@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Hexo博客搭建回顾概览 - saltyfishyjk
+          「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/28/Hexo博客搭建回顾概览/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/05/「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
                             
                         </div>
-                        <h1>Hexo博客搭建回顾概览</h1>
+                        <h1>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-01-28
+                            2022-03-05
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.5k</span> and
-                                Reading Time <span class="post-count">5</span> Minutes
+                                Words <span class="post-count">1.4k</span> and
+                                Reading Time <span class="post-count">4</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,75 +256,68 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Hexo博客（Snail主题）搭建回顾概览"><a href="#Hexo博客（Snail主题）搭建回顾概览" class="headerlink" title="Hexo博客（Snail主题）搭建回顾概览"></a>Hexo博客（Snail主题）搭建回顾概览</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>该Part记录一些背景信息，有助于读者<strong>了解这篇博客的写作背景、定位、对读者的前置知识期望</strong>。建议脑海中只有”想像大家一样搭建hexo博客“的同学阅读本部分，其他同学可直接跳至Part 1开始阅读。</p>
-<hr>
-<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在6系第一学期的祭祖中阅读参考了大量的学长学姐和同届大神的博客，受益匪浅，csdn和cnblog都是很不错的适合博客小白的平台，同时<strong>易于在百度检索中出现</strong>；除此之外，基于github page的hexo博客吸引了我的兴趣，虽不易于百度检索，但是<strong>利于对个人博客收集整理</strong>，这便是搭建本博客的初衷。</p>
-<p>笔者的设备是Windows 10家庭版。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于这篇博客提供的<strong>其他搭建博客详细指导链接</strong>和笔者自己的补充，预期读者可以依此搭建属于自己的Snail主题hexo博客。</p>
-<h4 id="您在这里可以期望获得："><a href="#您在这里可以期望获得：" class="headerlink" title="您在这里可以期望获得："></a>您在这里可以期望获得：</h4><ol>
-<li>笔者在搭建博客中踩过的坑</li>
-<li>一些较详细的指导搭建博客链接</li>
-<li>基于第2条中的搭建博客链接的一些补充</li>
-<li>包括链接博客内容在内的搭建博客所需的充分知识</li>
-<li>依照本博客给出的方法搭建出类似<a href="https://saltyfishyjk.github.io/">本博客</a>的个人博客</li>
+                <h1 id="「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享"><a href="#「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享" class="headerlink" title="「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享"></a>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1><hr>
+<h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><hr>
+<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>实现本次作业过程中，笔者和助教及同学们讨论多次，对架构进行多次修改和重构，最终确定了当前设计，在此和大家分享<strong>作业入手思路</strong>及<strong>架构设计</strong>。</p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客，您可以大致了解笔者从零开始对题意进行理解及架构设计的心路历程。</p>
+<h2 id="Part-1-作业入手思路"><a href="#Part-1-作业入手思路" class="headerlink" title="Part 1 作业入手思路"></a>Part 1 作业入手思路</h2><h3 id="面向对象与面向过程的思想"><a href="#面向对象与面向过程的思想" class="headerlink" title="面向对象与面向过程的思想"></a>面向对象与面向过程的思想</h3><p>经过假期Pre2和Pre3项目的迭代开发，我们已经初步接近了面向对象设计的一些特点。但是面向对象仍是较新鲜和陌生的东西，遇到第一次作业这种并不算轻松的任务很可能会下意识想回到面向对象的思路。然而，这并不是课程的训练方向，也大概率<em>并不适合</em>后续的迭代开发，因此，下面着重介绍如何以<strong>（可能）较为面向对象</strong>的思路理解和实现题目。</p>
+<h3 id="Training-advance"><a href="#Training-advance" class="headerlink" title="Training-advance"></a>Training-advance</h3><p>课程组提供的training对本次作业有相当的启示，事实上笔者的解析框架也基本借鉴自training，以下分析training的设计思路及架构。</p>
+<h4 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h4><h5 id="数据存储架构"><a href="#数据存储架构" class="headerlink" title="数据存储架构"></a>数据存储架构</h5><p><code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>，分别为表达式、项和因子，这也和题目的形式化表述相符合。其中，<code>Factor</code>接口被<code>Number</code>和<code>Expr</code>实现，即这两者都可以成为因子。</p>
+<h5 id="解析流程"><a href="#解析流程" class="headerlink" title="解析流程"></a>解析流程</h5><p><code>Parser</code>（语法分析）调用<code>Lexer</code>（词法分析），获取下一个<strong>词</strong>，在training中主要是<code>(</code>,<code>)</code>,<code>+</code>,<code>*</code>,<code>Number</code>。<code>Parser</code>以标点符号<code>+</code>和<code>*</code>区分当前层次。</p>
+<p>以<code>(1+2)*8+9</code>为例：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" class="" title="p2">
+
+<h3 id="HW1作业实现思路"><a href="#HW1作业实现思路" class="headerlink" title="HW1作业实现思路"></a>HW1作业实现思路</h3><h4 id="数据存储架构-1"><a href="#数据存储架构-1" class="headerlink" title="数据存储架构"></a>数据存储架构</h4><p>首先给出笔者的UML类图：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161041674.png" class="" title="p2">
+
+<p>面向对象的核心之一是识别类，并在类之间建立层次式协作关系（援引自Pre 2 Task 1 guidebook）。在本此作业中，<strong>识别类并设计合适的接口</strong>可以视作工作的核心。</p>
+<p>在上面介绍的<strong>training</strong>架构和思路中，<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>的架构一方面符合形式化语言描述的一个合法表达式拥有的结构，另一方面由于<code>Factor</code>以接口形式呈现，其具有良好的可拓展性，对于新的因子如<code>a*x^b</code>可以较好地支持。同时，<code>Factor</code>还内含了递归的支持，例如：<code>Expr</code>对象可以在有限次中展开至若干个<code>Number</code>对象。</p>
+<p>基于以上分析，以下介绍笔者的数据存储架构：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161310042.png" class="" title="p2">
+
+<p>类似上述training部分的树形结构，同样采用<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>结构，其中<code>Factor</code>接口被<code>Unit</code>和<code>Expr</code>实现。<code>Unit</code>储存了一个形如$a\times x^b$的数据，并且被视作<strong>基元</strong>。</p>
+<p>上述架构可以实现将原始字符串解析为一个完整的树状结构，同时，对每个结点来说，其存储了本节点所拥有的所有信息，并且对外提供一个<strong>extend()<strong>服务接口，使得外部节点可以通过该服务获取该节点的</strong>基元信息</strong>。</p>
+<p>因此，只需要搭建好<code>Expr</code>,<code>Term</code>,<code>Factor</code>三个类，设计这三个类的对外服务<code>extend()</code>方法，并且在<code>Parser</code>中以合适的方法调用即可。</p>
+<h2 id="Part-2-架构设计"><a href="#Part-2-架构设计" class="headerlink" title="Part 2 架构设计"></a>Part 2 架构设计</h2><p>Part1中已经较为详细地描述和定义了数据信息的存储，以下介绍架构设计。</p>
+<h4 id="Expr"><a href="#Expr" class="headerlink" title="Expr"></a><code>Expr</code></h4><h4 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li>以<code>HashSet</code>形式存储terms儿子结点们。</li>
+<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其terms儿子们<code>extend()</code>服务获得的基元们。</li>
+<li>用变量<code>index</code>存储该表达式的指数，以应对如<code>(1+x)**2</code>的情况</li>
 </ol>
-<h4 id="您在这里无法期望获得："><a href="#您在这里无法期望获得：" class="headerlink" title="您在这里无法期望获得："></a>您在这里无法期望获得：</h4><ol>
-<li>应用到的技术的深层原理</li>
-<li>Snail主题之外的其他hexo主题博客搭建方法</li>
+<h4 id="方法成员"><a href="#方法成员" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，代表自己作为<code>Factor</code>时内部储存的结点信息。</li>
+<li>实现<code>MULT()</code>方法，以应对当本对象<code>index</code>值不为1时，需要进行的乘法。</li>
+<li>实现<code>toString()</code>方法，根据自己的基元<code>HashMap</code>输出作业要求的答案。</li>
 </ol>
-<h3 id="对读者前置知识的期望"><a href="#对读者前置知识的期望" class="headerlink" title="对读者前置知识的期望"></a>对读者前置知识的期望</h3><p>我们希望读者最好可以拥有以下知识，或在阅读本博客时及时查阅学习。</p>
-<ol>
-<li>了解Git和GitHub基础知识</li>
-<li>能够应用编辑器（如visual studio code）查看各种非常规类型配置文件</li>
-<li>能够访问GitHub或能够使用VPN</li>
-<li>命令行的使用与Linux基本命令</li>
+<h3 id="Term"><a href="#Term" class="headerlink" title="Term"></a><code>Term</code></h3><h4 id="数据成员-1"><a href="#数据成员-1" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li>以<code>HashSet</code>形式存储factors儿子结点们。</li>
+<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其factors儿子们<code>extend()</code>服务获得的基元们。</li>
+<li>用变量<code>pos</code>表示该项外面是否有负号，以应对如<code>x*-3</code>的情况。</li>
 </ol>
-<h2 id="Part-1-笔者参考的其他博客"><a href="#Part-1-笔者参考的其他博客" class="headerlink" title="Part 1 笔者参考的其他博客"></a>Part 1 笔者参考的其他博客</h2><ol>
-<li><a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">Hexo+GitHub Page搭建技术博客（重要参考）</a></li>
-<li><a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a></li>
-<li><a href="https://hexo.io/" target="_blank" rel="noopener">hexo官网（可以获得hexo基本知识如hexo命令等）</a></li>
-<li>[<a href="https://www.cnblogs.com/yafine/p/12112210.html" target="_blank" rel="noopener">hexo+github搭建博客(超级详细版，精细入微)</a></li>
-<li><a href="https://blog.csdn.net/qwe435541908/article/details/93140354" target="_blank" rel="noopener">解决npm install安装慢的问题</a></li>
-<li><a href="https://developers.weixin.qq.com/community/develop/doc/0006e4a6280c78ea8e266455b51c00" target="_blank" rel="noopener">利用vscode打开.styl文件的办法</a></li>
-<li><a href="https://blog.csdn.net/qq_32074689/article/details/86769767" target="_blank" rel="noopener">解决hexo中文博客打不开的问题</a></li>
-<li><a href="https://www.cnblogs.com/bzsheng/p/13802829.html" target="_blank" rel="noopener">解决博客中插入图片的问题</a></li>
+<h4 id="方法成员-1"><a href="#方法成员-1" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，为自己内部储存的结点信息。</li>
+<li>由于项的factor之间的关系是乘法（在training中有介绍），因此，也需要在这里实现<code>MULT</code>方法，和<code>Expr</code>类同。</li>
 </ol>
-<p>以上为笔者在搭建博客的过程中所参考过的其他博客，前两个最为重要，读者可以将本博客与它们结合阅读。</p>
-<h2 id="Part-2-笔者踩过的坑"><a href="#Part-2-笔者踩过的坑" class="headerlink" title="Part 2 笔者踩过的坑"></a>Part 2 笔者踩过的坑</h2><h3 id="设置GitHub默认分支为master"><a href="#设置GitHub默认分支为master" class="headerlink" title="设置GitHub默认分支为master"></a>设置GitHub默认分支为master</h3><p>由于美国的一些政治因素，GitHub在2020年将默认分支由多年来一直使用的master改为了main，这导致了学习2020年10月之前的博客教程时，现在的用户需要考虑默认分支不同导致的潜在问题。因此，<strong>直接将自己GitHub账户的默认分支改为master即可与大家保持一致</strong>，避免无谓的bug。</p>
-<h3 id="直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客"><a href="#直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客" class="headerlink" title="直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客"></a>直接按照<a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a>的README.md搭建博客</h3><p>笔者曾尝试先应用默认主题，再更换为snail主题的方法，但是由于未知原因一直失败，但直接按照snail主题给出的指令操作即可。因此，建议读者直接按此操作。</p>
-<h3 id="执行hexo-g-d时关闭代理"><a href="#执行hexo-g-d时关闭代理" class="headerlink" title="执行hexo g -d时关闭代理"></a>执行<code>hexo g -d</code>时关闭代理</h3><p>在此先推荐一款访问GitHub的工具<a href="https://gitee.com/docmirror/dev-sidecar" target="_blank" rel="noopener">DevSideCar</a>，傻瓜式操作非常易用。</p>
-<p>在使用DevSideCar时，可能会遇到执行<code>hexo g -d</code>命令时上传失败，这并非因为操作错误，而是因为网络原因，只需要关闭代理即可。</p>
-<h2 id="Part-3-个性化设置博客界面"><a href="#Part-3-个性化设置博客界面" class="headerlink" title="Part 3 个性化设置博客界面"></a>Part 3 个性化设置博客界面</h2><p>如果你完全按照上文及相关链接的操作进行，那么下面的操作对你应当是适用的。</p>
-<h3 id="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"><a href="#在Snail主题官方仓库（给出了重要基本指导）已经给出的设置" class="headerlink" title="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"></a>在<a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a>已经给出的设置</h3><ol>
-<li>修改<strong>Site</strong>，按照官方指导即可。</li>
-<li>修改<strong>Site Settings</strong>，其中的<code>img</code>文件夹的相对地址是<code>blog\source\img</code>，其中<code>blog</code>是官方指导最开始的<code>hexo init blog</code>命令生成的<code>blog</code>文件夹。在该img文件夹下放入你所想要的图片并修改配置文件中相应代码。</li>
-<li>修改<strong>SNS Settings</strong>，按照官方指导即可。<ol>
-<li>修改<strong>Sidebar Settings</strong>，对于不需要的Sidebar，直接注释掉或删掉对应栏目即可；<strong>friends</strong>链接的<code>title</code>是在你的博客界面显示的文字，点击会跳转到<code>href</code>指向的链接。</li>
+<h3 id="Factor"><a href="#Factor" class="headerlink" title="Factor"></a><code>Factor</code></h3><p>接口，内部为空，仅表示实现该接口的类具有因子属性。</p>
+<h3 id="Unit"><a href="#Unit" class="headerlink" title="Unit"></a><code>Unit</code></h3><h4 id="数据成员-2"><a href="#数据成员-2" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li><code>constent</code>，表示$a\times x^b$中的$a$。</li>
+<li><code>index</code>，，表示$a\times x^b$中的$b$。</li>
 </ol>
-</li>
-<li><strong>theme</strong>部分应该无需自己修改。</li>
-<li><strong>Deployment</strong>部分依照官方指导修改即可，其具体格式可进一步参考<a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">Hexo+GitHub Page搭建技术博客（重要参考）</a>。</li>
-<li><strong>Background effects</strong>部分按照官方指导修改即可，也可以关闭以减少CPU消耗，其中<strong>content</strong>部分可以修改为自己喜欢的emoji或语句，做个小彩蛋（比如本博客[doge]）。</li>
+<h4 id="方法成员-2"><a href="#方法成员-2" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，事实上返回一个只有自己的<code>HashMap</code>。</li>
 </ol>
-<h3 id="官方指导未给出的设置配置"><a href="#官方指导未给出的设置配置" class="headerlink" title="官方指导未给出的设置配置"></a>官方指导未给出的设置配置</h3><h4 id="更改右上角导航栏"><a href="#更改右上角导航栏" class="headerlink" title="更改右上角导航栏"></a>更改右上角导航栏</h4><p>例子：如想删去下图右上角的<strong>TAGS</strong>栏目，只需要在<code>blog\source</code>目录下删去<code>tags</code>文件夹即可。<img src="/2022/01/28/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9E%E9%A1%BE%E6%A6%82%E8%A7%88/pic1.jpg" class="" title="这是一张图片"></p>
-<p>如果想增加栏目，可以查阅hexo命令hexo new page使用方法，此处不详述。</p>
-<h3 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h3><p>可以使用<code>hexo new &#39;title&#39;</code>的命令生成<code>.md</code>博客源文件，在其中使用<code>markdown</code>语法书写即可。</p>
-<h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>参考<a href="https://www.cnblogs.com/bzsheng/p/13802829.html" target="_blank" rel="noopener">解决博客中插入图片的问题</a>中的方案，其中前两种方法笔者已经亲测可用，最后的typora的方法没有尝试。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感谢您阅读至此，这篇博客到此也就告一段落了，后续笔者若有新的心得会更新本博客。</p>
-<p>这篇博客远非尽善尽美，笔者也只是提供了若干其他博客资源和自己亲历的坑，若有不足之处还望批评指正。</p>
+<h4 id="Parser和Lexer"><a href="#Parser和Lexer" class="headerlink" title="Parser和Lexer"></a><code>Parser</code>和<code>Lexer</code></h4><p>基于training的架构，需要修改部分内容以适应本架构，此处不再展开。</p>
+<h2 id="Part-3-后记"><a href="#Part-3-后记" class="headerlink" title="Part 3 后记"></a>Part 3 后记</h2><p>本次作业能够完成，本架构可以得以实现并最终呈现在这里，离不开老师、助教和同学们的无私帮助，在此表示深深的感谢。</p>
+<p>本架构仍十分稚嫩而不成熟，十分欢迎各位在此讨论和批评。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/02/10/Java程序设计（2022春）——第五章输入输出笔记与思考/" data-toggle="tooltip" data-placement="top" title="Java程序设计（2022春）——第五章输入输出笔记与思考">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/01/27/BUAA-CO-冒险之旅回顾/" data-toggle="tooltip" data-placement="top" title="BUAA CO 冒险之旅回顾">Next Post &rarr;</a>
+                        <a href="/2022/02/26/「BUAA-OO-Pre」-Pre-2总结回顾概览/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」 Pre 2总结回顾概览">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -377,7 +370,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Hexo博客（Snail主题）搭建回顾概览"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Hexo博客（Snail主题）搭建回顾概览</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#您在这里可以期望获得："><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">您在这里可以期望获得：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#您在这里无法期望获得："><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">您在这里无法期望获得：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对读者前置知识的期望"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">对读者前置知识的期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-笔者参考的其他博客"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的其他博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-笔者踩过的坑"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 笔者踩过的坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置GitHub默认分支为master"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">设置GitHub默认分支为master</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#执行hexo-g-d时关闭代理"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">执行hexo g -d时关闭代理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-个性化设置博客界面"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 个性化设置博客界面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">在Snail主题官方仓库（给出了重要基本指导）已经给出的设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#官方指导未给出的设置配置"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">官方指导未给出的设置配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#更改右上角导航栏"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">更改右上角导航栏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写博客"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">写博客</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#插入图片"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">插入图片</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#后记"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">后记</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-作业入手思路"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 作业入手思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#面向对象与面向过程的思想"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">面向对象与面向过程的思想</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Training-advance"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Training-advance</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#核心思路"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">核心思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#数据存储架构"><span class="toc-nav-number">1.2.2.1.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#解析流程"><span class="toc-nav-number">1.2.2.1.2.</span> <span class="toc-nav-text">解析流程</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HW1作业实现思路"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">HW1作业实现思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据存储架构-1"><span class="toc-nav-number">1.2.3.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-架构设计"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 架构设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Expr"><span class="toc-nav-number">1.3.0.1.</span> <span class="toc-nav-text">Expr</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员"><span class="toc-nav-number">1.3.0.2.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员"><span class="toc-nav-number">1.3.0.3.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Term"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Term</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员-1"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员-1"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Factor"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">Factor</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Unit"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">Unit</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员-2"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员-2"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">方法成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Parser和Lexer"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">Parser和Lexer</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-后记"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 后记</span></a></li></ol></li></ol>
             
           
           </div>
@@ -399,7 +392,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
                         
                     </div>
                 </section>
