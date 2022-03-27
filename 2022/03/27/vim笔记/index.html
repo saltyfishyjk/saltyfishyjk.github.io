@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Hexo博客搭建回顾概览 - saltyfishyjk
+          vim笔记 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/28/Hexo博客搭建回顾概览/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/27/vim笔记/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,23 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Vim" title="Vim">Vim</a>
                             
                         </div>
-                        <h1>Hexo博客搭建回顾概览</h1>
+                        <h1>vim笔记</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-01-28
+                            2022-03-27
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.5k</span> and
-                                Reading Time <span class="post-count">5</span> Minutes
+                                Words <span class="post-count">223</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,75 +258,34 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Hexo博客（Snail主题）搭建回顾概览"><a href="#Hexo博客（Snail主题）搭建回顾概览" class="headerlink" title="Hexo博客（Snail主题）搭建回顾概览"></a>Hexo博客（Snail主题）搭建回顾概览</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>该Part记录一些背景信息，有助于读者<strong>了解这篇博客的写作背景、定位、对读者的前置知识期望</strong>。建议脑海中只有”想像大家一样搭建hexo博客“的同学阅读本部分，其他同学可直接跳至Part 1开始阅读。</p>
-<hr>
-<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在6系第一学期的祭祖中阅读参考了大量的学长学姐和同届大神的博客，受益匪浅，csdn和cnblog都是很不错的适合博客小白的平台，同时<strong>易于在百度检索中出现</strong>；除此之外，基于github page的hexo博客吸引了我的兴趣，虽不易于百度检索，但是<strong>利于对个人博客收集整理</strong>，这便是搭建本博客的初衷。</p>
-<p>笔者的设备是Windows 10家庭版。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于这篇博客提供的<strong>其他搭建博客详细指导链接</strong>和笔者自己的补充，预期读者可以依此搭建属于自己的Snail主题hexo博客。</p>
-<h4 id="您在这里可以期望获得："><a href="#您在这里可以期望获得：" class="headerlink" title="您在这里可以期望获得："></a>您在这里可以期望获得：</h4><ol>
-<li>笔者在搭建博客中踩过的坑</li>
-<li>一些较详细的指导搭建博客链接</li>
-<li>基于第2条中的搭建博客链接的一些补充</li>
-<li>包括链接博客内容在内的搭建博客所需的充分知识</li>
-<li>依照本博客给出的方法搭建出类似<a href="https://saltyfishyjk.github.io/">本博客</a>的个人博客</li>
+                <h1 id="Vim笔记"><a href="#Vim笔记" class="headerlink" title="Vim笔记"></a>Vim笔记</h1><p>[TOC]</p>
+<h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>vim是一款强大的编辑器，网络上已经有大量其详细的实用教程与介绍。因此，本篇博客仅作学习笔记，不图大而全，也会随着笔者的使用及时更新。</p>
+<h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol>
+<li><a href="https://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">菜鸟教程Linux vi/vim</a> 适合作为百科全书检索</li>
+<li><a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">简明 VIM 练级攻略</a> 适合系统训练</li>
+<li><a href="https://www.vim.org/" target="_blank" rel="noopener">vim官方网站</a> 官方网站</li>
 </ol>
-<h4 id="您在这里无法期望获得："><a href="#您在这里无法期望获得：" class="headerlink" title="您在这里无法期望获得："></a>您在这里无法期望获得：</h4><ol>
-<li>应用到的技术的深层原理</li>
-<li>Snail主题之外的其他hexo主题博客搭建方法</li>
+<h2 id="Part-2-命令模式"><a href="#Part-2-命令模式" class="headerlink" title="Part 2 命令模式"></a>Part 2 命令模式</h2><ol>
+<li><code>i</code>：进入输入模式</li>
+<li><code>u</code>：撤回操作</li>
+<li>ctrl + r：撤销撤回操作</li>
+<li><code>h,j,k,l</code>：光标向左、下、上、右</li>
 </ol>
-<h3 id="对读者前置知识的期望"><a href="#对读者前置知识的期望" class="headerlink" title="对读者前置知识的期望"></a>对读者前置知识的期望</h3><p>我们希望读者最好可以拥有以下知识，或在阅读本博客时及时查阅学习。</p>
-<ol>
-<li>了解Git和GitHub基础知识</li>
-<li>能够应用编辑器（如visual studio code）查看各种非常规类型配置文件</li>
-<li>能够访问GitHub或能够使用VPN</li>
-<li>命令行的使用与Linux基本命令</li>
+<h2 id="Part-3-输入模式"><a href="#Part-3-输入模式" class="headerlink" title="Part 3 输入模式"></a>Part 3 输入模式</h2><h2 id="Part-4-底线命令模式"><a href="#Part-4-底线命令模式" class="headerlink" title="Part 4 底线命令模式"></a>Part 4 底线命令模式</h2><ol>
+<li><code>:?str</code>：查找str，然后用<code>n</code>和<code>N</code>分别向下和向上查找</li>
+<li><code>:set nu</code>：显示行号</li>
+<li><code>:set tabstop=4</code>：设置<code>table</code>键为四个空格</li>
+<li><code>:x</code>：x为数字，则跳转至相应行号；x若为<code>$</code>，则跳转至最后一行</li>
 </ol>
-<h2 id="Part-1-笔者参考的其他博客"><a href="#Part-1-笔者参考的其他博客" class="headerlink" title="Part 1 笔者参考的其他博客"></a>Part 1 笔者参考的其他博客</h2><ol>
-<li><a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">Hexo+GitHub Page搭建技术博客（重要参考）</a></li>
-<li><a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a></li>
-<li><a href="https://hexo.io/" target="_blank" rel="noopener">hexo官网（可以获得hexo基本知识如hexo命令等）</a></li>
-<li><a href="https://www.cnblogs.com/yafine/p/12112210.html" target="_blank" rel="noopener">hexo+github搭建博客(超级详细版，精细入微)</a></li>
-<li><a href="https://blog.csdn.net/qwe435541908/article/details/93140354" target="_blank" rel="noopener">解决npm install安装慢的问题</a></li>
-<li><a href="https://developers.weixin.qq.com/community/develop/doc/0006e4a6280c78ea8e266455b51c00" target="_blank" rel="noopener">利用vscode打开.styl文件的办法</a></li>
-<li><a href="https://blog.csdn.net/qq_32074689/article/details/86769767" target="_blank" rel="noopener">解决hexo中文博客打不开的问题</a></li>
-<li><a href="https://www.cnblogs.com/bzsheng/p/13802829.html" target="_blank" rel="noopener">解决博客中插入图片的问题</a></li>
-</ol>
-<p>以上为笔者在搭建博客的过程中所参考过的其他博客，前两个最为重要，读者可以将本博客与它们结合阅读。</p>
-<h2 id="Part-2-笔者踩过的坑"><a href="#Part-2-笔者踩过的坑" class="headerlink" title="Part 2 笔者踩过的坑"></a>Part 2 笔者踩过的坑</h2><h3 id="设置GitHub默认分支为master"><a href="#设置GitHub默认分支为master" class="headerlink" title="设置GitHub默认分支为master"></a>设置GitHub默认分支为master</h3><p>由于美国的一些政治因素，GitHub在2020年将默认分支由多年来一直使用的master改为了main，这导致了学习2020年10月之前的博客教程时，现在的用户需要考虑默认分支不同导致的潜在问题。因此，<strong>直接将自己GitHub账户的默认分支改为master即可与大家保持一致</strong>，避免无谓的bug。</p>
-<h3 id="直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客"><a href="#直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客" class="headerlink" title="直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客"></a>直接按照<a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a>的README.md搭建博客</h3><p>笔者曾尝试先应用默认主题，再更换为snail主题的方法，但是由于未知原因一直失败，但直接按照snail主题给出的指令操作即可。因此，建议读者直接按此操作。</p>
-<h3 id="执行hexo-g-d时关闭代理"><a href="#执行hexo-g-d时关闭代理" class="headerlink" title="执行hexo g -d时关闭代理"></a>执行<code>hexo g -d</code>时关闭代理</h3><p>在此先推荐一款访问GitHub的工具<a href="https://gitee.com/docmirror/dev-sidecar" target="_blank" rel="noopener">DevSideCar</a>，傻瓜式操作非常易用。</p>
-<p>在使用DevSideCar时，可能会遇到执行<code>hexo g -d</code>命令时上传失败，这并非因为操作错误，而是因为网络原因，只需要关闭代理即可。</p>
-<h2 id="Part-3-个性化设置博客界面"><a href="#Part-3-个性化设置博客界面" class="headerlink" title="Part 3 个性化设置博客界面"></a>Part 3 个性化设置博客界面</h2><p>如果你完全按照上文及相关链接的操作进行，那么下面的操作对你应当是适用的。</p>
-<h3 id="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"><a href="#在Snail主题官方仓库（给出了重要基本指导）已经给出的设置" class="headerlink" title="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"></a>在<a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">Snail主题官方仓库（给出了重要基本指导）</a>已经给出的设置</h3><ol>
-<li>修改<strong>Site</strong>，按照官方指导即可。</li>
-<li>修改<strong>Site Settings</strong>，其中的<code>img</code>文件夹的相对地址是<code>blog\source\img</code>，其中<code>blog</code>是官方指导最开始的<code>hexo init blog</code>命令生成的<code>blog</code>文件夹。在该img文件夹下放入你所想要的图片并修改配置文件中相应代码。</li>
-<li>修改<strong>SNS Settings</strong>，按照官方指导即可。<ol>
-<li>修改<strong>Sidebar Settings</strong>，对于不需要的Sidebar，直接注释掉或删掉对应栏目即可；<strong>friends</strong>链接的<code>title</code>是在你的博客界面显示的文字，点击会跳转到<code>href</code>指向的链接。</li>
-</ol>
-</li>
-<li><strong>theme</strong>部分应该无需自己修改。</li>
-<li><strong>Deployment</strong>部分依照官方指导修改即可，其具体格式可进一步参考<a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">Hexo+GitHub Page搭建技术博客（重要参考）</a>。</li>
-<li><strong>Background effects</strong>部分按照官方指导修改即可，也可以关闭以减少CPU消耗，其中<strong>content</strong>部分可以修改为自己喜欢的emoji或语句，做个小彩蛋（比如本博客[doge]）。</li>
-</ol>
-<h3 id="官方指导未给出的设置配置"><a href="#官方指导未给出的设置配置" class="headerlink" title="官方指导未给出的设置配置"></a>官方指导未给出的设置配置</h3><h4 id="更改右上角导航栏"><a href="#更改右上角导航栏" class="headerlink" title="更改右上角导航栏"></a>更改右上角导航栏</h4><p>例子：如想删去下图右上角的<strong>TAGS</strong>栏目，只需要在<code>blog\source</code>目录下删去<code>tags</code>文件夹即可。<img src="/2022/01/28/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9E%E9%A1%BE%E6%A6%82%E8%A7%88/pic1.jpg" class="" title="这是一张图片"></p>
-<p>如果想增加栏目，可以查阅hexo命令hexo new page使用方法，此处不详述。</p>
-<h3 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h3><p>可以使用<code>hexo new &#39;title&#39;</code>的命令生成<code>.md</code>博客源文件，在其中使用<code>markdown</code>语法书写即可。</p>
-<h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>参考<a href="https://www.cnblogs.com/bzsheng/p/13802829.html" target="_blank" rel="noopener">解决博客中插入图片的问题</a>中的方案，其中前两种方法笔者已经亲测可用，最后的typora的方法没有尝试。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感谢您阅读至此，这篇博客到此也就告一段落了，后续笔者若有新的心得会更新本博客。</p>
-<p>这篇博客远非尽善尽美，笔者也只是提供了若干其他博客资源和自己亲历的坑，若有不足之处还望批评指正。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/02/10/Java程序设计（2022春）——第五章输入输出笔记与思考/" data-toggle="tooltip" data-placement="top" title="Java程序设计（2022春）——第五章输入输出笔记与思考">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/01/27/BUAA-CO-冒险之旅回顾/" data-toggle="tooltip" data-placement="top" title="BUAA CO 冒险之旅回顾">Next Post &rarr;</a>
+                        <a href="/2022/03/25/「BUAA-OO-Unit-1-HW4」第一单元总结/" data-toggle="tooltip" data-placement="top" title="「BUAA-OO-Unit-1-HW4」第一单元总结">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -377,7 +338,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Hexo博客（Snail主题）搭建回顾概览"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Hexo博客（Snail主题）搭建回顾概览</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#您在这里可以期望获得："><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">您在这里可以期望获得：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#您在这里无法期望获得："><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">您在这里无法期望获得：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对读者前置知识的期望"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">对读者前置知识的期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-笔者参考的其他博客"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的其他博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-笔者踩过的坑"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 笔者踩过的坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置GitHub默认分支为master"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">设置GitHub默认分支为master</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#执行hexo-g-d时关闭代理"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">执行hexo g -d时关闭代理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-个性化设置博客界面"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 个性化设置博客界面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">在Snail主题官方仓库（给出了重要基本指导）已经给出的设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#官方指导未给出的设置配置"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">官方指导未给出的设置配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#更改右上角导航栏"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">更改右上角导航栏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写博客"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">写博客</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#插入图片"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">插入图片</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#后记"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">后记</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Vim笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vim笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-相关资源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-命令模式"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 命令模式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-输入模式"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 输入模式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-底线命令模式"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 底线命令模式</span></a></li></ol></li></ol>
             
           
           </div>
@@ -399,7 +360,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Vim" title="Vim">Vim</a>
                         
                     </div>
                 </section>
