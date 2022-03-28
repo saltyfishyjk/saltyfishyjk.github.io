@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>CMD笔记</title>
+      <link href="/2022/03/28/CMD%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/03/28/CMD%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CMD笔记"><a href="#CMD笔记" class="headerlink" title="CMD笔记"></a>CMD笔记</h1><p>[TOC]</p><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>CMD是Windows下的命令提示符，其指令和Linux有相似之处，但也有相当多的不同。在某些情况下，比如执行批处理、运行<code>anaconda</code>等时，我们需要和其打交道，这里记录相关资源和常用指令，特别是有别于Linux的部分。</p><p>相关介绍可能不完全准确，比如笔者可能会倾向于与Linux指令作类比，这是仅从使用效果而言，不保证完全相同，也不保证底层实现相同。</p><h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><h2 id="Part-2-常用命令"><a href="#Part-2-常用命令" class="headerlink" title="Part 2 常用命令"></a>Part 2 常用命令</h2><ol><li><code>cd</code>：同Linux，进入某一个目录。</li><li><code>dir</code>：类似Linux下的<code>ls</code>，展现当前目录下的文件和文件夹。</li><li><code>cls</code>：同Linux下<code>clear</code>，清屏。</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+            <tag> CMD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「BUAA OS Lab1」内核、Boot和prinitf</title>
+      <link href="/2022/03/28/%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf/"/>
+      <url>/2022/03/28/%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf/</url>
+      
+        <content type="html"><![CDATA[<h1 id="「BUAA-OS-Lab1」内核、Boot和prinitf"><a href="#「BUAA-OS-Lab1」内核、Boot和prinitf" class="headerlink" title="「BUAA OS Lab1」内核、Boot和prinitf"></a>「BUAA OS Lab1」内核、Boot和prinitf</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Lab1的要求包括：从操作系统角度理解 MIPS 体系结构、掌握操作系统启动的基本流程、掌握 ELF 文件的结构和功能和完成 printf 函数的编写。实验指导书有详尽的介绍，这里不再重复造轮子，仅针对学习和实验过程中的体会和思考加以记录。</p><h2 id="Part-1-操作系统的启动"><a href="#Part-1-操作系统的启动" class="headerlink" title="Part 1 操作系统的启动"></a>Part 1 操作系统的启动</h2><h3 id="实验的环境"><a href="#实验的环境" class="headerlink" title="实验的环境"></a>实验的环境</h3><p>区分以下几个概念是重要的：</p><p>模拟硬件环境：GXemul，这是一款计算机架构仿真器，可以模拟需要的CPU等硬件环境，这也是我们进行仿真实验的平台。</p><p>编写代码的平台：Linux。我们的跳板机的操作系统是Linux，我们输入的各种如<code>cd</code>，<code>ls</code>等指令就是Linux指令。</p><p>交叉编译：我们的跳板机是x86平台，其编译器服务于x86平台，但我们希望在跳板机中写出的操作系统运行于MIPS平台，因此，我们需要的是编译出可以在MIPS平台运行的程序，普通编译器做不到这一点。交叉编译器，就是在一个体系结构的平台上编译出另一个体系结构的程序的编译器。</p><h3 id="启动操作系统"><a href="#启动操作系统" class="headerlink" title="启动操作系统"></a>启动操作系统</h3><p>系统加电后，操作系统将要启动，这是一个复杂纠结的过程，以下简要总结思考路径。</p><ol><li>内核代码要能够运行，必须要被CPU直接访问，排除磁盘。</li><li>内核代码需要稳定，掉电后依然不能失去，排除易失性存储器内存RAM。RAM掉电后会丢失全部数据。</li><li>排除法知，现仅剩CPU可以直接访问的非易失性存储器ROM和FLASH。</li><li>上述两种存储器的存储空间一般会被映射到CPU寻址空间的确定区域，是有限的，不能装载内核较大的一版操作系统。</li><li>我们希望一个计算机硬件可以支持多个操作系统，并且希望操作系统便于移植而不和特定硬件完全绑死。</li></ol><p>基于以上考虑，硬件初始化工作用<code>bootloader</code>程序完成，有以下好处和特点：</p><ol><li>其单独将硬件初始化工作从操作系统中抽离，实现硬件启动和软件启动的分离，因此需要在非易失性存储器中存放的硬件启动指令不多。</li><li>bootloader完成硬件初始化后，为软件启动做相应准备，如，将内核镜像文件从存放的存储器（如磁盘）读取到RAM。即，我们可以在bootloader后选择加载哪一个内核镜像，达成多重开机的功能，也达成一个硬件运行多个操作系统的功能。</li><li></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> BUAA-OS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux终端笔记</title>
       <link href="/2022/03/27/Linux%E7%BB%88%E7%AB%AF%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/03/27/Linux%E7%BB%88%E7%AB%AF%E7%AC%94%E8%AE%B0/</url>
@@ -50,7 +90,7 @@
       <link href="/2022/03/27/Conda%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/03/27/Conda%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="Conda笔记"><a href="#Conda笔记" class="headerlink" title="Conda笔记"></a>Conda笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Conda是一个强大的管理版本和Python环境的工具，在本机与服务器等场景都有重要应用。这里记录使用过程中的心得和笔记。</p><h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/44398592" target="_blank" rel="noopener">Conda使用指南</a></li></ol><h2 id="Part-2-常用操作"><a href="#Part-2-常用操作" class="headerlink" title="Part 2 常用操作"></a>Part 2 常用操作</h2><ol><li><code>conda env list</code>：Linux查看conda环境</li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="Conda笔记"><a href="#Conda笔记" class="headerlink" title="Conda笔记"></a>Conda笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Conda是一个强大的管理版本和Python环境的工具，在本机与服务器等场景都有重要应用。这里记录使用过程中的心得和笔记。</p><h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/44398592" target="_blank" rel="noopener">Conda使用指南</a></li></ol><h2 id="Part-2-常用操作"><a href="#Part-2-常用操作" class="headerlink" title="Part 2 常用操作"></a>Part 2 常用操作</h2><ol><li><code>conda env list</code>：Linux查看conda环境</li><li><code>conda activate torch</code>：进入名为<code>torch</code>的环境</li></ol>]]></content>
       
       
       

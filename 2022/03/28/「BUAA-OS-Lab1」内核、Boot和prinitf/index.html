@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享 - saltyfishyjk
+          「BUAA OS Lab1」内核、Boot和prinitf - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/05/「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/28/「BUAA-OS-Lab1」内核、Boot和prinitf/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                             
                         </div>
-                        <h1>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1>
+                        <h1>「BUAA OS Lab1」内核、Boot和prinitf</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-03-05
+                            2022-03-28
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.4k</span> and
-                                Reading Time <span class="post-count">4</span> Minutes
+                                Words <span class="post-count">716</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,59 +256,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享"><a href="#「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享" class="headerlink" title="「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享"></a>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1><hr>
-<h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><hr>
-<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>实现本次作业过程中，笔者和助教及同学们讨论多次，对架构进行多次修改和重构，最终确定了当前设计，在此和大家分享<strong>作业入手思路</strong>及<strong>架构设计</strong>。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客，您可以大致了解笔者从零开始对题意进行理解及架构设计的心路历程。</p>
-<h2 id="Part-1-作业入手思路"><a href="#Part-1-作业入手思路" class="headerlink" title="Part 1 作业入手思路"></a>Part 1 作业入手思路</h2><h3 id="面向对象与面向过程的思想"><a href="#面向对象与面向过程的思想" class="headerlink" title="面向对象与面向过程的思想"></a>面向对象与面向过程的思想</h3><p>经过假期Pre2和Pre3项目的迭代开发，我们已经初步接近了面向对象设计的一些特点。但是面向对象仍是较新鲜和陌生的东西，遇到第一次作业这种并不算轻松的任务很可能会下意识想回到面向对象的思路。然而，这并不是课程的训练方向，也大概率<em>并不适合</em>后续的迭代开发，因此，下面着重介绍如何以<strong>（可能）较为面向对象</strong>的思路理解和实现题目。</p>
-<h3 id="Training-advance"><a href="#Training-advance" class="headerlink" title="Training-advance"></a>Training-advance</h3><p>课程组提供的training对本次作业有相当的启示，事实上笔者的解析框架也基本借鉴自training，以下分析training的设计思路及架构。</p>
-<h4 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h4><h5 id="数据存储架构"><a href="#数据存储架构" class="headerlink" title="数据存储架构"></a>数据存储架构</h5><p><code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>，分别为表达式、项和因子，这也和题目的形式化表述相符合。其中，<code>Factor</code>接口被<code>Number</code>和<code>Expr</code>实现，即这两者都可以成为因子。</p>
-<h5 id="解析流程"><a href="#解析流程" class="headerlink" title="解析流程"></a>解析流程</h5><p><code>Parser</code>（语法分析）调用<code>Lexer</code>（词法分析），获取下一个<strong>词</strong>，在training中主要是<code>(</code>,<code>)</code>,<code>+</code>,<code>*</code>,<code>Number</code>。<code>Parser</code>以标点符号<code>+</code>和<code>*</code>区分当前层次。</p>
-<p>以<code>(1+2)*8+9</code>为例：</p>
-<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" class="" title="p2">
-
-<h3 id="HW1作业实现思路"><a href="#HW1作业实现思路" class="headerlink" title="HW1作业实现思路"></a>HW1作业实现思路</h3><h4 id="数据存储架构-1"><a href="#数据存储架构-1" class="headerlink" title="数据存储架构"></a>数据存储架构</h4><p>首先给出笔者的UML类图：</p>
-<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161041674.png" class="" title="p2">
-
-<p>面向对象的核心之一是识别类，并在类之间建立层次式协作关系（援引自Pre 2 Task 1 guidebook）。在本此作业中，<strong>识别类并设计合适的接口</strong>可以视作工作的核心。</p>
-<p>在上面介绍的<strong>training</strong>架构和思路中，<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>的架构一方面符合形式化语言描述的一个合法表达式拥有的结构，另一方面由于<code>Factor</code>以接口形式呈现，其具有良好的可拓展性，对于新的因子如<code>a*x^b</code>可以较好地支持。同时，<code>Factor</code>还内含了递归的支持，例如：<code>Expr</code>对象可以在有限次中展开至若干个<code>Number</code>对象。</p>
-<p>基于以上分析，以下介绍笔者的数据存储架构：</p>
-<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161310042.png" class="" title="p2">
-
-<p>类似上述training部分的树形结构，同样采用<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>结构，其中<code>Factor</code>接口被<code>Unit</code>和<code>Expr</code>实现。<code>Unit</code>储存了一个形如$a\times x^b$的数据，并且被视作<strong>基元</strong>。</p>
-<p>上述架构可以实现将原始字符串解析为一个完整的树状结构，同时，对每个结点来说，其存储了本节点所拥有的所有信息，并且对外提供一个<strong>extend()<strong>服务接口，使得外部节点可以通过该服务获取该节点的</strong>基元信息</strong>。</p>
-<p>因此，只需要搭建好<code>Expr</code>,<code>Term</code>,<code>Factor</code>三个类，设计这三个类的对外服务<code>extend()</code>方法，并且在<code>Parser</code>中以合适的方法调用即可。</p>
-<h2 id="Part-2-架构设计"><a href="#Part-2-架构设计" class="headerlink" title="Part 2 架构设计"></a>Part 2 架构设计</h2><p>Part1中已经较为详细地描述和定义了数据信息的存储，以下介绍架构设计。</p>
-<h4 id="Expr"><a href="#Expr" class="headerlink" title="Expr"></a><code>Expr</code></h4><h4 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
-<li>以<code>HashSet</code>形式存储terms儿子结点们。</li>
-<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其terms儿子们<code>extend()</code>服务获得的基元们。</li>
-<li>用变量<code>index</code>存储该表达式的指数，以应对如<code>(1+x)**2</code>的情况</li>
+                <h1 id="「BUAA-OS-Lab1」内核、Boot和prinitf"><a href="#「BUAA-OS-Lab1」内核、Boot和prinitf" class="headerlink" title="「BUAA OS Lab1」内核、Boot和prinitf"></a>「BUAA OS Lab1」内核、Boot和prinitf</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Lab1的要求包括：从操作系统角度理解 MIPS 体系结构、掌握操作系统启动的基本流程、掌握 ELF 文件的结构和功能和完成 printf 函数的编写。实验指导书有详尽的介绍，这里不再重复造轮子，仅针对学习和实验过程中的体会和思考加以记录。</p>
+<h2 id="Part-1-操作系统的启动"><a href="#Part-1-操作系统的启动" class="headerlink" title="Part 1 操作系统的启动"></a>Part 1 操作系统的启动</h2><h3 id="实验的环境"><a href="#实验的环境" class="headerlink" title="实验的环境"></a>实验的环境</h3><p>区分以下几个概念是重要的：</p>
+<p>模拟硬件环境：GXemul，这是一款计算机架构仿真器，可以模拟需要的CPU等硬件环境，这也是我们进行仿真实验的平台。</p>
+<p>编写代码的平台：Linux。我们的跳板机的操作系统是Linux，我们输入的各种如<code>cd</code>，<code>ls</code>等指令就是Linux指令。</p>
+<p>交叉编译：我们的跳板机是x86平台，其编译器服务于x86平台，但我们希望在跳板机中写出的操作系统运行于MIPS平台，因此，我们需要的是编译出可以在MIPS平台运行的程序，普通编译器做不到这一点。交叉编译器，就是在一个体系结构的平台上编译出另一个体系结构的程序的编译器。</p>
+<h3 id="启动操作系统"><a href="#启动操作系统" class="headerlink" title="启动操作系统"></a>启动操作系统</h3><p>系统加电后，操作系统将要启动，这是一个复杂纠结的过程，以下简要总结思考路径。</p>
+<ol>
+<li>内核代码要能够运行，必须要被CPU直接访问，排除磁盘。</li>
+<li>内核代码需要稳定，掉电后依然不能失去，排除易失性存储器内存RAM。RAM掉电后会丢失全部数据。</li>
+<li>排除法知，现仅剩CPU可以直接访问的非易失性存储器ROM和FLASH。</li>
+<li>上述两种存储器的存储空间一般会被映射到CPU寻址空间的确定区域，是有限的，不能装载内核较大的一版操作系统。</li>
+<li>我们希望一个计算机硬件可以支持多个操作系统，并且希望操作系统便于移植而不和特定硬件完全绑死。</li>
 </ol>
-<h4 id="方法成员"><a href="#方法成员" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
-<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，代表自己作为<code>Factor</code>时内部储存的结点信息。</li>
-<li>实现<code>MULT()</code>方法，以应对当本对象<code>index</code>值不为1时，需要进行的乘法。</li>
-<li>实现<code>toString()</code>方法，根据自己的基元<code>HashMap</code>输出作业要求的答案。</li>
+<p>基于以上考虑，硬件初始化工作用<code>bootloader</code>程序完成，有以下好处和特点：</p>
+<ol>
+<li>其单独将硬件初始化工作从操作系统中抽离，实现硬件启动和软件启动的分离，因此需要在非易失性存储器中存放的硬件启动指令不多。</li>
+<li>bootloader完成硬件初始化后，为软件启动做相应准备，如，将内核镜像文件从存放的存储器（如磁盘）读取到RAM。即，我们可以在bootloader后选择加载哪一个内核镜像，达成多重开机的功能，也达成一个硬件运行多个操作系统的功能。</li>
+<li></li>
 </ol>
-<h3 id="Term"><a href="#Term" class="headerlink" title="Term"></a><code>Term</code></h3><h4 id="数据成员-1"><a href="#数据成员-1" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
-<li>以<code>HashSet</code>形式存储factors儿子结点们。</li>
-<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其factors儿子们<code>extend()</code>服务获得的基元们。</li>
-<li>用变量<code>pos</code>表示该项外面是否有负号，以应对如<code>x*-3</code>的情况。</li>
-</ol>
-<h4 id="方法成员-1"><a href="#方法成员-1" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
-<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，为自己内部储存的结点信息。</li>
-<li>由于项的factor之间的关系是乘法（在training中有介绍），因此，也需要在这里实现<code>MULT</code>方法，和<code>Expr</code>类同。</li>
-</ol>
-<h3 id="Factor"><a href="#Factor" class="headerlink" title="Factor"></a><code>Factor</code></h3><p>接口，内部为空，仅表示实现该接口的类具有因子属性。</p>
-<h3 id="Unit"><a href="#Unit" class="headerlink" title="Unit"></a><code>Unit</code></h3><h4 id="数据成员-2"><a href="#数据成员-2" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
-<li><code>constent</code>，表示$a\times x^b$中的$a$。</li>
-<li><code>index</code>，，表示$a\times x^b$中的$b$。</li>
-</ol>
-<h4 id="方法成员-2"><a href="#方法成员-2" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
-<li>实现自己的<code>extend()</code>方法，事实上返回一个只有自己的<code>HashMap</code>。</li>
-</ol>
-<h4 id="Parser和Lexer"><a href="#Parser和Lexer" class="headerlink" title="Parser和Lexer"></a><code>Parser</code>和<code>Lexer</code></h4><p>基于training的架构，需要修改部分内容以适应本架构，此处不再展开。</p>
-<h2 id="Part-3-后记"><a href="#Part-3-后记" class="headerlink" title="Part 3 后记"></a>Part 3 后记</h2><p>本次作业能够完成，本架构可以得以实现并最终呈现在这里，离不开老师、助教和同学们的无私帮助，在此表示深深的感谢。</p>
-<p>本架构仍十分稚嫩而不成熟，十分欢迎各位在此讨论和批评。</p>
 
                 
                 <hr>
@@ -316,12 +282,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2022/03/07/「BUAA-OO-Unit-1-HW1」面向测试小白的简易评测机/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 1 HW1」面向测试小白的简易评测机">&larr; Previous Post</a>
+                        <a href="/2022/03/28/CMD笔记/" data-toggle="tooltip" data-placement="top" title="CMD笔记">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2022/02/26/「BUAA-OO-Pre」-Pre-2总结回顾概览/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」 Pre 2总结回顾概览">Next Post &rarr;</a>
+                        <a href="/2022/03/27/Linux终端笔记/" data-toggle="tooltip" data-placement="top" title="Linux终端笔记">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -374,7 +340,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-作业入手思路"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 作业入手思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#面向对象与面向过程的思想"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">面向对象与面向过程的思想</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Training-advance"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Training-advance</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#核心思路"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">核心思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#数据存储架构"><span class="toc-nav-number">1.2.2.1.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#解析流程"><span class="toc-nav-number">1.2.2.1.2.</span> <span class="toc-nav-text">解析流程</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HW1作业实现思路"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">HW1作业实现思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据存储架构-1"><span class="toc-nav-number">1.2.3.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-架构设计"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 架构设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Expr"><span class="toc-nav-number">1.3.0.1.</span> <span class="toc-nav-text">Expr</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员"><span class="toc-nav-number">1.3.0.2.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员"><span class="toc-nav-number">1.3.0.3.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Term"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Term</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员-1"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员-1"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Factor"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">Factor</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Unit"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">Unit</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据成员-2"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#方法成员-2"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">方法成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Parser和Lexer"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">Parser和Lexer</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-后记"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 后记</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab1」内核、Boot和prinitf"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab1」内核、Boot和prinitf</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-操作系统的启动"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 操作系统的启动</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#实验的环境"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">实验的环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动操作系统"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">启动操作系统</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -396,7 +362,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                         
                     </div>
                 </section>
