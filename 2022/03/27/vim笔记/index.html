@@ -125,7 +125,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">272</span> and
+                                Words <span class="post-count">280</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -278,13 +278,21 @@
 <li><code>esc</code>：回到命令模式</li>
 </ol>
 <h2 id="Part-4-底线命令模式"><a href="#Part-4-底线命令模式" class="headerlink" title="Part 4 底线命令模式"></a>Part 4 底线命令模式</h2><ol>
-<li><code>:?str</code>：查找str，然后用<code>n</code>和<code>N</code>分别向下和向上查找</li>
-<li><code>:set nu</code>：显示行号</li>
-<li><code>:set tabstop=4</code>：设置<code>table</code>键为四个空格</li>
-<li><code>:x</code>：x为数字，则跳转至相应行号；x若为<code>$</code>，则跳转至最后一行</li>
-<li><code>w</code>：保存</li>
-<li><code>q</code>：退出；如果发生了修改而且没有保存，则不能仅使用<code>q</code>退出</li>
-<li><code>wq</code>：保存并退出</li>
+<li><p><code>:?str</code>：查找str，然后用<code>n</code>和<code>N</code>分别向下和向上查找</p>
+</li>
+<li><p><code>:set nu</code>：显示行号</p>
+<p><code>:set nonu</code>：关闭行号显示</p>
+</li>
+<li><p><code>:set tabstop=4</code>：设置<code>table</code>键为四个空格</p>
+</li>
+<li><p><code>:x</code>：x为数字，则跳转至相应行号；x若为<code>$</code>，则跳转至最后一行</p>
+</li>
+<li><p><code>w</code>：保存</p>
+</li>
+<li><p><code>q</code>：退出；如果发生了修改而且没有保存，则不能仅使用<code>q</code>退出</p>
+</li>
+<li><p><code>wq</code>：保存并退出</p>
+</li>
 </ol>
 
                 
@@ -614,7 +622,7 @@
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -624,21 +632,6 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
