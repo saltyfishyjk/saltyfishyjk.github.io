@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>Flask笔记</title>
+      <link href="/2022/04/05/Flask%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/04/05/Flask%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Flask笔记"><a href="#Flask笔记" class="headerlink" title="Flask笔记"></a>Flask笔记</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><p>参考资料：<a href="https://www.cnblogs.com/cleven/p/10858016.html" target="_blank" rel="noopener">https://www.cnblogs.com/cleven/p/10858016.html</a></p><ul><li>ctrl + C关闭服务</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+            <tag> Flask </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Excel笔记</title>
+      <link href="/2022/04/05/Excel%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/04/05/Excel%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Excel笔记"><a href="#Excel笔记" class="headerlink" title="Excel笔记"></a>Excel笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Excel在工作中十分重要，一些快捷操作等十分重要但由于不常使用导致不熟练每次都要现查，在这里记录整理。</p><h2 id="Part-1-常用操作"><a href="#Part-1-常用操作" class="headerlink" title="Part 1 常用操作"></a>Part 1 常用操作</h2><h2 id="批量把数值转为文本形式"><a href="#批量把数值转为文本形式" class="headerlink" title="批量把数值转为文本形式"></a>批量把数值转为文本形式</h2><p>参考<a href="https://www.jianshu.com/p/61790960ae62" target="_blank" rel="noopener">这篇博客</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+            <tag> Excel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Pytorch笔记</title>
       <link href="/2022/04/03/Pytorch%E7%AC%94%E8%AE%B0/"/>
       <url>/2022/04/03/Pytorch%E7%AC%94%E8%AE%B0/</url>
