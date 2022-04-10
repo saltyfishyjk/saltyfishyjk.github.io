@@ -271,10 +271,20 @@
 (x+y)^n = \sum_{k=0}^{n}\tbinom{n}{k}x^{n-k}y^k</script><h3 id="求导法和积分法"><a href="#求导法和积分法" class="headerlink" title="求导法和积分法"></a>求导法和积分法</h3><p>对于一些不等式证明和计算，需要使用这两种方法，以下举例说明</p>
 <h4 id="求导法"><a href="#求导法" class="headerlink" title="求导法"></a>求导法</h4><p>来源：《组合数学》P96 T15</p>
 <p>题目：求证对${\forall}n&gt;1$有$\tbinom{n}{1}-2\tbinom{n}{2}+3\tbinom{n}{3}+···+(-1)^{n-1}n\tbinom{n}{n}=0$</p>
-<p>解答：根据$(1-x)^n=\sum<em>{k=0}^{n}\tbinom{n}{k}(-1)^{k}x^k$，求导得$-n(1-x)^{n-1}=\sum</em>{k=0}^{n}\tbinom{n}{k}(-1)^kkx^{k-1}$，令$x=1$即证毕。</p>
+<p>解答：</p>
+<p>根据</p>
+<script type="math/tex; mode=display">
+(1-x)^n=\sum_{k=0}^{n}\tbinom{n}{k}(-1)^{k}x^k</script><p>求导得</p>
+<script type="math/tex; mode=display">
+-n(1-x)^{n-1}=\sum_{k=0}^{n}\tbinom{n}{k}(-1)^kkx^{k-1}</script><p>令$x=1$即证毕。</p>
 <h4 id="积分法"><a href="#积分法" class="headerlink" title="积分法"></a>积分法</h4><p>来源：《组合数学》P96 T18</p>
 <p>题目：求和$1-\frac{1}{2}\tbinom{n}{1}+\frac{1}{3}\tbinom{n}{2}-\frac{1}{4}\tbinom{n}{3}+···+(-1)^n\frac{1}{n+1}\tbinom{n}{n}$</p>
-<p>解答：根据$(1-x)^n=\sum<em>{k=0}^{n}\tbinom{n}{k}(-1)^{k}x^k$，左右不定积分得$-\frac{(1-x)^{n+1}}{n+1}=\sum</em>{k=0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C$。<strong>注意有$+C$</strong>。代入$x=0$得$C=-\frac{1}{n+1}$，代入$x=1$得所求式值为$-\frac{1}{n+1}$</p>
+<p>解答：</p>
+<p>根据</p>
+<script type="math/tex; mode=display">
+ (1-x)^n = \sum_{k=0}^{n} \tbinom{n}{k}(-1)^{k}x^k</script><p>左右不定积分得</p>
+<script type="math/tex; mode=display">
+-\frac{(1-x)^{n+1}} {n+1} = \sum_{k=0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C</script><p><strong>注意有$+C$</strong>。代入$x=0$得$C=-\frac{1}{n+1}$，代入$x=1$得所求式值为$-\frac{1}{n+1}$</p>
 
                 
                 <hr>
@@ -599,7 +609,7 @@
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -609,22 +619,6 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>
