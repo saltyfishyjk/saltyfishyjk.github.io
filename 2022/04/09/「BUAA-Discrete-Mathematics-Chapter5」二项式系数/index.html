@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">349</span> and
+                                Words <span class="post-count">422</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -285,6 +285,8 @@
  (1-x)^n = \sum_{k=0}^{n} \tbinom{n}{k}(-1)^{k}x^k</script><p>左右不定积分得</p>
 <script type="math/tex; mode=display">
 -\frac{(1-x)^{n+1}} {n+1} = \sum_{k=0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C</script><p><strong>注意有$+C$</strong>。代入$x=0$得$C=-\frac{1}{n+1}$，代入$x=1$得所求式值为$-\frac{1}{n+1}$</p>
+<h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
+<p>事实上，上述引出了反链的定义，以下逐个介绍链、最大</p>
 
                 
                 <hr>
@@ -350,7 +352,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter5」二项式系数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pascal公式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Pascal公式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组合推理证明"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">组合推理证明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式定理"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#求导法和积分法"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">求导法和积分法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#求导法"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">求导法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#积分法"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">积分法</span></a></li></ol></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter5」二项式系数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pascal公式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Pascal公式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组合推理证明"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">组合推理证明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式定理"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#求导法和积分法"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">求导法和积分法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#求导法"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">求导法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#积分法"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">积分法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sperner定理"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">Sperner定理</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -391,7 +393,7 @@
                     
                         <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
                     
-                        <li><a href="https://github.com/dusign" target="_blank">Dusign&#39;s Github</a></li>
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
                     
                 </ul>
                 
