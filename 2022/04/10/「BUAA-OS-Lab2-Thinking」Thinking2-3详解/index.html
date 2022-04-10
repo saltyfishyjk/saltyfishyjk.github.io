@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">273</span> and
+                                Words <span class="post-count">285</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -264,6 +264,9 @@
 <p>到此为止，可以确定<code>Page</code>结构体的展开结构如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span>                                                               </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">le_next</span>;</span> </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> **<span class="title">le_prev</span>;</span></span><br><span class="line">        &#125; pp_link;</span><br><span class="line">    u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>查看<code>queue.h</code>中的<code>LIST_HEAD</code>声明如下：</p>
+<blockquote>
+<p> 占老师锐评：这下工厂模式了</p>
+</blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_HEAD(name, type)                                               \</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">name</span> &#123;</span>                                                           \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">lh_first</span>;</span>  <span class="comment">/* first element */</span>                     \</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <p>因此在<code>pmap.h</code>中声明的<code>IST_HEAD(Page_list, Page)</code>完成了<code>Page_list</code>的构建如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page_list</span> &#123;</span> </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">lh_first</span>;</span>                      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
