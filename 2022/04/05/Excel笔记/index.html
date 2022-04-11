@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">74</span> and
+                                Words <span class="post-count">92</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -185,6 +185,13 @@
 
                         
                         <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -193,13 +200,6 @@
                         
                         <li>
                             <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -260,6 +260,7 @@
 
                 <h1 id="Excel笔记"><a href="#Excel笔记" class="headerlink" title="Excel笔记"></a>Excel笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Excel在工作中十分重要，一些快捷操作等十分重要但由于不常使用导致不熟练每次都要现查，在这里记录整理。</p>
 <h2 id="Part-1-常用操作"><a href="#Part-1-常用操作" class="headerlink" title="Part 1 常用操作"></a>Part 1 常用操作</h2><h3 id="批量把数值转为文本形式"><a href="#批量把数值转为文本形式" class="headerlink" title="批量把数值转为文本形式"></a>批量把数值转为文本形式</h3><p>参考<a href="https://www.jianshu.com/p/61790960ae62" target="_blank" rel="noopener">这篇博客</a></p>
+<h2 id="冻结首列（行）"><a href="#冻结首列（行）" class="headerlink" title="冻结首列（行）"></a>冻结首列（行）</h2><p>参考<a href="https://jingyan.baidu.com/article/574c5219c7cfd02d8c9dc140.html" target="_blank" rel="noopener">Excel如何让第一列一直显示</a></p>
 
                 
                 <hr>
@@ -325,7 +326,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Excel笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Excel笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-常用操作"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 常用操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#批量把数值转为文本形式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">批量把数值转为文本形式</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Excel笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Excel笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-常用操作"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 常用操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#批量把数值转为文本形式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">批量把数值转为文本形式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#冻结首列（行）"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">冻结首列（行）</span></a></li></ol></li></ol>
             
           
           </div>
@@ -586,7 +587,7 @@
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -596,22 +597,6 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>
