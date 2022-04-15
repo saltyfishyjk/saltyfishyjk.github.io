@@ -8,6 +8,13 @@
     </url>
     
     <url>
+        <loc>https://saltyfishyjk.github.io/404.html</loc>
+        <lastmod>2022-04-15T09:30:54.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
         <loc>https://saltyfishyjk.github.io/about/</loc>
         <lastmod>2022-04-12T11:57:30.030Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,13 +31,6 @@
     <url>
         <loc>https://saltyfishyjk.github.io/archive/</loc>
         <lastmod>2022-01-27T03:03:04.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://saltyfishyjk.github.io/404.html</loc>
-        <lastmod>2022-01-26T02:56:05.872Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
