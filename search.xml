@@ -386,8 +386,8 @@
     
     <entry>
       <title>Vim笔记</title>
-      <link href="/2022/03/27/vim%E7%AC%94%E8%AE%B0/"/>
-      <url>/2022/03/27/vim%E7%AC%94%E8%AE%B0/</url>
+      <link href="/2022/03/27/Vim%E7%AC%94%E8%AE%B0/"/>
+      <url>/2022/03/27/Vim%E7%AC%94%E8%AE%B0/</url>
       
         <content type="html"><![CDATA[<h1 id="Vim笔记"><a href="#Vim笔记" class="headerlink" title="Vim笔记"></a>Vim笔记</h1><p>[TOC]</p><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>vim是一款强大的编辑器，网络上已经有大量其详细的实用教程与介绍。因此，本篇博客仅作学习笔记，不图大而全，也会随着笔者的使用及时更新。</p><h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol><li><a href="https://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">菜鸟教程Linux vi/vim</a> 适合作为百科全书检索</li><li><a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">简明 VIM 练级攻略</a> 适合系统训练</li><li><a href="https://www.vim.org/" target="_blank" rel="noopener">vim官方网站</a> 官方网站</li></ol><h2 id="Part-2-命令模式"><a href="#Part-2-命令模式" class="headerlink" title="Part 2 命令模式"></a>Part 2 命令模式</h2><ol><li><code>i</code>：进入输入模式</li><li><code>:</code>：进入底线命令模式</li><li><code>u</code>：撤回操作</li><li>ctrl + r：撤销撤回操作</li><li><code>h,j,k,l</code>：光标向左、下、上、右</li></ol><h2 id="Part-3-输入模式"><a href="#Part-3-输入模式" class="headerlink" title="Part 3 输入模式"></a>Part 3 输入模式</h2><ol><li><code>esc</code>：回到命令模式</li></ol><h2 id="Part-4-底线命令模式"><a href="#Part-4-底线命令模式" class="headerlink" title="Part 4 底线命令模式"></a>Part 4 底线命令模式</h2><ol><li><p><code>:?str</code>：查找str，然后用<code>n</code>和<code>N</code>分别向下和向上查找</p></li><li><p><code>:set nu</code>：显示行号</p><p><code>:set nonu</code>：关闭行号显示</p></li><li><p><code>:set tabstop=4</code>：设置<code>table</code>键为四个空格</p></li><li><p><code>:x</code>：x为数字，则跳转至相应行号；x若为<code>$</code>，则跳转至最后一行</p></li><li><p><code>w</code>：保存</p></li><li><p><code>q</code>：退出；如果发生了修改而且没有保存，则不能仅使用<code>q</code>退出</p></li><li><p><code>wq</code>：保存并退出</p></li></ol>]]></content>
       
