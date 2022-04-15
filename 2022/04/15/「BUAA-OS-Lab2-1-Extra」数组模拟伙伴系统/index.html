@@ -183,13 +183,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/tags/">Tags</a>
                         </li>
                         
@@ -198,6 +191,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -260,9 +260,9 @@
 <p>同时，本博客系统已支持评论区，欢迎您参考<a href="https://saltyfishyjk.github.io/2022/04/12/Gitment%E8%AF%84%E8%AE%BA%E5%8C%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"> Gitment评论区配置与使用</a>中Part2开通您在本博客的权限，留下您的想法。</p>
 <hr>
 <h2 id="Part-1-题目描述"><a href="#Part-1-题目描述" class="headerlink" title="Part 1 题目描述"></a>Part 1 题目描述</h2><p>请你对现有的物理内存管理机制进行修改，对 MOS 中$  64 MB $物理内存的高地址 $ 32 MB $建立伙伴<br>系统。下面对本题中所需要实现的伙伴系统进行描述：</p>
-<h3 id="内存区间的初始化"><a href="#内存区间的初始化" class="headerlink" title="内存区间的初始化"></a>内存区间的初始化</h3><p>伙伴系统将高地址  32 MB 划分为数个内存区间，每个内存区间有两种状态：<strong>已分配</strong>和<strong>未分配</strong>。</p>
+<h3 id="内存区间的初始化"><a href="#内存区间的初始化" class="headerlink" title="内存区间的初始化"></a>内存区间的初始化</h3><p>伙伴系统将高地址$  32 MB $划分为数个内存区间，每个内存区间有两种状态：<strong>已分配</strong>和<strong>未分配</strong>。</p>
 <p>每个内存区间的大小只可能是$ 4 \times 2^i KB $，其中$ i $是整数且$ 0 \le i \le 10 $。</p>
-<p>初始，共有  8 个  4 MB 大小的内存区间，状态均为<strong>未分配</strong>。 </p>
+<p>初始，共有$  8 $个$  4 MB $大小的内存区间，状态均为<strong>未分配</strong>。 </p>
 <h3 id="内存区间的分配"><a href="#内存区间的分配" class="headerlink" title="内存区间的分配"></a>内存区间的分配</h3><p>每次通过伙伴系统分配 $ x B $的空间时，找到满足如下三个条件的内存区间：</p>
 <ul>
 <li>该内存区间的状态为<strong>未分配</strong>。 </li>
@@ -283,7 +283,7 @@
 <p>请你实现如下的三个函数：</p>
 <h3 id="初始化函数-buddy-init"><a href="#初始化函数-buddy-init" class="headerlink" title="初始化函数 buddy_init"></a>初始化函数 <code>buddy_init</code></h3><ul>
 <li>函数原型为： <code>void buddy_init(void)</code></li>
-<li>调用此函数后，为 MOS 中 $ 64 MB $物理内存的高地址$ 32 MB $初始化伙伴系统。初始化结束后，伙伴系统中仅有只有  8 个  4 MB 的待分配内存区间。</li>
+<li>调用此函数后，为 MOS 中 $ 64 MB $物理内存的高地址$ 32 MB $初始化伙伴系统。初始化结束后，伙伴系统中仅有只有$  8 $个$  4 MB $的待分配内存区间。</li>
 </ul>
 <h3 id="分配函数-buddy-alloc"><a href="#分配函数-buddy-alloc" class="headerlink" title="分配函数 buddy_alloc"></a>分配函数 <code>buddy_alloc</code></h3><ul>
 <li>函数原型为：<code>int buddy_alloc(u_int size, u_int *pa, u_char *pi)</code></li>
