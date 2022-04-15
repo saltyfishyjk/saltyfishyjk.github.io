@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -310,7 +310,7 @@
 <hr>
 <h2 id="Part-2-设计分析"><a href="#Part-2-设计分析" class="headerlink" title="Part 2 设计分析"></a>Part 2 设计分析</h2><h3 id="基于树的实现"><a href="#基于树的实现" class="headerlink" title="基于树的实现"></a>基于树的实现</h3><p>通过题目的描述，我们可以自然地得到树的设计思路：设计<code>TreeNode</code>结构体为树节点，储存左右儿子（不一定存在）和父亲的指针信息，储存分配信息以及储存空间大小。</p>
 <p>受限于上机时间、实现难度和<code>buddy_free</code>函数<strong>时间复杂度</strong>的考虑，笔者最终并没有采取这种办法，以下着重介绍第二种思路：基于数组的实现。</p>
-<h3 id="基于数组的实现"><a href="#基于数组的实现" class="headerlink" title="基于数组的实现"></a>基于数组的实现</h3><p>题目给出，对于给定<code>size</code>，若其可能被分配，其分配大小只能为$  4 \times 2^i KB $，因此，我们以一页（$ 4 KB $）为单位，将内存分为$ 8 <em> 1024 $个页面，利用数组` buddyPage[8 </em> 1024] `表示。</p>
+<h3 id="基于数组的实现"><a href="#基于数组的实现" class="headerlink" title="基于数组的实现"></a>基于数组的实现</h3><p>题目给出，对于给定<code>size</code>，若其可能被分配，其分配大小只能为$  4 \times 2^i KB $，因此，我们以一页（$ 4 KB $）为单位，将内存分为$ 8 \times 1024 $个页面，利用数组<code>buddyPage[8 * 1024]</code>表示。</p>
 <p>对于页数$2 ^ i $，我们按照如下公式计算得到：</p>
 <script type="math/tex; mode=display">
 4 \times 2^{i-1} \times 1024 < size \le   4 \times 2^i \times 1024</script><p>得到页数$2 ^ i $后，由于伙伴系统的特点，我们从下标$ 0 $开始，以$2 ^ i $为步长，从低至高遍历<code>buddyPage</code>，若某一步内<code>buddyPage</code>全部未分配，则将其标记为该次分配并返回；若遍历结束仍未找到满足条件的块，标记为未找到。</p>
