@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/EMT.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/15/「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                            
+                        </div>
+                        <h1>「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-15
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.1k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统"><a href="#「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统" class="headerlink" title="「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统"></a>「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>本篇博客记录模拟伙伴系统的数组实现方法，<strong>Part 1</strong>为题目描述，<strong>Part 2</strong>为设计分析，<strong>Part 3</strong>为课上源码（已AC）参考，读者可自取所需。</p>
+<p>同时，本博客系统已支持评论区，欢迎您参考<a href="https://saltyfishyjk.github.io/2022/04/12/Gitment%E8%AF%84%E8%AE%BA%E5%8C%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"> Gitment评论区配置与使用</a>中Part2开通您在本博客的权限，留下您的想法。</p>
+<hr>
+<h2 id="Part-1-题目描述"><a href="#Part-1-题目描述" class="headerlink" title="Part 1 题目描述"></a>Part 1 题目描述</h2><p>请你对现有的物理内存管理机制进行修改，对 MOS 中$  64 MB $物理内存的高地址 $ 32 MB $建立伙伴<br>系统。下面对本题中所需要实现的伙伴系统进行描述：</p>
+<h3 id="内存区间的初始化"><a href="#内存区间的初始化" class="headerlink" title="内存区间的初始化"></a>内存区间的初始化</h3><p>伙伴系统将高地址  32 MB 划分为数个内存区间，每个内存区间有两种状态：<strong>已分配</strong>和<strong>未分配</strong>。</p>
+<p>每个内存区间的大小只可能是$ 4 \times 2^i KB $，其中$ i $是整数且$ 0 \le i \le 10 $。</p>
+<p>初始，共有  8 个  4 MB 大小的内存区间，状态均为<strong>未分配</strong>。 </p>
+<h3 id="内存区间的分配"><a href="#内存区间的分配" class="headerlink" title="内存区间的分配"></a>内存区间的分配</h3><p>每次通过伙伴系统分配 $ x B $的空间时，找到满足如下三个条件的内存区间：</p>
+<ul>
+<li>该内存区间的状态为<strong>未分配</strong>。 </li>
+<li>其大小不小于  $x B $。</li>
+<li>满足上面两个条件的前提下，该内存区间的起始地址最小。 </li>
+</ul>
+<p>如果不存在这样的内存区间，则本次分配失败；否则，执行如下步骤：</p>
+<ol>
+<li>设该内存区间的大小为 $ y  B $，若$ \frac{y}{2} &lt; x $或$ y = 4 K$，则将该内存区间的状态设为<strong>已分配</strong>，将该内存区间分配并结束此次分配过程。</li>
+<li>否则，将该内存区间分裂成两个大小相等的内存区间，状态均为<strong>未分配</strong>。</li>
+<li>继续选择起始地址更小的那个内存区间，并返回步骤 1。</li>
+</ol>
+<h3 id="内存区间的释放"><a href="#内存区间的释放" class="headerlink" title="内存区间的释放"></a>内存区间的释放</h3><p>当一个内存区间使用完毕，通过伙伴系统释放时，将其状态设为<strong>未分配</strong>。<br>我们称两个内存区间$  x $和$  y  $是<strong>可合并</strong>的，当且仅当它们满足如下四个条件：</p>
+<ol>
+<li>$ x $和$ y $的状态均为<strong>未分配</strong>。</li>
+<li>$ x $和$  y $是由<strong>同一个</strong>内存区间<strong>一次分裂</strong>所产生的两个内存区间。<br>若存在两个<strong>可合并</strong>的内存区间，则将两个内存区间合并，若合并后仍存在两个<strong>可合并</strong>的内存区间，则继续合并，直到不存在两个<strong>可合并</strong>的内存区间为止。</li>
+</ol>
+<p>请你实现如下的三个函数：</p>
+<h3 id="初始化函数-buddy-init"><a href="#初始化函数-buddy-init" class="headerlink" title="初始化函数 buddy_init"></a>初始化函数 <code>buddy_init</code></h3><ul>
+<li>函数原型为： <code>void buddy_init(void)</code></li>
+<li>调用此函数后，为 MOS 中 $ 64 MB $物理内存的高地址$ 32 MB $初始化伙伴系统。初始化结束后，伙伴系统中仅有只有  8 个  4 MB 的待分配内存区间。</li>
+</ul>
+<h3 id="分配函数-buddy-alloc"><a href="#分配函数-buddy-alloc" class="headerlink" title="分配函数 buddy_alloc"></a>分配函数 <code>buddy_alloc</code></h3><ul>
+<li>函数原型为：<code>int buddy_alloc(u_int size, u_int *pa, u_char *pi)</code></li>
+<li>调用此函数后，通过伙伴系统分配大小不小于<code>size</code>字节的空间，分配逻辑见上述描述。<br>如果分配失败，返回$ −1$。否则，将<code>pa</code>指向所分配内存区间的起始地址，设所分配内存区间的大小为$ 4 \times 2^i KB $，令<code>*pi = i</code>，并返回$ 0 $。<br>，令<code>*pi = i</code>，并返回  0。</li>
+</ul>
+<h3 id="释放函数-buddy-free"><a href="#释放函数-buddy-free" class="headerlink" title="释放函数 buddy_free"></a>释放函数 <code>buddy_free</code></h3><ul>
+<li>函数原型为：<code>void buddy_free(u_int pa)</code></li>
+<li>调用此函数后，通过伙伴系统释放一个状态为已分配的内存区间，其起始地址为<code>pa</code> 。释放后的合并逻辑见上述描述。</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>你需要先在<code>include/pmap.h</code>中加入如下三个函数定义： </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_init</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">buddy_alloc</span><span class="params">(u_int <span class="built_in">size</span>, u_int *pa, u_char *pi)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_free</span><span class="params">(u_int pa)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>之后再在<code>mm/pmap.c</code>中实现这三个函数。</p>
+<h3 id="评测逻辑"><a href="#评测逻辑" class="headerlink" title="评测逻辑"></a>评测逻辑</h3><p>评测过程中，我们会将所有的<code>Makefile</code>文件、<code>include.mk</code>以及    <code>init/init.c</code>替换为 lab2 初始配置，接着将<code>init/init.c</code>中的<code>mips_init</code>函数改为如下形式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mips_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">mips_detect_memory(); </span><br><span class="line">mips_vm_init();</span><br><span class="line">page_init(); </span><br><span class="line">buddy_init(); </span><br><span class="line">buddy_test();</span><br><span class="line">*((<span class="keyword">volatile</span> <span class="keyword">char</span>*)(<span class="number">0xB0000010</span>)) = <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后的<code>*((volatile char*)(0xB0000010)) = 0;</code>会终止 Gxemul 模拟器的运行，避免占用评测资源。 </p>
+<p><code>buddy_test</code>在评测过程中新添加到<code>init/init.c</code>的函数，其中仅包含以下两种操作：</p>
+<ul>
+<li>调用<code>buddy_alloc</code>函数，我们保证<code>size</code>不为$ 0 $。</li>
+<li>调用<code>buddy_free</code>函数，我们保证<code>pa</code>是之前某次调用<code>buddy_alloc</code>所得到的。 </li>
+</ul>
+<p>每调用一个函数算一次操作，我们保证总操作数不超过$  1000 $。</p>
+<p>运行<code>make</code>指令的最大时间为$ 10 $秒，运行Gxemul模拟器的最大时间为$  4 $秒。</p>
+<p>设伙伴系统管理的物理页数为$  n $，标程中<code>buddy_alloc</code>和<code>buddy_free</code>两个函数的时间复杂度均为$ O(n) $，请你尽量以此复杂度设计算法。</p>
+<hr>
+<h2 id="Part-2-设计分析"><a href="#Part-2-设计分析" class="headerlink" title="Part 2 设计分析"></a>Part 2 设计分析</h2><h3 id="基于树的实现"><a href="#基于树的实现" class="headerlink" title="基于树的实现"></a>基于树的实现</h3><p>通过题目的描述，我们可以自然地得到树的设计思路：设计<code>TreeNode</code>结构体为树节点，储存左右儿子（不一定存在）和父亲的指针信息，储存分配信息以及储存空间大小。</p>
+<p>受限于上机时间、实现难度和<code>buddy_free</code>函数<strong>时间复杂度</strong>的考虑，笔者最终并没有采取这种办法，以下着重介绍第二种思路：基于数组的实现。</p>
+<h3 id="基于数组的实现"><a href="#基于数组的实现" class="headerlink" title="基于数组的实现"></a>基于数组的实现</h3><p>题目给出，对于给定<code>size</code>，若其可能被分配，其分配大小只能为$  4 \times 2^i KB $，因此，我们以一页（$ 4 KB $）为单位，将内存分为$ 8 <em> 1024$个页面，利用数组` buddyPage[8 </em> 1024] `表示。</p>
+<p>对于页数$2 ^ i $，我们按照如下公式计算得到：</p>
+<script type="math/tex; mode=display">
+4 \times 2^{i-1} \times 1024 < size \le   4 \times 2^i \times 1024</script><p>得到页数$2 ^ i $后，由于伙伴系统的特点，我们从下标$ 0 $开始，以$2 ^ i $为步长，从低至高遍历<code>buddyPage</code>，若某一步内<code>buddyPage</code>全部未分配，则将其标记为该次分配并返回；若遍历结束仍未找到满足条件的块，标记为未找到。</p>
+<p>对于<code>buddy_free</code>函数，我们需要释放以给定地址开始的内存，因此，我们在分配时需要区分不同的分配。举例来说，两个相邻的$ 4KB $在两次分配中分别被分配，那么当给定第一个$ 4KB $的地址时，只能释放第一个$ 4KB $。</p>
+<p>基于数组的实现保证了我们时间复杂度为$ O(n) $，同时正确性可以逻辑证明，兼顾了实现难度和实际性能。</p>
+<hr>
+<h2 id="Part-3-课上源码"><a href="#Part-3-课上源码" class="headerlink" title="Part 3 课上源码"></a>Part 3 课上源码</h2><h3 id="全局变量与辅助函数"><a href="#全局变量与辅助函数" class="headerlink" title="全局变量与辅助函数"></a>全局变量与辅助函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> buddyPage[<span class="number">9999</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> flagWhole = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow2</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n--) &#123;</span><br><span class="line">		ans *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-init"><a href="#buddy-init" class="headerlink" title="buddy_init"></a><code>buddy_init</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt;= <span class="number">9000</span>;i++) &#123;</span><br><span class="line">		buddyPage[i] = <span class="number">0</span>; <span class="comment">// signals not alloced</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-alloc"><a href="#buddy-alloc" class="headerlink" title="buddy_alloc"></a><code>buddy_alloc</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">buddy_alloc</span><span class="params">(u_int <span class="built_in">size</span>, u_int *pa, u_char *pi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> MAX = <span class="number">4</span> * <span class="number">1024</span> * <span class="number">1024</span>; <span class="comment">// MAX = 4MB</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">size</span> &gt; MAX) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> pageSize = <span class="number">4</span> * <span class="number">1024</span>; <span class="comment">// pageSize = 4KB</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">size</span> &lt;= pageSize) &#123;</span><br><span class="line">		cnt = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">size</span> % pageSize == <span class="number">0</span>) &#123;</span><br><span class="line">			cnt = <span class="built_in">size</span> / pageSize;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cnt = <span class="built_in">size</span> / pageSize + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> tempPi = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt;= <span class="number">10</span>;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (pow2(i) &gt;= cnt) &#123;</span><br><span class="line">			cnt = pow2(i);</span><br><span class="line">			tempPi = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">int</span> nPage = <span class="number">8</span> * <span class="number">1024</span>; <span class="comment">// total 8K pages</span></span><br><span class="line">	<span class="keyword">int</span> ava = <span class="number">1</span>; <span class="comment">// signal whether has area to alloc</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; nPage;i += cnt) &#123;</span><br><span class="line">		ava = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> l = i;</span><br><span class="line">		<span class="keyword">int</span> r = i + cnt;</span><br><span class="line">		<span class="comment">//int ava = 1; // signale whether this area can be alloced</span></span><br><span class="line">		<span class="keyword">for</span> (j = l;j &lt; r;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (buddyPage[j] != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="comment">//printf("buddyPage[%d] = %d\n", j, buddyPage[j]);</span></span><br><span class="line">				ava = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ava == <span class="number">1</span>) &#123;</span><br><span class="line">			*pa = <span class="number">0x2000000</span> + (i) * pageSize;</span><br><span class="line">			*pi = tempPi;</span><br><span class="line">			<span class="keyword">for</span> (j = l;j &lt; r;j++) &#123;</span><br><span class="line">				buddyPage[j] = flagWhole;</span><br><span class="line">			&#125;</span><br><span class="line">			flagWhole++;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//printf("Need %d pages\n", cnt);</span></span><br><span class="line">		<span class="comment">//printf("Not Find ava betwen Page %d and %d\n", l, r);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (ava == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-free"><a href="#buddy-free" class="headerlink" title="buddy_free"></a><code>buddy_free</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_free</span><span class="params">(u_int pa)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> id = pa - <span class="number">0x2000000</span>;</span><br><span class="line">	id = id / (<span class="number">4</span> * <span class="number">1024</span>);</span><br><span class="line">	<span class="keyword">int</span> key = buddyPage[id];</span><br><span class="line">	<span class="keyword">int</span> i = id;</span><br><span class="line">	<span class="keyword">while</span>(buddyPage[i] == key) &#123;</span><br><span class="line">		buddyPage[i] = <span class="number">0</span>;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Part-4-后记"><a href="#Part-4-后记" class="headerlink" title="Part 4 后记"></a>Part 4 后记</h2><p>Part2中提到了树的实现，笔者不会写树了（菜qwq），并且分析时感觉可能需要递归释放空间，可能会超过$ O(n) $的限制，因此没有继续深究，若读者通过此方法实现或有想法，欢迎和我取得联系一起探讨。</p>
+<p>Part3中的代码为上机时最后一次提交，注释掉了一些调试用代码，并且很多地方的细节处理的不够漂亮（<del>可能还有英文单词拼写错误</del>），欢迎批评指正。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/14/Word笔记/" data-toggle="tooltip" data-placement="top" title="Word笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Apr 15 2022 08:46:43 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA-OS-Lab2-1-Extra」数组模拟伙伴系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-题目描述"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 题目描述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内存区间的初始化"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">内存区间的初始化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内存区间的分配"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">内存区间的分配</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内存区间的释放"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">内存区间的释放</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化函数-buddy-init"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">初始化函数 buddy_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分配函数-buddy-alloc"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">分配函数 buddy_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#释放函数-buddy-free"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">释放函数 buddy_free</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#注意事项"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">注意事项</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#评测逻辑"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">评测逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-设计分析"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 设计分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基于树的实现"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">基于树的实现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基于数组的实现"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">基于数组的实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-课上源码"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 课上源码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#全局变量与辅助函数"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">全局变量与辅助函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#buddy-init"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">buddy_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#buddy-alloc"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">buddy_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#buddy-free"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">buddy_free</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-后记"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 后记</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://mmmusel.github.io/" target="_blank">🍔gf</a></li>
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io" target="_blank" rel="noopener">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>
