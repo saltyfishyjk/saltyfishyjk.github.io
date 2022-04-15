@@ -183,7 +183,7 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -197,7 +197,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -287,7 +287,7 @@
 </ul>
 <h3 id="分配函数-buddy-alloc"><a href="#分配函数-buddy-alloc" class="headerlink" title="分配函数 buddy_alloc"></a>分配函数 <code>buddy_alloc</code></h3><ul>
 <li>函数原型为：<code>int buddy_alloc(u_int size, u_int *pa, u_char *pi)</code></li>
-<li>调用此函数后，通过伙伴系统分配大小不小于<code>size</code>字节的空间，分配逻辑见上述描述。<br>如果分配失败，返回$ −1$。否则，将<code>pa</code>指向所分配内存区间的起始地址，设所分配内存区间的大小为$ 4 \times 2^i KB $，令<code>*pi = i</code>，并返回$ 0 $。<br>，令<code>*pi = i</code>，并返回  0。</li>
+<li>调用此函数后，通过伙伴系统分配大小不小于<code>size</code>字节的空间，分配逻辑见上述描述。<br>如果分配失败，返回$ −1$。否则，将<code>pa</code>指向所分配内存区间的起始地址，设所分配内存区间的大小为$ 4 \times 2^i KB $，令<code>*pi = i</code>，并返回$ 0 $。<br>，令<code>*pi = i</code>，并返回$  0 $。</li>
 </ul>
 <h3 id="释放函数-buddy-free"><a href="#释放函数-buddy-free" class="headerlink" title="释放函数 buddy_free"></a>释放函数 <code>buddy_free</code></h3><ul>
 <li>函数原型为：<code>void buddy_free(u_int pa)</code></li>
@@ -328,6 +328,10 @@
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/15/Markdown笔记/" data-toggle="tooltip" data-placement="top" title="Markdown笔记">&larr; Previous Post</a>
+                    </li>
                     
                     
                     <li class="next">
