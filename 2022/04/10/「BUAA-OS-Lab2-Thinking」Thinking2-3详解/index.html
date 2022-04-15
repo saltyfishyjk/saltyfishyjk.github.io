@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">285</span> and
+                                Words <span class="post-count">288</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -256,7 +256,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Thinking-2-3详解"><a href="#Thinking-2-3详解" class="headerlink" title="Thinking 2.3详解"></a>Thinking 2.3详解</h1><p>Thinking2.3引用的函数与定义比较多且散乱，以下从题目入手逐层展开：</p>
+                <h1 id="「BUAA-OS-Lab2-Thinking」Thinking2-3详解"><a href="#「BUAA-OS-Lab2-Thinking」Thinking2-3详解" class="headerlink" title="「BUAA OS Lab2 Thinking」Thinking2.3详解"></a>「BUAA OS Lab2 Thinking」Thinking2.3详解</h1><p>Thinking2.3引用的函数与定义比较多且散乱，以下从题目入手逐层展开：</p>
 <p>通过<code>pmap.h</code>可以看到Page结构如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">    Page_LIST_entry_t pp_link;  <span class="comment">/* free list link */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Ref is the count of pointers (usually in page table entries)</span></span><br><span class="line">    <span class="comment">// to this page.  This only holds for pages allocated using</span></span><br><span class="line">    <span class="comment">// page_alloc.  Pages allocated at boot time using pmap.c's "alloc"</span></span><br><span class="line">    <span class="comment">// do not have valid reference count fields.</span></span><br><span class="line"></span><br><span class="line">    u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>又知道<code>Page_LIST_entry_t</code>在宏定义<code>typedef LIST_ENTRY(Page) Page_LIST_entry_t;</code>中声明，查看<code>LIST_ENTRY</code>在<code>queue.h</code>中声明如下：</p>
@@ -406,7 +406,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Thinking-2-3详解"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Thinking 2.3详解</span></a></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2-Thinking」Thinking2-3详解"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2 Thinking」Thinking2.3详解</span></a></li></ol>
             
           
           </div>
