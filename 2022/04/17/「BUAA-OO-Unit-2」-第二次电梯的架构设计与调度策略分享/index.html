@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA OO Pre」 切换Java版本到OO课程要求版本 - saltyfishyjk
+          「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/02/16/「BUAA-OO-Pre」-切换Java版本到OO课程要求版本/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/17/「BUAA-OO-Unit-2」-第二次电梯的架构设计与调度策略分享/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -111,18 +111,18 @@
                               <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
                             
                         </div>
-                        <h1>「BUAA OO Pre」 切换Java版本到OO课程要求版本</h1>
+                        <h1>「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-02-16
+                            2022-04-17
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">616</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">1.8k</span> and
+                                Reading Time <span class="post-count">6</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,56 +256,56 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-OO-Pre」-切换Java版本到OO课程要求版本"><a href="#「BUAA-OO-Pre」-切换Java版本到OO课程要求版本" class="headerlink" title="「BUAA OO Pre」 切换Java版本到OO课程要求版本"></a>「BUAA OO Pre」 切换Java版本到OO课程要求版本</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在配置《面向对象设计与构造》所需课程环境时，发现课程所需的Java版本（1.8.0.xxx）和自己已配置的不符，而课程教程主要面向未安装过Java的同学，因此在这里记录切换Java版本到OO课程要求版本的过程。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客及其中给出的其他辅助资料，读者可以切换到课程要求的Java版本。</p>
-<h3 id="笔者设备"><a href="#笔者设备" class="headerlink" title="笔者设备"></a>笔者设备</h3><p>Windows 10家庭版；联想拯救者Y7000P 2020</p>
-<h3 id="您可以在这里期望获得"><a href="#您可以在这里期望获得" class="headerlink" title="您可以在这里期望获得"></a>您可以在这里期望获得</h3><ol>
-<li>切换Java版本的方法</li>
-<li>一些笔者踩过的坑</li>
+                <h1 id="第二次电梯的架构设计与调度策略"><a href="#第二次电梯的架构设计与调度策略" class="headerlink" title="第二次电梯的架构设计与调度策略"></a>第二次电梯的架构设计与调度策略</h1><p>[TOC]</p>
+<p>第八周研讨课，笔者依旧准备了讲稿和分享，但是没有选上，在这里和大家分享。</p>
+<h2 id="Part-0-第一次电梯架构与调度基础"><a href="#Part-0-第一次电梯架构与调度基础" class="headerlink" title="Part 0 第一次电梯架构与调度基础"></a>Part 0 第一次电梯架构与调度基础</h2><p>第一次作业中，ABCDE座各有纵向电梯一部，乘客需求只有纵向。</p>
+<p>在这次作业，我们核心设计采用生产者-消费者模型，大致结构如下：</p>
+<img src="/2022/04/17/%E3%80%8CBUAA-OO-Unit-2%E3%80%8D-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%94%B5%E6%A2%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5%E5%88%86%E4%BA%AB/image-20220417150151821.png" class="" title="p2">
+<p>其中，我们的InputHandler维护所有请求的一个大<code>Dispatcher</code>，其中储存所有楼座的待分发请求，并由大<code>Dispatcher</code>分发给五个楼座的小<code>Dispatcher</code>，各电梯只需和自己楼座的<code>Dispatcher</code>交互即可。</p>
+<p>对于多个请求，综合实际性能和实现难度，采取LOOK算法，尽可能同方向捎带。</p>
+<p>在上述设计中，我们的<strong>线程</strong>只有输入线程和五个电梯线程，秉持精简和易维护的架构设计理念，我们尽可能减少线程之间复杂的交互关系。</p>
+<h2 id="Part-1-迭代架构设计"><a href="#Part-1-迭代架构设计" class="headerlink" title="Part 1 迭代架构设计"></a>Part 1 迭代架构设计</h2><p>在上述第一次电梯的基础上，我们迭代到第二次电梯架构设计。</p>
+<h3 id="新需求分析"><a href="#新需求分析" class="headerlink" title="新需求分析"></a>新需求分析</h3><p>第二次作业的变化主要包括：增加横向电梯种类并支持在同楼层不同座之间的乘客需求和支持动态增加（纵向和横向）电梯数量。</p>
+<p>对于第一个需求，我们秉持开闭原则，增设<code>Elevator</code>父类，纵向电梯<code>ElevatorCol</code>和横向电梯<code>ElevatorRow</code>分别继承它，只需在子类重写<code>run</code>方法即可。</p>
+<p>对于第二个需求，我们采用工厂模式，通过<code>ElevatorFactory</code>生产具有我们需要的功能的电梯。</p>
+<h3 id="请求群"><a href="#请求群" class="headerlink" title="请求群"></a>请求群</h3><p>对于同楼座（层），我们首先定义<strong>请求群</strong>的概念，一个请求群内的所有请求对该群内的所有电梯均可视（即电梯都有接到该请求的能力），群内所有电梯都可接待所有请求。</p>
+<h3 id="类虚拟空间"><a href="#类虚拟空间" class="headerlink" title="类虚拟空间"></a>类虚拟空间</h3><p>同时，为了简化调度负担及结构复杂度，我们借用OS中<strong>虚拟空间</strong>的思路。</p>
+<p>对于群内的电梯，其可视所有请求，并且不认为有其他电梯，这样即可不更改第一次电梯中的LOOK策略，并便于应用自由竞争的调度策略，这将在下一部分简述。同时，通过类<strong>物理空间</strong>的理念，我们通过请求是否被真实满足来避免产生冲突，保证了架构的安全性。</p>
+<h2 id="Part-2-基于LOOK和自由竞争的调度策略"><a href="#Part-2-基于LOOK和自由竞争的调度策略" class="headerlink" title="Part 2 基于LOOK和自由竞争的调度策略"></a>Part 2 基于LOOK和自由竞争的调度策略</h2><h3 id="设计的核心理念"><a href="#设计的核心理念" class="headerlink" title="设计的核心理念"></a>设计的核心理念</h3><p>正确性、易维护性和可迭代性是我们架构设计的核心思想，秉持<code>less is more</code>的思路，我们尽可能在逻辑上简化调度策略，在实现难度和迭代维护难度与性能方面做取舍平衡，最终选择LOOK和自由竞争的策略。</p>
+<h3 id="LOOK"><a href="#LOOK" class="headerlink" title="LOOK"></a>LOOK</h3><p>纵向LOOK：</p>
+<ol>
+<li><p>当电梯有乘客时，以乘客中<strong>目标楼层距离当前楼层最远</strong>的请求为主请求确定目标楼层</p>
+</li>
+<li><p>当电梯没有乘客时，首先按照原方向，寻找<strong>距离当前楼层最远的有请求的</strong>楼层，找到则确定为目标楼层，这次寻找最终结果<strong>有可能会是当前层</strong>。如果寻找无果（沿方向的所有层包括本层都没有请求）则改变方向，继续寻找。若最后没有找到，则可以返回一个标志结束的值表示电梯进入空闲。</p>
+</li>
 </ol>
-<h3 id="您在这里无法期望获得"><a href="#您在这里无法期望获得" class="headerlink" title="您在这里无法期望获得"></a>您在这里无法期望获得</h3><ol>
-<li>这些操作的底层原理</li>
-<li>Windows之外的操作系统上切换Java版本方法</li>
+<p>横向LOOK：</p>
+<ol>
+<li><p>当电梯有乘客时，依然希望寻找其中目标楼座距离当前楼座最远的请求为主请求，但是这里的距离不应该是简单的加减法，可以加上模运算（注意若出现负数直接取模不符合我们的要求）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dis = (target - nowBuilding + <span class="number">5</span>) % <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当电梯没有乘客时，原则上仍然按照第一次的方法寻找，只是如果第一次向上的尽头是10层，这一次顺时针尽头应该变为 <code>(now + 2) % 5；</code>向下的尽头是1层，这一次逆时针尽头应该变为<code>(now - 2 + 5) % 5</code>。</p>
+</li>
 </ol>
-<h3 id="对读者前置知识的期望"><a href="#对读者前置知识的期望" class="headerlink" title="对读者前置知识的期望"></a>对读者前置知识的期望</h3><ol>
-<li>基本Windows操作</li>
-<li>曾安装过Java</li>
-</ol>
-<h2 id="Part-1-笔者参考的资料"><a href="#Part-1-笔者参考的资料" class="headerlink" title="Part 1 笔者参考的资料"></a>Part 1 笔者参考的资料</h2><ol>
-<li><a href="http://gitlab.oo.buaa.edu.cn/" target="_blank" rel="noopener">BUAA OO工具链教程</a>（需要搭配学校VPN使用）</li>
-<li><a href="https://www.cnblogs.com/90s-ITBoy/p/13388482.html" target="_blank" rel="noopener">更换JDK版本不成功，还是以前的版本（两种分析、解决办法）</a></li>
-<li><a href="https://blog.csdn.net/gaoduicai/article/details/120796396" target="_blank" rel="noopener">Java版本切换不生效</a></li>
-</ol>
-<h2 id="Part-2-具体步骤"><a href="#Part-2-具体步骤" class="headerlink" title="Part 2 具体步骤"></a>Part 2 具体步骤</h2><h3 id="下载并安装OO课程推荐JDK"><a href="#下载并安装OO课程推荐JDK" class="headerlink" title="下载并安装OO课程推荐JDK"></a>下载并安装OO课程推荐JDK</h3><p>官方网站下载链接：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p>对于操作系统字长64位机器，选择Windows x64版本</p>
-<p>对于操作系统字长32位机器，选择Windows x86版本</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216094959453.png" class="" title="p1">
-<p>双击安装</p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>搜索栏搜索“系统环境变量”并打开</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095221176.png" class="" title="p2">
-<p>打开“环境变量”</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095326523.png" class="" title="p2">
-<h4 id="修改JAVA-HOME"><a href="#修改JAVA-HOME" class="headerlink" title="修改JAVA_HOME"></a>修改JAVA_HOME</h4><p>在系统变量中<strong>修改</strong>JAVA_HOME属性为<code>C:\Program Files\Java\jdk1.8.0_101</code>（具体路径因安装路径而异，不要包含<code>bin</code>）</p>
-<h4 id="修改CLASSPATH"><a href="#修改CLASSPATH" class="headerlink" title="修改CLASSPATH"></a>修改CLASSPATH</h4><p>在系统变量栏中，修改变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></p>
-<h4 id="修改PATH"><a href="#修改PATH" class="headerlink" title="修改PATH"></a>修改PATH</h4><p>在系统环境变量中，设置<code>PATH</code>，变量值<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code>（<strong>不要覆盖掉原本的内容，将这个值加入到<code>PATH</code>的最前面</strong>）。</p>
-<h2 id="Part-3-验证已切换好Java版本"><a href="#Part-3-验证已切换好Java版本" class="headerlink" title="Part 3 验证已切换好Java版本"></a>Part 3 验证已切换好Java版本</h2><p>在<code>cmd</code>中输入<code>java -version</code>看到Java的版本号改变即可</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095920052.png" class="" title="p2">
-<h2 id="Part-4-在IDEA中新建依赖于新JDK的工程"><a href="#Part-4-在IDEA中新建依赖于新JDK的工程" class="headerlink" title="Part 4 在IDEA中新建依赖于新JDK的工程"></a>Part 4 在IDEA中新建依赖于新JDK的工程</h2><p>打开IDEA(ultimate)，<code>File-&gt;new-&gt;Project</code>在<code>Project SDK</code>中选择切换后的JDK</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216100231068.png" class="" title="p2">
-<h2 id="Part-5-笔者踩过的坑"><a href="#Part-5-笔者踩过的坑" class="headerlink" title="Part 5 笔者踩过的坑"></a>Part 5 笔者踩过的坑</h2><p>以前配置Java环境变量的时候，在用户变量和系统变量都修改了，但是切换Java版本时只修改了用户变量，导致未能生效。</p>
+<p>LOOK的性能在随机大数据中有较好的表现，同时易于实现。</p>
+<h3 id="自由竞争"><a href="#自由竞争" class="headerlink" title="自由竞争"></a>自由竞争</h3><p>在<strong>Part 1</strong>中，我们介绍了请求群和虚拟空间的想法，在这基础上，我们介绍自由竞争的具体实现。</p>
+<p>对于每台电梯（无论横纵），其均按照自己的LOOK进行调度运行；当其在访问本请求群内的请求时，不会考虑别的电梯是否正在前往其中某个请求，而只考虑是否满足自己的调度来运行。这样，我们只需要在电梯arrive每层的时候访问请求群内的请求即可，若其接到了请求，则在请求群内移除；若某格请求被其他电梯接走，而其事实上是使本电梯运行的动力，那么至多付出一层的代价，本电梯就会重新访问请求群并基于LOOK获得新的运行方向。</p>
+<p>上述设计较为精简，在面对大数据时表现均衡；同时，省去了中央调度的设计，类分布式的思路使得电梯自行运动而无需被指派任务；并且对电梯数量没有任何限制，覆盖了作业要求的15部要求。</p>
+<h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p>在上述介绍中，电梯们对于所属请求群内的候乘表读相比写更频繁，可以采用读写锁来进一步优化提升性能。</p>
+<h2 id="Part-3-未来需求预测与预迭代设计"><a href="#Part-3-未来需求预测与预迭代设计" class="headerlink" title="Part 3 未来需求预测与预迭代设计"></a>Part 3 未来需求预测与预迭代设计</h2><p>上面两个Part简介了第一次电梯设计并着重分析了第一次到第二次的迭代设计和开发，为了进一步说明我们设计的易维护性和可迭代性，我们预测下一次作业需求并简要介绍预迭代设计思路。</p>
+<h3 id="未来需求预测"><a href="#未来需求预测" class="headerlink" title="未来需求预测"></a>未来需求预测</h3><p>满足不同座不同层的需求，如E4-&gt;A2。</p>
+<h3 id="预迭代设计"><a href="#预迭代设计" class="headerlink" title="预迭代设计"></a>预迭代设计</h3><p>基于第二次电梯的设计，我们只需在架构上做如下迭代开发：</p>
+<h4 id="拆解需求"><a href="#拆解需求" class="headerlink" title="拆解需求"></a>拆解需求</h4><p>对于不同座不同层的需求，我们根据横向和纵向电梯数量与两个作业群的需求数量选择两种正交分解方式（先纵向后横向与先横向后纵向）中的一种，拆解为两个步骤。</p>
+<h4 id="分段满足"><a href="#分段满足" class="headerlink" title="分段满足"></a>分段满足</h4><p>对于拆解后的需求，我们采用类Experiment4中的操作，实现如果当前电梯处理完的请求并没有完全满足该请求，则制作新请求并传递给大<code>Dispatcher</code>，进一步由大<code>Dispatcher</code>分发给小<code>Dispatcher</code>。同时，修改<code>isEnd()</code>信号，使得所有请求（分段和不分段）都满足后所有电梯线程才可结束。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/02/17/「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/02/15/Java一维与二维数组的拷贝与排序/" data-toggle="tooltip" data-placement="top" title="Java一维与二维数组的拷贝与排序">Next Post &rarr;</a>
+                        <a href="/2022/04/16/「BUAA-OO-Unit-2」-多线程分享/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2」 多线程分享">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -386,7 +386,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Wed Feb 16 2022 10:05:47 GMT+0800', // optional
+    id: 'Sun Apr 17 2022 22:26:04 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -426,7 +426,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Pre」-切换Java版本到OO课程要求版本"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Pre」 切换Java版本到OO课程要求版本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#笔者设备"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">笔者设备</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#您可以在这里期望获得"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">您可以在这里期望获得</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#您在这里无法期望获得"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">您在这里无法期望获得</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对读者前置知识的期望"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">对读者前置知识的期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-笔者参考的资料"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的资料</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-具体步骤"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 具体步骤</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载并安装OO课程推荐JDK"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">下载并安装OO课程推荐JDK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置环境变量"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">配置环境变量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改JAVA-HOME"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">修改JAVA_HOME</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改CLASSPATH"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">修改CLASSPATH</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改PATH"><span class="toc-nav-number">1.3.2.3.</span> <span class="toc-nav-text">修改PATH</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-验证已切换好Java版本"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 验证已切换好Java版本</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-在IDEA中新建依赖于新JDK的工程"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 在IDEA中新建依赖于新JDK的工程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-笔者踩过的坑"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 笔者踩过的坑</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#第二次电梯的架构设计与调度策略"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">第二次电梯的架构设计与调度策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-第一次电梯架构与调度基础"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 第一次电梯架构与调度基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-迭代架构设计"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 迭代架构设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#新需求分析"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">新需求分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#请求群"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">请求群</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#类虚拟空间"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">类虚拟空间</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-基于LOOK和自由竞争的调度策略"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 基于LOOK和自由竞争的调度策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设计的核心理念"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">设计的核心理念</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LOOK"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">LOOK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#自由竞争"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">自由竞争</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#读写锁"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">读写锁</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-未来需求预测与预迭代设计"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 未来需求预测与预迭代设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#未来需求预测"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">未来需求预测</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#预迭代设计"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">预迭代设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#拆解需求"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">拆解需求</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#分段满足"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">分段满足</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
