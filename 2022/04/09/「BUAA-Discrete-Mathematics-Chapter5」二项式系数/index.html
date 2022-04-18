@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">958</span> and
-                                Reading Time <span class="post-count">4</span> Minutes
+                                Words <span class="post-count">1.3k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -289,7 +289,7 @@
 <h4 id="单峰性"><a href="#单峰性" class="headerlink" title="单峰性"></a>单峰性</h4><p>设序列$ s_0, s_1, s_2, \cdots , s_n $，若存在一个整数$ t $，$ 0 \le t \le n $，使得：</p>
 <script type="math/tex; mode=display">
 s_0 \le s_1 \le s_2 \cdots \le s_t , s_t \ge s_{t+1} \ge s_{t+2} \ge \cdots \ge s_n</script><p>那么， 称序列是单峰的</p>
-<h3 id="二项式系数的单峰性-1"><a href="#二项式系数的单峰性-1" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h3><p>$ n $为正整数，二项式系数序列是单峰序列，其中：</p>
+<h4 id="二项式系数的单峰性-1"><a href="#二项式系数的单峰性-1" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h4><p>$ n $为正整数，二项式系数序列是单峰序列，其中：</p>
 <ul>
 <li>$ n $是偶数：</li>
 </ul>
@@ -298,7 +298,23 @@ s_0 \le s_1 \le s_2 \cdots \le s_t , s_t \ge s_{t+1} \ge s_{t+2} \ge \cdots \ge 
 <li>$ n $是奇数：</li>
 </ul>
 <script type="math/tex; mode=display">
-\tbinom{n}{0} < \tbinom{n}{1} < \cdots < \tbinom{n}{\frac{n-1}{2}} , \tbinom{n}{\frac{n+1}{2}} > \cdots > \tbinom{n}{n - 1} > \tbinom{n}{ n }</script><h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
+\tbinom{n}{0} < \tbinom{n}{1} < \cdots < \tbinom{n}{\frac{n-1}{2}} , \tbinom{n}{\frac{n+1}{2}} > \cdots > \tbinom{n}{n - 1} > \tbinom{n}{ n }</script><h3 id="多项式定理"><a href="#多项式定理" class="headerlink" title="多项式定理"></a>多项式定理</h3><p>二项式定理给出对正整数$n$ ， $ (x + y ) ^ n $的公式，扩展到 $ (x_1 + x_2 + \cdots +x_t) ^ n $ 的公式，二项式系数的角色被多项式系数取代，其定义为：</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} = \frac{n!}{n_1!n_2! \cdots n_t!}</script><p>其中$ n_1, n_2, \cdots n_t $满足：</p>
+<script type="math/tex; mode=display">
+n_1 + n_2 + \cdots + n_t = n</script><p>根据这种记法，可以将二项式系数表示为：</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{k} = \tbinom{n}{k \quad n-k}</script><h4 id="帕斯卡公式"><a href="#帕斯卡公式" class="headerlink" title="帕斯卡公式"></a>帕斯卡公式</h4><h5 id="二项式"><a href="#二项式" class="headerlink" title="二项式"></a>二项式</h5><script type="math/tex; mode=display">
+\tbinom{n}{k \quad n-k} =  \tbinom{n-1}{k \quad n - k - 1} + \tbinom{n-1}{k-1 \quad n - k}</script><h5 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h5><script type="math/tex; mode=display">
+\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} = \tbinom{n - 1}{n_1-1 \ n_2 \ \cdots  \ n_t} + \tbinom{n - 1}{n_1 \ n_2 - 1 \ \cdots  \ n_t} + \cdots + \tbinom{n - 1}{n_1 \ n_2 \ \cdots  \ n_t - 1}</script><p>规律为：上面$ - 1 $，下面依次各$ - 1 $，应用加法原理。</p>
+<h4 id="多项式定理-1"><a href="#多项式定理-1" class="headerlink" title="多项式定理"></a>多项式定理</h4><script type="math/tex; mode=display">
+(x_1 + x_2 + \cdots + x_t) ^ n = \sum\tbinom{n}{n_1 \ n_2 \cdots n_t}{x_1}^{n_1}{x_2}^{n_2}\cdots{x_t}^{n_t}</script><p>其中，求和是对 $ n_1 + n_2 + \cdots + n_t = n $ 的所有非负整数解进行的。</p>
+<h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>牛顿扩展了二项式定理，得到 $ (x + y) ^ \alpha$ 的展开式， $ \alpha $ 是任意实数。</p>
+<p>设 $ \alpha $是实数，对所有满足 $ 0 \le |x| &lt; |y| $ 的 $ x $ 和 $ y $ ，有：</p>
+<script type="math/tex; mode=display">
+(x + y) ^ {\alpha} = \sum_{k = 0}^{\infty}\tbinom{\alpha}{k}x^ky^{\alpha - k}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\tbinom{\alpha}{k} = \frac{\alpha(\alpha - 1) \cdots (\alpha - k - 1)}{k!}</script><h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
 <p>事实上，上述引出了反链的定义，以下逐个介绍链、最大链、反链。</p>
 <h4 id="链"><a href="#链" class="headerlink" title="链"></a>链</h4><p>$ S $的子集的集合$ C $是一条链(chain)，只要对于$ C $中的<strong>每一对</strong>子集，总有一个包含在另一个之中：$ A_1 $，$ A_2 $在$ C $中，且$ A_1 \ne A_2 $意味着$ A_1 \subset A_2 $或者$ A_2 \subset A_1 $。</p>
 <h4 id="最大链"><a href="#最大链" class="headerlink" title="最大链"></a>最大链</h4><p>链中不能挤入更多子集。</p>
@@ -444,7 +460,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter5」二项式系数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pascal公式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Pascal公式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组合推理证明"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">组合推理证明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式定理"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#求导法和积分法"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">求导法和积分法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#求导法"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">求导法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#积分法"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">积分法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式系数的单峰性"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#单峰性"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">单峰性</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式系数的单峰性-1"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sperner定理"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">Sperner定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#链"><span class="toc-nav-number">1.2.7.1.</span> <span class="toc-nav-text">链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#最大链"><span class="toc-nav-number">1.2.7.2.</span> <span class="toc-nav-text">最大链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#反链"><span class="toc-nav-number">1.2.7.3.</span> <span class="toc-nav-text">反链</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对称链划分"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">对称链划分</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter5」二项式系数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pascal公式"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Pascal公式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#组合推理证明"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">组合推理证明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式定理"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#求导法和积分法"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">求导法和积分法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#求导法"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">求导法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#积分法"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">积分法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二项式系数的单峰性"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#单峰性"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">单峰性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#二项式系数的单峰性-1"><span class="toc-nav-number">1.2.5.2.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#多项式定理"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">多项式定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#帕斯卡公式"><span class="toc-nav-number">1.2.6.1.</span> <span class="toc-nav-text">帕斯卡公式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#二项式"><span class="toc-nav-number">1.2.6.1.1.</span> <span class="toc-nav-text">二项式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#多项式"><span class="toc-nav-number">1.2.6.1.2.</span> <span class="toc-nav-text">多项式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#多项式定理-1"><span class="toc-nav-number">1.2.6.2.</span> <span class="toc-nav-text">多项式定理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#牛顿二项式定理"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">牛顿二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sperner定理"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">Sperner定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#链"><span class="toc-nav-number">1.2.8.1.</span> <span class="toc-nav-text">链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#最大链"><span class="toc-nav-number">1.2.8.2.</span> <span class="toc-nav-text">最大链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#反链"><span class="toc-nav-number">1.2.8.3.</span> <span class="toc-nav-text">反链</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对称链划分"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">对称链划分</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -705,7 +721,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -715,6 +731,22 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 </html>
