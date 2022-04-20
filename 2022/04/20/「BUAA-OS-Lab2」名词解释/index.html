@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Git笔记 - saltyfishyjk
+          「BUAA OS Lab2」名词解释 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/27/Git笔记/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/20/「BUAA-OS-Lab2」名词解释/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,23 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                            
-                              <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                             
                         </div>
-                        <h1>Git笔记</h1>
+                        <h1>「BUAA OS Lab2」名词解释</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-03-27
+                            2022-04-20
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.3k</span> and
-                                Reading Time <span class="post-count">4</span> Minutes
+                                Words <span class="post-count">385</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -258,63 +256,58 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Git笔记"><a href="#Git笔记" class="headerlink" title="Git笔记"></a>Git笔记</h1><p>[TOC]</p>
-<h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Git是一款强大的版本控制工具，在OO和OS课程中也起着重要作用。</p>
-<p>网络上已有诸多优秀的Git教程，这里主要记录常用操作，以备复习查看。</p>
-<h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol>
-<li><a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" rel="noopener">Learning Git Branching</a> 不错的git教程，适合系统学习git</li>
-</ol>
-<h2 id="Part-2-常用指令"><a href="#Part-2-常用指令" class="headerlink" title="Part 2 常用指令"></a>Part 2 常用指令</h2><h3 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><code>git commit</code></h3><p><code>git commit</code>：提交分支。常用格式为<code>git commit -m &#39;Content&#39;</code>，其中<code>Content</code>为本次提交的相关说明。</p>
-<h3 id="git-branch-amp-git-checkout"><a href="#git-branch-amp-git-checkout" class="headerlink" title="git branch&amp;git checkout"></a><code>git branch</code>&amp;<code>git checkout</code></h3><p><code>git branch</code>：创建新的分支，如：<code>git branch bugFix</code>会创建一个名为<code>bugFix</code>的新分支。</p>
-<p><code>git checkout</code>：切换到另一分支，如：<code>git checkout bugFix</code>会切换到<code>bugFix</code>分支。</p>
-<p><code>git switch</code>：在<code>Git</code>2.23中引入了<code>git switch</code>命令，最终会取代<code>git checkout</code>，也可以完成切换到另一分支的操作，如：<code>git switch bugFix</code></p>
-<h3 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a><code>git merge</code></h3><p><code>git merge</code>：将两个分支合并到一起。我们新建一个分支，在其上面开发某个新功能，开发完成后再合并回到主线。如：<code>git merge bugFix</code>，该命令将<code>bugFix</code>分支合并入目前所指向的分支（如<code>main</code>）</p>
-<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a><code>git rebase</code></h3><p>第二种合并分支的方法是 <code>git rebase</code>。Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。</p>
-<h3 id="分离HEAD"><a href="#分离HEAD" class="headerlink" title="分离HEAD"></a>分离<code>HEAD</code></h3><p>我们首先看一下 “HEAD”。 HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。</p>
-<p>HEAD 总是指向当前分支上最近一次提交记录。大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。</p>
-<p>HEAD 通常情况下是指向分支名的（如 bugFix）。在你提交时，改变了 bugFix 的状态，这一变化通过 HEAD 变得可见。</p>
-<p>通过哈希值来更改HEAD指向</p>
-<h3 id="相对引用"><a href="#相对引用" class="headerlink" title="相对引用"></a>相对引用</h3><p>正如我前面所说，通过哈希值指定提交记录很不方便，所以 Git 引入了相对引用。这个就很厉害了!</p>
-<p>使用相对引用的话，你就可以从一个易于记忆的地方（比如 <code>bugFix</code> 分支或 <code>HEAD</code>）开始计算。</p>
-<p>相对引用非常给力，这里我介绍两个简单的用法：</p>
-<ul>
-<li>使用 <code>^</code> 向上移动 1 个提交记录</li>
-<li>使用 <code>~&lt;num&gt;</code> 向上移动多个提交记录，如 <code>~3</code></li>
-</ul>
-<p>强制修改分支位置<br>你现在是相对引用的专家了，现在用它来做点实际事情。</p>
-<p>我使用相对引用最多的就是移动分支。可以直接使用 -f 选项让分支指向另一个提交。例如:</p>
-<p><code>git branch -f main HEAD~3</code></p>
-<p>上面的命令会将 main 分支强制指向 HEAD 的第 3 级父提交。</p>
-<p>这就对了! 相对引用为我们提供了一种简洁的引用提交记录 <code>C1</code> 的方式， 而 <code>-f</code> 则容许我们将分支强制移动到那个位置。</p>
-<h3 id="撤销变更-git-reset-amp-git-revert"><a href="#撤销变更-git-reset-amp-git-revert" class="headerlink" title="撤销变更 git reset&amp;git revert"></a>撤销变更 <code>git reset</code>&amp;<code>git revert</code></h3><p>在 Git 里撤销变更的方法很多。和提交一样，撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成。我们这个应用主要关注的是后者。</p>
-<p>主要有两种方法用来撤销变更 —— 一是 <code>git reset</code>，还有就是 <code>git revert</code>。接下来咱们逐个进行讲解。</p>
-<h4 id="Git-Reset"><a href="#Git-Reset" class="headerlink" title="Git Reset"></a>Git Reset</h4><p><code>git reset</code> 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。<code>git reset</code> 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。</p>
-<p>让我们来看看演示：</p>
-<p>漂亮! Git 把 main 分支移回到 <code>C1</code>；现在我们的本地代码库根本就不知道有 <code>C2</code> 这个提交了。</p>
-<p>（译者注：在reset后， <code>C2</code> 所做的变更还在，但是处于未加入暂存区状态。）</p>
-<p>如：<code>git reset HEAD~1</code>，在本地回退到HEAD的上一个分支</p>
-<h4 id="Git-Revert"><a href="#Git-Revert" class="headerlink" title="Git Revert"></a>Git Revert</h4><p>虽然在你的本地分支中使用 <code>git reset</code> 很方便，但是这种“改写历史”的方法对大家一起使用的远程分支是无效的哦！</p>
-<p>为了撤销更改并<strong>分享</strong>给别人，我们需要使用 <code>git revert</code>。来看演示：</p>
-<p><code>git revert HEAD</code></p>
-<p>在我们要撤销的提交记录后面居然多了一个新提交！这是因为新提交记录 <code>C2&#39;</code> 引入了<strong>更改</strong> —— 这些更改刚好是用来撤销 <code>C2</code> 这个提交的。也就是说 <code>C2&#39;</code> 的状态与 <code>C1</code> 是相同的。</p>
-<p>revert 之后就可以把你的更改推送到远程仓库与别人分享啦。</p>
-<p>如：<code>git revert HEAD</code>，创造了一个新的提交记录，这个提交撤销了当前提交，因此相当于回退到上一个提交。</p>
-<h3 id="git-cherry-pick"><a href="#git-cherry-pick" class="headerlink" title="git cherry-pick"></a><code>git cherry-pick</code></h3><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p><code>git log</code>：查看历史提交记录。当从GitHub clone一个仓库下来之后，我们可以通过这个指令方便地查看原作者都有哪些提交和更改。</p>
-<h2 id="Part-3-Others"><a href="#Part-3-Others" class="headerlink" title="Part 3 Others"></a>Part 3 Others</h2><h3 id="解决【fatal-过早的文件结束符（EOF）】"><a href="#解决【fatal-过早的文件结束符（EOF）】" class="headerlink" title="解决【fatal: 过早的文件结束符（EOF）】"></a>解决【fatal: 过早的文件结束符（EOF）】</h3><p>参考资料：<a href="https://blog.csdn.net/weixin_44991673/article/details/108962549" target="_blank" rel="noopener">成功解决使用git clone下载失败的问题： fatal: 过早的文件结束符（EOF） fatal: index-pack 失败</a></p>
-<p>解决办法：执行<code>git config --global http.postBuffer 524288000</code></p>
+                <h1 id="「BUAA-OS-Lab2」名词解释"><a href="#「BUAA-OS-Lab2」名词解释" class="headerlink" title="「BUAA OS Lab2」名词解释"></a>「BUAA OS Lab2」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="Pde和Pte"><a href="#Pde和Pte" class="headerlink" title="Pde和Pte"></a><code>Pde</code>和<code>Pte</code></h3><p>Page directory entry / Page table entry</p>
+<p>声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> u_long Pde; </span><br><span class="line"><span class="keyword">typedef</span> u_long Pte;</span><br></pre></td></tr></table></figure>
+<p>位置：<code>include/mmu.h</code></p>
+<p><code>Pde</code>表示一个一级页表项，<code>Pde</code>表示一个二级页表项。二者本质为<code>u_long</code></p>
+<hr>
+<h3 id="PDX和PTX"><a href="#PDX和PTX" class="headerlink" title="PDX和PTX"></a><code>PDX</code>和<code>PTX</code></h3><p>Page Directory indeX / Page Table indeX</p>
+<hr>
+<h3 id="maxpa"><a href="#maxpa" class="headerlink" title="maxpa"></a><code>maxpa</code></h3><p>maximum physical address</p>
+<p>声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long maxpa;</span><br></pre></td></tr></table></figure>
+<p>位置：<code>mm/pmap.c</code></p>
+<p>最大物理地址+1，即$ [0,maxpa - 1] $范围内的所有整数所组成的集合等于物理地址的集合。</p>
+<hr>
+<h3 id="basemem"><a href="#basemem" class="headerlink" title="basemem"></a><code>basemem</code></h3><p>base memory</p>
+<p>声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u_long basemem; </span><br><span class="line">basemem = maxpa;</span><br></pre></td></tr></table></figure>
+<p>位置：<code>mm/pmap.c</code></p>
+<p>物理内存对应的字节数</p>
+<hr>
+<h3 id="npage"><a href="#npage" class="headerlink" title="npage"></a><code>npage</code></h3><p>number of pages</p>
+<p>声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long npage;</span><br></pre></td></tr></table></figure>
+<p>位置：<code>mm/pmap.c</code></p>
+<p>总<strong>物理</strong>页数</p>
+<hr>
+<h3 id="extmem"><a href="#extmem" class="headerlink" title="extmem"></a><code>extmem</code></h3><p>extend memory</p>
+<p>扩展内存的大小，在本实验中不涉及，置0。</p>
+<hr>
+<h3 id="end"><a href="#end" class="headerlink" title="end"></a><code>end</code></h3><p>声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. = <span class="number">0x80400000</span>;</span><br><span class="line"><span class="built_in">end</span> = .;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extend <span class="keyword">char</span> <span class="built_in">end</span>[];</span><br></pre></td></tr></table></figure>
+<p>位置：<code>tools/scse0_3.lds</code>（声明）<code>mm/pmap.c</code>（引用）</p>
+<p>对应虚拟地址<code>0x80400000</code>，由映射规则知对应物理地址<code>0x00400000</code>，表明我们管理的物理空间 $ [0x00400000, maxpa - 1] $。又知道这段物理地址和虚拟地址 $ [0x80400000, 0x83fffff] $一一对应，因此虚拟地址被分配出去，代表对应的物理地址也被分配出去。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="void-mips-detect-memory"><a href="#void-mips-detect-memory" class="headerlink" title="void mips_detect_memory()"></a><code>void mips_detect_memory()</code></h3><p>位置：<code>mm/pmap.c</code></p>
+<p>对一些和内存管理相关的变量进行初始化，包括<code>maxpa</code>,<code>basemem</code>,<code>npage</code>,<code>extmem</code>。</p>
+<hr>
+<h3 id="void-mips-vm-init"><a href="#void-mips-vm-init" class="headerlink" title="void mips_vm_init"></a><code>void mips_vm_init</code></h3><p>mips virtual memory init</p>
+<p>位置：<code>mm/pmap.c</code></p>
+<hr>
+<p><code>static void *alloc(u_int n, u_int align, int clear)</code></p>
+<p>位置：<code>mm/pmap.c</code></p>
+<p>分配<code>n</code>字节空间并返回初始虚拟地址；同时保证<code>align</code>（中文意思为’对齐’）可以整除初始虚拟地址；若<code>clear</code>为真则将对应空间的值清零，否则不清零。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/03/27/Conda笔记/" data-toggle="tooltip" data-placement="top" title="Conda笔记">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/03/27/vim笔记/" data-toggle="tooltip" data-placement="top" title="Vim笔记">Next Post &rarr;</a>
+                        <a href="/2022/04/17/「BUAA-OO-Unit-2」-第二次电梯的架构设计与调度策略分享/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -395,7 +388,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Sun Mar 27 2022 19:14:19 GMT+0800', // optional
+    id: 'Wed Apr 20 2022 09:24:07 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -435,7 +428,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Git笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Git笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-相关资源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-常用指令"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 常用指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-commit"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">git commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-branch-amp-git-checkout"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">git branch&amp;git checkout</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-merge"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">git merge</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-rebase"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">git rebase</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离HEAD"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">分离HEAD</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相对引用"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">相对引用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#撤销变更-git-reset-amp-git-revert"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">撤销变更 git reset&amp;git revert</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Reset"><span class="toc-nav-number">1.3.7.1.</span> <span class="toc-nav-text">Git Reset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Revert"><span class="toc-nav-number">1.3.7.2.</span> <span class="toc-nav-text">Git Revert</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-cherry-pick"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">git cherry-pick</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-log"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">git log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Others"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Others</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#解决【fatal-过早的文件结束符（EOF）】"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">解决【fatal: 过早的文件结束符（EOF）】</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pde和Pte"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Pde和Pte</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX和PTX"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">PDX和PTX</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#maxpa"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">maxpa</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#basemem"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">basemem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#npage"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">npage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#extmem"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">extmem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#end"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">end</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-detect-memory"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">void mips_detect_memory()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-vm-init"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">void mips_vm_init</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -457,9 +450,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                        
-                          <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                         
                     </div>
                 </section>
