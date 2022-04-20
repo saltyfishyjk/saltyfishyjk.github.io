@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA OS Lab2」名词解释 - saltyfishyjk
+          「BUAA Discrete Mathematics Chapter6」容斥原理及应用 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/20/「BUAA-OS-Lab2」名词解释/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/20/「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,10 +108,10 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                              <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
                             
                         </div>
-                        <h1>「BUAA OS Lab2」名词解释</h1>
+                        <h1>「BUAA Discrete Mathematics Chapter6」容斥原理及应用</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">385</span> and
+                                Words <span class="post-count">84</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -256,62 +256,18 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-OS-Lab2」名词解释"><a href="#「BUAA-OS-Lab2」名词解释" class="headerlink" title="「BUAA OS Lab2」名词解释"></a>「BUAA OS Lab2」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="Pde和Pte"><a href="#Pde和Pte" class="headerlink" title="Pde和Pte"></a><code>Pde</code>和<code>Pte</code></h3><p>Page directory entry / Page table entry</p>
-<p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> u_long Pde; </span><br><span class="line"><span class="keyword">typedef</span> u_long Pte;</span><br></pre></td></tr></table></figure>
-<p>位置：<code>include/mmu.h</code></p>
-<p><code>Pde</code>表示一个一级页表项，<code>Pde</code>表示一个二级页表项。二者本质为<code>u_long</code></p>
-<hr>
-<h3 id="PDX和PTX"><a href="#PDX和PTX" class="headerlink" title="PDX和PTX"></a><code>PDX</code>和<code>PTX</code></h3><p>Page Directory indeX / Page Table indeX</p>
-<hr>
-<h3 id="maxpa"><a href="#maxpa" class="headerlink" title="maxpa"></a><code>maxpa</code></h3><p>maximum physical address</p>
-<p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long maxpa;</span><br></pre></td></tr></table></figure>
-<p>位置：<code>mm/pmap.c</code></p>
-<p>最大物理地址+1，即$ [0,maxpa - 1] $范围内的所有整数所组成的集合等于物理地址的集合。</p>
-<hr>
-<h3 id="basemem"><a href="#basemem" class="headerlink" title="basemem"></a><code>basemem</code></h3><p>base memory</p>
-<p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u_long basemem; </span><br><span class="line">basemem = maxpa;</span><br></pre></td></tr></table></figure>
-<p>位置：<code>mm/pmap.c</code></p>
-<p>物理内存对应的字节数</p>
-<hr>
-<h3 id="npage"><a href="#npage" class="headerlink" title="npage"></a><code>npage</code></h3><p>number of pages</p>
-<p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long npage;</span><br></pre></td></tr></table></figure>
-<p>位置：<code>mm/pmap.c</code></p>
-<p>总<strong>物理</strong>页数</p>
-<hr>
-<h3 id="extmem"><a href="#extmem" class="headerlink" title="extmem"></a><code>extmem</code></h3><p>extend memory</p>
-<p>扩展内存的大小，在本实验中不涉及，置0。</p>
-<hr>
-<h3 id="end"><a href="#end" class="headerlink" title="end"></a><code>end</code></h3><p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. = <span class="number">0x80400000</span>;</span><br><span class="line"><span class="built_in">end</span> = .;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extend <span class="keyword">char</span> <span class="built_in">end</span>[];</span><br></pre></td></tr></table></figure>
-<p>位置：<code>tools/scse0_3.lds</code>（声明）<code>mm/pmap.c</code>（引用）</p>
-<p>对应虚拟地址<code>0x80400000</code>，由映射规则知对应物理地址<code>0x00400000</code>，表明我们管理的物理空间 $ [0x00400000, maxpa - 1] $。又知道这段物理地址和虚拟地址 $ [0x80400000, 0x83fffff] $一一对应，因此虚拟地址被分配出去，代表对应的物理地址也被分配出去。</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="void-mips-detect-memory"><a href="#void-mips-detect-memory" class="headerlink" title="void mips_detect_memory()"></a><code>void mips_detect_memory()</code></h3><p>位置：<code>mm/pmap.c</code></p>
-<p>对一些和内存管理相关的变量进行初始化，包括<code>maxpa</code>,<code>basemem</code>,<code>npage</code>,<code>extmem</code>。</p>
-<hr>
-<h3 id="void-mips-vm-init"><a href="#void-mips-vm-init" class="headerlink" title="void mips_vm_init"></a><code>void mips_vm_init</code></h3><p>mips virtual memory init</p>
-<p>位置：<code>mm/pmap.c</code></p>
-<hr>
-<p><code>static void *alloc(u_int n, u_int align, int clear)</code></p>
-<p>位置：<code>mm/pmap.c</code></p>
-<p>分配<code>n</code>字节空间并返回初始虚拟地址；同时保证<code>align</code>（中文意思为’对齐’）可以整除初始虚拟地址；若<code>clear</code>为真则将对应空间的值清零，否则不清零。</p>
-
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用"><a href="#「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用" class="headerlink" title="「BUAA Discrete Mathematics Chapter6」容斥原理及应用"></a>「BUAA Discrete Mathematics Chapter6」容斥原理及应用</h1><h1 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h1><h1 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h1><h2 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h2><h4 id="定理6-1-1"><a href="#定理6-1-1" class="headerlink" title="定理6.1.1"></a>定理6.1.1</h4><p>集合 $ S $ 中<strong>不具有</strong>性质 $ P_1 , P_2, \cdots , P_m $ 的对象个数由下面的交错表达式给出：</p>
+<script type="math/tex; mode=display">
+|\overline{A_1} \cap \overline{A_2} \cap \cdots\cap\overline{A_m}| = 
+|S| - \sum|A_i| + \sum{A_i \cap A_j} - \sum|A_i \cap A_j \cap A_k| \\ + \cdots + (-1)^m|A_1 \cap A_2 \cap \cdots \cap A_m|</script>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/04/20/「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用/" data-toggle="tooltip" data-placement="top" title="「BUAA Discrete Mathematics Chapter6」容斥原理及应用">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/04/17/「BUAA-OO-Unit-2」-第二次电梯的架构设计与调度策略分享/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享">Next Post &rarr;</a>
+                        <a href="/2022/04/20/「BUAA-OS-Lab2」名词解释/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab2」名词解释">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -392,7 +348,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Wed Apr 20 2022 09:24:07 GMT+0800', // optional
+    id: 'Wed Apr 20 2022 14:54:36 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -432,7 +388,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pde和Pte"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Pde和Pte</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX和PTX"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">PDX和PTX</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#maxpa"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">maxpa</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#basemem"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">basemem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#npage"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">npage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#extmem"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">extmem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#end"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">end</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-detect-memory"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">void mips_detect_memory()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-vm-init"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">void mips_vm_init</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter6」容斥原理及应用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#容斥原理"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">容斥原理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#定理6-1-1"><span class="toc-nav-number">3.1.0.1.</span> <span class="toc-nav-text">定理6.1.1</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -454,7 +410,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                          <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
                         
                     </div>
                 </section>
