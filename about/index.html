@@ -160,14 +160,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -290,10 +290,6 @@
     <div class="tags">
         
             
-            <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
-            
-        
-            
         
             
             <a href="/tags/#Java Programming" title="Java Programming" rel="2">Java Programming</a>
@@ -304,11 +300,17 @@
             
         
             
+            <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
+            
+        
+            
             <a href="/tags/#Tools" title="Tools" rel="13">Tools</a>
             
         
             
             <a href="/tags/#Git" title="Git" rel="2">Git</a>
+            
+        
             
         
             
@@ -329,8 +331,6 @@
         
             
             <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="4">BUAA-OS</a>
-            
-        
             
         
             
@@ -648,7 +648,7 @@
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -658,6 +658,22 @@
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 </html>

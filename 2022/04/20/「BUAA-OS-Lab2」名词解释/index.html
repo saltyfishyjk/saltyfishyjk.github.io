@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">720</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">1.4k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -291,12 +291,25 @@
 <p>位置：<code>tools/scse0_3.lds</code>（声明）<code>mm/pmap.c</code>（引用）</p>
 <p>对应虚拟地址<code>0x80400000</code>，由映射规则知对应物理地址<code>0x00400000</code>，表明我们管理的物理空间 $ [0x00400000, maxpa - 1] $。又知道这段物理地址和虚拟地址 $ [0x80400000, 0x83fffff] $一一对应，因此虚拟地址被分配出去，代表对应的物理地址也被分配出去。</p>
 <hr>
+<h3 id="LIST-ENTRY"><a href="#LIST-ENTRY" class="headerlink" title="LIST_ENTRY"></a><code>LIST_ENTRY</code></h3><p>位置：<code>include/queue.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_ENTRY(type)                                                \</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>                                                                \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">le_next</span>;</span>   <span class="comment">/* next element */</span>                      \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> **<span class="title">le_prev</span>;</span>  <span class="comment">/* address of previous next element */</span>  \</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>本质上相当于一个工厂，生产一个type类型的链表结点结构体，其内容包含指向下一个结点的指针和指向上一个节点的<em>下一个节点指针</em>的指针。</p>
+<p>举例来说，当我们调用<code>typedef LIST_ENTRY(Page) Page_LIST_entry_t;</code>时候，事实上为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">	struct Page *le_next;</span><br><span class="line">	struct Page **le_prev;</span><br><span class="line">&#125; Page_LIST_entry_t;</span><br></pre></td></tr></table></figure>
+<p>即，构造了一个类型名为<code>Page_LIST_entry_t</code>，作为<code>Page</code>结构体的链表结点。</p>
+<hr>
 <h3 id="Page"><a href="#Page" class="headerlink" title="Page"></a><code>Page</code></h3><p>位置：<code>include/pmap.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">	Page_LIST_entry_t pp_link;	<span class="comment">/* free list link */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Ref is the count of pointers (usually in page table entries)</span></span><br><span class="line">	<span class="comment">// to this page.  This only holds for pages allocated using </span></span><br><span class="line">	<span class="comment">// page_alloc.  Pages allocated at boot time using pmap.c's "alloc"</span></span><br><span class="line">	<span class="comment">// do not have valid reference count fields.</span></span><br><span class="line"></span><br><span class="line">	u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="Page-Directory与Page-Table"><a href="#Page-Directory与Page-Table" class="headerlink" title="Page Directory与Page Table"></a>Page Directory与Page Table</h3><p>第一级表称为页目录（Page Directory），第二级表称为页表（Page Table）。</p>
 <hr>
 <h3 id="PFN"><a href="#PFN" class="headerlink" title="PFN"></a><code>PFN</code></h3><p>Physical Frame Number</p>
 <p>物理页框号</p>
+<hr>
+<h3 id="PPN"><a href="#PPN" class="headerlink" title="PPN"></a><code>PPN</code></h3><p>Physical Page Number</p>
+<hr>
+<h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a><code>VPN</code></h3><p>Virtual Page Number</p>
+<hr>
 <hr>
 <h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="void-mips-detect-memory"><a href="#void-mips-detect-memory" class="headerlink" title="void mips_detect_memory()"></a><code>void mips_detect_memory()</code></h3><p>位置：<code>mm/pmap.c</code></p>
 <p>对一些和内存管理相关的变量进行初始化，包括<code>maxpa</code>,<code>basemem</code>,<code>npage</code>,<code>extmem</code>。</p>
@@ -334,7 +347,32 @@
 <h3 id="PTX-va"><a href="#PTX-va" class="headerlink" title="PTX(va)"></a><code>PTX(va)</code></h3><p>Page Table Index，二级页表号，或二级页表项偏移量（指针加法即可）</p>
 <p>获取虚拟地址<code>va</code>的 $ 21 - 12 $ 位</p>
 <hr>
-<h3 id="KADDR-pa"><a href="#KADDR-pa" class="headerlink" title="KADDR(pa)"></a><code>KADDR(pa)</code></h3><p>返回物理地址<code>pa</code>对应的<code>kseg0</code>的虚拟地址</p>
+<h3 id="PADDR-va"><a href="#PADDR-va" class="headerlink" title="PADDR(va)"></a><code>PADDR(va)</code></h3><p>Physical Address</p>
+<p>返回虚拟地址<code>va</code>对应的物理地址。要求<code>va</code>ixu是kseg0的虚拟地址，因此只需要将最高位清零就可以得到对应的物理地址。</p>
+<hr>
+<h3 id="KADDR-pa"><a href="#KADDR-pa" class="headerlink" title="KADDR(pa)"></a><code>KADDR(pa)</code></h3><p>Kernal Address(virtual)</p>
+<p>返回物理地址<code>pa</code>对应的<code>kseg0</code>的虚拟地址</p>
+<hr>
+<h3 id="bzero"><a href="#bzero" class="headerlink" title="bzero"></a><code>bzero</code></h3><p>位置：<code>init/init.c</code></p>
+<hr>
+<h3 id="static-Pte-boot-pgdir-walk-Pde-pgdir-u-long-va-int-create"><a href="#static-Pte-boot-pgdir-walk-Pde-pgdir-u-long-va-int-create" class="headerlink" title="static Pte *boot_pgdir_walk(Pde *pgdir, u_long va, int create,)"></a><code>static Pte *boot_pgdir_walk(Pde *pgdir, u_long va, int create,)</code></h3><p>返回一级页表基地址<code>pgdir</code>对应的两级页表结构中，<code>va</code>虚拟地址所在的<strong>二级页表项</strong>。</p>
+<p>这一函数在<strong>内核启动</strong>过程中被调用。</p>
+<hr>
+<h3 id="void-boot-map-segment-Pde-pgdir-u-long-va-u-long-size-u-long-pa-int-perm"><a href="#void-boot-map-segment-Pde-pgdir-u-long-va-u-long-size-u-long-pa-int-perm" class="headerlink" title="void boot_map_segment(Pde *pgdir, u_long va, u_long size, u_long pa, int perm)"></a><code>void boot_map_segment(Pde *pgdir, u_long va, u_long size, u_long pa, int perm)</code></h3><p>区间地址映射函数。将一级页表及地址pgdir对应的两级页表结构做区间地址映射，将虚拟地址空间 $ [va, va + size - 1] $ 映射到物理地址区间 $ [pa, pa + size - 1] $ 。由于按页映射，要求<code>size</code>是页面大小的整数倍。设置页表项的权限位为<code>perm</code>。函数调用了<code>boot_pgdir_walk</code>，为<code>Page</code>结构体和<code>Env</code>结构体进行映射。</p>
+<p>这一函数在<strong>内核启动</strong>过程中被调用。</p>
+<hr>
+<h3 id="int-pgdir-walk-Pde-pgdir-u-long-va-int-create-Pte-ppte"><a href="#int-pgdir-walk-Pde-pgdir-u-long-va-int-create-Pte-ppte" class="headerlink" title="int pgdir_walk(Pde *pgdir, u_long va, int create, Pte **ppte)"></a><code>int pgdir_walk(Pde *pgdir, u_long va, int create, Pte **ppte)</code></h3><hr>
+<h3 id="PTE-ADDR-pte"><a href="#PTE-ADDR-pte" class="headerlink" title="PTE_ADDR(pte)"></a><code>PTE_ADDR(pte)</code></h3><p>位置：<code>include/mmu.h</code></p>
+<hr>
+<h3 id="int-page-insert-Pde-pgddir-struct-Page-pp-u-long-va-u-int-perm"><a href="#int-page-insert-Pde-pgddir-struct-Page-pp-u-long-va-u-int-perm" class="headerlink" title="int page_insert(Pde *pgddir, struct Page *pp, u_long va, u_int perm)"></a><code>int page_insert(Pde *pgddir, struct Page *pp, u_long va, u_int perm)</code></h3><p>将一级页表基地址<code>pgdir</code>对应的两级也表结构中<code>va</code>这一虚拟地址映射到内存控制块<code>pp</code>对应的物理页面，并将页表项权限位设置为<code>perm</code>。</p>
+<hr>
+<h3 id="struct-Page-page-lookup-Pde-pgdir-u-long-va-Pte-ppte"><a href="#struct-Page-page-lookup-Pde-pgdir-u-long-va-Pte-ppte" class="headerlink" title="struct Page * page_lookup(Pde *pgdir, u_long va, Pte **ppte)"></a><code>struct Page * page_lookup(Pde *pgdir, u_long va, Pte **ppte)</code></h3><p>返回一级页表及地址<code>pgdir</code>对应的两级页表结构中<code>va</code>这一虚拟地址映射对应的物理页面对应的内存控制块</p>
+<hr>
+<h3 id="void-page-remove-Pde-pgdir-u-long-va"><a href="#void-page-remove-Pde-pgdir-u-long-va" class="headerlink" title="void page_remove(Pde *pgdir, u_long va)"></a><code>void page_remove(Pde *pgdir, u_long va)</code></h3><p>取消地址映射函数</p>
+<p>删除一级页表基地址<code>pgdir</code>对应的两级页表结构中<code>va</code>这一虚拟地址对应物理地址的映射。如果存在这样的映射，那么对应物理页面结构的引用次数会减少。</p>
+<hr>
+<h3 id="void-pageout-int-va-int-context"><a href="#void-pageout-int-va-int-context" class="headerlink" title="void pageout(int va, int context)"></a><code>void pageout(int va, int context)</code></h3><p>被动地址映射函数</p>
+<p>一级页表基地址<code>context</code>对应的两级页表结构中<code>va</code>新增这一虚拟地址的映射，对应的物理页面通过函数<code>page_alloc</code>获取而不特殊指定。</p>
 
                 
                 <hr>
@@ -468,7 +506,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pde和Pte"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Pde和Pte</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX和PTX"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">PDX和PTX</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#maxpa"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">maxpa</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#basemem"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">basemem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#npage"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">npage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#extmem"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">extmem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#end"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">end</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Page"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">Page</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Page-Directory与Page-Table"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">Page Directory与Page Table</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PFN"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">PFN</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-detect-memory"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">void mips_detect_memory()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-vm-init"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">void mips_vm_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#static-void-alloc-u-int-n-u-int-align-int-clear"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">static void *alloc(u_int n, u_int align, int clear)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-HEAD-name-type"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">LIST_HEAD(name, type)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-ENTRY-type"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">LIST_ENTRY(type)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-EMPTY-head"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">LIST_EMPTY(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-FIRST-head"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">LIST_FIRST(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-INIT-head"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">LIST_INIT(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-NEXT-elm-field"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">LIST_NEXT(elm, field)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-INSERT-AFTER-listelm-elm-field"><span class="toc-nav-number">1.2.10.</span> <span class="toc-nav-text">LIST_INSERT_AFTER(listelm, elm, field)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-decref-struct-Page-pp"><span class="toc-nav-number">1.2.11.</span> <span class="toc-nav-text">page_decref(struct Page *pp)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-free"><span class="toc-nav-number">1.2.12.</span> <span class="toc-nav-text">page_free</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX-va"><span class="toc-nav-number">1.2.13.</span> <span class="toc-nav-text">PDX(va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PTX-va"><span class="toc-nav-number">1.2.14.</span> <span class="toc-nav-text">PTX(va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#KADDR-pa"><span class="toc-nav-number">1.2.15.</span> <span class="toc-nav-text">KADDR(pa)</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pde和Pte"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Pde和Pte</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX和PTX"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">PDX和PTX</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#maxpa"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">maxpa</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#basemem"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">basemem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#npage"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">npage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#extmem"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">extmem</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#end"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">end</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-ENTRY"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">LIST_ENTRY</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Page"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">Page</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Page-Directory与Page-Table"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">Page Directory与Page Table</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PFN"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">PFN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PPN"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">PPN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#VPN"><span class="toc-nav-number">1.1.13.</span> <span class="toc-nav-text">VPN</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-detect-memory"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">void mips_detect_memory()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-mips-vm-init"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">void mips_vm_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#static-void-alloc-u-int-n-u-int-align-int-clear"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">static void *alloc(u_int n, u_int align, int clear)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-HEAD-name-type"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">LIST_HEAD(name, type)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-ENTRY-type"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">LIST_ENTRY(type)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-EMPTY-head"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">LIST_EMPTY(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-FIRST-head"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">LIST_FIRST(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-INIT-head"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">LIST_INIT(head)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-NEXT-elm-field"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">LIST_NEXT(elm, field)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LIST-INSERT-AFTER-listelm-elm-field"><span class="toc-nav-number">1.2.10.</span> <span class="toc-nav-text">LIST_INSERT_AFTER(listelm, elm, field)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-decref-struct-Page-pp"><span class="toc-nav-number">1.2.11.</span> <span class="toc-nav-text">page_decref(struct Page *pp)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-free"><span class="toc-nav-number">1.2.12.</span> <span class="toc-nav-text">page_free</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PDX-va"><span class="toc-nav-number">1.2.13.</span> <span class="toc-nav-text">PDX(va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PTX-va"><span class="toc-nav-number">1.2.14.</span> <span class="toc-nav-text">PTX(va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PADDR-va"><span class="toc-nav-number">1.2.15.</span> <span class="toc-nav-text">PADDR(va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#KADDR-pa"><span class="toc-nav-number">1.2.16.</span> <span class="toc-nav-text">KADDR(pa)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#bzero"><span class="toc-nav-number">1.2.17.</span> <span class="toc-nav-text">bzero</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#static-Pte-boot-pgdir-walk-Pde-pgdir-u-long-va-int-create"><span class="toc-nav-number">1.2.18.</span> <span class="toc-nav-text">static Pte *boot_pgdir_walk(Pde *pgdir, u_long va, int create,)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-boot-map-segment-Pde-pgdir-u-long-va-u-long-size-u-long-pa-int-perm"><span class="toc-nav-number">1.2.19.</span> <span class="toc-nav-text">void boot_map_segment(Pde *pgdir, u_long va, u_long size, u_long pa, int perm)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#int-pgdir-walk-Pde-pgdir-u-long-va-int-create-Pte-ppte"><span class="toc-nav-number">1.2.20.</span> <span class="toc-nav-text">int pgdir_walk(Pde *pgdir, u_long va, int create, Pte **ppte)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PTE-ADDR-pte"><span class="toc-nav-number">1.2.21.</span> <span class="toc-nav-text">PTE_ADDR(pte)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#int-page-insert-Pde-pgddir-struct-Page-pp-u-long-va-u-int-perm"><span class="toc-nav-number">1.2.22.</span> <span class="toc-nav-text">int page_insert(Pde *pgddir, struct Page *pp, u_long va, u_int perm)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#struct-Page-page-lookup-Pde-pgdir-u-long-va-Pte-ppte"><span class="toc-nav-number">1.2.23.</span> <span class="toc-nav-text">struct Page * page_lookup(Pde *pgdir, u_long va, Pte **ppte)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-page-remove-Pde-pgdir-u-long-va"><span class="toc-nav-number">1.2.24.</span> <span class="toc-nav-text">void page_remove(Pde *pgdir, u_long va)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#void-pageout-int-va-int-context"><span class="toc-nav-number">1.2.25.</span> <span class="toc-nav-text">void pageout(int va, int context)</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -729,7 +767,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -739,6 +777,22 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 
 </html>
