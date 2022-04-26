@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          BUAA CO 冒险之旅回顾 - saltyfishyjk
+          「BUAA OS Lab3」名词解释 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/27/BUAA-CO-冒险之旅回顾/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/26/「BUAA-OS-Lab3」名词解释/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,20 +108,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                             
                         </div>
-                        <h1>BUAA CO 冒险之旅回顾</h1>
+                        <h1>「BUAA OS Lab3」名词解释</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-01-27
+                            2022-04-26
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">200</span> and
+                                Words <span class="post-count">186</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -256,19 +256,23 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="BUAA-CO-冒险之旅回顾-序"><a href="#BUAA-CO-冒险之旅回顾-序" class="headerlink" title="BUAA-CO 冒险之旅回顾 序"></a>BUAA-CO 冒险之旅回顾 序</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>《计算机组成》是计算机学院重要的核心专业课，每一位同学都会在计组（平时我更愿意称之为祭祖）旅程中有所收获。</p>
-<p>笔者在2021秋季学期的计组实验进度为通过P7课上，但经过了相当的波折，比如一共挂了四次上机实验，因此，在这里及时总结踩过的坑。</p>
-<p>受限于笔者极其有限的专业知识和对课程的理解，该系blog<strong>并不能作为cscore.buaa.edu.cn教程的替代品或《计组》实验指导</strong>，仅可以作为一种补充。如果有后来者看到这系列blog，有些许体会乃至收获，那便是这些blog最大的意义。</p>
-
+                <h1 id="「BUAA-OS-Lab3」名词解释"><a href="#「BUAA-OS-Lab3」名词解释" class="headerlink" title="「BUAA OS Lab3」名词解释"></a>「BUAA OS Lab3」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a><code>PCB</code></h3><p>进程控制块（Process Conotrol Block），系统感知进程存在的唯一标志。进程和PCB一一对应。</p>
+<hr>
+<h3 id="Env"><a href="#Env" class="headerlink" title="Env"></a><code>Env</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span> <span class="comment">// Saved registers </span></span><br><span class="line">	LIST_ENTRY(Env) env_link; <span class="comment">// Free LIST_ENTRY</span></span><br><span class="line">	u_int env_id;                  <span class="comment">// Unique environment identifier </span></span><br><span class="line">    u_int env_parent_id;           <span class="comment">// env_id of this env's parent </span></span><br><span class="line">    u_int env_status;              <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;               <span class="comment">// Kernel virtual address of page dir </span></span><br><span class="line">    u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link; </span><br><span class="line">    u_int env_pri;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="env-tf"><a href="#env-tf" class="headerlink" title="env_tf"></a><code>env_tf</code></h3><p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中</p>
+<hr>
+<h3 id="Trapframe"><a href="#Trapframe" class="headerlink" title="Trapframe"></a><code>Trapframe</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> &#123;</span> <span class="comment">//lr:need to be modified(reference to linux pt_regs) TODO</span></span><br><span class="line">	<span class="comment">/* Saved main processor registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> regs[<span class="number">32</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Saved special registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_status;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> hi;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> lo;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_badvaddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_cause;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_epc;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> pc;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/01/28/Hexo博客搭建回顾概览/" data-toggle="tooltip" data-placement="top" title="Hexo博客搭建回顾概览">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2022/04/20/「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用/" data-toggle="tooltip" data-placement="top" title="「BUAA Discrete Mathematics Chapter6」容斥原理及应用">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -348,7 +352,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Thu Jan 27 2022 11:25:11 GMT+0800', // optional
+    id: 'Tue Apr 26 2022 22:42:52 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -388,7 +392,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BUAA-CO-冒险之旅回顾-序"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">BUAA-CO 冒险之旅回顾 序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab3」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab3」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PCB"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">PCB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Env</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-tf"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">env_tf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Trapframe"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">Trapframe</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a></li></ol></li></ol>
             
           
           </div>
@@ -410,7 +414,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                         
                     </div>
                 </section>
