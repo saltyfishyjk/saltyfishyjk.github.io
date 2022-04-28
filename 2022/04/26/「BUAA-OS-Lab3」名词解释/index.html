@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">739</span> and
+                                Words <span class="post-count">743</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -264,7 +264,8 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIST_HEAD(Env_list, Env);</span><br></pre></td></tr></table></figure>
 <p>工厂模式构造<code>Env_list</code>类型，内部含有一个<code>struct type *lh_first</code>的变量，相当于构造了头结点类型<code>Env_list</code>。</p>
 <hr>
-<h3 id="env-tf"><a href="#env-tf" class="headerlink" title="env_tf"></a><code>env_tf</code></h3><p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中</p>
+<h3 id="env-tf"><a href="#env-tf" class="headerlink" title="env_tf"></a><code>env_tf</code></h3><p>env trapframe</p>
+<p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中</p>
 <hr>
 <h3 id="Trapframe"><a href="#Trapframe" class="headerlink" title="Trapframe"></a><code>Trapframe</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> &#123;</span> <span class="comment">//lr:need to be modified(reference to linux pt_regs) TODO</span></span><br><span class="line">	<span class="comment">/* Saved main processor registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> regs[<span class="number">32</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Saved special registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_status;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> hi;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> lo;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_badvaddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_cause;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_epc;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> pc;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -282,12 +283,13 @@
 </ul>
 <hr>
 <h3 id="env-pgdir"><a href="#env-pgdir" class="headerlink" title="env_pgdir"></a><code>env_pgdir</code></h3><p>env page directory</p>
-<p>保存<strong>该进程</strong>页目录的内核虚拟地址。</p>
+<p>保存<strong>该进程页目录</strong>的<strong>内核虚拟地址</strong>。</p>
 <hr>
 <h3 id="env-cr3"><a href="#env-cr3" class="headerlink" title="env_cr3"></a><code>env_cr3</code></h3><p>env </p>
 <p>保存该进程页目录的物理地址。</p>
 <hr>
-<h3 id="env-sched-link"><a href="#env-sched-link" class="headerlink" title="env_sched_link"></a><code>env_sched_link</code></h3><p>这个变量用来构造调度队列。</p>
+<h3 id="env-sched-link"><a href="#env-sched-link" class="headerlink" title="env_sched_link"></a><code>env_sched_link</code></h3><p>env scheduled link</p>
+<p>这个变量用来构造调度队列。</p>
 <hr>
 <h3 id="env-pri"><a href="#env-pri" class="headerlink" title="env_pri"></a><code>env_pri</code></h3><p>env priority</p>
 <p>保存该进程的优先级。</p>
