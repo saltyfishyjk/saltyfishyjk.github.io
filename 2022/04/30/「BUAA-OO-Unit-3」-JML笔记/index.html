@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA Discrete Mathematics Chapter2」排列与组合 - saltyfishyjk
+          「BUAA OO Unit 3」 JML笔记 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/31/「BUAA-Discrete-Mathematics-Chapter2」排列与组合/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/30/「BUAA-OO-Unit-3」-JML笔记/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
                             
                         </div>
-                        <h1>「BUAA Discrete Mathematics Chapter2」排列与组合</h1>
+                        <h1>「BUAA OO Unit 3」 JML笔记</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-03-31
+                            2022-04-30
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">469</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">1.3k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,42 +256,65 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-Discrete-Mathematics-Chapter2」排列与组合"><a href="#「BUAA-Discrete-Mathematics-Chapter2」排列与组合" class="headerlink" title="「BUAA Discrete Mathematics Chapter2」排列与组合"></a>「BUAA Discrete Mathematics Chapter2」排列与组合</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h3 id="内容概况"><a href="#内容概况" class="headerlink" title="内容概况"></a>内容概况</h3><p>BUAA离散数学3同步笔记，对应内容为《组合数学》（Richard A.Brualdi）第2章与PPT对应授课内容。</p>
-<h3 id="读者前置知识期望"><a href="#读者前置知识期望" class="headerlink" title="读者前置知识期望"></a>读者前置知识期望</h3><ol>
-<li>高中数学基本知识</li>
-<li>离散数学1、2基本知识</li>
-<li>如果没有以上知识，善用搜索引擎也可</li>
-</ol>
-<h2 id="Part-1-四个基本计数原理"><a href="#Part-1-四个基本计数原理" class="headerlink" title="Part 1 四个基本计数原理"></a>Part 1 四个基本计数原理</h2><h3 id="加法原理"><a href="#加法原理" class="headerlink" title="加法原理"></a>加法原理</h3><p>集合S被划分为<strong>两两不相交</strong>的部分$S_1$, $S_2$,···,$S_m$，则$S$的对象数目可以通过其每一个部分的对象的数目相加得到。</p>
+                <h1 id="「BUAA-OO-Unit-3」-JML笔记"><a href="#「BUAA-OO-Unit-3」-JML笔记" class="headerlink" title="「BUAA OO Unit 3」 JML笔记"></a>「BUAA OO Unit 3」 JML笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>JML(Java Modeling Language)是用于对Java程序进行规格化设计的一种表示语言，对规格化设计有重要作用。这里记录Unit3中学习JML的相关笔记</p>
+<hr>
+<h2 id="Part-1-注释"><a href="#Part-1-注释" class="headerlink" title="Part 1 注释"></a>Part 1 注释</h2><p>JML中以javadoc注释的方式表示规格，每行以<code>@</code>开头。有行注释和块注释两种方式。</p>
+<p>按照javadoc习惯，JML注释一般放在被注释成分的近邻上部。</p>
+<h3 id="行注释"><a href="#行注释" class="headerlink" title="行注释"></a>行注释</h3><ul>
+<li>表示方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@ public model non_null int [] elements</span></span><br></pre></td></tr></table></figure>
+<h3 id="块注释"><a href="#块注释" class="headerlink" title="块注释"></a>块注释</h3><ul>
+<li>表示方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@ contents</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @*/</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Part-2-JML表达式"><a href="#Part-2-JML表达式" class="headerlink" title="Part 2 JML表达式"></a>Part 2 JML表达式</h2><h3 id="pure"><a href="#pure" class="headerlink" title="pure"></a><code>pure</code></h3><p>方法的执行不会有任何副作用</p>
+<hr>
+<h3 id="model"><a href="#model" class="headerlink" title="model"></a><code>model</code></h3><p>规格</p>
+<hr>
+<h3 id="non-null"><a href="#non-null" class="headerlink" title="non_null"></a><code>non_null</code></h3><p>数组引用对象不能为<code>null</code></p>
+<hr>
+<h3 id="原子表达式"><a href="#原子表达式" class="headerlink" title="原子表达式"></a>原子表达式</h3><h4 id="result"><a href="#result" class="headerlink" title="\result"></a><code>\result</code></h4><p>表示一个非<code>void</code>类型的方法执行所获得的结果，即，方法执行后的返回值。事实上，该表达式的类型就是方法声明定义的返回值类型。</p>
+<h4 id="old-expr"><a href="#old-expr" class="headerlink" title="\old(expr)"></a><code>\old(expr)</code></h4><p>表示一个表达式<code>expr</code>在相应方法执行前的取值。其遵循Java引用规则，即，针对一个对象引用，只判断引用本身是否变化，不判断引用指向的对象实体的内容是否发生变化。因此，只有当引用本身的值发生变化（即其指向了另一个对象）时，才会变化。我们应当把<code>\old()</code>关心的表达式取值<strong>整体括起来</strong>。</p>
+<h4 id="not-assigned-x-y"><a href="#not-assigned-x-y" class="headerlink" title="\not_assigned(x,y,...)"></a><code>\not_assigned(x,y,...)</code></h4><p>表示括号中的变量是否在方法执行过程中<strong>被赋值</strong>，如果没有被赋值，返回<code>true</code>，否则返回<code>false</code>。一般该表达式被用于后置条件的约束表示上，用来限制一个方法的实现不能对列表中的变量赋值。</p>
+<h4 id="not-modified-x-y"><a href="#not-modified-x-y" class="headerlink" title="\not_modified(x,y,...)"></a><code>\not_modified(x,y,...)</code></h4><p> 与<code>\not_assigned()</code>类似，限制括号中的变量在方法执行期间的取值不发生变化。</p>
+<h4 id="nonnullelements-container"><a href="#nonnullelements-container" class="headerlink" title="\nonnullelements(container)"></a><code>\nonnullelements(container)</code></h4><p>表示<code>container</code>对象中存储的对象不会有<code>null</code>，等价于如下断言：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">(\forall <span class="keyword">int</span> i; <span class="number">0</span> &lt;= i &amp;&amp; i &lt; container.length;container[i] != <span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="type-type"><a href="#type-type" class="headerlink" title="\type(type)"></a><code>\type(type)</code></h4><p>返回类型<code>type</code>对应的类型（Class），如<code>\type(boolean)</code>为<code>Boolean.TYPE</code>。<code>TYPE</code>是JML中的缩略表示，等同于Java中的<code>java.lang.Class</code>。</p>
+<h4 id="typeof-expr"><a href="#typeof-expr" class="headerlink" title="\typeof(expr)"></a><code>\typeof(expr)</code></h4><p>返回<code>expr</code>对应的准确类型，如<code>\typeof(false)</code>为<code>Boolean.TYPE</code>。</p>
+<hr>
+<h3 id="量化表达式"><a href="#量化表达式" class="headerlink" title="量化表达式"></a>量化表达式</h3><h4 id="forall"><a href="#forall" class="headerlink" title="\forall"></a><code>\forall</code></h4><p>全称量词修饰的表达式，表示对应给定范围内的元素，每个元素<strong>都</strong>满足对应的约束。</p>
+<p>举例而言，对于<code>(\forall int i,j; 0 &lt;= i &amp;&amp; i &lt;= j&amp;&amp; j &lt; 10;a[i] &lt; a[j])</code>的意思为，对于任意<code>0&lt;=i&lt;j&lt;=10</code>，<code>a[i]&lt;a[j]</code>。这个表达式如果为真，表明数组<code>a</code>事实上是升序排列。</p>
+<h4 id="exists"><a href="#exists" class="headerlink" title="\exists"></a><code>\exists</code></h4><p>存在量词修饰表达式，表示对于给定范围内的元素，<strong>存在</strong>某个元素满足对应的约束。</p>
+<p>举例而言，对于<code>(\exists int i; 0 &lt;= i &amp;&amp; i &lt; 10;a[i] &lt; 0)</code>的意思为，对于<code>0 &lt;= i &lt; 10</code>，存在一个<code>a[i] &lt; 0</code>。</p>
+<h4 id="sum"><a href="#sum" class="headerlink" title="\sum"></a><code>\sum</code></h4><p>求和表达式，返回给定范围内的表达式的和。</p>
+<p><code>(\sum int i; 0&lt;= i &amp;&amp; i &lt; 5;i)</code>，意为计算 $ [0, 5) $ 范围内的整数<code>i</code>的和，即， $ 0 + 1 + 2 + 3 + 4 = 10 $。值得注意的是，<code>0 &lt;= i &amp;&amp; i &lt; 5</code>是对<code>i</code>的范围的限制，而<strong>求和表达式</strong>是最后的那个<code>i</code>。</p>
+<p>进一步说，如果表达式为<code>(\sum int i; 0 &lt;= i &amp;&amp; i &lt; 5 ; i * i)</code>，则等价于表达式：</p>
 <script type="math/tex; mode=display">
-|S| = |S_1|+|S_2|+···+|S_m|</script><h3 id="乘法原理"><a href="#乘法原理" class="headerlink" title="乘法原理"></a>乘法原理</h3><p>$S$是对象的有序对$(a,b)$的集合，其中第一个对象$a$来自大小为$p$的一个集合，对于对象$a$的每一个选择，对象$b$有$q$种选择，于是，$S$的大小为$p \times q$</p>
+\sum_{i = 0} ^ {4} {i \times i}</script><h3 id="product"><a href="#product" class="headerlink" title="\product"></a><code>\product</code></h3><p>返回给定范围内的表达式的连乘结果。</p>
+<p><code>(\product int i;0 &lt; i &amp;&amp; i &lt; 5; i)</code>等价于：</p>
 <script type="math/tex; mode=display">
-|S| = p \times q</script><h3 id="减法原理"><a href="#减法原理" class="headerlink" title="减法原理"></a>减法原理</h3><p>$A$为集合，$U$包含$A$，定义$A$在$U$中的补$\overline{A}$：</p>
-<script type="math/tex; mode=display">
-\overline{A} = U \backslash A = \{x \in U:x\notin A\}</script><p>$A$的对象的数目由以下公式给出：</p>
-<script type="math/tex; mode=display">
-|A| = |U| - |\overline{A}|</script><h3 id="除法原理"><a href="#除法原理" class="headerlink" title="除法原理"></a>除法原理</h3><p>$S$是一个优先级和，将其划分为$k$个部分，使得每一个部分包含的对象数目相同。划分的部分中的数目由下述公式给出：</p>
-<script type="math/tex; mode=display">
-k = \frac{|S|}{在一个部分中的对象数目}</script><h2 id="Part-2-集合的排列"><a href="#Part-2-集合的排列" class="headerlink" title="Part 2 集合的排列"></a>Part 2 集合的排列</h2><h3 id="定理2-2-1-排列数-P-n-r"><a href="#定理2-2-1-排列数-P-n-r" class="headerlink" title="定理2.2.1 排列数$P(n,r)$"></a>定理2.2.1 排列数$P(n,r)$</h3><p>定义：$r$排列表示有$r$个元素的排列。</p>
-<p>定义：$P(n,r)$表示$n$元素集合$r$排列的数目。</p>
-<p>对于正整数$n$和$r$，$r \le n$，有：</p>
-<script type="math/tex; mode=display">
-P(n,r) = n \times (n-1) \times ···\times(n-r-1)</script><h3 id="定理2-2-2-循环-r-排列"><a href="#定理2-2-2-循环-r-排列" class="headerlink" title="定理2.2.2 循环$r$排列"></a>定理2.2.2 循环$r$排列</h3><p>$n$元素集合的循环$r$排列的数目是：</p>
-<script type="math/tex; mode=display">
-\frac{P(n,r)}{r} = \frac{n!}{r \cdot (n-r)!}</script><p>特别地，$n$个元素的循环排列的数目是$(n-1)!$</p>
-
+\prod_{i = 1}^{4}i</script><h4 id="max"><a href="#max" class="headerlink" title="\max"></a><code>\max</code></h4><p>返回给定范围内的表达式的最大值。</p>
+<p><code>(\max int i; 0 &lt;= i &amp;&amp; i &lt; 5;i)</code>，这个表达式返回 $ [0, 5) $中最大的整数，即 $ 4 $ 。</p>
+<h4 id="min"><a href="#min" class="headerlink" title="\min"></a><code>\min</code></h4><p>返回给定范围内的表达式的最小值，用法类似<code>\max</code></p>
+<h4 id="num-of"><a href="#num-of" class="headerlink" title="\num_of()"></a><code>\num_of()</code></h4><p>返回指定变量中满足相应条件的取值个数。</p>
+<p><code>(\num_of int x; 0 &lt; x &amp;&amp; x &lt;= 20;x % 2 == 0)</code>，这个表达式给出 $ (0,20] $中可以被 $ 2 $ 整除的整数的个数，即 $ 10 $ 。</p>
+<p>一般而言，对于<code>(\num_of T x; R(x); P(x)</code>，<code>T</code>为变量 <code>x</code>的类型，<code>R(x)</code>为<code>x</code>的取值范围，<code>P(x)</code>定义<code>x</code>需要满足的约束条件。从逻辑等价角度看，事实上相当于<code>(\num_of T x; R(x) &amp;&amp; P(x);1)</code></p>
+<hr>
+<h3 id="集合表达式"><a href="#集合表达式" class="headerlink" title="集合表达式"></a>集合表达式</h3><p>可以在JML规格中构造一个局部的集合（容器），明确集合中包含的元素。</p>
+<p><code>new JMLObjectSet {Integer i | s.contains(i) &amp;&amp; 0 &lt; i.intValue()}</code>表示构造一个JMLObjecti对象，包含的元素类型为Integer，集合中的所有元素都在容器集合<code>s</code>中出现（该容器集合指的是Java程序中构建的容器，比如<code>ArrayList()</code>），且整数值大于<code>0</code>。</p>
+<p>集合构造表达式的一般形式为<code>new ST{T x | R(x) &amp;&amp; P(x)}</code>，其中的<code>R(x)</code>对应集合中<code>x</code>的范围，通常是来自于<strong>某个既有集合中的元素</strong>，如<code>s.has(x)</code>，<code>P(x)</code>对应<code>x</code>取值的约束。</p>
+<hr>
+<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/04/03/Pytorch笔记/" data-toggle="tooltip" data-placement="top" title="Pytorch笔记">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/03/28/CMD笔记/" data-toggle="tooltip" data-placement="top" title="CMD笔记">Next Post &rarr;</a>
+                        <a href="/2022/04/29/「BUAA-OS-Lab3-1-Extra」模拟PV操作/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab3-1-Extra」模拟PV操作">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -372,7 +395,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Thu Mar 31 2022 22:26:08 GMT+0800', // optional
+    id: 'Sat Apr 30 2022 09:59:44 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -412,7 +435,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter2」排列与组合"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter2」排列与组合</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内容概况"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">内容概况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#读者前置知识期望"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">读者前置知识期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-四个基本计数原理"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 四个基本计数原理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#加法原理"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">加法原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#乘法原理"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">乘法原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#减法原理"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">减法原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#除法原理"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">除法原理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-集合的排列"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 集合的排列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定理2-2-1-排列数-P-n-r"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">定理2.2.1 排列数$P(n,r)$</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定理2-2-2-循环-r-排列"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">定理2.2.2 循环$r$排列</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Unit-3」-JML笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 3」 JML笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-注释"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 注释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#行注释"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">行注释</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#块注释"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">块注释</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-JML表达式"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 JML表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pure"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">pure</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">model</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#non-null"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">non_null</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#原子表达式"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">原子表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#result"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">\result</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#old-expr"><span class="toc-nav-number">1.3.4.2.</span> <span class="toc-nav-text">\old(expr)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-assigned-x-y"><span class="toc-nav-number">1.3.4.3.</span> <span class="toc-nav-text">\not_assigned(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-modified-x-y"><span class="toc-nav-number">1.3.4.4.</span> <span class="toc-nav-text">\not_modified(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nonnullelements-container"><span class="toc-nav-number">1.3.4.5.</span> <span class="toc-nav-text">\nonnullelements(container)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#type-type"><span class="toc-nav-number">1.3.4.6.</span> <span class="toc-nav-text">\type(type)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#typeof-expr"><span class="toc-nav-number">1.3.4.7.</span> <span class="toc-nav-text">\typeof(expr)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#量化表达式"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">量化表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#forall"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">\forall</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#exists"><span class="toc-nav-number">1.3.5.2.</span> <span class="toc-nav-text">\exists</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sum"><span class="toc-nav-number">1.3.5.3.</span> <span class="toc-nav-text">\sum</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#product"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">\product</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#max"><span class="toc-nav-number">1.3.6.1.</span> <span class="toc-nav-text">\max</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#min"><span class="toc-nav-number">1.3.6.2.</span> <span class="toc-nav-text">\min</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#num-of"><span class="toc-nav-number">1.3.6.3.</span> <span class="toc-nav-text">\num_of()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合表达式"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">集合表达式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#操作符"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">操作符</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -434,7 +457,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
                         
                     </div>
                 </section>
