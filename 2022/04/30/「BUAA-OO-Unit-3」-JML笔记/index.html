@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">5k</span> and
-                                Reading Time <span class="post-count">18</span> Minutes
+                                Words <span class="post-count">5.5k</span> and
+                                Reading Time <span class="post-count">20</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -371,7 +371,7 @@
 <h2 id="Part-4-类型规格"><a href="#Part-4-类型规格" class="headerlink" title="Part 4 类型规格"></a>Part 4 类型规格</h2><p>类型规格是针对Java程序中定义的数据类型所设计的限制规则。一般而言，就是针对类或接口所设计的约束规则。</p>
 <p>从面向对象角度来看，类或接口包含数据成员和方法成员的声明及（或）实现。不失一般性，一个类型的成员要么是静态成员（static member），要么是实例成员（instance member）。一个类的静态方法不可以访问这个类的非静态成员变量（即实例变量）。静态成员可以直接通过类型引用，而实例成员只能通过实例化对象来引用。因此，在设计和表示类型规格时需要加以区分。</p>
 <p>JML针对类型规格定义了多种限制规则，本课程中主要涉及两类：不变式限制（invariant）和约束限制（constraints）。无论哪一种，类型规格都是针对类型中定义的数据成员所定义的显示规则，一旦违反限制规则，就称相应的状态有错。</p>
-<h5 id="不变式invariant"><a href="#不变式invariant" class="headerlink" title="不变式invariant"></a>不变式invariant</h5><p>不变式（invariant）是要求再所有可见状态（visible state）下都必须满足的特性，语法上定义为<code>invariant P</code>，其中<code>invariant</code>是关键词，<code>P</code>是谓词。对于类型规格而言，<strong>可见状态</strong>是一个重要概念，一般指特定时刻下对一个对象状态的观察。以下描述几种时刻下对象<code>o</code>的状态都是可见状态：</p>
+<h3 id="不变式invariant"><a href="#不变式invariant" class="headerlink" title="不变式invariant"></a>不变式invariant</h3><p>不变式（invariant）是要求再所有可见状态（visible state）下都必须满足的特性，语法上定义为<code>invariant P</code>，其中<code>invariant</code>是关键词，<code>P</code>是谓词。对于类型规格而言，<strong>可见状态</strong>是一个重要概念，一般指特定时刻下对一个对象状态的观察。以下描述几种时刻下对象<code>o</code>的状态都是可见状态：</p>
 <ul>
 <li>对象的有状态构造方法（用来初始化对象成员变量初值）的执行<strong>结束</strong>时刻</li>
 <li>在调用一个对象回收方法（<code>finilize</code>方法）来释放相关资源<strong>开始</strong>的时刻</li>
@@ -388,9 +388,64 @@
 <p>如果一个对象的可见状态不满足不变式，那么称该对象的状态有错。</p>
 <p>不变式中可以直接引用<code>pure</code>状态方法。</p>
 <p>对应类成员变量有静态和非静态之分，JML也区分两类不变式，静态不变式（static invarient）和实例不变式（instance invarient）。其中静态不变式只针对类中的静态成员变量取值进行约束，实例不变式则可以针对静态成员变量和非静态成员变量的取值进行约束。可以在不变式定义中明确使用<code>instance invarient</code>或者<code>static invarient</code>来表示不变式的类别。</p>
-<h4 id="状态变化约束constraint"><a href="#状态变化约束constraint" class="headerlink" title="状态变化约束constraint"></a>状态变化约束constraint</h4><p>对象的状态在变化时往往也满足一些约束，这种约束本质上也是一种不变式。JML为了简化使用规则，规定<code>invarient</code>只针对可见状态（即当下可见状态）的取值进行约束，而是用<code>constraint</code>来对前序可见状态和当前可见状态的关系进行约束，如下例：</p>
+<h3 id="状态变化约束constraint"><a href="#状态变化约束constraint" class="headerlink" title="状态变化约束constraint"></a>状态变化约束constraint</h3><p>对象的状态在变化时往往也满足一些约束，这种约束本质上也是一种不变式。JML为了简化使用规则，规定<code>invarient</code>只针对可见状态（即当下可见状态）的取值进行约束，而是用<code>constraint</code>来对前序可见状态和当前可见状态的关系进行约束，如下例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceCounter</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> <span class="keyword">long</span> counter;</span><br><span class="line">	<span class="comment">//@ invariant counter &gt;= 0;</span></span><br><span class="line">	<span class="comment">//@ constraint counter == \old(counter)+1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>类<code>ServiceCounter</code>拥有一个成员变量<code>counter</code>，包含一个不变式和一个状态约束变化。不变式指出<code>counter &gt;= 0</code>，而<code>constraint</code>不同，约束每一次修改<code>counter</code>只能加<code>1</code>。虽然这个约束可以在对<code>counter</code>进行修改的方法中通过后置条件来表示，但是每个可能修改<code>counter</code>的方法都需要加上这样的后置条件，远不如<code>constraint</code>这样的表示来得方便。不仅如此，<code>invariant</code>和<code>constraint</code>可以直接被子类继承获得。</p>
+<p>和不变式一样，JML也根据类的静态成员变量区分了两类约束：<code>static constraint</code>和<code>instance constraint</code>。其中<code>static constraint</code>指涉及类的静态成员变量，而<code>instance constraint</code>则可以涉及类的静态成员变量和非静态成员变量。同样，也可以在规格中通过关键词来明确区分：<code>static constraint P</code>和<code>instance constraint P</code>。</p>
+<h3 id="方法与类型规格的关系"><a href="#方法与类型规格的关系" class="headerlink" title="方法与类型规格的关系"></a>方法与类型规格的关系</h3><p>如果一个类是不可变类，就没必要定义其不变式，只需要在构造方法中明确其初始状态应该满足的后置条件即可。当然，也可以反过来，定义不变式，而不定义构造方法的后置条件。</p>
+<p>事实上，在大部分情况下，一个类有几种不同类别的方法：静态初始化（不是方法，但也是一种行为）、有状态静态方法、有状态构造方法、有状态非静态方法。以下展示两类不变式和方法的关系：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>静态成员初始化</th>
+<th>有状态静态方法</th>
+<th>有状态构造方法</th>
+<th>有状态非静态方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static invarient</td>
+<td>建立</td>
+<td>保持</td>
+<td>保持</td>
+<td>保持</td>
+</tr>
+<tr>
+<td>instance invarient</td>
+<td>（无关）</td>
+<td>（无关）</td>
+<td>建立</td>
+<td>保持，除非是finalizer方法</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注：“建立”的含义是静态成员建立了满足相应不变式的类或对象状态。“保持”的含义是如果方法执行前不变式满足，执行后还应该满足相应的不变式。</p>
+<p>同理，JML也对constraint与方法之间的关系进行了约定：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>静态成员初始化</th>
+<th>有状态静态方法</th>
+<th>有状态构造方法</th>
+<th>有状态非静态方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static constraint</td>
+<td>（无关）</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 
                 
                 <hr>
@@ -520,7 +575,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Unit-3」-JML笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 3」 JML笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-注释"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 注释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#行注释"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">行注释</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#块注释"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">块注释</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-JML表达式"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 JML表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pure"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">pure</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">model</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#non-null"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">non_null</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#原子表达式"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">原子表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#result"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">\result</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#old-expr"><span class="toc-nav-number">1.3.4.2.</span> <span class="toc-nav-text">\old(expr)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-assigned-x-y"><span class="toc-nav-number">1.3.4.3.</span> <span class="toc-nav-text">\not_assigned(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-modified-x-y"><span class="toc-nav-number">1.3.4.4.</span> <span class="toc-nav-text">\not_modified(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nonnullelements-container"><span class="toc-nav-number">1.3.4.5.</span> <span class="toc-nav-text">\nonnullelements(container)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#type-type"><span class="toc-nav-number">1.3.4.6.</span> <span class="toc-nav-text">\type(type)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#typeof-expr"><span class="toc-nav-number">1.3.4.7.</span> <span class="toc-nav-text">\typeof(expr)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#量化表达式"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">量化表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#forall"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">\forall</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#exists"><span class="toc-nav-number">1.3.5.2.</span> <span class="toc-nav-text">\exists</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sum"><span class="toc-nav-number">1.3.5.3.</span> <span class="toc-nav-text">\sum</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#product"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">\product</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#max"><span class="toc-nav-number">1.3.6.1.</span> <span class="toc-nav-text">\max</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#min"><span class="toc-nav-number">1.3.6.2.</span> <span class="toc-nav-text">\min</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#num-of"><span class="toc-nav-number">1.3.6.3.</span> <span class="toc-nav-text">\num_of()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合表达式"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">集合表达式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#操作符"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">操作符</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#子类型关系操作符-lt"><span class="toc-nav-number">1.3.8.1.</span> <span class="toc-nav-text">子类型关系操作符&lt;:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#等价关系操作符-lt-gt-与-lt-gt"><span class="toc-nav-number">1.3.8.2.</span> <span class="toc-nav-text">等价关系操作符&lt;&#x3D;&#x3D;&gt;与&lt;&#x3D;!&#x3D;&gt;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#推理操作符-gt-与-lt"><span class="toc-nav-number">1.3.8.3.</span> <span class="toc-nav-text">推理操作符&#x3D;&#x3D;&gt;与&lt;&#x3D;&#x3D;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#变量引用操作符"><span class="toc-nav-number">1.3.8.4.</span> <span class="toc-nav-text">变量引用操作符</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-方法规格"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 方法规格</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#前置条件（pre-condition）"><span class="toc-nav-number">1.4.0.1.</span> <span class="toc-nav-text">前置条件（pre-condition）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#后置条件（post-condition）"><span class="toc-nav-number">1.4.0.2.</span> <span class="toc-nav-text">后置条件（post-condition）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#副作用范围限定（side-effects）"><span class="toc-nav-number">1.4.0.3.</span> <span class="toc-nav-text">副作用范围限定（side-effects）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#signals子句"><span class="toc-nav-number">1.4.0.4.</span> <span class="toc-nav-text">signals子句</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-类型规格"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 类型规格</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#不变式invariant"><span class="toc-nav-number">1.5.0.0.1.</span> <span class="toc-nav-text">不变式invariant</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#状态变化约束constraint"><span class="toc-nav-number">1.5.0.1.</span> <span class="toc-nav-text">状态变化约束constraint</span></a></li></ol></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Unit-3」-JML笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 3」 JML笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-注释"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 注释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#行注释"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">行注释</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#块注释"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">块注释</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-JML表达式"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 JML表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pure"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">pure</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#model"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">model</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#non-null"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">non_null</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#原子表达式"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">原子表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#result"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">\result</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#old-expr"><span class="toc-nav-number">1.3.4.2.</span> <span class="toc-nav-text">\old(expr)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-assigned-x-y"><span class="toc-nav-number">1.3.4.3.</span> <span class="toc-nav-text">\not_assigned(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#not-modified-x-y"><span class="toc-nav-number">1.3.4.4.</span> <span class="toc-nav-text">\not_modified(x,y,...)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nonnullelements-container"><span class="toc-nav-number">1.3.4.5.</span> <span class="toc-nav-text">\nonnullelements(container)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#type-type"><span class="toc-nav-number">1.3.4.6.</span> <span class="toc-nav-text">\type(type)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#typeof-expr"><span class="toc-nav-number">1.3.4.7.</span> <span class="toc-nav-text">\typeof(expr)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#量化表达式"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">量化表达式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#forall"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">\forall</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#exists"><span class="toc-nav-number">1.3.5.2.</span> <span class="toc-nav-text">\exists</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sum"><span class="toc-nav-number">1.3.5.3.</span> <span class="toc-nav-text">\sum</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#product"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">\product</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#max"><span class="toc-nav-number">1.3.6.1.</span> <span class="toc-nav-text">\max</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#min"><span class="toc-nav-number">1.3.6.2.</span> <span class="toc-nav-text">\min</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#num-of"><span class="toc-nav-number">1.3.6.3.</span> <span class="toc-nav-text">\num_of()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合表达式"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">集合表达式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#操作符"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">操作符</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#子类型关系操作符-lt"><span class="toc-nav-number">1.3.8.1.</span> <span class="toc-nav-text">子类型关系操作符&lt;:</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#等价关系操作符-lt-gt-与-lt-gt"><span class="toc-nav-number">1.3.8.2.</span> <span class="toc-nav-text">等价关系操作符&lt;&#x3D;&#x3D;&gt;与&lt;&#x3D;!&#x3D;&gt;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#推理操作符-gt-与-lt"><span class="toc-nav-number">1.3.8.3.</span> <span class="toc-nav-text">推理操作符&#x3D;&#x3D;&gt;与&lt;&#x3D;&#x3D;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#变量引用操作符"><span class="toc-nav-number">1.3.8.4.</span> <span class="toc-nav-text">变量引用操作符</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-方法规格"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 方法规格</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#前置条件（pre-condition）"><span class="toc-nav-number">1.4.0.1.</span> <span class="toc-nav-text">前置条件（pre-condition）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#后置条件（post-condition）"><span class="toc-nav-number">1.4.0.2.</span> <span class="toc-nav-text">后置条件（post-condition）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#副作用范围限定（side-effects）"><span class="toc-nav-number">1.4.0.3.</span> <span class="toc-nav-text">副作用范围限定（side-effects）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#signals子句"><span class="toc-nav-number">1.4.0.4.</span> <span class="toc-nav-text">signals子句</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-类型规格"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 类型规格</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不变式invariant"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">不变式invariant</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#状态变化约束constraint"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">状态变化约束constraint</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#方法与类型规格的关系"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">方法与类型规格的关系</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
