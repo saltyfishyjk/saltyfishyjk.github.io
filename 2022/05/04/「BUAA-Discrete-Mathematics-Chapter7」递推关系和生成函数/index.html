@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          BUAA CO 冒险之旅回顾 - saltyfishyjk
+          「BUAA Discrete Mathematics Chapter7」递推关系和生成函数 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/27/BUAA-CO-冒险之旅回顾/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/04/「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,20 +108,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                              <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
                             
                         </div>
-                        <h1>BUAA CO 冒险之旅回顾</h1>
+                        <h1>「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-01-27
+                            2022-05-04
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">200</span> and
+                                Words <span class="post-count">16</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -256,19 +256,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="BUAA-CO-冒险之旅回顾-序"><a href="#BUAA-CO-冒险之旅回顾-序" class="headerlink" title="BUAA-CO 冒险之旅回顾 序"></a>BUAA-CO 冒险之旅回顾 序</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>《计算机组成》是计算机学院重要的核心专业课，每一位同学都会在计组（平时我更愿意称之为祭祖）旅程中有所收获。</p>
-<p>笔者在2021秋季学期的计组实验进度为通过P7课上，但经过了相当的波折，比如一共挂了四次上机实验，因此，在这里及时总结踩过的坑。</p>
-<p>受限于笔者极其有限的专业知识和对课程的理解，该系blog<strong>并不能作为cscore.buaa.edu.cn教程的替代品或《计组》实验指导</strong>，仅可以作为一种补充。如果有后来者看到这系列blog，有些许体会乃至收获，那便是这些blog最大的意义。</p>
-
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数"><a href="#「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数" class="headerlink" title="「BUAA Discrete Mathematics Chapter7」递推关系和生成函数"></a>「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/01/28/Hexo博客搭建回顾概览/" data-toggle="tooltip" data-placement="top" title="Hexo博客搭建回顾概览">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2022/05/02/「BUAA-OO-Unit-2-HW8」第二单元总结/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2 HW8」第二单元总结">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -348,7 +345,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Thu Jan 27 2022 11:25:11 GMT+0800', // optional
+    id: 'Wed May 04 2022 09:57:06 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -388,7 +385,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BUAA-CO-冒险之旅回顾-序"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">BUAA-CO 冒险之旅回顾 序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a></li></ol></li></ol>
             
           
           </div>
@@ -410,7 +407,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                          <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
                         
                     </div>
                 </section>
