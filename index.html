@@ -167,14 +167,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -317,9 +317,50 @@
 
     
 
+    
+
 
 
 <!-- Main Content -->
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/05/06/「BUAA-OS-Lab2」难点梳理与理解总结/">
+                <h2 class="post-title">
+                    「BUAA OS Lab2」难点梳理与理解总结
+                </h2>
+                <h3 class="post-subtitle">
+                    
+                </h3>
+                <div class="post-content-preview">
+                    「BUAA OS Lab2」 难点梳理与理解总结内存访问
+内存访问的流程：
+
+TLB根据虚拟地址查找
+若存在，在cache中查找；若不存在，按照页表查询，再查cache，更新TLB
+若cache命中则完成，若未命中，进行页面替换
+
+值得一提的是，这里有一个思考方式：我认为应当将虚拟地址如何划分和管理与如何进行物理内存管理这两件事分开考虑。也就是说，我们在虚拟空间中，按照我们的规则将不同的内容......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by saltyfishyjk on
+                    2022-05-06
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
 
     
 
@@ -580,13 +621,14 @@ Env1234567891011struct Env &#123;	struct Trapframe env_tf; // Saved registers 	L
                     
                 </h3>
                 <div class="post-content-preview">
-                    「BUAA OS Lab2」名词解释变量和类型Pde和PtePage directory entry / Page table entry
+                    「BUAA OS Lab2」名词解释
+变量和类型Pde和PtePage directory entry / Page table entry
 声明：
 12typedef u_long Pde; typedef u_long Pte;
 位置：include/mmu.h
-Pde表示一个一级页表项，Pde表示一个二级页表项。二者本质为u_long
+Pde表示一个一级页表项，Pde表示一个二级页表项。二者本质为u_long。
 
-PDX和PTXPage Directory ind......
+PDX和PTXPage Directory i......
                 </div>
             </a>
             
@@ -630,40 +672,6 @@ Part 0 第一次电梯架构与调度基础第一次作业中，ABCDE座各有�
                 <p class="post-meta" style="margin: 10px 0;">
                     Posted by saltyfishyjk on
                     2022-04-17
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/04/16/「BUAA-OO-Unit-2」-多线程分享/">
-                <h2 class="post-title">
-                    「BUAA OO Unit 2」 多线程分享
-                </h2>
-                <h3 class="post-subtitle">
-                    
-                </h3>
-                <div class="post-content-preview">
-                    「BUAA OO Unit 2」 多线程分享Part 0 前言第六周研讨课，笔者依旧准备了讲稿和分享，但是没有选上，在这里和大家分享。
-Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thread需要继承Thread类，并重写run方法，调用start()启动线程。
-实现Runnable需要实现run方法，通过Thread调用start()启动线程。在这里我们更推荐使用实现......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by saltyfishyjk on
-                    2022-04-16
                 </p>
                 <div class="tags">
                     
@@ -736,11 +744,15 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
             
         
             
-            <a href="/tags/#BUAA-OO" title="BUAA-OO" rel="11">BUAA-OO</a>
+            <a href="/tags/#Java Programming" title="Java Programming" rel="2">Java Programming</a>
             
         
             
-            <a href="/tags/#Java Programming" title="Java Programming" rel="2">Java Programming</a>
+            <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
+            
+        
+            
+            <a href="/tags/#BUAA-OO" title="BUAA-OO" rel="11">BUAA-OO</a>
             
         
             
@@ -749,10 +761,6 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
         
             
             <a href="/tags/#Git" title="Git" rel="2">Git</a>
-            
-        
-            
-            <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
             
         
             
@@ -766,7 +774,7 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
             
         
             
-        
+            <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="7">BUAA-OS</a>
             
         
             
@@ -778,7 +786,7 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
             
         
             
-            <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="6">BUAA-OS</a>
+        
             
         
             
@@ -865,6 +873,10 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
     <ul>
       
         <li>
+          <a href="/2022/05/06/%E3%80%8CBUAA-OS-Lab2%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/">「BUAA OS Lab2」难点梳理与理解总结</a>
+        </li>
+      
+        <li>
           <a href="/2022/05/04/%E3%80%8CBUAA-OS-Course%E3%80%8D%E8%BF%9B%E7%A8%8B/">「BUAA OS Course」进程</a>
         </li>
       
@@ -878,10 +890,6 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
       
         <li>
           <a href="/2022/04/30/%E3%80%8CBUAA-OO-Unit-3%E3%80%8D-JML%E7%AC%94%E8%AE%B0/">「BUAA OO Unit 3」 JML笔记</a>
-        </li>
-      
-        <li>
-          <a href="/2022/04/29/%E3%80%8CBUAA-OS-Lab3-1-Extra%E3%80%8D%E6%A8%A1%E6%8B%9FPV%E6%93%8D%E4%BD%9C/">「BUAA OS Lab3-1-Extra」模拟PV操作</a>
         </li>
       
     </ul>
@@ -912,7 +920,7 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li></ul>
     </div>
 
         <hr>
