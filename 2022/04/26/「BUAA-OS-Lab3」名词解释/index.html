@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">799</span> and
+                                Words <span class="post-count">889</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -258,14 +258,15 @@
 
                 <h1 id="「BUAA-OS-Lab3」名词解释"><a href="#「BUAA-OS-Lab3」名词解释" class="headerlink" title="「BUAA OS Lab3」名词解释"></a>「BUAA OS Lab3」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a><code>PCB</code></h3><p>进程控制块（Process Conotrol Block），系统感知进程存在的唯一标志。进程和PCB一一对应。</p>
 <hr>
-<h3 id="Env"><a href="#Env" class="headerlink" title="Env"></a><code>Env</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span> <span class="comment">// Saved registers </span></span><br><span class="line">	LIST_ENTRY(Env) env_link; <span class="comment">// Free LIST_ENTRY</span></span><br><span class="line">	u_int env_id;                  <span class="comment">// Unique environment identifier </span></span><br><span class="line">    u_int env_parent_id;           <span class="comment">// env_id of this env's parent </span></span><br><span class="line">    u_int env_status;              <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;               <span class="comment">// Kernel virtual address of page dir </span></span><br><span class="line">    u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link; </span><br><span class="line">    u_int env_pri;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Env"><a href="#Env" class="headerlink" title="Env"></a><code>Env</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span> <span class="comment">// Saved registers </span></span><br><span class="line">	LIST_ENTRY(Env) env_link; <span class="comment">// Free LIST_ENTRY</span></span><br><span class="line">	u_int env_id;                  <span class="comment">// Unique environment identifier </span></span><br><span class="line">	u_int env_parent_id;           <span class="comment">// env_id of this env's parent </span></span><br><span class="line">	u_int env_status;              <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;               <span class="comment">// Kernel virtual address of page dir </span></span><br><span class="line">	u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link; </span><br><span class="line">	u_int env_pri;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="Env-list"><a href="#Env-list" class="headerlink" title="Env_list"></a><code>Env_list</code></h3><p>位置：<code>env.h</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIST_HEAD(Env_list, Env);</span><br></pre></td></tr></table></figure>
 <p>工厂模式构造<code>Env_list</code>类型，内部含有一个<code>struct type *lh_first</code>的变量，相当于构造了头结点类型<code>Env_list</code>。</p>
 <hr>
 <h3 id="env-tf"><a href="#env-tf" class="headerlink" title="env_tf"></a><code>env_tf</code></h3><p>env trapframe</p>
-<p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中</p>
+<p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中。</p>
+<p><code>Trapframe</code>结构体内容见下。</p>
 <hr>
 <h3 id="Trapframe"><a href="#Trapframe" class="headerlink" title="Trapframe"></a><code>Trapframe</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> &#123;</span> <span class="comment">//lr:need to be modified(reference to linux pt_regs) TODO</span></span><br><span class="line">	<span class="comment">/* Saved main processor registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> regs[<span class="number">32</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Saved special registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_status;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> hi;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> lo;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_badvaddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_cause;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_epc;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> pc;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
@@ -294,14 +295,25 @@
 <h3 id="env-pri"><a href="#env-pri" class="headerlink" title="env_pri"></a><code>env_pri</code></h3><p>env priority</p>
 <p>保存该进程的优先级。</p>
 <hr>
+<h3 id="env-runs"><a href="#env-runs" class="headerlink" title="env_runs"></a><code>env_runs</code></h3><p>number of times have been runned</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_int env_runs;</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="LOG2NENV"><a href="#LOG2NENV" class="headerlink" title="LOG2NENV"></a><code>LOG2NENV</code></h3><p>$ log_{2}{NENV} $</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG2NENV  10</span></span><br></pre></td></tr></table></figure>
 <p>一共1024个<code>env</code>，因此是<code>10</code>位</p>
 <hr>
 <h3 id="UTOP与ULIM"><a href="#UTOP与ULIM" class="headerlink" title="UTOP与ULIM"></a><code>UTOP</code>与<code>ULIM</code></h3><p><code>UTOP</code>之下是用户进程可以自由读写的地址区域，<code>ULIM</code>是用户进程的最高地址，在<code>UTOP</code>到<code>ULIM</code>的区域与其他用户区相比最大的区别是用户只能读，不能写。</p>
+<hr>
+<h3 id="cp0-status"><a href="#cp0-status" class="headerlink" title="cp0_status"></a><code>cp0_status</code></h3><p><code>cp0_status</code>就是MIPS R3000中的SR(Status Register)寄存器</p>
+<hr>
+<h3 id="IEp"><a href="#IEp" class="headerlink" title="IEp"></a><code>IEp</code></h3><p>IE previous</p>
+<hr>
 <h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="env-init"><a href="#env-init" class="headerlink" title="env_init()"></a><code>env_init()</code></h3><p>初始化<code>ene_free_list</code></p>
 <hr>
-<h3 id="mkenvid"><a href="#mkenvid" class="headerlink" title="mkenvid"></a><code>mkenvid</code></h3><p>生成一个新的进程标识符</p>
+<h3 id="mkenvid"><a href="#mkenvid" class="headerlink" title="mkenvid"></a><code>mkenvid</code></h3><p>返回值：<code>u_int</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">u_int <span class="title">mkenvid</span><span class="params">(struct Env *e)</span> </span>&#123;</span><br><span class="line">    u_int idx = e - envs;</span><br><span class="line">    u_int asid = asid_alloc();</span><br><span class="line">    <span class="keyword">return</span> (asid &lt;&lt; (<span class="number">1</span> + LOG2NENV)) | (<span class="number">1</span> &lt;&lt; LOG2NENV) | idx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成一个新的进程标识符。</p>
+<p>低10位是idx，即env在envs数组中的索引；第10位是1，为了防止envid为0；11-16位是asid</p>
 <hr>
 <h3 id="asid-alloc"><a href="#asid-alloc" class="headerlink" title="asid_alloc()"></a><code>asid_alloc()</code></h3><p>申请一个<code>asid</code>。</p>
 <p>使用位图法管理asid。</p>
@@ -309,6 +321,8 @@
 <hr>
 <h3 id="envid2env"><a href="#envid2env" class="headerlink" title="envid2env"></a><code>envid2env</code></h3><p><code>envid2env(u_int envid, struct Env **penv, int checkperm)</code></p>
 <p>根据<code>envid</code>找到对应的<code>env</code></p>
+<hr>
+<h3 id="env-alloc"><a href="#env-alloc" class="headerlink" title="env_alloc"></a><code>env_alloc</code></h3><p>返回值：<code>int</code></p>
 <hr>
 <h3 id="env-setup-vm"><a href="#env-setup-vm" class="headerlink" title="env_setup_vm"></a><code>env_setup_vm</code></h3><p><code>env_setup_vm(struct Env *e)</code></p>
 <hr>
@@ -455,7 +469,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab3」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab3」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PCB"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">PCB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Env</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env-list"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">Env_list</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-tf"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">env_tf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Trapframe"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">Trapframe</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-link"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">env_link</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-id"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">env_id</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-parent-id"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">env_parent_id</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-status"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">env_status</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-pgdir"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">env_pgdir</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-cr3"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">env_cr3</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-sched-link"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">env_sched_link</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-pri"><span class="toc-nav-number">1.1.13.</span> <span class="toc-nav-text">env_pri</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LOG2NENV"><span class="toc-nav-number">1.1.14.</span> <span class="toc-nav-text">LOG2NENV</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UTOP与ULIM"><span class="toc-nav-number">1.1.15.</span> <span class="toc-nav-text">UTOP与ULIM</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-init"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">env_init()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mkenvid"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">mkenvid</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#asid-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">asid_alloc()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#envid2env"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">envid2env</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-setup-vm"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">env_setup_vm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#load-icode-mapper"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">load_icode_mapper</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#load-elf"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">load_elf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#kclock-init"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">kclock_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SAVE-ALL"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">SAVE_ALL</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab3」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab3」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PCB"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">PCB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Env</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env-list"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">Env_list</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-tf"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">env_tf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Trapframe"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">Trapframe</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-link"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">env_link</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-id"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">env_id</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-parent-id"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">env_parent_id</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-status"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">env_status</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-pgdir"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">env_pgdir</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-cr3"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">env_cr3</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-sched-link"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">env_sched_link</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-pri"><span class="toc-nav-number">1.1.13.</span> <span class="toc-nav-text">env_pri</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-runs"><span class="toc-nav-number">1.1.14.</span> <span class="toc-nav-text">env_runs</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LOG2NENV"><span class="toc-nav-number">1.1.15.</span> <span class="toc-nav-text">LOG2NENV</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UTOP与ULIM"><span class="toc-nav-number">1.1.16.</span> <span class="toc-nav-text">UTOP与ULIM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cp0-status"><span class="toc-nav-number">1.1.17.</span> <span class="toc-nav-text">cp0_status</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IEp"><span class="toc-nav-number">1.1.18.</span> <span class="toc-nav-text">IEp</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-init"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">env_init()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mkenvid"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">mkenvid</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#asid-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">asid_alloc()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#envid2env"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">envid2env</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-alloc"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">env_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env-setup-vm"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">env_setup_vm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#load-icode-mapper"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">load_icode_mapper</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#load-elf"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">load_elf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#kclock-init"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">kclock_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SAVE-ALL"><span class="toc-nav-number">1.2.10.</span> <span class="toc-nav-text">SAVE_ALL</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -716,7 +730,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -726,22 +740,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>
