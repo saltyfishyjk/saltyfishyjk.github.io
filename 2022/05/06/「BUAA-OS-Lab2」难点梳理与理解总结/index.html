@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">3.5k</span> and
+                                Words <span class="post-count">3.6k</span> and
                                 Reading Time <span class="post-count">13</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,13 +183,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -198,6 +191,13 @@
                         
                         <li>
                             <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -330,7 +330,9 @@
 <li><code>pte</code>为0（无效）或<code>pte</code>判断<code>PTE_V</code>无效，直接返回0表示没找到</li>
 <li><code>pte</code>有效，根据<code>pte</code>得到物理页框的指针作为返回值，同时将参数<code>Pte **ppte</code>赋值使得<code>ppte</code>指向的<code>pte</code>的值更新为本函数中调用<code>pgdir_walk</code>得到的页目录项指针，一个小细节是要判断<code>ppte!=0</code>即<code>ppte</code>不是空指针</li>
 </ul>
-<h3 id="page-remove"><a href="#page-remove" class="headerlink" title="page_remove"></a><code>page_remove</code></h3><p>取消地址映射函数，删除pgdir对应的两级页表结构中va这一虚拟地址对物理地址的映射，如果存在这样的映射，相应的物理页面引用次数会减少。</p>
+<h4 id="page-remove"><a href="#page-remove" class="headerlink" title="page_remove"></a><code>page_remove</code></h4><p>取消地址映射函数，删除pgdir对应的两级页表结构中va这一虚拟地址对物理地址的映射，如果存在这样的映射，相应的物理页面引用次数会减少。</p>
+<p>利用上面的<code>page_lookup</code>函数找到va再pgdir下对应的物理页面，如果不为0（说明确实va映射到了物理地址）则使其<code>pp_ref</code>减1，如果减完之后为0，则说明不再有va映射到该物理页面，调用<code>page_free</code>将其插回<code>page_free_list</code>。将二级页表项内容设置为0，并调用<code>tlb_invalidate</code>使得再次访问该va时会引发缺页异常。</p>
+<h4 id="page-decref"><a href="#page-decref" class="headerlink" title="page_decref"></a><code>page_decref</code></h4><p>减小物理页框的引用次数1次。</p>
 
                 
                 <hr>
@@ -460,7 +462,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」-难点梳理与理解总结"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」 难点梳理与理解总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存访问"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">内存访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存布局与初始化"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">内存布局与初始化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#涉及的内存布局"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">涉及的内存布局</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化内存管理相关变量"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">初始化内存管理相关变量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化mips虚拟空间"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">初始化mips虚拟空间</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化Pages结构体和空闲链表"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">初始化Pages结构体和空闲链表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#虚拟内存管理"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">虚拟内存管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#虚拟地址和物理地址"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">虚拟地址和物理地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#boot-map-segment"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">boot_map_segment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#boot-pgdir-walk"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">boot_pgdir_walk</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#物理内存内容"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">物理内存内容</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#操作进程页表"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">操作进程页表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运行时二级页表检索"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">运行时二级页表检索</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#页面插入、删除与置换"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">页面插入、删除与置换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-insert"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">page_insert</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-lookup"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">page_lookup</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-remove"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">page_remove</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab2」-难点梳理与理解总结"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab2」 难点梳理与理解总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存访问"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">内存访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#内存布局与初始化"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">内存布局与初始化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#涉及的内存布局"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">涉及的内存布局</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化内存管理相关变量"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">初始化内存管理相关变量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化mips虚拟空间"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">初始化mips虚拟空间</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#初始化Pages结构体和空闲链表"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">初始化Pages结构体和空闲链表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#虚拟内存管理"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">虚拟内存管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#虚拟地址和物理地址"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">虚拟地址和物理地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#boot-map-segment"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">boot_map_segment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#boot-pgdir-walk"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">boot_pgdir_walk</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#物理内存内容"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">物理内存内容</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#操作进程页表"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">操作进程页表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运行时二级页表检索"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">运行时二级页表检索</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#页面插入、删除与置换"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">页面插入、删除与置换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-insert"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">page_insert</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-lookup"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">page_lookup</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-remove"><span class="toc-nav-number">1.4.2.3.</span> <span class="toc-nav-text">page_remove</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-decref"><span class="toc-nav-number">1.4.2.4.</span> <span class="toc-nav-text">page_decref</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
