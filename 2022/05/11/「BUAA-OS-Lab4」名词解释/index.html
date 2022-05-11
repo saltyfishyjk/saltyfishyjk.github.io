@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          BUAA CO 冒险之旅回顾 - saltyfishyjk
+          「BUAA OS Lab4」名词解释 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/27/BUAA-CO-冒险之旅回顾/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/11/「BUAA-OS-Lab4」名词解释/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                             
                         </div>
-                        <h1>BUAA CO 冒险之旅回顾</h1>
+                        <h1>「BUAA OS Lab4」名词解释</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-01-27
+                            2022-05-11
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">200</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">530</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,19 +256,28 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="BUAA-CO-冒险之旅回顾-序"><a href="#BUAA-CO-冒险之旅回顾-序" class="headerlink" title="BUAA-CO 冒险之旅回顾 序"></a>BUAA-CO 冒险之旅回顾 序</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>《计算机组成》是计算机学院重要的核心专业课，每一位同学都会在计组（平时我更愿意称之为祭祖）旅程中有所收获。</p>
-<p>笔者在2021秋季学期的计组实验进度为通过P7课上，但经过了相当的波折，比如一共挂了四次上机实验，因此，在这里及时总结踩过的坑。</p>
-<p>受限于笔者极其有限的专业知识和对课程的理解，该系blog<strong>并不能作为cscore.buaa.edu.cn教程的替代品或《计组》实验指导</strong>，仅可以作为一种补充。如果有后来者看到这系列blog，有些许体会乃至收获，那便是这些blog最大的意义。</p>
+                <h1 id="「BUAA-OS-Lab4」名词解释"><a href="#「BUAA-OS-Lab4」名词解释" class="headerlink" title="「BUAA OS Lab4」名词解释"></a>「BUAA OS Lab4」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="SYSCALL-BASE"><a href="#SYSCALL-BASE" class="headerlink" title="__SYSCALL_BASE"></a><code>__SYSCALL_BASE</code></h3><p>位置：<code>include/unisted.h</code></p>
+<p>系统调用号基址。内核确定是哪类系统调用的唯一依据。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __SYSCALL_BASE 9527</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="SYS-putchar"><a href="#SYS-putchar" class="headerlink" title="SYS_putchar"></a><code>SYS_putchar</code></h3><p>位置：<code>include/unisted.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SYS_putchar 		((__SYSCALL_BASE ) + (0 ) )</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="TF"><a href="#TF" class="headerlink" title="TF_*"></a><code>TF_*</code></h3><p>TrapFrame相关宏定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG0		0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG1		((TF_REG0) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG2		((TF_REG1) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG3		((TF_REG2) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG4		((TF_REG3) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG5		((TF_REG4) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG6		((TF_REG5) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG7		((TF_REG6) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG8		((TF_REG7) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG9		((TF_REG8) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG10	((TF_REG9) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG11	((TF_REG10) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG12	((TF_REG11) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG13	((TF_REG12) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG14	((TF_REG13) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG15	((TF_REG14) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG16	((TF_REG15) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG17	((TF_REG16) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG18	((TF_REG17) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG19	((TF_REG18) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG20	((TF_REG19) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG21	((TF_REG20) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG22	((TF_REG21) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG23	((TF_REG22) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG24	((TF_REG23) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG25	((TF_REG24) + 4)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * $26 (k0) and $27 (k1) not saved</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG26	((TF_REG25) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG27	((TF_REG26) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG28	((TF_REG27) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG29	((TF_REG28) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG30	((TF_REG29) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG31	((TF_REG30) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_STATUS	((TF_REG31) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_HI		((TF_STATUS) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_LO		((TF_HI) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_BADVADDR	((TF_LO)+4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_CAUSE	((TF_BADVADDR) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_EPC		((TF_CAUSE) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_PC		((TF_EPC) + 4)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Size of stack frame, word/double word alignment</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_SIZE		((TF_PC)+4)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="handle-sys"><a href="#handle-sys" class="headerlink" title="handle_sys"></a><code>handle_sys</code></h3><p>位置：<code>lib/syscall.S</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_sys,TF_SIZE, sp)</span><br><span class="line">    SAVE_ALL                            &#x2F;&#x2F; Macro used to save trapframe</span><br><span class="line">    CLI                                 &#x2F;&#x2F; Clean Interrupt Mask</span><br><span class="line">    nop</span><br><span class="line">    .set at                             &#x2F;&#x2F; Resume use of $at</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.</span><br><span class="line"></span><br><span class="line">	lw		t0, TF_EPC(sp)</span><br><span class="line">	lw		t1, TF_CAUSE(sp)</span><br><span class="line">	lui		t2, 0x8000</span><br><span class="line">	and		t1, t1, t2</span><br><span class="line">	bnez	t1, IS_BD</span><br><span class="line">	nop</span><br><span class="line">	addiu	t0, t0, 4</span><br><span class="line">	j BD_IF_END</span><br><span class="line">	nop</span><br><span class="line">IS_BD:</span><br><span class="line">BD_IF_END:</span><br><span class="line">	sw		t0, TF_EPC(sp)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Copy the syscall number into $a0.</span><br><span class="line"></span><br><span class="line">	lw		a0, TF_REG4(sp)</span><br><span class="line">    </span><br><span class="line">    addiu   a0, a0, -__SYSCALL_BASE     &#x2F;&#x2F; a0 &lt;- relative syscall number</span><br><span class="line">    sll     t0, a0, 2                   &#x2F;&#x2F; t0 &lt;- relative syscall number times 4</span><br><span class="line">    la      t1, sys_call_table          &#x2F;&#x2F; t1 &lt;- syscall table base</span><br><span class="line">    addu    t1, t1, t0                  &#x2F;&#x2F; t1 &lt;- table entry of specific syscall</span><br><span class="line">    lw      t2, 0(t1)                   &#x2F;&#x2F; t2 &lt;- function entry of specific syscall</span><br><span class="line"></span><br><span class="line">    lw      t0, TF_REG29(sp)            &#x2F;&#x2F; t0 &lt;- user&#39;s stack pointer</span><br><span class="line">    lw      t3, 16(t0)                  &#x2F;&#x2F; t3 &lt;- the 5th argument of msyscall</span><br><span class="line">    lw      t4, 20(t0)                  &#x2F;&#x2F; t4 &lt;- the 6th argument of msyscall</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location</span><br><span class="line">    </span><br><span class="line">	lw		a0, TF_REG4(sp)</span><br><span class="line">	lw		a1, TF_REG5(sp)</span><br><span class="line">	lw		a2, TF_REG6(sp)</span><br><span class="line">	lw		a3, TF_REG7(sp)</span><br><span class="line">	addiu	sp, sp, -24</span><br><span class="line">	sw		t3, 16(sp)</span><br><span class="line">	sw		t4, 20(sp)</span><br><span class="line">    </span><br><span class="line">    jalr    t2                          &#x2F;&#x2F; Invoke sys_* function</span><br><span class="line">    nop</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: Resume current kernel stack</span><br><span class="line">    </span><br><span class="line">	addiu	sp, sp, 24</span><br><span class="line"></span><br><span class="line">    sw      v0, TF_REG2(sp)             &#x2F;&#x2F; Store return value of function sys_* (in $v0) into trapframe</span><br><span class="line"></span><br><span class="line">    j       ret_from_exception          &#x2F;&#x2F; Return from exeception</span><br><span class="line">    nop</span><br><span class="line">END(handle_sys)</span><br></pre></td></tr></table></figure>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/01/28/Hexo博客搭建回顾概览/" data-toggle="tooltip" data-placement="top" title="Hexo博客搭建回顾概览">&larr; Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/2022/05/11/GCC笔记/" data-toggle="tooltip" data-placement="top" title="GCC笔记">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -348,7 +357,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Thu Jan 27 2022 11:25:11 GMT+0800', // optional
+    id: 'Wed May 11 2022 16:21:43 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -388,7 +397,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BUAA-CO-冒险之旅回顾-序"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">BUAA-CO 冒险之旅回顾 序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYSCALL-BASE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">__SYSCALL_BASE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYS-putchar"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">SYS_putchar</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">TF_*</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">handle_sys</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -410,7 +419,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-CO" title="BUAA-CO">BUAA-CO</a>
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
                         
                     </div>
                 </section>
