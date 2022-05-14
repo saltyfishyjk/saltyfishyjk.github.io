@@ -188,14 +188,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -270,8 +270,8 @@
 <li>就绪状态：进程获得了除处理机的一切所需资源，一旦得到处理机，便可立即运行</li>
 <li>阻塞状态：进程正在等待某一事件而暂停运行，即使处理机空闲，该进程也不能运行</li>
 </ul>
-<p><img src="2022-05-04-「BUAA-OS-Course」进程.assets/image-20220504201758908.png" alt="image-20220504201758908"></p>
-<p><img src="2022-05-04-「BUAA-OS-Course」进程.assets/image-20220504201844691.png" alt="image-20220504201844691"></p>
+<img src="/2022/05/04/%E3%80%8CBUAA-OS-Course%E3%80%8D%E8%BF%9B%E7%A8%8B/image-20220504201758908.png" class="" title="状态转换">
+<img src="/2022/05/04/%E3%80%8CBUAA-OS-Course%E3%80%8D%E8%BF%9B%E7%A8%8B/image-20220504201844691.png" class="" title="允许挂起">
 <h2 id="Part-1-进程控制"><a href="#Part-1-进程控制" class="headerlink" title="Part 1 进程控制"></a>Part 1 进程控制</h2><h3 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h3><p>进程控制块（Process Control Block, PCB）是系统用来描述进程的基本情况和运行状态的数据结构。</p>
 <p>由<strong>程序段</strong>、<strong>相关数据段</strong>和<strong>PCB</strong>三部分构成了进程映像（进程实体）。创建进程，实质上是创建进程映像的PCB；撤销进程，就是撤销进程的PCB。</p>
 <blockquote>
