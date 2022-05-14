@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -311,7 +311,25 @@ g(x) = h_0+h_1x+h_2x^2+ \cdots +h_mx^m</script><h3 id="多重集的组合与排�
 <li><script type="math/tex; mode=display">
 \frac{1}{(1-y^m)} = \sum_{k=0}^{\infty}{y^m}^k \quad (|y|<1)</script></li>
 </ul>
-
+<hr>
+<h3 id="生成函数的应用"><a href="#生成函数的应用" class="headerlink" title="生成函数的应用"></a>生成函数的应用</h3><h4 id="利用生成函数求解多重集的组合个数"><a href="#利用生成函数求解多重集的组合个数" class="headerlink" title="利用生成函数求解多重集的组合个数"></a>利用生成函数求解多重集的组合个数</h4><p>思路：对于给定的有限制的多重集问题，其可以被表述为：</p>
+<script type="math/tex; mode=display">
+e_1 + e_2 + \cdots + e_k = n</script><p>其中，对每个因子 $ e_i $ 的限制可以被体现在其生成函数中，表现如下：</p>
+<script type="math/tex; mode=display">
+g(x) = (\sum^{e_1}{x^{e_1}}) \times (\sum^{e_2}{x^{e_2}}) \times \cdots \times (\sum^{e_k}{x^{e_k}})</script><p>对于 $ \sum^{e_i}{x^{e_i}} $ ，可以通过上述常见展开式化为一个有理式，如 $ \frac{1}{(1-x)^2}$ ，将 $ k $ 个有理式的乘积化简得到的有理式可以再推出第k项的系数，即为 $ h_k $ 的系数。</p>
+<p>特别地，如果 $ e_i $ 前有系数，如 $ 2e_1 $ ，进行变量替换，并给新变量加上倍数限制即可。</p>
+<hr>
+<h3 id="排列逆序与定理7-2-1"><a href="#排列逆序与定理7-2-1" class="headerlink" title="排列逆序与定理7.2.1"></a>排列逆序与定理7.2.1</h3><h4 id="排列逆序"><a href="#排列逆序" class="headerlink" title="排列逆序"></a>排列逆序</h4><p>对于集合 $ {1,2, \cdots ,n } $的排列 $ \pi = i_1,i_2,\cdots i_n$ 中的逆序指的是 $ k &lt; l $ 且 $ i_k &gt; i_l $ 的有序数对 $ (i_k, i_l) $ 。这样的逆序数我们记作 $ inv (\pi) $ 。</p>
+<p>设 $ h(n, t) $ 表示 $ { 1,2,\cdots ,n } $ 的排列中有 $ t $ 个逆序的排列的个数</p>
+<h4 id="定理7-2-1"><a href="#定理7-2-1" class="headerlink" title="定理7.2.1"></a>定理7.2.1</h4><p>数列 $ h(n,0),h(n,1),h(n,2),\cdots h(n,n(n-1)/2) $ 的生成函数为：</p>
+<script type="math/tex; mode=display">
+g(x) = h(n,0)+h(n,1)x+h(n,2)x^2 +\cdots + h(n,n(n-1)/2)x^{n(n-1)/2} = \frac{\prod_{j=1}^{n}{1-x^j}}{(1-x)^n}</script><hr>
+<h2 id="Part-2-指数生成函数"><a href="#Part-2-指数生成函数" class="headerlink" title="Part 2 指数生成函数"></a>Part 2 指数生成函数</h2><h3 id="为什么需要指数生成函数"><a href="#为什么需要指数生成函数" class="headerlink" title="为什么需要指数生成函数"></a>为什么需要指数生成函数</h3><p>在<strong>Part 1 生成函数</strong>中，我们介绍了利用 $ {1,x,x^2,\cdots ,x^k,\cdots} $ 获得生成函数的方法，并解决了一些计数数列问题，如多重集的组合</p>
+<h3 id="指数生成函数定义"><a href="#指数生成函数定义" class="headerlink" title="指数生成函数定义"></a>指数生成函数定义</h3><p>对于给定数列：</p>
+<script type="math/tex; mode=display">
+h_0,h_1,h_2, \cdots , h_n , \cdots</script><p>其指数生成函数定义为：</p>
+<script type="math/tex; mode=display">
+g^{(e)}(x) = \sum_{n=0}^{\infty}h_n\frac{x^n}{n!} = h_0+h_1x+h_2\frac{x^2}{2!}+\cdots+h_n\frac{x^n}{n!}+\cdots</script>
                 
                 <hr>
                 <!-- Pager -->
@@ -444,7 +462,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-生成函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#为什么研究生成函数"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">为什么研究生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成函数定义"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">生成函数定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#多重集的组合与排列"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">多重集的组合与排列</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常见展开式"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">常见展开式</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-生成函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#为什么研究生成函数"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">为什么研究生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成函数定义"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">生成函数定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#多重集的组合与排列"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">多重集的组合与排列</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#常见展开式"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">常见展开式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成函数的应用"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">生成函数的应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#利用生成函数求解多重集的组合个数"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">利用生成函数求解多重集的组合个数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#排列逆序与定理7-2-1"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">排列逆序与定理7.2.1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#排列逆序"><span class="toc-nav-number">1.2.6.1.</span> <span class="toc-nav-text">排列逆序</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#定理7-2-1"><span class="toc-nav-number">1.2.6.2.</span> <span class="toc-nav-text">定理7.2.1</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-指数生成函数"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 指数生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#为什么需要指数生成函数"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">为什么需要指数生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#指数生成函数定义"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">指数生成函数定义</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -705,7 +723,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -715,22 +733,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>

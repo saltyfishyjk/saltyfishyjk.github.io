@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -257,7 +257,7 @@
                 post-container">
 
                 <h1 id="「BUAA-OS-Lab3」难点梳理与理解总结"><a href="#「BUAA-OS-Lab3」难点梳理与理解总结" class="headerlink" title="「BUAA OS Lab3」难点梳理与理解总结"></a>「BUAA OS Lab3」难点梳理与理解总结</h1><img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220505214641951.png" class="" title="mmu.h">
-<h2 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h2><h3 id="进程控制块（Process-Control-Block）"><a href="#进程控制块（Process-Control-Block）" class="headerlink" title="进程控制块（Process Control Block）"></a>进程控制块（Process Control Block）</h3><p>PCB是用来进程管理的数据结构，在我们的MOS中就是<code>Env</code>结构体，具体内容可以参考源码或<strong>Lab 3 名词解释</strong>。在后文中，我们可能混用PCB和<code>Env</code>，其实两者基本是一个东西。</p>
+<h2 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h2><h3 id="进程控制块（Process-Control-Block）"><a href="#进程控制块（Process-Control-Block）" class="headerlink" title="进程控制块（Process Control Block）"></a>进程控制块（Process Control Block）</h3><p>PCB是用来进程管理的数据结构，在我们的MOS中就是<code>Env</code>结构体，具体内容可以参考源码或<strong><a href="https://saltyfishyjk.github.io/2022/04/26/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">Lab 3 名词解释</a></strong>。在后文中，我们可能混用PCB和<code>Env</code>，其实两者基本是一个东西。</p>
 <p>对于PCB，我们仿照Lab 2中的思路，为<code>envs</code>开辟空间，通过<code>boot_map_segment</code>将其<code>map</code>到UENVS空间。</p>
 <p>之后，我们类比<code>page_init</code>，将空闲进程块连缀成<code>env_free_list</code>，值得注意的是这里guidebook强调了顺序问题，需要稍加注意。</p>
 <h3 id="进程创建流程"><a href="#进程创建流程" class="headerlink" title="进程创建流程"></a>进程创建流程</h3><ol>
@@ -767,7 +767,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -777,22 +777,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 </html>
