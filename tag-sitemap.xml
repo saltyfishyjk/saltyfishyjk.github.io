@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://saltyfishyjk.github.io/tags/Excel/</loc>
+        <lastmod>2022-05-15T10:47:38.411Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://saltyfishyjk.github.io/tags/Tools/</loc>
+        <lastmod>2022-05-15T10:47:38.411Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://saltyfishyjk.github.io/tags/BUAA-Discrete-Mathematics/</loc>
         <lastmod>2022-05-14T16:27:42.297Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,13 +39,6 @@
 
     <url>
         <loc>https://saltyfishyjk.github.io/tags/Linux/</loc>
-        <lastmod>2022-05-05T08:41:03.844Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://saltyfishyjk.github.io/tags/Tools/</loc>
         <lastmod>2022-05-05T08:41:03.844Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -61,13 +68,6 @@
     <url>
         <loc>https://saltyfishyjk.github.io/tags/Vim/</loc>
         <lastmod>2022-04-15T16:02:06.221Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://saltyfishyjk.github.io/tags/Excel/</loc>
-        <lastmod>2022-04-15T14:33:04.474Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
