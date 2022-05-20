@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA OO Pre」 切换Java版本到OO课程要求版本 - saltyfishyjk
+          「BUAA Discrete Mathematics Chapter8」特殊计数数列 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/02/16/「BUAA-OO-Pre」-切换Java版本到OO课程要求版本/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/18/「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                            
                         </div>
-                        <h1>「BUAA OO Pre」 切换Java版本到OO课程要求版本</h1>
+                        <h1>「BUAA Discrete Mathematics Chapter8」特殊计数数列</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-02-16
+                            2022-05-18
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">616</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">50</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -256,56 +254,20 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-OO-Pre」-切换Java版本到OO课程要求版本"><a href="#「BUAA-OO-Pre」-切换Java版本到OO课程要求版本" class="headerlink" title="「BUAA OO Pre」 切换Java版本到OO课程要求版本"></a>「BUAA OO Pre」 切换Java版本到OO课程要求版本</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在配置《面向对象设计与构造》所需课程环境时，发现课程所需的Java版本（1.8.0.xxx）和自己已配置的不符，而课程教程主要面向未安装过Java的同学，因此在这里记录切换Java版本到OO课程要求版本的过程。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客及其中给出的其他辅助资料，读者可以切换到课程要求的Java版本。</p>
-<h3 id="笔者设备"><a href="#笔者设备" class="headerlink" title="笔者设备"></a>笔者设备</h3><p>Windows 10家庭版；联想拯救者Y7000P 2020</p>
-<h3 id="您可以在这里期望获得"><a href="#您可以在这里期望获得" class="headerlink" title="您可以在这里期望获得"></a>您可以在这里期望获得</h3><ol>
-<li>切换Java版本的方法</li>
-<li>一些笔者踩过的坑</li>
-</ol>
-<h3 id="您在这里无法期望获得"><a href="#您在这里无法期望获得" class="headerlink" title="您在这里无法期望获得"></a>您在这里无法期望获得</h3><ol>
-<li>这些操作的底层原理</li>
-<li>Windows之外的操作系统上切换Java版本方法</li>
-</ol>
-<h3 id="对读者前置知识的期望"><a href="#对读者前置知识的期望" class="headerlink" title="对读者前置知识的期望"></a>对读者前置知识的期望</h3><ol>
-<li>基本Windows操作</li>
-<li>曾安装过Java</li>
-</ol>
-<h2 id="Part-1-笔者参考的资料"><a href="#Part-1-笔者参考的资料" class="headerlink" title="Part 1 笔者参考的资料"></a>Part 1 笔者参考的资料</h2><ol>
-<li><a href="http://gitlab.oo.buaa.edu.cn/" target="_blank" rel="noopener">BUAA OO工具链教程</a>（需要搭配学校VPN使用）</li>
-<li><a href="https://www.cnblogs.com/90s-ITBoy/p/13388482.html" target="_blank" rel="noopener">更换JDK版本不成功，还是以前的版本（两种分析、解决办法）</a></li>
-<li><a href="https://blog.csdn.net/gaoduicai/article/details/120796396" target="_blank" rel="noopener">Java版本切换不生效</a></li>
-</ol>
-<h2 id="Part-2-具体步骤"><a href="#Part-2-具体步骤" class="headerlink" title="Part 2 具体步骤"></a>Part 2 具体步骤</h2><h3 id="下载并安装OO课程推荐JDK"><a href="#下载并安装OO课程推荐JDK" class="headerlink" title="下载并安装OO课程推荐JDK"></a>下载并安装OO课程推荐JDK</h3><p>官方网站下载链接：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
-<p>对于操作系统字长64位机器，选择Windows x64版本</p>
-<p>对于操作系统字长32位机器，选择Windows x86版本</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216094959453.png" class="" title="p1">
-<p>双击安装</p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>搜索栏搜索“系统环境变量”并打开</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095221176.png" class="" title="p2">
-<p>打开“环境变量”</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095326523.png" class="" title="p2">
-<h4 id="修改JAVA-HOME"><a href="#修改JAVA-HOME" class="headerlink" title="修改JAVA_HOME"></a>修改JAVA_HOME</h4><p>在系统变量中<strong>修改</strong>JAVA_HOME属性为<code>C:\Program Files\Java\jdk1.8.0_101</code>（具体路径因安装路径而异，不要包含<code>bin</code>）</p>
-<h4 id="修改CLASSPATH"><a href="#修改CLASSPATH" class="headerlink" title="修改CLASSPATH"></a>修改CLASSPATH</h4><p>在系统变量栏中，修改变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></p>
-<h4 id="修改PATH"><a href="#修改PATH" class="headerlink" title="修改PATH"></a>修改PATH</h4><p>在系统环境变量中，设置<code>PATH</code>，变量值<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code>（<strong>不要覆盖掉原本的内容，将这个值加入到<code>PATH</code>的最前面</strong>）。</p>
-<h2 id="Part-3-验证已切换好Java版本"><a href="#Part-3-验证已切换好Java版本" class="headerlink" title="Part 3 验证已切换好Java版本"></a>Part 3 验证已切换好Java版本</h2><p>在<code>cmd</code>中输入<code>java -version</code>看到Java的版本号改变即可</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095920052.png" class="" title="p2">
-<h2 id="Part-4-在IDEA中新建依赖于新JDK的工程"><a href="#Part-4-在IDEA中新建依赖于新JDK的工程" class="headerlink" title="Part 4 在IDEA中新建依赖于新JDK的工程"></a>Part 4 在IDEA中新建依赖于新JDK的工程</h2><p>打开IDEA(ultimate)，<code>File-&gt;new-&gt;Project</code>在<code>Project SDK</code>中选择切换后的JDK</p>
-<img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216100231068.png" class="" title="p2">
-<h2 id="Part-5-笔者踩过的坑"><a href="#Part-5-笔者踩过的坑" class="headerlink" title="Part 5 笔者踩过的坑"></a>Part 5 笔者踩过的坑</h2><p>以前配置Java环境变量的时候，在用户变量和系统变量都修改了，但是切换Java版本时只修改了用户变量，导致未能生效。</p>
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列"><a href="#「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列" class="headerlink" title="「BUAA Discrete Mathematics Chapter8」特殊计数数列"></a>「BUAA Discrete Mathematics Chapter8」特殊计数数列</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1-Catalan数"><a href="#Part-1-Catalan数" class="headerlink" title="Part 1 Catalan数"></a>Part 1 Catalan数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Catalan数列是序列</p>
+<script type="math/tex; mode=display">
+C_0, C_1, C_2, \cdots , C_n, \cdots</script><p>其中</p>
+<script type="math/tex; mode=display">
+C_n = \frac{1}{n+1}\tbinom{2n}{n} \quad (n = 0, 1, 2, \cdots)</script><p>是第 $ n $ 个Catalan数。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/02/17/「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/02/15/Java一维与二维数组的拷贝与排序/" data-toggle="tooltip" data-placement="top" title="Java一维与二维数组的拷贝与排序">Next Post &rarr;</a>
+                        <a href="/2022/05/11/「BUAA-OS-Lab4」名词解释/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab4」名词解释">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -386,7 +348,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Wed Feb 16 2022 10:05:47 GMT+0800', // optional
+    id: 'Wed May 18 2022 15:37:29 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -426,7 +388,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Pre」-切换Java版本到OO课程要求版本"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Pre」 切换Java版本到OO课程要求版本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#笔者设备"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">笔者设备</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#您可以在这里期望获得"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">您可以在这里期望获得</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#您在这里无法期望获得"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">您在这里无法期望获得</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对读者前置知识的期望"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">对读者前置知识的期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-笔者参考的资料"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的资料</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-具体步骤"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 具体步骤</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载并安装OO课程推荐JDK"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">下载并安装OO课程推荐JDK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置环境变量"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">配置环境变量</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改JAVA-HOME"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">修改JAVA_HOME</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改CLASSPATH"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">修改CLASSPATH</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改PATH"><span class="toc-nav-number">1.3.2.3.</span> <span class="toc-nav-text">修改PATH</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-验证已切换好Java版本"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 验证已切换好Java版本</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-在IDEA中新建依赖于新JDK的工程"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 在IDEA中新建依赖于新JDK的工程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-笔者踩过的坑"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 笔者踩过的坑</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter8」特殊计数数列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-Catalan数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 Catalan数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定义"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">定义</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -448,8 +410,6 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                        
                     </div>
                 </section>
                 
