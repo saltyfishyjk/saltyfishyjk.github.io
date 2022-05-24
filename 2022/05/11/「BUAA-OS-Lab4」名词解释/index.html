@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">654</span> and
-                                Reading Time <span class="post-count">3</span> Minutes
+                                Words <span class="post-count">803</span> and
+                                Reading Time <span class="post-count">4</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -411,8 +411,21 @@ END(msyscall)
 <h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a><code>fork</code></h3><p>位置：<code>user/fork.c</code></p>
 <hr>
 <h3 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h3><p>位置：<code>user/fork.c</code></p>
+<p>page fault </p>
+<p>写时复制函数处理函数，是<code>page_fault_handler</code>后续会调用的函数，负责对<code>PTE_COW</code>标志的页面进行处理。</p>
 <hr>
-<h3 id="duppage"><a href="#duppage" class="headerlink" title="duppage"></a><code>duppage</code></h3>
+<h3 id="duppage"><a href="#duppage" class="headerlink" title="duppage"></a><code>duppage</code></h3><p>位置：<code>user/fork.c</code></p>
+<p>父进程对子进程页面空间进行映射以及相关标志设置的函数。</p>
+<hr>
+<h3 id="set-pgfault-handler"><a href="#set-pgfault-handler" class="headerlink" title="set_pgfault_handler"></a><code>set_pgfault_handler</code></h3><p>位置：<code>user/pgfault.c</code></p>
+<p>父进程为子进程设置页错误处理函数的函数</p>
+<hr>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="entry-S"><a href="#entry-S" class="headerlink" title="entry.S"></a><code>entry.S</code></h3><p>用户进程的入口</p>
+<hr>
+<h3 id="libos-c"><a href="#libos-c" class="headerlink" title="libos.c"></a><code>libos.c</code></h3><p>用户进程入口的C语言部分，负责完成执行用户程序 <code>umain</code> 前后的准备和清理工作</p>
+<hr>
+<h3 id="genex-S"><a href="#genex-S" class="headerlink" title="genex.S"></a><code>genex.S</code></h3><p>实现了 MOS 的中断处理流程</p>
+
                 
                 <hr>
                 <!-- Pager -->
@@ -545,7 +558,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYSCALL-BASE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">__SYSCALL_BASE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYS-putchar"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">SYS_putchar</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">TF_*</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#COW"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">COW</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">handle_sys</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#msyscall"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">msyscall</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-env-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">sys_env_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-set-pgfault-handler"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">sys_set_pgfault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-fault-handler"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">page_fault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fork"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">fork</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pgfault"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">pgfault</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#duppage"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">duppage</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYSCALL-BASE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">__SYSCALL_BASE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYS-putchar"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">SYS_putchar</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">TF_*</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#COW"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">COW</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">handle_sys</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#msyscall"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">msyscall</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-env-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">sys_env_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-set-pgfault-handler"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">sys_set_pgfault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-fault-handler"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">page_fault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fork"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">fork</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pgfault"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">pgfault</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#duppage"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">duppage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#set-pgfault-handler"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">set_pgfault_handler</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#文件"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#entry-S"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">entry.S</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#libos-c"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">libos.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#genex-S"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">genex.S</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -806,7 +819,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -816,6 +829,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
