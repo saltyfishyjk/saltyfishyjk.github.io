@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">3.1k</span> and
+                                Words <span class="post-count">3k</span> and
                                 Reading Time <span class="post-count">13</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -259,7 +259,9 @@
                 <h1 id="「BUAA-OS-Lab2」名词解释"><a href="#「BUAA-OS-Lab2」名词解释" class="headerlink" title="「BUAA OS Lab2」名词解释"></a>「BUAA OS Lab2」名词解释</h1>
 <h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="Pde和Pte"><a href="#Pde和Pte" class="headerlink" title="Pde和Pte"></a><code>Pde</code>和<code>Pte</code></h3><p>Page directory entry / Page table entry</p>
 <p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> u_long Pde; </span><br><span class="line"><span class="keyword">typedef</span> u_long Pte;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">typedef u_long Pde; 
+typedef u_long Pte;
+</code></pre>
 <p>位置：<code>include/mmu.h</code></p>
 <p><code>Pde</code>表示一个一级页表项，<code>Pde</code>表示一个二级页表项。二者本质为<code>u_long</code>。</p>
 <hr>
@@ -267,19 +269,23 @@
 <hr>
 <h3 id="maxpa"><a href="#maxpa" class="headerlink" title="maxpa"></a><code>maxpa</code></h3><p>maximum physical address</p>
 <p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long maxpa;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">u_long maxpa;
+</code></pre>
 <p>位置：<code>mm/pmap.c</code></p>
 <p>最大物理地址+1，即$ [0,maxpa - 1] $范围内的所有整数所组成的集合等于物理地址的集合。</p>
 <hr>
 <h3 id="basemem"><a href="#basemem" class="headerlink" title="basemem"></a><code>basemem</code></h3><p>base memory</p>
 <p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u_long basemem; </span><br><span class="line">basemem = maxpa;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">u_long basemem; 
+basemem = maxpa;
+</code></pre>
 <p>位置：<code>mm/pmap.c</code></p>
 <p>物理内存对应的字节数</p>
 <hr>
 <h3 id="npage"><a href="#npage" class="headerlink" title="npage"></a><code>npage</code></h3><p>number of pages</p>
 <p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_long npage;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">u_long npage;
+</code></pre>
 <p>位置：<code>mm/pmap.c</code></p>
 <p>总<strong>物理</strong>页数，npage个<code>Page</code>和npage个物理页面一一顺序对应，具体来说，npage个Page的起始地址为<code>pages</code>，则<code>pages[i]</code>对应从<code>0</code>开始计数的第<code>i</code>个物理页面，可以使用<code>page2pa</code>和<code>pa2page</code>相互转换。</p>
 <hr>
@@ -287,22 +293,44 @@
 <p>扩展内存的大小，在本实验中不涉及，置0。</p>
 <hr>
 <h3 id="end"><a href="#end" class="headerlink" title="end"></a><code>end</code></h3><p>声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">. = <span class="number">0x80400000</span>;</span><br><span class="line"><span class="built_in">end</span> = .;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extend <span class="keyword">char</span> <span class="built_in">end</span>[];</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">. = 0x80400000;
+end = .;
+</code></pre>
+<pre><code class="lang-C">extend char end[];
+</code></pre>
 <p>位置：<code>tools/scse0_3.lds</code>（声明）<code>mm/pmap.c</code>（引用）</p>
 <p>对应虚拟地址<code>0x80400000</code>，由映射规则知对应物理地址<code>0x00400000</code>，表明我们管理的物理空间 $ [0x00400000, maxpa - 1] $。又知道这段物理地址和虚拟地址 $ [0x80400000, 0x83fffff] $一一对应，因此虚拟地址被分配出去，代表对应的物理地址也被分配出去。</p>
 <hr>
 <h3 id="freemem"><a href="#freemem" class="headerlink" title="freemem"></a><code>freemem</code></h3><p>第一次调用<code>mips_vm_init</code>函数将其赋值为<code>end</code>即$ 0x80400000 $。其含义为 $ [0x80400000, freemem - 1 ]$的虚拟地址都已被分配。</p>
 <hr>
 <h3 id="LIST-ENTRY"><a href="#LIST-ENTRY" class="headerlink" title="LIST_ENTRY"></a><code>LIST_ENTRY</code></h3><p>位置：<code>include/queue.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_ENTRY(type)                                                \</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>                                                                \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">le_next</span>;</span>   <span class="comment">/* next element */</span>                      \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> **<span class="title">le_prev</span>;</span>  <span class="comment">/* address of previous next element */</span>  \</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_ENTRY(type)                                                \
+        struct {                                                                \
+                struct type *le_next;   /* next element */                      \
+                struct type **le_prev;  /* address of previous next element */  \
+        }
+</code></pre>
 <p>本质上相当于一个工厂，生产一个type类型的链表结点结构体，其内容包含指向下一个结点的指针和指向上一个节点的<em>下一个节点指针</em>的指针。</p>
 <p>举例来说，当我们调用<code>typedef LIST_ENTRY(Page) Page_LIST_entry_t;</code>时候，事实上为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">le_next</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Page</span> **<span class="title">le_prev</span>;</span></span><br><span class="line">&#125; Page_LIST_entry_t;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">typedef struct {
+    struct Page *le_next;
+    struct Page **le_prev;
+} Page_LIST_entry_t;
+</code></pre>
 <p>即，构造了一个类型名为<code>Page_LIST_entry_t</code>，作为<code>Page</code>结构体的链表项。</p>
 <hr>
 <h3 id="Page"><a href="#Page" class="headerlink" title="Page"></a><code>Page</code></h3><p>位置：<code>include/pmap.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">	Page_LIST_entry_t pp_link;	<span class="comment">/* free list link */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Ref is the count of pointers (usually in page table entries)</span></span><br><span class="line">	<span class="comment">// to this page.  This only holds for pages allocated using </span></span><br><span class="line">	<span class="comment">// page_alloc.  Pages allocated at boot time using pmap.c's "alloc"</span></span><br><span class="line">	<span class="comment">// do not have valid reference count fields.</span></span><br><span class="line"></span><br><span class="line">	u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">struct Page {
+    Page_LIST_entry_t pp_link;    /* free list link */
+
+    // Ref is the count of pointers (usually in page table entries)
+    // to this page.  This only holds for pages allocated using 
+    // page_alloc.  Pages allocated at boot time using pmap.c&#39;s &quot;alloc&quot;
+    // do not have valid reference count fields.
+
+    u_short pp_ref;
+};
+</code></pre>
 <hr>
 <h3 id="Page-Directory与Page-Table"><a href="#Page-Directory与Page-Table" class="headerlink" title="Page Directory与Page Table"></a>Page Directory与Page Table</h3><p>第一级表称为页目录（Page Directory），第二级表称为页表（Page Table）。</p>
 <hr>
@@ -310,7 +338,8 @@
 <p>物理页框号</p>
 <hr>
 <h3 id="PPN"><a href="#PPN" class="headerlink" title="PPN"></a><code>PPN</code></h3><p>Physical Page Number</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PPN(va)		(((u_long)(va))&gt;&gt;12)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">#define PPN(va)        (((u_long)(va))&gt;&gt;12)
+</code></pre>
 <hr>
 <h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a><code>VPN</code></h3><p>Virtual Page Number</p>
 <hr>
@@ -329,25 +358,31 @@
 <h3 id="PTE-R"><a href="#PTE-R" class="headerlink" title="PTE_R"></a><code>PTE_R</code></h3><p>writable</p>
 <hr>
 <h3 id="BY2PG"><a href="#BY2PG" class="headerlink" title="BY2PG"></a><code>BY2PG</code></h3><p>BYtes to a PaGe</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BY2PG 4096</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define BY2PG 4096
+</code></pre>
 <hr>
 <h3 id="ULIM"><a href="#ULIM" class="headerlink" title="ULIM"></a><code>ULIM</code></h3><p>User limit</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ULIM 0x80000000</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define ULIM 0x80000000
+</code></pre>
 <p>小于ULIM的虚拟地址位于kuseg，紧挨着kuseg的是kseg0</p>
 <hr>
 <h3 id="PDMAP"><a href="#PDMAP" class="headerlink" title="PDMAP"></a><code>PDMAP</code></h3><p>Page Directory Map, bytes mapped by a page directory entry</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PDMAP (4 * 1024 * 1024) <span class="comment">// bytes mapped by a page directory entry</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define PDMAP (4 * 1024 * 1024) // bytes mapped by a page directory entry
+</code></pre>
 <hr>
 <h3 id="UVPT"><a href="#UVPT" class="headerlink" title="UVPT"></a><code>UVPT</code></h3><p>User VPT </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UVPT (ULIM - PDMAP)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define UVPT (ULIM - PDMAP)
+</code></pre>
 <p>UVPT = 0x7fc0,0000</p>
 <hr>
 <h3 id="UPAGES"><a href="#UPAGES" class="headerlink" title="UPAGES"></a><code>UPAGES</code></h3><p>User Pages</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UPAGES (UVPT - PDMAP)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define UPAGES (UVPT - PDMAP)
+</code></pre>
 <p>UPAGES = 0x7f80,0000</p>
 <hr>
 <h3 id="UENVS"><a href="#UENVS" class="headerlink" title="UENVS"></a><code>UENVS</code></h3><p>User ENVS</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> UENVS (UPAGES - PDMAP)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define UENVS (UPAGES - PDMAP)
+</code></pre>
 <p>UENVNS = 0x7f40,0000</p>
 <hr>
 <h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="mips-detect-memory"><a href="#mips-detect-memory" class="headerlink" title="mips_detect_memory()"></a><code>mips_detect_memory()</code></h3><p>返回值：<code>void</code></p>
@@ -364,27 +399,40 @@
 <hr>
 <h3 id="LIST-HEAD-name-type"><a href="#LIST-HEAD-name-type" class="headerlink" title="LIST_HEAD(name, type)"></a><code>LIST_HEAD(name, type)</code></h3><p>位置：<code>include/queue.h</code></p>
 <p>创建一个名称为<code>name</code>链表的<strong>头部结构体</strong>，包含一个指向<code>type</code>类型结构体的指针，指针可以指向链表的首个元素。在我们的实验中，<code>pmap.h</code>中调用了<code>LIST_HEAD(Page_list, Page);</code>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_HEAD(name, type)                                           \</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">name</span> &#123;</span>                                                           \</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">lh_first</span>;</span>  <span class="comment">/* first element */</span>                     \</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_HEAD(name, type)                                           \
+        struct name {                                                           \
+                struct type *lh_first;  /* first element */                     \
+        }
+</code></pre>
 <p>当调用<code>LIST_HEAD(Page_list, Page);</code>，实际上相当于：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page_list</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">lh_first</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">struct Page_list {
+    struct Page *lh_first;
+}
+</code></pre>
 <hr>
 <h3 id="LIST-ENTRY-type"><a href="#LIST-ENTRY-type" class="headerlink" title="LIST_ENTRY(type)"></a><code>LIST_ENTRY(type)</code></h3><p>位置：<code>include/queue.h</code></p>
 <hr>
 <h3 id="LIST-EMPTY-head"><a href="#LIST-EMPTY-head" class="headerlink" title="LIST_EMPTY(head)"></a><code>LIST_EMPTY(head)</code></h3><p>位置：<code>include/queue.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_EMPTY(head)        ((head)-&gt;lh_first == NULL</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_EMPTY(head)        ((head)-&gt;lh_first == NULL
+</code></pre>
 <p>判断头部结构体是否为空。</p>
 <hr>
 <h3 id="LIST-FIRST-head"><a href="#LIST-FIRST-head" class="headerlink" title="LIST_FIRST(head)"></a><code>LIST_FIRST(head)</code></h3><p>位置：<code>include/queue.h</code></p>
 <p>返回头部结构体<code>head</code>对应的链表的首个元素。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_FIRST(head)        ((head)-&gt;lh_first)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_FIRST(head)        ((head)-&gt;lh_first)
+</code></pre>
 <hr>
 <h3 id="LIST-INIT-head"><a href="#LIST-INIT-head" class="headerlink" title="LIST_INIT(head)"></a><code>LIST_INIT(head)</code></h3><p>位置：<code>include/queue.h</code></p>
 <p>将头部结构体<code>head</code>对应的链表初始化，等价于将首个元素清空。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_INIT(head) do &#123;                                            \</span></span><br><span class="line">                LIST_FIRST((head)) = <span class="literal">NULL</span>;                                      \</span><br><span class="line">        &#125; <span class="keyword">while</span> (<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_INIT(head) do {                                            \
+                LIST_FIRST((head)) = NULL;                                      \
+        } while (0)
+</code></pre>
 <hr>
 <h3 id="LIST-NEXT-elm-field"><a href="#LIST-NEXT-elm-field" class="headerlink" title="LIST_NEXT(elm, field)"></a><code>LIST_NEXT(elm, field)</code></h3><p>位置：<code>include/queue.h</code></p>
 <p>结构体<code>elm</code>包含的名为<code>field</code>的数据，类型是一个链表项<code>LIST_ENTRY(type)</code>，返回其指向的下一个元素。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_NEXT(elm, field)   ((elm)-&gt;field.le_next)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LIST_NEXT(elm, field)   ((elm)-&gt;field.le_next)
+</code></pre>
 <hr>
 <h3 id="LIST-INSERT-AFTER-listelm-elm-field"><a href="#LIST-INSERT-AFTER-listelm-elm-field" class="headerlink" title="LIST_INSERT_AFTER(listelm, elm, field)"></a><code>LIST_INSERT_AFTER(listelm, elm, field)</code></h3><p>位置：<code>queue.h</code></p>
 <hr>
@@ -393,12 +441,14 @@
 <h3 id="page-decref-struct-Page-pp"><a href="#page-decref-struct-Page-pp" class="headerlink" title="page_decref(struct Page *pp)"></a><code>page_decref(struct Page *pp)</code></h3><hr>
 <h3 id="page-free"><a href="#page-free" class="headerlink" title="page_free"></a><code>page_free</code></h3><hr>
 <h3 id="PDX-va"><a href="#PDX-va" class="headerlink" title="PDX(va)"></a><code>PDX(va)</code></h3><p>位置：<code>include/mmu.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PDX(va) ((((u_long)(va)) &gt;&gt; 22) &amp; 0x03FF)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define PDX(va) ((((u_long)(va)) &gt;&gt; 22) &amp; 0x03FF)
+</code></pre>
 <p>Page Directory Index，一级页表号，或一级页表项偏移量（指针加法即可）</p>
 <p>获取虚拟地址<code>va</code>的 $ 31 - 22 $ 位</p>
 <hr>
 <h3 id="PTX-va"><a href="#PTX-va" class="headerlink" title="PTX(va)"></a><code>PTX(va)</code></h3><p>位置：<code>include/mmu.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTX(va) ((((u_long)(va)) &gt;&gt; 12) &amp; 0x03FF)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define PTX(va) ((((u_long)(va)) &gt;&gt; 12) &amp; 0x03FF)
+</code></pre>
 <p>Page Table Index，二级页表号，或二级页表项偏移量（指针加法即可）</p>
 <p>获取虚拟地址<code>va</code>的 $ 21 - 12 $ 位</p>
 <hr>
@@ -407,12 +457,21 @@
 <hr>
 <h3 id="KADDR-pa"><a href="#KADDR-pa" class="headerlink" title="KADDR(pa)"></a><code>KADDR(pa)</code></h3><p>Kernal Address(virtual)</p>
 <p>返回物理地址<code>pa</code>对应的<code>kseg0</code>的虚拟地址</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KADDR(pa)                                                        \</span></span><br><span class="line">	(                                                                    \</span><br><span class="line">		&#123;                                                                \</span><br><span class="line">			u_long ppn = PPN(pa);                                        \</span><br><span class="line">			<span class="keyword">if</span> (ppn &gt;= npage)                                            \</span><br><span class="line">				panic(<span class="string">"KADDR called with invalid pa %08lx"</span>, (u_long)pa); \</span><br><span class="line">			(pa) + ULIM;                                                 \</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">#define KADDR(pa)                                                        \
+    (                                                                    \
+        {                                                                \
+            u_long ppn = PPN(pa);                                        \
+            if (ppn &gt;= npage)                                            \
+                panic(&quot;KADDR called with invalid pa %08lx&quot;, (u_long)pa); \
+            (pa) + ULIM;                                                 \
+        })
+</code></pre>
 <hr>
 <h3 id="PTE-ADDR-pte"><a href="#PTE-ADDR-pte" class="headerlink" title="PTE_ADDR(pte)"></a><code>PTE_ADDR(pte)</code></h3><p>Page Table Entry Address</p>
 
 <p>PTE（和TLB中的EntryLo结构相同）结构如上图示</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTE_ADDR(pte) ((u_long)(pte) &amp; ~0xFFF)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define PTE_ADDR(pte) ((u_long)(pte) &amp; ~0xFFF)
+</code></pre>
 <p>对于给定的pte项，将低12位清零，得到页框号（即页号）PFN(Page Frame Number)<strong>左移12位</strong>的结果即物理地址。</p>
 <hr>
 <h3 id="bzero"><a href="#bzero" class="headerlink" title="bzero"></a><code>bzero</code></h3><p>位置：<code>init/init.c</code></p>
@@ -420,13 +479,63 @@
 <hr>
 <h3 id="bcopy"><a href="#bcopy" class="headerlink" title="bcopy"></a><code>bcopy</code></h3><p>位置：<code>init/init.c</code></p>
 <p>从<code>src</code>拷贝<code>len</code>个字节到<code>dst</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bcopy</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *src, <span class="keyword">void</span> *dst, <span class="keyword">size_t</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">void</span> *<span class="built_in">max</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">max</span> = dst + len;</span><br><span class="line">	<span class="comment">// copy machine words while possible</span></span><br><span class="line">	<span class="keyword">while</span> (dst + <span class="number">3</span> &lt; <span class="built_in">max</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		*(<span class="keyword">int</span> *)dst = *(<span class="keyword">int</span> *)src;</span><br><span class="line">		dst += <span class="number">4</span>;</span><br><span class="line">		src += <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// finish remaining 0-3 bytes</span></span><br><span class="line">	<span class="keyword">while</span> (dst &lt; <span class="built_in">max</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		*(<span class="keyword">char</span> *)dst = *(<span class="keyword">char</span> *)src;</span><br><span class="line">		dst += <span class="number">1</span>;</span><br><span class="line">		src += <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void bcopy(const void *src, void *dst, size_t len)
+{
+    void *max;
+
+    max = dst + len;
+    // copy machine words while possible
+    while (dst + 3 &lt; max)
+    {
+        *(int *)dst = *(int *)src;
+        dst += 4;
+        src += 4;
+    }
+    // finish remaining 0-3 bytes
+    while (dst &lt; max)
+    {
+        *(char *)dst = *(char *)src;
+        dst += 1;
+        src += 1;
+    }
+}
+</code></pre>
 <hr>
 <h3 id="boot-pgdir-walk"><a href="#boot-pgdir-walk" class="headerlink" title="boot_pgdir_walk"></a><code>boot_pgdir_walk</code></h3><p>二级页表检索函数</p>
 <p>返回值：<code>Pte*</code>，返回指向检索到的二级页表页表项的指针。</p>
 <p>返回一级页表基地址<code>pgdir</code>对应的两级页表结构中，<code>va</code>虚拟地址所在的<strong>二级页表项</strong>。</p>
 <p>这一函数在<strong>内核启动</strong>过程中被调用。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> Pte *<span class="title">boot_pgdir_walk</span><span class="params">(Pde *pgdir, u_long va, <span class="keyword">int</span> create)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	Pde *pgdir_entryp;</span><br><span class="line">	Pte *pgtable, *pgtable_entry;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 1: Get the corresponding page directory entry and page table. */</span></span><br><span class="line">	<span class="comment">/* Hint: Use KADDR and PTE_ADDR to get the page table from page directory</span></span><br><span class="line"><span class="comment">	 * entry value. */</span></span><br><span class="line">	pgdir_entryp = pgdir + PDX(va);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 2: If the corresponding page table is not exist and parameter `create`</span></span><br><span class="line"><span class="comment">	 * is set, create one. And set the correct permission bits for this new page</span></span><br><span class="line"><span class="comment">	 * table. */</span></span><br><span class="line">	<span class="keyword">if</span> (!((*pgdir_entryp) &amp; PTE_V)) &#123; </span><br><span class="line">		<span class="keyword">if</span> (create) &#123;</span><br><span class="line">            <span class="comment">// 当页表项不存在且create=1时，为该二级页表项申请一个页，将二级页表项指向这个新的页，并设置权限表明该二级页表项可用</span></span><br><span class="line">            <span class="comment">// 实际上，最开始的二级页表项几乎都是空的不可用的，这里逐渐使得二级页表项可用。</span></span><br><span class="line">			*pgdir_entryp = PADDR(alloc(BY2PG, BY2PG, <span class="number">1</span>));</span><br><span class="line">			*pgdir_entryp = (*pgdir_entryp) | PTE_V | PTE_R;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	pgtable = (Pte *) KADDR(PTE_ADDR(*pgdir_entryp));</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 3: Get the page table entry for `va`, and return it. */</span></span><br><span class="line">	pgtable_entry = pgtable + PTX(va);</span><br><span class="line">	<span class="keyword">return</span> pgtable_entry;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">static Pte *boot_pgdir_walk(Pde *pgdir, u_long va, int create)
+{
+
+    Pde *pgdir_entryp;
+    Pte *pgtable, *pgtable_entry;
+
+    /* Step 1: Get the corresponding page directory entry and page table. */
+    /* Hint: Use KADDR and PTE_ADDR to get the page table from page directory
+     * entry value. */
+    pgdir_entryp = pgdir + PDX(va);
+
+    /* Step 2: If the corresponding page table is not exist and parameter `create`
+     * is set, create one. And set the correct permission bits for this new page
+     * table. */
+    if (!((*pgdir_entryp) &amp; PTE_V)) { 
+        if (create) {
+            // 当页表项不存在且create=1时，为该二级页表项申请一个页，将二级页表项指向这个新的页，并设置权限表明该二级页表项可用
+            // 实际上，最开始的二级页表项几乎都是空的不可用的，这里逐渐使得二级页表项可用。
+            *pgdir_entryp = PADDR(alloc(BY2PG, BY2PG, 1));
+            *pgdir_entryp = (*pgdir_entryp) | PTE_V | PTE_R;
+        } else {
+            return 0;
+        }
+    }
+    pgtable = (Pte *) KADDR(PTE_ADDR(*pgdir_entryp));
+
+    /* Step 3: Get the page table entry for `va`, and return it. */
+    pgtable_entry = pgtable + PTX(va);
+    return pgtable_entry;    
+}
+</code></pre>
 <hr>
 <h3 id="boot-map-segment"><a href="#boot-map-segment" class="headerlink" title="boot_map_segment"></a><code>boot_map_segment</code></h3><p>返回值：<code>void boot_map_segment(Pde *pgdir, u_long va, u_long size, u_long pa, int perm)</code></p>
 <p>区间地址映射函数。将一级页表基地址pgdir对应的两级页表结构做区间地址映射，将虚拟地址空间 $ [va, va + size - 1] $ 映射到物理地址区间 $ [pa, pa + size - 1] $ 。由于按页映射，要求<code>size</code>是页面大小的整数倍。设置页表项的权限位为<code>perm</code>。函数调用了<code>boot_pgdir_walk</code>，为<code>Page</code>结构体和<code>Env</code>结构体进行映射。</p>
@@ -439,12 +548,73 @@
 <h3 id="page-insert"><a href="#page-insert" class="headerlink" title="page_insert"></a><code>page_insert</code></h3><p>增加地址映射函数，将一级页表基地址<code>pgdir</code>对应的两级页表结构中<code>va</code>这一虚拟地址映射到内存控制块<code>pp</code>对应的物理页面，并将页表项权限位设置为<code>perm</code>。</p>
 <p><code>int page_insert(Pde *pgddir, struct Page *pp, u_long va, u_int perm)</code></p>
 <p>返回值：<code>int</code>，成功执行时返回0，否则返回<code>-E_NO_MEM</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">page_insert</span><span class="params">(Pde *pgdir, struct Page *pp, u_long va, u_int perm)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	u_int PERM;</span><br><span class="line">	Pte *pgtable_entry;</span><br><span class="line">	PERM = perm | PTE_V;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 1: Get corresponding page table entry. */</span></span><br><span class="line">	pgdir_walk(pgdir, va, <span class="number">0</span>, &amp;pgtable_entry);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (pgtable_entry != <span class="number">0</span> &amp;&amp; (*pgtable_entry &amp; PTE_V) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (pa2page(*pgtable_entry) != pp) &#123;</span><br><span class="line">			page_remove(pgdir, va);</span><br><span class="line">		&#125; <span class="keyword">else</span>	&#123;</span><br><span class="line">			tlb_invalidate(pgdir, va);</span><br><span class="line">			*pgtable_entry = (page2pa(pp) | PERM);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 2: Update TLB. */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* hint: use tlb_invalidate function */</span></span><br><span class="line">	tlb_invalidate(pgdir, va);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 3: Do check, re-get page table entry to validate the insertion. */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 3.1 Check if the page can be insert, if can’t return -E_NO_MEM */</span></span><br><span class="line">	<span class="keyword">if</span> (pgdir_walk(pgdir, va, <span class="number">1</span>, &amp;pgtable_entry) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> -E_NO_MEM;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* Step 3.2 Insert page and increment the pp_ref */</span></span><br><span class="line">	*pgtable_entry = page2pa(pp) | PERM;</span><br><span class="line">	pp-&gt;pp_ref++;	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">int page_insert(Pde *pgdir, struct Page *pp, u_long va, u_int perm)
+{
+    u_int PERM;
+    Pte *pgtable_entry;
+    PERM = perm | PTE_V;
+
+    /* Step 1: Get corresponding page table entry. */
+    pgdir_walk(pgdir, va, 0, &amp;pgtable_entry);
+
+    if (pgtable_entry != 0 &amp;&amp; (*pgtable_entry &amp; PTE_V) != 0) {
+        if (pa2page(*pgtable_entry) != pp) {
+            page_remove(pgdir, va);
+        } else    {
+            tlb_invalidate(pgdir, va);
+            *pgtable_entry = (page2pa(pp) | PERM);
+            return 0;
+        }
+    }
+
+    /* Step 2: Update TLB. */
+
+    /* hint: use tlb_invalidate function */
+    tlb_invalidate(pgdir, va);
+
+    /* Step 3: Do check, re-get page table entry to validate the insertion. */
+
+    /* Step 3.1 Check if the page can be insert, if can’t return -E_NO_MEM */
+    if (pgdir_walk(pgdir, va, 1, &amp;pgtable_entry) != 0) {
+        return -E_NO_MEM;
+    }
+    /* Step 3.2 Insert page and increment the pp_ref */
+    *pgtable_entry = page2pa(pp) | PERM;
+    pp-&gt;pp_ref++;    
+    return 0;
+}
+</code></pre>
 <hr>
 <h3 id="page-lookup"><a href="#page-lookup" class="headerlink" title="page_lookup"></a><code>page_lookup</code></h3><p><code>struct Page *page_lookup(Pde *pgdir, u_long va, Pte **ppte)</code></p>
 <p>返回值：<code>struct Page *</code></p>
 <p>返回一级页表及地址<code>pgdir</code>对应的两级页表结构中<code>va</code>这一虚拟地址映射对应的物理页面对应的内存控制块，并且将va的二级页表项存到ppte中。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *</span></span><br><span class="line"><span class="class"><span class="title">page_lookup</span>(<span class="title">Pde</span> *<span class="title">pgdir</span>, <span class="title">u_long</span> <span class="title">va</span>, <span class="title">Pte</span> **<span class="title">ppte</span>) &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">ppage</span>;</span></span><br><span class="line">    Pte *pte;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 1: Get the page table entry. */</span></span><br><span class="line">    pgdir_walk(pgdir, va, <span class="number">0</span>, &amp;pte);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Hint: Check if the page table entry doesn't exist or is not valid. */</span></span><br><span class="line">    <span class="keyword">if</span> (pte == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ((*pte &amp; PTE_V) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;    <span class="comment">//the page is not in memory.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Get the corresponding Page struct. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Hint: Use function `pa2page`, defined in include/pmap.h . */</span></span><br><span class="line">    ppage = pa2page(*pte);</span><br><span class="line">    <span class="keyword">if</span> (ppte) &#123;</span><br><span class="line">        *ppte = pte;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ppage;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">struct Page *
+page_lookup(Pde *pgdir, u_long va, Pte **ppte) {
+    struct Page *ppage;
+    Pte *pte;
+
+    /* Step 1: Get the page table entry. */
+    pgdir_walk(pgdir, va, 0, &amp;pte);
+
+    /* Hint: Check if the page table entry doesn&#39;t exist or is not valid. */
+    if (pte == 0) {
+        return 0;
+    }
+    if ((*pte &amp; PTE_V) == 0) {
+        return 0;    //the page is not in memory.
+    }
+
+    /* Step 2: Get the corresponding Page struct. */
+
+    /* Hint: Use function `pa2page`, defined in include/pmap.h . */
+    ppage = pa2page(*pte);
+    if (ppte) {
+        *ppte = pte;
+    }
+
+    return ppage;
+}
+</code></pre>
 <hr>
 <h3 id="page-remove"><a href="#page-remove" class="headerlink" title="page_remove"></a><code>page_remove</code></h3><p> <code>void page_remove(Pde *pgdir, u_long va)</code></p>
 <p>取消地址映射函数</p>
@@ -458,13 +628,27 @@
 <p>实现删除特定虚拟地址的映射。</p>
 <p>当页表被修改时，需要调用该函数保证下次访问该虚拟地址时会诱发TLB重填以保证访存的正确性。</p>
 <hr>
-<h3 id="page2ppn"><a href="#page2ppn" class="headerlink" title="page2ppn"></a><code>page2ppn</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">page2ppn(struct Page *pp)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> pp - pages;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="page2ppn"><a href="#page2ppn" class="headerlink" title="page2ppn"></a><code>page2ppn</code></h3><pre><code class="lang-C">page2ppn(struct Page *pp)
+{
+    return pp - pages;
+}
+</code></pre>
 <p>利用Page<em>和pages（Page </em>）确定offset，类似Page数组的下标</p>
 <hr>
-<h3 id="page2pa"><a href="#page2pa" class="headerlink" title="page2pa"></a><code>page2pa</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> u_long <span class="title">page2pa</span><span class="params">(struct Page *pp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> page2ppn(pp)&lt;&lt;PGSHIFT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="page2pa"><a href="#page2pa" class="headerlink" title="page2pa"></a><code>page2pa</code></h3><pre><code class="lang-C">static inline u_long page2pa(struct Page *pp)
+{
+    return page2ppn(pp)&lt;&lt;PGSHIFT;
+}
+</code></pre>
 <p>获得pp（大概为Page pointer）“下标”，左移页大小可得物理地址pa（physical address)。</p>
 <hr>
-<h3 id="pa2page"><a href="#pa2page" class="headerlink" title="pa2page"></a><code>pa2page</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pa2page(u_long pa)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (PPN(pa) &gt;= npage)</span><br><span class="line">		panic(<span class="string">"pa2page called with invalid pa: %x"</span>, pa);</span><br><span class="line">	<span class="keyword">return</span> &amp;pages[PPN(pa)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pa2page"><a href="#pa2page" class="headerlink" title="pa2page"></a><code>pa2page</code></h3><pre><code class="lang-C">pa2page(u_long pa)
+{
+    if (PPN(pa) &gt;= npage)
+        panic(&quot;pa2page called with invalid pa: %x&quot;, pa);
+    return &amp;pages[PPN(pa)];
+}
+</code></pre>
 <p>根据pa（physical address），</p>
 <hr>
 <h3 id="page-init"><a href="#page-init" class="headerlink" title="page_init"></a><code>page_init</code></h3><ul>
@@ -481,21 +665,31 @@
 <p>将<code>page_free_list</code>空闲链表头部内存控制块对应的物理页面分配出去，将其从空闲链表中移除，并清空对应的物理页面，最后将<code>pp</code>指向的空间赋值为这个内存控制块的地址。</p>
 <p>在这之中，我们使用了<code>LIST_EMPTY</code>判断空闲链表中是否还有页面；使用了<code>LIST_FIRST</code>取出了<code>page_free_list</code>对应的第一个页面；使用了<code>LIST_REMOVE()</code>将这个页面从<code>page_free_list</code>中移除；使用<code>bzero</code>将页面初始化。</p>
 <hr>
-<h3 id="page2kva"><a href="#page2kva" class="headerlink" title="page2kva"></a><code>page2kva</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">page2kva(struct Page *pp)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> KADDR(page2pa(pp));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="page2kva"><a href="#page2kva" class="headerlink" title="page2kva"></a><code>page2kva</code></h3><pre><code class="lang-C">page2kva(struct Page *pp)
+{
+  return KADDR(page2pa(pp));
+}
+</code></pre>
 <hr>
 <h3 id="page-decref"><a href="#page-decref" class="headerlink" title="page_decref"></a><code>page_decref</code></h3><p><code>page_decref(struct Page *pp)</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">page_decref</span><span class="params">(struct Page *pp)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(--pp-&gt;pp_ref == <span class="number">0</span>) &#123;</span><br><span class="line">		page_free(pp);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void page_decref(struct Page *pp) {
+    if(--pp-&gt;pp_ref == 0) {
+        page_free(pp);
+    }
+}
+</code></pre>
 <p>令<code>pp</code>对应内存控制块的引用次数减少1。如果引用次数为0，会接着调用<code>page_free</code>将对应的物理页面重新设置为空闲页面</p>
 <hr>
 <h3 id="page-free-1"><a href="#page-free-1" class="headerlink" title="page_free"></a><code>page_free</code></h3><p><code>page_free(struct Page *pp)</code></p>
 <p>判断<code>pp</code>指向内存控制块对应的物理页面引用次数是否为<code>0</code>，如果是的话该物理页面为空闲页面，将其重新插入到<code>page_free_list</code></p>
 <hr>
-<h3 id="ROUND"><a href="#ROUND" class="headerlink" title="ROUND"></a><code>ROUND</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ROUND(a, n)	(((((u_long)(a))+(n)-1)) &amp; ~((n)-1))</span></span><br></pre></td></tr></table></figure>
+<h3 id="ROUND"><a href="#ROUND" class="headerlink" title="ROUND"></a><code>ROUND</code></h3><pre><code class="lang-C">#define ROUND(a, n)    (((((u_long)(a))+(n)-1)) &amp; ~((n)-1))
+</code></pre>
 <p>圆整，返回 $ \lceil\frac{a}{n} \rceil n $ ，要求 $ n $ 必须是 $ 2 $ 的非负整数次幂。</p>
 <p>效果是将 $ a $ 向上圆整为 $ n $ 的整数倍。</p>
 <hr>
-<h3 id="ROUNDDOWN"><a href="#ROUNDDOWN" class="headerlink" title="ROUNDDOWN"></a><code>ROUNDDOWN</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define ROUNDDOWN(a, n)	(((u_long)(a)) &amp; ~((n)-1))</span><br></pre></td></tr></table></figure>
-<p>圆整，返回 $ \lfloor \frac{a}{n} \rfloor n $ ，要求 $ n $ 是 $ 2 $ 的非负整数次幂。</p>
+<h3 id="ROUNDDOWN"><a href="#ROUNDDOWN" class="headerlink" title="ROUNDDOWN"></a><code>ROUNDDOWN</code></h3><pre><code>#define ROUNDDOWN(a, n)    (((u_long)(a)) &amp; ~((n)-1))
+</code></pre><p>圆整，返回 $ \lfloor \frac{a}{n} \rfloor n $ ，要求 $ n $ 是 $ 2 $ 的非负整数次幂。</p>
 <p>效果是将 $ a $ 向下圆整为 $ n $ 的整数倍。</p>
 <hr>
 
@@ -916,8 +1110,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

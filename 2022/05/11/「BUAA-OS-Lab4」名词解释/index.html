@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">639</span> and
+                                Words <span class="post-count">599</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -258,21 +258,136 @@
 
                 <h1 id="「BUAA-OS-Lab4」名词解释"><a href="#「BUAA-OS-Lab4」名词解释" class="headerlink" title="「BUAA OS Lab4」名词解释"></a>「BUAA OS Lab4」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="SYSCALL-BASE"><a href="#SYSCALL-BASE" class="headerlink" title="__SYSCALL_BASE"></a><code>__SYSCALL_BASE</code></h3><p>位置：<code>include/unisted.h</code></p>
 <p>系统调用号基址。内核确定是哪类系统调用的唯一依据。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __SYSCALL_BASE 9527</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define __SYSCALL_BASE 9527
+</code></pre>
 <hr>
 <h3 id="SYS-putchar"><a href="#SYS-putchar" class="headerlink" title="SYS_putchar"></a><code>SYS_putchar</code></h3><p>位置：<code>include/unisted.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SYS_putchar 		((__SYSCALL_BASE ) + (0 ) )</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define SYS_putchar         ((__SYSCALL_BASE ) + (0 ) )
+</code></pre>
 <hr>
 <h3 id="TF"><a href="#TF" class="headerlink" title="TF_*"></a><code>TF_*</code></h3><p>TrapFrame相关宏定义</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG0		0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG1		((TF_REG0) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG2		((TF_REG1) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG3		((TF_REG2) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG4		((TF_REG3) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG5		((TF_REG4) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG6		((TF_REG5) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG7		((TF_REG6) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG8		((TF_REG7) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG9		((TF_REG8) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG10	((TF_REG9) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG11	((TF_REG10) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG12	((TF_REG11) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG13	((TF_REG12) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG14	((TF_REG13) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG15	((TF_REG14) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG16	((TF_REG15) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG17	((TF_REG16) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG18	((TF_REG17) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG19	((TF_REG18) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG20	((TF_REG19) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG21	((TF_REG20) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG22	((TF_REG21) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG23	((TF_REG22) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG24	((TF_REG23) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG25	((TF_REG24) + 4)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * $26 (k0) and $27 (k1) not saved</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG26	((TF_REG25) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG27	((TF_REG26) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG28	((TF_REG27) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG29	((TF_REG28) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG30	((TF_REG29) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_REG31	((TF_REG30) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_STATUS	((TF_REG31) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_HI		((TF_STATUS) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_LO		((TF_HI) + 4)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_BADVADDR	((TF_LO)+4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_CAUSE	((TF_BADVADDR) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_EPC		((TF_CAUSE) + 4)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_PC		((TF_EPC) + 4)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Size of stack frame, word/double word alignment</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TF_SIZE		((TF_PC)+4)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define TF_REG0        0
+#define TF_REG1        ((TF_REG0) + 4)
+#define TF_REG2        ((TF_REG1) + 4)
+#define TF_REG3        ((TF_REG2) + 4)
+#define TF_REG4        ((TF_REG3) + 4)
+#define TF_REG5        ((TF_REG4) + 4)
+#define TF_REG6        ((TF_REG5) + 4)
+#define TF_REG7        ((TF_REG6) + 4)
+#define TF_REG8        ((TF_REG7) + 4)
+#define TF_REG9        ((TF_REG8) + 4)
+#define TF_REG10    ((TF_REG9) + 4)
+#define TF_REG11    ((TF_REG10) + 4)
+#define TF_REG12    ((TF_REG11) + 4)
+#define TF_REG13    ((TF_REG12) + 4)
+#define TF_REG14    ((TF_REG13) + 4)
+#define TF_REG15    ((TF_REG14) + 4)
+#define TF_REG16    ((TF_REG15) + 4)
+#define TF_REG17    ((TF_REG16) + 4)
+#define TF_REG18    ((TF_REG17) + 4)
+#define TF_REG19    ((TF_REG18) + 4)
+#define TF_REG20    ((TF_REG19) + 4)
+#define TF_REG21    ((TF_REG20) + 4)
+#define TF_REG22    ((TF_REG21) + 4)
+#define TF_REG23    ((TF_REG22) + 4)
+#define TF_REG24    ((TF_REG23) + 4)
+#define TF_REG25    ((TF_REG24) + 4)
+/*
+ * $26 (k0) and $27 (k1) not saved
+ */
+#define TF_REG26    ((TF_REG25) + 4)
+#define TF_REG27    ((TF_REG26) + 4)
+#define TF_REG28    ((TF_REG27) + 4)
+#define TF_REG29    ((TF_REG28) + 4)
+#define TF_REG30    ((TF_REG29) + 4)
+#define TF_REG31    ((TF_REG30) + 4)
+
+#define TF_STATUS    ((TF_REG31) + 4)
+
+#define TF_HI        ((TF_STATUS) + 4)
+#define TF_LO        ((TF_HI) + 4)
+
+#define TF_BADVADDR    ((TF_LO)+4)
+#define TF_CAUSE    ((TF_BADVADDR) + 4)
+#define TF_EPC        ((TF_CAUSE) + 4)
+#define TF_PC        ((TF_EPC) + 4)
+/*
+ * Size of stack frame, word/double word alignment
+ */
+#define TF_SIZE        ((TF_PC)+4)
+</code></pre>
 <hr>
 <h3 id="COW"><a href="#COW" class="headerlink" title="COW"></a>COW</h3><p>Copy On Write，写时复制。</p>
 <p>当fork后的父子进程中有修改内存（一般是数据段或栈）的行为发生时，内核会捕获<strong>页写入异常</strong>，并哎异常处理时为<strong>修改内存的进程</strong>的地址空间中相应地址分配新的物理页面。</p>
 <hr>
 <h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="handle-sys"><a href="#handle-sys" class="headerlink" title="handle_sys"></a><code>handle_sys</code></h3><p>位置：<code>lib/syscall.S</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_sys,TF_SIZE, sp)</span><br><span class="line">    SAVE_ALL                            &#x2F;&#x2F; Macro used to save trapframe</span><br><span class="line">    CLI                                 &#x2F;&#x2F; Clean Interrupt Mask</span><br><span class="line">    nop</span><br><span class="line">    .set at                             &#x2F;&#x2F; Resume use of $at</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.</span><br><span class="line"></span><br><span class="line">	lw		t0, TF_EPC(sp)</span><br><span class="line">	lw		t1, TF_CAUSE(sp)</span><br><span class="line">	lui		t2, 0x8000</span><br><span class="line">	and		t1, t1, t2</span><br><span class="line">	bnez	t1, IS_BD</span><br><span class="line">	nop</span><br><span class="line">	addiu	t0, t0, 4</span><br><span class="line">	j BD_IF_END</span><br><span class="line">	nop</span><br><span class="line">IS_BD:</span><br><span class="line">BD_IF_END:</span><br><span class="line">	sw		t0, TF_EPC(sp)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Copy the syscall number into $a0.</span><br><span class="line"></span><br><span class="line">	lw		a0, TF_REG4(sp)</span><br><span class="line">    </span><br><span class="line">    addiu   a0, a0, -__SYSCALL_BASE     &#x2F;&#x2F; a0 &lt;- relative syscall number</span><br><span class="line">    sll     t0, a0, 2                   &#x2F;&#x2F; t0 &lt;- relative syscall number times 4</span><br><span class="line">    la      t1, sys_call_table          &#x2F;&#x2F; t1 &lt;- syscall table base</span><br><span class="line">    addu    t1, t1, t0                  &#x2F;&#x2F; t1 &lt;- table entry of specific syscall</span><br><span class="line">    lw      t2, 0(t1)                   &#x2F;&#x2F; t2 &lt;- function entry of specific syscall</span><br><span class="line"></span><br><span class="line">    lw      t0, TF_REG29(sp)            &#x2F;&#x2F; t0 &lt;- user&#39;s stack pointer</span><br><span class="line">    lw      t3, 16(t0)                  &#x2F;&#x2F; t3 &lt;- the 5th argument of msyscall</span><br><span class="line">    lw      t4, 20(t0)                  &#x2F;&#x2F; t4 &lt;- the 6th argument of msyscall</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location</span><br><span class="line">    </span><br><span class="line">	lw		a0, TF_REG4(sp)</span><br><span class="line">	lw		a1, TF_REG5(sp)</span><br><span class="line">	lw		a2, TF_REG6(sp)</span><br><span class="line">	lw		a3, TF_REG7(sp)</span><br><span class="line">	addiu	sp, sp, -24</span><br><span class="line">	sw		t3, 16(sp)</span><br><span class="line">	sw		t4, 20(sp)</span><br><span class="line">    </span><br><span class="line">    jalr    t2                          &#x2F;&#x2F; Invoke sys_* function</span><br><span class="line">    nop</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: Resume current kernel stack</span><br><span class="line">    </span><br><span class="line">	addiu	sp, sp, 24</span><br><span class="line"></span><br><span class="line">    sw      v0, TF_REG2(sp)             &#x2F;&#x2F; Store return value of function sys_* (in $v0) into trapframe</span><br><span class="line"></span><br><span class="line">    j       ret_from_exception          &#x2F;&#x2F; Return from exeception</span><br><span class="line">    nop</span><br><span class="line">END(handle_sys)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">NESTED(handle_sys,TF_SIZE, sp)
+    SAVE_ALL                            // Macro used to save trapframe
+    CLI                                 // Clean Interrupt Mask
+    nop
+    .set at                             // Resume use of $at
+
+    // TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.
+
+    lw        t0, TF_EPC(sp)
+    lw        t1, TF_CAUSE(sp)
+    lui        t2, 0x8000
+    and        t1, t1, t2
+    bnez    t1, IS_BD
+    nop
+    addiu    t0, t0, 4
+    j BD_IF_END
+    nop
+IS_BD:
+BD_IF_END:
+    sw        t0, TF_EPC(sp)
+
+    // TODO: Copy the syscall number into $a0.
+
+    lw        a0, TF_REG4(sp)
+
+    addiu   a0, a0, -__SYSCALL_BASE     // a0 &lt;- relative syscall number
+    sll     t0, a0, 2                   // t0 &lt;- relative syscall number times 4
+    la      t1, sys_call_table          // t1 &lt;- syscall table base
+    addu    t1, t1, t0                  // t1 &lt;- table entry of specific syscall
+    lw      t2, 0(t1)                   // t2 &lt;- function entry of specific syscall
+
+    lw      t0, TF_REG29(sp)            // t0 &lt;- user&#39;s stack pointer
+    lw      t3, 16(t0)                  // t3 &lt;- the 5th argument of msyscall
+    lw      t4, 20(t0)                  // t4 &lt;- the 6th argument of msyscall
+
+    // TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location
+
+    lw        a0, TF_REG4(sp)
+    lw        a1, TF_REG5(sp)
+    lw        a2, TF_REG6(sp)
+    lw        a3, TF_REG7(sp)
+    addiu    sp, sp, -24
+    sw        t3, 16(sp)
+    sw        t4, 20(sp)
+
+    jalr    t2                          // Invoke sys_* function
+    nop
+
+    // TODO: Resume current kernel stack
+
+    addiu    sp, sp, 24
+
+    sw      v0, TF_REG2(sp)             // Store return value of function sys_* (in $v0) into trapframe
+
+    j       ret_from_exception          // Return from exeception
+    nop
+END(handle_sys)
+</code></pre>
 <h3 id="msyscall"><a href="#msyscall" class="headerlink" title="msyscall"></a><code>msyscall</code></h3><p>位置：<code>user/syscall_wrap.S</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LEAF(msyscall)</span><br><span class="line">    &#x2F;&#x2F; TODO: you JUST need to execute a &#96;syscall&#96; instruction and return from msyscall</span><br><span class="line">	syscall</span><br><span class="line">	nop</span><br><span class="line">	jr		ra</span><br><span class="line">	nop</span><br><span class="line">END(msyscall)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">LEAF(msyscall)
+    // TODO: you JUST need to execute a `syscall` instruction and return from msyscall
+    syscall
+    nop
+    jr        ra
+    nop
+END(msyscall)
+</code></pre>
 
                 
                 <hr>
@@ -691,8 +806,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -282,7 +282,8 @@
 <p>横向LOOK：</p>
 <ol>
 <li><p>当电梯有乘客时，依然希望寻找其中目标楼座距离当前楼座最远的请求为主请求，但是这里的距离不应该是简单的加减法，可以加上模运算（注意若出现负数直接取模不符合我们的要求）：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dis = (target - nowBuilding + <span class="number">5</span>) % <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">dis = (target - nowBuilding + 5) % 5;
+</code></pre>
 </li>
 <li><p>当电梯没有乘客时，原则上仍然按照第一次的方法寻找，只是如果第一次向上的尽头是10层，这一次顺时针尽头应该变为 <code>(now + 2) % 5；</code>向下的尽头是1层，这一次逆时针尽头应该变为<code>(now - 2 + 5) % 5</code>。</p>
 </li>
@@ -715,8 +716,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

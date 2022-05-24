@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">3.8k</span> and
-                                Reading Time <span class="post-count">20</span> Minutes
+                                Words <span class="post-count">3.7k</span> and
+                                Reading Time <span class="post-count">19</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -258,17 +258,42 @@
 
                 <h1 id="「BUAA-OS-Lab3」名词解释"><a href="#「BUAA-OS-Lab3」名词解释" class="headerlink" title="「BUAA OS Lab3」名词解释"></a>「BUAA OS Lab3」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a><code>PCB</code></h3><p>进程控制块（Process Conotrol Block），系统感知进程存在的唯一标志。进程和PCB一一对应。</p>
 <hr>
-<h3 id="Env"><a href="#Env" class="headerlink" title="Env"></a><code>Env</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span> <span class="comment">// Saved registers </span></span><br><span class="line">	LIST_ENTRY(Env) env_link; <span class="comment">// Free LIST_ENTRY</span></span><br><span class="line">	u_int env_id;                  <span class="comment">// Unique environment identifier </span></span><br><span class="line">	u_int env_parent_id;           <span class="comment">// env_id of this env's parent </span></span><br><span class="line">	u_int env_status;              <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;               <span class="comment">// Kernel virtual address of page dir </span></span><br><span class="line">	u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link; </span><br><span class="line">	u_int env_pri;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Env"><a href="#Env" class="headerlink" title="Env"></a><code>Env</code></h3><pre><code class="lang-C">struct Env {
+    struct Trapframe env_tf; // Saved registers 
+    LIST_ENTRY(Env) env_link; // Free LIST_ENTRY
+    u_int env_id;                  // Unique environment identifier 
+    u_int env_parent_id;           // env_id of this env&#39;s parent 
+    u_int env_status;              // Status of the environment
+    Pde  *env_pgdir;               // Kernel virtual address of page dir 
+    u_int env_cr3;
+    LIST_ENTRY(Env) env_sched_link; 
+    u_int env_pri;
+};
+</code></pre>
 <hr>
 <h3 id="Env-list"><a href="#Env-list" class="headerlink" title="Env_list"></a><code>Env_list</code></h3><p>位置：<code>env.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIST_HEAD(Env_list, Env);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">LIST_HEAD(Env_list, Env);
+</code></pre>
 <p>工厂模式构造<code>Env_list</code>类型，内部含有一个<code>struct type *lh_first</code>的变量，相当于构造了头结点类型<code>Env_list</code>。</p>
 <hr>
 <h3 id="env-tf"><a href="#env-tf" class="headerlink" title="env_tf"></a><code>env_tf</code></h3><p>env trapframe</p>
 <p><code>Trapframe</code>结构体的定义在<code>include/trap.h</code>中，在发生进程调度或陷入内核中时，会将当时的进程上下文环境保存在<code>env_tf</code>变量中。</p>
 <p><code>Trapframe</code>结构体内容见下。</p>
 <hr>
-<h3 id="Trapframe"><a href="#Trapframe" class="headerlink" title="Trapframe"></a><code>Trapframe</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> &#123;</span> <span class="comment">//lr:need to be modified(reference to linux pt_regs) TODO</span></span><br><span class="line">	<span class="comment">/* Saved main processor registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> regs[<span class="number">32</span>];</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Saved special registers. */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_status;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> hi;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> lo;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_badvaddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_cause;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cp0_epc;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> pc;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Trapframe"><a href="#Trapframe" class="headerlink" title="Trapframe"></a><code>Trapframe</code></h3><pre><code class="lang-C">struct Trapframe { //lr:need to be modified(reference to linux pt_regs) TODO
+    /* Saved main processor registers. */
+    unsigned long regs[32];
+
+    /* Saved special registers. */
+    unsigned long cp0_status;
+    unsigned long hi;
+    unsigned long lo;
+    unsigned long cp0_badvaddr;
+    unsigned long cp0_cause;
+    unsigned long cp0_epc;
+    unsigned long pc;
+};
+</code></pre>
 <hr>
 <h3 id="env-link"><a href="#env-link" class="headerlink" title="env_link"></a><code>env_link</code></h3><p><code>env_link</code>的机制类似lab2的<code>pp_link</code>，使用<code>env_link</code>和<code>env_free_list</code>来构造空闲进程链表。</p>
 <hr>
@@ -291,16 +316,19 @@
 <hr>
 <h3 id="env-sched-link"><a href="#env-sched-link" class="headerlink" title="env_sched_link"></a><code>env_sched_link</code></h3><p>env scheduled link</p>
 <p>进程调度队列的链表项。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIST_ENTRY(Env) env_sched_link;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">LIST_ENTRY(Env) env_sched_link;
+</code></pre>
 <hr>
 <h3 id="env-pri"><a href="#env-pri" class="headerlink" title="env_pri"></a><code>env_pri</code></h3><p>env priority</p>
 <p>保存该进程的优先级。</p>
 <hr>
 <h3 id="env-runs"><a href="#env-runs" class="headerlink" title="env_runs"></a><code>env_runs</code></h3><p>number of times have been runned</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u_int env_runs;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">u_int env_runs;
+</code></pre>
 <hr>
 <h3 id="LOG2NENV"><a href="#LOG2NENV" class="headerlink" title="LOG2NENV"></a><code>LOG2NENV</code></h3><p>$ log_{2}{NENV} $</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOG2NENV  10</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define LOG2NENV  10
+</code></pre>
 <p>一共1024个<code>env</code>，因此是<code>10</code>位</p>
 <hr>
 <h3 id="UTOP与ULIM"><a href="#UTOP与ULIM" class="headerlink" title="UTOP与ULIM"></a><code>UTOP</code>与<code>ULIM</code></h3><p><code>UTOP</code>之下是用户进程可以自由读写的地址区域，<code>ULIM</code>是用户进程的最高地址，在<code>UTOP</code>到<code>ULIM</code>的区域与其他用户区相比最大的区别是用户只能读，不能写。</p>
@@ -315,26 +343,50 @@
 <p><code>KUc &amp; IEc</code>：<code>c</code>表示current</p>
 <p>这低6位结构式二重栈，共三组。当中断发生时，硬件会自动将<code>KUp</code>和<code>IEp</code>的内容拷贝到<code>KUo</code>和<code>IEo</code>；将<code>KUc</code>和<code>IEc</code>拷贝到<code>KUp</code>和<code>IEp</code>中。</p>
 <p>而<code>rfe</code>(Return From Exception)指令是上述操作的逆操作，guidebook中介绍如下代码是每个进程每一次被调度的时候都会执行的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lw k0, TF_STATUS(k0) # 恢复CP0_STATUS寄存器</span><br><span class="line">mtc0 k0, CP0_STATUS</span><br><span class="line">j k1</span><br><span class="line">rfe</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">lw k0, TF_STATUS(k0) # 恢复CP0_STATUS寄存器
+mtc0 k0, CP0_STATUS
+j k1
+rfe
+</code></pre>
 <p>这样可以解释设置<code>status</code>后6位为0的原因：运行进程前，上述代码会运行到<code>rfe</code>，将<code>KUp</code>和<code>IEp</code>拷贝回到<code>KUc</code>和<code>IEc</code>，这时<code>status</code>变成了 $ 000001 $ ，最后两位<code>KUc</code>和<code>IEc</code>为 $ [0, 1] $ ，表示开启了中断。这之后，第一个进程成功运行，我们的操作系统就可以在正常响应中断了。</p>
 <hr>
 <h3 id="TIMESTACK"><a href="#TIMESTACK" class="headerlink" title="TIMESTACK"></a><code>TIMESTACK</code></h3><p>时钟栈，存储时钟中断的时候的trapframe。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIMESTACK 0x82000000</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define TIMESTACK 0x82000000
+</code></pre>
 <hr>
 <h3 id="exception-handlers"><a href="#exception-handlers" class="headerlink" title="exception_handlers"></a><code>exception_handlers</code></h3><p>位置：<code>lib/traps.c</code></p>
 <p>异常向量组，在<code>.text.exc.vec3</code>这一异常分发代码结束时会按照<code>exception_handlers</code>这一数组基地址加上<code>Cause</code>寄存器中2-6位得到的<code>ExcCode</code>偏移得到正确的异常处理函数地址。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> exception_handlers[<span class="number">32</span>];</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">unsigned long exception_handlers[32];
+</code></pre>
 <hr>
 <h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="env-init"><a href="#env-init" class="headerlink" title="env_init()"></a><code>env_init()</code></h3><p>初始化<code>ene_free_list</code></p>
 <hr>
 <h3 id="mkenvid"><a href="#mkenvid" class="headerlink" title="mkenvid"></a><code>mkenvid</code></h3><p>返回值：<code>u_int</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">u_int <span class="title">mkenvid</span><span class="params">(struct Env *e)</span> </span>&#123;</span><br><span class="line">    u_int idx = e - envs;</span><br><span class="line">    u_int asid = asid_alloc();</span><br><span class="line">    <span class="keyword">return</span> (asid &lt;&lt; (<span class="number">1</span> + LOG2NENV)) | (<span class="number">1</span> &lt;&lt; LOG2NENV) | idx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">u_int mkenvid(struct Env *e) {
+    u_int idx = e - envs;
+    u_int asid = asid_alloc();
+    return (asid &lt;&lt; (1 + LOG2NENV)) | (1 &lt;&lt; LOG2NENV) | idx;
+}
+</code></pre>
 <p>生成一个新的进程标识符。</p>
 <p>低10位是idx，即env在envs数组中的索引；第10位是1，为了防止envid为0；11-16位是asid</p>
 <hr>
 <h3 id="asid-alloc"><a href="#asid-alloc" class="headerlink" title="asid_alloc()"></a><code>asid_alloc()</code></h3><p>申请一个<code>asid</code>。</p>
 <p>使用位图法管理asid。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> u_int asid_bitmap[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 位图法管理64个asid</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> u_int <span class="title">asid_alloc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, index, inner;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">64</span>; ++i) &#123;</span><br><span class="line">        index = i &gt;&gt; <span class="number">5</span>; <span class="comment">// index标记索引，即具体是哪个asid_bitmap</span></span><br><span class="line">        inner = i &amp; <span class="number">31</span>; <span class="comment">// i&amp;31，即获取低5位，舍弃第6位</span></span><br><span class="line">        <span class="keyword">if</span> ((asid_bitmap[index] &amp; (<span class="number">1</span> &lt;&lt; inner)) == <span class="number">0</span>) &#123; <span class="comment">// 将管理i对应的位取出，判断是否为0，若为0则说明该asid可以申请。</span></span><br><span class="line">            asid_bitmap[index] |= <span class="number">1</span> &lt;&lt; inner; <span class="comment">// 将对应的位置1，标记这个asid已经被申请</span></span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    panic(<span class="string">"too many processes!"</span>); <span class="comment">// 若最后也没有找到可以用的asid，返回报错信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">static u_int asid_bitmap[2] = {0}; // 位图法管理64个asid
+static u_int asid_alloc() {
+    int i, index, inner;
+    for (i = 0; i &lt; 64; ++i) {
+        index = i &gt;&gt; 5; // index标记索引，即具体是哪个asid_bitmap
+        inner = i &amp; 31; // i&amp;31，即获取低5位，舍弃第6位
+        if ((asid_bitmap[index] &amp; (1 &lt;&lt; inner)) == 0) { // 将管理i对应的位取出，判断是否为0，若为0则说明该asid可以申请。
+            asid_bitmap[index] |= 1 &lt;&lt; inner; // 将对应的位置1，标记这个asid已经被申请
+            return i;
+        }
+    }
+    panic(&quot;too many processes!&quot;); // 若最后也没有找到可以用的asid，返回报错信息
+}
+</code></pre>
 <hr>
 <h3 id="envid2env"><a href="#envid2env" class="headerlink" title="envid2env"></a><code>envid2env</code></h3><p><code>envid2env(u_int envid, struct Env **penv, int checkperm)</code></p>
 <p>根据<code>envid</code>找到对应的<code>env</code></p>
@@ -345,22 +397,91 @@
 <hr>
 <h3 id="env-create"><a href="#env-create" class="headerlink" title="env_create"></a><code>env_create</code></h3><p>返回值：<code>void</code></p>
 <p>创建进程。以默认优先级申请一个<code>env</code>，实际上是调用<code>env_create_priority</code>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">env_create(u_char *binary, <span class="keyword">int</span> <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">     <span class="comment">/* Step 1: Use env_create_priority to alloc a new env with priority 1 */</span></span><br><span class="line">	env_create_priority(binary, <span class="built_in">size</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void
+env_create(u_char *binary, int size)
+{
+     /* Step 1: Use env_create_priority to alloc a new env with priority 1 */
+    env_create_priority(binary, size, 1);
+}
+</code></pre>
 <hr>
 <h3 id="env-create-priority"><a href="#env-create-priority" class="headerlink" title="env_create_priority"></a><code>env_create_priority</code></h3><p>返回值：<code>void</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">env_create_priority(u_char *binary, <span class="keyword">int</span> <span class="built_in">size</span>, <span class="keyword">int</span> priority)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span>;</span></span><br><span class="line">    <span class="comment">/* Step 1: Use env_alloc to alloc a new env. */</span></span><br><span class="line">	<span class="keyword">if</span> (env_alloc(&amp;e, <span class="number">0</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">/* Step 2: assign priority to the new env. */</span></span><br><span class="line">	e-&gt;env_pri = priority;</span><br><span class="line">    <span class="comment">/* Step 3: Use load_icode() to load the named elf binary,</span></span><br><span class="line"><span class="comment">       and insert it into env_sched_list using LIST_INSERT_HEAD. */</span></span><br><span class="line">	load_icode(e, binary, <span class="built_in">size</span>);</span><br><span class="line">	LIST_INSERT_HEAD(&amp;env_sched_list[<span class="number">0</span>], e, env_sched_link);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void
+env_create_priority(u_char *binary, int size, int priority)
+{
+    struct Env *e;
+    /* Step 1: Use env_alloc to alloc a new env. */
+    if (env_alloc(&amp;e, 0) != 0) {
+        return;
+    }
+    /* Step 2: assign priority to the new env. */
+    e-&gt;env_pri = priority;
+    /* Step 3: Use load_icode() to load the named elf binary,
+       and insert it into env_sched_list using LIST_INSERT_HEAD. */
+    load_icode(e, binary, size);
+    LIST_INSERT_HEAD(&amp;env_sched_list[0], e, env_sched_link);
+}
+</code></pre>
 <hr>
 <h3 id="ENV-CREATE-PRIORITY"><a href="#ENV-CREATE-PRIORITY" class="headerlink" title="ENV_CREATE_PRIORITY"></a><code>ENV_CREATE_PRIORITY</code></h3><p>将<code>env_create</code>封装起来的宏函数，作用是根据给定参数调用<code>env_create</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ENV_CREATE(x) \</span></span><br><span class="line">&#123; \</span><br><span class="line">    <span class="keyword">extern</span> u_char binary_#<span class="meta">#x##_start[];\</span></span><br><span class="line">    <span class="keyword">extern</span> u_int binary_#<span class="meta">#x##_size; \</span></span><br><span class="line">    env_create(binary_##x##_start, \</span><br><span class="line">        (u_int)binary_##x##_size); \</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define ENV_CREATE(x) \
+{ \
+    extern u_char binary_##x##_start[];\
+    extern u_int binary_##x##_size; \
+    env_create(binary_##x##_start, \
+        (u_int)binary_##x##_size); \
+}
+</code></pre>
 <p><code>##</code>是拼接符号，在lab3中我们在<code>init.c</code>中以<code>user_A</code>和<code>user_B</code>为参数分别启动两个进程，可以在<code>/init/code_a.c</code>和<code>/init/code_b.c</code>中查看进程的具体配置</p>
 <hr>
 <h3 id="ENV-CREATE-PRIORITY-1"><a href="#ENV-CREATE-PRIORITY-1" class="headerlink" title="ENV_CREATE_PRIORITY"></a><code>ENV_CREATE_PRIORITY</code></h3><p>将<code>env_create_priority</code>封装起来的宏函数，作用是根据给定参数调用<code>env_create_priority</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ENV_CREATE_PRIORITY(x, y) \</span></span><br><span class="line">&#123;\</span><br><span class="line">        <span class="keyword">extern</span> u_char binary_#<span class="meta">#x##_start[]; \</span></span><br><span class="line">        <span class="keyword">extern</span> u_int binary_#<span class="meta">#x##_size;\</span></span><br><span class="line">        env_create_priority(binary_##x##_start, \</span><br><span class="line">                (u_int)binary_##x##_size, y);\</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define ENV_CREATE_PRIORITY(x, y) \
+{\
+        extern u_char binary_##x##_start[]; \
+        extern u_int binary_##x##_size;\
+        env_create_priority(binary_##x##_start, \
+                (u_int)binary_##x##_size, y);\
+}
+</code></pre>
 <hr>
 <h3 id="load-icode"><a href="#load-icode" class="headerlink" title="load_icode"></a><code>load_icode</code></h3><p>返回值：<code>void</code></p>
 <p>特殊类型：<code>static</code></p>
 <p>load image code 加载镜像代码。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span></span><br><span class="line">load_icode(struct Env *e, u_char *binary, u_int <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Hint:</span></span><br><span class="line"><span class="comment">     *  You must figure out which permissions you'll need</span></span><br><span class="line"><span class="comment">     *  for the different mappings you create.</span></span><br><span class="line"><span class="comment">     *  Remember that the binary image is an a.out format image,</span></span><br><span class="line"><span class="comment">     *  which contains both text and data.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">p</span> = <span class="title">NULL</span>;</span></span><br><span class="line">    u_long entry_point;</span><br><span class="line">    u_long r;</span><br><span class="line">    u_long perm;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 1: alloc a page. */</span></span><br><span class="line">	perm = PTE_R;</span><br><span class="line">	<span class="keyword">if</span> ((r = page_alloc(&amp;p)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">/* Step 2: Use appropriate perm to set initial stack for new Env. */</span></span><br><span class="line">    <span class="comment">/* Hint: Should the user-stack be writable? */</span></span><br><span class="line">	<span class="keyword">if</span> ((r = page_insert(e-&gt;env_pgdir, p, USTACKTOP - BY2PG, perm)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ((r = load_elf(binary, <span class="built_in">size</span>, &amp;entry_point, e, load_icode_mapper)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: load the binary using elf loader. */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 4: Set CPU's PC register as appropriate value. */</span></span><br><span class="line">    e-&gt;env_tf.pc = entry_point;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">static void
+load_icode(struct Env *e, u_char *binary, u_int size)
+{
+    /* Hint:
+     *  You must figure out which permissions you&#39;ll need
+     *  for the different mappings you create.
+     *  Remember that the binary image is an a.out format image,
+     *  which contains both text and data.
+     */
+    struct Page *p = NULL;
+    u_long entry_point;
+    u_long r;
+    u_long perm;
+
+    /* Step 1: alloc a page. */
+    perm = PTE_R;
+    if ((r = page_alloc(&amp;p)) != 0) {
+        return;
+    }
+    /* Step 2: Use appropriate perm to set initial stack for new Env. */
+    /* Hint: Should the user-stack be writable? */
+    if ((r = page_insert(e-&gt;env_pgdir, p, USTACKTOP - BY2PG, perm)) != 0) {
+        return;
+    }
+    if ((r = load_elf(binary, size, &amp;entry_point, e, load_icode_mapper)) != 0) {
+        return;
+    }
+
+    /* Step 3: load the binary using elf loader. */
+
+
+    /* Step 4: Set CPU&#39;s PC register as appropriate value. */
+    e-&gt;env_tf.pc = entry_point;
+}
+</code></pre>
 <hr>
 <h3 id="load-icode-mapper"><a href="#load-icode-mapper" class="headerlink" title="load_icode_mapper"></a><code>load_icode_mapper</code></h3><p>返回值：<code>int</code></p>
 <p>特殊类型：<code>static</code></p>
@@ -370,11 +491,65 @@
 <hr>
 <h3 id="is-elf-format"><a href="#is-elf-format" class="headerlink" title="is_elf_format"></a><code>is_elf_format</code></h3><p>返回值：<code>int</code>，当判定符合elf格式时返回1，否则返回0</p>
 <p>位置：<code>lib/kernel_elfloader.c</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_elf_format</span><span class="params">(u_char *binary)</span> </span>&#123;</span><br><span class="line">    Elf32_Ehdr *ehdr = (Elf32_Ehdr *) binary;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ehdr-&gt;e_ident[<span class="number">0</span>] == EI_MAG0 &amp;&amp;</span><br><span class="line">        ehdr-&gt;e_ident[<span class="number">1</span>] == EI_MAG1 &amp;&amp;</span><br><span class="line">        ehdr-&gt;e_ident[<span class="number">2</span>] == EI_MAG2 &amp;&amp;</span><br><span class="line">        ehdr-&gt;e_ident[<span class="number">3</span>] == EI_MAG3) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">int is_elf_format(u_char *binary) {
+    Elf32_Ehdr *ehdr = (Elf32_Ehdr *) binary;
+
+    if (ehdr-&gt;e_ident[0] == EI_MAG0 &amp;&amp;
+        ehdr-&gt;e_ident[1] == EI_MAG1 &amp;&amp;
+        ehdr-&gt;e_ident[2] == EI_MAG2 &amp;&amp;
+        ehdr-&gt;e_ident[3] == EI_MAG3) {
+        return 0;
+    }
+
+    return 1;
+}
+</code></pre>
 <hr>
 <h3 id="load-elf"><a href="#load-elf" class="headerlink" title="load_elf"></a><code>load_elf</code></h3><p>返回值：<code>int</code></p>
 <p>位置：<code>lib/kernenl_elfloader.c</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">load_elf</span><span class="params">(u_char *binary, <span class="keyword">int</span> <span class="built_in">size</span>, u_long *entry_point, <span class="keyword">void</span> *user_data,</span></span></span><br><span class="line"><span class="function"><span class="params">			 <span class="keyword">int</span> (*<span class="built_in">map</span>)(u_long va, <span class="keyword">u_int32_t</span> sgsize,</span></span></span><br><span class="line"><span class="function"><span class="params">						u_char *bin, <span class="keyword">u_int32_t</span> bin_size, <span class="keyword">void</span> *user_data))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Elf32_Ehdr *ehdr = (Elf32_Ehdr *)binary;</span><br><span class="line">	Elf32_Phdr *phdr = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="comment">/* As a loader, we just care about segment,</span></span><br><span class="line"><span class="comment">         * so we just parse program headers.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">	u_char *ptr_ph_table = <span class="literal">NULL</span>;</span><br><span class="line">        Elf32_Half ph_entry_count;</span><br><span class="line">        Elf32_Half ph_entry_size;</span><br><span class="line">        <span class="keyword">int</span> r;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// check whether `binary` is a ELF file.</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">size</span> &lt; <span class="number">4</span> || !is_elf_format(binary)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ptr_ph_table = binary + ehdr-&gt;e_phoff;</span><br><span class="line">        ph_entry_count = ehdr-&gt;e_phnum;</span><br><span class="line">        ph_entry_size = ehdr-&gt;e_phentsize;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (ph_entry_count--) &#123;</span><br><span class="line">                phdr = (Elf32_Phdr *)ptr_ph_table;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (phdr-&gt;p_type == PT_LOAD) &#123;</span><br><span class="line">	<span class="comment">/* Your task here!  */</span></span><br><span class="line">        <span class="comment">/* Real map all section at correct virtual address.Return &lt; 0 if error. */</span></span><br><span class="line">        <span class="comment">/* Hint: Call the callback function you have achieved before. */</span></span><br><span class="line">					r = <span class="built_in">map</span>(phdr-&gt;p_vaddr, phdr-&gt;p_memsz,  binary + phdr-&gt;p_offset, phdr-&gt;p_filesz, user_data);</span><br><span class="line">					<span class="keyword">if</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">						<span class="keyword">return</span> r;</span><br><span class="line">					&#125;	</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ptr_ph_table += ph_entry_size;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        *entry_point = ehdr-&gt;e_entry;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">int load_elf(u_char *binary, int size, u_long *entry_point, void *user_data,
+             int (*map)(u_long va, u_int32_t sgsize,
+                        u_char *bin, u_int32_t bin_size, void *user_data))
+{
+    Elf32_Ehdr *ehdr = (Elf32_Ehdr *)binary;
+    Elf32_Phdr *phdr = NULL;
+    /* As a loader, we just care about segment,
+         * so we just parse program headers.
+         */
+    u_char *ptr_ph_table = NULL;
+        Elf32_Half ph_entry_count;
+        Elf32_Half ph_entry_size;
+        int r;
+
+    // check whether `binary` is a ELF file.
+    if (size &lt; 4 || !is_elf_format(binary)) {
+                return -1;
+        }
+
+        ptr_ph_table = binary + ehdr-&gt;e_phoff;
+        ph_entry_count = ehdr-&gt;e_phnum;
+        ph_entry_size = ehdr-&gt;e_phentsize;
+
+        while (ph_entry_count--) {
+                phdr = (Elf32_Phdr *)ptr_ph_table;
+
+                if (phdr-&gt;p_type == PT_LOAD) {
+    /* Your task here!  */
+        /* Real map all section at correct virtual address.Return &lt; 0 if error. */
+        /* Hint: Call the callback function you have achieved before. */
+                    r = map(phdr-&gt;p_vaddr, phdr-&gt;p_memsz,  binary + phdr-&gt;p_offset, phdr-&gt;p_filesz, user_data);
+                    if (r != 0) {
+                        return r;
+                    }    
+                }
+
+                ptr_ph_table += ph_entry_size;
+        }
+
+        *entry_point = ehdr-&gt;e_entry;
+        return 0;
+}
+</code></pre>
 <hr>
 <h3 id="kclock-init"><a href="#kclock-init" class="headerlink" title="kclock_init"></a><code>kclock_init</code></h3><p>位置：<code>lib/kclock.c</code></p>
 <p>初始化时钟，主要调用<code>set_timer</code></p>
@@ -382,64 +557,539 @@
 <h3 id="SAVE-ALL"><a href="#SAVE-ALL" class="headerlink" title="SAVE_ALL"></a><code>SAVE_ALL</code></h3><p>位置：<code>include/stackframe.h</code></p>
 <hr>
 <h3 id="lcontext"><a href="#lcontext" class="headerlink" title="lcontext"></a><code>lcontext</code></h3><p>汇编函数，更换地址空间，在进程切换时用到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LEAF(lcontext)</span><br><span class="line">		.extern	mCONTEXT</span><br><span class="line">		sw		a0,mCONTEXT</span><br><span class="line">		jr	ra</span><br><span class="line">		nop</span><br><span class="line">END(lcontext)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">LEAF(lcontext)
+        .extern    mCONTEXT
+        sw        a0,mCONTEXT
+        jr    ra
+        nop
+END(lcontext)
+</code></pre>
 <hr>
 <h3 id="env-pop-tf"><a href="#env-pop-tf" class="headerlink" title="env_pop_tf"></a><code>env_pop_tf</code></h3><p>位置：<code>lib/env_asm.S</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">env_pop_tf</span><span class="params">(struct Trapframe *tf, <span class="keyword">int</span> id)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">extern void env_pop_tf(struct Trapframe *tf, int id);
+</code></pre>
 <p>恢复现场，异常返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">LEAF(env_pop_tf)</span><br><span class="line">.set	mips1          </span><br><span class="line">		&#x2F;&#x2F;1:	j	1b</span><br><span class="line">	nop    </span><br><span class="line">		move		k0,a0 </span><br><span class="line">		mtc0	a1,CP0_ENTRYHI</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		mfc0	t0,CP0_STATUS                    </span><br><span class="line">		ori	t0,0x3                          </span><br><span class="line">		xori	t0,0x3                          </span><br><span class="line">		mtc0	t0,CP0_STATUS                    </span><br><span class="line">				 </span><br><span class="line">		lw	v1,TF_LO(k0)                                       </span><br><span class="line">		mtlo	v1                               </span><br><span class="line">		lw	v0,TF_HI(k0)                     </span><br><span class="line">		lw	v1,TF_EPC(k0)                    </span><br><span class="line">		mthi	v0                               </span><br><span class="line">		mtc0	v1,CP0_EPC                       </span><br><span class="line">		lw	$31,TF_REG31(k0)                 </span><br><span class="line">		lw	$30,TF_REG30(k0)     </span><br><span class="line">		lw	$29,TF_REG29(k0)            </span><br><span class="line">		lw	$28,TF_REG28(k0)                 </span><br><span class="line">		lw	$25,TF_REG25(k0)                 </span><br><span class="line">		lw	$24,TF_REG24(k0)                 </span><br><span class="line">		lw	$23,TF_REG23(k0)                 </span><br><span class="line">		lw	$22,TF_REG22(k0)                 </span><br><span class="line">		lw	$21,TF_REG21(k0)                 </span><br><span class="line">		lw	$20,TF_REG20(k0)                 </span><br><span class="line">		lw	$19,TF_REG19(k0)                 </span><br><span class="line">		lw	$18,TF_REG18(k0)                 </span><br><span class="line">		lw	$17,TF_REG17(k0)                 </span><br><span class="line">		lw	$16,TF_REG16(k0)                 </span><br><span class="line">		lw	$15,TF_REG15(k0)                 </span><br><span class="line">		lw	$14,TF_REG14(k0)                 </span><br><span class="line">		lw	$13,TF_REG13(k0)                 </span><br><span class="line">		lw	$12,TF_REG12(k0)                 </span><br><span class="line">		lw	$11,TF_REG11(k0)                 </span><br><span class="line">		lw	$10,TF_REG10(k0)                 </span><br><span class="line">		lw	$9,TF_REG9(k0)                   </span><br><span class="line">		lw	$8,TF_REG8(k0)                   </span><br><span class="line">		lw	$7,TF_REG7(k0)                   </span><br><span class="line">		lw	$6,TF_REG6(k0)                   </span><br><span class="line">		lw	$5,TF_REG5(k0)                   </span><br><span class="line">		lw	$4,TF_REG4(k0)                   </span><br><span class="line">		lw	$3,TF_REG3(k0)                   </span><br><span class="line">		lw	$2,TF_REG2(k0)                   </span><br><span class="line">		lw	$1,TF_REG1(k0)</span><br><span class="line"></span><br><span class="line">		lw	k1,TF_PC(k0)</span><br><span class="line"></span><br><span class="line">		lw	k0,TF_STATUS(k0)                 </span><br><span class="line">		nop					 </span><br><span class="line">		mtc0	k0,CP0_STATUS</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		j	k1</span><br><span class="line">		rfe # 这里也可以看到进程被调度运行之前一定会执行rfe指令</span><br><span class="line">		nop</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">END(env_pop_tf)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">LEAF(env_pop_tf)
+.set    mips1          
+        //1:    j    1b
+    nop    
+        move        k0,a0 
+        mtc0    a1,CP0_ENTRYHI
+
+
+        mfc0    t0,CP0_STATUS                    
+        ori    t0,0x3                          
+        xori    t0,0x3                          
+        mtc0    t0,CP0_STATUS                    
+
+        lw    v1,TF_LO(k0)                                       
+        mtlo    v1                               
+        lw    v0,TF_HI(k0)                     
+        lw    v1,TF_EPC(k0)                    
+        mthi    v0                               
+        mtc0    v1,CP0_EPC                       
+        lw    $31,TF_REG31(k0)                 
+        lw    $30,TF_REG30(k0)     
+        lw    $29,TF_REG29(k0)            
+        lw    $28,TF_REG28(k0)                 
+        lw    $25,TF_REG25(k0)                 
+        lw    $24,TF_REG24(k0)                 
+        lw    $23,TF_REG23(k0)                 
+        lw    $22,TF_REG22(k0)                 
+        lw    $21,TF_REG21(k0)                 
+        lw    $20,TF_REG20(k0)                 
+        lw    $19,TF_REG19(k0)                 
+        lw    $18,TF_REG18(k0)                 
+        lw    $17,TF_REG17(k0)                 
+        lw    $16,TF_REG16(k0)                 
+        lw    $15,TF_REG15(k0)                 
+        lw    $14,TF_REG14(k0)                 
+        lw    $13,TF_REG13(k0)                 
+        lw    $12,TF_REG12(k0)                 
+        lw    $11,TF_REG11(k0)                 
+        lw    $10,TF_REG10(k0)                 
+        lw    $9,TF_REG9(k0)                   
+        lw    $8,TF_REG8(k0)                   
+        lw    $7,TF_REG7(k0)                   
+        lw    $6,TF_REG6(k0)                   
+        lw    $5,TF_REG5(k0)                   
+        lw    $4,TF_REG4(k0)                   
+        lw    $3,TF_REG3(k0)                   
+        lw    $2,TF_REG2(k0)                   
+        lw    $1,TF_REG1(k0)
+
+        lw    k1,TF_PC(k0)
+
+        lw    k0,TF_STATUS(k0)                 
+        nop                     
+        mtc0    k0,CP0_STATUS
+
+
+
+        j    k1
+        rfe # 这里也可以看到进程被调度运行之前一定会执行rfe指令
+        nop
+
+
+END(env_pop_tf)
+</code></pre>
 <hr>
 <h3 id="GET-ENV-ASID"><a href="#GET-ENV-ASID" class="headerlink" title="GET_ENV_ASID"></a><code>GET_ENV_ASID</code></h3><p>对给定的<code>envid</code>，解析<code>ASID</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GET_ENV_ASID(envid) (((envid)&gt;&gt; 11)&lt;&lt;6)</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">#define GET_ENV_ASID(envid) (((envid)&gt;&gt; 11)&lt;&lt;6)
+</code></pre>
 <hr>
 <h3 id="env-run"><a href="#env-run" class="headerlink" title="env_run"></a><code>env_run</code></h3><p>位置：<code>lib/env.c</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">env_run(struct Env *e)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Step 1: save register state of curenv. */</span></span><br><span class="line">    <span class="comment">/* Hint: if there is an environment running, </span></span><br><span class="line"><span class="comment">     *   you should switch the context and save the registers. </span></span><br><span class="line"><span class="comment">     *   You can imitate env_destroy() 's behaviors.*/</span></span><br><span class="line">	<span class="keyword">if</span> (curenv) &#123;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> *<span class="title">old</span> = (<span class="title">struct</span> <span class="title">Trapframe</span> *)(<span class="title">TIMESTACK</span> - <span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">Trapframe</span>));</span></span><br><span class="line">		bcopy(old, &amp;(curenv-&gt;env_tf), <span class="keyword">sizeof</span>(struct Trapframe));</span><br><span class="line">		curenv-&gt;env_tf.pc = curenv-&gt;env_tf.cp0_epc;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Set 'curenv' to the new environment. */</span></span><br><span class="line">	curenv = e;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: Use lcontext() to switch to its address space. */</span></span><br><span class="line">	lcontext(curenv-&gt;env_pgdir);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 4: Use env_pop_tf() to restore the environment's</span></span><br><span class="line"><span class="comment">     *   environment   registers and return to user mode.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * Hint: You should use GET_ENV_ASID there. Think why?</span></span><br><span class="line"><span class="comment">     *   (read &lt;see mips run linux&gt;, page 135-144)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	env_pop_tf(&amp;(curenv-&gt;env_tf), GET_ENV_ASID(curenv-&gt;env_id));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void
+env_run(struct Env *e)
+{
+    /* Step 1: save register state of curenv. */
+    /* Hint: if there is an environment running, 
+     *   you should switch the context and save the registers. 
+     *   You can imitate env_destroy() &#39;s behaviors.*/
+    if (curenv) {
+        struct Trapframe *old = (struct Trapframe *)(TIMESTACK - sizeof(struct Trapframe));
+        bcopy(old, &amp;(curenv-&gt;env_tf), sizeof(struct Trapframe));
+        curenv-&gt;env_tf.pc = curenv-&gt;env_tf.cp0_epc;
+    }
+
+    /* Step 2: Set &#39;curenv&#39; to the new environment. */
+    curenv = e;
+
+    /* Step 3: Use lcontext() to switch to its address space. */
+    lcontext(curenv-&gt;env_pgdir);
+
+    /* Step 4: Use env_pop_tf() to restore the environment&#39;s
+     *   environment   registers and return to user mode.
+     *
+     * Hint: You should use GET_ENV_ASID there. Think why?
+     *   (read &lt;see mips run linux&gt;, page 135-144)
+     */
+    env_pop_tf(&amp;(curenv-&gt;env_tf), GET_ENV_ASID(curenv-&gt;env_id));
+}
+</code></pre>
 <hr>
-<h3 id="env-destroy"><a href="#env-destroy" class="headerlink" title="env_destroy"></a><code>env_destroy</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">env_destroy(struct Env *e)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Hint: free e. */</span></span><br><span class="line">    env_free(e);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Hint: schedule to run a new environment. */</span></span><br><span class="line">    <span class="keyword">if</span> (curenv == e) &#123;</span><br><span class="line">        curenv = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">/* Hint: Why this? */</span></span><br><span class="line">        bcopy((<span class="keyword">void</span> *)KERNEL_SP - <span class="keyword">sizeof</span>(struct Trapframe),</span><br><span class="line">              (<span class="keyword">void</span> *)TIMESTACK - <span class="keyword">sizeof</span>(struct Trapframe),</span><br><span class="line">              <span class="keyword">sizeof</span>(struct Trapframe));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"i am killed ... \n"</span>);</span><br><span class="line">        sched_yield();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="env-destroy"><a href="#env-destroy" class="headerlink" title="env_destroy"></a><code>env_destroy</code></h3><pre><code class="lang-C">void
+env_destroy(struct Env *e)
+{
+    /* Hint: free e. */
+    env_free(e);
+
+    /* Hint: schedule to run a new environment. */
+    if (curenv == e) {
+        curenv = NULL;
+        /* Hint: Why this? */
+        bcopy((void *)KERNEL_SP - sizeof(struct Trapframe),
+              (void *)TIMESTACK - sizeof(struct Trapframe),
+              sizeof(struct Trapframe));
+        printf(&quot;i am killed ... \n&quot;);
+        sched_yield();
+    }
+}
+</code></pre>
 <hr>
 <h3 id="set-except-vector"><a href="#set-except-vector" class="headerlink" title="set_except_vector"></a><code>set_except_vector</code></h3><p>返回值：<code>void *</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">set_except_vector</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">void</span> *addr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> handler = (<span class="keyword">unsigned</span> <span class="keyword">long</span>) addr;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> old_handler = exception_handlers[n];</span><br><span class="line">    exception_handlers[n] = handler;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">void</span> *) old_handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void *set_except_vector(int n, void *addr) {
+    unsigned long handler = (unsigned long) addr;
+    unsigned long old_handler = exception_handlers[n];
+    exception_handlers[n] = handler;
+    return (void *) old_handler;
+}
+</code></pre>
 <p>设置异常向量组偏移为<code>n</code>的内容为<code>addr</code>指向的函数；若偏移量为<code>n</code>的地方原来有数，则将其以<code>void *</code>形式返回。</p>
 <p>这里我们可以将代码和寄存器结构对应上：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set_except_vector(<span class="number">0</span>, handle_int);</span><br><span class="line">set_except_vector(<span class="number">1</span>, handle_mod);</span><br><span class="line">set_except_vector(<span class="number">2</span>, handle_tlb);</span><br><span class="line">set_except_vector(<span class="number">3</span>, handle_tlb);</span><br><span class="line">set_except_vector(<span class="number">8</span>, handle_sys);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">set_except_vector(0, handle_int);
+set_except_vector(1, handle_mod);
+set_except_vector(2, handle_tlb);
+set_except_vector(3, handle_tlb);
+set_except_vector(8, handle_sys);
+</code></pre>
 <p><img src="2022-04-26-「BUAA-OS-Lab3」名词解释.assets/image-20220509184223967.png" alt="image-20220509184223967"></p>
 <p><img src="2022-04-26-「BUAA-OS-Lab3」名词解释.assets/image-20220509184233622.png" alt="image-20220509184233622"></p>
 <p>由此进一步软硬件互相印证。</p>
 <hr>
 <h3 id="handle-int"><a href="#handle-int" class="headerlink" title="handle_int"></a><code>handle_int</code></h3><p>0号异常的处理函数，表示中断，由时钟中断、控制台中断等中断造成。</p>
 <p>位置：<code>lib/genex.S</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_int, TF_SIZE, sp)</span><br><span class="line">&#x2F;&#x2F;.set	noat</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;1: j 1b</span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">SAVE_ALL</span><br><span class="line">CLI</span><br><span class="line">.set	at</span><br><span class="line">mfc0	t0, CP0_CAUSE</span><br><span class="line">mfc0	t2, CP0_STATUS</span><br><span class="line">and	t0, t2</span><br><span class="line"></span><br><span class="line">andi	t1, t0, STATUSF_IP4</span><br><span class="line">bnez	t1, timer_irq</span><br><span class="line">nop</span><br><span class="line">END(handle_int)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">NESTED(handle_int, TF_SIZE, sp)
+//.set    noat
+
+//1: j 1b
+nop
+
+SAVE_ALL
+CLI
+.set    at
+mfc0    t0, CP0_CAUSE
+mfc0    t2, CP0_STATUS
+and    t0, t2
+
+andi    t1, t0, STATUSF_IP4
+bnez    t1, timer_irq
+nop
+END(handle_int)
+</code></pre>
 <h3 id="handle-mod"><a href="#handle-mod" class="headerlink" title="handle_mod"></a><code>handle_mod</code></h3><p>1号异常的处理函数</p>
 <p>位置：<code>lib/genex.S</code>和<code>lib/traps.c</code></p>
 <p>通过<code>genex.S</code>中的汇编宏函数和<code>traps.c</code>中的代码实现来组合完成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.macro	BUILD_HANDLER exception handler clear</span><br><span class="line">	.align	5</span><br><span class="line">	NESTED(handle_\exception, TF_SIZE, sp)  </span><br><span class="line">	&#x2F;&#x2F;.set	noat</span><br><span class="line"></span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">	SAVE_ALL				</span><br><span class="line">	__build_clear_\clear</span><br><span class="line">	.set	at</span><br><span class="line">	move	a0, sp</span><br><span class="line">	jal	\handler</span><br><span class="line">	nop</span><br><span class="line">	j	ret_from_exception</span><br><span class="line">	nop</span><br><span class="line">	END(handle_\exception)</span><br><span class="line">.endm</span><br><span class="line">BUILD_HANDLER mod	page_fault_handler cli</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void page_fault_handler(struct Trapframe *tf)</span><br><span class="line">&#123;</span><br><span class="line">    struct Trapframe PgTrapFrame;</span><br><span class="line">    extern struct Env *curenv;</span><br><span class="line"></span><br><span class="line">    bcopy(tf, &amp;PgTrapFrame, sizeof(struct Trapframe));</span><br><span class="line"></span><br><span class="line">    if (tf-&gt;regs[29] &gt;&#x3D; (curenv-&gt;env_xstacktop - BY2PG) &amp;&amp;</span><br><span class="line">        tf-&gt;regs[29] &lt;&#x3D; (curenv-&gt;env_xstacktop - 1))</span><br><span class="line">    &#123;</span><br><span class="line">        tf-&gt;regs[29] &#x3D; tf-&gt;regs[29] - sizeof(struct Trapframe);</span><br><span class="line">        bcopy(&amp;PgTrapFrame, (void *)tf-&gt;regs[29], sizeof(struct Trapframe));</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        tf-&gt;regs[29] &#x3D; curenv-&gt;env_xstacktop - sizeof(struct Trapframe);</span><br><span class="line">        bcopy(&amp;PgTrapFrame, (void *)curenv-&gt;env_xstacktop - sizeof(struct Trapframe), sizeof(struct Trapframe));</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; TODO: Set EPC to a proper value in the trapframe</span><br><span class="line">    tf-&gt;cp0_epc &#x3D; curenv-&gt;env_pgfault_handler;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="handle-tlb"><a href="#handle-tlb" class="headerlink" title="handle_tlb"></a><code>handle_tlb</code></h3><p>位置：<code>lib/genex.S</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.macro	BUILD_HANDLER exception handler clear</span><br><span class="line">	.align	5</span><br><span class="line">	NESTED(handle_\exception, TF_SIZE, sp)  </span><br><span class="line">	&#x2F;&#x2F;.set	noat</span><br><span class="line"></span><br><span class="line">nop</span><br><span class="line"></span><br><span class="line">	SAVE_ALL				</span><br><span class="line">	__build_clear_\clear</span><br><span class="line">	.set	at</span><br><span class="line">	move	a0, sp</span><br><span class="line">	jal	\handler</span><br><span class="line">	nop</span><br><span class="line">	j	ret_from_exception</span><br><span class="line">	nop</span><br><span class="line">	END(handle_\exception)</span><br><span class="line">.endm</span><br><span class="line">BUILD_HANDLER tlb	do_refill	cli</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">NESTED(do_refill,0 , sp)</span><br><span class="line">			&#x2F;&#x2F;li	k1, &#39;?&#39;</span><br><span class="line">			&#x2F;&#x2F;sb	k1, 0x90000000</span><br><span class="line">			.extern	mCONTEXT</span><br><span class="line">&#x2F;&#x2F;this &quot;1&quot; is important</span><br><span class="line">1:			&#x2F;&#x2F;j 1b</span><br><span class="line">			nop</span><br><span class="line">			lw		k1,mCONTEXT</span><br><span class="line">			and		k1,0xfffff000</span><br><span class="line">				mfc0		k0,CP0_BADVADDR</span><br><span class="line">				srl		k0,20</span><br><span class="line">				and		k0,0xfffffffc</span><br><span class="line">			addu		k0,k1</span><br><span class="line">			</span><br><span class="line">			lw		k1,0(k0)</span><br><span class="line">			nop</span><br><span class="line">					move		t0,k1</span><br><span class="line">					and		t0,0x0200</span><br><span class="line">					beqz		t0,NOPAGE</span><br><span class="line">			nop</span><br><span class="line">			and		k1,0xfffff000</span><br><span class="line">				mfc0		k0,CP0_BADVADDR</span><br><span class="line">				srl		k0,10</span><br><span class="line">				and		k0,0xfffffffc</span><br><span class="line">				and		k0,0x00000fff</span><br><span class="line">			addu		k0,k1</span><br><span class="line"></span><br><span class="line">			or		k0,0x80000000</span><br><span class="line">			lw		k1,0(k0)</span><br><span class="line">			nop</span><br><span class="line">					move		t0,k1</span><br><span class="line">					and		t0,0x0200</span><br><span class="line">					beqz		t0,NOPAGE</span><br><span class="line">			nop</span><br><span class="line">			move		k0,k1</span><br><span class="line">			and		k0,0x1</span><br><span class="line">			beqz		k0,NoCOW</span><br><span class="line">			nop</span><br><span class="line">			and		k1,0xfffffbff</span><br><span class="line">NoCOW:</span><br><span class="line">			mtc0		k1,CP0_ENTRYLO0</span><br><span class="line">			nop</span><br><span class="line">			tlbwr</span><br><span class="line"></span><br><span class="line">			j		2f</span><br><span class="line">			nop</span><br><span class="line">NOPAGE:</span><br><span class="line">&#x2F;&#x2F;3: j 3b</span><br><span class="line">nop</span><br><span class="line">			mfc0		a0,CP0_BADVADDR</span><br><span class="line">			lw		a1,mCONTEXT</span><br><span class="line">			nop</span><br><span class="line">				</span><br><span class="line">			sw	 	ra,tlbra</span><br><span class="line">			jal		pageout</span><br><span class="line">			nop</span><br><span class="line">&#x2F;&#x2F;3: j 3b</span><br><span class="line">nop</span><br><span class="line">			lw		ra,tlbra</span><br><span class="line">			nop</span><br><span class="line"></span><br><span class="line">			j	1b</span><br><span class="line">2:			nop</span><br><span class="line"></span><br><span class="line">			jr		ra</span><br><span class="line">			nop</span><br><span class="line">END(do_refill)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">.macro    BUILD_HANDLER exception handler clear
+    .align    5
+    NESTED(handle_\exception, TF_SIZE, sp)  
+    //.set    noat
+
+nop
+
+    SAVE_ALL                
+    __build_clear_\clear
+    .set    at
+    move    a0, sp
+    jal    \handler
+    nop
+    j    ret_from_exception
+    nop
+    END(handle_\exception)
+.endm
+BUILD_HANDLER mod    page_fault_handler cli
+</code></pre>
+<pre><code>void page_fault_handler(struct Trapframe *tf)
+{
+    struct Trapframe PgTrapFrame;
+    extern struct Env *curenv;
+
+    bcopy(tf, &amp;PgTrapFrame, sizeof(struct Trapframe));
+
+    if (tf-&gt;regs[29] &gt;= (curenv-&gt;env_xstacktop - BY2PG) &amp;&amp;
+        tf-&gt;regs[29] &lt;= (curenv-&gt;env_xstacktop - 1))
+    {
+        tf-&gt;regs[29] = tf-&gt;regs[29] - sizeof(struct Trapframe);
+        bcopy(&amp;PgTrapFrame, (void *)tf-&gt;regs[29], sizeof(struct Trapframe));
+    }
+    else
+    {
+        tf-&gt;regs[29] = curenv-&gt;env_xstacktop - sizeof(struct Trapframe);
+        bcopy(&amp;PgTrapFrame, (void *)curenv-&gt;env_xstacktop - sizeof(struct Trapframe), sizeof(struct Trapframe));
+    }
+    // TODO: Set EPC to a proper value in the trapframe
+    tf-&gt;cp0_epc = curenv-&gt;env_pgfault_handler;
+    return;
+}
+</code></pre><h3 id="handle-tlb"><a href="#handle-tlb" class="headerlink" title="handle_tlb"></a><code>handle_tlb</code></h3><p>位置：<code>lib/genex.S</code></p>
+<pre><code class="lang-assembly">.macro    BUILD_HANDLER exception handler clear
+    .align    5
+    NESTED(handle_\exception, TF_SIZE, sp)  
+    //.set    noat
+
+nop
+
+    SAVE_ALL                
+    __build_clear_\clear
+    .set    at
+    move    a0, sp
+    jal    \handler
+    nop
+    j    ret_from_exception
+    nop
+    END(handle_\exception)
+.endm
+BUILD_HANDLER tlb    do_refill    cli
+</code></pre>
+<pre><code class="lang-assembly">NESTED(do_refill,0 , sp)
+            //li    k1, &#39;?&#39;
+            //sb    k1, 0x90000000
+            .extern    mCONTEXT
+//this &quot;1&quot; is important
+1:            //j 1b
+            nop
+            lw        k1,mCONTEXT
+            and        k1,0xfffff000
+                mfc0        k0,CP0_BADVADDR
+                srl        k0,20
+                and        k0,0xfffffffc
+            addu        k0,k1
+
+            lw        k1,0(k0)
+            nop
+                    move        t0,k1
+                    and        t0,0x0200
+                    beqz        t0,NOPAGE
+            nop
+            and        k1,0xfffff000
+                mfc0        k0,CP0_BADVADDR
+                srl        k0,10
+                and        k0,0xfffffffc
+                and        k0,0x00000fff
+            addu        k0,k1
+
+            or        k0,0x80000000
+            lw        k1,0(k0)
+            nop
+                    move        t0,k1
+                    and        t0,0x0200
+                    beqz        t0,NOPAGE
+            nop
+            move        k0,k1
+            and        k0,0x1
+            beqz        k0,NoCOW
+            nop
+            and        k1,0xfffffbff
+NoCOW:
+            mtc0        k1,CP0_ENTRYLO0
+            nop
+            tlbwr
+
+            j        2f
+            nop
+NOPAGE:
+//3: j 3b
+nop
+            mfc0        a0,CP0_BADVADDR
+            lw        a1,mCONTEXT
+            nop
+
+            sw         ra,tlbra
+            jal        pageout
+            nop
+//3: j 3b
+nop
+            lw        ra,tlbra
+            nop
+
+            j    1b
+2:            nop
+
+            jr        ra
+            nop
+END(do_refill)
+</code></pre>
 <h3 id="handle-sys"><a href="#handle-sys" class="headerlink" title="handle_sys"></a><code>handle_sys</code></h3><p>位置：<code>lib/syscall.S</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_sys,TF_SIZE, sp)</span><br><span class="line">    SAVE_ALL                            &#x2F;&#x2F; Macro used to save trapframe</span><br><span class="line">    CLI                                 &#x2F;&#x2F; Clean Interrupt Mask</span><br><span class="line">    nop</span><br><span class="line">    .set at                             &#x2F;&#x2F; Resume use of $at</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.</span><br><span class="line">	</span><br><span class="line">	lw		t0, TF_EPC(sp)</span><br><span class="line">	addiu	t0, t0, 4</span><br><span class="line">	sw		t0, TF_EPC(sp)</span><br><span class="line">    &#x2F;&#x2F; TODO: Copy the syscall number into $a0.</span><br><span class="line">    </span><br><span class="line">	lw		a0, TF_REG4(sp)</span><br><span class="line"></span><br><span class="line">    addiu   a0, a0, -__SYSCALL_BASE     &#x2F;&#x2F; a0 &lt;- relative syscall number</span><br><span class="line">    sll     t0, a0, 2                   &#x2F;&#x2F; t0 &lt;- relative syscall number times 4</span><br><span class="line">    la      t1, sys_call_table          &#x2F;&#x2F; t1 &lt;- syscall table base</span><br><span class="line">    addu    t1, t1, t0                  &#x2F;&#x2F; t1 &lt;- table entry of specific syscall</span><br><span class="line">    lw      t2, 0(t1)                   &#x2F;&#x2F; t2 &lt;- function entry of specific syscall</span><br><span class="line"></span><br><span class="line">    lw      t0, TF_REG29(sp)            &#x2F;&#x2F; t0 &lt;- user stack pointer</span><br><span class="line">    lw      t3, 16(t0)                  &#x2F;&#x2F; t3 &lt;- the 5th argument of msyscall</span><br><span class="line">    lw      t4, 20(t0)                  &#x2F;&#x2F; t4 &lt;- the 6th argument of msyscall</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location</span><br><span class="line">    lw		a0, TF_REG4(sp)</span><br><span class="line">	lw		a1, TF_REG5(sp)</span><br><span class="line">	lw		a2, TF_REG6(sp)</span><br><span class="line">	lw		a3, TF_REG7(sp)</span><br><span class="line">	addiu	sp, sp, -24</span><br><span class="line">	sw		a0, 0(sp)</span><br><span class="line">	sw		a1, 4(sp)</span><br><span class="line">	sw		a2, 8(sp)</span><br><span class="line">	sw		a3, 12(sp)</span><br><span class="line">	sw		t3, 16(sp)</span><br><span class="line">	sw		t4, 20(sp)</span><br><span class="line">    </span><br><span class="line">    jalr    t2                          &#x2F;&#x2F; Invoke sys_* function</span><br><span class="line">    nop</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; TODO: Resume current kernel stack</span><br><span class="line">    addiu	sp, sp, 24</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sw      v0, TF_REG2(sp)             &#x2F;&#x2F; Store return value of function sys_* (in $v0) into trapframe</span><br><span class="line"></span><br><span class="line">    j       ret_from_exception          &#x2F;&#x2F; Return from exeception</span><br><span class="line">    nop</span><br><span class="line">END(handle_sys)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-S">NESTED(handle_sys,TF_SIZE, sp)
+    SAVE_ALL                            // Macro used to save trapframe
+    CLI                                 // Clean Interrupt Mask
+    nop
+    .set at                             // Resume use of $at
+
+    // TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.
+
+    lw        t0, TF_EPC(sp)
+    addiu    t0, t0, 4
+    sw        t0, TF_EPC(sp)
+    // TODO: Copy the syscall number into $a0.
+
+    lw        a0, TF_REG4(sp)
+
+    addiu   a0, a0, -__SYSCALL_BASE     // a0 &lt;- relative syscall number
+    sll     t0, a0, 2                   // t0 &lt;- relative syscall number times 4
+    la      t1, sys_call_table          // t1 &lt;- syscall table base
+    addu    t1, t1, t0                  // t1 &lt;- table entry of specific syscall
+    lw      t2, 0(t1)                   // t2 &lt;- function entry of specific syscall
+
+    lw      t0, TF_REG29(sp)            // t0 &lt;- user stack pointer
+    lw      t3, 16(t0)                  // t3 &lt;- the 5th argument of msyscall
+    lw      t4, 20(t0)                  // t4 &lt;- the 6th argument of msyscall
+
+    // TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location
+    lw        a0, TF_REG4(sp)
+    lw        a1, TF_REG5(sp)
+    lw        a2, TF_REG6(sp)
+    lw        a3, TF_REG7(sp)
+    addiu    sp, sp, -24
+    sw        a0, 0(sp)
+    sw        a1, 4(sp)
+    sw        a2, 8(sp)
+    sw        a3, 12(sp)
+    sw        t3, 16(sp)
+    sw        t4, 20(sp)
+
+    jalr    t2                          // Invoke sys_* function
+    nop
+
+    // TODO: Resume current kernel stack
+    addiu    sp, sp, 24
+
+
+    sw      v0, TF_REG2(sp)             // Store return value of function sys_* (in $v0) into trapframe
+
+    j       ret_from_exception          // Return from exeception
+    nop
+END(handle_sys)
+</code></pre>
 <hr>
 <h3 id="kclock-init-1"><a href="#kclock-init-1" class="headerlink" title="kclock_init"></a><code>kclock_init</code></h3><p>位置：<code>lib/kclock.c</code></p>
 <p>kernel clock init，时钟初始化</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">kclock_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	set_timer();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void kclock_init(void)
+{
+    set_timer();
+}
+</code></pre>
 <hr>
 <h3 id="set-timer"><a href="#set-timer" class="headerlink" title="set_timer"></a><code>set_timer</code></h3><p>位置：<code>kclock_asm.S</code></p>
 <p>设置时钟</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LEAF(set_timer)</span><br><span class="line"></span><br><span class="line">	li t0, 0xc8</span><br><span class="line">	sb t0, 0xb5000100</span><br><span class="line">	sw	sp, KERNEL_SP</span><br><span class="line">setup_c0_status STATUS_CU0|0x1001 0</span><br><span class="line">	jr ra</span><br><span class="line"></span><br><span class="line">	nop</span><br><span class="line">END(set_timer)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">LEAF(set_timer)
+
+    li t0, 0xc8
+    sb t0, 0xb5000100
+    sw    sp, KERNEL_SP
+setup_c0_status STATUS_CU0|0x1001 0
+    jr ra
+
+    nop
+END(set_timer)
+</code></pre>
 <hr>
 <h3 id="timer-irq"><a href="#timer-irq" class="headerlink" title="timer_irq"></a><code>timer_irq</code></h3><p>timer InterRupt Request，时钟中断请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">timer_irq:</span><br><span class="line"></span><br><span class="line">1:	j	sched_yield</span><br><span class="line">	nop</span><br><span class="line">	&#x2F;*li t1, 0xff</span><br><span class="line">	lw    t0, delay</span><br><span class="line">	addu  t0, 1</span><br><span class="line">	sw	t0, delay</span><br><span class="line">	beq	t0,t1,1f	</span><br><span class="line">	nop*&#x2F;</span><br><span class="line">	j	ret_from_exception</span><br><span class="line">	nop</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">timer_irq:
+
+1:    j    sched_yield
+    nop
+    /*li t1, 0xff
+    lw    t0, delay
+    addu  t0, 1
+    sw    t0, delay
+    beq    t0,t1,1f    
+    nop*/
+    j    ret_from_exception
+    nop
+</code></pre>
 <p>跳转到<code>sched_yield</code></p>
 <hr>
 <h3 id="sched-yield"><a href="#sched-yield" class="headerlink" title="sched_yield"></a><code>sched_yield</code></h3><p>位置：<code>lib/sched.c</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sched_yield</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">0</span>; <span class="comment">// remaining time slices of current env</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> <span class="built_in">point</span> = <span class="number">0</span>; <span class="comment">// current env_sched_list index</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span> = <span class="title">NULL</span>;</span></span><br><span class="line">	<span class="comment">//printf("\ncurenv-&gt;env_id : %d\n", e-&gt;env_id);</span></span><br><span class="line">    <span class="comment">/*  hint:</span></span><br><span class="line"><span class="comment">     *  1. if (count==0), insert `e` into `env_sched_list[1-point]`</span></span><br><span class="line"><span class="comment">     *     using LIST_REMOVE and LIST_INSERT_TAIL.</span></span><br><span class="line"><span class="comment">     *  2. if (env_sched_list[point] is empty), point = 1 - point;</span></span><br><span class="line"><span class="comment">     *     then search through `env_sched_list[point]` for a runnable env `e`, </span></span><br><span class="line"><span class="comment">     *     and set count = e-&gt;env_pri</span></span><br><span class="line"><span class="comment">     *  3. count--</span></span><br><span class="line"><span class="comment">     *  4. env_run()</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *  functions or macros below may be used (not all):</span></span><br><span class="line"><span class="comment">     *  LIST_INSERT_TAIL, LIST_REMOVE, LIST_FIRST, LIST_EMPTY</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="keyword">if</span> (count == <span class="number">0</span> || e == <span class="literal">NULL</span> || e-&gt;env_status != ENV_RUNNABLE) &#123;</span><br><span class="line">         <span class="keyword">if</span> (e != <span class="literal">NULL</span>) &#123;</span><br><span class="line">             LIST_REMOVE(e, env_sched_link);</span><br><span class="line">             <span class="keyword">if</span> (e-&gt;env_status != ENV_FREE) &#123;</span><br><span class="line">                 LIST_INSERT_TAIL(&amp;env_sched_list[<span class="number">1</span> - <span class="built_in">point</span>], e, env_sched_link);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">             <span class="keyword">while</span>(LIST_EMPTY(&amp;env_sched_list[<span class="built_in">point</span>])) &#123;</span><br><span class="line">                 <span class="built_in">point</span> = <span class="number">1</span> - <span class="built_in">point</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             e = LIST_FIRST(&amp;env_sched_list[<span class="built_in">point</span>]);</span><br><span class="line">             <span class="keyword">if</span> (e-&gt;env_status == ENV_FREE) &#123;</span><br><span class="line">                 LIST_REMOVE(e, env_sched_link);</span><br><span class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e-&gt;env_status == ENV_NOT_RUNNABLE) &#123;</span><br><span class="line">                 LIST_REMOVE(e, env_sched_link);</span><br><span class="line">                 LIST_INSERT_TAIL(&amp;env_sched_list[<span class="number">1</span> - <span class="built_in">point</span>], e, env_sched_link);</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                 count = e-&gt;env_pri;</span><br><span class="line">                 <span class="keyword">break</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     count--;</span><br><span class="line">     e-&gt;env_runs++;</span><br><span class="line">	<span class="comment">// printf("\n%d\n",e-&gt;env_id);</span></span><br><span class="line">     env_run(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void sched_yield(void)
+{
+    static int count = 0; // remaining time slices of current env
+    static int point = 0; // current env_sched_list index
+    static struct Env *e = NULL;
+    //printf(&quot;\ncurenv-&gt;env_id : %d\n&quot;, e-&gt;env_id);
+    /*  hint:
+     *  1. if (count==0), insert `e` into `env_sched_list[1-point]`
+     *     using LIST_REMOVE and LIST_INSERT_TAIL.
+     *  2. if (env_sched_list[point] is empty), point = 1 - point;
+     *     then search through `env_sched_list[point]` for a runnable env `e`, 
+     *     and set count = e-&gt;env_pri
+     *  3. count--
+     *  4. env_run()
+     *
+     *  functions or macros below may be used (not all):
+     *  LIST_INSERT_TAIL, LIST_REMOVE, LIST_FIRST, LIST_EMPTY
+     */
+     if (count == 0 || e == NULL || e-&gt;env_status != ENV_RUNNABLE) {
+         if (e != NULL) {
+             LIST_REMOVE(e, env_sched_link);
+             if (e-&gt;env_status != ENV_FREE) {
+                 LIST_INSERT_TAIL(&amp;env_sched_list[1 - point], e, env_sched_link);
+             }
+         }
+         while (1) {
+             while(LIST_EMPTY(&amp;env_sched_list[point])) {
+                 point = 1 - point;
+             }
+             e = LIST_FIRST(&amp;env_sched_list[point]);
+             if (e-&gt;env_status == ENV_FREE) {
+                 LIST_REMOVE(e, env_sched_link);
+             } else if (e-&gt;env_status == ENV_NOT_RUNNABLE) {
+                 LIST_REMOVE(e, env_sched_link);
+                 LIST_INSERT_TAIL(&amp;env_sched_list[1 - point], e, env_sched_link);
+             } else {
+                 count = e-&gt;env_pri;
+                 break;
+             }
+         }
+     }
+     count--;
+     e-&gt;env_runs++;
+    // printf(&quot;\n%d\n&quot;,e-&gt;env_id);
+     env_run(e);
+}
+</code></pre>
 <hr>
 <h3 id="SAVE-ALL-1"><a href="#SAVE-ALL-1" class="headerlink" title="SAVE_ALL"></a><code>SAVE_ALL</code></h3><p>位置：<code>include/stackframe.h</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">.macro SAVE_ALL    </span><br><span class="line">		<span class="comment">/* 保存SR寄存器 */</span>                          </span><br><span class="line">		mfc0	k0,CP0_STATUS     </span><br><span class="line">		<span class="comment">/* sll 逻辑左移3位，使得CU0在最高位（符号位） */</span></span><br><span class="line">		sll		k0,<span class="number">3</span>      <span class="comment">/* extract cu0 bit */</span></span><br><span class="line">		<span class="comment">/* 判断如果CU0为1跳转到1处 */</span></span><br><span class="line">		<span class="comment">/* 1f即标签1，可以参考https://blog.csdn.net/lamdoc/article/details/8979243*/</span></span><br><span class="line">		bltz	k0,<span class="number">1f</span>                            </span><br><span class="line">		nop       </span><br><span class="line">		<span class="comment">/*                                       </span></span><br><span class="line"><span class="comment">		 * Called from user mode, new stack      </span></span><br><span class="line"><span class="comment">		 */</span>                                      </span><br><span class="line">		<span class="comment">//lui	k1,%hi(kernelsp)                 </span></span><br><span class="line">		<span class="comment">//lw	k1,%lo(kernelsp)(k1)  //not clear right now </span></span><br><span class="line">		           </span><br><span class="line"><span class="number">1</span>:		<span class="comment">/* 保存sp到k0 */</span>		</span><br><span class="line">		<span class="built_in">move</span>	k0,sp</span><br><span class="line">		<span class="comment">/* 调用宏get_sp */</span></span><br><span class="line">		get_sp      </span><br><span class="line">		<span class="built_in">move</span>	k1,sp                     </span><br><span class="line">		subu	sp,k1,TF_SIZE                    </span><br><span class="line">		sw	k0,TF_REG29(sp)                  </span><br><span class="line">		sw	$<span class="number">2</span>,TF_REG2(sp)                   </span><br><span class="line">		mfc0	v0,CP0_STATUS                    </span><br><span class="line">		sw	v0,TF_STATUS(sp)                 </span><br><span class="line">		mfc0	v0,CP0_CAUSE                     </span><br><span class="line">		sw	v0,TF_CAUSE(sp)                  </span><br><span class="line">		mfc0	v0,CP0_EPC                       </span><br><span class="line">		sw	v0,TF_EPC(sp)</span><br><span class="line">		mfc0	v0, CP0_BADVADDR        </span><br><span class="line">		sw	v0, TF_BADVADDR(sp)            </span><br><span class="line">		mfhi	v0                               </span><br><span class="line">		sw	v0,TF_HI(sp)                     </span><br><span class="line">		mflo	v0                               </span><br><span class="line">		sw	v0,TF_LO(sp)                     </span><br><span class="line">		sw	$<span class="number">0</span>,TF_REG0(sp)</span><br><span class="line">		sw	$<span class="number">1</span>,TF_REG1(sp)                    </span><br><span class="line">		<span class="comment">//sw	$2,TF_REG2(sp)                   </span></span><br><span class="line">		sw	$<span class="number">3</span>,TF_REG3(sp)                   </span><br><span class="line">		sw	$<span class="number">4</span>,TF_REG4(sp)                   </span><br><span class="line">		sw	$<span class="number">5</span>,TF_REG5(sp)                   </span><br><span class="line">		sw	$<span class="number">6</span>,TF_REG6(sp)                   </span><br><span class="line">		sw	$<span class="number">7</span>,TF_REG7(sp)                   </span><br><span class="line">		sw	$<span class="number">8</span>,TF_REG8(sp)                   </span><br><span class="line">		sw	$<span class="number">9</span>,TF_REG9(sp)                   </span><br><span class="line">		sw	$<span class="number">10</span>,TF_REG10(sp)                 </span><br><span class="line">		sw	$<span class="number">11</span>,TF_REG11(sp)                 </span><br><span class="line">		sw	$<span class="number">12</span>,TF_REG12(sp)                 </span><br><span class="line">		sw	$<span class="number">13</span>,TF_REG13(sp)                 </span><br><span class="line">		sw	$<span class="number">14</span>,TF_REG14(sp)                 </span><br><span class="line">		sw	$<span class="number">15</span>,TF_REG15(sp)                 </span><br><span class="line">		sw	$<span class="number">16</span>,TF_REG16(sp)                 </span><br><span class="line">		sw	$<span class="number">17</span>,TF_REG17(sp)                 </span><br><span class="line">		sw	$<span class="number">18</span>,TF_REG18(sp)                 </span><br><span class="line">		sw	$<span class="number">19</span>,TF_REG19(sp)                 </span><br><span class="line">		sw	$<span class="number">20</span>,TF_REG20(sp)                 </span><br><span class="line">		sw	$<span class="number">21</span>,TF_REG21(sp)                 </span><br><span class="line">		sw	$<span class="number">22</span>,TF_REG22(sp)                 </span><br><span class="line">		sw	$<span class="number">23</span>,TF_REG23(sp)                 </span><br><span class="line">		sw	$<span class="number">24</span>,TF_REG24(sp)                 </span><br><span class="line">		sw	$<span class="number">25</span>,TF_REG25(sp)                 </span><br><span class="line">		sw	$<span class="number">26</span>,TF_REG26(sp) 				 </span><br><span class="line">		sw	$<span class="number">27</span>,TF_REG27(sp) 				 </span><br><span class="line">		sw	$<span class="number">28</span>,TF_REG28(sp)                 </span><br><span class="line">		sw	$<span class="number">30</span>,TF_REG30(sp)                 </span><br><span class="line">		sw	$<span class="number">31</span>,TF_REG31(sp)</span><br><span class="line">.endm</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">.macro SAVE_ALL    
+        /* 保存SR寄存器 */                          
+        mfc0    k0,CP0_STATUS     
+        /* sll 逻辑左移3位，使得CU0在最高位（符号位） */
+        sll        k0,3      /* extract cu0 bit */
+        /* 判断如果CU0为1跳转到1处 */
+        /* 1f即标签1，可以参考https://blog.csdn.net/lamdoc/article/details/8979243*/
+        bltz    k0,1f                            
+        nop       
+        /*                                       
+         * Called from user mode, new stack      
+         */                                      
+        //lui    k1,%hi(kernelsp)                 
+        //lw    k1,%lo(kernelsp)(k1)  //not clear right now 
+
+1:        /* 保存sp到k0 */        
+        move    k0,sp
+        /* 调用宏get_sp */
+        get_sp      
+        move    k1,sp                     
+        subu    sp,k1,TF_SIZE                    
+        sw    k0,TF_REG29(sp)                  
+        sw    $2,TF_REG2(sp)                   
+        mfc0    v0,CP0_STATUS                    
+        sw    v0,TF_STATUS(sp)                 
+        mfc0    v0,CP0_CAUSE                     
+        sw    v0,TF_CAUSE(sp)                  
+        mfc0    v0,CP0_EPC                       
+        sw    v0,TF_EPC(sp)
+        mfc0    v0, CP0_BADVADDR        
+        sw    v0, TF_BADVADDR(sp)            
+        mfhi    v0                               
+        sw    v0,TF_HI(sp)                     
+        mflo    v0                               
+        sw    v0,TF_LO(sp)                     
+        sw    $0,TF_REG0(sp)
+        sw    $1,TF_REG1(sp)                    
+        //sw    $2,TF_REG2(sp)                   
+        sw    $3,TF_REG3(sp)                   
+        sw    $4,TF_REG4(sp)                   
+        sw    $5,TF_REG5(sp)                   
+        sw    $6,TF_REG6(sp)                   
+        sw    $7,TF_REG7(sp)                   
+        sw    $8,TF_REG8(sp)                   
+        sw    $9,TF_REG9(sp)                   
+        sw    $10,TF_REG10(sp)                 
+        sw    $11,TF_REG11(sp)                 
+        sw    $12,TF_REG12(sp)                 
+        sw    $13,TF_REG13(sp)                 
+        sw    $14,TF_REG14(sp)                 
+        sw    $15,TF_REG15(sp)                 
+        sw    $16,TF_REG16(sp)                 
+        sw    $17,TF_REG17(sp)                 
+        sw    $18,TF_REG18(sp)                 
+        sw    $19,TF_REG19(sp)                 
+        sw    $20,TF_REG20(sp)                 
+        sw    $21,TF_REG21(sp)                 
+        sw    $22,TF_REG22(sp)                 
+        sw    $23,TF_REG23(sp)                 
+        sw    $24,TF_REG24(sp)                 
+        sw    $25,TF_REG25(sp)                 
+        sw    $26,TF_REG26(sp)                  
+        sw    $27,TF_REG27(sp)                  
+        sw    $28,TF_REG28(sp)                 
+        sw    $30,TF_REG30(sp)                 
+        sw    $31,TF_REG31(sp)
+.endm
+</code></pre>
 <hr>
 <h3 id="get-sp"><a href="#get-sp" class="headerlink" title="get_sp"></a><code>get_sp</code></h3><p>位置：<code>include/stackframe.h</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.macro get_sp</span><br><span class="line">	mfc0	k1, CP0_CAUSE</span><br><span class="line">	andi	k1, 0x107C</span><br><span class="line">	xori	k1, 0x1000</span><br><span class="line">	bnez	k1, 1f</span><br><span class="line">	nop</span><br><span class="line">	li	sp, 0x82000000</span><br><span class="line">	j	2f</span><br><span class="line">	nop</span><br><span class="line">1:</span><br><span class="line">	bltz	sp, 2f</span><br><span class="line">	nop</span><br><span class="line">	lw	sp, KERNEL_SP</span><br><span class="line">	nop</span><br><span class="line"></span><br><span class="line">2:	nop</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.endm</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-assembly">.macro get_sp
+    mfc0    k1, CP0_CAUSE
+    andi    k1, 0x107C
+    xori    k1, 0x1000
+    bnez    k1, 1f
+    nop
+    li    sp, 0x82000000
+    j    2f
+    nop
+1:
+    bltz    sp, 2f
+    nop
+    lw    sp, KERNEL_SP
+    nop
+
+2:    nop
+
+
+.endm
+</code></pre>
 
                 
                 <hr>
@@ -858,8 +1508,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

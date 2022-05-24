@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1k</span> and
+                                Words <span class="post-count">1.1k</span> and
                                 Reading Time <span class="post-count">4</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -261,21 +261,90 @@
 <p>以下以第一次作业评测机搭建为例，并将在Part3部分介绍本设计对迭代开发的支持。</p>
 <h2 id="Part-1-获取jar包"><a href="#Part-1-获取jar包" class="headerlink" title="Part 1 获取jar包"></a>Part 1 获取jar包</h2><p>为了避免不同同学的Java项目结构目录、依赖包等的不同导致的无谓的麻烦，将Java项目打包为jar包，方法<strong>可移植性强</strong>。一种简单的获取jar包的方式可以见<a href="https://saltyfishyjk.github.io/2022/03/07/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D%E9%9D%A2%E5%90%91%E6%B5%8B%E8%AF%95%E5%B0%8F%E7%99%BD%E7%9A%84%E7%AE%80%E6%98%93%E8%AF%84%E6%B5%8B%E6%9C%BA/">面向测试小白的简易评测机</a>中的<strong>Part 2</strong>。</p>
 <h2 id="Part-2-自动化评测机框架"><a href="#Part-2-自动化评测机框架" class="headerlink" title="Part 2 自动化评测机框架"></a>Part 2 自动化评测机框架</h2><p><em>注：以下为python代码，并且需要python3.5以上版本以支持相应库</em></p>
-<h3 id="命令行运行jar包并重定向输入和输出"><a href="#命令行运行jar包并重定向输入和输出" class="headerlink" title="命令行运行jar包并重定向输入和输出"></a>命令行运行jar包并重定向输入和输出</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> STDOUT, PIPE</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">execute_java</span><span class="params">(stdin)</span>:</span></span><br><span class="line">    cmd = [<span class="string">'java'</span>, <span class="string">'-jar'</span>, <span class="string">'homework.jar'</span>]<span class="comment"># 更改为自己的.jar包名</span></span><br><span class="line">    proc = subprocess.Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=STDOUT)</span><br><span class="line">    stdout, stderr = proc.communicate(stdin.encode())</span><br><span class="line">    <span class="keyword">return</span> stdout.decode().strip()</span><br></pre></td></tr></table></figure>
+<h3 id="命令行运行jar包并重定向输入和输出"><a href="#命令行运行jar包并重定向输入和输出" class="headerlink" title="命令行运行jar包并重定向输入和输出"></a>命令行运行jar包并重定向输入和输出</h3><pre><code class="lang-python">import subprocess
+from subprocess import STDOUT, PIPE
+
+def execute_java(stdin):
+    cmd = [&#39;java&#39;, &#39;-jar&#39;, &#39;homework.jar&#39;]# 更改为自己的.jar包名
+    proc = subprocess.Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    stdout, stderr = proc.communicate(stdin.encode())
+    return stdout.decode().strip()
+</code></pre>
 <h3 id="判定输出答案正确性"><a href="#判定输出答案正确性" class="headerlink" title="判定输出答案正确性"></a>判定输出答案正确性</h3><p>利用<code>sympy</code>处理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">poly = genData() <span class="comment"># genData提供输入数据，将在下一Part中介绍。</span></span><br><span class="line">f = sympy.parse_expr(poly) <span class="comment"># 获取标准答案</span></span><br><span class="line">strr = execute_java(poly) <span class="comment"># 获取输出答案</span></span><br><span class="line">g = sympy.parse_expr(strr) </span><br><span class="line"><span class="keyword">if</span> sympy.simplify(f).equals(g) : <span class="comment"># 判定输出答案和标准答案是否相同</span></span><br><span class="line">    print(<span class="string">"AC : "</span> + str(cnt))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"!!WA!! with "</span> + <span class="string">"poly : "</span> + poly + <span class="string">" YOURS: "</span> + strr)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">    poly = genData() # genData提供输入数据，将在下一Part中介绍。
+    f = sympy.parse_expr(poly) # 获取标准答案
+    strr = execute_java(poly) # 获取输出答案
+    g = sympy.parse_expr(strr) 
+    if sympy.simplify(f).equals(g) : # 判定输出答案和标准答案是否相同
+        print(&quot;AC : &quot; + str(cnt))
+    else:
+        print(&quot;!!WA!! with &quot; + &quot;poly : &quot; + poly + &quot; YOURS: &quot; + strr)
+</code></pre>
 <h2 id="Part-3-数据生成"><a href="#Part-3-数据生成" class="headerlink" title="Part 3 数据生成"></a>Part 3 数据生成</h2><p>在Part 1中，我们利用了<code>genData()</code>方法获取<code>poly</code>，该模块的一种实现思路如下：</p>
 <h3 id="分层构造数据"><a href="#分层构造数据" class="headerlink" title="分层构造数据"></a>分层构造数据</h3><p>依照<code>Expr-&gt;Term-&gt;Factor</code>的思路，构建如下模块：</p>
 <p><code>getExpr()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> sympys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getExpr</span><span class="params">()</span>:</span></span><br><span class="line">    index = random.randint(indexA, indexB) <span class="comment"># 设置表达式指数</span></span><br><span class="line">	termNum = random.randint(termNumA, termNumB) <span class="comment"># 设置该Expr包含的term个数</span></span><br><span class="line">	str = <span class="string">""</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(termNum):</span><br><span class="line">    	whiteNum = random.randint(whiteA, whiteB)</span><br><span class="line">		str = str + getTerm() + getWhite(whiteNum)</span><br><span class="line">    withIndex = random.randint(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">if</span> withIndex == <span class="number">1</span>:</span><br><span class="line">		str = <span class="string">"("</span> + str + <span class="string">")**"</span> + index</span><br><span class="line">	<span class="keyword">return</span> str</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">import random
+import sympys
+
+def getExpr():
+    index = random.randint(indexA, indexB) # 设置表达式指数
+    termNum = random.randint(termNumA, termNumB) # 设置该Expr包含的term个数
+    str = &quot;&quot;
+    for i in range(termNum):
+        whiteNum = random.randint(whiteA, whiteB)
+        str = str + getTerm() + getWhite(whiteNum)
+    withIndex = random.randint(0,1)
+    if withIndex == 1:
+        str = &quot;(&quot; + str + &quot;)**&quot; + index
+    return str
+</code></pre>
 <p><code>getTerm()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTerm</span><span class="params">()</span>:</span></span><br><span class="line">	str = <span class="string">""</span></span><br><span class="line">	sigNum = random.randint(<span class="number">0</span>,<span class="number">2</span>) <span class="comment"># 设置项的符号个数</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(sigNum):</span><br><span class="line">		<span class="keyword">if</span>(random.randint(<span class="number">0</span>,<span class="number">1</span>) == <span class="number">1</span>):</span><br><span class="line">			str = str + <span class="string">"+"</span></span><br><span class="line">			str = str + <span class="string">"-"</span></span><br><span class="line">	factorNum = random.randint(factorA, factorB)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(factorNum) :</span><br><span class="line">		str = str + getFactor()</span><br><span class="line">	<span class="keyword">return</span> str</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">def getTerm():
+    str = &quot;&quot;
+    sigNum = random.randint(0,2) # 设置项的符号个数
+    for i in range(sigNum):
+        if(random.randint(0,1) == 1):
+            str = str + &quot;+&quot;
+            str = str + &quot;-&quot;
+    factorNum = random.randint(factorA, factorB)
+    for i in range(factorNum) :
+        str = str + getFactor()
+    return str
+</code></pre>
 <p><code>getFactor()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getFactor</span><span class="params">()</span>:</span></span><br><span class="line">	str = <span class="string">""</span></span><br><span class="line">	type = random.randint(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">	<span class="keyword">if</span> type == <span class="number">1</span>:</span><br><span class="line">    	str = getNum()</span><br><span class="line">	<span class="keyword">elif</span> type == <span class="number">2</span>:</span><br><span class="line">    	str = getPower()</span><br><span class="line">	<span class="keyword">elif</span> type == <span class="number">3</span>:</span><br><span class="line">    	str = getExpr()</span><br><span class="line">	<span class="keyword">return</span> str</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">def getFactor():
+    str = &quot;&quot;
+    type = random.randint(1,3)
+    if type == 1:
+        str = getNum()
+    elif type == 2:
+        str = getPower()
+    elif type == 3:
+        str = getExpr()
+    return str
+</code></pre>
 <p><code>getNum()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNum</span><span class="params">()</span>:</span></span><br><span class="line">	str = <span class="string">""</span></span><br><span class="line">	pos = random.randint(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">if</span> pos == <span class="number">0</span>:</span><br><span class="line">		str = str + <span class="string">"-"</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		str = str + <span class="string">"+"</span></span><br><span class="line">	str = str + random.randint(A,B)</span><br><span class="line">    <span class="keyword">return</span> str</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">def getNum():
+    str = &quot;&quot;
+    pos = random.randint(0,1)
+    if pos == 0:
+        str = str + &quot;-&quot;
+    else:
+        str = str + &quot;+&quot;
+    str = str + random.randint(A,B)
+    return str
+</code></pre>
 <p><code>getWhite</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWhite</span><span class="params">(ct)</span>:</span> <span class="comment"># ct控制生成空白字符数</span></span><br><span class="line">    str = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(ct):</span><br><span class="line">        flag = random.randint(<span class="number">0</span>, <span class="number">1</span>) <span class="comment"># 随机控制传入的是空格还是table</span></span><br><span class="line">        <span class="keyword">if</span> flag == <span class="number">0</span>:</span><br><span class="line">            str = str + <span class="string">' '</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            str = str + <span class="string">'\t'</span></span><br><span class="line">    <span class="keyword">return</span> str</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">def getWhite(ct): # ct控制生成空白字符数
+    str = &quot;&quot;
+    for i in range(ct):
+        flag = random.randint(0, 1) # 随机控制传入的是空格还是table
+        if flag == 0:
+            str = str + &#39; &#39;
+        else:
+            str = str + &#39;\t&#39;
+    return str
+</code></pre>
 <p><code>getPower()</code>等函数不再枚举，与之类似</p>
 <h2 id="Part-4-迭代开发"><a href="#Part-4-迭代开发" class="headerlink" title="Part 4 迭代开发"></a>Part 4 迭代开发</h2><p>以上简述了对于第一次作业的评测机实现的部分细节，以下简要介绍如何针对第二三次作业的新需求迭代开发我们的评测机</p>
 <h3 id="新因子"><a href="#新因子" class="headerlink" title="新因子"></a>新因子</h3><p>对于<code>sin</code>和<code>cos</code>，直接利用形式化表达的表述，构建<code>getTri()</code>方法，并将其扩充入<code>getFactor()</code></p>
@@ -703,8 +772,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

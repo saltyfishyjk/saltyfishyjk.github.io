@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -272,19 +272,124 @@
 </ul>
 <p>64MB的物理内存的16进制为 $ 0x400,0000 $ </p>
 <h3 id="初始化内存管理相关变量"><a href="#初始化内存管理相关变量" class="headerlink" title="初始化内存管理相关变量"></a>初始化内存管理相关变量</h3><p><code>mips_detect_memory</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mips_detect_memory</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* Step 1: Initialize basemem.</span></span><br><span class="line"><span class="comment">	 * (When use real computer, CMOS tells us how many kilobytes there are). */</span></span><br><span class="line">	maxpa = <span class="number">0x4000000</span>;</span><br><span class="line">	basemem = <span class="number">0x4000000</span>;</span><br><span class="line">	extmem = <span class="number">0x0</span>;</span><br><span class="line">	<span class="comment">// Step 2: Calculate corresponding npage value.</span></span><br><span class="line">	npage = basemem &gt;&gt; PGSHIFT;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Physical memory: %dK available, "</span>, (<span class="keyword">int</span>)(maxpa / <span class="number">1024</span>));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"base = %dK, extended = %dK\n"</span>, (<span class="keyword">int</span>)(basemem / <span class="number">1024</span>),</span><br><span class="line">			(<span class="keyword">int</span>)(extmem / <span class="number">1024</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void mips_detect_memory()
+{
+    /* Step 1: Initialize basemem.
+     * (When use real computer, CMOS tells us how many kilobytes there are). */
+    maxpa = 0x4000000;
+    basemem = 0x4000000;
+    extmem = 0x0;
+    // Step 2: Calculate corresponding npage value.
+    npage = basemem &gt;&gt; PGSHIFT;
+    printf(&quot;Physical memory: %dK available, &quot;, (int)(maxpa / 1024));
+    printf(&quot;base = %dK, extended = %dK\n&quot;, (int)(basemem / 1024),
+            (int)(extmem / 1024));
+}
+</code></pre>
 <p>初始化一些相关变量，具体的变量含义等可以查询文章<strong>Lab 2 名词解释</strong></p>
 <h3 id="初始化mips虚拟空间"><a href="#初始化mips虚拟空间" class="headerlink" title="初始化mips虚拟空间"></a>初始化mips虚拟空间</h3><p><code>mips_vm_init</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mips_vm_init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">char</span> <span class="built_in">end</span>[];</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> mCONTEXT;</span><br><span class="line">	<span class="keyword">extern</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">envs</span>;</span></span><br><span class="line"></span><br><span class="line">	Pde *pgdir;</span><br><span class="line">	u_int n;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 1: Allocate a page for page directory(first level page table). */</span></span><br><span class="line">	pgdir = alloc(BY2PG, BY2PG, <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"to memory %x for struct page directory.\n"</span>, freemem);</span><br><span class="line">	mCONTEXT = (<span class="keyword">int</span>)pgdir;</span><br><span class="line"></span><br><span class="line">	boot_pgdir = pgdir;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 2: Allocate proper size of physical memory for global array `pages`,</span></span><br><span class="line"><span class="comment">	 * for physical memory management. Then, map virtual address `UPAGES` to</span></span><br><span class="line"><span class="comment">	 * physical address `pages` allocated before. In consideration of alignment,</span></span><br><span class="line"><span class="comment">	 * you should round up the memory size before map. */</span></span><br><span class="line">	pages = (struct Page *)alloc(npage * <span class="keyword">sizeof</span>(struct Page), BY2PG, <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"to memory %x for struct Pages.\n"</span>, freemem);</span><br><span class="line">	n = ROUND(npage * <span class="keyword">sizeof</span>(struct Page), BY2PG);</span><br><span class="line">	boot_map_segment(pgdir, UPAGES, n, PADDR(pages), PTE_R);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 3, Allocate proper size of physical memory for global array `envs`,</span></span><br><span class="line"><span class="comment">	 * for process management. Then map the physical address to `UENVS`. */</span></span><br><span class="line">	envs = (struct Env *)alloc(NENV * <span class="keyword">sizeof</span>(struct Env), BY2PG, <span class="number">1</span>);</span><br><span class="line">	n = ROUND(NENV * <span class="keyword">sizeof</span>(struct Env), BY2PG);</span><br><span class="line">	boot_map_segment(pgdir, UENVS, n, PADDR(envs), PTE_R);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"pmap.c:\t mips vm init success\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void mips_vm_init()
+{
+    extern char end[];
+    extern int mCONTEXT;
+    extern struct Env *envs;
+
+    Pde *pgdir;
+    u_int n;
+
+    /* Step 1: Allocate a page for page directory(first level page table). */
+    pgdir = alloc(BY2PG, BY2PG, 1);
+    printf(&quot;to memory %x for struct page directory.\n&quot;, freemem);
+    mCONTEXT = (int)pgdir;
+
+    boot_pgdir = pgdir;
+
+    /* Step 2: Allocate proper size of physical memory for global array `pages`,
+     * for physical memory management. Then, map virtual address `UPAGES` to
+     * physical address `pages` allocated before. In consideration of alignment,
+     * you should round up the memory size before map. */
+    pages = (struct Page *)alloc(npage * sizeof(struct Page), BY2PG, 1);
+    printf(&quot;to memory %x for struct Pages.\n&quot;, freemem);
+    n = ROUND(npage * sizeof(struct Page), BY2PG);
+    boot_map_segment(pgdir, UPAGES, n, PADDR(pages), PTE_R);
+
+    /* Step 3, Allocate proper size of physical memory for global array `envs`,
+     * for process management. Then map the physical address to `UENVS`. */
+    envs = (struct Env *)alloc(NENV * sizeof(struct Env), BY2PG, 1);
+    n = ROUND(NENV * sizeof(struct Env), BY2PG);
+    boot_map_segment(pgdir, UENVS, n, PADDR(envs), PTE_R);
+
+    printf(&quot;pmap.c:\t mips vm init success\n&quot;);
+}
+</code></pre>
 <p>这个函数进行了初始化工作，它调用了一些其他函数，我们在下面逐一讲解：</p>
 <p><code>alloc</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> *<span class="title">alloc</span><span class="params">(u_int n, u_int align, <span class="keyword">int</span> <span class="built_in">clear</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="keyword">char</span> <span class="built_in">end</span>[];</span><br><span class="line">	u_long alloced_mem;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Initialize `freemem` if this is the first time. The first virtual address that the</span></span><br><span class="line"><span class="comment">	 * linker did *not* assign to any kernel code or global variables. */</span></span><br><span class="line">	<span class="keyword">if</span> (freemem == <span class="number">0</span>) &#123;</span><br><span class="line">		freemem = (u_long)<span class="built_in">end</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 1: Round up `freemem` up to be aligned properly */</span></span><br><span class="line">	freemem = ROUND(freemem, align);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 2: Save current value of `freemem` as allocated chunk. */</span></span><br><span class="line">	alloced_mem = freemem;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 3: Increase `freemem` to record allocation. */</span></span><br><span class="line">	freemem = freemem + n;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Check if we're out of memory. If we are, PANIC !! */</span></span><br><span class="line">	<span class="keyword">if</span> (PADDR(freemem) &gt;= maxpa) &#123;</span><br><span class="line">		panic(<span class="string">"out of memory\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">void</span> *)-E_NO_MEM;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 4: Clear allocated chunk if parameter `clear` is set. */</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">clear</span>) &#123;</span><br><span class="line">		bzero((<span class="keyword">void</span> *)alloced_mem, n);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Step 5: return allocated chunk. */</span></span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">void</span> *)alloced_mem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">static void *alloc(u_int n, u_int align, int clear)
+{
+    extern char end[];
+    u_long alloced_mem;
+
+    /* Initialize `freemem` if this is the first time. The first virtual address that the
+     * linker did *not* assign to any kernel code or global variables. */
+    if (freemem == 0) {
+        freemem = (u_long)end;
+    }
+
+    /* Step 1: Round up `freemem` up to be aligned properly */
+    freemem = ROUND(freemem, align);
+
+    /* Step 2: Save current value of `freemem` as allocated chunk. */
+    alloced_mem = freemem;
+
+    /* Step 3: Increase `freemem` to record allocation. */
+    freemem = freemem + n;
+
+    /* Check if we&#39;re out of memory. If we are, PANIC !! */
+    if (PADDR(freemem) &gt;= maxpa) {
+        panic(&quot;out of memory\n&quot;);
+        return (void *)-E_NO_MEM;
+    }
+
+    /* Step 4: Clear allocated chunk if parameter `clear` is set. */
+    if (clear) {
+        bzero((void *)alloced_mem, n);
+    }
+
+    /* Step 5: return allocated chunk. */
+    return (void *)alloced_mem;
+}
+</code></pre>
 <p>值得注意的是，我们的<code>maxpa</code>是 $ 0x400,0000 $ ， 查阅<code>mmu.h</code>可以知道 $ 0x8400,0000 $ 直接对应<code>maxpa</code>，这也就是图中的Physical Memory Max(PMM)。</p>
 <p><code>alloc</code>函数中我们可以看到，其本质上维护<code>freemem</code>，而 $ [PADDR(freemem), maxpa - 1] $​是我们还可以接着分配的物理内存。但是由于我们统一使用虚拟地址，因此，<code>freemem</code>仍然是虚拟地址。由于这种一一映射的关系，将物理内存 $ [0x400000 , 0x4000000] $ 表述为</p>
 <p> $ [0x80400000,0x84000000] $ 也是可以理解的。</p>
 <p>在<code>alloc</code>维护<code>freemem</code>的时候，其具体操作为上移<code>freemem</code>，以代表剩余可分配空间的底线。</p>
 <h3 id="初始化Pages结构体和空闲链表"><a href="#初始化Pages结构体和空闲链表" class="headerlink" title="初始化Pages结构体和空闲链表"></a>初始化Pages结构体和空闲链表</h3><p><code>page_init</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">page_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* Step 1: Initialize page_free_list. */</span></span><br><span class="line">    <span class="comment">/* Hint: Use macro `LIST_INIT` defined in include/queue.h. */</span></span><br><span class="line">    LIST_INIT(&amp;page_free_list);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Align `freemem` up to multiple of BY2PG. */</span></span><br><span class="line">    freemem = ROUND(freemem, BY2PG);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: Mark all memory blow `freemem` as used(set `pp_ref`</span></span><br><span class="line"><span class="comment">     * filed to 1) */</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">size</span> = PADDR(freemem) / BY2PG;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        pages[i].pp_ref = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* Step 4: Mark the other memory as free. */</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="built_in">size</span>; i &lt; npage; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        pages[i].pp_ref = <span class="number">0</span>;</span><br><span class="line">        LIST_INSERT_HEAD(&amp;page_free_list, pages + i, pp_link);</span><br><span class="line">    &#125;</span><br><span class="line">    LIST_REMOVE(pa2page(PADDR(TIMESTACK - BY2PG)), pp_link);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-C">void page_init(void)
+{
+    /* Step 1: Initialize page_free_list. */
+    /* Hint: Use macro `LIST_INIT` defined in include/queue.h. */
+    LIST_INIT(&amp;page_free_list);
+
+    /* Step 2: Align `freemem` up to multiple of BY2PG. */
+    freemem = ROUND(freemem, BY2PG);
+
+    /* Step 3: Mark all memory blow `freemem` as used(set `pp_ref`
+     * filed to 1) */
+    int size = PADDR(freemem) / BY2PG;
+    int i;
+    for (i = 0; i &lt; size; ++i)
+    {
+        pages[i].pp_ref = 1;
+    }
+    /* Step 4: Mark the other memory as free. */
+    for (i = size; i &lt; npage; ++i)
+    {
+        pages[i].pp_ref = 0;
+        LIST_INSERT_HEAD(&amp;page_free_list, pages + i, pp_link);
+    }
+    LIST_REMOVE(pa2page(PADDR(TIMESTACK - BY2PG)), pp_link);
+}
+</code></pre>
 <ul>
 <li>初始化头结点<code>page_free_list</code></li>
 <li>圆整<code>freemem</code>使其对齐</li>
@@ -751,8 +856,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

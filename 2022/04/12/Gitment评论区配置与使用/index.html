@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -261,7 +261,14 @@
 <h2 id="Part-1-配置Gitment"><a href="#Part-1-配置Gitment" class="headerlink" title="Part 1 配置Gitment"></a>Part 1 配置Gitment</h2><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="noopener">Gitment：使用 GitHub Issues 搭建评论系统(官方文档)</a></p>
 <h3 id="Step-1-注册OAuth-Application"><a href="#Step-1-注册OAuth-Application" class="headerlink" title="Step 1 注册OAuth Application"></a>Step 1 注册OAuth Application</h3><p>参考<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="noopener">Gitment：使用 GitHub Issues 搭建评论系统(官方文档)</a>和<a href="https://www.jianshu.com/p/ac7658cc912f" target="_blank" rel="noopener">Hexo博客集成Gitment评论</a>这两篇博客</p>
 <h3 id="Step-2-修改-config-yml"><a href="#Step-2-修改-config-yml" class="headerlink" title="Step 2 修改_config.yml"></a>Step 2 修改<code>_config.yml</code></h3><p>以本博客为例，修改配置文件如下内容，注意空格不能省略。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comment:</span></span><br><span class="line">  <span class="attr">gitment:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">owner:</span> <span class="string">saltyfishyjk</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">saltyfishyjk.github.io</span></span><br><span class="line">    <span class="attr">client_id:</span> <span class="string">[client_id]</span></span><br><span class="line">    <span class="attr">client_secret:</span> <span class="string">[client_secret]</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-yaml">comment:
+  gitment:
+    enable: true
+    owner: saltyfishyjk
+    repo: saltyfishyjk.github.io
+    client_id: [client_id]
+    client_secret: [client_secret]
+</code></pre>
 <h3 id="Step-3-重启"><a href="#Step-3-重启" class="headerlink" title="Step 3 重启"></a>Step 3 重启</h3><p>使用<code>hexo clean</code>和<code>hexo g -d</code>以使配置生效。</p>
 <p>至此，Gitment已经配置完毕，你可能会发现此时在评论区log in会卡住，对此的解决办法请您继续阅读Part 2。 </p>
 <h2 id="Part-2-使用Gitment"><a href="#Part-2-使用Gitment" class="headerlink" title="Part 2 使用Gitment"></a>Part 2 使用Gitment</h2><p>由于一些因素，本博客的Gitment需要读者在自己的浏览器做少许配置操作才会可用，以下以Chrome浏览器为例介绍相应办法。</p>
@@ -690,8 +697,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

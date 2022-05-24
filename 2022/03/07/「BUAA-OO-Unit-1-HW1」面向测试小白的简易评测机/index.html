@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.4k</span> and
-                                Reading Time <span class="post-count">6</span> Minutes
+                                Words <span class="post-count">1.5k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -292,10 +292,178 @@
 </li>
 </ol>
 <h3 id="须知"><a href="#须知" class="headerlink" title="须知"></a>须知</h3><p>对于本次作业，课程组提供的官方输入输出包需要被注释掉，同时需要自行将原<code>MainClass</code>中的<code>Scanner</code>切换回标准的<code>Scanner SCANNER = new Scanner(System.in)</code>。同时，本评测机暂不支持预解析模式输入。</p>
-<h2 id="Part-2-修改评测机参数"><a href="#Part-2-修改评测机参数" class="headerlink" title="Part 2 修改评测机参数"></a>Part 2 修改评测机参数</h2><h3 id="pipline-py"><a href="#pipline-py" class="headerlink" title="pipline.py"></a>pipline.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy <span class="comment"># 如果报错显示没有这个包，就需要导入</span></span><br><span class="line"><span class="keyword">from</span> xeger <span class="keyword">import</span> Xeger</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> STDOUT, PIPE</span><br><span class="line"><span class="keyword">from</span> gendata <span class="keyword">import</span> genData</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">execute_java</span><span class="params">(stdin)</span>:</span></span><br><span class="line">    cmd = [<span class="string">'java'</span>, <span class="string">'-jar'</span>, <span class="string">'archer.jar'</span>]<span class="comment"># 更改为自己的.jar包名</span></span><br><span class="line">    proc = subprocess.Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=STDOUT)</span><br><span class="line">    stdout, stderr = proc.communicate(stdin.encode())</span><br><span class="line">    <span class="keyword">return</span> stdout.decode().strip()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">X = Xeger(limit=<span class="number">10</span>)</span><br><span class="line">cnt = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    cnt = cnt + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> cnt % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(cnt)</span><br><span class="line">    poly, ans = genData()</span><br><span class="line">    <span class="comment">#print(poly)</span></span><br><span class="line">    f = sympy.parse_expr(poly)</span><br><span class="line">    strr = execute_java(poly)</span><br><span class="line">    <span class="comment">#print(strr)</span></span><br><span class="line">    g = sympy.parse_expr(strr)</span><br><span class="line">    <span class="keyword">if</span> sympy.simplify(f).equals(g) :</span><br><span class="line">        print(<span class="string">"AC : "</span> + str(cnt))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"!!WA!! with "</span> + <span class="string">"poly : "</span> + poly + <span class="string">" YOURS: "</span> + strr)</span><br></pre></td></tr></table></figure>
+<h2 id="Part-2-修改评测机参数"><a href="#Part-2-修改评测机参数" class="headerlink" title="Part 2 修改评测机参数"></a>Part 2 修改评测机参数</h2><h3 id="pipline-py"><a href="#pipline-py" class="headerlink" title="pipline.py"></a>pipline.py</h3><pre><code class="lang-python">import sympy # 如果报错显示没有这个包，就需要导入
+from xeger import Xeger
+import random
+import subprocess
+from subprocess import STDOUT, PIPE
+from gendata import genData
+
+
+def execute_java(stdin):
+    cmd = [&#39;java&#39;, &#39;-jar&#39;, &#39;archer.jar&#39;]# 更改为自己的.jar包名
+    proc = subprocess.Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+    stdout, stderr = proc.communicate(stdin.encode())
+    return stdout.decode().strip()
+
+
+x = sympy.Symbol(&#39;x&#39;)
+X = Xeger(limit=10)
+cnt = 1
+
+while True:
+    cnt = cnt + 1
+    if cnt % 1000 == 0:
+        print(cnt)
+    poly, ans = genData()
+    #print(poly)
+    f = sympy.parse_expr(poly)
+    strr = execute_java(poly)
+    #print(strr)
+    g = sympy.parse_expr(strr)
+    if sympy.simplify(f).equals(g) :
+        print(&quot;AC : &quot; + str(cnt))
+    else:
+        print(&quot;!!WA!! with &quot; + &quot;poly : &quot; + poly + &quot; YOURS: &quot; + strr)
+</code></pre>
 <p>上述代码中<strong>需要改jar包为自己的包名</strong>。</p>
 <p>其他不修改即可正常使用，也可根据需求自行修改。</p>
-<h3 id="gendata-py"><a href="#gendata-py" class="headerlink" title="gendata.py"></a>gendata.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Auther: GHY</span></span><br><span class="line"><span class="string">Date: 20222022/3/5</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line">intPool = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]   <span class="comment"># 常量池</span></span><br><span class="line">hasWhiteSpace = <span class="literal">False</span>   <span class="comment"># 是否加入空白字符</span></span><br><span class="line">hasLeadZeros = <span class="literal">False</span>    <span class="comment"># 数字是否有前导零,如果传入sympy的表达式中数字有前导零，sympy将无法识别</span></span><br><span class="line">maxTerm = <span class="number">10</span>             <span class="comment"># 表达式中的最大项数</span></span><br><span class="line">maxFactor = <span class="number">3</span>           <span class="comment"># 项中最大因子个数</span></span><br><span class="line">specialData = [<span class="string">"1"</span>,<span class="string">"x-x"</span>,<span class="string">"-1"</span>]  <span class="comment"># 可以放一些特殊数据</span></span><br><span class="line">globalPointer = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rd</span><span class="params">(a,b)</span> :</span></span><br><span class="line">    <span class="keyword">return</span> random.randint(a,b)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWhiteSpace</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> hasWhiteSpace==<span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    str = <span class="string">""</span></span><br><span class="line">    cnt = rd(<span class="number">0</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(cnt):</span><br><span class="line">        type = rd(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> type==<span class="number">0</span>:</span><br><span class="line">            str = str + <span class="string">" "</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            str = str + <span class="string">"\t"</span></span><br><span class="line">    <span class="keyword">return</span> str</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getSymbol</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"+"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"-"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNum</span><span class="params">(positive)</span>:</span></span><br><span class="line">    result = <span class="string">""</span></span><br><span class="line">    integer = intPool[rd(<span class="number">0</span>,len(intPool)<span class="number">-1</span>)]</span><br><span class="line">    iszero = rd(<span class="number">0</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(iszero):</span><br><span class="line">        result = result + <span class="string">"0"</span></span><br><span class="line">    <span class="keyword">if</span> hasLeadZeros==<span class="literal">False</span>:</span><br><span class="line">        result = <span class="string">""</span></span><br><span class="line">    result = result + str(integer)</span><br><span class="line">    <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> positive==<span class="literal">True</span>:</span><br><span class="line">            result = <span class="string">"+"</span> + result</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = getSymbol() + result </span><br><span class="line">    <span class="comment"># print("num:"+result)</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getExponent</span><span class="params">()</span>:</span></span><br><span class="line">    result = <span class="string">"**"</span></span><br><span class="line">    result = result + getWhiteSpace()</span><br><span class="line">    case = rd(<span class="number">0</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">        result = result + <span class="string">"+"</span></span><br><span class="line">    <span class="keyword">if</span> case==<span class="number">0</span>:</span><br><span class="line">        result = result + <span class="string">"0"</span></span><br><span class="line">    <span class="keyword">elif</span> case==<span class="number">1</span>:</span><br><span class="line">        result = result + <span class="string">"1"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        result = result + <span class="string">"2"</span>    </span><br><span class="line">    <span class="comment"># result = result + getNum(True)</span></span><br><span class="line">    <span class="comment"># print("exponent:"+result)</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">     </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getPower</span><span class="params">()</span>:</span></span><br><span class="line">    result = <span class="string">"x"</span></span><br><span class="line">    <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">        result = result + getWhiteSpace() + getExponent()</span><br><span class="line">    <span class="comment"># print("Power:"+result)</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTerm</span><span class="params">(genExpr)</span>:</span></span><br><span class="line">    factorNum = rd(<span class="number">1</span>,maxFactor)</span><br><span class="line">    result = <span class="string">""</span></span><br><span class="line">    <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">        result = getSymbol()+getWhiteSpace()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(factorNum):</span><br><span class="line">        factor = rd(<span class="number">0</span>,<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> factor==<span class="number">0</span>:</span><br><span class="line">            result = result + getNum(<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">elif</span> factor==<span class="number">1</span>:</span><br><span class="line">            result = result + getPower()</span><br><span class="line">        <span class="keyword">elif</span> factor==<span class="number">2</span> <span class="keyword">and</span> genExpr==<span class="literal">True</span>:</span><br><span class="line">            result = result + getExpr(<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = result + <span class="string">"0"</span>    </span><br><span class="line">        <span class="keyword">if</span> i &lt; factorNum<span class="number">-1</span>:</span><br><span class="line">            result = result + getWhiteSpace() + <span class="string">"*"</span> + getWhiteSpace()   </span><br><span class="line">    <span class="comment"># print("term:"+result)        </span></span><br><span class="line">    <span class="keyword">return</span> result                 </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getExpr</span><span class="params">(isFactor)</span>:</span></span><br><span class="line">    termNum = rd(<span class="number">1</span>,maxTerm)</span><br><span class="line">    result = getWhiteSpace()    </span><br><span class="line">    genExpr = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> isFactor==<span class="literal">True</span>:</span><br><span class="line">        genExpr = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(termNum):</span><br><span class="line">        result = result + getSymbol() + getWhiteSpace() + getTerm(genExpr) + getWhiteSpace()</span><br><span class="line">    <span class="keyword">if</span> isFactor==<span class="literal">True</span>:</span><br><span class="line">        result = <span class="string">"("</span> + result + <span class="string">")"</span></span><br><span class="line">        <span class="keyword">if</span> rd(<span class="number">0</span>,<span class="number">1</span>)==<span class="number">1</span>:</span><br><span class="line">            result = result + getWhiteSpace() + getExponent()   </span><br><span class="line">    <span class="comment"># print("Expr:"+result)        </span></span><br><span class="line">    <span class="keyword">return</span> result          </span><br><span class="line">               </span><br><span class="line">              </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genData</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> globalPointer</span><br><span class="line">    <span class="keyword">if</span> globalPointer&lt;len(specialData):</span><br><span class="line">        expr = specialData[globalPointer]</span><br><span class="line">        globalPointer = globalPointer + <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        expr = getExpr(<span class="literal">False</span>)</span><br><span class="line">    x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">    simplifed = sympy.expand(eval(expr))</span><br><span class="line">    <span class="keyword">return</span> str(expr),str(simplifed)</span><br><span class="line">               </span><br><span class="line">               </span><br><span class="line">x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">fx = <span class="string">"+x**+0*x**0++3++x**+1*+1"</span></span><br><span class="line">y = sympy.expand(eval(fx))</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
+<h3 id="gendata-py"><a href="#gendata-py" class="headerlink" title="gendata.py"></a>gendata.py</h3><pre><code class="lang-python">&quot;&quot;&quot;
+Auther: GHY
+Date: 20222022/3/5
+&quot;&quot;&quot;
+
+import random
+import sympy
+
+intPool = [0,1,2,3,4]   # 常量池
+hasWhiteSpace = False   # 是否加入空白字符
+hasLeadZeros = False    # 数字是否有前导零,如果传入sympy的表达式中数字有前导零，sympy将无法识别
+maxTerm = 10             # 表达式中的最大项数
+maxFactor = 3           # 项中最大因子个数
+specialData = [&quot;1&quot;,&quot;x-x&quot;,&quot;-1&quot;]  # 可以放一些特殊数据
+globalPointer = 0
+
+def rd(a,b) :
+    return random.randint(a,b)
+
+def getWhiteSpace():
+    if hasWhiteSpace==False:
+        return &quot;&quot;
+    str = &quot;&quot;
+    cnt = rd(0,2)
+    for i in range(cnt):
+        type = rd(0,1)
+        if type==0:
+            str = str + &quot; &quot;
+        else:
+            str = str + &quot;\t&quot;
+    return str
+
+
+def getSymbol():
+    if rd(0,1)==1:
+        return &quot;+&quot;
+    else:
+        return &quot;-&quot;
+
+def getNum(positive):
+    result = &quot;&quot;
+    integer = intPool[rd(0,len(intPool)-1)]
+    iszero = rd(0,2)
+    for i in range(iszero):
+        result = result + &quot;0&quot;
+    if hasLeadZeros==False:
+        result = &quot;&quot;
+    result = result + str(integer)
+    if rd(0,1)==1:
+        if positive==True:
+            result = &quot;+&quot; + result
+        else:
+            result = getSymbol() + result 
+    # print(&quot;num:&quot;+result)
+    return result
+
+
+def getExponent():
+    result = &quot;**&quot;
+    result = result + getWhiteSpace()
+    case = rd(0,2)
+    if rd(0,1)==1:
+        result = result + &quot;+&quot;
+    if case==0:
+        result = result + &quot;0&quot;
+    elif case==1:
+        result = result + &quot;1&quot;
+    else:
+        result = result + &quot;2&quot;    
+    # result = result + getNum(True)
+    # print(&quot;exponent:&quot;+result)
+    return result
+
+
+def getPower():
+    result = &quot;x&quot;
+    if rd(0,1)==1:
+        result = result + getWhiteSpace() + getExponent()
+    # print(&quot;Power:&quot;+result)
+    return result
+
+
+def getTerm(genExpr):
+    factorNum = rd(1,maxFactor)
+    result = &quot;&quot;
+    if rd(0,1)==1:
+        result = getSymbol()+getWhiteSpace()
+    for i in range(factorNum):
+        factor = rd(0,2)
+        if factor==0:
+            result = result + getNum(False)
+        elif factor==1:
+            result = result + getPower()
+        elif factor==2 and genExpr==True:
+            result = result + getExpr(True)
+        else:
+            result = result + &quot;0&quot;    
+        if i &lt; factorNum-1:
+            result = result + getWhiteSpace() + &quot;*&quot; + getWhiteSpace()   
+    # print(&quot;term:&quot;+result)        
+    return result                 
+
+
+def getExpr(isFactor):
+    termNum = rd(1,maxTerm)
+    result = getWhiteSpace()    
+    genExpr = True
+    if isFactor==True:
+        genExpr = False
+    for i in range(termNum):
+        result = result + getSymbol() + getWhiteSpace() + getTerm(genExpr) + getWhiteSpace()
+    if isFactor==True:
+        result = &quot;(&quot; + result + &quot;)&quot;
+        if rd(0,1)==1:
+            result = result + getWhiteSpace() + getExponent()   
+    # print(&quot;Expr:&quot;+result)        
+    return result          
+
+
+def genData():
+    global globalPointer
+    if globalPointer&lt;len(specialData):
+        expr = specialData[globalPointer]
+        globalPointer = globalPointer + 1
+    else:
+        expr = getExpr(False)
+    x = sympy.Symbol(&#39;x&#39;)
+    simplifed = sympy.expand(eval(expr))
+    return str(expr),str(simplifed)
+
+
+x = sympy.Symbol(&#39;x&#39;)
+fx = &quot;+x**+0*x**0++3++x**+1*+1&quot;
+y = sympy.expand(eval(fx))
+print(y)
+</code></pre>
 <p>上述代码不修改即可正常使用，也可根据需求修改数据生成方式。</p>
 <h2 id="Part-3-评测机架构"><a href="#Part-3-评测机架构" class="headerlink" title="Part 3 评测机架构"></a>Part 3 评测机架构</h2><p>本评测机<strong>仅</strong>需要将jar包、pipline.py和gendata.py放在同一目录下即可，无其他要求。</p>
 <p>对于多个jar包，允许在多个文件夹中分别存放评测机，同时测试运行。</p>
@@ -725,8 +893,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

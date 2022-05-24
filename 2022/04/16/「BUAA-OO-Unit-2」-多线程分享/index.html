@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -266,25 +266,46 @@
 <p>我们使用的<code>synchronized</code>包含三种情况，分别是：</p>
 <ol>
 <li><p>修饰实例方法： 作用于当前对象实例加锁，进入同步代码前要获得<strong>当前对象实例的锁</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">synchronized void method() {
+  // CODE
+}
+</code></pre>
 </li>
 <li><p>修饰静态方法：给当前类加锁，会作用于类的所有对象实例，进入同步代码前要获得<strong>当前 class 的锁</strong>。</p>
 <p>class信息存储在method area中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> staic <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">synchronized void staic method() {
+  // TODO
+}
+</code></pre>
 </li>
 <li><p>修饰代码块：指定加锁对象，对给定对象/类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">synchronized(this) {
+  // TODO
+}
+</code></pre>
 </li>
 </ol>
 <p>上面的第一种介绍中主要侧重了从代码模板上的三种形式，对于谁获得了锁，获得了谁的锁可能表述的不是非常清晰，以下从<strong>对象锁</strong>和<strong>类锁</strong>进行第二个角度的归类。</p>
 <h4 id="对象锁"><a href="#对象锁" class="headerlink" title="对象锁"></a>对象锁</h4><p>包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象)。</p>
 <h5 id="方法锁形式"><a href="#方法锁形式" class="headerlink" title="方法锁形式"></a>方法锁形式</h5><p><code>synchronized</code>修饰普通实例方法，锁对象默认为this</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public synchronized void method() {
+    // CODE
+}
+</code></pre>
 <h5 id="代码块形式"><a href="#代码块形式" class="headerlink" title="代码块形式"></a>代码块形式</h5><p>手动指定锁定对象，可以是<code>this</code>，也可以是其他对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj) &#123; <span class="comment">// obj可以为this或其他对象</span></span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">synchronized (obj) { // obj可以为this或其他对象
+    // CODE
+}
+</code></pre>
 <h4 id="类锁"><a href="#类锁" class="headerlink" title="类锁"></a>类锁</h4><p>指<code>synchronized</code>修饰静态的方法或指定锁对象为<code>Class</code>对象。这种情况下，所有对象共用一把锁。</p>
-<h5 id="静态方法形式"><a href="#静态方法形式" class="headerlink" title="静态方法形式"></a>静态方法形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="代码块形式-1"><a href="#代码块形式-1" class="headerlink" title="代码块形式"></a>代码块形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (classA<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="静态方法形式"><a href="#静态方法形式" class="headerlink" title="静态方法形式"></a>静态方法形式</h5><pre><code class="lang-java">public static synchronized void method() {
+    // TODO
+}
+</code></pre>
+<h5 id="代码块形式-1"><a href="#代码块形式-1" class="headerlink" title="代码块形式"></a>代码块形式</h5><pre><code class="lang-java">synchronized (classA.class) {
+    // TODO 
+}
+</code></pre>
 <h3 id="调试可用技巧"><a href="#调试可用技巧" class="headerlink" title="调试可用技巧"></a>调试可用技巧</h3><ol>
 <li>jprofiler</li>
 <li><code>setName()</code>设置线程名</li>
@@ -718,8 +739,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

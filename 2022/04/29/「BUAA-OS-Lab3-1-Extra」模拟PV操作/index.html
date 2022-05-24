@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">3.1k</span> and
+                                Words <span class="post-count">3k</span> and
                                 Reading Time <span class="post-count">12</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -319,19 +319,170 @@
 <h3 id="P操作-1"><a href="#P操作-1" class="headerlink" title="P操作"></a><code>P</code>操作</h3><p>注意当申请到资源的时候给<strong>对应的</strong>资源计数器自增1。如果申请资源失败，加入对应资源的等待队列并修改状态。</p>
 <h3 id="V操作-1"><a href="#V操作-1" class="headerlink" title="V操作"></a><code>V</code>操作</h3><p>注意当释放资源的时候，<strong>只释放1个</strong>，释放后有可能仍持有资源。如果当前并不持有该资源，需要注意资源计数器不能为负数。</p>
 <h2 id="Part-3-课上源码"><a href="#Part-3-课上源码" class="headerlink" title="Part 3 课上源码"></a>Part 3 课上源码</h2><hr>
-<h3 id="Env结构体-1"><a href="#Env结构体-1" class="headerlink" title="Env结构体"></a><code>Env</code>结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span>        <span class="comment">// Saved registers</span></span><br><span class="line">	LIST_ENTRY(Env) env_link;       <span class="comment">// Free list</span></span><br><span class="line">	u_int env_id;                   <span class="comment">// Unique environment identifier</span></span><br><span class="line">	u_int env_parent_id;            <span class="comment">// env_id of this env's parent</span></span><br><span class="line">	u_int env_status;               <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;                <span class="comment">// Kernel virtual address of page dir</span></span><br><span class="line">	u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link;</span><br><span class="line">        u_int env_pri;</span><br><span class="line">	<span class="comment">// Lab 4 IPC</span></span><br><span class="line">	u_int env_ipc_value;            <span class="comment">// data value sent to us </span></span><br><span class="line">	u_int env_ipc_from;             <span class="comment">// envid of the sender  </span></span><br><span class="line">	u_int env_ipc_recving;          <span class="comment">// env is blocked receiving</span></span><br><span class="line">	u_int env_ipc_dstva;		<span class="comment">// va at which to map received page</span></span><br><span class="line">	u_int env_ipc_perm;		<span class="comment">// perm of page mapping received</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Lab 4 fault handling</span></span><br><span class="line">	u_int env_pgfault_handler;      <span class="comment">// page fault state</span></span><br><span class="line">	u_int env_xstacktop;            <span class="comment">// top of exception stack</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Lab 6 scheduler counts</span></span><br><span class="line">	u_int env_runs;			<span class="comment">// number of times been env_run'ed</span></span><br><span class="line">	u_int env_nop;                  <span class="comment">// align to avoid mul instruction</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* alter for lab3-1-Extra */</span></span><br><span class="line">	<span class="keyword">int</span> status;</span><br><span class="line">	<span class="keyword">int</span> has1;</span><br><span class="line">	<span class="keyword">int</span> has2;</span><br><span class="line">	<span class="keyword">int</span> wait1;</span><br><span class="line">	<span class="keyword">int</span> wait2;</span><br><span class="line">	<span class="keyword">int</span> cnt1;</span><br><span class="line">	<span class="keyword">int</span> cnt2;</span><br><span class="line">    <span class="comment">/* alter for lab3-1-Extra finished */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Env结构体-1"><a href="#Env结构体-1" class="headerlink" title="Env结构体"></a><code>Env</code>结构体</h3><pre><code class="lang-C">struct Env {
+    struct Trapframe env_tf;        // Saved registers
+    LIST_ENTRY(Env) env_link;       // Free list
+    u_int env_id;                   // Unique environment identifier
+    u_int env_parent_id;            // env_id of this env&#39;s parent
+    u_int env_status;               // Status of the environment
+    Pde  *env_pgdir;                // Kernel virtual address of page dir
+    u_int env_cr3;
+    LIST_ENTRY(Env) env_sched_link;
+        u_int env_pri;
+    // Lab 4 IPC
+    u_int env_ipc_value;            // data value sent to us 
+    u_int env_ipc_from;             // envid of the sender  
+    u_int env_ipc_recving;          // env is blocked receiving
+    u_int env_ipc_dstva;        // va at which to map received page
+    u_int env_ipc_perm;        // perm of page mapping received
+
+    // Lab 4 fault handling
+    u_int env_pgfault_handler;      // page fault state
+    u_int env_xstacktop;            // top of exception stack
+
+    // Lab 6 scheduler counts
+    u_int env_runs;            // number of times been env_run&#39;ed
+    u_int env_nop;                  // align to avoid mul instruction
+
+    /* alter for lab3-1-Extra */
+    int status;
+    int has1;
+    int has2;
+    int wait1;
+    int wait2;
+    int cnt1;
+    int cnt2;
+    /* alter for lab3-1-Extra finished */
+};
+</code></pre>
 <hr>
-<h3 id="资源等待队列"><a href="#资源等待队列" class="headerlink" title="资源等待队列"></a>资源等待队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* alter for lab3-1-Extra */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> sig[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env_list</span> <span class="title">env_wait1_list</span>;</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env_list</span> <span class="title">env_wait2_list</span>;</span></span><br><span class="line"><span class="comment">/* alter for lab3-1-Extra finished*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="资源等待队列"><a href="#资源等待队列" class="headerlink" title="资源等待队列"></a>资源等待队列</h3><pre><code class="lang-C">/* alter for lab3-1-Extra */
+static int sig[10] = {0};
+static struct Env_list env_wait1_list;
+static struct Env_list env_wait2_list;
+/* alter for lab3-1-Extra finished*/
+</code></pre>
 <hr>
-<h3 id="S-init"><a href="#S-init" class="headerlink" title="S_init"></a><code>S_init</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">S_init</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">	sig[s] = num;</span><br><span class="line">	LIST_INIT(&amp;env_wait1_list);</span><br><span class="line">	LIST_INIT(&amp;env_wait2_list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="S-init"><a href="#S-init" class="headerlink" title="S_init"></a><code>S_init</code></h3><pre><code class="lang-C">void S_init(int s, int num) {
+    sig[s] = num;
+    LIST_INIT(&amp;env_wait1_list);
+    LIST_INIT(&amp;env_wait2_list);
+}
+</code></pre>
 <hr>
-<h3 id="P操作-2"><a href="#P操作-2" class="headerlink" title="P操作"></a><code>P</code>操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">P</span><span class="params">(struct Env *e, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//printf("env_id = %d s = %d s left : %d \n", e-&gt;env_id, s, sig[s]);</span></span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (sig[s] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		sig[s]--;</span><br><span class="line">		e-&gt;status = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="number">1</span>) &#123;</span><br><span class="line">			e-&gt;cnt1 = e-&gt;cnt1 + <span class="number">1</span>;</span><br><span class="line">			e-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;cnt2 = e-&gt;cnt2 + <span class="number">1</span>;</span><br><span class="line">			e-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		e-&gt;status = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="number">1</span>) &#123; </span><br><span class="line">			LIST_INSERT_TAIL(&amp;env_wait1_list, e, env_link);</span><br><span class="line">			e-&gt;wait1 = <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			LIST_INSERT_TAIL(&amp;env_wait2_list, e, env_link);</span><br><span class="line">			e-&gt;wait2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//return -1;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="P操作-2"><a href="#P操作-2" class="headerlink" title="P操作"></a><code>P</code>操作</h3><pre><code class="lang-C">int P(struct Env *e, int s) {
+    //printf(&quot;env_id = %d s = %d s left : %d \n&quot;, e-&gt;env_id, s, sig[s]);
+    if (e-&gt;wait1 == 1 || e-&gt;wait2 == 1) {
+        return -1;
+    }
+    if (sig[s] &gt; 0) {
+        sig[s]--;
+        e-&gt;status = 2;
+        if (s == 1) {
+            e-&gt;cnt1 = e-&gt;cnt1 + 1;
+            e-&gt;has1 = 1;
+        } else {
+            e-&gt;cnt2 = e-&gt;cnt2 + 1;
+            e-&gt;has2 = 1;
+        }
+        return 0;
+    } else {
+        e-&gt;status = 1;
+        if (s == 1) { 
+            LIST_INSERT_TAIL(&amp;env_wait1_list, e, env_link);
+            e-&gt;wait1 = 1;
+        } else {
+            LIST_INSERT_TAIL(&amp;env_wait2_list, e, env_link);
+            e-&gt;wait2 = 1;
+        }
+        //return -1;
+    }
+    return 0;
+}
+</code></pre>
 <hr>
-<h3 id="V操作-2"><a href="#V操作-2" class="headerlink" title="V操作"></a><code>V</code>操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">V</span><span class="params">(struct Env* e, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">eNow</span>;</span></span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (s == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (LIST_EMPTY(&amp;env_wait1_list)) &#123; </span><br><span class="line">			sig[s]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			eNow = LIST_FIRST(&amp;env_wait1_list);</span><br><span class="line">			<span class="comment">//eNow-&gt;status = 2;</span></span><br><span class="line">			eNow-&gt;wait1 = <span class="number">0</span>;</span><br><span class="line">			eNow-&gt;cnt1 = eNow-&gt;cnt1 + <span class="number">1</span>;</span><br><span class="line">			eNow-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (eNow-&gt;wait1 == <span class="number">1</span> || eNow-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (eNow-&gt;has1 == <span class="number">1</span> || eNow-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">2</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">3</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			LIST_REMOVE(eNow, env_link);</span><br><span class="line">		&#125;</span><br><span class="line">		e-&gt;cnt1 = e-&gt;cnt1 - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (e-&gt;cnt1 &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			e-&gt;cnt1 = <span class="number">0</span>;</span><br><span class="line">			e-&gt;has1 = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//e-&gt;has1 = 0;</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (LIST_EMPTY(&amp;env_wait2_list)) &#123;</span><br><span class="line">			sig[s]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			eNow = LIST_FIRST(&amp;env_wait2_list);</span><br><span class="line">			<span class="comment">//eNow-&gt;status = 2;</span></span><br><span class="line">			eNow-&gt;wait2 = <span class="number">0</span>;</span><br><span class="line">			eNow-&gt;cnt2 = eNow-&gt;cnt2 + <span class="number">1</span>;</span><br><span class="line">			eNow-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (eNow-&gt;wait1 == <span class="number">1</span> || eNow-&gt;wait2 == <span class="number">1</span>) &#123;	</span><br><span class="line">				eNow-&gt;status = <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (eNow-&gt;has1 == <span class="number">1</span> || eNow-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">2</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">3</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			LIST_REMOVE(eNow, env_link);</span><br><span class="line">		&#125;</span><br><span class="line">		e-&gt;cnt2 = e-&gt;cnt2 - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (e-&gt;cnt2 &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			e-&gt;cnt2 = <span class="number">0</span>;</span><br><span class="line">			e-&gt;has2 = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//e-&gt;has2 = 0;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		e-&gt;status = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (e-&gt;has1 == <span class="number">1</span> || e-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">		e-&gt;status = <span class="number">2</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		e-&gt;status = <span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="V操作-2"><a href="#V操作-2" class="headerlink" title="V操作"></a><code>V</code>操作</h3><pre><code class="lang-C">int V(struct Env* e, int s) {
+    struct Env *eNow;
+    if (e-&gt;wait1 == 1 || e-&gt;wait2 == 1) {
+        return -1;
+    }
+    if (s == 1) {
+        if (LIST_EMPTY(&amp;env_wait1_list)) { 
+            sig[s]++;
+        } else {
+            eNow = LIST_FIRST(&amp;env_wait1_list);
+            //eNow-&gt;status = 2;
+            eNow-&gt;wait1 = 0;
+            eNow-&gt;cnt1 = eNow-&gt;cnt1 + 1;
+            eNow-&gt;has1 = 1;
+            if (eNow-&gt;wait1 == 1 || eNow-&gt;wait2 == 1) {
+                eNow-&gt;status = 1;
+            } else if (eNow-&gt;has1 == 1 || eNow-&gt;has2 == 1) {
+                eNow-&gt;status = 2;
+            } else {
+                eNow-&gt;status = 3;
+            }
+            LIST_REMOVE(eNow, env_link);
+        }
+        e-&gt;cnt1 = e-&gt;cnt1 - 1;
+        if (e-&gt;cnt1 &lt;= 0) {
+            e-&gt;cnt1 = 0;
+            e-&gt;has1 = 0;
+        } else {
+            e-&gt;has1 = 1;
+        }
+        //e-&gt;has1 = 0;
+    } else {
+        if (LIST_EMPTY(&amp;env_wait2_list)) {
+            sig[s]++;
+        } else {
+            eNow = LIST_FIRST(&amp;env_wait2_list);
+            //eNow-&gt;status = 2;
+            eNow-&gt;wait2 = 0;
+            eNow-&gt;cnt2 = eNow-&gt;cnt2 + 1;
+            eNow-&gt;has2 = 1;
+            if (eNow-&gt;wait1 == 1 || eNow-&gt;wait2 == 1) {    
+                eNow-&gt;status = 1;
+            } else if (eNow-&gt;has1 == 1 || eNow-&gt;has2 == 1) {
+                eNow-&gt;status = 2;
+            } else {
+                eNow-&gt;status = 3;
+            }
+            LIST_REMOVE(eNow, env_link);
+        }
+        e-&gt;cnt2 = e-&gt;cnt2 - 1;
+        if (e-&gt;cnt2 &lt;= 0) {
+            e-&gt;cnt2 = 0;
+            e-&gt;has2 = 0;
+        } else {
+            e-&gt;has2 = 1;
+        }
+        //e-&gt;has2 = 0;
+    }
+    if (e-&gt;wait1 == 1 || e-&gt;wait2 == 1) {
+        e-&gt;status = 1;
+    } else if (e-&gt;has1 == 1 || e-&gt;has2 == 1) {
+        e-&gt;status = 2;
+    } else {
+        e-&gt;status = 3;
+    }
+    return 0;
+}
+</code></pre>
 <hr>
-<h3 id="my-env-create"><a href="#my-env-create" class="headerlink" title="my_env_create()"></a><code>my_env_create()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">my_env_create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span>;</span></span><br><span class="line">	<span class="keyword">if</span> (env_alloc(&amp;e, <span class="number">0</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> e-&gt;env_id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="my-env-create"><a href="#my-env-create" class="headerlink" title="my_env_create()"></a><code>my_env_create()</code></h3><pre><code class="lang-C">int my_env_create() {
+    struct Env *e;
+    if (env_alloc(&amp;e, 0) != 0) {
+        return -1;
+    }
+    return e-&gt;env_id;
+}
+</code></pre>
 <hr>
-<h3 id="get-status"><a href="#get-status" class="headerlink" title="get_status()"></a><code>get_status()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_status</span><span class="params">(struct Env *e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> e-&gt;status;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="get-status"><a href="#get-status" class="headerlink" title="get_status()"></a><code>get_status()</code></h3><pre><code class="lang-C">int get_status(struct Env *e) {
+    return e-&gt;status;
+}
+</code></pre>
 <h2 id="Part-4-后记"><a href="#Part-4-后记" class="headerlink" title="Part 4 后记"></a>Part 4 后记</h2><p>由于<del>上机时评测姬咕咕咕了20min</del>，这次的Extra写得十分仓促，很可能有冗余设计（比如有了<code>cnt</code>变量就应当可以用<code>cnt</code>为0表示不持有资源而无需<code>has</code>变量），欢迎大家批评指正。</p>
 
                 
@@ -751,8 +902,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

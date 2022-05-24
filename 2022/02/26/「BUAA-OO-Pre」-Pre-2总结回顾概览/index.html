@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -360,9 +360,23 @@
 <h4 id="测评方法"><a href="#测评方法" class="headerlink" title="测评方法"></a>测评方法</h4><p>输出数值时，你的输出数值需要和正确数值相等。</p>
 <p><strong>假设你的输出值 $x<em>{out}$ 和正确数值 $x</em>{std}$ 之间的绝对或相对误差小于等于  $10 ^ {-5}$，则认为是相等的，即满足</strong></p>
 <script type="math/tex; mode=display">
-\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">12345667 water 20 100</span><br><span class="line">8</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5 30</span><br><span class="line">6 true</span><br><span class="line">7</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">water</span><br><span class="line">20</span><br><span class="line">100.0</span><br><span class="line">true</span><br><span class="line">The bottle&#39;s id is 12345667, name is water, capacity is 100.0, filled is true.</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
-<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>下面简单介绍 pre2 系列任务的迭代形式：</p>
+\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><pre><code>12345667 water 20 100
+8
+1
+2
+3
+4
+5 30
+6 true
+7
+2
+</code></pre><h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><pre><code>water
+20
+100.0
+true
+The bottle&#39;s id is 12345667, name is water, capacity is 100.0, filled is true.
+30
+</code></pre><h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>下面简单介绍 pre2 系列任务的迭代形式：</p>
 <p>从 <strong><em>Task1</em></strong> 到 <strong><em>Task3</em></strong> ，逐步引导同学们实现一系列基础的类，并且熟悉类、属性和方法的使用，引导大家向面向对象的思维方式转变。</p>
 <p><strong><em>Task4</em></strong> 涉及方法的重写和复用，并引入异常处理机制，希望同学们可以感性地体会到层次化设计的好处，了解并简单应用异常处理（异常处理在之后也常会用到）。</p>
 <p><strong><em>Task5</em></strong> 涉及接口，需要同学们在之前 Task 的基础上完成更加复杂的操作。如果此时仍然使用原来的编码习惯，会在这个 Task 中遇到巨大困难，而严格按照我们的提示去做的同学会体会到好处。</p>
@@ -481,9 +495,18 @@
 <h4 id="测评方法-1"><a href="#测评方法-1" class="headerlink" title="测评方法"></a>测评方法</h4><p>输出数值时，你的输出数值需要和正确数值相等。</p>
 <p><strong>假设你的输出值 $x<em>{out}$ 和正确数值 $x</em>{std}$ 之间的绝对或相对误差小于等于  $10 ^ {-5}$，则认为是相等的，即满足</strong></p>
 <script type="math/tex; mode=display">
-\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1 1 Person1</span><br><span class="line">2 1 2 bottle1 10 5</span><br><span class="line">2 1 3 bottle2 15 12</span><br><span class="line">4 1</span><br><span class="line">5 1</span><br><span class="line">3 1 2</span><br><span class="line">4 1</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">25</span><br><span class="line">15</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
-<h4 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h4><p>建立一个对象的集合，实现向集合中增加对象和访问集合中对象的操作，学习容器的使用和选择。</p>
+\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例"></a>输入样例</h4><pre><code>7
+1 1 Person1
+2 1 2 bottle1 10 5
+2 1 3 bottle2 15 12
+4 1
+5 1
+3 1 2
+4 1
+</code></pre><h4 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例"></a>输出样例</h4><pre><code>25
+15
+15
+</code></pre><h4 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h4><p>建立一个对象的集合，实现向集合中增加对象和访问集合中对象的操作，学习容器的使用和选择。</p>
 <p>熟悉对容器的操作，题目中限制了所有对象（冒险者、瓶子）的 ID 不会相同，思考一下，哪种容器会更加适合本次任务？或者说哪些容器呢？</p>
 <p>在本次作业中我们有求和操作，尽管我们将输入数据限制在 long 的范围内，但是在求和时可能会超出精度范围。请你查阅 Java 相关资料，来看看在 Java 中是如何解决超过普通数据类型数据范围的精度问题的。</p>
 <p>Java 中有些特别的类用于处理大数运算，如 <code>BigInteger</code>，<code>BigDecimal</code>。</p>
@@ -492,7 +515,10 @@
 <li><p>了解<code>BigInteger</code>相关知识并应用，这将在下面的<strong>扩展知识</strong>进行部分介绍。</p>
 </li>
 <li><p>了解Java中的一种遍历方式如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Bottle bottle : bottles) &#123;</span><br><span class="line">	max = Math.max(bottle.getPrice(),max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">for (Bottle bottle : bottles) {
+    max = Math.max(bottle.getPrice(),max);
+}
+</code></pre>
 <p>该遍历方式可以便捷遍历如<code>ArrayList</code>等容器内的所有对象，优于C语言中按索引遍历的方式，尤其是我们不关心容器内对象的索引的时候。对于各种容器的使用，可以首先参考<a href="https://www.runoob.com/java/java-arraylist.html" target="_blank" rel="noopener">Java ArrayList - 菜鸟教程</a>，了解<code>ArrayList</code>基本用法后迁移知识到其他容器如<code>HashMap</code>等。</p>
 </li>
 </ol>
@@ -770,9 +796,20 @@
 <h4 id="测评方法-2"><a href="#测评方法-2" class="headerlink" title="测评方法"></a>测评方法</h4><p>输出数值时，你的输出数值需要和正确数值相等。</p>
 <p><strong>假设你的输出值 $x<em>{out}$ 和正确数值 $x</em>{std}$ 之间的绝对或相对误差小于等于  $10 ^ {-5}$，则认为是相等的，即满足</strong></p>
 <script type="math/tex; mode=display">
-\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-2"><a href="#输入样例-2" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">1 1 Person1</span><br><span class="line">1 2 Person2</span><br><span class="line">2 1 1 3 bottle1 10 5</span><br><span class="line">2 1 6 4 sword1 20 7 0.6</span><br><span class="line">2 2 3 5 bottle2 15 3 8</span><br><span class="line">6 1</span><br><span class="line">7 2 5</span><br><span class="line">3 1 3</span><br><span class="line">5 1</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-2"><a href="#输出样例-2" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">The expBottle&#39;s id is 5, name is bottle2, capacity is 3.0, filled is true, expRatio is 8.0.</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
-<h4 id="补充材料"><a href="#补充材料" class="headerlink" title="补充材料"></a>补充材料</h4><ol>
+\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-2"><a href="#输入样例-2" class="headerlink" title="输入样例"></a>输入样例</h4><pre><code>9
+1 1 Person1
+1 2 Person2
+2 1 1 3 bottle1 10 5
+2 1 6 4 sword1 20 7 0.6
+2 2 3 5 bottle2 15 3 8
+6 1
+7 2 5
+3 1 3
+5 1
+</code></pre><h4 id="输出样例-2"><a href="#输出样例-2" class="headerlink" title="输出样例"></a>输出样例</h4><pre><code>2
+The expBottle&#39;s id is 5, name is bottle2, capacity is 3.0, filled is true, expRatio is 8.0.
+20
+</code></pre><h4 id="补充材料"><a href="#补充材料" class="headerlink" title="补充材料"></a>补充材料</h4><ol>
 <li><p>请思考，本次作业中的<strong>求和</strong>操作等是否会出现超出数据限制的情况。</p>
 <p>提示：Java 中有特别的类：<code>BigInteger</code> 和 <code>BigDecimal</code> 。</p>
 </li>
@@ -828,9 +865,15 @@
 <p>对于更细致的用法和特性，可以参考<a href="https://www.runoob.com/java/java-arraylist.html" target="_blank" rel="noopener">Java ArrayList</a>和<a href="https://www.runoob.com/java/java-hashmap.html" target="_blank" rel="noopener">Java HashMap</a>。</p>
 <p>由以上对比可以看到，<code>HashMap</code>具有可以根据<code>key</code>值随机访问和删除的功能，而<code>ArrayList</code>在这方面的支持是按照索引访问，即类似数组下标。根据本task要求可以知道，冒险者拥有的物品的<code>id</code>是我们关心的，我们并不关心其在列表中的索引下标，因此，使用<code>HashMap</code>是一种更优越的选择。</p>
 <p>对于遍历操作，<code>ArrayList</code>支持直接使用类似如下格式，可以直接遍历每个对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Bottle bottle : bottles) &#123;</span><br><span class="line">    <span class="comment">/* body */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">for (Bottle bottle : bottles) {
+    /* body */
+}
+</code></pre>
 <p><code>HashMap</code>则支持对<code>key</code>值遍历，在此过程中可以通过<code>get</code>方法访问每一个<code>key</code>对应的对象，也做到了遍历：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Integer i : valueEntityHashMap.keySet()) &#123;</span><br><span class="line">    sum = sum.add(valueEntityHashMap.get(i).getPrice());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">for (Integer i : valueEntityHashMap.keySet()) {
+    sum = sum.add(valueEntityHashMap.get(i).getPrice());
+}
+</code></pre>
 <h5 id="向上转型、向下转型和方法重写"><a href="#向上转型、向下转型和方法重写" class="headerlink" title="向上转型、向下转型和方法重写"></a>向上转型、向下转型和方法重写</h5><p><strong>向上转型</strong>：可以使用<strong>父类型</strong>去引用通过<strong>子类型</strong>创建的对象，此时程序设计者只关心父类型层次可以看到的方法，因此只能调用父类型所声明的方法。</p>
 <p>如果该引用转型前和转型后所属的类型都声明了同样原型的方法，那么访问哪个方法体就会涉及<strong>方法查找</strong>的问题，一句话说明即：<strong>从对象创建时的类开始，沿类层次向上查找</strong>。</p>
 <p>上述的两个特征为我们实现此task及后来的task提供了一种方法和思路：对于冒险者对象而言，其要管理其名下的诸多<code>Equipment</code>（到task5还会涉及到<code>ValueEntity</code>等），但是创建对象时又很纷繁，如<code>Bottle</code>类、<code>Sword</code>类等，如果对每个具体的子类都创建<code>ArrayList</code>或者<code>HashMap</code>进行管理，显然极大增加了复杂度，降低了可维护性和可拓展性。</p>
@@ -972,18 +1015,54 @@
 <h4 id="测评方法-3"><a href="#测评方法-3" class="headerlink" title="测评方法"></a>测评方法</h4><p>输出数值时，你的输出数值需要和正确数值相等。</p>
 <p><strong>假设你的输出值 $x<em>{out}$ 和正确数值 $x</em>{std}$ 之间的绝对或相对误差小于等于  $10 ^ {-5}$，则认为是相等的，即满足</strong></p>
 <script type="math/tex; mode=display">
-\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-3"><a href="#输入样例-3" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1 1 Person1</span><br><span class="line">2 1 1 2 water_bottle1 10 50.0</span><br><span class="line">2 1 6 3 epic_sword1 300 7.0 1.5</span><br><span class="line">2 1 3 4 exp_bottle1 10 3.0 1.2</span><br><span class="line">8 1</span><br><span class="line">9 1</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-3"><a href="#输出样例-3" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person1 used epic_sword1 and earned 7.0.</span><br><span class="line">epic_sword1&#39;s sharpness became 10.5.</span><br><span class="line">Person1 drank exp_bottle1 and recovered 0.3.</span><br><span class="line">Person1&#39;s exp became 12.0.</span><br><span class="line">Person1 drank water_bottle1 and recovered 5.0.</span><br><span class="line">The adventurer&#39;s id is 1, name is Person1, health is 95.3, exp is 12.0, money is 7.0.</span><br></pre></td></tr></table></figure>
-<hr>
+\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-3"><a href="#输入样例-3" class="headerlink" title="输入样例"></a>输入样例</h4><pre><code>6
+1 1 Person1
+2 1 1 2 water_bottle1 10 50.0
+2 1 6 3 epic_sword1 300 7.0 1.5
+2 1 3 4 exp_bottle1 10 3.0 1.2
+8 1
+9 1
+</code></pre><h4 id="输出样例-3"><a href="#输出样例-3" class="headerlink" title="输出样例"></a>输出样例</h4><pre><code>Person1 used epic_sword1 and earned 7.0.
+epic_sword1&#39;s sharpness became 10.5.
+Person1 drank exp_bottle1 and recovered 0.3.
+Person1&#39;s exp became 12.0.
+Person1 drank water_bottle1 and recovered 5.0.
+The adventurer&#39;s id is 1, name is Person1, health is 95.3, exp is 12.0, money is 7.0.
+</code></pre><hr>
 <h4 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h4><ol>
 <li>建议在Equipment类中定义一个use方法，在所有的装备子类中都去重写这个use方法，另外还应该为所有需要打印描述字符串的类重写toString方法。在Adventurer类中定义<code>HashMap&lt;Integer, Equipment&gt;</code>类型的equipments属性，表示冒险者拥有的全部装备，在执行操作8时，先对equipments中存储的装备进行排序，然后依次调用这些装备对象的use方法（因为有多态机制，这里不需要强制转型，直接调用就可以保证行为正确）。</li>
 <li>冒险者使用装备的过程中，是对冒险者属性和装备自身属性的读取，运算和修改。如何才能让装备类的方法可以读取并修改他的使用者的属性呢？为<code>use</code>方法传递一个冒险者作为参数是一个好主意。</li>
 <li>在 <code>Bottle</code> 和它的子类在 <code>filled</code> 为 <code>false</code> 时被使用就可以看作是一种异常行为。于是你可以在 <code>Bottle.use</code> 方法中抛出一个异常（使用 throw 语句），在 <code>HealingPotion.use</code> 调用 <code>Bottle.use</code> 时，不处理这个异常而是将其继续抛出到上层，而在冒险者循环使用装备的代码中将其捕获并打印出错误信息。</li>
 </ol>
 <p>下面的代码是标程中Bottle类内定义的use方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">use</span><span class="params">(Adventurer user)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!isFilled()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Failed to use "</span> + getName() + <span class="string">" because it is empty."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    user.setHealth(user.getHealth() + capacity / <span class="number">10</span>);</span><br><span class="line">    setFilled(<span class="keyword">false</span>);</span><br><span class="line">    setPrice(getPrice().divide(BigInteger.TEN));</span><br><span class="line"></span><br><span class="line">    System.out.println(user.getName() +</span><br><span class="line">            <span class="string">" drank "</span> + getName() +</span><br><span class="line">            <span class="string">" and recovered "</span> + capacity / <span class="number">10</span> +</span><br><span class="line">            <span class="string">"."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">@Override
+public void use(Adventurer user) throws Exception {
+    if (!isFilled()) {
+        throw new Exception(&quot;Failed to use &quot; + getName() + &quot; because it is empty.&quot;);
+    }
+    user.setHealth(user.getHealth() + capacity / 10);
+    setFilled(false);
+    setPrice(getPrice().divide(BigInteger.TEN));
+
+    System.out.println(user.getName() +
+            &quot; drank &quot; + getName() +
+            &quot; and recovered &quot; + capacity / 10 +
+            &quot;.&quot;);
+}
+</code></pre>
 <p>下面的代码是标程中在Adventurer类中用于完成操作8所定义的useAll方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Equipment&gt; sorted = <span class="keyword">new</span> ArrayList&lt;&gt;(equipments.values());</span><br><span class="line">    Collections.sort(sorted, Comparator.reverseOrder());</span><br><span class="line">    <span class="keyword">for</span> (Equipment equipment : sorted) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            equipment.use(<span class="keyword">this</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public void useAll() {
+    ArrayList&lt;Equipment&gt; sorted = new ArrayList&lt;&gt;(equipments.values());
+    Collections.sort(sorted, Comparator.reverseOrder());
+    for (Equipment equipment : sorted) {
+        try {
+            equipment.use(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+</code></pre>
 <ol>
 <li>本次作业将会涉及到自定义排序，请学习如何给对象编写 <code>compareTo</code> 方法并实现 <code>Comparable</code> 接口，之后即可利用 <code>Collections.sort</code> 方法来给容器内对象进行排序，考虑到有许多知识同学们还没有学过，本章结尾会给出一个例子，同学们可以照猫画虎地完成，compareTo方法仅需要在Equipment类中定义，Equipment类的子类如果不重写该方法的话，将会与父类行为保持一致。</li>
 </ol>
@@ -992,7 +1071,84 @@
 <p>另外，<code>HashSet</code> 和 <code>HashMap</code> 这两种容器会通过调用对象的 <code>hashCode</code> 方法和 <code>equals</code> 方法来将任意对象作为key来使用。<strong>这个知识点非常重要，请同学们务必弄懂其原理</strong>。</p>
 <p>Java中许多内置的类，比如 <code>Integer</code> 和 <code>BigInteger</code> 等等都已经实现了<code>compareTo</code>、<code>hashCode</code>、<code>equals</code> 方法，所以你才可以直接把他们当作 <code>TreeMap</code> 和 <code>HashMap</code> 的key来使用。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Comparable接口的例子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Score xiaoMing = <span class="keyword">new</span> Score(<span class="number">120</span>, <span class="number">138</span>);</span><br><span class="line">        Score xiaoHong = <span class="keyword">new</span> Score(<span class="number">125</span>, <span class="number">133</span>);</span><br><span class="line">        Score xiaoWang = <span class="keyword">new</span> Score(<span class="number">119</span>, <span class="number">145</span>);</span><br><span class="line">        ArrayList&lt;Score&gt; scores = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        scores.add(xiaoMing);</span><br><span class="line">        scores.add(xiaoHong);</span><br><span class="line">        scores.add(xiaoWang);</span><br><span class="line"></span><br><span class="line">        Collections.sort(scores);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Score score : scores) &#123; <span class="comment">// 如果你使用IDEA编写代码，可以试一试打出 "scores.for&lt;TAB&gt;" 这一串按键，快速补齐for循环</span></span><br><span class="line">            System.out.println(score); <span class="comment">// 试一试 "score.sout&lt;TAB&gt;"，自动补齐打印语句</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        运行结果如下，越大的对象越在后面（即升序排序）:</span></span><br><span class="line"><span class="comment">        Score&#123;chinese=120, math=138&#125;</span></span><br><span class="line"><span class="comment">        Score&#123;chinese=125, math=133&#125;</span></span><br><span class="line"><span class="comment">        Score&#123;chinese=119, math=145&#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Score</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Score</span>&gt; </span>&#123; <span class="comment">// 后面尖括号里的类名基本上都会与前面的类名相同，表达“Score这个类可以与Score这个类相比较”这个意思。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> chinese;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> math;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Score</span><span class="params">(<span class="keyword">int</span> chinese, <span class="keyword">int</span> math)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.chinese = chinese;</span><br><span class="line">        <span class="keyword">this</span>.math = math;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> chinese + math;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义分数的比较规则，首先比较总分，总分相同比较语文，语文相同比较数学……</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Score other)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.getSum() &lt; other.getSum()) &#123; <span class="comment">//首先比较总分，总分高的先录取</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// 返回 -1 代表 this 小于 other</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.getSum() &gt; other.getSum()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 返回 1 代表 this 大于 other</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.chinese &lt; other.chinese) &#123; <span class="comment">//若总分一样，按语文分更高的先录取</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.chinese &gt; other.chinese) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 返回任何负值都代表this &lt; other，于是可以这样子简写，</span></span><br><span class="line">        <span class="comment">// 下面三行关于math的比较和上面的五行关于chinese的比较是完全等价的。</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.math != other.math) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.math - other.math; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//返回0代表两被比较对象相等</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Score&#123;"</span> +</span><br><span class="line">                <span class="string">"chinese="</span> + chinese +</span><br><span class="line">                <span class="string">", math="</span> + math +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// Comparable接口的例子
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+class MainClass {
+    public static void main(String[] args) {
+        Score xiaoMing = new Score(120, 138);
+        Score xiaoHong = new Score(125, 133);
+        Score xiaoWang = new Score(119, 145);
+        ArrayList&lt;Score&gt; scores = new ArrayList&lt;&gt;();
+        scores.add(xiaoMing);
+        scores.add(xiaoHong);
+        scores.add(xiaoWang);
+
+        Collections.sort(scores);
+
+        for (Score score : scores) { // 如果你使用IDEA编写代码，可以试一试打出 &quot;scores.for&lt;TAB&gt;&quot; 这一串按键，快速补齐for循环
+            System.out.println(score); // 试一试 &quot;score.sout&lt;TAB&gt;&quot;，自动补齐打印语句
+        }
+        /*
+        运行结果如下，越大的对象越在后面（即升序排序）:
+        Score{chinese=120, math=138}
+        Score{chinese=125, math=133}
+        Score{chinese=119, math=145}
+         */
+    }
+}
+
+class Score implements Comparable&lt;Score&gt; { // 后面尖括号里的类名基本上都会与前面的类名相同，表达“Score这个类可以与Score这个类相比较”这个意思。
+    private final int chinese;
+    private final int math;
+
+    public Score(int chinese, int math) {
+        this.chinese = chinese;
+        this.math = math;
+    }
+
+    public int getSum() {
+        return chinese + math;
+    }
+
+    /**
+     * 自定义分数的比较规则，首先比较总分，总分相同比较语文，语文相同比较数学……
+     */
+    @Override
+    public int compareTo(Score other) {
+        if (this.getSum() &lt; other.getSum()) { //首先比较总分，总分高的先录取
+            return -1; // 返回 -1 代表 this 小于 other
+        } else if (this.getSum() &gt; other.getSum()) {
+            return 1; // 返回 1 代表 this 大于 other
+        }
+
+        if (this.chinese &lt; other.chinese) { //若总分一样，按语文分更高的先录取
+            return -1;
+        } else if (this.chinese &gt; other.chinese) {
+            return 1;
+        }
+
+        // 返回任何负值都代表this &lt; other，于是可以这样子简写，
+        // 下面三行关于math的比较和上面的五行关于chinese的比较是完全等价的。
+        if (this.math != other.math) {
+            return this.math - other.math; 
+        }
+
+        return 0; //返回0代表两被比较对象相等
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Score{&quot; +
+                &quot;chinese=&quot; + chinese +
+                &quot;, math=&quot; + math +
+                &#39;}&#39;;
+    }
+
+}
+</code></pre>
 <h3 id="值得注意的点-3"><a href="#值得注意的点-3" class="headerlink" title="值得注意的点"></a>值得注意的点</h3><ol>
 <li>对于公有方法，设计时可以自上向下，有利于在顶层统一规范。</li>
 <li>通过设计类内变量为<code>private</code>类型，并通过设计<code>public</code>的<code>get</code>和<code>set</code>方法达到对其的访问是一种好的设计习惯。</li>
@@ -1000,14 +1156,52 @@
 <li><code>HashSet</code>和<code>HashMap</code>中的<code>hashCode</code>和<code>equals</code>方法，这将在下面<strong>扩展知识</strong>具体介绍。</li>
 </ol>
 <h3 id="扩展知识-2"><a href="#扩展知识-2" class="headerlink" title="扩展知识"></a>扩展知识</h3><h4 id="Comparable接口和compareTo方法"><a href="#Comparable接口和compareTo方法" class="headerlink" title="Comparable接口和compareTo方法"></a><code>Comparable</code>接口和<code>compareTo</code>方法</h4><p><code>Comparable</code>接口的声明为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T o)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public interface Comparable&lt;T&gt; {
+    public int compareTo(T o);
+}
+</code></pre>
 <p>当我们需要两个对象彼此可比较时，可以对其类实现该接口，并重写<code>compareTo</code>方法，举例如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Equipment</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Equipment</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> price;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Equipment</span><span class="params">(<span class="keyword">long</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrice</span><span class="params">(<span class="keyword">long</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Equipment other)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.price &gt; other.price) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.price &lt; other.price) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.id &gt; other.id) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public class Equipment implements Comparable&lt;Equipment&gt; {
+    private long price;
+
+    public Equipment(long price) {
+        this.price = price;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+
+    @Override
+    public int compareTo(Equipment other) {
+        if (this.price &gt; other.price) {
+            return 1;
+        } else if (this.price &lt; other.price) {
+            return -1;
+        } else {
+            if (this.id &gt; other.id) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+    }
+}
+</code></pre>
 <p><code>compareTo</code>方法返回值类型为<code>int</code>，本意是希望当当前对象比传入参数对象大的时候返回正数，小的时候返回负数，相等返回0，但是实际应用中也可以直接逆过来实现降序。</p>
 <p>但是笔者仍旧认为，对两个对象大小的比较在<code>compareTo</code>中最好仍按照其本意写，此时若直接调用<code>Collections.sort</code>则为升序，若需要降序则可以添加参数<code>Comparator.reverseOrder()</code>，如：<code>Collections.sort(sorted, Comparator.reverseOrder());</code>，其中<code>sorted</code>为被比较对象类型的<code>ArrayList</code>。</p>
 <h4 id="HashSet和HashMap与hashCode和equals"><a href="#HashSet和HashMap与hashCode和equals" class="headerlink" title="HashSet和HashMap与hashCode和equals"></a><code>HashSet</code>和<code>HashMap</code>与<code>hashCode</code>和<code>equals</code></h4><p><code>abstractMap</code>类中有<code>hashCode</code>方法和<code>equals</code>方法，其原型如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public native int hashCode();
+</code></pre>
+<pre><code class="lang-java">public boolean equals(Object obj) {
+    return (this == obj);
+}
+</code></pre>
 <p><code>hashCode</code>方法会返回一个哈希值。</p>
 <p><code>equals</code>方法判断两个对象是否同一，并非两个对象是否相等。如果想要实现判断两个对象是否相等，需要自己重写方法。</p>
 <p>由于指导书中特地强调了这两个方法的重要性，因此笔者将其列在这，但是目前不很清楚课程组的意图，等待未来更新.jpg</p>
@@ -1234,9 +1428,28 @@
 <h4 id="测评方法-4"><a href="#测评方法-4" class="headerlink" title="测评方法"></a>测评方法</h4><p>输出数值时，你的输出数值需要和正确数值相等。</p>
 <p><strong>假设你的输出值 $x<em>{out}$ 和正确数值 $x</em>{std}$ 之间的绝对或相对误差小于等于  $10 ^ {-5}$，则认为是相等的，即满足</strong></p>
 <script type="math/tex; mode=display">
-\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-4"><a href="#输入样例-4" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">13</span><br><span class="line">1 1 Saber 							</span><br><span class="line">1 2 Lancer 							</span><br><span class="line">1 114514 Ausar 						</span><br><span class="line">2 1 1 3 bottle1 3 3 				</span><br><span class="line">2 2 4 4 sword1 4 5 					</span><br><span class="line">2 2 4 5 sword2 10 2 				</span><br><span class="line">2 114514 1 6 bottle2 3 3 			</span><br><span class="line">10 1 2 							</span><br><span class="line">10 2 114514 							</span><br><span class="line">7 1 2 							</span><br><span class="line">4 1 								</span><br><span class="line">6 1 								</span><br><span class="line">8 1</span><br></pre></td></tr></table></figure>
-<h4 id="输出样例-4"><a href="#输出样例-4" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">The adventurer&#39;s id is 2, name is Lancer, health is 100.0, exp is 0.0, money is 0.0.</span><br><span class="line">20</span><br><span class="line">2</span><br><span class="line">Saber used sword2 and earned 2.</span><br><span class="line">Saber used sword1 and earned 5.</span><br><span class="line">Saber drank bottle2 and recovered 0.3.</span><br><span class="line">Saber drank bottle1 and recovered 0.3.</span><br></pre></td></tr></table></figure>
-<hr>
+\dfrac {|x_{std} - x_{out}|}{\max(1, |x_{std}|)} \leq 10^{-5}</script><h4 id="输入样例-4"><a href="#输入样例-4" class="headerlink" title="输入样例"></a>输入样例</h4><pre><code>13
+1 1 Saber                             
+1 2 Lancer                             
+1 114514 Ausar                         
+2 1 1 3 bottle1 3 3                 
+2 2 4 4 sword1 4 5                     
+2 2 4 5 sword2 10 2                 
+2 114514 1 6 bottle2 3 3             
+10 1 2                             
+10 2 114514                             
+7 1 2                             
+4 1                                 
+6 1                                 
+8 1
+</code></pre><h4 id="输出样例-4"><a href="#输出样例-4" class="headerlink" title="输出样例"></a>输出样例</h4><pre><code>The adventurer&#39;s id is 2, name is Lancer, health is 100.0, exp is 0.0, money is 0.0.
+20
+2
+Saber used sword2 and earned 2.
+Saber used sword1 and earned 5.
+Saber drank bottle2 and recovered 0.3.
+Saber drank bottle1 and recovered 0.3.
+</code></pre><hr>
 <h4 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h4><p>冒险者和装备都是价值体，都可以<strong>求价值</strong>、<strong>被使用</strong>以及<strong>字符串化</strong>等，故一个推荐的设计方法是建立<strong>价值体接口</strong> ，接口中包含上述提到的三个方法，让冒险者 <code>Adventurer</code> 和装备 <code>Equipment</code> 都实现这个接口，这样在顶层逻辑中就只能看到<strong>价值体</strong>这一种类型，可使用该类型的引用去调用不同子类型对象的这三种方法，这种处理称为归一化处理，会在正式课程中有专门的论述和训练。</p>
 <h3 id="值得注意的点-4"><a href="#值得注意的点-4" class="headerlink" title="值得注意的点"></a>值得注意的点</h3><p>笔者在本次task进行了相当程度的重构和优化，代码结构和风格有较大提升，以下记录重构重点：</p>
 <ol>
@@ -1675,8 +1888,7 @@ const gitment = new Gitment({
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
