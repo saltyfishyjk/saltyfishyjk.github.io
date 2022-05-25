@@ -276,13 +276,13 @@
 <p>同时，我在此次作业中设计并实现了一个自动化评测机，这对检验程序的正确性有不小的帮助，将在<strong>Part 4 自动化评测</strong>部分介绍。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在设计本次作业之初，我设计过很多架构，在设计阶段就推倒重来若干次。尽管在Pre中的冒险者游戏中已经初步领会了面向对象的思想，但是面对较为抽象的表达式解析仍然显得无从下手。</p>
 <p>尽管如此，得益于<code>training</code>部分提供的<code>Parser</code>和<code>Lexer</code>思路以及和助教与同学们的帮助，我最终得以确定这个较为面向对象的设计。但是，这个架构依然存在相当的不足，在后面的迭代开发介绍中将会着重介绍。</p>
-<h2 id="Part-2-第二次作业"><a href="#Part-2-第二次作业" class="headerlink" title="Part 2 第二次作业"></a>Part 2 第二次作业</h2><h3 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h3><p>在本次作业中，我新增了<code>SeflDefineFunc</code>类和<code>Sum</code>类处理待解析表达式中的这两类函数调用；新增了<code>Func</code>类处理自定义函数的定义式；新增了<code>Num</code>和<code>Power</code>类将这两类因子抽离出来；新增了<code>Add</code>和<code>Mul</code>方法处理加法和乘法；新增了<code>Sin</code>和<code>Cos</code>类处理三角函数；修改了<code>Unit</code>类，其现在存储形如$a \times x^b \times \prod<em>{i=1}^{n}(sin(expr_i))\prod</em>{j=1}^{n}(cos(expr_j))$的基元。</p>
+<h2 id="Part-2-第二次作业"><a href="#Part-2-第二次作业" class="headerlink" title="Part 2 第二次作业"></a>Part 2 第二次作业</h2><h3 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h3><p>在本次作业中，我新增了<code>SeflDefineFunc</code>类和<code>Sum</code>类处理待解析表达式中的这两类函数调用；新增了<code>Func</code>类处理自定义函数的定义式；新增了<code>Num</code>和<code>Power</code>类将这两类因子抽离出来；新增了<code>Add</code>和<code>Mul</code>方法处理加法和乘法；新增了<code>Sin</code>和<code>Cos</code>类处理三角函数；修改了<code>Unit</code>类，其现在存储形如$a \times x^b \times \prod_{i=1}^{n}(sin(expr_i))\prod_{j=1}^{n}(cos(expr_j))$的基元。</p>
 <p>整体架构上，依然遵循<code>Expr-&gt;Term-Factor</code>的结构，其中，<code>Num,Power,SelfDefineFunc,Sum,Sin,Cos</code>都实现了<code>Factor</code>接口。</p>
 <p>在<code>sum</code>和自定义函数的代入过程中，没有采取在原字符串暴力替换的方法，而是采用了解析出变量式再替换的办法，更好符合了语义。</p>
 <p>UML类图如下所示，可以点开大图查看细节。</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW2_remove.png" class="" title="p2">
 <h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
-<li>简化和统一了接口与计算，<code>Add</code>和<code>Mul</code>始终只需要处理两个<code>Unit</code>集合（$a \times x^b \times \prod<em>{i=1}^{n}(sin(expr_i))\prod</em>{j=1}^{n}(cos(expr_j))$）的加法和乘法即可。</li>
+<li>简化和统一了接口与计算，<code>Add</code>和<code>Mul</code>始终只需要处理两个<code>Unit</code>集合（$a \times x^b \times \prod_{i=1}^{n}(sin(expr_i))\prod_{j=1}^{n}(cos(expr_j))$）的加法和乘法即可。</li>
 <li>数据存储和运算相解耦合。具体来说，在解析原字符串时，按照其结构存储为一棵多叉树；在运算过程中，从最顶层依次递归向下调用，获得<code>Unit</code>集合，结构清晰，同时不更改原有存储数据。</li>
 </ol>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
