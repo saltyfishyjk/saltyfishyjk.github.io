@@ -287,7 +287,6 @@
 <p><strong>TOO LOW</strong></p>
 <p>KUc为1代表CPU处于用户态，此时如果进程试图访问内核空间，则会触发TLB异常。在Lab3中，我们的进程仍运行在内核态（可以通过我们设置的）。值得注意的是，在进程调度时，会首先调用<code>rfe</code>，因此，我们不能直接在<code>env_alloc</code>中设置KUc，而应当设置KUp，这样在调用<code>rfe</code>后会让我们的进程的CPU状态得到正确的设置。</p>
 <h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220511161832176.png" class="" title="系统调用流程">
-<p><img src="2022-05-25-「BUAA-OS-Lab4」难点梳理与理解总结.assets/image-20220516104220271.png" alt="image-20220516104220271"></p>
 <p>上图是指导书给出的流程，已经比较详细，我们以其为本更细致介绍具体操作及各个函数的声明与实现位置。</p>
 <p>我们以<code>writef</code>为例梳理系统调用的一般流程：</p>
 <ol>
