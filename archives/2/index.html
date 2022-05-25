@@ -160,14 +160,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -382,10 +382,7 @@ Part 1 题目描述在理论课......
                 <div class="post-content-preview">
                     「BUAA OS Lab3」名词解释变量和类型PCB进程控制块（Process Conotrol Block），系统感知进程存在的唯一标志。进程和PCB一一对应。
 
-Envstruct Env {
-    struct Trapframe env_tf; // Saved registers 
-    LIST_ENTRY(Env) env_link; // Free LIST_ENTRY
-......
+Env1234567891011struct Env &#123;	struct Trapframe env_tf; // Saved registers 	LIST_ENTRY(Env) env_link; // Free L......
                 </div>
             </a>
             
@@ -454,9 +451,7 @@ Envstruct Env {
                     「BUAA OS Lab2」名词解释
 变量和类型Pde和PtePage directory entry / Page table entry
 声明：
-typedef u_long Pde; 
-typedef u_long Pte;
-
+12typedef u_long Pde; typedef u_long Pte;
 位置：include/mmu.h
 Pde表示一个一级页表项，Pde表示一个二级页表项。二者本质为u_long。
 
@@ -601,7 +596,7 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
                     Markdown笔记Part 0 前言Part 1 常用语法删除线
 源码：
 
-~~要删除的内容~~
+1~~要删除的内容~~
 
 效果
 
@@ -760,13 +755,13 @@ Part 1 题目描述请你对现有的物理内存......
     <div class="tags">
         
             
+        
+            
             <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
             
         
             
             <a href="/tags/#Java Programming" title="Java Programming" rel="2">Java Programming</a>
-            
-        
             
         
             
@@ -794,13 +789,13 @@ Part 1 题目描述请你对现有的物理内存......
             
         
             
-            <a href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics" rel="5">BUAA Discrete Mathematics</a>
-            
-        
-            
-        
-            
             <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="10">BUAA-OS</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics" rel="5">BUAA Discrete Mathematics</a>
             
         
             

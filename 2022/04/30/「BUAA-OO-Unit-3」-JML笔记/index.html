@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">5.4k</span> and
+                                Words <span class="post-count">5.5k</span> and
                                 Reading Time <span class="post-count">20</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -263,20 +263,11 @@
 <h3 id="行注释"><a href="#行注释" class="headerlink" title="行注释"></a>行注释</h3><ul>
 <li>表示方式</li>
 </ul>
-<pre><code class="lang-java">//@ public model non_null int [] elements
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@ public model non_null int [] elements</span></span><br></pre></td></tr></table></figure>
 <h3 id="块注释"><a href="#块注释" class="headerlink" title="块注释"></a>块注释</h3><ul>
 <li>表示方式</li>
 </ul>
-<pre><code class="lang-java">/*@ contents
-  @
-  @
-  @
-  @
-  @
-  @
-  @*/
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@ contents</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @</span></span><br><span class="line"><span class="comment">  @*/</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Part-2-JML表达式"><a href="#Part-2-JML表达式" class="headerlink" title="Part 2 JML表达式"></a>Part 2 JML表达式</h2><h3 id="pure"><a href="#pure" class="headerlink" title="pure"></a><code>pure</code></h3><p>方法的执行不会有任何副作用</p>
 <hr>
@@ -289,9 +280,7 @@
 <h4 id="not-assigned-x-y"><a href="#not-assigned-x-y" class="headerlink" title="\not_assigned(x,y,...)"></a><code>\not_assigned(x,y,...)</code></h4><p>表示括号中的变量是否在方法执行过程中<strong>被赋值</strong>，如果没有被赋值，返回<code>true</code>，否则返回<code>false</code>。一般该表达式被用于后置条件的约束表示上，用来限制一个方法的实现不能对列表中的变量赋值。</p>
 <h4 id="not-modified-x-y"><a href="#not-modified-x-y" class="headerlink" title="\not_modified(x,y,...)"></a><code>\not_modified(x,y,...)</code></h4><p> 与<code>\not_assigned()</code>类似，限制括号中的变量在方法执行期间的取值不发生变化。</p>
 <h4 id="nonnullelements-container"><a href="#nonnullelements-container" class="headerlink" title="\nonnullelements(container)"></a><code>\nonnullelements(container)</code></h4><p>表示<code>container</code>对象中存储的对象不会有<code>null</code>，等价于如下断言：</p>
-<pre><code class="lang-java">container != null &amp;&amp;
-(\forall int i; 0 &lt;= i &amp;&amp; i &lt; container.length;container[i] != null)
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">(\forall <span class="keyword">int</span> i; <span class="number">0</span> &lt;= i &amp;&amp; i &lt; container.length;container[i] != <span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="type-type"><a href="#type-type" class="headerlink" title="\type(type)"></a><code>\type(type)</code></h4><p>返回类型<code>type</code>对应的类型（Class），如<code>\type(boolean)</code>为<code>Boolean.TYPE</code>。<code>TYPE</code>是JML中的缩略表示，等同于Java中的<code>java.lang.Class</code>。</p>
 <h4 id="typeof-expr"><a href="#typeof-expr" class="headerlink" title="\typeof(expr)"></a><code>\typeof(expr)</code></h4><p>返回<code>expr</code>对应的准确类型，如<code>\typeof(false)</code>为<code>Boolean.TYPE</code>。</p>
 <hr>
@@ -350,48 +339,15 @@
 <p>从方法规格的角度看，必须要给出明确的副作用范围。JML提供了副作用范围子句，使用关键词<code>assignable</code>或者<code>modifiable</code>。</p>
 <p>从语法上看，副作用约束子句有两种形态，一种不指明具体的变量，而是用JML关键词来概括；另一种指明具体的变量列表。</p>
 <p>:chestnut::</p>
-<pre><code class="lang-java">public class IntegerSet{
-    private /*@spec_public@*/ ArrayList&lt;Integer&gt; elements;
-    private /*@spec_public@*/ Integer max;
-    private /*@spec_public@*/ Integer min;
-    /*@
-      @ assignable \nothing;
-      @ assignable \everything;
-      @ modifiable \nothing;
-      @ modifiable \everthing;
-      @ assignable elements;
-      @ modifiable elements;
-      @ assignable elements, max, min;
-      @ modifiable elements, max, min;
-      @*/
-}
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerSet</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> ArrayList&lt;Integer&gt; elements;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> Integer max;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> Integer min;</span><br><span class="line">	<span class="comment">/*@</span></span><br><span class="line"><span class="comment">	  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">	  @ assignable \everything;</span></span><br><span class="line"><span class="comment">	  @ modifiable \nothing;</span></span><br><span class="line"><span class="comment">	  @ modifiable \everthing;</span></span><br><span class="line"><span class="comment">	  @ assignable elements;</span></span><br><span class="line"><span class="comment">	  @ modifiable elements;</span></span><br><span class="line"><span class="comment">	  @ assignable elements, max, min;</span></span><br><span class="line"><span class="comment">	  @ modifiable elements, max, min;</span></span><br><span class="line"><span class="comment">	  @*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>assignable</code>表示可赋值，<code>modifiable</code>表示可修改。二者有一定差异，但是在大部分情况可以交换使用。</p>
 <p><code>\nothing</code>和<code>\everything</code>是两个关键词，前者表示当前作用域内所有可见类成员变量和方法输入对象都不可以赋值或者修改；后者表示当前作用域内可见的所有类成员变量和方法输入对象都可以赋值或者修改。也可以指明具体的可以修改的变量列表，为一个或多个变量，多个的时候需要用逗号分隔，如<code>@assignable elements, max, min</code>。</p>
 <p>设计中会出现某些纯粹访问性的方法，不会对对象的状态进行任何改变，也不需要提供输入参数，这样的方法无需描述前置条件，也没有任何副作用，执行也一定会正常结束。对于这样的方法，可以使用简单的（轻量级）方式描述其规格，即，使用<code>pure</code>关键词。</p>
-<pre><code class="lang-java">public /*@ pure @ */ String getName();
-
-//@ ensures \result == bachelor || \result == master;
-public /*@ pure @*/ int getStatus();
-
-//@ ensures \result &gt;= 0;
-public /*
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="comment">/*@ pure @ */</span> <span class="function">String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//@ ensures \result == bachelor || \result == master;</span></span><br><span class="line"><span class="keyword">public</span> <span class="comment">/*@ pure @*/</span> <span class="function"><span class="keyword">int</span> <span class="title">getStatus</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//@ ensures \result &gt;= 0;</span></span><br><span class="line"><span class="keyword">public</span> <span class="comment">/*</span></span><br></pre></td></tr></table></figure>
 <p>在上面几个例子中，<code>getName</code>没有做任何限定，是一个极简的场景；<code>getStatus()</code>限定了返回值<code>\result</code>只能为<code>bachelor</code>和<code>master</code>中的一个；<code>getCredits()</code>的例子休闲南定了返回值必须大于等于<code>0</code>：<code>\result &gt;= 0</code>。</p>
 <p>在方法规格中，有些前置条件也可以引用<code>pure</code>方法返回的结果。</p>
 <p>如前所述，为了有效区分方法的正常功能行为和异常行为，JML提供了这两类行为的区分机制，可以明确按照这两类行为来描述方法的规格，如下例：</p>
-<pre><code class="lang-java">/*@ public normal_behavior
-  @ requires z &lt;= 99;
-  @ assignable \nothing;
-  @ ensures \result &gt; z;
-  @ also
-  @ public exceptional_behavior
-  @ requires z &lt; 0;
-  @ assignable \nothing;
-  @ signals (IllegalArgumentException e) true;
-  @*/
-public int cantBeSatisfied(int z) throws IllegalArgumentException；
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*@ public normal_behavior</span></span><br><span class="line"><span class="comment">  @ requires z &lt;= 99;</span></span><br><span class="line"><span class="comment">  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">  @ ensures \result &gt; z;</span></span><br><span class="line"><span class="comment">  @ also</span></span><br><span class="line"><span class="comment">  @ public exceptional_behavior</span></span><br><span class="line"><span class="comment">  @ requires z &lt; 0;</span></span><br><span class="line"><span class="comment">  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">  @ signals (IllegalArgumentException e) true;</span></span><br><span class="line"><span class="comment">  @*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cantBeSatisfied</span><span class="params">(<span class="keyword">int</span> z)</span> <span class="keyword">throws</span> IllegalArgumentException；</span></span><br></pre></td></tr></table></figure>
 <p>其中<code>public normal_behavior</code>表示接下来的部分对<code>cantBeSatisfied(int z)</code>方法的正常功能给出规格。</p>
 <p>正常功能，一般指输入或方法关联<code>this</code>对象的状态在正常范围内时所指向的功能，与之相对的时异常功能，即<code>public exceptional_behavior</code>下面所定义的规格。其中<code>public</code>指相应的规格在所在包范围内的所有其他规格处都可见。</p>
 <p>值得注意的是，如果一个方法没有异常处理行为，那么无需区分正常功能规格和异常功能规格，就无需使用这两个关键词。</p>
@@ -407,27 +363,7 @@ public int cantBeSatisfied(int z) throws IllegalArgumentException；
 <p>此外，如果一个方法在运行时抛出异常，<strong>一定</strong>要在方法声明中明确指出（使用Java的<code>throws</code>表达式），并且保证<code>signals</code>子句中给出的异常类型一定等同于方法声明中给出的异常类型，或者是后者的子类型。</p>
 <p>还有一个简化的<code>signals</code>子句，即<code>signals_obly</code>子句，其后跟着一个异常类型。<code>signals</code>子句强调在对象状态满足某个条件的时候抛出符合相应类型的异常。</p>
 <p>有时，为了更明显地区分异常，会针对输入参数的取值范围抛出不同的异常，从而提醒调用者进行不同的处理。这时可以使用多个<code>exceptional_behavior</code>：</p>
-<pre><code class="lang-java">public class Student {
-    //@ public model non_null int[] credits;
-    /*@ normal_behavior
-      @ requires z &gt;=0 &amp;&amp; z &lt;= 100;
-      @ assignable \nothing;
-      @ ensures \result == credits.length;
-      @ also
-      @ exceptional_behavior
-      @ requires z &lt; 0;
-      @ assignable \nothing;
-      @ signals_only IllegalArgumentException;
-      @ also
-      @ exceptional_behavior
-      @ requires z &gt; 100;
-      @ assignable \nothing;
-      @ signals_only OverFlowException;
-      @*/
-public int recordCredit(int z) throws IllegalArgumentException,
-OverFlowException;
-}
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">	<span class="comment">//@ public model non_null int[] credits;</span></span><br><span class="line">	<span class="comment">/*@ normal_behavior</span></span><br><span class="line"><span class="comment">	  @ requires z &gt;=0 &amp;&amp; z &lt;= 100;</span></span><br><span class="line"><span class="comment">	  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">	  @ ensures \result == credits.length;</span></span><br><span class="line"><span class="comment">	  @ also</span></span><br><span class="line"><span class="comment">	  @ exceptional_behavior</span></span><br><span class="line"><span class="comment">	  @ requires z &lt; 0;</span></span><br><span class="line"><span class="comment">	  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">	  @ signals_only IllegalArgumentException;</span></span><br><span class="line"><span class="comment">	  @ also</span></span><br><span class="line"><span class="comment">	  @ exceptional_behavior</span></span><br><span class="line"><span class="comment">	  @ requires z &gt; 100;</span></span><br><span class="line"><span class="comment">	  @ assignable \nothing;</span></span><br><span class="line"><span class="comment">	  @ signals_only OverFlowException;</span></span><br><span class="line"><span class="comment">	  @*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">recordCredit</span><span class="params">(<span class="keyword">int</span> z)</span> <span class="keyword">throws</span> IllegalArgumentException,</span></span><br><span class="line"><span class="function">OverFlowException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的例子针对<code>Student</code>类的<code>recordCredit(int z)</code>方法，从规格角度定义了一个规格数据<code>int[] credits</code>，并提供了三个功能规格，使用了两个<code>also</code>分隔。</p>
 <p>三个功能的<code>requires</code>子句合在一起覆盖了方法输入参数的所有取值范围，并且没有交叉，这是功能规格设计的基本要求。</p>
 <p>其中，两个异常功能规格使用<code>signals_only</code>子句分别抛出相应的异常。</p>
@@ -446,29 +382,14 @@ OverFlowException;
 <p>由上面定义可知，凡是会修改成员变量（包括静态成员变量和非静态成员变量）的方法执行期间，对象的状态都是不可见状态（其本质原因是对象的状态修改未完成，此时观察到的状态可能不完整）。</p>
 <p>这里的可见不是一般意义上的是否可以见到，而是带有完整可见的含义。在会修改状态的方法的执行期间，对象状态不稳定，对视可能会被修改，因此在这样的方法执行期间，对象和的不变式有可能不满足。</p>
 <p>类型规格强调在任意可见状态下都要满足不变式。</p>
-<pre><code class="lang-java">public class Path{
-    private /*@spec_public@*/ ArrayList &lt;Integer&gt; seq_nodes;
-    private /*@spec_public@*/ Integer start_node;
-    private /*@spec_public@*/ Integer end_node;
-    /*@ invariant seq_nodes != null &amp;&amp;
-      @ seq_nodes[0] == start_node &amp;&amp;
-      @ seq_nodes[seq_nodes.legnth-1] == end_node &amp;&amp;
-      @ seq_nodes.length &gt;=2;
-      @*/
-}
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Path</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> ArrayList &lt;Integer&gt; seq_nodes;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> Integer start_node;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> Integer end_node;</span><br><span class="line">	<span class="comment">/*@ invariant seq_nodes != null &amp;&amp;</span></span><br><span class="line"><span class="comment">	  @ seq_nodes[0] == start_node &amp;&amp;</span></span><br><span class="line"><span class="comment">	  @ seq_nodes[seq_nodes.legnth-1] == end_node &amp;&amp;</span></span><br><span class="line"><span class="comment">	  @ seq_nodes.length &gt;=2;</span></span><br><span class="line"><span class="comment">	  @*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的例子中，<code>Path</code>类的不变式定义了<code>seq_nodes</code>不能为<code>null</code>，且任何一个<code>Path</code>对象至少包含两个节点，一个起始节点（<code>start_node</code>）和一个终止节点（<code>end_node</code>）。</p>
 <p>一个类可以包括多个不变式，相互独立。</p>
 <p>如果一个对象的可见状态不满足不变式，那么称该对象的状态有错。</p>
 <p>不变式中可以直接引用<code>pure</code>状态方法。</p>
 <p>对应类成员变量有静态和非静态之分，JML也区分两类不变式，静态不变式（static invarient）和实例不变式（instance invarient）。其中静态不变式只针对类中的静态成员变量取值进行约束，实例不变式则可以针对静态成员变量和非静态成员变量的取值进行约束。可以在不变式定义中明确使用<code>instance invarient</code>或者<code>static invarient</code>来表示不变式的类别。</p>
 <h3 id="状态变化约束constraint"><a href="#状态变化约束constraint" class="headerlink" title="状态变化约束constraint"></a>状态变化约束constraint</h3><p>对象的状态在变化时往往也满足一些约束，这种约束本质上也是一种不变式。JML为了简化使用规则，规定<code>invarient</code>只针对可见状态（即当下可见状态）的取值进行约束，而是用<code>constraint</code>来对前序可见状态和当前可见状态的关系进行约束，如下例：</p>
-<pre><code class="lang-java">public class ServiceCounter{
-    private /*@spec_public@*/ long counter;
-    //@ invariant counter &gt;= 0;
-    //@ constraint counter == \old(counter)+1;
-}
-</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceCounter</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="comment">/*@spec_public@*/</span> <span class="keyword">long</span> counter;</span><br><span class="line">	<span class="comment">//@ invariant counter &gt;= 0;</span></span><br><span class="line">	<span class="comment">//@ constraint counter == \old(counter)+1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>类<code>ServiceCounter</code>拥有一个成员变量<code>counter</code>，包含一个不变式和一个状态约束变化。不变式指出<code>counter &gt;= 0</code>，而<code>constraint</code>不同，约束每一次修改<code>counter</code>只能加<code>1</code>。虽然这个约束可以在对<code>counter</code>进行修改的方法中通过后置条件来表示，但是每个可能修改<code>counter</code>的方法都需要加上这样的后置条件，远不如<code>constraint</code>这样的表示来得方便。不仅如此，<code>invariant</code>和<code>constraint</code>可以直接被子类继承获得。</p>
 <p>和不变式一样，JML也根据类的静态成员变量区分了两类约束：<code>static constraint</code>和<code>instance constraint</code>。其中<code>static constraint</code>指涉及类的静态成员变量，而<code>instance constraint</code>则可以涉及类的静态成员变量和非静态成员变量。同样，也可以在规格中通过关键词来明确区分：<code>static constraint P</code>和<code>instance constraint P</code>。</p>
 <h3 id="方法与类型规格的关系"><a href="#方法与类型规格的关系" class="headerlink" title="方法与类型规格的关系"></a>方法与类型规格的关系</h3><p>如果一个类是不可变类，就没必要定义其不变式，只需要在构造方法中明确其初始状态应该满足的后置条件即可。当然，也可以反过来，定义不变式，而不定义构造方法的后置条件。</p>

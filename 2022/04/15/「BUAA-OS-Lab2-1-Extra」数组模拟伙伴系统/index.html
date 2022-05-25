@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -294,21 +294,10 @@
 <li>调用此函数后，通过伙伴系统释放一个状态为已分配的内存区间，其起始地址为<code>pa</code> 。释放后的合并逻辑见上述描述。</li>
 </ul>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>你需要先在<code>include/pmap.h</code>中加入如下三个函数定义： </p>
-<pre><code class="lang-C">void buddy_init(void);
-int buddy_alloc(u_int size, u_int *pa, u_char *pi); 
-void buddy_free(u_int pa);
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_init</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">buddy_alloc</span><span class="params">(u_int <span class="built_in">size</span>, u_int *pa, u_char *pi)</span></span>; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_free</span><span class="params">(u_int pa)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>之后再在<code>mm/pmap.c</code>中实现这三个函数。</p>
 <h3 id="评测逻辑"><a href="#评测逻辑" class="headerlink" title="评测逻辑"></a>评测逻辑</h3><p>评测过程中，我们会将所有的<code>Makefile</code>文件、<code>include.mk</code>以及    <code>init/init.c</code>替换为 lab2 初始配置，接着将<code>init/init.c</code>中的<code>mips_init</code>函数改为如下形式：</p>
-<pre><code class="lang-C">void mips_init(){
-mips_detect_memory(); 
-mips_vm_init();
-page_init(); 
-buddy_init(); 
-buddy_test();
-*((volatile char*)(0xB0000010)) = 0; 
-}
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mips_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">mips_detect_memory(); </span><br><span class="line">mips_vm_init();</span><br><span class="line">page_init(); </span><br><span class="line">buddy_init(); </span><br><span class="line">buddy_test();</span><br><span class="line">*((<span class="keyword">volatile</span> <span class="keyword">char</span>*)(<span class="number">0xB0000010</span>)) = <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后的<code>*((volatile char*)(0xB0000010)) = 0;</code>会终止 Gxemul 模拟器的运行，避免占用评测资源。 </p>
 <p><code>buddy_test</code>在评测过程中新添加到<code>init/init.c</code>的函数，其中仅包含以下两种操作：</p>
 <ul>
@@ -328,98 +317,10 @@ buddy_test();
 <p>对于<code>buddy_free</code>函数，我们需要释放以给定地址开始的内存，因此，我们在分配时需要区分不同的分配。举例来说，两个相邻的$ 4KB $在两次分配中分别被分配，那么当给定第一个$ 4KB $的地址时，只能释放第一个$ 4KB $。</p>
 <p>基于数组的实现保证了我们时间复杂度为$ O(n) $，同时正确性可以逻辑证明，兼顾了实现难度和实际性能。</p>
 <hr>
-<h2 id="Part-3-课上源码"><a href="#Part-3-课上源码" class="headerlink" title="Part 3 课上源码"></a>Part 3 课上源码</h2><h3 id="全局变量与辅助函数"><a href="#全局变量与辅助函数" class="headerlink" title="全局变量与辅助函数"></a>全局变量与辅助函数</h3><pre><code class="lang-C">int buddyPage[9999] = {0};
-int flagWhole = 1;
-int pow2(int n)
-{
-    int i = 0;
-    int ans = 1;
-    while(n--) {
-        ans *= 2;
-    }
-    return ans;
-}
-</code></pre>
-<h3 id="buddy-init"><a href="#buddy-init" class="headerlink" title="buddy_init"></a><code>buddy_init</code></h3><pre><code class="lang-C">void buddy_init(void)
-{
-    int i;
-    for (i = 0;i &lt;= 9000;i++) {
-        buddyPage[i] = 0; // signals not alloced
-    }
-}
-</code></pre>
-<h3 id="buddy-alloc"><a href="#buddy-alloc" class="headerlink" title="buddy_alloc"></a><code>buddy_alloc</code></h3><pre><code class="lang-C">int buddy_alloc(u_int size, u_int *pa, u_char *pi)
-{
-    int MAX = 4 * 1024 * 1024; // MAX = 4MB
-    if (size &gt; MAX) {
-        return -1;
-    }
-    int cnt = 0;
-    int pageSize = 4 * 1024; // pageSize = 4KB
-    if (size &lt;= pageSize) {
-        cnt = 1;
-    } else {
-        if (size % pageSize == 0) {
-            cnt = size / pageSize;
-        } else {
-            cnt = size / pageSize + 1;
-        }
-    }
-    int i = 0;
-    int tempPi = 0;
-    for (i = 0;i &lt;= 10;i++) {
-        if (pow2(i) &gt;= cnt) {
-            cnt = pow2(i);
-            tempPi = i;
-            break;
-        }
-    }
-    int j;
-    int nPage = 8 * 1024; // total 8K pages
-    int ava = 1; // signal whether has area to alloc
-    for (i = 0;i &lt; nPage;i += cnt) {
-        ava = 1;
-        int l = i;
-        int r = i + cnt;
-        //int ava = 1; // signal whether this area can be alloced
-        for (j = l;j &lt; r;j++) {
-            if (buddyPage[j] != 0) {
-                //printf(&quot;buddyPage[%d] = %d\n&quot;, j, buddyPage[j]);
-                ava = 0;
-                break;
-            }
-        }
-        if (ava == 1) {
-            *pa = 0x2000000 + (i) * pageSize;
-            *pi = tempPi;
-            for (j = l;j &lt; r;j++) {
-                buddyPage[j] = flagWhole;
-            }
-            flagWhole++;
-            break;
-        }
-        //printf(&quot;Need %d pages\n&quot;, cnt);
-        //printf(&quot;Not Find ava betwen Page %d and %d\n&quot;, l, r);
-    }
-    if (ava == 1) {
-        return 0;
-    } else {
-        return -1;
-    }
-}
-</code></pre>
-<h3 id="buddy-free"><a href="#buddy-free" class="headerlink" title="buddy_free"></a><code>buddy_free</code></h3><pre><code class="lang-C">void buddy_free(u_int pa) 
-{
-    int id = pa - 0x2000000;
-    id = id / (4 * 1024);
-    int key = buddyPage[id];
-    int i = id;
-    while(buddyPage[i] == key) {
-        buddyPage[i] = 0;
-        i++;
-    }
-}
-</code></pre>
+<h2 id="Part-3-课上源码"><a href="#Part-3-课上源码" class="headerlink" title="Part 3 课上源码"></a>Part 3 课上源码</h2><h3 id="全局变量与辅助函数"><a href="#全局变量与辅助函数" class="headerlink" title="全局变量与辅助函数"></a>全局变量与辅助函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> buddyPage[<span class="number">9999</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> flagWhole = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow2</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n--) &#123;</span><br><span class="line">		ans *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-init"><a href="#buddy-init" class="headerlink" title="buddy_init"></a><code>buddy_init</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt;= <span class="number">9000</span>;i++) &#123;</span><br><span class="line">		buddyPage[i] = <span class="number">0</span>; <span class="comment">// signals not alloced</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-alloc"><a href="#buddy-alloc" class="headerlink" title="buddy_alloc"></a><code>buddy_alloc</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">buddy_alloc</span><span class="params">(u_int <span class="built_in">size</span>, u_int *pa, u_char *pi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> MAX = <span class="number">4</span> * <span class="number">1024</span> * <span class="number">1024</span>; <span class="comment">// MAX = 4MB</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">size</span> &gt; MAX) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> pageSize = <span class="number">4</span> * <span class="number">1024</span>; <span class="comment">// pageSize = 4KB</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">size</span> &lt;= pageSize) &#123;</span><br><span class="line">		cnt = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">size</span> % pageSize == <span class="number">0</span>) &#123;</span><br><span class="line">			cnt = <span class="built_in">size</span> / pageSize;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cnt = <span class="built_in">size</span> / pageSize + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> tempPi = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt;= <span class="number">10</span>;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (pow2(i) &gt;= cnt) &#123;</span><br><span class="line">			cnt = pow2(i);</span><br><span class="line">			tempPi = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">int</span> nPage = <span class="number">8</span> * <span class="number">1024</span>; <span class="comment">// total 8K pages</span></span><br><span class="line">	<span class="keyword">int</span> ava = <span class="number">1</span>; <span class="comment">// signal whether has area to alloc</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; nPage;i += cnt) &#123;</span><br><span class="line">		ava = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> l = i;</span><br><span class="line">		<span class="keyword">int</span> r = i + cnt;</span><br><span class="line">		<span class="comment">//int ava = 1; // signal whether this area can be alloced</span></span><br><span class="line">		<span class="keyword">for</span> (j = l;j &lt; r;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (buddyPage[j] != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="comment">//printf("buddyPage[%d] = %d\n", j, buddyPage[j]);</span></span><br><span class="line">				ava = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ava == <span class="number">1</span>) &#123;</span><br><span class="line">			*pa = <span class="number">0x2000000</span> + (i) * pageSize;</span><br><span class="line">			*pi = tempPi;</span><br><span class="line">			<span class="keyword">for</span> (j = l;j &lt; r;j++) &#123;</span><br><span class="line">				buddyPage[j] = flagWhole;</span><br><span class="line">			&#125;</span><br><span class="line">			flagWhole++;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//printf("Need %d pages\n", cnt);</span></span><br><span class="line">		<span class="comment">//printf("Not Find ava betwen Page %d and %d\n", l, r);</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (ava == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="buddy-free"><a href="#buddy-free" class="headerlink" title="buddy_free"></a><code>buddy_free</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buddy_free</span><span class="params">(u_int pa)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> id = pa - <span class="number">0x2000000</span>;</span><br><span class="line">	id = id / (<span class="number">4</span> * <span class="number">1024</span>);</span><br><span class="line">	<span class="keyword">int</span> key = buddyPage[id];</span><br><span class="line">	<span class="keyword">int</span> i = id;</span><br><span class="line">	<span class="keyword">while</span>(buddyPage[i] == key) &#123;</span><br><span class="line">		buddyPage[i] = <span class="number">0</span>;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Part-4-后记"><a href="#Part-4-后记" class="headerlink" title="Part 4 后记"></a>Part 4 后记</h2><p>Part2中提到了树的实现，笔者不会写树了（菜qwq），并且分析时感觉可能需要递归释放空间，可能会超过$ O(n) $的限制，因此没有继续深究，若读者通过此方法实现或有想法，欢迎和我取得联系一起探讨。</p>
 <p>Part3中的代码为上机时最后一次提交，注释掉了一些调试用代码，并且很多地方的细节处理的不够漂亮（<del>可能还有英文单词拼写错误</del>），欢迎批评指正。</p>
 

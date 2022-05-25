@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -319,20 +319,11 @@
 <h3 id="卸载hexo-math"><a href="#卸载hexo-math" class="headerlink" title="[卸载hexo-math]"></a>[卸载hexo-math]</h3><p><code>npm uninstall hexo-math --save</code></p>
 <h3 id="安装mathjax"><a href="#安装mathjax" class="headerlink" title="安装mathjax"></a>安装mathjax</h3><p><code>npm install hexo-renderer-mathjax --save</code></p>
 <h3 id="更新mathjax的CDN标签"><a href="#更新mathjax的CDN标签" class="headerlink" title="更新mathjax的CDN标签"></a>更新mathjax的CDN标签</h3><p>打开 <code>node_modules/hexo-renderer-mathjax/mathjax.html</code>, 修改 <code>&lt;scripts&gt;</code> 标签</p>
-<pre><code class="lang-html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改<code>_config.yml</code></h3><p>找到<code>math</code>配置并更改为以下：</p>
-<pre><code class="lang-yaml">math:
-  enable: true
-  engine: mathjax
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br></pre></td></tr></table></figure>
 <h3 id="修改博客开头"><a href="#修改博客开头" class="headerlink" title="修改博客开头"></a>修改博客开头</h3><p>博客文章的开头加入<code>mathjax:true</code>，具体如下：</p>
-<pre><code class="lang-json">---
-title: Hexo博客搭建回顾概览
-date: 2022-01-28 11:33:04
-mathjax: true
----
-</code></pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客搭建回顾概览</span><br><span class="line">date: 2022-01-28 11:33:04</span><br><span class="line">mathjax: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>到此为止即配置完成。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
 <li><a href="https://www.dusign.net/2019/10/14/Hexo-Configuration/" target="_blank" rel="noopener">Super Snail提供的Mathjax支持攻略</a></li>
