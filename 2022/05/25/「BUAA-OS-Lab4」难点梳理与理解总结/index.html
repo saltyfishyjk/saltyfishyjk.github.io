@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OS Lab4」难点梳理与理解总结 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/25/「BUAA-OS-Lab4」难点梳理与理解总结/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                            
+                        </div>
+                        <h1>「BUAA OS Lab4」难点梳理与理解总结</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-05-25
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.3k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab4」难点梳理与理解总结"><a href="#「BUAA-OS-Lab4」难点梳理与理解总结" class="headerlink" title="「BUAA OS Lab4」难点梳理与理解总结"></a>「BUAA OS Lab4」难点梳理与理解总结</h1><p>为了节约页面，保证阅读的连贯性，本篇博客尝试不再提供函数的具体实现代码，而转将其在<a href="https://saltyfishyjk.github.io/2022/05/11/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">「BUAA OS Lab4」名词解释</a>中专门介绍。读者若有需要，可以两篇博客对比阅读。</p>
+<p>首先明确，硬件决定了我们在用户态时，用户进程不能访问系统的内核空间，即，不能存取内核使用的内存数据，不能调用内核函数。我们不允许内核态执行用户程序的代码，因此我们设计了内核空间中的函数，当用户进程需要相关操作的时候，引发特定的异常陷入内核态，获得更高的权限，由内核识别异常并调用对应的函数，安全地为用户提供系统级操作，这就是<strong>系统调用</strong>。</p>
+<p>我们在lab4的工作有：</p>
+<ul>
+<li>实现上述系统调用机制</li>
+<li>在系统调用的基础上实现进程间通信（IPC）机制</li>
+<li>实现进程创建机制<code>fork</code>（&amp;写时复制(COW)特性&amp;相关页写入异常处理）</li>
+</ul>
+<p><strong>CPU模式</strong></p>
+<ul>
+<li><p>内核态：</p>
+<p>允许架构支持的任何操作、指令、IO行为、访问任何可达空间</p>
+</li>
+<li><p>其他CPU状态：硬件决定CPU行为有特定的限制，典型的如一些可以改变机器全局状态的行为不被允许，访问某些特定空间不被允许。事实上这些状态下的CPU行为是内核态的子集</p>
+</li>
+</ul>
+<p>事实上，在我们的实验中，我们依靠的是SR寄存器中KUc位的值来判断当前CPU所处状态。</p>
+<p><strong>虚拟空间</strong></p>
+<ul>
+<li>用户空间：kuseg</li>
+<li>内核空间：kseg0和kseg1</li>
+</ul>
+<p>CPU在内核态可以访问任何内存区域，对物理内存有完整的控制权，用户态下则只能访问用户空间。</p>
+<p><strong>（用户）进程和内核</strong></p>
+<ul>
+<li>进程是资源分配和调度的基本单位，对每个进程而言，其拥有独立的地址空间视图</li>
+<li>内核负责管理系统资源和调度，使进程得以并发运行。可以认为内核是存在于所有进程地址空间的一段代码</li>
+</ul>
+<p><strong>TOO LOW</strong></p>
+<p>KUc为1代表CPU处于用户态，此时如果进程试图访问内核空间，则会触发TLB异常。在Lab3中，我们的进程仍运行在内核态（可以通过我们设置的）。值得注意的是，在进程调度时，会首先调用<code>rfe</code>，因此，我们不能直接在<code>env_alloc</code>中设置KUc，而应当设置KUp，这样在调用<code>rfe</code>后会让我们的进程的CPU状态得到正确的设置。</p>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p><img src="2022-05-25-「BUAA-OS-Lab4」难点梳理与理解总结.assets/image-20220511161832176.png" alt="image-20220511161832176"></p>
+<p><img src="2022-05-25-「BUAA-OS-Lab4」难点梳理与理解总结.assets/image-20220516104220271.png" alt="image-20220516104220271"></p>
+<p>上图是指导书给出的流程，已经比较详细，我们以其为本更细致介绍具体操作及各个函数的声明与实现位置。</p>
+<p>我们以<code>writef</code>为例梳理系统调用的一般流程：</p>
+<ol>
+<li>调用<code>writef</code>这一用户函数</li>
+<li><code>writef</code>中调用了用户空间的<code>syscall_*</code>的用户空间函数（在<code>user/lib.h</code>中声明，在<code>user/syscall_lib.c</code>中实现）</li>
+<li><code>syscall_*</code>函数调用了<code>msyscall</code>函数，<strong>进入内核态</strong></li>
+<li>内核态中将异常分发到<code>handle_sys</code>函数，将系统调用所需要的信息传递到内核</li>
+<li>内核获取信息，执行对应的内核空间的系统调用函数<code>sys_*</code></li>
+<li>从系统调用函数返回，回到用户程序<code>writef</code>调用处</li>
+</ol>
+<h3 id="handle-sys"><a href="#handle-sys" class="headerlink" title="handle_sys"></a><code>handle_sys</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_sys,TF_SIZE, sp)</span><br><span class="line">    SAVE_ALL                            &#x2F;&#x2F; Macro used to save trapframe</span><br><span class="line">    CLI                                 &#x2F;&#x2F; Clean Interrupt Mask</span><br><span class="line">    nop</span><br><span class="line">    .set at                             &#x2F;&#x2F; Resume use of $at</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.</span><br><span class="line">	&#x2F;* EPC +&#x3D; 4 *&#x2F;</span><br><span class="line">	lw t0, TF_EPC(sp)</span><br><span class="line">	addiu t0, t0, 4</span><br><span class="line">	sw t0, TF_EPC(sp)</span><br><span class="line">    &#x2F;&#x2F; TODO: Copy the syscall number into $a0.</span><br><span class="line">	lw a0, TF_REG4(sp)</span><br><span class="line">	</span><br><span class="line">    addiu   a0, a0, -__SYSCALL_BASE     &#x2F;&#x2F; a0 &lt;- relative syscall number</span><br><span class="line">    sll     t0, a0, 2                   &#x2F;&#x2F; t0 &lt;- relative syscall number times 4</span><br><span class="line">    la      t1, sys_call_table          &#x2F;&#x2F; t1 &lt;- syscall table base</span><br><span class="line">    addu    t1, t1, t0                  &#x2F;&#x2F; t1 &lt;- table entry of specific syscall</span><br><span class="line">    lw      t2, 0(t1)                   &#x2F;&#x2F; t2 &lt;- function entry of specific syscall</span><br><span class="line"></span><br><span class="line">    lw      t0, TF_REG29(sp)            &#x2F;&#x2F; t0 &lt;- user&#39;s stack pointer</span><br><span class="line">    lw      t3, 16(t0)                  &#x2F;&#x2F; t3 &lt;- the 5th argument of msyscall</span><br><span class="line">    lw      t4, 20(t0)                  &#x2F;&#x2F; t4 &lt;- the 6th argument of msyscall</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location</span><br><span class="line">    &#x2F;&#x2F; a0, a1, a2, a3的寄存器编号分别是4，5，6，7，因此从栈的这些位置获取</span><br><span class="line">	lw a0, TF_REG4(sp)  </span><br><span class="line">	lw a1, TF_REG5(sp)  </span><br><span class="line">	lw a2, TF_REG6(sp)  </span><br><span class="line">	lw a3, TF_REG7(sp)  </span><br><span class="line">	addiu sp, sp, -24</span><br><span class="line">	sw t3, 16(sp)</span><br><span class="line">	sw t4, 20(sp)</span><br><span class="line"></span><br><span class="line">    jalr    t2                          &#x2F;&#x2F; Invoke sys_* function</span><br><span class="line">    nop</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; TODO: Resume current kernel stack</span><br><span class="line">	addiu sp, sp, 24 &#x2F;&#x2F; recover stack</span><br><span class="line">    sw      v0, TF_REG2(sp)             &#x2F;&#x2F; Store return value of function sys_* (in $v0) into trapframe</span><br><span class="line"></span><br><span class="line">    j       ret_from_exception          &#x2F;&#x2F; Return from exeception</span><br><span class="line">    nop</span><br><span class="line">END(handle_sys)</span><br><span class="line"></span><br><span class="line">sys_call_table:                         &#x2F;&#x2F; Syscall Table</span><br><span class="line">    .align 2</span><br><span class="line">    .word sys_putchar</span><br><span class="line">    .word sys_getenvid</span><br><span class="line">    .word sys_yield</span><br><span class="line">    .word sys_env_destroy</span><br><span class="line">    .word sys_set_pgfault_handler</span><br><span class="line">    .word sys_mem_alloc</span><br><span class="line">    .word sys_mem_map</span><br><span class="line">    .word sys_mem_unmap</span><br><span class="line">    .word sys_env_alloc</span><br><span class="line">    .word sys_set_env_status</span><br><span class="line">    .word sys_set_trapframe</span><br><span class="line">    .word sys_panic</span><br><span class="line">    .word sys_ipc_can_send</span><br><span class="line">    .word sys_ipc_recv</span><br><span class="line">    .word sys_cgetc</span><br></pre></td></tr></table></figure>
+<h2 id="进程间通信（IPC）"><a href="#进程间通信（IPC）" class="headerlink" title="进程间通信（IPC）"></a>进程间通信（IPC）</h2><h2 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h2><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><p><img src="https://os.buaa.edu.cn/assets/courseware/v1/ec04bb966e3083678fe5dcabe84273ee/asset-v1:BUAA+B3I062270+2022_SPRING+type@asset+block/4_fork_process.png" alt="https://os.buaa.edu.cn/assets/courseware/v1/ec04bb966e3083678fe5dcabe84273ee/asset-v1:BUAA+B3I062270+2022_SPRING+type@asset+block/4_fork_process.png"></p>
+<p>父进程分支中，在正常执行之前，是fork在父进程中执行的流程，在正常执行之下是写时复制。同理，在子进程分支中，正常执行之上是fork在子进程中执行的流程，正常执行之下是写时复制。</p>
+<p>为了保证逻辑的连贯性，我们接下来分别从宏观视角的<strong>函数效果</strong>，微观实现的<strong>正常执行</strong>和<strong>写时复制</strong>进行介绍。</p>
+<h3 id="函数效果"><a href="#函数效果" class="headerlink" title="函数效果"></a>函数效果</h3><p>产生一个和原进程几乎一样的子进程，但二者互相独立。</p>
+<p>fork在父进程和子进程中返回值不同，在父进程中返回值不为0（事实上为子进程的id），在子进程中返回值为0，我们以此来区分代码在调用fork后是处在父进程还是子进程。</p>
+<h3 id="正常执行"><a href="#正常执行" class="headerlink" title="正常执行"></a>正常执行</h3><h4 id="父子进程公共部分"><a href="#父子进程公共部分" class="headerlink" title="父子进程公共部分"></a>父子进程公共部分</h4><p>事实上，此时还没有产生子进程，但是子进程返回时又依赖于此，因此可以类似看作公共部分。</p>
+<p>首先，设置缺页异常处理函数为<code>pgfault</code></p>
+<p>接着，<code>fork</code>调用了<code>syscall_env_alloc</code>，获得了新的进程控制块（编号）。实际上，我们也是在这里根据返回值区分父进程和子进程的：返回值为0则为子进程，返回值不为0（实际上是子进程的<code>envid</code>）则为父进程。</p>
+<h4 id="父进程"><a href="#父进程" class="headerlink" title="父进程"></a>父进程</h4><p>父进程正常执行独有的部分从<code>duppage</code>开始。</p>
+<h5 id="duppage"><a href="#duppage" class="headerlink" title="duppage"></a><code>duppage</code></h5><p>父进程对子进程页面空间进行映射，并设置相应权限。这里需要着重注意的是权限问题。</p>
+<p><img src="2022-05-25-「BUAA-OS-Lab4」难点梳理与理解总结.assets/image-20220525161304112.png" alt="image-20220525161304112"></p>
+<p>上图为指导书介绍，我们根据其首先进行实现，然后分析原因。</p>
+<p>对于该介绍，本质上其实是<code>if-else</code>块，我们首先处理第四类<strong>可写页面</strong>。若<code>perm &amp; PTE_R &amp;&amp; !(perm &amp; PTE_LIBRARY)</code>，则<code>perm |= PTE_COW</code>，进行保护。可以注意到，其实这还包含了第二类<strong>共享页面</strong>的情况，但这样做结果一样，因此没有问题。</p>
+<h5 id="为子进程申请异常处理栈"><a href="#为子进程申请异常处理栈" class="headerlink" title="为子进程申请异常处理栈"></a>为子进程申请异常处理栈</h5><p>调用<code>syscall_mem_alloc</code>，在UXSTACKTOP - BY2PG为子进程alloc一块异常处理栈。</p>
+<h5 id="为子进程设置缺页异常处理函数"><a href="#为子进程设置缺页异常处理函数" class="headerlink" title="为子进程设置缺页异常处理函数"></a>为子进程设置缺页异常处理函数</h5><p>调用<code>syscall_set_pgfault_handler</code>，设置缺页异常处理函数为<code>__asm_pgfault_handler</code>。</p>
+<h5 id="设置子进程可运行"><a href="#设置子进程可运行" class="headerlink" title="设置子进程可运行"></a>设置子进程可运行</h5><p>调用<code>syscall_set_env_status</code>，设置子进程的状态为<code>ENV_RUNNABLE</code>。</p>
+<h4 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h4><p>在用户进程中，我们用声明在<code>user/libos.c</code>中的变量<code>env</code>指向当前进程的控制块。自然地，我们需要在<code>fork</code>出的子进程中修改<code>env</code>，使其指向自身。由于在子进程中，<code>syscall_env_alloc</code>返回值为0，因此，我们调用<code>syscall_getenvid</code>获取当前<code>envid</code>，从而计算出其相对<code>envs</code>的偏移量并最终使其指向正确的进程块。</p>
+<p>设置完<code>env</code>后，子进程就可以返回了。</p>
+<h3 id="写时复制"><a href="#写时复制" class="headerlink" title="写时复制"></a>写时复制</h3><p>在fork刚刚结束的时候，父子进程事实上在共享物理内存。对于不被任一进程修改的物理内存，这种共享是没有问题的。而有一些内存将被修改，因此引入写时复制机制（Copy On Write, COW）。</p>
+<p>写时复制机制保证，在fork后的父子进程有修改内存的行为的时候，产生页写入异常，接着在异常处理中为<strong>修改内存的进程</strong>的地址空间中的相应地址分配新的物理页面。</p>
+<p>对于如代码段等，父子进程一般仍会共享相同的物理空间。</p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p><img src="2022-05-25-「BUAA-OS-Lab4」难点梳理与理解总结.assets/image-20220525170301907.png" alt="image-20220525170301907"></p>
+<p>上图为指导书给出的页写入异常处理流程，接下来我们结合流程分析具体过程。</p>
+<h4 id="page-fault-handler"><a href="#page-fault-handler" class="headerlink" title="page_fault_handler"></a><code>page_fault_handler</code></h4><p>进行写时复制前的一些处理，并在最后将<code>cp0_epc</code>指向<code>env_pgfault_handler</code>函数的入口。</p>
+<h4 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h4><p>事实上，<code>env_pgfault_handler</code>指向的函数就是<code>pgfault</code>。</p>
+<p>首先判断权限位是否有<code>PTE_COW</code>，如果没有，说明发生了错误，即，对于没有<code>PTE_COW</code>的页，不应当触发<code>pgfault</code>。</p>
+<p>将权限位的<code>PTE_COW</code>置零，表征此页面为独立的页面，不需要与其他进程共享。</p>
+<p>将新的页映射到临时地址。</p>
+<p>复制页内容到临时地址。</p>
+<p>将<code>va</code>映射到临时地址。</p>
+<p>取消临时地址的映射。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/05/23/「BUAA-OS-Lab4-1-Extra」IPC实现阻塞机制避免发送方轮询/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab4-1-Extra」IPC实现阻塞机制避免发送方轮询">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Wed May 25 2022 17:14:06 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」难点梳理与理解总结"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」难点梳理与理解总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#系统调用"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">系统调用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">handle_sys</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#进程间通信（IPC）"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">进程间通信（IPC）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fork"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">fork</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#实现流程"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">实现流程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#函数效果"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">函数效果</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#正常执行"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">正常执行</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#父子进程公共部分"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">父子进程公共部分</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#父进程"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">父进程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#duppage"><span class="toc-nav-number">1.3.3.2.1.</span> <span class="toc-nav-text">duppage</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#为子进程申请异常处理栈"><span class="toc-nav-number">1.3.3.2.2.</span> <span class="toc-nav-text">为子进程申请异常处理栈</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#为子进程设置缺页异常处理函数"><span class="toc-nav-number">1.3.3.2.3.</span> <span class="toc-nav-text">为子进程设置缺页异常处理函数</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#设置子进程可运行"><span class="toc-nav-number">1.3.3.2.4.</span> <span class="toc-nav-text">设置子进程可运行</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#子进程"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">子进程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写时复制"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">写时复制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#流程"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">流程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#page-fault-handler"><span class="toc-nav-number">1.3.4.2.</span> <span class="toc-nav-text">page_fault_handler</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pgfault"><span class="toc-nav-number">1.3.4.3.</span> <span class="toc-nav-text">pgfault</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://mmmusel.github.io/" target="_blank">🍔gf</a></li>
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io" target="_blank" rel="noopener">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
