@@ -323,10 +323,11 @@
 <p>这一汇编函数的实现在<code>lib/genex.S</code>中，这里，化名为<code>do_refill</code>的函数。</p>
 <p>在<code>do_refill</code>中，若物理页面在页表中存在，填入TLB并返回异常地址再次执行内存存取的指令；如果物理页面不存在，触发一个一般意义的缺页错误，跳转到<code>mm/pmap.c</code>中的<code>pageout</code>函数，在这一函数中，若存取地址合法，内核为相应地址分配并映射一个物理页面来解决缺页问题。</p>
 <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>上面我们首先回顾了常规的缺页异常。对于写时复制来说，同样依赖异常处理。</p>
+<p>为了实现写时复制功能，我们在<code>lib/traps.c/trap_init</code>中注册了<code>handle_mod</code>，并使其跳转到<code>lib/traps.c/page_fault_handler</code>这一内核函数来处理</p>
 <img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220525170301907.png" class="" title="写时复制流程">
 <p>上图为指导书给出的页写入异常处理流程，接下来我们结合流程分析具体过程。</p>
 <h4 id="page-fault-handler"><a href="#page-fault-handler" class="headerlink" title="page_fault_handler"></a><code>page_fault_handler</code></h4><p>进行写时复制前的一些处理，并在最后将<code>cp0_epc</code>指向<code>env_pgfault_handler</code>函数的入口。</p>
-<h4 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h4><p>事实上，<code>env_pgfault_handler</code>指向的函数就是<code>pgfault</code>。</p>
+<h4 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h4><p>事实上，<code>env_pgfault_handler</code>指向的函数就是<code>pgfault</code>（这个指向是在<code>fork</code>中实现的）。</p>
 <p>首先判断权限位是否有<code>PTE_COW</code>，如果没有，说明发生了错误，即，对于没有<code>PTE_COW</code>的页，不应当触发<code>pgfault</code>。</p>
 <p>将权限位的<code>PTE_COW</code>置零，表征此页面为独立的页面，不需要与其他进程共享。</p>
 <p>将新的页映射到临时地址。</p>
