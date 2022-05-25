@@ -183,6 +183,13 @@
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -191,13 +198,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -290,6 +290,7 @@
 <hr>
 <h3 id="duppage"><a href="#duppage" class="headerlink" title="duppage"></a><code>duppage</code></h3><p>位置：<code>user/fork.c</code></p>
 <p>父进程对子进程页面空间进行映射以及相关标志设置的函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">duppage(u_int envid, u_int pn)</span><br><span class="line">&#123;</span><br><span class="line">	u_int addr;</span><br><span class="line">	u_int perm;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">	addr = pn &lt;&lt; PGSHIFT; <span class="comment">// PGSHIFT = 12</span></span><br><span class="line">	perm = (*vpt)[pn] &amp; (BY2PG - <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span> (perm &amp; PTE_R) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!(perm &amp; PTE_LIBRARY)) &#123;</span><br><span class="line">			flag = <span class="number">1</span>;</span><br><span class="line">			perm |= PTE_COW;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	syscall_mem_map(<span class="number">0</span>, addr, envid, addr, perm);</span><br><span class="line">	<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">		syscall_mem_map(<span class="number">0</span>, addr, <span class="number">0</span>, addr, perm);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	user_panic("duppage not implemented");</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="set-pgfault-handler"><a href="#set-pgfault-handler" class="headerlink" title="set_pgfault_handler"></a><code>set_pgfault_handler</code></h3><p>位置：<code>user/pgfault.c</code></p>
 <p>父进程为子进程设置页错误处理函数的函数</p>
