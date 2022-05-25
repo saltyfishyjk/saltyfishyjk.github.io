@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">891</span> and
-                                Reading Time <span class="post-count">4</span> Minutes
+                                Words <span class="post-count">1k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -406,12 +406,60 @@ END(msyscall)
 </code></pre>
 <hr>
 <h3 id="sys-set-pgfault-handler"><a href="#sys-set-pgfault-handler" class="headerlink" title="sys_set_pgfault_handler"></a><code>sys_set_pgfault_handler</code></h3><p>位置：<code>lib/syscall_all.c</code></p>
-<p><code>C</code></p>
-<hr>
-<h3 id="page-fault-handler"><a href="#page-fault-handler" class="headerlink" title="page_fault_handler"></a><code>page_fault_handler</code></h3><p>位置：<code>lib/traps.c</code></p>
-<p>负责完成写时复制处理前的相关设置，返回前将<code>cp0_epc</code>指向<code>env_pgfault_handler</code>函数入口。<code>env_pgfault_handler</code>指向的函数就是<code>pgfault</code>，这是真正处理缺页异常的函数。这里我们也可以看到，写时复制的实现依赖于缺页异常实现。</p>
-<hr>
-<h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a><code>fork</code></h3><p>位置：<code>user/fork.c</code></p>
+<pre><code class="lang-C">```
+
+***
+
+### `page_fault_handler`
+
+位置：`lib/traps.c`
+
+负责完成写时复制处理前的相关设置，返回前将`cp0_epc`指向`env_pgfault_handler`函数入口。`env_pgfault_handler`指向的函数就是`pgfault`，这是真正处理缺页异常的函数。这里我们也可以看到，写时复制的实现依赖于缺页异常实现。
+
+***
+
+### `fork`
+
+位置：`user/fork.c`
+
+创建一个子进程。
+
+```C
+int
+fork(void)
+{
+    // Your code here.
+    u_int newenvid;
+    extern struct Env *envs;
+    extern struct Env *env;
+    u_int i;
+
+
+    //The parent installs pgfault using set_pgfault_handler
+    set_pgfault_handler(pgfault);
+    //alloc a new alloc
+    /* syscall_env_alloc return different values in parent process ans subprocess */
+    newenvid = syscall_env_alloc();
+    if (newenvid) {
+        /* copy address space for subprocess */
+        for (i = 0; i &lt; VPN(USTACKTOP); i++) {
+            if (((*vpd)[i &gt;&gt; 10] &amp; PTE_V) &amp;&amp; ((*vpt)[i] &amp; PTE_V)) {
+                duppage(newenvid, i);
+            }
+        }
+        /* alloc user exception stack for subprocess at UXSTACKTOP - BY2PG */
+        syscall_mem_alloc(newenvid, UXSTACKTOP - BY2PG, PTE_V | PTE_R);
+        /* set exception handler func for subprocess */
+        syscall_set_pgfault_handler(newenvid, __asm_pgfault_handler, UXSTACKTOP);
+        /* set subprocess as RUNNABLE */
+        syscall_set_env_status(newenvid, ENV_RUNNABLE);
+    } else { // in subprocess, just return
+        env = envs + ENVX(syscall_getenvid());
+    }
+
+    return newenvid;
+}
+</code></pre>
 <hr>
 <h3 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h3><p>位置：<code>user/fork.c</code></p>
 <p>page fault </p>
@@ -561,7 +609,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYSCALL-BASE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">__SYSCALL_BASE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYS-putchar"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">SYS_putchar</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">TF_*</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#COW"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">COW</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">env</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">handle_sys</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#msyscall"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">msyscall</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-env-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">sys_env_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-set-pgfault-handler"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">sys_set_pgfault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#page-fault-handler"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">page_fault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fork"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">fork</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pgfault"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">pgfault</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#duppage"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">duppage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#set-pgfault-handler"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">set_pgfault_handler</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#文件"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#entry-S"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">entry.S</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#libos-c"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">libos.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#genex-S"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">genex.S</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab4」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab4」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYSCALL-BASE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">__SYSCALL_BASE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SYS-putchar"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">SYS_putchar</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">TF_*</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#COW"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">COW</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#env"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">env</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#handle-sys"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">handle_sys</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#msyscall"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">msyscall</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-env-alloc"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">sys_env_alloc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-set-pgfault-handler"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">sys_set_pgfault_handler</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pgfault"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">pgfault</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#duppage"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">duppage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#set-pgfault-handler"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">set_pgfault_handler</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#文件"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">文件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#entry-S"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">entry.S</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#libos-c"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">libos.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#genex-S"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">genex.S</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
