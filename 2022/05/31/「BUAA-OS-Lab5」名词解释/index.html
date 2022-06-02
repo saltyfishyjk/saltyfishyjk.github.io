@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OS Lab5」名词解释 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/31/「BUAA-OS-Lab5」名词解释/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>「BUAA OS Lab5」名词解释</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-05-31
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.7k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab5」名词解释"><a href="#「BUAA-OS-Lab5」名词解释" class="headerlink" title="「BUAA OS Lab5」名词解释"></a>「BUAA OS Lab5」名词解释</h1><h2 id="变量和类型"><a href="#变量和类型" class="headerlink" title="变量和类型"></a>变量和类型</h2><h3 id="Block"><a href="#Block" class="headerlink" title="Block"></a><code>Block</code></h3><p>磁盘块，虚拟概念，将相邻的扇区组合在一起，减小由于扇区过多带来的寻址困难。、</p>
+<p>位置：<code>fs/fsformat.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Block</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint8_t</span> data[BY2BLK];</span><br><span class="line">    <span class="keyword">uint32_t</span> type;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>uint8_t</code>是<code>unsigned char</code>，<code>uint32_t</code>是<code>unsigned</code>s</p>
+<p>// Parameters:<br>//  diskno: disk number.<br>//  secno: start sector number.<br>//  dst: destination for data read from IDE disk.<br>//  nsecs: the number of sectors to read.</p>
+<hr>
+<h3 id="Super"><a href="#Super" class="headerlink" title="Super"></a><code>Super</code></h3><p>超级块Super Block，用来描述文件系统的基本信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Super</span> &#123;</span></span><br><span class="line">	u_int s_magic;     <span class="comment">// Magic number: FS_MAGIC</span></span><br><span class="line">	u_int s_nblocks;   <span class="comment">// Total number of blocks on disk </span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">File</span> <span class="title">s_root</span>;</span> <span class="comment">// Root directory node</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>s_magic：魔数，用于识别该文件系统，是一个常量</p>
+<p>s_nblocks：记录本文件系统有多少个磁盘块，在本文件系统中是1024</p>
+<p>s_root：根目录，其<code>f_type</code>为<code>FTYPE_DIR</code>，<code>f_name</code>为<code>/</code></p>
+<hr>
+<h3 id="super"><a href="#super" class="headerlink" title="super"></a><code>super</code></h3><p>位置：<code>fs/fs.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Super</span> *<span class="title">super</span>;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="nbitblock"><a href="#nbitblock" class="headerlink" title="nbitblock"></a><code>nbitblock</code></h3><p>标记磁盘所有块的实用信息，其值为1，及，需要一个磁盘块储存位图管理信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbitblock = (NBLOCK + BIT2BLK - <span class="number">1</span>) / BIT2BLK;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或许，你对分子中的BIT2BLK - 1心存疑虑，事实上，其效果为NBLOCK/BIT2BLK的答案向上取整</p>
+</blockquote>
+<hr>
+<h3 id="NBLOCK"><a href="#NBLOCK" class="headerlink" title="NBLOCK"></a><code>NBLOCK</code></h3><p>位置：<code>fs/fsformat.c</code></p>
+<p>表示文件系统有多少个磁盘块，其值为1024</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NBLOCK 1024 <span class="comment">// The number of blocks in the disk.</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="BY2BLK"><a href="#BY2BLK" class="headerlink" title="BY2BLK"></a><code>BY2BLK</code></h3><p>位置：<code>fs.h</code></p>
+<p>byte to block ，一块字节数，其值和BY2PG（一页字节数）相同，均为4096</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BY2BLK BY2PG</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="BIT2BLK"><a href="#BIT2BLK" class="headerlink" title="BIT2BLK"></a><code>BIT2BLK</code></h3><p>bit to block，一块位数，其值位<code>BY2BLK</code>的8倍（1 byte = 8 bit），32768</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BIT2BLK (BY2BLK * 8)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="MAXNAMELEN"><a href="#MAXNAMELEN" class="headerlink" title="MAXNAMELEN"></a><code>MAXNAMELEN</code></h3><p>文件名最大长度，其值为128，即，文件名不可以超过128个字符</p>
+<p>位置：<code>include/fs.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Maximum size of a filename (a single path component), including null</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNAMELEN 128</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="NDIRECT"><a href="#NDIRECT" class="headerlink" title="NDIRECT"></a><code>NDIRECT</code></h3><p>文件控制块中直接块指针的数量，其值为10</p>
+<p>位置：<code>include/fs.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number of (direct) block pointers in a File descriptor</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NDIRECT 10</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="NINDIRECT"><a href="#NINDIRECT" class="headerlink" title="NINDIRECT"></a><code>NINDIRECT</code></h3><p>文件控制块中间接块指针可以管理的块数量上限</p>
+<p>位置：<code>include/fs.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NINDIRECT (BY2BLK / 4)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="FTYPE-REG"><a href="#FTYPE-REG" class="headerlink" title="FTYPE_REG"></a><code>FTYPE_REG</code></h3><p>regular file， 常规文件</p>
+<p>位置：<code>include/fs.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FTYPE_REG 0 <span class="comment">// Regular file</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="FTYPE-DIR"><a href="#FTYPE-DIR" class="headerlink" title="FTYPE_DIR"></a><code>FTYPE_DIR</code></h3><p>directory file，文件夹文件</p>
+<p>位置：<code>include/fs.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FTYPE_DIR 1 <span class="comment">// Directory</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="FTYPE-BIN"><a href="#FTYPE-BIN" class="headerlink" title="FTYPE_BIN"></a><code>FTYPE_BIN</code></h3><p>binary file，二进制文件</p>
+<p>位置：<code>include/fs.h</code></p>
+<hr>
+<h3 id="File"><a href="#File" class="headerlink" title="File"></a><code>File</code></h3><p>文件控制块</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">File</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	u_char f_name[MAXNAMELEN]; <span class="comment">// filename</span></span><br><span class="line">	u_int f_size;			   <span class="comment">// file size in bytes</span></span><br><span class="line">	u_int f_type;			   <span class="comment">// file type</span></span><br><span class="line">	u_int f_direct[NDIRECT];</span><br><span class="line">	u_int f_indirect;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">File</span> *<span class="title">f_dir</span>;</span> <span class="comment">// valid only in memory</span></span><br><span class="line">	u_char f_pad[<span class="number">256</span> - MAXNAMELEN - <span class="number">4</span> - <span class="number">4</span> - NDIRECT * <span class="number">4</span> - <span class="number">4</span> - <span class="number">4</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>f_type</code>为文件类型，有普通文件<code>FTYPE_REG</code>和文件夹<code>FTYPE_DIR</code>两种</p>
+<p><code>f_direct[NDIRECT]</code>用来记录文件的数据块在磁盘上的位置，设有十个直接指针，计算可以知道我们的十个直接指针可以表示最大40KB的文件，而当文件大于40KB时，需要用到间接指针。</p>
+<p><code>f_indirect</code>是间接指针，指向一个间接磁盘块，用来存储指向文件内容的磁盘块的指针。为了简化计算，我们不使用简介磁盘块的前十个指针。</p>
+<p><code>f_dir</code>指向文件所属的文件目录。</p>
+<p><code>f_pad</code>是为了使得整个结构体大小是2的幂数，以便于整数个结构体占用一个磁盘块，占用剩下的字节。（利用了<code>char</code>是一个字节的特点）。</p>
+<hr>
+<h2 id="函数和宏函数"><a href="#函数和宏函数" class="headerlink" title="函数和宏函数"></a>函数和宏函数</h2><h3 id="read-sector"><a href="#read-sector" class="headerlink" title="read_sector"></a><code>read_sector</code></h3><p>内核态驱动，该函数为示意，不在代码中真实存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># read sector at specified offset from the beginning of the disk image. </span><br><span class="line">LEAF(read_sector)</span><br><span class="line">	sw a0, 0xB3000010 # select the IDE id. </span><br><span class="line">	sw a1, 0xB3000000 # offset.</span><br><span class="line">	li t0, 0</span><br><span class="line">	sb t0, 0xB3000020 # start read. </span><br><span class="line">	lw v0, 0xB3000030</span><br><span class="line">	nop </span><br><span class="line">	jr ra </span><br><span class="line">	nop</span><br><span class="line">END(read_sector)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="sys-write-dev"><a href="#sys-write-dev" class="headerlink" title="sys_write_dev"></a><code>sys_write_dev</code></h3><p>系统调用写设备</p>
+<p>位置：<code>lib/syscall_all.c</code></p>
+<p><code>dev</code>意味device，设备</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sys_write_dev</span><span class="params">(<span class="keyword">int</span> sysno, u_int va, u_int dev, u_int len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// Your code here</span></span><br><span class="line">	<span class="keyword">if</span> (dev &gt;= <span class="number">0x10000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x10000020</span> ||</span><br><span class="line">		dev &gt;= <span class="number">0x13000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x13004200</span> ||</span><br><span class="line">		dev &gt;= <span class="number">0x15000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x15000200</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		bcopy(va, <span class="number">0xa0000000</span> + dev, len);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -E_INVAL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>系统调用函数<code>syscall_write_dev</code>的实现，将从<code>va</code>开始长度为<code>len</code>的字节拷贝到<code>0xa000,0000 + dev</code>虚拟地址处（实际上，dev就是设备的物理地址，但得益于我们的虚拟地址机制，这里需要引用的是映射到kseg1的虚拟地址空间的地址）</p>
+<hr>
+<h3 id="sys-read-dev"><a href="#sys-read-dev" class="headerlink" title="sys_read_dev"></a><code>sys_read_dev</code></h3><p>系统调用读设备</p>
+<p>位置：<code>lib/syscall_.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sys_read_dev</span><span class="params">(<span class="keyword">int</span> sysno, u_int va, u_int dev, u_int len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// Your code here</span></span><br><span class="line">	<span class="keyword">if</span> (dev &gt;= <span class="number">0x10000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x10000020</span> ||</span><br><span class="line">		dev &gt;= <span class="number">0x13000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x13004200</span> ||</span><br><span class="line">		dev &gt;= <span class="number">0x15000000</span> &amp;&amp; dev + len &lt;= <span class="number">0x15000200</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		bcopy(<span class="number">0xa0000000</span> + dev, va, len);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -E_INVAL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似<code>sys_write_dev</code>。</p>
+<hr>
+<h3 id="ide-write"><a href="#ide-write" class="headerlink" title="ide_write"></a><code>ide_write</code></h3><p>写IDE磁盘，具体地，我们依赖下图，通过在特定位置写入指定内容</p>
+<p><img src="2022-05-31-「BUAA-OS-Lab5」名词解释.assets/image-20220601200917606.png" alt="image-20220601200917606"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">ide_write(u_int diskno, u_int secno, <span class="keyword">void</span> *src, u_int nsecs)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// Your code here</span></span><br><span class="line">	<span class="keyword">int</span> offset_begin = secno * <span class="number">0x200</span>;</span><br><span class="line">	<span class="keyword">int</span> offset_end = offset_begin + nsecs * <span class="number">0x200</span>;</span><br><span class="line">	<span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> offset_now = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> op_status = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">write</span> = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> can_read = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// DO NOT DELETE WRITEF !!!</span></span><br><span class="line">	writef(<span class="string">"diskno: %d\n"</span>, diskno);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (offset_begin + offset &lt; offset_end) &#123;</span><br><span class="line">		<span class="comment">// copy data from source array to disk buffer.</span></span><br><span class="line">		offset_now = offset_begin + offset;</span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;diskno, <span class="number">0x13000010</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;offset_now, <span class="number">0x13000000</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(src + offset, <span class="number">0x13004000</span>, <span class="number">0x200</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"read failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;<span class="built_in">write</span>, <span class="number">0x13000020</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (syscall_read_dev(&amp;op_status, <span class="number">0x13000030</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (op_status == <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"read failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		offset += <span class="number">0x200</span>;</span><br><span class="line">		<span class="comment">// if error occur, then panic.</span></span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="ide-read"><a href="#ide-read" class="headerlink" title="ide_read"></a><code>ide_read</code></h3><p>读IDE磁盘</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">ide_read(u_int diskno, u_int secno, <span class="keyword">void</span> *dst, u_int nsecs)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 0x200: the size of a sector: 512 bytes.</span></span><br><span class="line">	<span class="keyword">int</span> offset_begin = secno * <span class="number">0x200</span>;</span><br><span class="line">	<span class="keyword">int</span> offset_end = offset_begin + nsecs * <span class="number">0x200</span>;</span><br><span class="line">	<span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	u_int zero = <span class="number">0</span>;</span><br><span class="line">	u_int cur_offset = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> op_status = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">read</span> = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> can_read = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (offset_begin + offset &lt; offset_end) &#123;</span><br><span class="line">		<span class="comment">// Your code here</span></span><br><span class="line">		cur_offset = offset_begin + offset; <span class="comment">// calc current offset</span></span><br><span class="line">		<span class="comment">/* set diskno */</span></span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;diskno, <span class="number">0x13000010</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/* set offset */</span></span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;cur_offset, <span class="number">0x13000000</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/* set value */</span></span><br><span class="line">		<span class="keyword">if</span> (syscall_write_dev(&amp;<span class="built_in">read</span>, <span class="number">0x13000020</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (syscall_read_dev(&amp;op_status, <span class="number">0x13000030</span>, <span class="number">4</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"write failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (op_status = <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"read failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (syscall_read_dev(dst + offset, <span class="number">0x13004000</span>, <span class="number">0x200</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">			user_panic(<span class="string">"read failed!\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		offset += <span class="number">0x200</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// error occurred, then panic.</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="init-disk"><a href="#init-disk" class="headerlink" title="init_disk"></a><code>init_disk</code></h3><p>初始化磁盘块</p>
+<p>位置：<code>fs/fsformat.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Initial the disk. Do some work with bitmap and super block.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_disk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, r, diff;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Step 1: Mark boot sector block.</span></span><br><span class="line">    disk[<span class="number">0</span>].type = BLOCK_BOOT;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Step 2: Initialize boundary.</span></span><br><span class="line">    nbitblock = (NBLOCK + BIT2BLK - <span class="number">1</span>) / BIT2BLK;</span><br><span class="line">    nextbno = <span class="number">2</span> + nbitblock;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Step 2: Initialize bitmap blocks.</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; nbitblock; ++i) &#123;</span><br><span class="line">        disk[<span class="number">2</span>+i].type = BLOCK_BMAP;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; nbitblock; ++i) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(disk[<span class="number">2</span>+i].data, <span class="number">0xff</span>, BY2BLK);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(NBLOCK != nbitblock * BIT2BLK) &#123;</span><br><span class="line">        diff = NBLOCK % BIT2BLK / <span class="number">8</span>;</span><br><span class="line">        <span class="built_in">memset</span>(disk[<span class="number">2</span>+(nbitblock<span class="number">-1</span>)].data+diff, <span class="number">0x00</span>, BY2BLK - diff);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Step 3: Initialize super block.</span></span><br><span class="line">    disk[<span class="number">1</span>].type = BLOCK_SUPER;</span><br><span class="line">    super.s_magic = FS_MAGIC;</span><br><span class="line">    super.s_nblocks = NBLOCK;</span><br><span class="line">    super.s_root.f_type = FTYPE_DIR;</span><br><span class="line">    <span class="built_in">strcpy</span>(super.s_root.f_name, <span class="string">"/"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="block-is-free"><a href="#block-is-free" class="headerlink" title="block_is_free"></a><code>block_is_free</code></h3><p>位置：<code>fs/fs.c</code></p>
+<p>通过位图的特定位来判断指定的磁盘块是否被占用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">block_is_free</span><span class="params">(u_int blockno)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (super == <span class="number">0</span> || blockno &gt;= super-&gt;s_nblocks)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (bitmap[blockno / <span class="number">32</span>] &amp; (<span class="number">1</span> &lt;&lt; (blockno % <span class="number">32</span>)))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="create-file"><a href="#create-file" class="headerlink" title="create_file"></a><code>create_file</code></h3><p>创建文件</p>
+<p>位置：<code>fs/fsformat.c</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">### &#96;save_block_link&#96;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;C</span><br><span class="line">&#x2F;&#x2F; Save block link.</span><br><span class="line">void save_block_link(struct File *f, int nblk, int bno)</span><br><span class="line">&#123;</span><br><span class="line">    assert(nblk &lt; NINDIRECT); &#x2F;&#x2F; if not, file is too large !</span><br><span class="line"></span><br><span class="line">    if (nblk &lt; NDIRECT)</span><br><span class="line">    &#123;</span><br><span class="line">        f-&gt;f_direct[nblk] &#x3D; bno;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        if (f-&gt;f_indirect &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F; create new indirect block.</span><br><span class="line">            f-&gt;f_indirect &#x3D; next_block(BLOCK_INDEX);</span><br><span class="line">        &#125;</span><br><span class="line">        ((uint32_t *)(disk[f-&gt;f_indirect].data))[nblk] &#x3D; bno;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="make-link-block"><a href="#make-link-block" class="headerlink" title="make_link_block"></a><code>make_link_block</code></h3><p>创建相邻块</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Make new block contians link to files in a directory.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">make_link_block</span><span class="params">(struct <span class="built_in">File</span> *dirf, <span class="keyword">int</span> nblk)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    save_block_link(dirf, nblk, nextbno);</span><br><span class="line">    dirf-&gt;f_size += BY2BLK;</span><br><span class="line">    <span class="keyword">return</span> next_block(BLOCK_FILE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/05/31/「BUAA-OO-Unit-3-HW12」第三单元总结/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 3 HW12」第三单元总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Tue May 31 2022 23:27:07 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OS-Lab5」名词解释"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab5」名词解释</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#变量和类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">变量和类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Block"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">Block</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Super"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Super</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#super"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">super</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nbitblock"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">nbitblock</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NBLOCK"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">NBLOCK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BY2BLK"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">BY2BLK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BIT2BLK"><span class="toc-nav-number">1.1.7.</span> <span class="toc-nav-text">BIT2BLK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MAXNAMELEN"><span class="toc-nav-number">1.1.8.</span> <span class="toc-nav-text">MAXNAMELEN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NDIRECT"><span class="toc-nav-number">1.1.9.</span> <span class="toc-nav-text">NDIRECT</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NINDIRECT"><span class="toc-nav-number">1.1.10.</span> <span class="toc-nav-text">NINDIRECT</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FTYPE-REG"><span class="toc-nav-number">1.1.11.</span> <span class="toc-nav-text">FTYPE_REG</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FTYPE-DIR"><span class="toc-nav-number">1.1.12.</span> <span class="toc-nav-text">FTYPE_DIR</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FTYPE-BIN"><span class="toc-nav-number">1.1.13.</span> <span class="toc-nav-text">FTYPE_BIN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#File"><span class="toc-nav-number">1.1.14.</span> <span class="toc-nav-text">File</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数和宏函数"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">函数和宏函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#read-sector"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">read_sector</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-write-dev"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">sys_write_dev</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sys-read-dev"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">sys_read_dev</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ide-write"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">ide_write</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ide-read"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">ide_read</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#init-disk"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">init_disk</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#block-is-free"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">block_is_free</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#create-file"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">create_file</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#make-link-block"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">make_link_block</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://mmmusel.github.io/" target="_blank">🍔gf</a></li>
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io" target="_blank" rel="noopener">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>
