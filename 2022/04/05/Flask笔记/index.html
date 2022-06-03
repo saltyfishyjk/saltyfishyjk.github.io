@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">266</span> and
+                                Words <span class="post-count">288</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -185,14 +185,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -277,6 +277,7 @@
 <p>Tip：如果你的机器名含有中文或一些特殊字符，可能会报错<code>UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xd4 in position 0: invalid continuation byte</code></p>
 <h4 id="处理简单的请求"><a href="#处理简单的请求" class="headerlink" title="处理简单的请求"></a>处理简单的请求</h4><p>使用POST</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route('/ques', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ques</span><span class="params">()</span>:</span></span><br><span class="line">    ans,score = serve(request.form[<span class="string">'question'</span>])</span><br><span class="line">    print(request.headers)</span><br><span class="line">    print(request.form[<span class="string">'question'</span>])</span><br><span class="line">    res = &#123;<span class="string">'answer'</span>:ans,<span class="string">'score'</span>:score&#125;</span><br><span class="line">    <span class="keyword">return</span> json.dumps(res,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment">#return 'we are analysing your question...'</span></span><br></pre></td></tr></table></figure>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>可以使用postman发送各种类型的请求，操作简单。</p>
 
                 
                 <hr>
@@ -410,7 +411,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Flask笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Flask笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-快速搭建一个最小的应用"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 快速搭建一个最小的应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">参考资料</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#流程"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">流程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装和导入flask包"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">安装和导入flask包</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#写一个简单的demo展示页面"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">写一个简单的demo展示页面</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#处理简单的请求"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">处理简单的请求</span></a></li></ol></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Flask笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Flask笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-快速搭建一个最小的应用"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 快速搭建一个最小的应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参考资料"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">参考资料</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#流程"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">流程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装和导入flask包"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">安装和导入flask包</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#写一个简单的demo展示页面"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">写一个简单的demo展示页面</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#处理简单的请求"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">处理简单的请求</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#发送请求"><span class="toc-nav-number">1.2.2.4.</span> <span class="toc-nav-text">发送请求</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
