@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -268,7 +268,7 @@
 <p>具体内容为实现<code>Group</code>，<code>Network</code>，<code>Person</code>三个类，模拟一个社交网络中的群体、个体及其关系；实现六个抽象异常类，要求具有计数功能。</p>
 <p>本次作业的主要难点有：JML的入门；自定义异常类与抛出；连通块维护。</p>
 <h3 id="1-2-JML入门"><a href="#1-2-JML入门" class="headerlink" title="1.2 JML入门"></a>1.2 JML入门</h3><p>这一部分主要根据课程组提供的JML level0指导书学习，我将相关笔记整理在博客<a href="https://saltyfishyjk.github.io/2022/04/30/%E3%80%8CBUAA-OO-Unit-3%E3%80%8D-JML%E7%AC%94%E8%AE%B0/">「BUAA OO Unit 3」 JML笔记</a>中。</p>
-<h3 id="1-3-自定义异常类与抛出"><a href="#1-3-自定义异常类与抛出" class="headerlink" title="1.3 自定义异常类与抛出"></a>1.3 自定义异常类与抛出</h3><p>本次作业带我实现了对自定义异常类从0到1的突破，并让我得以亏得异常一隅。</p>
+<h3 id="1-3-自定义异常类与抛出"><a href="#1-3-自定义异常类与抛出" class="headerlink" title="1.3 自定义异常类与抛出"></a>1.3 自定义异常类与抛出</h3><p>本次作业带我实现了对自定义异常类从0到1的突破，并让我得以窥得异常一隅。</p>
 <p>自定义异常类也是一个类，抛出的自定义异常也是一个对象（符合Java中一切皆对象的思想），我们的具体操作就是在产生异常（这里的异常指自定义异常，即，<strong>条件判断</strong>中符合自定义异常条件）的时候<code>new</code>一个异常对象，并使用<code>throw</code>语句将其抛出，非常形象。</p>
 <h4 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h4><p>对于本次作业需要自己完成的异常部分到此为止，但是通过<code>Runner</code>类，我们可以较为完整地了解异常机制。</p>
 <p>我们抛出异常后并没有到此为止，异常会被沿着栈的方向被抛给上层调用方法；在这个过程中，如果异常被某个调用方法捕获并处理，则不再上抛；如果所有方法都选择将此异常抛出，那么最终这个异常会被JVM（Java Virtual Machine）捕获，并终止程序的运行。</p>
