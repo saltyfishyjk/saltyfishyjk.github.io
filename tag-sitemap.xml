@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
+        <lastmod>2022-06-30T11:33:44.734Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://saltyfishyjk.github.io/tags/BUAA-OO/</loc>
         <lastmod>2022-06-30T09:03:28.073Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,13 +19,6 @@
     <url>
         <loc>https://saltyfishyjk.github.io/tags/BUAA-Discrete-Mathematics/</loc>
         <lastmod>2022-06-21T13:33:27.845Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
-        <lastmod>2022-06-10T08:42:27.628Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
