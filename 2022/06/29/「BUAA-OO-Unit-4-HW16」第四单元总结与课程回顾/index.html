@@ -183,13 +183,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -198,6 +191,13 @@
                         
                         <li>
                             <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -259,7 +259,7 @@
                 <h1 id="「BUAA-OO-Unit-4-HW16」第四单元总结与课程回顾"><a href="#「BUAA-OO-Unit-4-HW16」第四单元总结与课程回顾" class="headerlink" title="「BUAA OO Unit 4 HW16」第四单元总结与课程回顾"></a>「BUAA OO Unit 4 HW16」第四单元总结与课程回顾</h1><p>[TOC]</p>
 <h2 id="Part-0-第四单元作业架构设计"><a href="#Part-0-第四单元作业架构设计" class="headerlink" title="Part 0 第四单元作业架构设计"></a>Part 0 第四单元作业架构设计</h2><h3 id="架构设计概要"><a href="#架构设计概要" class="headerlink" title="架构设计概要"></a>架构设计概要</h3><p>本单元的设计目标为扩展UML解析器，使之支持对UML类图、状态图和顺序图的分析，可以通过输入相应的指令来进行相关查询，并能根据UML规则进行一定的规范性验证。</p>
 <p>整个第四单元的三次作业是依次迭代的，没有进行重构，因此这里以第15次作业为例介绍架构设计如下图示。</p>
-<p><img src="2022-06-29-「BUAA-OO-Unit-4-HW16」第四单元总结与课程回顾.assets/hw15架构.jpg" alt="hw15架构"></p>
+<img src="/2022/06/29/%E3%80%8CBUAA-OO-Unit-4-HW16%E3%80%8D%E7%AC%AC%E5%9B%9B%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AF%BE%E7%A8%8B%E5%9B%9E%E9%A1%BE/hw15%E6%9E%B6%E6%9E%84.jpg" class="" title="hw15架构">
 <p>在本次作业中，我主要遵循以下几个原则进行设计：</p>
 <ol>
 <li>将<strong>所有</strong> <code>UML*</code>封装为<code>My*</code>，以便于统一管理和增设属性。</li>
@@ -320,7 +320,7 @@
 <blockquote>
 <p>这里主要针对类和接口的泛化与接口的实现，对于作业中其他的属性以及后续作业的新要求，可以利用类似的思想</p>
 </blockquote>
-<h4 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h4><p><img src="2022-06-29-「BUAA-OO-Unit-4-HW16」第四单元总结与课程回顾.assets/Page1.png" alt="Page1"></p>
+<h4 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h4><img src="/2022/06/29/%E3%80%8CBUAA-OO-Unit-4-HW16%E3%80%8D%E7%AC%AC%E5%9B%9B%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AF%BE%E7%A8%8B%E5%9B%9E%E9%A1%BE/Page1.png" class="" title="Page1.png">
 <p>上图展示了三轮循环的工作实现与要点，以下结合该图逐个介绍。</p>
 <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><h5 id="Round-1-“实体”加入"><a href="#Round-1-“实体”加入" class="headerlink" title="Round 1 “实体”加入"></a>Round 1 “实体”加入</h5><p>第一轮遍历，加入类和接口实体，这时候泛化和接口实现等关系尚未加入，彼此处于孤立状态。</p>
 <h5 id="Round-2-“泛化”加入"><a href="#Round-2-“泛化”加入" class="headerlink" title="Round 2 “泛化”加入"></a>Round 2 “泛化”加入</h5><p>第二轮遍历，将泛化关系加入图中。</p>
