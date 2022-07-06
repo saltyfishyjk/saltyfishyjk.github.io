@@ -108,7 +108,7 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Python Programming" title="Python Programming">Python Programming</a>
+                              <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                             
                         </div>
                         <h1>「BUAA Python Programming」Week1</h1>
@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">524</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">788</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -271,7 +271,38 @@
 <p>举例而言，输入一个整数，可以用如下代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num = int(input())</span><br></pre></td></tr></table></figure>
 <p>python中的强制类型转换是<em>类型（变量）</em>的形式，如<code>int(val)</code>会将<code>val</code>转为<code>int</code>类型。</p>
-<h2 id="Part-3-print"><a href="#Part-3-print" class="headerlink" title="Part 3 print()"></a>Part 3 <code>print()</code></h2><p><code>print()</code>函数是重要的输出（打印）函数，了解其使用十分重要。对于该函数较全面的入门级介绍，可以参考<a href="https://www.runoob.com/w3cnote/python3-print-func-b.html" target="_blank" rel="noopener">菜鸟教程-Python3 print 函数用法总结</a></p>
+<h2 id="Part-3-print"><a href="#Part-3-print" class="headerlink" title="Part 3 print()"></a>Part 3 <code>print()</code></h2><p><code>print()</code>函数是重要的输出（打印）函数，了解其使用十分重要。对于该函数较全面的入门级介绍，可以参考<a href="https://www.runoob.com/w3cnote/python3-print-func-b.html" target="_blank" rel="noopener">菜鸟教程-Python3 print 函数用法总结</a>。在这里，我们总结一些比较常用的输出需求与对应解决方案：</p>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>在C中，<code>printf()</code>函数提供的格式化输出深入人心，python也支持类似的方案。</p>
+<h4 id="保留两位小数"><a href="#保留两位小数" class="headerlink" title="保留两位小数"></a>保留两位小数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">10.246</span></span><br><span class="line">print(<span class="string">"num : %.2f"</span> %(num))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num : 10.25</span><br></pre></td></tr></table></figure>
+<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>格式化操作符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-</code></td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>用<code>0</code>填充而非默认的空格</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="不换行输出"><a href="#不换行输出" class="headerlink" title="不换行输出"></a>不换行输出</h3><p>在不限制的情况下，<code>print()</code>会在输出结束后加一个换行。当我们不希望输出结束后换行的时候，可以用如下方案：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">70</span></span><br><span class="line">str = <span class="string">'BUAA'</span></span><br><span class="line">print(str, end = <span class="string">''</span>)</span><br><span class="line">print(num, end = <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUAA70</span><br></pre></td></tr></table></figure>
+<h2 id="Part-4-遍历"><a href="#Part-4-遍历" class="headerlink" title="Part 4 遍历"></a>Part 4 遍历</h2><p>在python中，循环遍历在整数区间内的遍历写法和C有较大不同。以C中<code>for (i = 0; i &lt; n, i++)</code>为例，在python中写法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n)</span><br></pre></td></tr></table></figure>
+<p>这其实是利用了<code>range()</code>这一重要函数，该函数也可以通过参数支持反向遍历、步长设置等，具体可以参考<a href="https://www.runoob.com/python/python-func-range.html" target="_blank" rel="noopener">菜鸟教程-Python range() 函数用法</a>。</p>
 
                 
                 <hr>
@@ -401,7 +432,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-声明编码方式"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 声明编码方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-类型转换"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-print"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 print()</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-声明编码方式"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 声明编码方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-类型转换"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-print"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 print()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#格式化输出"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">格式化输出</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#保留两位小数"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">保留两位小数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#对齐"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">对齐</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不换行输出"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">不换行输出</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-遍历"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 遍历</span></a></li></ol></li></ol>
             
           
           </div>
@@ -423,7 +454,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Python Programming" title="Python Programming">Python Programming</a>
+                          <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                         
                     </div>
                 </section>
