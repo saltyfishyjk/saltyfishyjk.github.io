@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">788</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">958</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -303,6 +303,12 @@
 <h2 id="Part-4-遍历"><a href="#Part-4-遍历" class="headerlink" title="Part 4 遍历"></a>Part 4 遍历</h2><p>在python中，循环遍历在整数区间内的遍历写法和C有较大不同。以C中<code>for (i = 0; i &lt; n, i++)</code>为例，在python中写法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n)</span><br></pre></td></tr></table></figure>
 <p>这其实是利用了<code>range()</code>这一重要函数，该函数也可以通过参数支持反向遍历、步长设置等，具体可以参考<a href="https://www.runoob.com/python/python-func-range.html" target="_blank" rel="noopener">菜鸟教程-Python range() 函数用法</a>。</p>
+<h2 id="Part-5-一行输入多个变量"><a href="#Part-5-一行输入多个变量" class="headerlink" title="Part 5 一行输入多个变量"></a>Part 5 一行输入多个变量</h2><p>python中的<code>input()</code>函数是重要的标准输入函数，其返回一个类型为<code>string</code>的数据。</p>
+<p>一般地，可以用<code>input(str)</code>首先输出<code>str</code>提示希望获取的输入，接着获取一个输入数据。</p>
+<p>但是，当我们需要输入以某种形式分隔的多个变量的时候，一个好的方法是采用<code>split</code>作为参数。举例而言，我们要输入一行两个用空格分隔的整数的时候，可以采用的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = map(int, input(),split())</span><br></pre></td></tr></table></figure>
+<p>若是一行两个用逗号分隔的整数，则可以用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = map(int, input().split(<span class="string">','</span>))</span><br></pre></td></tr></table></figure>
 
                 
                 <hr>
@@ -432,7 +438,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-声明编码方式"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 声明编码方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-类型转换"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-print"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 print()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#格式化输出"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">格式化输出</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#保留两位小数"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">保留两位小数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#对齐"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">对齐</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不换行输出"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">不换行输出</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-遍历"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 遍历</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-声明编码方式"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 声明编码方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-类型转换"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-print"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 print()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#格式化输出"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">格式化输出</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#保留两位小数"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">保留两位小数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#对齐"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">对齐</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不换行输出"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">不换行输出</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-遍历"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 遍历</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-一行输入多个变量"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 一行输入多个变量</span></a></li></ol></li></ol>
             
           
           </div>
