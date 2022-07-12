@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          HTML笔记 - saltyfishyjk
+          「BUAA Python Programming」Week2 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/12/HTML笔记/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/07/11/「BUAA-Python-Programming」Week2/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,22 +108,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                            
-                              <a class="tag" href="/tags/#HTML" title="HTML">HTML</a>
+                              <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                             
                         </div>
-                        <h1>HTML笔记</h1>
+                        <h1>「BUAA Python Programming」Week2</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-04-12
+                            2022-07-11
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">159</span> and
+                                Words <span class="post-count">287</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -258,34 +256,24 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="HTML笔记"><a href="#HTML笔记" class="headerlink" title="HTML笔记"></a>HTML笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>HTML是一个超文本标记语言（不是编程语言），在描述网页时有重要应用。除此之外，由于markdown语法较少，一些复杂功能（如字体变换颜色）可以通过HTML实现。这里记录HTML使用中的笔记。</p>
-<p>超文本有两层含义：</p>
-<ul>
-<li>可以加入图片、声音、动画、多媒体等内容（超越文本的限制）</li>
-<li>可以从一个文件跳转到另一个文件（超级链接文本）</li>
-</ul>
-<h2 id="Part-1-常用语法"><a href="#Part-1-常用语法" class="headerlink" title="Part 1 常用语法"></a>Part 1 常用语法</h2><h3 id="字体变色"><a href="#字体变色" class="headerlink" title="字体变色"></a>字体变色</h3><ul>
-<li>源码：</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span> 字体变红 <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>效果</li>
-</ul>
-<font color=red> 字体变红 </font>
-
+                <h1 id="「BUAA-Python-Programming」Week2"><a href="#「BUAA-Python-Programming」Week2" class="headerlink" title="「BUAA Python Programming」Week2"></a>「BUAA Python Programming」Week2</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h2 id="Part-1-列表去重-set"><a href="#Part-1-列表去重-set" class="headerlink" title="Part 1 列表去重 set()"></a>Part 1 列表去重 <code>set()</code></h2><p>需要对一个列表进行去重操作的时候，可以使用<code>set()</code>函数，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr = input().split(<span class="string">" "</span>)</span><br><span class="line">arrSet = set(arr)</span><br></pre></td></tr></table></figure>
+<p>如此，可以得到一个去重后的集合。</p>
+<h2 id="Part-2-特定字符连缀列表元素-join"><a href="#Part-2-特定字符连缀列表元素-join" class="headerlink" title="Part 2 特定字符连缀列表元素 join()"></a>Part 2 特定字符连缀列表元素 <code>join()</code></h2><p>需要以某种特定字符连缀列表元素得到一个新的字符串的时候，可以使用<code>join()</code>方法，如想以空格连缀：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">space = <span class="string">" "</span></span><br><span class="line">arr = input.split(<span class="string">" "</span>)</span><br><span class="line">arrOut = space.join(arr)</span><br></pre></td></tr></table></figure>
+<h2 id="Part-3-获取字符ASCII码-ord"><a href="#Part-3-获取字符ASCII码-ord" class="headerlink" title="Part 3  获取字符ASCII码 ord()"></a>Part 3  获取字符ASCII码 <code>ord()</code></h2><p>对于给定字符需要获取其ASCII码，可以使用<code>ord()</code>方法，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"BUAA"</span></span><br><span class="line">arr = []</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> str:</span><br><span class="line">    ele = ord(ch)</span><br><span class="line">    arr.add(ele)</span><br></pre></td></tr></table></figure>
+<h2 id="Part-4-对齐字符串并补位"><a href="#Part-4-对齐字符串并补位" class="headerlink" title="Part 4 对齐字符串并补位"></a>Part 4 对齐字符串并补位</h2><p>在输出函数<code>print()</code>中对齐和补位的操作较为常用，在字符串中可以用<code>rjust()</code>和<code>ljust()</code>等方法进行右对齐，并设置参数决定补位字符。详细介绍可以参考<a href="https://www.runoob.com/python/att-string-rjust.html" target="_blank" rel="noopener">Python rjust()方法 | 菜鸟教程 (runoob.com)</a>。</p>
+<h2 id="Part-5-字典包含判断"><a href="#Part-5-字典包含判断" class="headerlink" title="Part 5 字典包含判断"></a>Part 5 字典包含判断</h2><p>在使用字典的时候，可能会需要判断某个索引是否在字典中存在，<strong>python 3.x</strong>中支持的方法有<code>__contains__()</code>和<code>in</code>。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/04/14/Word笔记/" data-toggle="tooltip" data-placement="top" title="Word笔记">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/04/12/Gitment评论区配置与使用/" data-toggle="tooltip" data-placement="top" title="Gitment评论区配置与使用">Next Post &rarr;</a>
+                        <a href="/2022/07/06/「BUAA-Python-Programming」Week1/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Week1">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -366,7 +354,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Tue Apr 12 2022 19:58:00 GMT+0800', // optional
+    id: 'Mon Jul 11 2022 19:53:46 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -406,7 +394,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#HTML笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">HTML笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-常用语法"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 常用语法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#字体变色"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">字体变色</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week2</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-列表去重-set"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 列表去重 set()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-特定字符连缀列表元素-join"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 特定字符连缀列表元素 join()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-获取字符ASCII码-ord"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3  获取字符ASCII码 ord()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-对齐字符串并补位"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 对齐字符串并补位</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-字典包含判断"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 字典包含判断</span></a></li></ol></li></ol>
             
           
           </div>
@@ -428,9 +416,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                        
-                          <a class="tag" href="/tags/#HTML" title="HTML">HTML</a>
+                          <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                         
                     </div>
                 </section>
