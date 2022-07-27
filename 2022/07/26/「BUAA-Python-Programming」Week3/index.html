@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Pytorch笔记 - saltyfishyjk
+          「BUAA Python Programming」Week3 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/03/Pytorch笔记/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/07/26/「BUAA-Python-Programming」Week3/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,24 +108,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                            
-                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
-                            
-                              <a class="tag" href="/tags/#Pytorch" title="Pytorch">Pytorch</a>
+                              <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                             
                         </div>
-                        <h1>Pytorch笔记</h1>
+                        <h1>「BUAA Python Programming」Week3</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-04-03
+                            2022-07-26
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">97</span> and
+                                Words <span class="post-count">27</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,28 +256,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Pytorch笔记"><a href="#Pytorch笔记" class="headerlink" title="Pytorch笔记"></a>Pytorch笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><h2 id="Part-2-服务器安装Pytorch"><a href="#Part-2-服务器安装Pytorch" class="headerlink" title="Part 2 服务器安装Pytorch"></a>Part 2 服务器安装Pytorch</h2><p><a href="https://blog.csdn.net/sarracode/article/details/107312975" target="_blank" rel="noopener">服务器上安装pytorch-gpu</a></p>
-<p><a href="https://blog.csdn.net/weixin_44398263/article/details/109110773" target="_blank" rel="noopener">【Pytorch】在实验室linux系统服务器上搭建自己的pytorch-gpu环境过程详解！一篇就足够！</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/79059379#:~:text=CUDA%20%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%20%E4%B8%80%E8%88%AC%E8%80%8C%E8%A8%80%EF%BC%8C%E5%9C%A8%20Linux%20%E4%B8%8B%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%20CUDA%20%E7%9A%84%E6%B5%81%E7%A8%8B%E5%A6%82%E4%B8%8B%EF%BC%9A%20%E5%AE%89%E8%A3%85,lspci%20%7C%20grep%20-i%20nvidia%20%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%20GPU%20%E5%9E%8B%E5%8F%B7%E3%80%82" target="_blank" rel="noopener">Linux 下的 CUDA 安装和使用指南</a></p>
-<ol>
-<li><code>watch nvidia-smi</code>：查看GPU情况，确定需要的CUDA版本</li>
-</ol>
-<h2 id="Part-3-常用代码与指令"><a href="#Part-3-常用代码与指令" class="headerlink" title="Part 3 常用代码与指令"></a>Part 3 常用代码与指令</h2><ol>
-<li><code>import torch</code>：导入<code>torch</code></li>
-</ol>
+                <h1 id="「BUAA-Python-Programming」Week3"><a href="#「BUAA-Python-Programming」Week3" class="headerlink" title="「BUAA Python Programming」Week3"></a>「BUAA Python Programming」Week3</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h2 id="Part-1-全排列"><a href="#Part-1-全排列" class="headerlink" title="Part 1 全排列"></a>Part 1 全排列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line">arr = [<span class="string">'a'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="string">"soso"</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> itertools.permutations(arr, <span class="number">3</span>):</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/04/05/Excel笔记/" data-toggle="tooltip" data-placement="top" title="Excel笔记">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/03/31/「BUAA-Discrete-Mathematics-Chapter2」排列与组合/" data-toggle="tooltip" data-placement="top" title="「BUAA Discrete Mathematics Chapter2」排列与组合">Next Post &rarr;</a>
+                        <a href="/2022/07/11/「BUAA-Python-Programming」Week2/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Week2">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -362,7 +346,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Sun Apr 03 2022 15:40:50 GMT+0800', // optional
+    id: 'Tue Jul 26 2022 20:47:30 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -402,7 +386,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Pytorch笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Pytorch笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-相关资源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-服务器安装Pytorch"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 服务器安装Pytorch</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-常用代码与指令"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 常用代码与指令</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week3"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week3</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-全排列"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 全排列</span></a></li></ol></li></ol>
             
           
           </div>
@@ -424,11 +408,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                        
-                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
-                        
-                          <a class="tag" href="/tags/#Pytorch" title="Pytorch">Pytorch</a>
+                          <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
                         
                     </div>
                 </section>

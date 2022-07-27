@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">287</span> and
+                                Words <span class="post-count">402</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -259,17 +259,25 @@
                 <h1 id="「BUAA-Python-Programming」Week2"><a href="#「BUAA-Python-Programming」Week2" class="headerlink" title="「BUAA Python Programming」Week2"></a>「BUAA Python Programming」Week2</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h2 id="Part-1-列表去重-set"><a href="#Part-1-列表去重-set" class="headerlink" title="Part 1 列表去重 set()"></a>Part 1 列表去重 <code>set()</code></h2><p>需要对一个列表进行去重操作的时候，可以使用<code>set()</code>函数，如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr = input().split(<span class="string">" "</span>)</span><br><span class="line">arrSet = set(arr)</span><br></pre></td></tr></table></figure>
 <p>如此，可以得到一个去重后的集合。</p>
-<h2 id="Part-2-特定字符连缀列表元素-join"><a href="#Part-2-特定字符连缀列表元素-join" class="headerlink" title="Part 2 特定字符连缀列表元素 join()"></a>Part 2 特定字符连缀列表元素 <code>join()</code></h2><p>需要以某种特定字符连缀列表元素得到一个新的字符串的时候，可以使用<code>join()</code>方法，如想以空格连缀：</p>
+<h2 id="Part-2-字符串操作"><a href="#Part-2-字符串操作" class="headerlink" title="Part 2 字符串操作"></a>Part 2 字符串操作</h2><h3 id="字符串计数count"><a href="#字符串计数count" class="headerlink" title="字符串计数count()"></a>字符串计数<code>count()</code></h3><p>Python count() 方法用于统计字符串里某个字符或子字符串出现的次数。可选参数为在字符串搜索的开始与结束位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.count(sub, start = <span class="number">0</span>, end = len(string))</span><br></pre></td></tr></table></figure>
+<h3 id="特定字符连缀列表元素-join"><a href="#特定字符连缀列表元素-join" class="headerlink" title="特定字符连缀列表元素 join()"></a>特定字符连缀列表元素 <code>join()</code></h3><p>需要以某种特定字符连缀列表元素得到一个新的字符串的时候，可以使用<code>join()</code>方法，如想以空格连缀：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">space = <span class="string">" "</span></span><br><span class="line">arr = input.split(<span class="string">" "</span>)</span><br><span class="line">arrOut = space.join(arr)</span><br></pre></td></tr></table></figure>
-<h2 id="Part-3-获取字符ASCII码-ord"><a href="#Part-3-获取字符ASCII码-ord" class="headerlink" title="Part 3  获取字符ASCII码 ord()"></a>Part 3  获取字符ASCII码 <code>ord()</code></h2><p>对于给定字符需要获取其ASCII码，可以使用<code>ord()</code>方法，如：</p>
+<h3 id="获取字符ASCII码-ord"><a href="#获取字符ASCII码-ord" class="headerlink" title="获取字符ASCII码 ord()"></a>获取字符ASCII码 <code>ord()</code></h3><p>对于给定字符需要获取其ASCII码，可以使用<code>ord()</code>方法，如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"BUAA"</span></span><br><span class="line">arr = []</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> str:</span><br><span class="line">    ele = ord(ch)</span><br><span class="line">    arr.add(ele)</span><br></pre></td></tr></table></figure>
-<h2 id="Part-4-对齐字符串并补位"><a href="#Part-4-对齐字符串并补位" class="headerlink" title="Part 4 对齐字符串并补位"></a>Part 4 对齐字符串并补位</h2><p>在输出函数<code>print()</code>中对齐和补位的操作较为常用，在字符串中可以用<code>rjust()</code>和<code>ljust()</code>等方法进行右对齐，并设置参数决定补位字符。详细介绍可以参考<a href="https://www.runoob.com/python/att-string-rjust.html" target="_blank" rel="noopener">Python rjust()方法 | 菜鸟教程 (runoob.com)</a>。</p>
-<h2 id="Part-5-字典包含判断"><a href="#Part-5-字典包含判断" class="headerlink" title="Part 5 字典包含判断"></a>Part 5 字典包含判断</h2><p>在使用字典的时候，可能会需要判断某个索引是否在字典中存在，<strong>python 3.x</strong>中支持的方法有<code>__contains__()</code>和<code>in</code>。</p>
-
+<h3 id="对齐字符串并补位"><a href="#对齐字符串并补位" class="headerlink" title="对齐字符串并补位"></a>对齐字符串并补位</h3><p>在输出函数<code>print()</code>中对齐和补位的操作较为常用，在字符串中可以用<code>rjust()</code>和<code>ljust()</code>等方法进行右对齐，并设置参数决定补位字符。详细介绍可以参考<a href="https://www.runoob.com/python/att-string-rjust.html" target="_blank" rel="noopener">Python rjust()方法 | 菜鸟教程 (runoob.com)</a>。</p>
+<h3 id="字典包含判断"><a href="#字典包含判断" class="headerlink" title="字典包含判断"></a>字典包含判断</h3><p>在使用字典的时候，可能会需要判断某个索引是否在字典中存在，<strong>python 3.x</strong>中支持的方法有<code>__contains__()</code>和<code>in</code>。</p>
+<h2 id="Part-3-Python-OO"><a href="#Part-3-Python-OO" class="headerlink" title="Part 3 Python OO"></a>Part 3 Python OO</h2><p>Python是一门面向对象的语言，由于已经具备了Java和Java OO的基本知识，以下简要介绍python中OO的基本内容</p>
+<h3 id="创建类与构造函数"><a href="#创建类与构造函数" class="headerlink" title="创建类与构造函数"></a>创建类与构造函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, ...)</span>:</span></span><br><span class="line">        <span class="comment"># constructor content</span></span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/07/26/「BUAA-Python-Programming」Week3/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Week3">&larr; Previous Post</a>
+                    </li>
                     
                     
                     <li class="next">
@@ -394,7 +402,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week2</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-列表去重-set"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 列表去重 set()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-特定字符连缀列表元素-join"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 特定字符连缀列表元素 join()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-获取字符ASCII码-ord"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3  获取字符ASCII码 ord()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-对齐字符串并补位"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 对齐字符串并补位</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-字典包含判断"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 字典包含判断</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Week2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week2</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-列表去重-set"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 列表去重 set()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-字符串操作"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 字符串操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#字符串计数count"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">字符串计数count()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#特定字符连缀列表元素-join"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">特定字符连缀列表元素 join()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#获取字符ASCII码-ord"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">获取字符ASCII码 ord()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对齐字符串并补位"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">对齐字符串并补位</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#字典包含判断"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">字典包含判断</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Python-OO"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Python OO</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建类与构造函数"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">创建类与构造函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"> </span></a></li></ol></li></ol></li></ol>
             
           
           </div>
