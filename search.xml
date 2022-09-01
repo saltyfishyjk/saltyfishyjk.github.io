@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>「BUAA Python Programming」Notes</title>
+      <link href="/2022/09/01/%E3%80%8CBUAA-Python-Programming%E3%80%8DNotes/"/>
+      <url>/2022/09/01/%E3%80%8CBUAA-Python-Programming%E3%80%8DNotes/</url>
+      
+        <content type="html"><![CDATA[<h1 id="「BUAA-Python-Programming」Notes"><a href="#「BUAA-Python-Programming」Notes" class="headerlink" title="「BUAA Python Programming」Notes"></a>「BUAA Python Programming」Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>尽管Python暑期课已经告一段落，但是和Python的旅程并没有迎来结束<del>Python在做胶水方面实在太强大辣</del>，因此，在这里开一篇新博客记录一些常用的笔记备忘。</p><h2 id="Part-1-json处理"><a href="#Part-1-json处理" class="headerlink" title="Part 1 json处理"></a>Part 1 json处理</h2><p>Python的<code>json</code>库提供了强大的json处理工具，在工作中十分常用。</p><h3 id="读取json"><a href="#读取json" class="headerlink" title="读取json"></a>读取json</h3><h4 id="json-load"><a href="#json-load" class="headerlink" title="json.load"></a><code>json.load</code></h4><p>从文件中读取json。</p><p>e.g.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file_dir = <span class="string">"./data.json"</span> <span class="comment"># 文件中存储了多个json</span></span><br><span class="line"><span class="keyword">with</span> open(file_dir, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f: <span class="comment"># 设置utf-8以正常读取中文字符</span></span><br><span class="line">    s = json.load(f) <span class="comment"># 读取后，s为一个dict，每个元素是一个list</span></span><br><span class="line">    print(<span class="string">"Yes"</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> BUAA Python Programming </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机</title>
       <link href="/2022/08/29/%E3%80%8CBUAA-Swift-Programming%E3%80%8DWindows10-VMWare16%E5%AE%89%E8%A3%85mcOS%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
       <url>/2022/08/29/%E3%80%8CBUAA-Swift-Programming%E3%80%8DWindows10-VMWare16%E5%AE%89%E8%A3%85mcOS%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
