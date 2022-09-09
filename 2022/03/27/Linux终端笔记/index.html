@@ -185,13 +185,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -200,6 +193,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -304,9 +304,10 @@
 <li><code>screen -ls</code>：查看当前存在的所有<code>screen</code>会话</li>
 <li><code>screen -x &lt;会话ID&gt;</code>：重新接入会话ID为&lt;会话ID&gt;的screen会话（配合<code>screen -ls</code>使用</li>
 <li><code>screen -r &lt;会话名&gt;</code>：重新接入会话名为&lt;会话名&gt;的screen会话，与-x参数作用相同</li>
+<li><code>screen - X -S &lt;会话ID&gt;</code>：kill会话</li>
 <li>ctrl + a, d：退出当前会话窗口</li>
 <li>ctrl + a, w：列出当前所有的会话窗口</li>
-<li>ctrl + a, k：杀死当前窗口，同时结束当前窗口··</li>
+<li>ctrl + a, k：杀死当前窗口，同时结束当前窗口</li>
 </ul>
 <h3 id="java"><a href="#java" class="headerlink" title="java"></a><code>java</code></h3><ol>
 <li><code>java -version</code>：查看jdk版本</li>
@@ -708,7 +709,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -718,6 +719,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
