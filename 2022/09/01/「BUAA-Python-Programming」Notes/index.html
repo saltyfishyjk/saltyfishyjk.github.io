@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">277</span> and
+                                Words <span class="post-count">364</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -190,14 +190,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -264,7 +264,9 @@
 <h2 id="Part-2-字符串处理"><a href="#Part-2-字符串处理" class="headerlink" title="Part 2 字符串处理"></a>Part 2 字符串处理</h2><h3 id="strip"><a href="#strip" class="headerlink" title="strip()"></a><code>strip()</code></h3><p>移除字符串头尾指定字符（通常为空格和换行符）</p>
 <p>e.g.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.strip([chars]) <span class="comment"># chars : 移除字符串头尾指定的字符序列</span></span><br></pre></td></tr></table></figure>
-<h2 id="Part-3-文件读写"><a href="#Part-3-文件读写" class="headerlink" title="Part 3 文件读写"></a>Part 3 文件读写</h2><h2 id="Part-4-加密"><a href="#Part-4-加密" class="headerlink" title="Part 4 加密"></a>Part 4 加密</h2><p>在WEB开发等工作中，对于密码等涉密信息加密是常见的操作，python提供了简洁优雅的加密函数与接口。</p>
+<h2 id="Part-3-文件处理"><a href="#Part-3-文件处理" class="headerlink" title="Part 3 文件处理"></a>Part 3 文件处理</h2><p>python提供了强大的文件处理能力，掌握这些接口可以方便地造轮子<del>（bushi）</del>。</p>
+<h3 id="判断文件存在与删除"><a href="#判断文件存在与删除" class="headerlink" title="判断文件存在与删除"></a>判断文件存在与删除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">flag_path = os.path.exists(path) <span class="comment"># 判断是否存在path路径下的文件，不区分文件和文件夹</span></span><br><span class="line">flag_file = os.path.isfile(file_name) <span class="comment"># 判断是否存在file_name文件</span></span><br><span class="line"><span class="keyword">if</span> flag_path:</span><br><span class="line">	os.remove(path) <span class="comment"># 删除文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="Part-4-加密"><a href="#Part-4-加密" class="headerlink" title="Part 4 加密"></a>Part 4 加密</h2><p>在WEB开发等工作中，对于密码等涉密信息加密是常见的操作，python提供了简洁优雅的加密函数与接口。</p>
 <h3 id="md5加密"><a href="#md5加密" class="headerlink" title="md5加密"></a>md5加密</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">md5_encode</span><span class="params">(s)</span>:</span></span><br><span class="line">    s_new = s</span><br><span class="line">    hl = hashlib.md5()</span><br><span class="line">    hl.update(s_new.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">    <span class="keyword">return</span> hl.hexdigest()</span><br></pre></td></tr></table></figure>
 
                 
@@ -395,7 +397,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-json处理"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 json处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#读取json"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">读取json</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#json-load"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">json.load</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-字符串处理"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 字符串处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#strip"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">strip()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-文件读写"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 文件读写</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-加密"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 加密</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#md5加密"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">md5加密</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-Python-Programming」Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-json处理"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 json处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#读取json"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">读取json</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#json-load"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">json.load</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-字符串处理"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 字符串处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#strip"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">strip()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-文件处理"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 文件处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#判断文件存在与删除"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">判断文件存在与删除</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-加密"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 加密</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#md5加密"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">md5加密</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -656,7 +658,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -666,21 +668,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
