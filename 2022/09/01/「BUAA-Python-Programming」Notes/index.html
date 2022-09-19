@@ -185,6 +185,13 @@
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -193,13 +200,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -316,7 +316,7 @@
 </blockquote>
 <h3 id="绘制箭头"><a href="#绘制箭头" class="headerlink" title="绘制箭头"></a>绘制箭头</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x1, y1 = <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">x2, y2 = <span class="number">7</span>, <span class="number">6</span></span><br><span class="line">ax.arrow(x1, y1, x2 - x1, y2 - y1, head_width=<span class="number">4</span>, head_length=<span class="number">4</span>, color=<span class="string">'black'</span>)</span><br><span class="line"><span class="comment"># 前四个参数分别为起点x，起点y，deltax， deltay</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>关于arrow的更多资料，可以参考<a href=""></a></p>
+<p>关于arrow的更多资料，可以参考<a href="https://vimsky.com/examples/usage/matplotlib-axes-axes-arrow-in-python.html" target="_blank" rel="noopener">matplotlib.axes.Axes.arrow()函数</a></p>
 </blockquote>
 <h2 id="Part-6-Numpy科学计算"><a href="#Part-6-Numpy科学计算" class="headerlink" title="Part 6 Numpy科学计算"></a>Part 6 Numpy科学计算</h2><h3 id="Numpy简介"><a href="#Numpy简介" class="headerlink" title="Numpy简介"></a>Numpy简介</h3><p>近年来，Matlab的使用在内地越来越被限制，在具有敏感背景的高校更是如此。在这样的环境下，使用python是优秀的选择，BUAA《数学建模》课程与数学建模国赛都更推荐python。其中，Numpy库起到了重要的作用。</p>
 <p>NumPy 通常与 SciPy（Scientific Python）和 Matplotlib（绘图库）一起使用， 这种组合广泛用于替代 MatLab，是一个强大的科学计算环境，有助于我们通过 Python 学习数据科学或者机器学习。更多的介绍，可以参考<a href="https://www.runoob.com/numpy/numpy-tutorial.html" target="_blank" rel="noopener">NumPy 教程-Runoob</a></p>
@@ -712,7 +712,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -722,6 +722,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
