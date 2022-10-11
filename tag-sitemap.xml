@@ -3,22 +3,29 @@
 
 
     <url>
-        <loc>https://saltyfishyjk.github.io/tags/Latex/</loc>
-        <lastmod>2022-09-25T11:58:37.642Z</lastmod>
+        <loc>https://saltyfishyjk.github.io/tags/Git/</loc>
+        <lastmod>2022-10-11T07:32:26.622Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://saltyfishyjk.github.io/tags/Tools/</loc>
-        <lastmod>2022-09-25T11:58:37.642Z</lastmod>
+        <lastmod>2022-10-11T07:32:26.622Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://saltyfishyjk.github.io/tags/BUAA-Python-Programming/</loc>
-        <lastmod>2022-09-25T11:47:17.112Z</lastmod>
+        <lastmod>2022-09-30T00:30:22.841Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://saltyfishyjk.github.io/tags/Latex/</loc>
+        <lastmod>2022-09-25T11:58:37.642Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -131,13 +138,6 @@
     <url>
         <loc>https://saltyfishyjk.github.io/tags/CMD/</loc>
         <lastmod>2022-04-02T01:17:58.311Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://saltyfishyjk.github.io/tags/Git/</loc>
-        <lastmod>2022-03-31T08:17:21.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

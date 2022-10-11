@@ -123,8 +123,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.3k</span> and
-                                Reading Time <span class="post-count">4</span> Minutes
+                                Words <span class="post-count">1.5k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -300,7 +300,12 @@
 <p>revert 之后就可以把你的更改推送到远程仓库与别人分享啦。</p>
 <p>如：<code>git revert HEAD</code>，创造了一个新的提交记录，这个提交撤销了当前提交，因此相当于回退到上一个提交。</p>
 <h3 id="git-cherry-pick"><a href="#git-cherry-pick" class="headerlink" title="git cherry-pick"></a><code>git cherry-pick</code></h3><h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a><code>git log</code></h3><p><code>git log</code>：查看历史提交记录。当从GitHub clone一个仓库下来之后，我们可以通过这个指令方便地查看原作者都有哪些提交和更改。</p>
-<h2 id="Part-3-Others"><a href="#Part-3-Others" class="headerlink" title="Part 3 Others"></a>Part 3 Others</h2><h3 id="解决【fatal-过早的文件结束符（EOF）】"><a href="#解决【fatal-过早的文件结束符（EOF）】" class="headerlink" title="解决【fatal: 过早的文件结束符（EOF）】"></a>解决【fatal: 过早的文件结束符（EOF）】</h3><p>参考资料：<a href="https://blog.csdn.net/weixin_44991673/article/details/108962549" target="_blank" rel="noopener">成功解决使用git clone下载失败的问题： fatal: 过早的文件结束符（EOF） fatal: index-pack 失败</a></p>
+<h2 id="Part-3-Tag"><a href="#Part-3-Tag" class="headerlink" title="Part 3 Tag"></a>Part 3 Tag</h2><p>为特定的commit打上tag，并在后续工作中依托tag发布release是常见的仓库管理功能，这里简单介绍。</p>
+<h3 id="为特定commit打tag"><a href="#为特定commit打tag" class="headerlink" title="为特定commit打tag"></a>为特定commit打tag</h3><p>在GitHub上添加tag时只能选择对最近的commit添加，当我们有较远的commit需要打tag时，可以使用如下指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v4.0.0 -m <span class="string">'message'</span> 2cad43704c70a8d2a28854cc3fbbbad64356ca82</span><br></pre></td></tr></table></figure>
+<p>其中，<code>v4.0.0</code>是tag名，<code>message</code>是信息，<code>2cad43704c70a8d2a28854cc3fbbbad64356ca82</code>是commit的hash code</p>
+<h3 id="发布release"><a href="#发布release" class="headerlink" title="发布release"></a>发布release</h3><p>在制作好tag后，可以在GitHub上选择tag进行release发布，其中的二进制附件没有大小限制，可以当作云盘（bushi</p>
+<h2 id="Part-4-Others"><a href="#Part-4-Others" class="headerlink" title="Part 4 Others"></a>Part 4 Others</h2><h3 id="解决【fatal-过早的文件结束符（EOF）】"><a href="#解决【fatal-过早的文件结束符（EOF）】" class="headerlink" title="解决【fatal: 过早的文件结束符（EOF）】"></a>解决【fatal: 过早的文件结束符（EOF）】</h3><p>参考资料：<a href="https://blog.csdn.net/weixin_44991673/article/details/108962549" target="_blank" rel="noopener">成功解决使用git clone下载失败的问题： fatal: 过早的文件结束符（EOF） fatal: index-pack 失败</a></p>
 <p>解决办法：执行<code>git config --global http.postBuffer 524288000</code></p>
 
                 
@@ -435,7 +440,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Git笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Git笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-相关资源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-常用指令"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 常用指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-commit"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">git commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-branch-amp-git-checkout"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">git branch&amp;git checkout</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-merge"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">git merge</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-rebase"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">git rebase</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离HEAD"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">分离HEAD</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相对引用"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">相对引用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#撤销变更-git-reset-amp-git-revert"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">撤销变更 git reset&amp;git revert</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Reset"><span class="toc-nav-number">1.3.7.1.</span> <span class="toc-nav-text">Git Reset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Revert"><span class="toc-nav-number">1.3.7.2.</span> <span class="toc-nav-text">Git Revert</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-cherry-pick"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">git cherry-pick</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-log"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">git log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Others"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Others</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#解决【fatal-过早的文件结束符（EOF）】"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">解决【fatal: 过早的文件结束符（EOF）】</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Git笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Git笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-相关资源"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-常用指令"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 常用指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-commit"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">git commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-branch-amp-git-checkout"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">git branch&amp;git checkout</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-merge"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">git merge</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-rebase"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">git rebase</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离HEAD"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">分离HEAD</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#相对引用"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">相对引用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#撤销变更-git-reset-amp-git-revert"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">撤销变更 git reset&amp;git revert</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Reset"><span class="toc-nav-number">1.3.7.1.</span> <span class="toc-nav-text">Git Reset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Git-Revert"><span class="toc-nav-number">1.3.7.2.</span> <span class="toc-nav-text">Git Revert</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-cherry-pick"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">git cherry-pick</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#git-log"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">git log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Tag"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Tag</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#为特定commit打tag"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">为特定commit打tag</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#发布release"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">发布release</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Others"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 Others</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#解决【fatal-过早的文件结束符（EOF）】"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">解决【fatal: 过早的文件结束符（EOF）】</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -700,7 +705,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -710,21 +715,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
