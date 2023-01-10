@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://saltyfishyjk.github.io/2023/01/02/Java-Programming-Notes/</loc>
-    <lastmod>2023-01-03</lastmod>
+    <lastmod>2023-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://saltyfishyjk.github.io/2022/03/27/Linux%E7%BB%88%E7%AB%AF%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-01-06</lastmod>
   </url>
   <url>
     <loc>https://saltyfishyjk.github.io/2022/08/13/Django%E7%AC%94%E8%AE%B0/</loc>
@@ -11,10 +15,6 @@
   <url>
     <loc>https://saltyfishyjk.github.io/2022/09/01/%E3%80%8CBUAA-Python-Programming%E3%80%8DNotes/</loc>
     <lastmod>2023-01-01</lastmod>
-  </url>
-  <url>
-    <loc>https://saltyfishyjk.github.io/2022/03/27/Linux%E7%BB%88%E7%AB%AF%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-10-25</lastmod>
   </url>
   <url>
     <loc>https://saltyfishyjk.github.io/2022/03/27/Git%E7%AC%94%E8%AE%B0/</loc>
