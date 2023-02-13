@@ -108,9 +108,9 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
-                            
                               <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
                             
                         </div>
                         <h1>Java Programming Notes</h1>
@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">664</span> and
+                                Words <span class="post-count">707</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -185,14 +185,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -274,11 +274,16 @@
 <h3 id="ArrayList数组列表"><a href="#ArrayList数组列表" class="headerlink" title="ArrayList数组列表"></a><code>ArrayList</code>数组列表</h3><h4 id="边遍历边删除"><a href="#边遍历边删除" class="headerlink" title="边遍历边删除"></a>边遍历边删除</h4><p>参考文章：<a href="https://blog.csdn.net/Jiangshan11/article/details/83038857" target="_blank" rel="noopener">ConcurrentModificationException异常</a></p>
 <p>当遇到该需求时，需要使用迭代器进行遍历，同时使用迭代器提供的方法进行删除，才可以避免错误。在多线程时，还需要考虑额外的问题。举例如下（单线程）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Worker</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> leftToRight;</span><br><span class="line">	<span class="keyword">int</span> pickOld;</span><br><span class="line">	<span class="keyword">int</span> rightToLeft;</span><br><span class="line">	<span class="keyword">int</span> putNew;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">int</span> endTime = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Worker</span><span class="params">(<span class="keyword">int</span> leftToRight,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> pickOld,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> rightToLeft,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> putNew,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.leftToRight = leftToRight;</span><br><span class="line">		<span class="keyword">this</span>.pickOld = pickOld;</span><br><span class="line">		<span class="keyword">this</span>.rightToLeft = rightToLeft;</span><br><span class="line">		<span class="keyword">this</span>.putNew = putNew;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Worker</span><span class="params">(<span class="keyword">int</span> leftToRight,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> pickOld,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> rightToLeft,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> putNew,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> id,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="keyword">int</span> endTime)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>(leftToRight, pickOld, rightToLeft, putNew, id);</span><br><span class="line">		<span class="keyword">this</span>.endTime = endTime;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ArrayList&lt;Worker&gt; workL = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">Iterator&lt;Worker&gt; iterator = workL.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    Worker now = iterator.next();</span><br><span class="line">    <span class="keyword">if</span> (now.endTime &lt;= cur) &#123;</span><br><span class="line">    	<span class="comment">// workL.remove(now);</span></span><br><span class="line">    	iterator.remove();</span><br><span class="line">    	waitL.add(now);</span><br><span class="line">    	move = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Part-2-数论"><a href="#Part-2-数论" class="headerlink" title="Part 2 数论"></a>Part 2 数论</h2><h3 id="公约数"><a href="#公约数" class="headerlink" title="公约数"></a>公约数</h3><h4 id="辗转相除法的while循环实现"><a href="#辗转相除法的while循环实现" class="headerlink" title="辗转相除法的while循环实现"></a>辗转相除法的<code>while</code>循环实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        c = a % b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/02/13/curl-Notes/" data-toggle="tooltip" data-placement="top" title="curl Notes">&larr; Previous Post</a>
+                    </li>
                     
                     
                     <li class="next">
@@ -403,7 +408,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java-Programming-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java Programming Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-容器"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PriorityQueue优先队列"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">PriorityQueue优先队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#自定义类和排序方法"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">自定义类和排序方法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Integer的大根堆"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">Integer的大根堆</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ArrayList数组列表"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">ArrayList数组列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#边遍历边删除"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">边遍历边删除</span></a></li></ol></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java-Programming-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java Programming Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-容器"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PriorityQueue优先队列"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">PriorityQueue优先队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#自定义类和排序方法"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">自定义类和排序方法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Integer的大根堆"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">Integer的大根堆</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ArrayList数组列表"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">ArrayList数组列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#边遍历边删除"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">边遍历边删除</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-数论"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 数论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#公约数"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">公约数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#辗转相除法的while循环实现"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">辗转相除法的while循环实现</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -425,9 +430,9 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
-                        
                           <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
                         
                     </div>
                 </section>
@@ -670,7 +675,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -680,6 +685,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
