@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          curl Notes - saltyfishyjk
+          tmux Notes - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/02/13/curl-Notes/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/02/13/tmux-Notes/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -112,10 +112,10 @@
                             
                               <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
                             
-                              <a class="tag" href="/tags/#curl" title="curl">curl</a>
+                              <a class="tag" href="/tags/#tmux" title="tmux">tmux</a>
                             
                         </div>
-                        <h1>curl Notes</h1>
+                        <h1>tmux Notes</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
@@ -125,7 +125,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">181</span> and
+                                Words <span class="post-count">108</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,29 +260,30 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="curl-Notes"><a href="#curl-Notes" class="headerlink" title="curl Notes"></a>curl Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>curl是常用的命令行工具，用以请求Web服务器。curl是client的URL工具的意思，也被写为cURL。</p>
-<p>尽管我们已经有Postman这种图形化工具，但是在一些情况下curl可能是更有选择，如测试非常简单的url可以使用curl这一非常轻量的工具而避免Postman这种重型图形化工具的开销；亦如在内网等环境下，需要使用ssh tunnel，可以直接在终端使用curl，而在Postman设置较为困难。</p>
+                <h1 id="tmux-Notes"><a href="#tmux-Notes" class="headerlink" title="tmux Notes"></a>tmux Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>tmux是一款优秀的终端复用软件，是terminal ultiplexer的简称。</p>
 <p>参考文献：</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/1bc473e84f7f" target="_blank" rel="noopener">curl发送HTTP请求</a></li>
+<li><a href="https://www.51cto.com/article/664989.html" target="_blank" rel="noopener">Linux 终端复用神器 Tmux 使用详解</a></li>
+<li><a href="https://blog.csdn.net/CSSDCC/article/details/121231906" target="_blank" rel="noopener">Tmux教程 （一文就够）</a></li>
 </ul>
-<h2 id="Part-1-发送请求"><a href="#Part-1-发送请求" class="headerlink" title="Part 1 发送请求"></a>Part 1 发送请求</h2><h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>无参数e.g.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST localhost:8003/demo</span><br></pre></td></tr></table></figure>
-<p>有参数e.g.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d 'param1=value1' -d 'param2=value2' localhost:8003/demo</span><br></pre></td></tr></table></figure>
+<h2 id="Part-1-命令与操作"><a href="#Part-1-命令与操作" class="headerlink" title="Part 1 命令与操作"></a>Part 1 命令与操作</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br></pre></td></tr></table></figure>
+<h3 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h3><p><code>ctrl+b d</code>或使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure>
+<h3 id="绑定、解绑、切换session"><a href="#绑定、解绑、切换session" class="headerlink" title="绑定、解绑、切换session"></a>绑定、解绑、切换session</h3><ul>
+<li>绑定：<code>tmux attach -t your-session-name</code></li>
+<li>解绑：<code>tmux detach</code></li>
+<li>切换session：<code>tmux switch -t your-session-name</code></li>
+</ul>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2023/02/13/tmux-Notes/" data-toggle="tooltip" data-placement="top" title="tmux Notes">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2023/01/02/Java-Programming-Notes/" data-toggle="tooltip" data-placement="top" title="Java Programming Notes">Next Post &rarr;</a>
+                        <a href="/2023/02/13/curl-Notes/" data-toggle="tooltip" data-placement="top" title="curl Notes">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -363,7 +364,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Mon Feb 13 2023 18:37:39 GMT+0800', // optional
+    id: 'Mon Feb 13 2023 20:37:19 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -403,7 +404,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#curl-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">curl Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-发送请求"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 发送请求</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#POST"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">POST</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#tmux-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tmux Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-命令与操作"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 命令与操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">分离</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#退出"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#绑定、解绑、切换session"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">绑定、解绑、切换session</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -429,7 +430,7 @@ const gitment = new Gitment({
                         
                           <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
                         
-                          <a class="tag" href="/tags/#curl" title="curl">curl</a>
+                          <a class="tag" href="/tags/#tmux" title="tmux">tmux</a>
                         
                     </div>
                 </section>
