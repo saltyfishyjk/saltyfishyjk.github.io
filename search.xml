@@ -31,7 +31,7 @@
       <link href="/2023/02/13/curl-Notes/"/>
       <url>/2023/02/13/curl-Notes/</url>
       
-        <content type="html"><![CDATA[<h1 id="curl-Notes"><a href="#curl-Notes" class="headerlink" title="curl Notes"></a>curl Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>curl是常用的命令行工具，用以请求Web服务器。curl是client的URL工具的意思，也被写为cURL。</p><p>尽管我们已经有Postman这种图形化工具，但是在一些情况下curl可能是更有选择，如测试非常简单的url可以使用curl这一非常轻量的工具而避免Postman这种重型图形化工具的开销；亦如在内网等环境下，需要使用ssh tunnel，可以直接在终端使用curl，而在Postman设置较为困难。</p><p>参考文献：</p><ul><li><a href="https://www.jianshu.com/p/1bc473e84f7f" target="_blank" rel="noopener">curl发送HTTP请求</a></li></ul><h2 id="Part-1-发送请求"><a href="#Part-1-发送请求" class="headerlink" title="Part 1 发送请求"></a>Part 1 发送请求</h2><h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>无参数e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST localhost:8003/demo</span><br></pre></td></tr></table></figure><p>有参数e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d 'param1=value1' -d 'param2=value2' localhost:8003/demo</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="curl-Notes"><a href="#curl-Notes" class="headerlink" title="curl Notes"></a>curl Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>curl是常用的命令行工具，用以请求Web服务器。curl是client的URL工具的意思，也被写为cURL。</p><p>尽管我们已经有Postman这种图形化工具，但是在一些情况下curl可能是更优选择，如测试非常简单的url可以使用curl这一非常轻量的工具而避免Postman这种重型图形化工具的开销；亦如在内网等环境下，需要使用ssh tunnel，可以直接在终端使用curl，而在Postman设置较为困难。</p><p>参考文献：</p><ul><li><a href="https://www.jianshu.com/p/1bc473e84f7f" target="_blank" rel="noopener">curl发送HTTP请求</a></li></ul><h2 id="Part-1-发送请求"><a href="#Part-1-发送请求" class="headerlink" title="Part 1 发送请求"></a>Part 1 发送请求</h2><h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>无参数e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST localhost:8003/demo</span><br></pre></td></tr></table></figure><p>有参数e.g.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d 'param1=value1' -d 'param2=value2' localhost:8003/demo</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -60,9 +60,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       
