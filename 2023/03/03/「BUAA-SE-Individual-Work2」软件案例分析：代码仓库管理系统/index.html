@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/03/「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                            
+                        </div>
+                        <h1>「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-03-03
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.5k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统"><a href="#「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统" class="headerlink" title="「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统"></a>「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">项目</th>
+<th style="text-align:left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">这个作业属于哪个课程</td>
+<td style="text-align:left"><a href="https://bbs.csdn.net/forums/buaa-ase2023" target="_blank" rel="noopener">2023年北航敏捷软件工程</a></td>
+</tr>
+<tr>
+<td style="text-align:left">这个作业的要求在哪里</td>
+<td style="text-align:left"><a href="https://bbs.csdn.net/topics/613598122" target="_blank" rel="noopener">个人作业-软件案例分析（作业说明链接）</a></td>
+</tr>
+<tr>
+<td style="text-align:left">我在这个课程的目标是</td>
+<td style="text-align:left">掌握团队管理和协作能力，学习现代软件工程开发的模式，以工业化水平持续开发高质量软件</td>
+</tr>
+<tr>
+<td style="text-align:left">这个作业在哪个<strong>具体方面</strong>帮助我实现目标</td>
+<td style="text-align:left">通过使用科学的工程化方法实地调研具体的软件，间接学习软工知识，提高自己对于软件特别是高质量软件的认知和理解，学习如何使得自己的软件避免低质量软件或失败软件的问题，并吸取高质量软件或成功软件的经验</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><p>本作业选题为<strong>5. 代码仓库管理系统</strong>，对GitHub、gitlab（私有化部署）、gitlink和coding四个产品进行案例分析。</p>
+<h3 id="选题理由"><a href="#选题理由" class="headerlink" title="选题理由"></a>选题理由</h3><p>这四个产品各具特点：</p>
+<ul>
+<li>GitHub是全球最大开源社区，孕育很多成功的开源项目，在微软接管后近年来也发生了许多新的变化</li>
+<li>gitlab（私有化部署）是面向组织和企业的成熟解决方案，通过部署在私有服务器和私有网络内提供了盈利的商业方案；同时，gitlab本身是海外产品，但国内由极狐代理</li>
+<li>gitlink是CCF主导的开源创新服务平台，平台本身也是开源的</li>
+<li>coding是腾讯云旗下的一站式数字化软件研发工作流解决方案，提供包括代码托管、项目协同、持续部署、持续集成、测试管理等软件开发中的重要功能</li>
+</ul>
+<p>以上四个平台在境内/境外，（主要）盈利/非盈利，社区/商业，（平台本身）闭源/开源，提供单一代码托管功能/提供工作流解决方案，社区主导/企业主导/政府组织主导等各有不同，在不同维度上分别具有特色和代表性，适合作为项目案例分析。</p>
+<p>同时，作为本次软工团队的PM，我也正好借此机会仔细学习和研究这些平台，为团队选择最佳实践。</p>
+<h2 id="Part-1-调研与评测"><a href="#Part-1-调研与评测" class="headerlink" title="Part 1 调研与评测"></a>Part 1 调研与评测</h2><h3 id="1-1-软件评测"><a href="#1-1-软件评测" class="headerlink" title="1.1 软件评测"></a>1.1 软件评测</h3><h4 id="1-1-1-GitHub"><a href="#1-1-1-GitHub" class="headerlink" title="1.1.1 GitHub"></a>1.1.1 GitHub</h4><p>GitHub是一个基于Git实现的在线代码仓库，是目前全球最大的代码托管平台，可以帮助程序员之间互相交流和学习。GitHub不仅是代码托管平台，更是开源社区，有着大量的活跃开发者。</p>
+<h5 id="1-1-1-1-基本使用"><a href="#1-1-1-1-基本使用" class="headerlink" title="1.1.1.1 基本使用"></a>1.1.1.1 基本使用</h5><ul>
+<li><p>网站访问方面，仅使用普通国内网络，无法正常访问GitHub或无法加载图片或访问很慢，需要通过修改hosts或使用devside-car等代理软件或使用其他科学上网方法。这是有一定门槛的，特别是对于非开发者的一般用户。</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303195809025.png" alt="image-20230303195809025"></p>
+</li>
+<li><p>网站注册方面，可以使用邮箱注册，无需手机号，较为方便。</p>
+</li>
+<li><p>网站首页可以看见最近仓库，following（关注的动态），lasted changes以及上方功能导航栏。最近GitHub还开发了<code>for you</code>这一新功能的beta版，提供更个性化的推荐。画面整体简洁清晰，没有多余的广告或其他推送内容。但是，GitHub并没有提供中文页面，需要用户有一定的英文能力。</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/使用GitHub.png" alt="使用GitHub"></p>
+</li>
+<li><p>个人页面：可以看到个人信息与简介、pin（置顶）、仓库、项目、star（收藏）、近期贡献与活动等</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303200619204.png" alt="image-20230303200619204"></p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303200628092.png" alt="image-20230303200628092"></p>
+</li>
+<li><p>仓库：可以看到仓库的目录、README、LICENSE、About、Releases等信息，快速了解仓库。同时，可以切换branch（分支）、使用git/http clone仓库、使用新功能CodeSpaces这一WebIDE在线开发。同时，可以设置仓库为public或private来控制自己的仓库是否可被外部访问。</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201021277.png" alt="image-20230303201021277"></p>
+</li>
+<li><p>GitHub提供Issues、Pull requests来支持开源社区用户们提出想法/发现bug/提出需求/申请合并开发的某一功能。</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201255742.png" alt="image-20230303201255742"></p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201336451.png" alt="image-20230303201336451"></p>
+</li>
+</ul>
+<ul>
+<li><p>GitHub提供GitHub Actions来支持CI/CD（持续集成、持续部署），为各类开发者都提供了DevOps解决方案</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201528209.png" alt="image-20230303201528209"></p>
+</li>
+<li><p>GitHub提供MarketPlace，开放了诸多权限和API，方便开发者向社区贡献高质量app</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201609650.png" alt="image-20230303201609650"></p>
+</li>
+<li><p>GitHub提供了Explore模块，下有Topics、Trending、Collections等子模块，为这一社区提供了社交平台和技术交流平台</p>
+<p><img src="2023-03-03-「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/image-20230303201711394.png" alt="image-20230303201711394"></p>
+</li>
+</ul>
+<h5 id="1-1-1-2-软件使用体验"><a href="#1-1-1-2-软件使用体验" class="headerlink" title="1.1.1.2 软件使用体验"></a>1.1.1.2 软件使用体验</h5><p>GitHub作为目前全球最大的代码托管平台，在被微软收购后更显专业与强劲，为开发者提供了代码仓库管理、开源软件获取与分享、技术交流等的平台，瞄准用户痛点解决使用需求问题，在数据量、界面、功能和准确度上都是当之无愧的第一代码托管平台，在这一细分领域是绝对的霸主。同时，系统使用稳定，长期使用中没有发现什么bug。</p>
+<p>然而，GitHub的最大问题就是在国内访问困难，虽然对于绝大多数开发者而言只是一个小门槛，但是对于更多的非开发者用户，这是一道高高的墙，将他们排除在外。</p>
+<h5 id="1-1-1-3-产品改进意见"><a href="#1-1-1-3-产品改进意见" class="headerlink" title="1.1.1.3 产品改进意见"></a>1.1.1.3 产品改进意见</h5><ul>
+<li>增加国内服务器，提高国内用户访问体验</li>
+<li>增加中文，提高中文用户使用体验</li>
+</ul>
+<h4 id="1-1-2-gitlab（私有化部署）"><a href="#1-1-2-gitlab（私有化部署）" class="headerlink" title="1.1.2 gitlab（私有化部署）"></a>1.1.2 gitlab（私有化部署）</h4><h4 id="1-1-3-gitlink"><a href="#1-1-3-gitlink" class="headerlink" title="1.1.3 gitlink"></a>1.1.3 gitlink</h4><h4 id="1-1-4-coding"><a href="#1-1-4-coding" class="headerlink" title="1.1.4 coding"></a>1.1.4 coding</h4><h4 id="1-1-5-用户调研与采访"><a href="#1-1-5-用户调研与采访" class="headerlink" title="1.1.5 用户调研与采访"></a>1.1.5 用户调研与采访</h4><h5 id="1-1-5-1-采访对象的背景"><a href="#1-1-5-1-采访对象的背景" class="headerlink" title="1.1.5.1 采访对象的背景"></a>1.1.5.1 采访对象的背景</h5><h3 id="1-2-Bug分析和提交"><a href="#1-2-Bug分析和提交" class="headerlink" title="1.2 Bug分析和提交"></a>1.2 Bug分析和提交</h3><h4 id="1-2-1-测试环境"><a href="#1-2-1-测试环境" class="headerlink" title="1.2.1 测试环境"></a>1.2.1 测试环境</h4><h4 id="1-2-2-可复现性及复现步骤"><a href="#1-2-2-可复现性及复现步骤" class="headerlink" title="1.2.2 可复现性及复现步骤"></a>1.2.2 可复现性及复现步骤</h4><h4 id="1-2-3-Bug具体情况描述"><a href="#1-2-3-Bug具体情况描述" class="headerlink" title="1.2.3 Bug具体情况描述"></a>1.2.3 Bug具体情况描述</h4><h4 id="1-2-4-Bug分析"><a href="#1-2-4-Bug分析" class="headerlink" title="1.2.4 Bug分析"></a>1.2.4 Bug分析</h4><h4 id="1-2-5-Bug改进建议"><a href="#1-2-5-Bug改进建议" class="headerlink" title="1.2.5 Bug改进建议"></a>1.2.5 Bug改进建议</h4><h4 id="1-2-6-Bug反馈"><a href="#1-2-6-Bug反馈" class="headerlink" title="1.2.6 Bug反馈"></a>1.2.6 Bug反馈</h4><h2 id="Part-2-分析"><a href="#Part-2-分析" class="headerlink" title="Part 2 分析"></a>Part 2 分析</h2><h3 id="2-1-工作量分析"><a href="#2-1-工作量分析" class="headerlink" title="2.1 工作量分析"></a>2.1 工作量分析</h3><h3 id="2-2-软件质量分析"><a href="#2-2-软件质量分析" class="headerlink" title="2.2 软件质量分析"></a>2.2 软件质量分析</h3><h2 id="Part-3-建议和规划"><a href="#Part-3-建议和规划" class="headerlink" title="Part 3 建议和规划"></a>Part 3 建议和规划</h2><h3 id="3-1-市场概况"><a href="#3-1-市场概况" class="headerlink" title="3.1 市场概况"></a>3.1 市场概况</h3><h3 id="3-2-市场现状"><a href="#3-2-市场现状" class="headerlink" title="3.2 市场现状"></a>3.2 市场现状</h3><h3 id="3-3-市场与产品生态"><a href="#3-3-市场与产品生态" class="headerlink" title="3.3 市场与产品生态"></a>3.3 市场与产品生态</h3><h3 id="3-4-产品规划"><a href="#3-4-产品规划" class="headerlink" title="3.4 产品规划"></a>3.4 产品规划</h3>
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/02/25/「BUAA-SE-Individual-Work1」阅读和提问/" data-toggle="tooltip" data-placement="top" title="「BUAA SE Individual Work1」阅读和提问">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Mar 03 2023 16:48:09 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#选题"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">选题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#选题理由"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">选题理由</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-调研与评测"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 调研与评测</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-软件评测"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.1 软件评测</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-1-GitHub"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">1.1.1 GitHub</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-1-基本使用"><span class="toc-nav-number">1.2.1.1.1.</span> <span class="toc-nav-text">1.1.1.1 基本使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-2-软件使用体验"><span class="toc-nav-number">1.2.1.1.2.</span> <span class="toc-nav-text">1.1.1.2 软件使用体验</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-3-产品改进意见"><span class="toc-nav-number">1.2.1.1.3.</span> <span class="toc-nav-text">1.1.1.3 产品改进意见</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-2-gitlab（私有化部署）"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">1.1.2 gitlab（私有化部署）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-3-gitlink"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">1.1.3 gitlink</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-4-coding"><span class="toc-nav-number">1.2.1.4.</span> <span class="toc-nav-text">1.1.4 coding</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-5-用户调研与采访"><span class="toc-nav-number">1.2.1.5.</span> <span class="toc-nav-text">1.1.5 用户调研与采访</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-5-1-采访对象的背景"><span class="toc-nav-number">1.2.1.5.1.</span> <span class="toc-nav-text">1.1.5.1 采访对象的背景</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-Bug分析和提交"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">1.2 Bug分析和提交</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-1-测试环境"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">1.2.1 测试环境</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-2-可复现性及复现步骤"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">1.2.2 可复现性及复现步骤</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-3-Bug具体情况描述"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">1.2.3 Bug具体情况描述</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-4-Bug分析"><span class="toc-nav-number">1.2.2.4.</span> <span class="toc-nav-text">1.2.4 Bug分析</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-5-Bug改进建议"><span class="toc-nav-number">1.2.2.5.</span> <span class="toc-nav-text">1.2.5 Bug改进建议</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-6-Bug反馈"><span class="toc-nav-number">1.2.2.6.</span> <span class="toc-nav-text">1.2.6 Bug反馈</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-分析"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-工作量分析"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">2.1 工作量分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-软件质量分析"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2.2 软件质量分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-建议和规划"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 建议和规划</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-市场概况"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">3.1 市场概况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-市场现状"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">3.2 市场现状</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-市场与产品生态"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">3.3 市场与产品生态</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-4-产品规划"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">3.4 产品规划</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://mmmusel.github.io/" target="_blank">🍔gf</a></li>
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2023 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io" target="_blank" rel="noopener">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
