@@ -284,15 +284,14 @@
 </tbody>
 </table>
 </div>
-<h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><p>本作业选题为<strong>5. 代码仓库管理系统</strong>，对GitHub、gitlab（私有化部署）、gitlink和coding四个产品进行案例分析。</p>
+<h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><p>本作业选题为<strong>5. 代码仓库管理系统</strong>，对GitHub、gitlab（私有化部署）和gitlink三个产品进行案例分析。</p>
 <h3 id="选题理由"><a href="#选题理由" class="headerlink" title="选题理由"></a>选题理由</h3><p>这四个产品各具特点：</p>
 <ul>
 <li>GitHub是全球最大开源社区，孕育很多成功的开源项目，在微软接管后近年来也发生了许多新的变化</li>
 <li>gitlab（私有化部署）是面向组织和企业的成熟解决方案，通过部署在私有服务器和私有网络内提供了盈利的商业方案；同时，gitlab本身是海外产品，但国内由极狐代理</li>
 <li>gitlink是CCF主导的开源创新服务平台，平台本身也是开源的</li>
-<li>coding是腾讯云旗下的一站式数字化软件研发工作流解决方案，提供包括代码托管、项目协同、持续部署、持续集成、测试管理等软件开发中的重要功能</li>
 </ul>
-<p>以上四个平台在境内/境外，（主要）盈利/非盈利，社区/商业，（平台本身）闭源/开源，提供单一代码托管功能/提供工作流解决方案，社区主导/企业主导/政府组织主导等各有不同，在不同维度上分别具有特色和代表性，适合作为项目案例分析。</p>
+<p>以上三个平台在境内/境外，（主要）盈利/非盈利，社区/商业，（平台本身）闭源/开源，提供单一代码托管功能/提供工作流解决方案，社区主导/企业主导/政府组织主导等各有不同，在不同维度上分别具有特色和代表性，适合作为项目案例分析。</p>
 <p>同时，作为本次软工团队的PM，我也正好借此机会仔细学习和研究这些平台，为团队选择最佳实践。</p>
 <h2 id="Part-1-调研与评测"><a href="#Part-1-调研与评测" class="headerlink" title="Part 1 调研与评测"></a>Part 1 调研与评测</h2><h3 id="1-1-软件评测"><a href="#1-1-软件评测" class="headerlink" title="1.1 软件评测"></a>1.1 软件评测</h3><h4 id="1-1-1-GitHub"><a href="#1-1-1-GitHub" class="headerlink" title="1.1.1 GitHub"></a>1.1.1 GitHub</h4><p>GitHub是一个基于Git实现的在线代码仓库，是目前全球最大的代码托管平台，可以帮助程序员之间互相交流和学习。GitHub不仅是代码托管平台，更是开源社区，有着大量的活跃开发者。</p>
 <h5 id="1-1-1-1-基本使用"><a href="#1-1-1-1-基本使用" class="headerlink" title="1.1.1.1 基本使用"></a>1.1.1.1 基本使用</h5><ul>
@@ -1341,7 +1340,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1351,6 +1350,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
