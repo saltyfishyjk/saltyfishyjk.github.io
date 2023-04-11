@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          服务器维护管理笔记 - saltyfishyjk
+          PC生产力工具最佳解决方案 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/27/服务器维护管理笔记/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/04/11/PC生产力工具最佳解决方案/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -110,21 +110,19 @@
                             
                               <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
                             
-                              <a class="tag" href="/tags/#Server" title="Server">Server</a>
-                            
                         </div>
-                        <h1>服务器维护管理笔记</h1>
+                        <h1>PC生产力工具最佳解决方案</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2023-03-27
+                            2023-04-11
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">611</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">208</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -258,56 +256,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="服务器维护管理笔记"><a href="#服务器维护管理笔记" class="headerlink" title="服务器维护管理笔记"></a>服务器维护管理笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>服务器的维护和管理是一件重要但是琐碎的工作，其中涉及很多细节处理。这些工作本身可能没有很高的技术门槛，但是却需要耗费相当的精力。因此，本笔记专门用于记录这方面的知识<del>踩过的坑</del>。</p>
-<p>本博客初稿的背景是2023敏捷软件工程课程，以下均以此为背景。</p>
-<h2 id="Part-1-服务器选购"><a href="#Part-1-服务器选购" class="headerlink" title="Part 1 服务器选购"></a>Part 1 服务器选购</h2><h3 id="厂商"><a href="#厂商" class="headerlink" title="厂商"></a>厂商</h3><p>课程组提供了500元额度的经费，我们结合服务器租用、域名租用、DNS解析等服务最终选择了腾讯云这一高性价比厂商（不过还是得通过新人优惠才便宜）。</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>这里主要借用一下<a href="https://www.buaaase.com/tasks/teamwork/devops" target="_blank" rel="noopener">课程组的图</a>，方便快速锚定配置范围：</p>
-<p><img src="2023-03-27-服务器维护管理笔记/image-20230328221814986.png" alt="image-20230328221814986"></p>
-<p>也可以参考文章：<a href="https://zhuanlan.zhihu.com/p/447914035" target="_blank" rel="noopener">如何选择云服务器配置？</a></p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>参考资料：</p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/463398630" target="_blank" rel="noopener">腾讯云域名注册申请流程（图文详解）</a></li>
-</ul>
-<p>主要流程包括：</p>
-<ul>
-<li>腾讯云实名认证</li>
-<li>使用DNSPod（已被腾讯云收购）查询想要注册的域名是否可用，在此界面可以购买域名和（可选）DNS解析服务</li>
-<li>创建实名信息模板交由注册局审核</li>
-<li>根据域名所属进行备案（须和腾讯云实名认证一致）</li>
-</ul>
-<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>由于熟悉且资料较多，因此选用Ubuntu 20.04 LTS。<strong>后文在不强调时也以此为默认配置</strong></p>
-<h2 id="Part-2-GitHub-Actions"><a href="#Part-2-GitHub-Actions" class="headerlink" title="Part 2 GitHub Actions"></a>Part 2 GitHub Actions</h2><p>参考资料：</p>
-<ul>
-<li><a href="https://www.cnblogs.com/YAN-HUA/p/13530906.html" target="_blank" rel="noopener">利用GitHub Actions自动化打包部署服务器</a>：有用，其中<code>appleboy/ssh-action</code>套件很有用，可以直接在服务器执行指令</li>
-</ul>
-<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>参考资料：</p>
-<ul>
-<li><a href="https://docs.github.com/zh/actions/security-guides/encrypted-secrets" target="_blank" rel="noopener">GitHub文档：加密机密</a>：GitHub官方中文文档，介绍的较为精要</li>
-</ul>
-<h2 id="Part-3-Conda"><a href="#Part-3-Conda" class="headerlink" title="Part 3 Conda"></a>Part 3 Conda</h2><h2 id="Part-4-NPM"><a href="#Part-4-NPM" class="headerlink" title="Part 4 NPM"></a>Part 4 NPM</h2><p>避免直接使用<code>apt-get</code>安装nodejs，而采用NPM进行nodejs环境管理</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考资料：</p>
-<ul>
-<li><a href="https://cloud.tencent.com/developer/article/1592229?from=article.detail.1772306&amp;areaSource=106000.19&amp;traceId=Tzg7WzbTDqDCL4Uv-k_8N" target="_blank" rel="noopener">ubuntu16.04安装node.js、npm</a>：有用，照着来就行，对Ubuntu20.04也适用</li>
-</ul>
-<h2 id="Part-4-Vue"><a href="#Part-4-Vue" class="headerlink" title="Part 4 Vue"></a>Part 4 Vue</h2><h2 id="Part-5-Django"><a href="#Part-5-Django" class="headerlink" title="Part 5 Django"></a>Part 5 Django</h2><h2 id="Part-6-腾讯云与Ubuntu"><a href="#Part-6-腾讯云与Ubuntu" class="headerlink" title="Part 6 腾讯云与Ubuntu"></a>Part 6 腾讯云与Ubuntu</h2><h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><p>使用<code>ed25519</code>算法生成密钥</p>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://blog.csdn.net/qq_36938617/article/details/95234909" target="_blank" rel="noopener">Ubuntu系统中防火墙的使用和开放端口</a>：介绍如何放开端口，有用；需要注意的是可能需要打开防火墙，再开放端口，再关闭防火墙，否则无法通过ssh连接服务器</li>
-<li><a href="https://cloud.tencent.com/document/product/1207/44573" target="_blank" rel="noopener">管理密钥</a>：介绍如何在腾讯云服务器配置ssh公钥</li>
-</ul>
+                <h1 id="PC生产力工具最佳解决方案"><a href="#PC生产力工具最佳解决方案" class="headerlink" title="PC生产力工具最佳解决方案"></a>PC生产力工具最佳解决方案</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>工欲善其事，必先利其器。这里记录个人的PC生产力工具最佳解决方案。如果没有特殊说明，均指Windows（10）平台下的软件。</p>
+<h2 id="Part-1-代码相关"><a href="#Part-1-代码相关" class="headerlink" title="Part 1 代码相关"></a>Part 1 代码相关</h2><h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><p>强大的编辑器，启动迅速，拥有丰富的插件生态。</p>
+<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><p>牛。</p>
+<h2 id="Part-2-非代码相关"><a href="#Part-2-非代码相关" class="headerlink" title="Part 2 非代码相关"></a>Part 2 非代码相关</h2><h3 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h3><p>强大、快速、无广告的视频播放器。</p>
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><p>最强大的markdown编辑器与解决方案。</p>
+<h3 id="知云文献翻译"><a href="#知云文献翻译" class="headerlink" title="知云文献翻译"></a>知云文献翻译</h3><p>强大的外文文献翻译工具。</p>
+<h3 id="EmEditor"><a href="#EmEditor" class="headerlink" title="EmEditor"></a>EmEditor</h3><p>强大快速的文本编辑器，是取代记事本和notepad++的最佳解决方案。</p>
+<h3 id="iSlide"><a href="#iSlide" class="headerlink" title="iSlide"></a>iSlide</h3><p>PowerPoint导出高清图片的最佳解决方案。</p>
+<h3 id="draw-io"><a href="#draw-io" class="headerlink" title="draw.io"></a>draw.io</h3><p>画图方便。</p>
+<h3 id="360zip"><a href="#360zip" class="headerlink" title="360zip"></a>360zip</h3><p>360少有的良心软件，最好使用国际版，强大快速。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2023/04/11/PC生产力工具最佳解决方案/" data-toggle="tooltip" data-placement="top" title="PC生产力工具最佳解决方案">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2023/03/21/「BUAA-X86-Programming」Experiment-Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA X86 Programming」Experiment Notes">Next Post &rarr;</a>
+                        <a href="/2023/03/27/服务器维护管理笔记/" data-toggle="tooltip" data-placement="top" title="服务器维护管理笔记">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -388,7 +355,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Mon Mar 27 2023 22:04:20 GMT+0800', // optional
+    id: 'Tue Apr 11 2023 14:51:14 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -428,7 +395,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#服务器维护管理笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">服务器维护管理笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-服务器选购"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 服务器选购</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#厂商"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">厂商</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#域名"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">域名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#操作系统"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">操作系统</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-GitHub-Actions"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 GitHub Actions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#加密"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">加密</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Conda"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Conda</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-NPM"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 NPM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Vue"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 4 Vue</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-Django"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 5 Django</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-腾讯云与Ubuntu"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 6 腾讯云与Ubuntu</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成ssh-key"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">生成ssh key</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PC生产力工具最佳解决方案"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">PC生产力工具最佳解决方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-代码相关"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 代码相关</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Visual-Studio-Code"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Visual Studio Code</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Github"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Github</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-非代码相关"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 非代码相关</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PotPlayer"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">PotPlayer</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Typora"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">Typora</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#知云文献翻译"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">知云文献翻译</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#EmEditor"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">EmEditor</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#iSlide"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">iSlide</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#draw-io"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">draw.io</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#360zip"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">360zip</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -451,8 +418,6 @@ const gitment = new Gitment({
                     <div class="tags">
                        
                           <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                        
-                          <a class="tag" href="/tags/#Server" title="Server">Server</a>
                         
                     </div>
                 </section>

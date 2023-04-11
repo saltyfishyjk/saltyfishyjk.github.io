@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>PC生产力工具最佳解决方案</title>
+      <link href="/2023/04/11/PC%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+      <url>/2023/04/11/PC%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="PC生产力工具最佳解决方案"><a href="#PC生产力工具最佳解决方案" class="headerlink" title="PC生产力工具最佳解决方案"></a>PC生产力工具最佳解决方案</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>工欲善其事，必先利其器。这里记录个人的PC生产力工具最佳解决方案。如果没有特殊说明，均指Windows（10）平台下的软件。</p><h2 id="Part-1-代码相关"><a href="#Part-1-代码相关" class="headerlink" title="Part 1 代码相关"></a>Part 1 代码相关</h2><h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><p>强大的编辑器，启动迅速，拥有丰富的插件生态。</p><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><p>牛。</p><h2 id="Part-2-非代码相关"><a href="#Part-2-非代码相关" class="headerlink" title="Part 2 非代码相关"></a>Part 2 非代码相关</h2><h3 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h3><p>强大、快速、无广告的视频播放器。</p><h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><p>最强大的markdown编辑器与解决方案。</p><h3 id="知云文献翻译"><a href="#知云文献翻译" class="headerlink" title="知云文献翻译"></a>知云文献翻译</h3><p>强大的外文文献翻译工具。</p><h3 id="EmEditor"><a href="#EmEditor" class="headerlink" title="EmEditor"></a>EmEditor</h3><p>强大快速的文本编辑器，是取代记事本和notepad++的最佳解决方案。</p><h3 id="iSlide"><a href="#iSlide" class="headerlink" title="iSlide"></a>iSlide</h3><p>PowerPoint导出高清图片的最佳解决方案。</p><h3 id="draw-io"><a href="#draw-io" class="headerlink" title="draw.io"></a>draw.io</h3><p>画图方便。</p><h3 id="360zip"><a href="#360zip" class="headerlink" title="360zip"></a>360zip</h3><p>360少有的良心软件，最好使用国际版，强大快速。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>服务器维护管理笔记</title>
       <link href="/2023/03/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/03/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/</url>
@@ -212,9 +231,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       
