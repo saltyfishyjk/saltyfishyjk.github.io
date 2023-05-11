@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>「BUAA Computer Network Experiment」Notes</title>
+      <link href="/2023/05/11/%E3%80%8CBUAA-Computer-Network-Experiment%E3%80%8DNotes/"/>
+      <url>/2023/05/11/%E3%80%8CBUAA-Computer-Network-Experiment%E3%80%8DNotes/</url>
+      
+        <content type="html"><![CDATA[<h1 id="「BUAA-Computer-Network-Experiment」Notes"><a href="#「BUAA-Computer-Network-Experiment」Notes" class="headerlink" title="「BUAA Computer Network Experiment」Notes"></a>「BUAA Computer Network Experiment」Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>线下实验室和线上网络实验室的设备版本和指令有少量区别，下文中多数<em>特殊说明</em>的情况是针对线下实验室环境<del>毕竟考试也要在线下</del>。另外，不同套件的实验顺序和内容也有所不同，下文均指套件二。</p><p>本笔记可能并不全面，不能作为jwsy的指导书使用，读者仍需结合ppt、常见问题解答、教材等学习。</p><h2 id="Part-1-实验一-网络实验入门"><a href="#Part-1-实验一-网络实验入门" class="headerlink" title="Part 1 实验一 网络实验入门"></a>Part 1 实验一 网络实验入门</h2><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>对于路由器和交换机，其在不同视图下执行不同指令，主要分为<strong>用户视图</strong>和<strong>系统视图</strong>。</p><h4 id="用户视图"><a href="#用户视图" class="headerlink" title="用户视图"></a>用户视图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3c&gt;</span><br></pre></td></tr></table></figure><h4 id="系统视图"><a href="#系统视图" class="headerlink" title="系统视图"></a>系统视图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3c&gt;system-view &#x2F;&#x2F; 由用户视图进入系统视图</span><br><span class="line">[h3c]</span><br></pre></td></tr></table></figure><h3 id="清空网络设备配置"><a href="#清空网络设备配置" class="headerlink" title="清空网络设备配置"></a>清空网络设备配置</h3><p>在实验开始之前，一定记得清空网络设备（路由器和交换机）的配置。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3c&gt;reset saved-configuration &#x2F;&#x2F; 删除已保存的配置，选y</span><br><span class="line">&lt;h3c&gt;reboot &#x2F;&#x2F; 重启设备，先选n再选y</span><br></pre></td></tr></table></figure><h3 id="display"><a href="#display" class="headerlink" title="display"></a><code>display</code></h3><p>查看当前配置，可以在任意视图下使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3c&gt;dis cu &#x2F;&#x2F; display current-confiiguration的缩写，查看系统当前的配置</span><br><span class="line">&lt;h3c&gt;display version &#x2F;&#x2F; 查看当前系统版本</span><br><span class="line">[h3c]display interface g 1&#x2F;0&#x2F;1 &#x2F;&#x2F; 查看千兆以太网端口1&#x2F;0&#x2F;1的信息</span><br></pre></td></tr></table></figure><blockquote><p>注意，不同网络设备（如线下和线上）的接口编号可能有所不同，需要使用dis cu显示当前设备的各接口编号，根据实际设备编号调整命令</p><p>技巧：<code>dis cu</code>后可能行数较多不能一次显示完整，此时使用空格键会放出接下来的一屏，使用回车键会放出接下来的一行</p></blockquote><h3 id="进入指定以太网接口视图"><a href="#进入指定以太网接口视图" class="headerlink" title="进入指定以太网接口视图"></a>进入指定以太网接口视图</h3><p>配置路由器/交换机接口时，往往需要先进入接口视图：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1]inter g 0&#x2F;0 &#x2F;&#x2F; interface g 0&#x2F;0的缩写，进入编号为0&#x2F;0的千兆以太网口</span><br></pre></td></tr></table></figure><h3 id="配置以太网接口IP"><a href="#配置以太网接口IP" class="headerlink" title="配置以太网接口IP"></a>配置以太网接口IP</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt;system-view &#x2F;&#x2F; 进入系统视图</span><br><span class="line">[R1]inter g 0&#x2F;0 &#x2F;&#x2F; interface g 0&#x2F;0的缩写，进入千兆以太网接口0&#x2F;0</span><br><span class="line">[R1-...0&#x2F;0]ip address 192.168.0.1 24 &#x2F;&#x2F; 配置该接口的IP地址为192.168.0.1，子网掩码为255.255.255.0，和ip address 192.168.0.1 255.255.255.0是等价的</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> BUAA Computer Network Experiment </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Notion笔记</title>
       <link href="/2023/04/22/Notion%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/04/22/Notion%E7%AC%94%E8%AE%B0/</url>
@@ -311,9 +330,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       
