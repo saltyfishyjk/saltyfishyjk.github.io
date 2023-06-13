@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>「CS231n Course 4」卷积神经网络</title>
+      <link href="/2023/06/12/%E3%80%8CCS231n-Course-4%E3%80%8D%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+      <url>/2023/06/12/%E3%80%8CCS231n-Course-4%E3%80%8D%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="「CS231n-Course-4」卷积神经网络"><a href="#「CS231n-Course-4」卷积神经网络" class="headerlink" title="「CS231n Course 4」卷积神经网络"></a>「CS231n Course 4」卷积神经网络</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p><ul><li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5/?p=16&amp;vd_source=b0a8793490273b09808dbd6f72d3465c" target="_blank" rel="noopener">b站 CS231n 5.1 卷积和池化</a></li><li><a href="https://zhuanlan.zhihu.com/p/22038289?refer=intelligentunit" target="_blank" rel="noopener">知乎 卷积神经网络笔记</a></li></ul><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CS231n </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Marp笔记</title>
       <link href="/2023/05/24/Marp%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/05/24/Marp%E7%AC%94%E8%AE%B0/</url>
@@ -406,9 +425,9 @@
       
         <tags>
             
-            <tag> Tools </tag>
-            
             <tag> Java Programming </tag>
+            
+            <tag> Tools </tag>
             
         </tags>
       
@@ -1437,9 +1456,9 @@
       
         <tags>
             
-            <tag> BUAA-OO </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> BUAA-OO </tag>
             
             <tag> Git </tag>
             
