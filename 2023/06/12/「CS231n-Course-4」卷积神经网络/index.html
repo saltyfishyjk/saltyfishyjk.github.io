@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">2.6k</span> and
-                                Reading Time <span class="post-count">9</span> Minutes
+                                Words <span class="post-count">2.8k</span> and
+                                Reading Time <span class="post-count">10</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -274,13 +274,14 @@
 <table>
 <tr>
     <td>
-        <img src='NN v.s. CNN1.jpeg'>
+        <img src='NN v.s. CNN1.jpeg' align='center'>
     </td>
     <td>
-        <img src='NN v.s. CNN2.jpeg'>
+        <img src='NN v.s. CNN2.jpeg' align='center'>
     </td>
     </tr>    
 </table>
+
 
 
 
@@ -333,6 +334,19 @@
 <p>在每个卷积层上，会有一整个集合的卷积核（如 $12$ 个），每个都会生成一个不同的二维激活图（$2$ D activation map）。将这些激活映射在深度方向上层叠起来就生成了输出数据。</p>
 <h4 id="以大脑比喻的视角"><a href="#以大脑比喻的视角" class="headerlink" title="以大脑比喻的视角"></a>以大脑比喻的视角</h4><p>输出的 3D 数据中的每个数据项可以被看作是神经元的一个输出，而这个神经元只观察输入数据的一小部分，并且和空间上左右两边的所有神经元共享参数（因为这些数字都是使用同一个卷积核得到的结果）。现在讨论神经元的连接、他们在空间中的排列以及他们参数共享的模式。</p>
 <h4 id="局部连接"><a href="#局部连接" class="headerlink" title="局部连接"></a>局部连接</h4><p>处理图像这类高纬度输入时，让每个神经元都与前一层中的所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接，该连接（connectivity）的空间大小叫做神经元的<strong>感受野（receptive field）</strong>，它的尺寸是一个超参数（其实就是卷积核的空间尺寸）。在深度方向上，这个连接的大小总是和输入量的深度相等。</p>
+<p>再次强调，我们对待空间维度（宽和高）与深度维度是不同的：连接在空间（宽和高）上是局部的，但是在深度上总是和输入数据的深度一致。</p>
+<p><strong>e.g.1</strong></p>
+<p>假设输入数据的尺寸是 $[32 \times 32 \times 3]$ （如CIFAR-10的RGB图像）；如果感受野（或卷积核尺寸）是 $5 \times 5$ ，那么卷积层中的每个每个神经元会有输入数据体中 $[5 \times 5 \times 3]$ 区域的权重，共 $5 \times 5 \times 3=75$ 个权重（还要再加一个偏差参数 bias parameter）。这个连接在深度维度上的大小必须为 $3$ ，这是和输入数据体的深度保持一致。</p>
+<p><strong>e.g.2</strong></p>
+<p>假设输入数据体的尺寸是 $[16 \times 16 \times 20]$，感受野尺寸是 $3 \times 3$，那么卷积层中每个神经元和输入数据体有 $3\times 3\times 20=180$ 个连接。</p>
+<blockquote>
+<p>在空间上连接是局部的，但是在深度上是和输入数据体一致的</p>
+</blockquote>
+<hr>
+<p><img src="neuron_model.jpeg" alt="neuron_model"></p>
+<ul>
+<li>左边：</li>
+</ul>
 
                 
                 <hr>
