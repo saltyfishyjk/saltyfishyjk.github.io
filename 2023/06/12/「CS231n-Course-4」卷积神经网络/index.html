@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">2.8k</span> and
-                                Reading Time <span class="post-count">10</span> Minutes
+                                Words <span class="post-count">3.4k</span> and
+                                Reading Time <span class="post-count">12</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -343,10 +343,35 @@
 <p>在空间上连接是局部的，但是在深度上是和输入数据体一致的</p>
 </blockquote>
 <hr>
-<p><img src="neuron_model.jpeg" alt="neuron_model"></p>
+<table>
+<tr>
+    <td>
+        <img src='depthcol.jpeg' align='center' width=8000>
+    </td>
+    <td>
+        <img src='neuron_model.jpeg' align='center' width=8000>
+    </td>
+    </tr>    
+</table>
+
 <ul>
-<li>左边：红色的是输入数据体（如CIFAR-10中的图像），</li>
+<li>左边：红色的是输入数据体（如CIFAR-10中的图像），蓝色的部分是第一个卷积层中的神经元。<strong>卷积层中的每个神经元都只与输入数据体的一个局部在空间上相连，但是与输入数据体的所有深度维度全部相连（在这个例子中，是RGB三个颜色通道）</strong>。在深度方向上，有多个神经元（本例中是 $5$ 个），他们都接收输入数据的同一块区域（感受野相同）。</li>
+<li>右边：神经网络章节中介绍的神经元保持不变，仍计算权重和输入的内积，然后进行激活函数运算。区别在于，卷积层的连接被限制在一个局部空间。</li>
 </ul>
+<hr>
+<h4 id="空间排列"><a href="#空间排列" class="headerlink" title="空间排列"></a>空间排列</h4><p>接下来讨论输出数据体中神经元的数量以及它们的排列方式。有 $3$ 个超参数控制输出数据体的尺寸：深度（depth）、步长（stride）和零填充（zero-padding）</p>
+<ol>
+<li><p>深度（depth）。输出数据体的深度十一个超参数，其和使用的<strong>卷积核数量</strong>一致，而每个卷积核在输入数据中寻找不同的东西。举例来说，如果第一个卷积层的输入是原始图像，那么在深度维度上的不同神经元将可能被不同方向的边界（various oriented edges），或者是颜色斑点（blobs of color）激活。</p>
+</li>
+<li><p>步长（stride）。其次，在滑动卷积核时，必须指定步长。当步长为 $1$ 时，卷积核每次移动 $1$ 个像素。当步长为 $2$ （或不常用的 $3$，这在实际中很少使用），卷积核每次滑动时移动 $2$ 个像素。这个操作会让输出数据体在空间上变小。</p>
+<blockquote>
+<p>选择步长时，应当保证可以卷积核可以正好移动覆盖完。</p>
+</blockquote>
+</li>
+<li><p>零填充（zero-padding）。有时候，我们不希望出现数据体尺寸变小的情况，因此可以使用零填充。零填充就是指在输入数据体的边缘用 $0$ 填充，其尺寸是一个超参数。零填充可以控制输出数据体的空间尺寸（最常用的是用来保持输入数据体在空间上的尺寸，这样输入和输出的宽高相等）</p>
+</li>
+</ol>
+<p>输出数据体在空间上的尺寸</p>
 
                 
                 <hr>
@@ -476,7 +501,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「CS231n-Course-4」卷积神经网络"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「CS231n Course 4」卷积神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-卷积神经网络概述"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 卷积神经网络概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CNN和NN相比的变化"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CNN和NN相比的变化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#结构概述"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">结构概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#回顾：常规神经网络（Regular-Neural-Network但不是RNN）"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">回顾：常规神经网络（Regular Neural Network但不是RNN）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#常规神经网络对于大尺寸图像的效果不尽如人意"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">常规神经网络对于大尺寸图像的效果不尽如人意</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#神经元的三维排列"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">神经元的三维排列</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-构建CNN的层"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 构建CNN的层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#卷积层"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">卷积层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#概述和直观介绍"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">概述和直观介绍</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#以大脑比喻的视角"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">以大脑比喻的视角</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#局部连接"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">局部连接</span></a></li></ol></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「CS231n-Course-4」卷积神经网络"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「CS231n Course 4」卷积神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-卷积神经网络概述"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 卷积神经网络概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CNN和NN相比的变化"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CNN和NN相比的变化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#结构概述"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">结构概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#回顾：常规神经网络（Regular-Neural-Network但不是RNN）"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">回顾：常规神经网络（Regular Neural Network但不是RNN）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#常规神经网络对于大尺寸图像的效果不尽如人意"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">常规神经网络对于大尺寸图像的效果不尽如人意</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#神经元的三维排列"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">神经元的三维排列</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-构建CNN的层"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 构建CNN的层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#卷积层"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">卷积层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#概述和直观介绍"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">概述和直观介绍</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#以大脑比喻的视角"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">以大脑比喻的视角</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#局部连接"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">局部连接</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#空间排列"><span class="toc-nav-number">1.3.1.4.</span> <span class="toc-nav-text">空间排列</span></a></li></ol></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -741,7 +766,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -751,21 +776,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
