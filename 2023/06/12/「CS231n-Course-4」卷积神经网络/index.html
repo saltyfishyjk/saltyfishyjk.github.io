@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">3.4k</span> and
+                                Words <span class="post-count">3.5k</span> and
                                 Reading Time <span class="post-count">12</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -361,7 +361,7 @@
 <hr>
 <h4 id="空间排列"><a href="#空间排列" class="headerlink" title="空间排列"></a>空间排列</h4><p>接下来讨论输出数据体中神经元的数量以及它们的排列方式。有 $3$ 个超参数控制输出数据体的尺寸：深度（depth）、步长（stride）和零填充（zero-padding）</p>
 <ol>
-<li><p>深度（depth）。输出数据体的深度十一个超参数，其和使用的<strong>卷积核数量</strong>一致，而每个卷积核在输入数据中寻找不同的东西。举例来说，如果第一个卷积层的输入是原始图像，那么在深度维度上的不同神经元将可能被不同方向的边界（various oriented edges），或者是颜色斑点（blobs of color）激活。</p>
+<li><p>深度（depth）。输出数据体的深度是一个超参数，其和使用的<strong>卷积核数量</strong>一致，而每个卷积核在输入数据中寻找不同的东西。举例来说，如果第一个卷积层的输入是原始图像，那么在深度维度上的不同神经元将可能被不同方向的边界（various oriented edges），或者是颜色斑点（blobs of color）激活。</p>
 </li>
 <li><p>步长（stride）。其次，在滑动卷积核时，必须指定步长。当步长为 $1$ 时，卷积核每次移动 $1$ 个像素。当步长为 $2$ （或不常用的 $3$，这在实际中很少使用），卷积核每次滑动时移动 $2$ 个像素。这个操作会让输出数据体在空间上变小。</p>
 <blockquote>
@@ -371,7 +371,7 @@
 <li><p>零填充（zero-padding）。有时候，我们不希望出现数据体尺寸变小的情况，因此可以使用零填充。零填充就是指在输入数据体的边缘用 $0$ 填充，其尺寸是一个超参数。零填充可以控制输出数据体的空间尺寸（最常用的是用来保持输入数据体在空间上的尺寸，这样输入和输出的宽高相等）</p>
 </li>
 </ol>
-<p>输出数据体在空间上的尺寸</p>
+<p>输出数据体在空间上的尺寸可以通过数据体尺寸（W），卷积层中神经元的感受野尺寸（F），步长（S）和零填充的数量（P）的函数来计算</p>
 
                 
                 <hr>
