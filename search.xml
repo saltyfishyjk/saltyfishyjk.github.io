@@ -8,7 +8,7 @@
       <link href="/2023/08/04/PyTorch-Notes/"/>
       <url>/2023/08/04/PyTorch-Notes/</url>
       
-        <content type="html"><![CDATA[<h1 id="PyTorch-Notes"><a href="#PyTorch-Notes" class="headerlink" title="PyTorch Notes"></a>PyTorch Notes</h1><h2 id="Part-0-简介"><a href="#Part-0-简介" class="headerlink" title="Part 0 简介"></a>Part 0 简介</h2><p>PyTorch 是目前最流行的深度学习框架之一。</p><p>参考资料：</p><ul><li><a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch官方网站</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="PyTorch-Notes"><a href="#PyTorch-Notes" class="headerlink" title="PyTorch Notes"></a>PyTorch Notes</h1><h2 id="Part-0-简介"><a href="#Part-0-简介" class="headerlink" title="Part 0 简介"></a>Part 0 简介</h2><p>PyTorch 是目前最流行的深度学习框架之一。</p><p>参考资料：</p><ul><li><a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch官方网站</a></li><li><a href="https://blog.csdn.net/weixin_44630522/article/details/122377337" target="_blank" rel="noopener">PyTorch+Windows 配置</a>：该贴在我的机器上可行</li><li><a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">PyTorch中文文档</a></li></ul><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="with-torch-no-grad"><a href="#with-torch-no-grad" class="headerlink" title="with torch.no_grad()"></a><code>with torch.no_grad()</code></h3><p>PyTorch 中的一个上下文管理器（context manager），提供一个临时的运行环境，在该环境中，所有 PyTorch 的操作不会被自动求导（AutoGrad），即，不会对计算图进行记录，从而节省内存并提高运行速度。</p>]]></content>
       
       
       
