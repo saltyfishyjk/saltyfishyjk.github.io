@@ -75,7 +75,7 @@
       <link href="/2023/05/24/Marp%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/05/24/Marp%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="Marp笔记"><a href="#Marp笔记" class="headerlink" title="Marp笔记"></a>Marp笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Marp 是一个支持使用 markdown 快速制作精简大方的 PPT 的工具，在一些场景十分有用（特别是已经有了 markdown 文档且需要制作 PPT 汇报时）。目前的使用方式主要是在 VSCode 中安装 Marp 插件，进行类似经典 markdown 编辑器的双屏浏览（左边源码，右边实时渲染）。</p><p>优点：</p><ul><li>支持 markdown 语法</li><li>不需要特别设置字体字号，不需要排版</li><li>制作快速</li><li></li></ul><p>参考资料：</p><ul><li><a href="https://marp.app" target="_blank" rel="noopener">Marp官网</a></li><li></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="Marp笔记"><a href="#Marp笔记" class="headerlink" title="Marp笔记"></a>Marp笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Marp 是一个支持使用 markdown 快速制作精简大方的 PPT 的工具，在一些场景十分有用（特别是已经有了 markdown 文档且需要制作 PPT 汇报时）。目前的使用方式主要是在 VSCode 中安装 Marp 插件，进行类似经典 markdown 编辑器的双屏浏览（左边源码，右边实时渲染）。</p><p>优点：</p><ul><li>支持 markdown 语法</li><li>不需要特别设置字体字号，不需要排版</li><li>制作快速</li></ul><p>参考资料：</p><ul><li><a href="https://marp.app" target="_blank" rel="noopener">Marp官网</a></li><li><a href="https://zhuanlan.zhihu.com/p/447797515" target="_blank" rel="noopener">用Markdown写PPT ，Marp的果壳主题</a></li><li><a href="https://cloud.tencent.com/developer/article/1942512" target="_blank" rel="noopener">用Markdown制作幻灯片:Marp</a></li><li><a href="https://caizhiyuan.gitee.io/categories/skills/20200730-marp.html#%E5%8A%9F%E8%83%BD" target="_blank" rel="noopener">marp Markdown演示编写器</a></li></ul><h2 id="Part-1-基本格式与用法"><a href="#Part-1-基本格式与用法" class="headerlink" title="Part 1 基本格式与用法"></a>Part 1 基本格式与用法</h2><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>通过 <code>---</code>进行手动分页展示，表示另起新页</p><h3 id="front-martter-头信息"><a href="#front-martter-头信息" class="headerlink" title="front-martter 头信息"></a>front-martter 头信息</h3><p>在文件头部添加信息，如：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">marp: true</span><br><span class="line">theme: </span><br><span class="line">paginate: true</span><br></pre></td></tr></table></figure><p>其中 <code>marp:true</code> 表示这是 <code>marp</code> 文件，<code>paginate:true</code> 表示自动标页码</p><h2 id="Part-2-图片"><a href="#Part-2-图片" class="headerlink" title="Part 2 图片"></a>Part 2 图片</h2><h3 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h3><p>通过 <code>![bg](backgroung.jpg)</code> 标记，其中，<code>bacckground.jpg</code> 为背景图片文件名，在本例中它应该和 markdown 文件放在一个目录下。仅在标注了该语句的页面显示背景图片。</p>]]></content>
       
       
       
@@ -485,9 +485,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       

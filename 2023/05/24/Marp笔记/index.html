@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">133</span> and
+                                Words <span class="post-count">286</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -262,13 +262,19 @@
 <li>支持 markdown 语法</li>
 <li>不需要特别设置字体字号，不需要排版</li>
 <li>制作快速</li>
-<li></li>
 </ul>
 <p>参考资料：</p>
 <ul>
 <li><a href="https://marp.app" target="_blank" rel="noopener">Marp官网</a></li>
-<li></li>
+<li><a href="https://zhuanlan.zhihu.com/p/447797515" target="_blank" rel="noopener">用Markdown写PPT ，Marp的果壳主题</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1942512" target="_blank" rel="noopener">用Markdown制作幻灯片:Marp</a></li>
+<li><a href="https://caizhiyuan.gitee.io/categories/skills/20200730-marp.html#%E5%8A%9F%E8%83%BD" target="_blank" rel="noopener">marp Markdown演示编写器</a></li>
 </ul>
+<h2 id="Part-1-基本格式与用法"><a href="#Part-1-基本格式与用法" class="headerlink" title="Part 1 基本格式与用法"></a>Part 1 基本格式与用法</h2><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>通过 <code>---</code>进行手动分页展示，表示另起新页</p>
+<h3 id="front-martter-头信息"><a href="#front-martter-头信息" class="headerlink" title="front-martter 头信息"></a>front-martter 头信息</h3><p>在文件头部添加信息，如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">marp: true</span><br><span class="line">theme: </span><br><span class="line">paginate: true</span><br></pre></td></tr></table></figure>
+<p>其中 <code>marp:true</code> 表示这是 <code>marp</code> 文件，<code>paginate:true</code> 表示自动标页码</p>
+<h2 id="Part-2-图片"><a href="#Part-2-图片" class="headerlink" title="Part 2 图片"></a>Part 2 图片</h2><h3 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h3><p>通过 <code>![bg](backgroung.jpg)</code> 标记，其中，<code>bacckground.jpg</code> 为背景图片文件名，在本例中它应该和 markdown 文件放在一个目录下。仅在标注了该语句的页面显示背景图片。</p>
 
                 
                 <hr>
@@ -402,7 +408,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Marp笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Marp笔记</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Part 0 前言</span></a></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Marp笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Marp笔记</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本格式与用法"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Part 1 基本格式与用法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分页"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">分页</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#front-martter-头信息"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">front-martter 头信息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-图片"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Part 2 图片</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#背景图片"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">背景图片</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -667,7 +673,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -677,21 +683,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
