@@ -343,7 +343,10 @@
 </tbody>
 </table>
 </div>
-<h2 id="Part-3-杂项"><a href="#Part-3-杂项" class="headerlink" title="Part 3 杂项"></a>Part 3 杂项</h2><h3 id="判断Linux是CentOS还是Ubuntu"><a href="#判断Linux是CentOS还是Ubuntu" class="headerlink" title="判断Linux是CentOS还是Ubuntu"></a>判断Linux是CentOS还是Ubuntu</h3><p>参考<a href="https://www.php.cn/linux-435827.html" target="_blank" rel="noopener">这篇博客</a>，其中使用apt-get和yum判断比较快捷。</p>
+<h2 id="Part-3-杂项"><a href="#Part-3-杂项" class="headerlink" title="Part 3 杂项"></a>Part 3 杂项</h2><h3 id="判断Linux是CentOS还是Ubuntu"><a href="#判断Linux是CentOS还是Ubuntu" class="headerlink" title="判断Linux是CentOS还是Ubuntu"></a>判断Linux是CentOS还是Ubuntu</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考<a href="https://www.php.cn/linux-435827.html" target="_blank" rel="noopener">这篇博客</a>，其中使用apt-get和yum判断比较快捷。</p>
+</blockquote>
 <h3 id="下载指令"><a href="#下载指令" class="headerlink" title="下载指令"></a>下载指令</h3><p>参考文章：<a href="https://blog.csdn.net/qq_38806886/article/details/88920201" target="_blank" rel="noopener">ubuntu几种不同的下载指令（apt-get,wget,git clone,pip etc）</a></p>
 <p>从指定url下载文件：<code>wget</code></p>
 
@@ -746,7 +749,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -756,6 +759,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
