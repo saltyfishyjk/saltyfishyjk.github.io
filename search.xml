@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Go笔记</title>
+      <link href="/2023/12/18/Go%E7%AC%94%E8%AE%B0/"/>
+      <url>/2023/12/18/Go%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Go笔记"><a href="#Go笔记" class="headerlink" title="Go笔记"></a>Go笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Go，也称 Golang，是 Google 开发的编程语言。</p><h1 id="Part-1-安装"><a href="#Part-1-安装" class="headerlink" title="Part 1 安装"></a>Part 1 安装</h1><h2 id="Linux-Ubuntu"><a href="#Linux-Ubuntu" class="headerlink" title="Linux - Ubuntu"></a>Linux - Ubuntu</h2><h3 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h3><p>参考博客：<a href="https://zhuanlan.zhihu.com/p/629240139" target="_blank" rel="noopener">如何在 Debian / Ubuntu 上安装 Go 开发环境</a></p><blockquote><p>推荐使用其中的<strong>官方二进制包</strong>方式安装，因为 apt 方式安装的版本过旧</p></blockquote><h3 id="设置国内代理"><a href="#设置国内代理" class="headerlink" title="设置国内代理"></a>设置国内代理</h3><p>参考博客：<a href="https://www.jianshu.com/p/9bffc3f45c7d" target="_blank" rel="noopener">go get 报错:dial tcp 142.251.43.17:443: i/o timeout</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+            <tag> Go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>dnspython 笔记</title>
       <link href="/2023/12/02/dnspython-%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/12/02/dnspython-%E7%AC%94%E8%AE%B0/</url>
