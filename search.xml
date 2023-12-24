@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Spark笔记</title>
+      <link href="/2023/12/24/Spark%E7%AC%94%E8%AE%B0/"/>
+      <url>/2023/12/24/Spark%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Spark-笔记"><a href="#Spark-笔记" class="headerlink" title="Spark 笔记"></a>Spark 笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Apache Spark 是一个开源的集群计算框架，可以执行大规模数据处理任务，经常和 Scala，Zeppelin 一起配合使用。</p><p>这篇笔记主要记录 Scala + Spark + Zeppelin 的使用。</p><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Go笔记</title>
       <link href="/2023/12/18/Go%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/12/18/Go%E7%AC%94%E8%AE%B0/</url>
@@ -467,7 +480,7 @@
       <link href="/2023/02/13/tmux-Notes/"/>
       <url>/2023/02/13/tmux-Notes/</url>
       
-        <content type="html"><![CDATA[<h1 id="tmux-Notes"><a href="#tmux-Notes" class="headerlink" title="tmux Notes"></a>tmux Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>tmux是一款优秀的终端复用软件，是terminal ultiplexer的简称。</p><p>参考文献：</p><ul><li><a href="https://www.51cto.com/article/664989.html" target="_blank" rel="noopener">Linux 终端复用神器 Tmux 使用详解</a></li><li><a href="https://blog.csdn.net/CSSDCC/article/details/121231906" target="_blank" rel="noopener">Tmux教程 （一文就够）</a></li></ul><h2 id="Part-1-命令与操作"><a href="#Part-1-命令与操作" class="headerlink" title="Part 1 命令与操作"></a>Part 1 命令与操作</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>新建 session，自动生成 id 为 0 的新 session</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br></pre></td></tr></table></figure><p><strong>推荐</strong> ：新建名为 <code>you-session-name</code> 的 session并打开，更方便解绑后重新进入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s your-session-name</span><br></pre></td></tr></table></figure><h3 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h3><p><code>ctrl+b d</code>或使用以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure><h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure><h3 id="绑定、解绑、切换session"><a href="#绑定、解绑、切换session" class="headerlink" title="绑定、解绑、切换session"></a>绑定、解绑、切换session</h3><ul><li>绑定：<code>tmux attach -t your-session-name</code></li><li>解绑：<code>tmux detach</code></li><li>切换session：<code>tmux switch -t your-session-name</code></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="tmux-Notes"><a href="#tmux-Notes" class="headerlink" title="tmux Notes"></a>tmux Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>tmux是一款优秀的终端复用软件，是terminal ultiplexer的简称。</p><p>参考文献：</p><ul><li><a href="https://www.51cto.com/article/664989.html" target="_blank" rel="noopener">Linux 终端复用神器 Tmux 使用详解</a></li><li><a href="https://blog.csdn.net/CSSDCC/article/details/121231906" target="_blank" rel="noopener">Tmux教程 （一文就够）</a></li></ul><h2 id="Part-1-命令与操作"><a href="#Part-1-命令与操作" class="headerlink" title="Part 1 命令与操作"></a>Part 1 命令与操作</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>新建 session，自动生成 id 为 0 的新 session</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br></pre></td></tr></table></figure><p><strong>推荐</strong> ：新建名为 <code>you-session-name</code> 的 session并打开，更方便解绑后重新进入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s your-session-name</span><br></pre></td></tr></table></figure><h3 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h3><p><code>ctrl+b d</code>或使用以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure><h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure><h3 id="绑定、解绑、切换session"><a href="#绑定、解绑、切换session" class="headerlink" title="绑定、解绑、切换session"></a>绑定、解绑、切换session</h3><ul><li>重新绑定（进入）：<code>tmux attach -t your-session-name</code></li><li>解绑：<code>tmux detach</code></li><li>切换session：<code>tmux switch -t your-session-name</code></li></ul>]]></content>
       
       
       
@@ -519,9 +532,9 @@
       
         <tags>
             
-            <tag> Tools </tag>
-            
             <tag> Java Programming </tag>
+            
+            <tag> Tools </tag>
             
         </tags>
       
@@ -1552,9 +1565,9 @@
       
         <tags>
             
-            <tag> Tools </tag>
-            
             <tag> BUAA-OO </tag>
+            
+            <tag> Tools </tag>
             
             <tag> Git </tag>
             
@@ -1632,9 +1645,9 @@
       
         <tags>
             
-            <tag> HexoBlog </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> HexoBlog </tag>
             
         </tags>
       
