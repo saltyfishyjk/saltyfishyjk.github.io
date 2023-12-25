@@ -108,6 +108,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Scala" title="Scala">Scala</a>
+                            
+                              <a class="tag" href="/tags/#Zeppelin" title="Zeppelin">Zeppelin</a>
+                            
                         </div>
                         <h1>Spark笔记</h1>
                         <h2 class="subheading"></h2>
@@ -119,7 +125,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">61</span> and
+                                Words <span class="post-count">271</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -181,14 +187,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -256,7 +262,22 @@
 
                 <h1 id="Spark-笔记"><a href="#Spark-笔记" class="headerlink" title="Spark 笔记"></a>Spark 笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Apache Spark 是一个开源的集群计算框架，可以执行大规模数据处理任务，经常和 Scala，Zeppelin 一起配合使用。</p>
 <p>这篇笔记主要记录 Scala + Spark + Zeppelin 的使用。</p>
-<h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2>
+<h2 id="Part-1-Scala"><a href="#Part-1-Scala" class="headerlink" title="Part 1 Scala"></a>Part 1 Scala</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myList = <span class="type">List</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Part-2-Spark"><a href="#Part-2-Spark" class="headerlink" title="Part 2 Spark"></a>Part 2 Spark</h2><h3 id="SparkSession"><a href="#SparkSession" class="headerlink" title="SparkSession"></a>SparkSession</h3><p>管理 Spark 应用程序的上下文，类似 Java 中的 JVM。</p>
+<p>在 Zeppelin 中，不需要显示创建。</p>
+<h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><p>DataFrame 是 Spark SQL 中的主要数据抽象，以列的形式组织分布式数据集，类似关系数据库的 table。</p>
+<h3 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h3><blockquote>
+<p>暂时未使用到</p>
+</blockquote>
+<h2 id="Part-3-Zeppelin"><a href="#Part-3-Zeppelin" class="headerlink" title="Part 3 Zeppelin"></a>Part 3 Zeppelin</h2><h3 id="魔术命令"><a href="#魔术命令" class="headerlink" title="%  魔术命令"></a><code>%</code>  魔术命令</h3><p>用于执行特定的操作，一般放在代码块开头。</p>
+<h4 id="example-spark"><a href="#example-spark" class="headerlink" title="%example_spark"></a><code>%example_spark</code></h4><p>类似 Jupyter 中的魔术命令，用以指定代码块的 Spark 解释器。</p>
+<h4 id="example-spark-pyspark"><a href="#example-spark-pyspark" class="headerlink" title="%example_spark.pyspark"></a><code>%example_spark.pyspark</code></h4><p>指定代码块的 PySpark 解释器，以执行 Python 代码。</p>
+<h2 id="Part-4-Parquet"><a href="#Part-4-Parquet" class="headerlink" title="Part 4 Parquet"></a>Part 4 Parquet</h2><p>Parquet 是一种列式数据存储格式，用于高效存储和处理大规模数据集。</p>
+<h3 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h3><blockquote>
+<p>假设文件目录为 <code>/home/example</code></p>
+</blockquote>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取 Parquet 文件</span></span><br><span class="line"><span class="keyword">val</span> df = spark.read.parquet(<span class="string">"/home/example"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 显示数据集内容</span></span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
+<h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h3>
                 
                 <hr>
                 <!-- Pager -->
@@ -385,7 +406,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spark-笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Spark 笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spark-笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Spark 笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-Scala"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 Scala</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#列表"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">列表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-Spark"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 Spark</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SparkSession"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">SparkSession</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DataFrame"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">DataFrame</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#RDD"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">RDD</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Zeppelin"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Zeppelin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#魔术命令"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">%  魔术命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#example-spark"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">%example_spark</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#example-spark-pyspark"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">%example_spark.pyspark</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Parquet"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 Parquet</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#读取"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">读取</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#存储"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">存储</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -407,6 +428,12 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Scala" title="Scala">Scala</a>
+                        
+                          <a class="tag" href="/tags/#Zeppelin" title="Zeppelin">Zeppelin</a>
+                        
                     </div>
                 </section>
                 
@@ -648,7 +675,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -658,6 +685,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
