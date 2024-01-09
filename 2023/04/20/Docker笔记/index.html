@@ -121,7 +121,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">450</span> and
+                                Words <span class="post-count">479</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -183,14 +183,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -272,7 +272,8 @@
 <li>高可移植性与迁移性。Docker容器可以在几乎任何主流的Linux环境中运行，这对后续在更复杂的物理硬件中部署很有利。具体地，当由于某些如硬件更替或网络安全原因需要将应用服务移植部署到校内或其他场景。</li>
 <li>多服务部署。每个Docker容器可以近似视为一个独立的Linux环境或者说Linux机器，因此，可以实现类似手机的“软件多开”，比如在多个Docker中部署Vue、Django服务等，他们可以彼此互不干扰。</li>
 </ul>
-<h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h2 id="Part-2-Dockerfile"><a href="#Part-2-Dockerfile" class="headerlink" title="Part 2 Dockerfile"></a>Part 2 Dockerfile</h2><h2 id="Part-3-DockerHub"><a href="#Part-3-DockerHub" class="headerlink" title="Part 3 DockerHub"></a>Part 3 DockerHub</h2>
+<h2 id="Part-1-安装"><a href="#Part-1-安装" class="headerlink" title="Part 1 安装"></a>Part 1 安装</h2><h3 id="CentOS-7-离线安装-Docker"><a href="#CentOS-7-离线安装-Docker" class="headerlink" title="CentOS 7 离线安装 Docker"></a>CentOS 7 离线安装 Docker</h3><p>参考博客：<a href="https://www.jianshu.com/p/3d88d08f112c" target="_blank" rel="noopener">centos7 离线安装docker - 简书</a></p>
+<h2 id="Part-2-基本概念"><a href="#Part-2-基本概念" class="headerlink" title="Part 2 基本概念"></a>Part 2 基本概念</h2><h2 id="Part-3-常用命令"><a href="#Part-3-常用命令" class="headerlink" title="Part 3 常用命令"></a>Part 3 常用命令</h2><h2 id="Part-4-Dockerfile"><a href="#Part-4-Dockerfile" class="headerlink" title="Part 4 Dockerfile"></a>Part 4 Dockerfile</h2><h2 id="Part-5-DockerHub"><a href="#Part-5-DockerHub" class="headerlink" title="Part 5 DockerHub"></a>Part 5 DockerHub</h2>
                 
                 <hr>
                 <!-- Pager -->
@@ -405,7 +406,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Docker笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#概述"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用场景"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">优点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本概念"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-Dockerfile"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 Dockerfile</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-DockerHub"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 DockerHub</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Docker笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#概述"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用场景"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">优点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-安装"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CentOS-7-离线安装-Docker"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CentOS 7 离线安装 Docker</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-基本概念"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-常用命令"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 常用命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Dockerfile"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 Dockerfile</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-DockerHub"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 DockerHub</span></a></li></ol></li></ol>
             
           
           </div>
