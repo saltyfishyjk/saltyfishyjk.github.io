@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Windows Server笔记</title>
+      <link href="/2024/01/27/Windows-Server%E7%AC%94%E8%AE%B0/"/>
+      <url>/2024/01/27/Windows-Server%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spark笔记</title>
       <link href="/2023/12/24/Spark%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/12/24/Spark%E7%AC%94%E8%AE%B0/</url>
@@ -239,7 +252,7 @@
       <link href="/2023/04/22/Notion%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/04/22/Notion%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="Notion笔记"><a href="#Notion笔记" class="headerlink" title="Notion笔记"></a>Notion笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Notion是一款不错的笔记和团队协作软件，笔者主要在罗杰软工期间接触和使用。由于Notion自身拥有一套完整的哲学和使用方法，特别是和经典的markdown编辑器如Typora的使用方法存在诸多细小的差异，因此在这里记录。</p><h2 id="Part-1-快捷键"><a href="#Part-1-快捷键" class="headerlink" title="Part 1 快捷键"></a>Part 1 快捷键</h2><h3 id="ctrl-k-网页链接"><a href="#ctrl-k-网页链接" class="headerlink" title="ctrl + k 网页链接"></a><code>ctrl + k</code> 网页链接</h3><p>选中文本后<code>ctrl + k</code>并填入网址可以制作超链接。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Notion笔记"><a href="#Notion笔记" class="headerlink" title="Notion笔记"></a>Notion笔记</h1><h1 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h1><p>Notion是一款不错的笔记和团队协作软件，笔者主要在罗杰软工期间接触和使用。由于Notion自身拥有一套完整的哲学和使用方法，特别是和经典的markdown编辑器如Typora的使用方法存在诸多细小的差异，因此在这里记录。</p><h2 id="Part-1-快捷键"><a href="#Part-1-快捷键" class="headerlink" title="Part 1 快捷键"></a>Part 1 快捷键</h2><h3 id="ctrl-k-网页链接"><a href="#ctrl-k-网页链接" class="headerlink" title="ctrl + k 网页链接"></a><code>ctrl + k</code> 网页链接</h3><p>选中文本后<code>ctrl + k</code>并填入网址可以制作超链接。</p><h2 id="Part-2-Button"><a href="#Part-2-Button" class="headerlink" title="Part 2 Button"></a>Part 2 Button</h2><h2 id="Part-3-bug-与踩坑"><a href="#Part-3-bug-与踩坑" class="headerlink" title="Part 3 bug 与踩坑"></a>Part 3 bug 与踩坑</h2>]]></content>
       
       
       
@@ -542,9 +555,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       
