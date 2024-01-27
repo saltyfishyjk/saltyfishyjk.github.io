@@ -119,7 +119,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">0</span> and
+                                Words <span class="post-count">447</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -254,7 +254,44 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                
+                <h1 id="Windows-Server笔记"><a href="#Windows-Server笔记" class="headerlink" title="Windows Server笔记"></a>Windows Server笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Windows Server 是微软的服务器操作系统，尽管大多数场景都使用 Linux 服务器，但是在计算机网络实验等特殊场景仍需要 windows server。</p>
+<p>本笔记主要基于 windows server 2019 操作系统，下述没有特殊说明时均为此背景。</p>
+<h2 id="Part-1-连接"><a href="#Part-1-连接" class="headerlink" title="Part 1 连接"></a>Part 1 连接</h2><h3 id="mstsc-远程桌面"><a href="#mstsc-远程桌面" class="headerlink" title="mstsc 远程桌面"></a>mstsc 远程桌面</h3><p>mstsc 是 Windows 自带的远程桌面软件，win + R 输入 mstsc 即可打开。</p>
+<h3 id="超级管理员"><a href="#超级管理员" class="headerlink" title="超级管理员"></a>超级管理员</h3><p>默认用户名是 administrator</p>
+<h2 id="Part-2-创建与管理用户"><a href="#Part-2-创建与管理用户" class="headerlink" title="Part 2 创建与管理用户"></a>Part 2 创建与管理用户</h2><blockquote>
+<p>以下操作在 administrator 下执行</p>
+</blockquote>
+<h3 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h3><ul>
+<li>打开“服务器管理器”（Server Manager）。</li>
+<li>导航到“工具”（Tools） &gt; “计算机管理”（Computer Management）。</li>
+<li>在左侧导航栏中，展开“系统工具”（System Tools），然后点击“本地用户和组”（Local Users and Groups）。</li>
+<li>右键点击“用户”（Users）文件夹，选择“新建用户”（New User）。</li>
+<li>按照向导填写用户信息。</li>
+</ul>
+<h4 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h4><p>默认的密码复杂性要求：</p>
+<ol>
+<li><p>不能包含用户的帐户名，不能包含用户姓名中超过两个连续字符的部分</p>
+</li>
+<li><p>至少有六个字符长</p>
+</li>
+<li><p>包含以下四类字符中的三类字符:</p>
+<ol>
+<li>英文大写字母(A 到 Z)    </li>
+<li>英文小写字母(a 到 z)</li>
+<li>10 个基本数字(0 到 9)</li>
+<li>非字母字符(例如 !、$、#、%)</li>
+</ol>
+</li>
+</ol>
+<h3 id="创建用户组"><a href="#创建用户组" class="headerlink" title="创建用户组"></a>创建用户组</h3><ol>
+<li>打开“服务器管理器”。</li>
+<li>导航到“本地服务器” &gt; “管理工具” &gt; “计算机管理”。</li>
+<li>在左侧导航栏中，展开“系统工具” &gt; “本地用户和组” &gt; “组”。</li>
+<li>右键点击要修改的用户组，选择“属性”。</li>
+<li>在“成员”选项卡中，点击“添加”并输入要添加的组名称，点击“检查名称”确保组名正确。</li>
+<li>确认选择后，点击“确定”来将组添加到用户组中。</li>
+</ol>
+
                 
                 <hr>
                 <!-- Pager -->
@@ -377,6 +414,17 @@ const gitment = new Gitment({
             <!-- Table of Contents -->
 
     
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Windows-Server笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Windows Server笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-连接"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 连接</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mstsc-远程桌面"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">mstsc 远程桌面</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#超级管理员"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">超级管理员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-创建与管理用户"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 创建与管理用户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建新用户"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">创建新用户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#密码"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">密码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建用户组"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">创建用户组</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
       
     
 
