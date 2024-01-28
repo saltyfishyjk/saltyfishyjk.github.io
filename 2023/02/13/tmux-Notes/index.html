@@ -114,6 +114,8 @@
                             
                               <a class="tag" href="/tags/#tmux" title="tmux">tmux</a>
                             
+                              <a class="tag" href="/tags/#Server" title="Server">Server</a>
+                            
                         </div>
                         <h1>tmux Notes</h1>
                         <h2 class="subheading"></h2>
@@ -125,7 +127,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">172</span> and
+                                Words <span class="post-count">258</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,26 +262,30 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="tmux-Notes"><a href="#tmux-Notes" class="headerlink" title="tmux Notes"></a>tmux Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>tmux是一款优秀的终端复用软件，是terminal ultiplexer的简称。</p>
+                <h1 id="tmux-Notes"><a href="#tmux-Notes" class="headerlink" title="tmux Notes"></a>tmux Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>tmux 是一款优秀的终端复用软件，是 terminal ultiplexer 的简称，适合在服务器执行多任务时使用，不会因为终端关闭而中断程序的运行。</p>
 <p>参考文献：</p>
 <ul>
 <li><a href="https://www.51cto.com/article/664989.html" target="_blank" rel="noopener">Linux 终端复用神器 Tmux 使用详解</a></li>
 <li><a href="https://blog.csdn.net/CSSDCC/article/details/121231906" target="_blank" rel="noopener">Tmux教程 （一文就够）</a></li>
 </ul>
-<h2 id="Part-1-命令与操作"><a href="#Part-1-命令与操作" class="headerlink" title="Part 1 命令与操作"></a>Part 1 命令与操作</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>新建 session，自动生成 id 为 0 的新 session</p>
+<h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h2 id="Part-2-进入与退出-Session"><a href="#Part-2-进入与退出-Session" class="headerlink" title="Part 2 进入与退出 Session"></a>Part 2 进入与退出 Session</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p><strong>不推荐（未指定名称，不方便重新绑定）</strong>：新建 session，自动生成 id 为 0 的新 session</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux</span><br></pre></td></tr></table></figure>
 <p><strong>推荐</strong> ：新建名为 <code>you-session-name</code> 的 session并打开，更方便解绑后重新进入</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s your-session-name</span><br></pre></td></tr></table></figure>
-<h3 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h3><p><code>ctrl+b d</code>或使用以下命令：</p>
+<h3 id="分离（解绑）"><a href="#分离（解绑）" class="headerlink" title="分离（解绑）"></a>分离（解绑）</h3><p><code>ctrl+b d</code>或使用以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure>
-<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure>
-<h3 id="分离并退出"><a href="#分离并退出" class="headerlink" title="分离并退出"></a>分离并退出</h3><p><code>ctrl + d</code></p>
-<h3 id="绑定、解绑、切换session"><a href="#绑定、解绑、切换session" class="headerlink" title="绑定、解绑、切换session"></a>绑定、解绑、切换session</h3><ul>
-<li>重新绑定（进入）：<code>tmux attach -t your-session-name</code></li>
-<li>解绑：<code>tmux detach</code></li>
-<li>切换session：<code>tmux switch -t your-session-name</code></li>
-</ul>
-<h3 id="查看所有会话列表"><a href="#查看所有会话列表" class="headerlink" title="查看所有会话列表"></a>查看所有会话列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><blockquote>
+<p>会杀掉 session</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux kill-session -t your-session-name</span><br></pre></td></tr></table></figure>
+<h3 id="分离并退出"><a href="#分离并退出" class="headerlink" title="分离并退出"></a>分离并退出</h3><blockquote>
+<p>会杀掉 session</p>
+</blockquote>
+<p><code>ctrl + d</code></p>
+<h3 id="进入（重新绑定）"><a href="#进入（重新绑定）" class="headerlink" title="进入（重新绑定）"></a>进入（重新绑定）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t your-session-name</span><br></pre></td></tr></table></figure>
+<h3 id="切换session"><a href="#切换session" class="headerlink" title="切换session"></a>切换session</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux switch -t your-session-name</span><br></pre></td></tr></table></figure>
+<h2 id="Part-3-查看"><a href="#Part-3-查看" class="headerlink" title="Part 3 查看"></a>Part 3 查看</h2><h3 id="查看所有-Session-列表"><a href="#查看所有-Session-列表" class="headerlink" title="查看所有 Session 列表"></a>查看所有 Session 列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
+<h3 id="查看-Session-历史输出信息"><a href="#查看-Session-历史输出信息" class="headerlink" title="查看 Session 历史输出信息"></a>查看 Session 历史输出信息</h3><p><code>ctrl+b [</code> 后使用键盘的上下左右和翻页键滚动历史输出信息。</p>
 
                 
                 <hr>
@@ -413,7 +419,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#tmux-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tmux Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-命令与操作"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 命令与操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">分离</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#退出"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离并退出"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">分离并退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#绑定、解绑、切换session"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">绑定、解绑、切换session</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看所有会话列表"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">查看所有会话列表</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#tmux-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tmux Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本概念"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-进入与退出-Session"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 进入与退出 Session</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离（解绑）"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">分离（解绑）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#退出"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#分离并退出"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">分离并退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#进入（重新绑定）"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">进入（重新绑定）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#切换session"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">切换session</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-查看"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 查看</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看所有-Session-列表"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">查看所有 Session 列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看-Session-历史输出信息"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">查看 Session 历史输出信息</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
@@ -440,6 +446,8 @@ const gitment = new Gitment({
                           <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
                         
                           <a class="tag" href="/tags/#tmux" title="tmux">tmux</a>
+                        
+                          <a class="tag" href="/tags/#Server" title="Server">Server</a>
                         
                     </div>
                 </section>
@@ -684,7 +692,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -694,21 +702,6 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
