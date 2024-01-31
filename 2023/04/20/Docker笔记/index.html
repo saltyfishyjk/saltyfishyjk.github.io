@@ -110,6 +110,8 @@
                             
                               <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
                             
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
                         </div>
                         <h1>Docker笔记</h1>
                         <h2 class="subheading"></h2>
@@ -121,8 +123,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">479</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">820</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -273,7 +275,30 @@
 <li>多服务部署。每个Docker容器可以近似视为一个独立的Linux环境或者说Linux机器，因此，可以实现类似手机的“软件多开”，比如在多个Docker中部署Vue、Django服务等，他们可以彼此互不干扰。</li>
 </ul>
 <h2 id="Part-1-安装"><a href="#Part-1-安装" class="headerlink" title="Part 1 安装"></a>Part 1 安装</h2><h3 id="CentOS-7-离线安装-Docker"><a href="#CentOS-7-离线安装-Docker" class="headerlink" title="CentOS 7 离线安装 Docker"></a>CentOS 7 离线安装 Docker</h3><p>参考博客：<a href="https://www.jianshu.com/p/3d88d08f112c" target="_blank" rel="noopener">centos7 离线安装docker - 简书</a></p>
-<h2 id="Part-2-基本概念"><a href="#Part-2-基本概念" class="headerlink" title="Part 2 基本概念"></a>Part 2 基本概念</h2><h2 id="Part-3-常用命令"><a href="#Part-3-常用命令" class="headerlink" title="Part 3 常用命令"></a>Part 3 常用命令</h2><h2 id="Part-4-Dockerfile"><a href="#Part-4-Dockerfile" class="headerlink" title="Part 4 Dockerfile"></a>Part 4 Dockerfile</h2><h2 id="Part-5-DockerHub"><a href="#Part-5-DockerHub" class="headerlink" title="Part 5 DockerHub"></a>Part 5 DockerHub</h2>
+<h2 id="Part-2-基本概念"><a href="#Part-2-基本概念" class="headerlink" title="Part 2 基本概念"></a>Part 2 基本概念</h2><h2 id="Part-3-常用命令"><a href="#Part-3-常用命令" class="headerlink" title="Part 3 常用命令"></a>Part 3 常用命令</h2><h3 id="列出镜像列表"><a href="#列出镜像列表" class="headerlink" title="列出镜像列表"></a>列出镜像列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi &lt;image-name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE [COMMAND][ARG...]</span><br></pre></td></tr></table></figure>
+<h4 id="无参数运行"><a href="#无参数运行" class="headerlink" title="无参数运行"></a>无参数运行</h4><p>启动容器，指定名为 <code>image_name</code> 的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run image_name</span><br></pre></td></tr></table></figure>
+<h4 id="后台运行-d"><a href="#后台运行-d" class="headerlink" title="后台运行 -d"></a>后台运行 <code>-d</code></h4><p>启动容器，后台运行，指定名为 <code>image_name</code> 的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d image_name</span><br></pre></td></tr></table></figure>
+<h4 id="指定容器名-name"><a href="#指定容器名-name" class="headerlink" title="指定容器名 --name"></a>指定容器名 <code>--name</code></h4><p>启动容器，指定容器名为 <code>container_name</code>，指定名为 <code>image_name</code> 的镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name container_name image_name</span><br></pre></td></tr></table></figure>
+<h3 id="挂载卷-v"><a href="#挂载卷-v" class="headerlink" title="挂载卷 -v"></a>挂载卷 <code>-v</code></h3><p>启动容器，将本地主机的 <code>/local/path</code> 目录和容器中的 <code>/container/path</code> 目录关联起来，指定名为 <code>image_name</code> 的镜像。</p>
+<p>挂载卷的作用是在容器和主机内共享数据，对持久化数据非常有用，比如可以将容器内的输出目录和主机内的目录关联起来，容器运行结束后输出数据也不会丢失。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /local/path:/container/path image_name</span><br></pre></td></tr></table></figure>
+<h2 id="Part-4-Dockerfile"><a href="#Part-4-Dockerfile" class="headerlink" title="Part 4 Dockerfile"></a>Part 4 Dockerfile</h2><p>Dockerfile 是一个用来构建镜像的文本文件，由一条条构建命令组成。</p>
+<h3 id="选择基础镜像"><a href="#选择基础镜像" class="headerlink" title="选择基础镜像"></a>选择基础镜像</h3><p>使用 Python 3.9 作为基础镜像</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.9</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置工作目录"><a href="#设置工作目录" class="headerlink" title="设置工作目录"></a>设置工作目录</h3><p>将工作目录设置为 <code>/app</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br></pre></td></tr></table></figure>
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><p>将当前目录下的 <code>code.py</code> 复制到容器中的 <code>/app/</code> 下</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> code.py /app/</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用-pip-安装包"><a href="#使用-pip-安装包" class="headerlink" title="使用 pip 安装包"></a>使用 pip 安装包</h3><p>安装 <code>requests</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="bash"> pip install requests</span></span><br></pre></td></tr></table></figure>
+<h3 id="指定容器启动时要执行的指令"><a href="#指定容器启动时要执行的指令" class="headerlink" title="指定容器启动时要执行的指令"></a>指定容器启动时要执行的指令</h3><p>运行 <code>code.py</code></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"python"</span>, <span class="string">"code.py"</span>]</span></span><br></pre></td></tr></table></figure>
+<h2 id="Part-5-DockerHub"><a href="#Part-5-DockerHub" class="headerlink" title="Part 5 DockerHub"></a>Part 5 DockerHub</h2>
                 
                 <hr>
                 <!-- Pager -->
@@ -406,7 +431,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Docker笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#概述"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用场景"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">优点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-安装"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CentOS-7-离线安装-Docker"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CentOS 7 离线安装 Docker</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-基本概念"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-常用命令"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 常用命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Dockerfile"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 Dockerfile</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-DockerHub"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 DockerHub</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Docker笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Docker笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#概述"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用场景"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">应用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#优点"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">优点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-安装"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CentOS-7-离线安装-Docker"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CentOS 7 离线安装 Docker</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-基本概念"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-常用命令"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#列出镜像列表"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">列出镜像列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#删除镜像"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">删除镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动容器"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">启动容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#无参数运行"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">无参数运行</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#后台运行-d"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">后台运行 -d</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#指定容器名-name"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">指定容器名 --name</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#挂载卷-v"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">挂载卷 -v</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-Dockerfile"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 Dockerfile</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#选择基础镜像"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">选择基础镜像</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#设置工作目录"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">设置工作目录</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#拷贝文件"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">拷贝文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用-pip-安装包"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text">使用 pip 安装包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#指定容器启动时要执行的指令"><span class="toc-nav-number">1.5.5.</span> <span class="toc-nav-text">指定容器启动时要执行的指令</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-DockerHub"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 DockerHub</span></a></li></ol></li></ol>
             
           
           </div>
@@ -429,6 +454,8 @@ const gitment = new Gitment({
                     <div class="tags">
                        
                           <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
                         
                     </div>
                 </section>
@@ -673,7 +700,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -683,6 +710,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
