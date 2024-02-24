@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>SQL笔记</title>
+      <link href="/2024/02/24/SQL%E7%AC%94%E8%AE%B0/"/>
+      <url>/2024/02/24/SQL%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SQL笔记"><a href="#SQL笔记" class="headerlink" title="SQL笔记"></a>SQL笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>SQL 语言用于数据库管理系统。后文中没有特殊说明，默认为 MySQL。</p><h2 id="Part-1-SELECT"><a href="#Part-1-SELECT" class="headerlink" title="Part 1 SELECT"></a>Part 1 SELECT</h2><p>SELECT 用于从数据库中选取数据。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows Server笔记</title>
       <link href="/2024/01/27/Windows-Server%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/01/27/Windows-Server%E7%AC%94%E8%AE%B0/</url>
@@ -1600,9 +1619,9 @@
       
         <tags>
             
-            <tag> BUAA-OO </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> BUAA-OO </tag>
             
             <tag> Git </tag>
             
