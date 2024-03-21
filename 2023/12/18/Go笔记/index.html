@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">117</span> and
+                                Words <span class="post-count">241</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -258,13 +258,22 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Go笔记"><a href="#Go笔记" class="headerlink" title="Go笔记"></a>Go笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Go，也称 Golang，是 Google 开发的编程语言。</p>
+                <h1 id="Go笔记"><a href="#Go笔记" class="headerlink" title="Go笔记"></a>Go笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Go，也称 Golang，是 Google 开发的编程语言，其轻量级协程使得在处理高并发需求时表现出色。</p>
 <h2 id="Part-1-安装"><a href="#Part-1-安装" class="headerlink" title="Part 1 安装"></a>Part 1 安装</h2><h3 id="Linux-Ubuntu"><a href="#Linux-Ubuntu" class="headerlink" title="Linux - Ubuntu"></a>Linux - Ubuntu</h3><h4 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h4><p>参考博客：<a href="https://zhuanlan.zhihu.com/p/629240139" target="_blank" rel="noopener">如何在 Debian / Ubuntu 上安装 Go 开发环境</a></p>
 <blockquote>
 <p>推荐使用其中的<strong>官方二进制包</strong>方式安装，因为 apt 方式安装的版本过旧</p>
 </blockquote>
 <h4 id="设置国内代理"><a href="#设置国内代理" class="headerlink" title="设置国内代理"></a>设置国内代理</h4><p>参考博客：<a href="https://www.jianshu.com/p/9bffc3f45c7d" target="_blank" rel="noopener">go get 报错:dial tcp 142.251.43.17:443: i/o timeout</a></p>
 <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>参考博客：<a href="https://zhuanlan.zhihu.com/p/255030682" target="_blank" rel="noopener">Go 语言在 Windows 上的安装及配置</a></p>
+<h2 id="Part-2-语言结构"><a href="#Part-2-语言结构" class="headerlink" title="Part 2 语言结构"></a>Part 2 语言结构</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">    fmt.Println(<span class="string">"Hello World!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每个 go 源文件都需要在开头声明所属包 <code>package main</code></li>
+<li>在 main 包中声明的 <code>main</code> 函数被视为程序入口<ul>
+<li>如果代码中有 <code>init</code> 函数，那么会在程序执行之初自动执行</li>
+<li>如果引入的包有 <code>init</code> 函数，会按照导入顺序执行各个包的 <code>init</code> 函数</li>
+</ul>
+</li>
+</ul>
 
                 
                 <hr>
@@ -398,7 +407,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Go笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Go笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-安装"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux-Ubuntu"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Linux - Ubuntu</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#下载与安装"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">下载与安装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#设置国内代理"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">设置国内代理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Windows"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Windows</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Go笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Go笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-安装"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux-Ubuntu"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Linux - Ubuntu</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#下载与安装"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">下载与安装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#设置国内代理"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">设置国内代理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Windows"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Windows</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-语言结构"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 语言结构</span></a></li></ol></li></ol>
             
           
           </div>
