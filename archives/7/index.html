@@ -110,10 +110,10 @@
                         <!--<hr class="small">-->
                         <span id="subdusi" class="subheading">
                             我会珍惜这一份幸运<br>
-                            <a href="https://mmmusel.github.io/" target="_blank" rel="noopener">
-                              背景 ©Musel
+                            <a href="https://mmmusel.github.io/" target="_blank" rel="noopener" id="custom-link">
+                                背景 ©Musel
                             </a>
-                          </span>
+                        </span>
                     </div>
                 
 
@@ -165,14 +165,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -870,17 +870,17 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
     <div class="tags">
         
             
+        
+            
+            <a href="/tags/#Java Programming" title="Java Programming" rel="3">Java Programming</a>
+            
+        
+            
             <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
             
         
             
             <a href="/tags/#Tools" title="Tools" rel="35">Tools</a>
-            
-        
-            
-        
-            
-            <a href="/tags/#Java Programming" title="Java Programming" rel="3">Java Programming</a>
             
         
             
@@ -910,9 +910,9 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
             
         
             
-        
-            
             <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="12">BUAA-OS</a>
+            
+        
             
         
             
@@ -930,7 +930,11 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
             
         
             
+        
+            
             <a href="/tags/#PyTorch" title="PyTorch" rel="2">PyTorch</a>
+            
+        
             
         
             
@@ -940,11 +944,7 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
             
         
             
-        
-            
             <a href="/tags/#BUAA-SE" title="BUAA-SE" rel="4">BUAA-SE</a>
-            
-        
             
         
             
@@ -1284,7 +1284,7 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;,&#34;🍔&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;,&quot;🍔&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1294,6 +1294,21 @@ Part 1 四个基本计数原理加法原理集合S被划分为两两不相交的
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
