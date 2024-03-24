@@ -427,7 +427,7 @@ pre code {
 }
 /* new code for subtitle line height */
 #subdusi {
-  line-height: 8em; /* Adjust this value to increase or decrease the space */
+  line-height: 2em; /* Adjust this value to increase or decrease the space */
 }
 /* Add your new CSS rule here */
 #custom-link {
