@@ -51,6 +51,14 @@
 	font-family: 'Montserrat', sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
+/* new code for subtitle line height */
+#subdusi {
+	line-height: 8em; /* Adjust this value to increase or decrease the space */
+  }
+/* Add your new CSS rule here */
+#custom-link {
+	color: white; /* Replace with your desired color */
+}
 
 /* search */
 #local-search-input{
