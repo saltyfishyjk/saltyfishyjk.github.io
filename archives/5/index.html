@@ -165,14 +165,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -416,9 +416,89 @@
 
     
 
+    
+
+    
+
 
 
 <!-- Main Content -->
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/05/31/「BUAA-OS-Lab5」名词解释/">
+                <h2 class="post-title">
+                    「BUAA OS Lab5」名词解释
+                </h2>
+                <h3 class="post-subtitle">
+                    
+                </h3>
+                <div class="post-content-preview">
+                    「BUAA OS Lab5」名词解释变量和类型Block磁盘块，虚拟概念，将相邻的扇区组合在一起，减小由于扇区过多带来的寻址困难。
+磁盘块控制块
+位置：fs/fsformat.c
+12345struct Block&#123;    uint8_t data[BY2BLK];    uint32_t type;&#125;;
+其中，uint8_t是unsigned char，uint32_t......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by saltyfishyjk on
+                    2022-05-31
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/05/31/「BUAA-OO-Unit-3-HW12」第三单元总结/">
+                <h2 class="post-title">
+                    「BUAA OO Unit 3 HW12」第三单元总结
+                </h2>
+                <h3 class="post-subtitle">
+                    
+                </h3>
+                <div class="post-content-preview">
+                    「BUAA OO Unit 3 HW12」第三单元总结[TOC]
+Part 0 前言值得一提的是，笔者在做作业中探索了适合自己的策略，和大家分享：
+
+首先通览guidebook，了解大致需求以及用到的算法
+实现异常类
+实现一般类中新增的内容，可以用Tricks一节中的插件进行比较快速得知更新内容
+
+
+Part 1 第九次作业1.1 作业要求根据给定JML编写符合要求的在限制复杂度内的Java......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by saltyfishyjk on
+                    2022-05-31
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
 
     
 
@@ -701,81 +781,6 @@ TLB根据虚拟地址查找
 
     
 
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/05/04/「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数/">
-                <h2 class="post-title">
-                    「BUAA Discrete Mathematics Chapter7」递推关系和生成函数
-                </h2>
-                <h3 class="post-subtitle">
-                    
-                </h3>
-                <div class="post-content-preview">
-                    「BUAA Discrete Mathematics Chapter7」递推关系和生成函数Part 0Part 1 生成函数为什么研究生成函数生成函数也叫母函数，研究生成函数是因为其适合求解计数问题。
-一方面，我们将生成函数看作代数对象，用代数手段计算一个问题的可能性的数目；另一方面，生成函数是无限可微分函数的泰勒级数。因此，如果找到这样的函数和它的泰勒级数，那么泰勒级数的系数就给出了问题的......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by saltyfishyjk on
-                    2022-05-04
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/05/02/「BUAA-OO-Unit-2-HW8」第二单元总结/">
-                <h2 class="post-title">
-                    「BUAA OO Unit 2 HW8」第二单元总结
-                </h2>
-                <h3 class="post-subtitle">
-                    
-                </h3>
-                <div class="post-content-preview">
-                    「BUAA OO Unit 2 HW8」第二单元总结Part 0 前言第二单元多线程已经告一段落，本单元中我收获颇丰，在这里再次总结记录。
-本篇博客将分为以下几个部分，读者可自取所需：
-
-Part 1 第五次作业
-Part 2 第六次作业
-Part 3 第七次作业
-Part 4 多线程心得体会
-Part 5 Tricks
-Part 6 展望
-
-其中，为了阅读顺畅，我将对象头、锁和同步以及线程......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by saltyfishyjk on
-                    2022-05-02
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
 
 
 <!-- Pager -->
@@ -837,21 +842,21 @@ Part 6 展望
     <div class="tags">
         
             
-            <a href="/tags/#Java Programming" title="Java Programming" rel="3">Java Programming</a>
-            
         
             
             <a href="/tags/#HexoBlog" title="HexoBlog" rel="2">HexoBlog</a>
             
         
             
-            <a href="/tags/#Tools" title="Tools" rel="35">Tools</a>
+            <a href="/tags/#Tools" title="Tools" rel="36">Tools</a>
+            
+        
+            
+            <a href="/tags/#Java Programming" title="Java Programming" rel="3">Java Programming</a>
             
         
             
             <a href="/tags/#BUAA-OO" title="BUAA-OO" rel="13">BUAA-OO</a>
-            
-        
             
         
             
@@ -871,13 +876,13 @@ Part 6 展望
             
         
             
+            <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="12">BUAA-OS</a>
+            
+        
+            
             <a href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics" rel="5">BUAA Discrete Mathematics</a>
             
         
-            
-        
-            
-            <a href="/tags/#BUAA-OS" title="BUAA-OS" rel="12">BUAA-OS</a>
             
         
             
@@ -897,17 +902,17 @@ Part 6 展望
             
         
             
+            <a href="/tags/#PyTorch" title="PyTorch" rel="2">PyTorch</a>
+            
+        
+            
+        
+            
+        
+            
         
             
             <a href="/tags/#Server" title="Server" rel="5">Server</a>
-            
-        
-            
-        
-            
-        
-            
-            <a href="/tags/#PyTorch" title="PyTorch" rel="2">PyTorch</a>
             
         
             
@@ -938,6 +943,8 @@ Part 6 展望
         
             
         
+            
+            <a href="/tags/#Go" title="Go" rel="2">Go</a>
             
         
     </div>
@@ -1018,6 +1025,14 @@ Part 6 展望
     <ul>
       
         <li>
+          <a href="/2024/04/07/TLS%E7%AC%94%E8%AE%B0/">TLS笔记</a>
+        </li>
+      
+        <li>
+          <a href="/2024/04/05/NSQ%E7%AC%94%E8%AE%B0/">NSQ笔记</a>
+        </li>
+      
+        <li>
           <a href="/2024/02/24/SQL%E7%AC%94%E8%AE%B0/">SQL笔记</a>
         </li>
       
@@ -1027,14 +1042,6 @@ Part 6 展望
       
         <li>
           <a href="/2023/12/24/Spark%E7%AC%94%E8%AE%B0/">Spark笔记</a>
-        </li>
-      
-        <li>
-          <a href="/2023/12/18/Go%E7%AC%94%E8%AE%B0/">Go笔记</a>
-        </li>
-      
-        <li>
-          <a href="/2023/12/02/dnspython-%E7%AC%94%E8%AE%B0/">dnspython 笔记</a>
         </li>
       
     </ul>
@@ -1071,7 +1078,7 @@ Part 6 展望
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li></ul>
     </div>
 
         <hr>
