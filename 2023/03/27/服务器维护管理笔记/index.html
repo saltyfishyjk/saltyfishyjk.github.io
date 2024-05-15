@@ -125,8 +125,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.5k</span> and
-                                Reading Time <span class="post-count">5</span> Minutes
+                                Words <span class="post-count">1.6k</span> and
+                                Reading Time <span class="post-count">6</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -187,13 +187,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -202,6 +195,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -312,6 +312,31 @@
 <p><del>设置用户对其家目录有合适的权限</del></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
 <h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
+<ol>
+<li><p>正常创建用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新指定用户家目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /mnt/data/username username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置仅有该用户拥有家目录的读、写和执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown username:username /mnt/data/username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从原来的家目录拷贝 <code>.bashrc</code> 和 <code>.bash_profile</code> 到新的家目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /home/username/.bashrc /mnt/data/username</span><br><span class="line">cp /home/username/.bash_profile /mnt/data/username</span><br></pre></td></tr></table></figure></li>
+<li><p>设置 SSH 密钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>设置 <code>.ssh</code> 的 SELinux 权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restorecon -v authorized_keys</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可能报错，报错则需要</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcon -v -t ssh_home_t authorized_keys</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /mnt/data/username -m username</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>参考文章：<a href="https://blog.csdn.net/qq_24909089/article/details/81068112" target="_blank" rel="noopener">Linux创建用户并指定目录为根目录</a></p>
