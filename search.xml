@@ -21,7 +21,7 @@
       <link href="/2024/04/05/NSQ%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/04/05/NSQ%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="NSQ笔记"><a href="#NSQ笔记" class="headerlink" title="NSQ笔记"></a>NSQ笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p><a href="https://nsq.io/" target="_blank" rel="noopener">NSQ</a> 是一种实时分布式消息（队列）平台，提供 Go 的官方版本。</p><p>参考资料：</p><ul><li><a href="https://nsq.io/" target="_blank" rel="noopener">NSQ 官网</a></li><li><a href="https://github.com/nsqio/nsq" target="_blank" rel="noopener">NSQ 官方 GitHub</a></li><li><a href="https://nsq.io/overview/quick_start.html" target="_blank" rel="noopener">NSQ 官方快速开始</a></li><li><a href="https://nsq.io/deployment/installing.html" target="_blank" rel="noopener">NSQ 安装</a></li></ul><h2 id="Part-1-服务"><a href="#Part-1-服务" class="headerlink" title="Part 1 服务"></a>Part 1 服务</h2><h3 id="nsqlookupd"><a href="#nsqlookupd" class="headerlink" title="nsqlookupd"></a>nsqlookupd</h3><p>服务发现和协调的守护进程，充当 NSQ 集群中的服务发现机制，允许生产者和消费者发现可用的 NSQ 实例</p><h3 id="nsqd"><a href="#nsqd" class="headerlink" title="nsqd"></a>nsqd</h3><p>NSQ 中的守护进程，负责接收、缓冲、投递和处理消息，是核心组件</p><h3 id="nsqadmin"><a href="#nsqadmin" class="headerlink" title="nsqadmin"></a>nsqadmin</h3><p>监控和管理 NSQ 集群的 web 界面</p><h2 id="Part-2-认证"><a href="#Part-2-认证" class="headerlink" title="Part 2 认证"></a>Part 2 认证</h2>]]></content>
+        <content type="html"><![CDATA[<h1 id="NSQ笔记"><a href="#NSQ笔记" class="headerlink" title="NSQ笔记"></a>NSQ笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p><a href="https://nsq.io/" target="_blank" rel="noopener">NSQ</a> 是一种实时分布式消息（队列）平台，提供 Go 的官方版本。</p><p>参考资料：</p><ul><li><a href="https://nsq.io/" target="_blank" rel="noopener">NSQ 官网</a></li><li><a href="https://github.com/nsqio/nsq" target="_blank" rel="noopener">NSQ 官方 GitHub</a></li><li><a href="https://nsq.io/overview/quick_start.html" target="_blank" rel="noopener">NSQ 官方快速开始</a></li><li><a href="https://nsq.io/deployment/installing.html" target="_blank" rel="noopener">NSQ 安装</a></li></ul><h2 id="Part-1-服务"><a href="#Part-1-服务" class="headerlink" title="Part 1 服务"></a>Part 1 服务</h2><h3 id="nsqlookupd"><a href="#nsqlookupd" class="headerlink" title="nsqlookupd"></a>nsqlookupd</h3><p>服务发现和协调的守护进程，充当 NSQ 集群中的服务发现机制，允许生产者和消费者发现可用的 NSQ 实例</p><h3 id="nsqd"><a href="#nsqd" class="headerlink" title="nsqd"></a>nsqd</h3><p>NSQ 中的守护进程，负责接收、缓冲、投递和处理消息，是核心组件</p><h3 id="nsqadmin"><a href="#nsqadmin" class="headerlink" title="nsqadmin"></a>nsqadmin</h3><p>监控和管理 NSQ 集群的 web 界面</p><h2 id="Part-2-认证"><a href="#Part-2-认证" class="headerlink" title="Part 2 认证"></a>Part 2 认证</h2><h2 id="Part-3-生产者"><a href="#Part-3-生产者" class="headerlink" title="Part 3 生产者"></a>Part 3 生产者</h2><p>生产者客户端：与 NSQD 节点通信，将消息发布到 NSQ 中的 <code>topic</code></p><p>使用 <code>out.config</code> 配置。</p><h2 id="Part-4-消费者"><a href="#Part-4-消费者" class="headerlink" title="Part 4 消费者"></a>Part 4 消费者</h2><p>消费者客户端：订阅 <code>topic</code>  并指定一个 <code>channel</code></p><p>使用 <code>in.config</code> 配置</p><h2 id="Part-5-消息传递流"><a href="#Part-5-消息传递流" class="headerlink" title="Part 5 消息传递流"></a>Part 5 消息传递流</h2><h3 id="生产者发布消息到-topic："><a href="#生产者发布消息到-topic：" class="headerlink" title="生产者发布消息到 topic："></a>生产者发布消息到 <code>topic</code>：</h3><ul><li>生产者将消息发布到特定的 <code>topic</code>。</li><li>例如，一个生产者发布订单消息到 <code>order_topic</code>。</li></ul><h3 id="消费者订阅-topic-和-channel："><a href="#消费者订阅-topic-和-channel：" class="headerlink" title="消费者订阅 topic 和 channel："></a>消费者订阅 <code>topic</code> 和 <code>channel</code>：</h3><ul><li>消费者订阅一个 <code>topic</code>，并指定一个 <code>channel</code>。</li><li>例如，一个消费者订阅 <code>order_topic</code> 的 <code>order_processing_channel</code>。</li></ul><h3 id="消息分发："><a href="#消息分发：" class="headerlink" title="消息分发："></a>消息分发：</h3><ul><li>所有订阅了相同 <code>topic</code> 但不同 <code>channel</code> 的消费者都会各自接收到该 <code>topic</code> 的完整消息副本。</li><li>不同 <code>channel</code> 的消息相互独立，不会互相干扰。</li></ul>]]></content>
       
       
       
@@ -622,9 +622,9 @@
       
         <tags>
             
-            <tag> Java Programming </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> Java Programming </tag>
             
         </tags>
       
@@ -1655,9 +1655,9 @@
       
         <tags>
             
-            <tag> BUAA-OO </tag>
-            
             <tag> Tools </tag>
+            
+            <tag> BUAA-OO </tag>
             
             <tag> Git </tag>
             
