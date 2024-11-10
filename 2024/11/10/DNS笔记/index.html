@@ -121,8 +121,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">90</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">539</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -258,10 +258,35 @@
 
                 <h1 id="DNS笔记"><a href="#DNS笔记" class="headerlink" title="DNS笔记"></a>DNS笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>记录文献中学习到的 DNS 相关基础知识。</p>
 <h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h3 id="DNS-解析参与方"><a href="#DNS-解析参与方" class="headerlink" title="DNS 解析参与方"></a>DNS 解析参与方</h3><h4 id="客户端-DNS-Client-stub-resolver"><a href="#客户端-DNS-Client-stub-resolver" class="headerlink" title="客户端 DNS Client(stub resolver)"></a>客户端 DNS Client(stub resolver)</h4><p>发送一个请求到recursive resolver，使其作为代理代为查询。</p>
-<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>接收从 client 发来的 DNS query，向</p>
-<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="image-20241110220821395.png" alt="image-20241110220821395"></p>
+<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>也叫递归侧/resolver。</p>
+<p>接收从 client 发来的 DNS query，从 Root Nameserver 开始逐级查询。</p>
+<p>四种不同模式：</p>
+<ul>
+<li>标准模式（recursive-only）：递归查询</li>
+<li>转发器（forwarder）：此时 resolver 作为转发器，将 query 转发给上游 recursive resolver，使其代为查询</li>
+<li>条件DNS（condiotional DNS, CDNS）：同时有 recursive 和 forwarder 两种模式，各有一个 DNS namespace 子空间，根据特定域名或客户端 IP 等进行选择性转发<ul>
+<li>CDNS without fallback：没有备用选项，上游 resolver 可能不可用</li>
+<li>CDNS with fallback：当上游 resolver 不可用时，系统使用备用的 resolver 保证请求可以被解析</li>
+</ul>
+</li>
+</ul>
+<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><p>也叫权威侧/Nameserver/Server。</p>
+<h5 id="ROOT"><a href="#ROOT" class="headerlink" title="ROOT"></a>ROOT</h5><p>根服务器，返回参考应答（ref-response），这是一种包含<strong>进一步的指向信息</strong>，而不包含所需的 IP 地址的响应。</p>
+<h5 id="TLD"><a href="#TLD" class="headerlink" title="TLD"></a>TLD</h5><p>Top-Level Domain，如 .com, .net 等，返回 ref-response</p>
+<h5 id="SLD"><a href="#SLD" class="headerlink" title="SLD"></a>SLD</h5><p>Second-Level Domain，如 cnn.com 等，（可能）返回权威应答（auth-response），包含<strong>最终 IP 地址</strong>的权威响应。</p>
+<h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="image-20241110220821395.png" alt="image-20241110220821395"></p>
+<blockquote>
+<p>图源：[Usenix Security ‘24]{ResolverFuzz}: Automated Discovery of {DNS} Resolver Vulnerabilities with {Query-Response} Fuzzing</p>
+</blockquote>
 <ol>
-<li></li>
+<li>Client 发起一个 Client-query $Q$</li>
+<li>Recursive resolver 收到 $Q$，并作为代理，向 ROOT Nameserver 发送 Resolver-query $Q_R$</li>
+<li>ROOT Nameserver 收到 $Q_R$，其根区域文件（root zone）中只包含 TLD 权威服务器的地址，因此向 Recursive resolver 返回一个 ref-response $R_R$，包含 TLD 的 NS 记录以及其 IP 地址</li>
+<li>Recursive resolver 收到 $R_R$ ，向 TLD 发送一个 $Q_R$</li>
+<li>TLD Nameserver 收到 $Q_R$，其 zone file 包含 SLD 的 NS 记录机器 IP 地址，将 $R_R$ 返回</li>
+<li>Recursive resolver 收到 $R_R$，向 SLD 发送一个 $Q_R$</li>
+<li>SLD Nameserver 收到 $Q_R$，其为被查询域名的权威名称服务器，包含具体的 NS 和 对应的 IP 地址，因此返回的是权威响应 $R_A$</li>
+<li>Recursive resolver 收到 $R_A$，包含了域名对应的 IP 地址，递归查询结束，将结果 $R$ 返回给 Client</li>
 </ol>
 
                 
@@ -392,7 +417,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#DNS笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">DNS笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本概念"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS-解析参与方"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">DNS 解析参与方</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#客户端-DNS-Client-stub-resolver"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">客户端 DNS Client(stub resolver)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#（递归）解析器-DNS-Recursive-resolver"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">（递归）解析器 DNS Recursive resolver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#名称服务器-DNS-Nameserver"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">名称服务器 DNS Nameserver</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-解析流程"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 解析流程</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#DNS笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">DNS笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本概念"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS-解析参与方"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">DNS 解析参与方</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#客户端-DNS-Client-stub-resolver"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">客户端 DNS Client(stub resolver)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#（递归）解析器-DNS-Recursive-resolver"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">（递归）解析器 DNS Recursive resolver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#名称服务器-DNS-Nameserver"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">名称服务器 DNS Nameserver</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ROOT"><span class="toc-nav-number">1.2.1.3.1.</span> <span class="toc-nav-text">ROOT</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#TLD"><span class="toc-nav-number">1.2.1.3.2.</span> <span class="toc-nav-text">TLD</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#SLD"><span class="toc-nav-number">1.2.1.3.3.</span> <span class="toc-nav-text">SLD</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-解析流程"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 解析流程</span></a></li></ol></li></ol>
             
           
           </div>
