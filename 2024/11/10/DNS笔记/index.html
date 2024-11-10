@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库 - saltyfishyjk
+          DNS笔记 - saltyfishyjk
         
     </title>
 
-    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/02/17/「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库/">
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2024/11/10/DNS笔记/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,24 +108,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                            
-                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                            
-                              <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                              <a class="tag" href="/tags/#DNS" title="DNS">DNS</a>
                             
                         </div>
-                        <h1>「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库</h1>
+                        <h1>DNS笔记</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by saltyfishyjk on
-                            2022-02-17
+                            2024-11-10
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">360</span> and
+                                Words <span class="post-count">90</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,40 +256,22 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库"><a href="#「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库" class="headerlink" title="「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库"></a>「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在配置学校GitLab的ssh key时遇到一些问题，原因应为曾经配置过GitHub的ssh key，因此在这里记录解决过程。</p>
-<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客及其中给出的其他辅助资料，读者可以在已配置GitHub ssh key的条件下再配置GitLab ssh key</p>
-<h2 id="Part-1-笔者参考的其他博客"><a href="#Part-1-笔者参考的其他博客" class="headerlink" title="Part 1 笔者参考的其他博客"></a>Part 1 笔者参考的其他博客</h2><ol>
-<li><a href="https://www.cnblogs.com/yjlch1016/p/9693567.html" target="_blank" rel="noopener">Git生成多个ssh key</a></li>
-<li><a href="https://blog.csdn.net/felicity294250051/article/details/53606158" target="_blank" rel="noopener">Git 【基于SSH协议clone GitHub远端仓库到本地】</a></li>
+                <h1 id="DNS笔记"><a href="#DNS笔记" class="headerlink" title="DNS笔记"></a>DNS笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>记录文献中学习到的 DNS 相关基础知识。</p>
+<h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h3 id="DNS-解析参与方"><a href="#DNS-解析参与方" class="headerlink" title="DNS 解析参与方"></a>DNS 解析参与方</h3><h4 id="客户端-DNS-Client-stub-resolver"><a href="#客户端-DNS-Client-stub-resolver" class="headerlink" title="客户端 DNS Client(stub resolver)"></a>客户端 DNS Client(stub resolver)</h4><p>发送一个请求到recursive resolver，使其作为代理代为查询。</p>
+<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>接收从 client 发来的 DNS query，向</p>
+<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="image-20241110220821395.png" alt="image-20241110220821395"></p>
+<ol>
+<li></li>
 </ol>
-<h2 id="Part-2-具体步骤"><a href="#Part-2-具体步骤" class="headerlink" title="Part 2 具体步骤"></a>Part 2 具体步骤</h2><h3 id="生成新的ssh-key"><a href="#生成新的ssh-key" class="headerlink" title="生成新的ssh key"></a>生成新的ssh key</h3><ol>
-<li>打开<code>git bash</code></li>
-<li>执行命令<code>cd ~/.ssh</code></li>
-<li>执行命令<code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></li>
-<li>输入存储该ssh key的文件名</li>
-<li>一直回车（除非有安全性要求，但对本课程应该不需要）</li>
-</ol>
-<h3 id="添加密钥到SSH-Agent"><a href="#添加密钥到SSH-Agent" class="headerlink" title="添加密钥到SSH Agent"></a>添加密钥到SSH Agent</h3><ol>
-<li>执行命令<code>eval &quot;$(ssh-agent -s)&quot;</code></li>
-<li>执行命令<code>ssh-add ~/.ssh/id_rsa</code>（id_rsa应当和上一步4中输入的存储ssh key的文件名相同）</li>
-</ol>
-<h3 id="创建config"><a href="#创建config" class="headerlink" title="创建config"></a>创建config</h3><p>具体配置方法参考博客<a href="https://www.cnblogs.com/yjlch1016/p/9693567.html" target="_blank" rel="noopener">Git生成多个ssh key</a></p>
-<h3 id="在GitLab填入公钥"><a href="#在GitLab填入公钥" class="headerlink" title="在GitLab填入公钥"></a>在GitLab填入公钥</h3><p>复制<code>id_rsa.pub</code>文件全部内容即可</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>执行命令<code>ssh -T git@gitlab.com</code></p>
-<h3 id="Part-3-其他问题"><a href="#Part-3-其他问题" class="headerlink" title="Part 3 其他问题"></a>Part 3 其他问题</h3><p>笔者发现每次打开git bash都需要执行命令<code>eval &quot;$(ssh-agent -s)&quot;</code>和<code>ssh-add ~/.ssh/id_rsa</code>以不输入密码，目前还没有找到合适的方法避免这种情况，如果找到将会在这里更新。</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2022/02/26/「BUAA-OO-Pre」-Pre-2总结回顾概览/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」 Pre 2总结回顾概览">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2022/02/16/「BUAA-OO-Pre」-切换Java版本到OO课程要求版本/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」 切换Java版本到OO课程要求版本">Next Post &rarr;</a>
+                        <a href="/2024/04/07/TLS笔记/" data-toggle="tooltip" data-placement="top" title="TLS笔记">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -374,7 +352,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Thu Feb 17 2022 16:54:48 GMT+0800', // optional
+    id: 'Sun Nov 10 2024 21:18:47 GMT+0800', // optional
     owner: "saltyfishyjk",
     repo: "saltyfishyjk.github.io",
     oauth: {
@@ -414,7 +392,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#「BUAA-OO-Pre」Git生成多个ssh-key并连接GitLab仓库"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Pre」Git生成多个ssh key并连接GitLab仓库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#写作背景"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#定位"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-笔者参考的其他博客"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的其他博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-具体步骤"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 具体步骤</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成新的ssh-key"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">生成新的ssh key</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#添加密钥到SSH-Agent"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">添加密钥到SSH Agent</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建config"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">创建config</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在GitLab填入公钥"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">在GitLab填入公钥</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#测试"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Part-3-其他问题"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">Part 3 其他问题</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#DNS笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">DNS笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-前言"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-基本概念"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS-解析参与方"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">DNS 解析参与方</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#客户端-DNS-Client-stub-resolver"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">客户端 DNS Client(stub resolver)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#（递归）解析器-DNS-Recursive-resolver"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">（递归）解析器 DNS Recursive resolver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#名称服务器-DNS-Nameserver"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">名称服务器 DNS Nameserver</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-解析流程"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 解析流程</span></a></li></ol></li></ol>
             
           
           </div>
@@ -436,11 +414,7 @@ const gitment = new Gitment({
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
-                        
-                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
-                        
-                          <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                          <a class="tag" href="/tags/#DNS" title="DNS">DNS</a>
                         
                     </div>
                 </section>

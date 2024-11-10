@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>DNS笔记</title>
+      <link href="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/"/>
+      <url>/2024/11/10/DNS%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="DNS笔记"><a href="#DNS笔记" class="headerlink" title="DNS笔记"></a>DNS笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>记录文献中学习到的 DNS 相关基础知识。</p><h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h3 id="DNS-解析参与方"><a href="#DNS-解析参与方" class="headerlink" title="DNS 解析参与方"></a>DNS 解析参与方</h3><h4 id="客户端-DNS-Client-stub-resolver"><a href="#客户端-DNS-Client-stub-resolver" class="headerlink" title="客户端 DNS Client(stub resolver)"></a>客户端 DNS Client(stub resolver)</h4><p>发送一个请求到recursive resolver，使其作为代理代为查询。</p><h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>接收从 client 发来的 DNS query，向</p><h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="image-20241110220821395.png" alt="image-20241110220821395"></p><ol><li></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> DNS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TLS笔记</title>
       <link href="/2024/04/07/TLS%E7%AC%94%E8%AE%B0/"/>
       <url>/2024/04/07/TLS%E7%AC%94%E8%AE%B0/</url>
@@ -622,9 +641,9 @@
       
         <tags>
             
-            <tag> Tools </tag>
-            
             <tag> Java Programming </tag>
+            
+            <tag> Tools </tag>
             
         </tags>
       
@@ -1655,9 +1674,9 @@
       
         <tags>
             
-            <tag> Tools </tag>
-            
             <tag> BUAA-OO </tag>
+            
+            <tag> Tools </tag>
             
             <tag> Git </tag>
             
