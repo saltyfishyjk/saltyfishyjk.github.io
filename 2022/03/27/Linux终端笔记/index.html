@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.9k</span> and
+                                Words <span class="post-count">2k</span> and
                                 Reading Time <span class="post-count">7</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -185,14 +185,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -345,8 +345,16 @@
 </div>
 <h3 id="ln"><a href="#ln" class="headerlink" title="ln"></a><code>ln</code></h3><p>用于创建软链接。</p>
 <ul>
-<li><code>ln -s [源文件或目录] [目标文件或目录]</code>：创建软链接</li>
-<li><code>rm -rf [软链接名称]</code>：删除软链接</li>
+<li><p><code>ln -s [源文件或目录] [目标文件或目录]</code>：创建软链接    </p>
+<ul>
+<li>e.g. 想要在<code>/home/user_name</code>下创建目录<code>data</code>，使得<code>cd /home/user_name/data</code>等价于<code>cd /mnt/data/user_name</code>，需要<code>ln -s /mnt/data/user_name /home/user_name/data</code>，其中，不需要事先创建<code>/home/user_name/data</code>目录<ul>
+<li>注意，这个命令中的目录结尾都不要加<code>/</code>，即，<code>/mnt/data/user_name</code>是正确的，而<code>/mnt/data/user_name/</code>是<strong>错误的</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>rm -rf [软链接名称]</code>：删除软链接</p>
+</li>
 </ul>
 <h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a><code>scp</code></h3><p>secure copy protocol，允许用户在两个主机之间传输数据</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [选项] &lt;file_source&gt; &lt;file_target&gt;</span><br></pre></td></tr></table></figure>
