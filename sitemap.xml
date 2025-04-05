@@ -943,13 +943,6 @@
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
-    <lastmod>2025-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://saltyfishyjk.github.io/tags/BUAA-Discrete-Mathematics/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -958,6 +951,13 @@
   
   <url>
     <loc>https://saltyfishyjk.github.io/tags/Pytorch/</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1076,13 +1076,6 @@
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/BUAA-Computer-Network-Experiment/</loc>
-    <lastmod>2025-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://saltyfishyjk.github.io/tags/CS231n/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -1098,6 +1091,13 @@
   
   <url>
     <loc>https://saltyfishyjk.github.io/tags/Machine-Learning/</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://saltyfishyjk.github.io/tags/BUAA-Computer-Network-Experiment/</loc>
     <lastmod>2025-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
