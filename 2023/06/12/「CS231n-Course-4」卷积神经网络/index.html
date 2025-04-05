@@ -263,7 +263,7 @@
 
                 <h1 id="「CS231n-Course-4」卷积神经网络"><a href="#「CS231n-Course-4」卷积神经网络" class="headerlink" title="「CS231n Course 4」卷积神经网络"></a>「CS231n Course 4」卷积神经网络</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p>
 <ul>
-<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5/?p=16&vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 5.1 卷积和池化</a></li>
+<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5/?p=16&amp;vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 5.1 卷积和池化</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/22038289?refer=intelligentunit">知乎 卷积神经网络笔记</a></li>
 <li><a href="https://cs231n.github.io/convolutional-networks/">CS231n Convolutional Neural Networks Note(official)</a></li>
 <li><a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/cifar10.html">浏览器中运行的CNN demo</a></li>
@@ -271,7 +271,7 @@
 <h2 id="Part-1-卷积神经网络概述"><a href="#Part-1-卷积神经网络概述" class="headerlink" title="Part 1 卷积神经网络概述"></a>Part 1 卷积神经网络概述</h2><p>卷积神经网络（Convolutional Neural Network, CNN）和上一章中讲述的神经网络非常相似：由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元得到一些输入，进行内积运算（dot product）再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。再最后一层（往往是全连接层），网络依旧有一个损失函数（如SVM或Softmax），并且在神经网络中实现的各种技巧和要点依旧适用于卷积神经网络。</p>
 <h3 id="CNN和NN相比的变化"><a href="#CNN和NN相比的变化" class="headerlink" title="CNN和NN相比的变化"></a>CNN和NN相比的变化</h3><p>CNN的结构基于一个假设：输入数据是图像。基于该假设，CNN向结构中添加了一些特有的性质，使得前向传播函数（forward function）更加高效，并且可以大幅降低网络中参数的数量。</p>
 <h3 id="结构概述"><a href="#结构概述" class="headerlink" title="结构概述"></a>结构概述</h3><h4 id="回顾：常规神经网络（Regular-Neural-Network但不是RNN）"><a href="#回顾：常规神经网络（Regular-Neural-Network但不是RNN）" class="headerlink" title="回顾：常规神经网络（Regular Neural Network但不是RNN）"></a>回顾：常规神经网络（Regular Neural Network<del>但不是RNN</del>）</h4><p>在上一章中，神经网络的输入是一个向量，然后在一系列隐层中对其做变换。其中，每个隐层是由若干神经元组成的，每个神经元都与前一层中的所有神经元连接（全连接）。但是在一个隐层中，神经元相互独立而不进行任何连接。最后的全连接层被称为”输出层“，在分类问题中，输出值被看作是不同类别的评分值。</p>
-<h4 id="常规神经网络对于大尺寸图像的效果不尽如人意"><a href="#常规神经网络对于大尺寸图像的效果不尽如人意" class="headerlink" title="常规神经网络对于大尺寸图像的效果不尽如人意"></a>常规神经网络对于大尺寸图像的效果不尽如人意</h4><p>观察常规神经网络的工作，其将图像（如CIFAR10中的 $32 \times 32 \times 3$ ，表示宽和高为 $32$ 个像素，$3$ 个颜色通道）展开为一个列向量，那么每一个全连接神经元就包含 $32 \times 32 \times 3&#x3D;3072$ 个权重，这个数量级目前看来还好。但是如果图像尺寸更大，如 $200 \times 200 \times 3$ ，那么神经元就会包含 $200 \times 200 \times 3&#x3D;120,000$ 个权重值，而网络中不止包含一个神经元，所以网络的参数量会快速膨胀。由此也可以发现，全连接结构不适合更大尺寸的图像，这种全连接的方式效率低下，参数量过大也很快会导致网络过拟合。</p>
+<h4 id="常规神经网络对于大尺寸图像的效果不尽如人意"><a href="#常规神经网络对于大尺寸图像的效果不尽如人意" class="headerlink" title="常规神经网络对于大尺寸图像的效果不尽如人意"></a>常规神经网络对于大尺寸图像的效果不尽如人意</h4><p>观察常规神经网络的工作，其将图像（如CIFAR10中的 $32 \times 32 \times 3$ ，表示宽和高为 $32$ 个像素，$3$ 个颜色通道）展开为一个列向量，那么每一个全连接神经元就包含 $32 \times 32 \times 3=3072$ 个权重，这个数量级目前看来还好。但是如果图像尺寸更大，如 $200 \times 200 \times 3$ ，那么神经元就会包含 $200 \times 200 \times 3=120,000$ 个权重值，而网络中不止包含一个神经元，所以网络的参数量会快速膨胀。由此也可以发现，全连接结构不适合更大尺寸的图像，这种全连接的方式效率低下，参数量过大也很快会导致网络过拟合。</p>
 <h4 id="神经元的三维排列"><a href="#神经元的三维排列" class="headerlink" title="神经元的三维排列"></a>神经元的三维排列</h4><p>CNN针对输入全部是图像的情况，将结构调整地更加合理，获得了不小的优势。</p>
 <p>与常规神经网络不同，CNN中的各层的神经元是3维排列的：<strong>宽度</strong>、<strong>高度</strong>和<strong>深度</strong>（此处的深度是指激活数据体（activation volume）的三个维度，不是神经网络的深度，整个网络的深度指的是网络的层数）。</p>
 <p>举例而言，CIFAR-10中的图像是CNN的输入，该数据体（volume）的维度是 $32 \times 32 \times 3$ （宽度7高度和深度）。可以看到，层中的神经元只与前一层中的一小块区域连接，而非全连接，因为在CNN的最后部分会将全尺寸的图像压缩为包含分类评分的一个向量，向量是在深度方向排列的。</p>
@@ -330,20 +330,20 @@
 <li>有的层有额外的超参数，有的没有（卷积层、全连接层和池化层有，ReLU层没有）</li>
 </ul>
 <p>一个CNN激活输出demo：</p>
-<p><img src="/2023/06/12/%E3%80%8CCS231n-Course-4%E3%80%8D%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/CNN_demo.jpeg" alt="CNN_demo"></p>
+<p><img src="CNN_demo.jpeg" alt="CNN_demo"></p>
 <p>在这个例子中，左边的输入层存有原始图像像素，右边的输出层存有类别分类评分。在处理流程中，每个激活数据体是铺成一列来展示的。</p>
 <hr>
 <h3 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h3><p>卷积层是构建CNN的核心层，它产生了网络中大部分的计算量。</p>
-<h4 id="概述和直观介绍"><a href="#概述和直观介绍" class="headerlink" title="概述和直观介绍"></a>概述和直观介绍</h4><p>卷积层的参数是由一些<strong>可学习的（learnable）<strong>卷积核的</strong>集合</strong>构成的。每个卷积核（filter）在空间上（宽度和高度，width and height）都比较小，但是深度和输入数据一致。</p>
+<h4 id="概述和直观介绍"><a href="#概述和直观介绍" class="headerlink" title="概述和直观介绍"></a>概述和直观介绍</h4><p>卷积层的参数是由一些<strong>可学习的（learnable）</strong>卷积核的<strong>集合</strong>构成的。每个卷积核（filter）在空间上（宽度和高度，width and height）都比较小，但是深度和输入数据一致。</p>
 <p>举例来说，CNN第一层的一个典型卷积核的尺寸可以是 $5 \times 5 \times 3$ （宽度和高度是 $5$ 像素，深度是 $3$ 是因为图像的深度是 $3$，即颜色通道）。在前向传播（forward pass）的时候，让每个卷积核在输入数据的宽度和高度上滑动（更精确地说是<strong>卷积（convolve）</strong>），然后计算卷积核和输入数据任一处的内积。当卷积核沿着输入数据的宽度和高度滑过后，会生成一个 <strong>2 维</strong> 的激活图（activation map），激活图给出了每个空间位置处的卷积核的反应（response）。直观地说，网络会让卷积核学习到当其看到某些类型的视觉特征时就激活，具体的视觉特征可能是某些方位上的边界，或者在第一层上某些颜色的半点，甚至可以是网络更高层上的蜂巢状或者车轮状图案。</p>
 <p>在每个卷积层上，会有一整个集合的卷积核（如 $12$ 个），每个都会生成一个不同的二维激活图（$2$ D activation map）。将这些激活映射在深度方向上层叠起来就生成了输出数据。</p>
 <h4 id="以大脑比喻的视角"><a href="#以大脑比喻的视角" class="headerlink" title="以大脑比喻的视角"></a>以大脑比喻的视角</h4><p>输出的 3D 数据中的每个数据项可以被看作是神经元的一个输出，而这个神经元只观察输入数据的一小部分，并且和空间上左右两边的所有神经元共享参数（因为这些数字都是使用同一个卷积核得到的结果）。现在讨论神经元的连接、他们在空间中的排列以及他们参数共享的模式。</p>
 <h4 id="局部连接"><a href="#局部连接" class="headerlink" title="局部连接"></a>局部连接</h4><p>处理图像这类高纬度输入时，让每个神经元都与前一层中的所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接，该连接（connectivity）的空间大小叫做神经元的<strong>感受野（receptive field）</strong>，它的尺寸是一个超参数（其实就是卷积核的空间尺寸）。在深度方向上，这个连接的大小总是和输入量的深度相等。</p>
 <p>再次强调，我们对待空间维度（宽和高）与深度维度是不同的：连接在空间（宽和高）上是局部的，但是在深度上总是和输入数据的深度一致。</p>
 <p><strong>e.g.1</strong></p>
-<p>假设输入数据的尺寸是 $[32 \times 32 \times 3]$ （如CIFAR-10的RGB图像）；如果感受野（或卷积核尺寸）是 $5 \times 5$ ，那么卷积层中的每个每个神经元会有输入数据体中 $[5 \times 5 \times 3]$ 区域的权重，共 $5 \times 5 \times 3&#x3D;75$ 个权重（还要再加一个偏差参数 bias parameter）。这个连接在深度维度上的大小必须为 $3$ ，这是和输入数据体的深度保持一致。</p>
+<p>假设输入数据的尺寸是 $[32 \times 32 \times 3]$ （如CIFAR-10的RGB图像）；如果感受野（或卷积核尺寸）是 $5 \times 5$ ，那么卷积层中的每个每个神经元会有输入数据体中 $[5 \times 5 \times 3]$ 区域的权重，共 $5 \times 5 \times 3=75$ 个权重（还要再加一个偏差参数 bias parameter）。这个连接在深度维度上的大小必须为 $3$ ，这是和输入数据体的深度保持一致。</p>
 <p><strong>e.g.2</strong></p>
-<p>假设输入数据体的尺寸是 $[16 \times 16 \times 20]$，感受野尺寸是 $3 \times 3$，那么卷积层中每个神经元和输入数据体有 $3\times 3\times 20&#x3D;180$ 个连接。</p>
+<p>假设输入数据体的尺寸是 $[16 \times 16 \times 20]$，感受野尺寸是 $3 \times 3$，那么卷积层中每个神经元和输入数据体有 $3\times 3\times 20=180$ 个连接。</p>
 <blockquote>
 <p>在空间上连接是局部的，但是在深度上是和输入数据体一致的</p>
 </blockquote>
@@ -781,7 +781,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -791,6 +791,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -258,12 +258,11 @@
                 post-container">
 
                 <h1 id="Gitment评论区配置与使用"><a href="#Gitment评论区配置与使用" class="headerlink" title="Gitment评论区配置与使用"></a>Gitment评论区配置与使用</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>为了进一步丰富本博客的功能，笔者依托Gitment配置了评论区。</p>
-<p>若您希望得知怎样在<strong>Hexo+Snail主题</strong>下配置Gitment评论区，请阅读**Part 1 <strong>；若您希望能够在本博客文章下使用评论区，请跳过Part1直接阅读</strong>Part 2 **。</p>
+<p>若您希望得知怎样在<strong>Hexo+Snail主题</strong>下配置Gitment评论区，请阅读<strong>Part 1 </strong>；若您希望能够在本博客文章下使用评论区，请跳过Part1直接阅读<strong>Part 2 </strong>。</p>
 <h2 id="Part-1-配置Gitment"><a href="#Part-1-配置Gitment" class="headerlink" title="Part 1 配置Gitment"></a>Part 1 配置Gitment</h2><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://imsun.net/posts/gitment-introduction/">Gitment：使用 GitHub Issues 搭建评论系统(官方文档)</a></p>
 <h3 id="Step-1-注册OAuth-Application"><a href="#Step-1-注册OAuth-Application" class="headerlink" title="Step 1 注册OAuth Application"></a>Step 1 注册OAuth Application</h3><p>参考<a href="https://imsun.net/posts/gitment-introduction/">Gitment：使用 GitHub Issues 搭建评论系统(官方文档)</a>和<a href="https://www.jianshu.com/p/ac7658cc912f">Hexo博客集成Gitment评论</a>这两篇博客</p>
 <h3 id="Step-2-修改-config-yml"><a href="#Step-2-修改-config-yml" class="headerlink" title="Step 2 修改_config.yml"></a>Step 2 修改<code>_config.yml</code></h3><p>以本博客为例，修改配置文件如下内容，注意空格不能省略。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comment:</span></span><br><span class="line">  <span class="attr">gitment:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">owner:</span> <span class="string">saltyfishyjk</span></span><br><span class="line">    <span class="attr">repo:</span> <span class="string">saltyfishyjk.github.io</span></span><br><span class="line">    <span class="attr">client_id:</span> [<span class="string">client_id</span>]</span><br><span class="line">    <span class="attr">client_secret:</span> [<span class="string">client_secret</span>]</span><br></pre></td></tr></table></figure>
-
 <h3 id="Step-3-重启"><a href="#Step-3-重启" class="headerlink" title="Step 3 重启"></a>Step 3 重启</h3><p>使用<code>hexo clean</code>和<code>hexo g -d</code>以使配置生效。</p>
 <p>至此，Gitment已经配置完毕，你可能会发现此时在评论区log in会卡住，对此的解决办法请您继续阅读Part 2。 </p>
 <h2 id="Part-2-使用Gitment"><a href="#Part-2-使用Gitment" class="headerlink" title="Part 2 使用Gitment"></a>Part 2 使用Gitment</h2><p>由于一些因素，本博客的Gitment需要读者在自己的浏览器做少许配置操作才会可用，以下以Chrome浏览器为例介绍相应办法。</p>
@@ -271,14 +270,8 @@
 <p>此时可能会卡住logging in的位置，这是正常现象。</p>
 <h3 id="Step-2-激活Gitment"><a href="#Step-2-激活Gitment" class="headerlink" title="Step 2 激活Gitment"></a>Step 2 激活Gitment</h3><p>F12进入开发者模式，点击<code>console</code>进入终端，点击其中报错信息为<font color=red> POST</font>，报错代码为403，URL大致为<code>https://cors-anywhere...</code>的URL，如下图中第二个报错信息。</p>
 <img src="/2022/04/12/Gitment%E8%AF%84%E8%AE%BA%E5%8C%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/image-20220412194621218.png" class="" title="p2">
-
-
-
 <p>随后会进入如下图页面，点击<code>Request temporary access to the demo server</code>按钮，即可正常使用Gitment评论区。</p>
 <img src="/2022/04/12/Gitment%E8%AF%84%E8%AE%BA%E5%8C%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/image-20220412194913904.png" class="" title="p2">
-
-
-
 <h2 id="Part-3-后记"><a href="#Part-3-后记" class="headerlink" title="Part 3 后记"></a>Part 3 后记</h2><p>似乎由于开发者不再支持Gitment，导致读者需要自己进行Part2中若干操作，笔者感到很不好意思，未来会寻找替代办法。如果您有任何更好的评论区方案，欢迎留言。</p>
 
                 
@@ -680,7 +673,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -690,6 +683,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

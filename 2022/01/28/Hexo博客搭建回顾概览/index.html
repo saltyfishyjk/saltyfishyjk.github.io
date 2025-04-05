@@ -269,7 +269,7 @@
 <li>一些较详细的指导搭建博客链接</li>
 <li>基于第2条中的搭建博客链接的一些补充</li>
 <li>包括链接博客内容在内的搭建博客所需的充分知识</li>
-<li>依照本博客给出的方法搭建出类似<a href="https://saltyfishyjk.github.io/">本博客</a>的个人博客</li>
+<li>依照本博客给出的方法搭建出类似<a href="https://saltyfishyjk.github.io">本博客</a>的个人博客</li>
 </ol>
 <h4 id="您在这里无法期望获得："><a href="#您在这里无法期望获得：" class="headerlink" title="您在这里无法期望获得："></a>您在这里无法期望获得：</h4><ol>
 <li>应用到的技术的深层原理</li>
@@ -318,7 +318,6 @@
 </blockquote>
 <h5 id="Typora-Hexo"><a href="#Typora-Hexo" class="headerlink" title="Typora + Hexo"></a>Typora + Hexo</h5><p>通过在博客 markdown 文档开头的 YAML 格式元数据中增加一行形如下的内容，可以设置该文档在本地的根 URL，从而引用图片时可以省略 <code>./2023-05-11-「BUAA-Computer-Network-Experiment」Notes</code> ，将图片保存在该目录下（此处需要辅以 Typora 设置图床目录为<code>./$&#123;filename&#125;</code>），直接在<code>()</code>中写图片文件名即可，可以做到 Typora 和博客网页中都能看到图片而不用做额外的修改。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">typora-root-url:</span> <span class="string">./2023-05-11-「BUAA-Computer-Network-Experiment」Notes</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-4-使用过程踩坑"><a href="#Part-4-使用过程踩坑" class="headerlink" title="Part 4 使用过程踩坑"></a>Part 4 使用过程踩坑</h2><p>在使用过程中，笔者陆续遇到若干问题，在这里记录问题和解决办法。</p>
 <h3 id="FATAL-Port-4000-has-been-used-Try-other-port-instead"><a href="#FATAL-Port-4000-has-been-used-Try-other-port-instead" class="headerlink" title="FATAL Port 4000 has been used. Try other port instead"></a><code>FATAL Port 4000 has been used. Try other port instead</code></h3><p>执行 <code>hexo s</code> 的时候遇到了提示 <code>FATAL Port 4000 has been used. Try other port instead</code>，即，4000端口被调用。</p>
 <p>网络上一些办法是找到占用4000端口的进程并杀掉，其实不必如此大费周章，在调用<code>hexo s</code>时加上参数<code>-p 4001</code>即<code>hexo s -p 4001</code>即可使用4001端口，避免了4000端口被占用的问题。</p>
@@ -329,13 +328,10 @@
 <h3 id="安装mathjax"><a href="#安装mathjax" class="headerlink" title="安装mathjax"></a>安装mathjax</h3><p><code>npm install hexo-renderer-mathjax --save</code></p>
 <h3 id="更新mathjax的CDN标签"><a href="#更新mathjax的CDN标签" class="headerlink" title="更新mathjax的CDN标签"></a>更新mathjax的CDN标签</h3><p>打开 <code>node_modules/hexo-renderer-mathjax/mathjax.html</code>, 修改 <code>&lt;scripts&gt;</code> 标签</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改<code>_config.yml</code></h3><p>找到<code>math</code>配置并更改为以下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="修改博客开头"><a href="#修改博客开头" class="headerlink" title="修改博客开头"></a>修改博客开头</h3><p>博客文章的开头加入<code>mathjax:true</code>，具体如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title<span class="punctuation">:</span> Hexo博客搭建回顾概览</span><br><span class="line">date<span class="punctuation">:</span> <span class="number">2022</span><span class="number">-01</span><span class="number">-28</span> <span class="number">11</span><span class="punctuation">:</span><span class="number">33</span><span class="punctuation">:</span><span class="number">04</span></span><br><span class="line">mathjax<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
 <p>到此为止即配置完成。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
 <li><a href="https://www.dusign.net/2019/10/14/Hexo-Configuration/">Super Snail提供的Mathjax支持攻略</a></li>
@@ -747,7 +743,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -757,6 +753,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

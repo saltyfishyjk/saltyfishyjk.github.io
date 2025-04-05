@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">525</span> and
+                                Words <span class="post-count">523</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,12 +260,12 @@
                 <h1 id="PC生产力工具最佳解决方案"><a href="#PC生产力工具最佳解决方案" class="headerlink" title="PC生产力工具最佳解决方案"></a>PC生产力工具最佳解决方案</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>工欲善其事，必先利其器。这里记录个人的PC生产力工具最佳解决方案。如果没有特殊说明，均指Windows（10）平台下的软件。</p>
 <h2 id="Part-1-代码相关"><a href="#Part-1-代码相关" class="headerlink" title="Part 1 代码相关"></a>Part 1 代码相关</h2><h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><p>强大的编辑器，启动迅速，拥有丰富的插件生态。</p>
 <h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p>神。</p>
-<h3 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h3><p>GitHub Desktop + 代理 &#x3D; 最佳解决方案，完美解决不定时出现的git bash中pull和push失败的情况（笔者感觉可能是没有使用默认的网络通道，而是真正走了代理，所以速度很快），薄纱修改hosts等大众方法。</p>
+<h3 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h3><p>GitHub Desktop + 代理 = 最佳解决方案，完美解决不定时出现的git bash中pull和push失败的情况（笔者感觉可能是没有使用默认的网络通道，而是真正走了代理，所以速度很快），薄纱修改hosts等大众方法。</p>
 <h3 id="NewBing"><a href="#NewBing" class="headerlink" title="NewBing"></a>NewBing</h3><p><del>不用美国手机号，太好了</del></p>
 <p>适合读文献（edge打开PDF然后用bing侧栏）和检索。</p>
 <h3 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT"></a>ChatGPT</h3><p>真香。</p>
 <h3 id="Clash"><a href="#Clash" class="headerlink" title="Clash"></a>Clash</h3><p>优秀的代理软件，不过偶尔可能会出现7890端口被占用的情况，重启电脑即可。</p>
-<h3 id="IDEA-PyCharm-CLion"><a href="#IDEA-PyCharm-CLion" class="headerlink" title="IDEA, PyCharm, CLion"></a>IDEA, PyCharm, CLion</h3><p>分别是 Java, Python, C&#x2F;C++ 的优秀 IDE，使用起来非常舒服。</p>
+<h3 id="IDEA-PyCharm-CLion"><a href="#IDEA-PyCharm-CLion" class="headerlink" title="IDEA, PyCharm, CLion"></a>IDEA, PyCharm, CLion</h3><p>分别是 Java, Python, C/C++ 的优秀 IDE，使用起来非常舒服。</p>
 <h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><p>最佳 Python 环境管理器。</p>
 <h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><p>优秀的记事本工具，适合将文档和代码块一起保存，最大优点在于代码可运行。</p>
 <h2 id="Part-2-非代码相关"><a href="#Part-2-非代码相关" class="headerlink" title="Part 2 非代码相关"></a>Part 2 非代码相关</h2><h3 id="PotPlayer"><a href="#PotPlayer" class="headerlink" title="PotPlayer"></a>PotPlayer</h3><p>强大、快速、无广告的视频播放器。</p>
@@ -678,7 +678,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -688,6 +688,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

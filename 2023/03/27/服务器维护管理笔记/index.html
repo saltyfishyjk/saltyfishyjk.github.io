@@ -265,7 +265,7 @@
 <p>本博客初稿的背景是2023敏捷软件工程课程，无特殊说明时，以下以此为背景。</p>
 <h2 id="Part-1-服务器选购"><a href="#Part-1-服务器选购" class="headerlink" title="Part 1 服务器选购"></a>Part 1 服务器选购</h2><h3 id="厂商"><a href="#厂商" class="headerlink" title="厂商"></a>厂商</h3><p>课程组提供了500元额度的经费，我们结合服务器租用、域名租用、DNS解析等服务最终选择了腾讯云这一高性价比厂商（不过还是得通过新人优惠才便宜）。</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>这里主要借用一下<a href="https://www.buaaase.com/tasks/teamwork/devops">课程组的图</a>，方便快速锚定配置范围：</p>
-<p><img src="/2023/03/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/image-20230328221814986.png" alt="image-20230328221814986"></p>
+<p><img src="image-20230328221814986.png" alt="image-20230328221814986"></p>
 <p>也可以参考文章：<a href="https://zhuanlan.zhihu.com/p/447914035">如何选择云服务器配置？</a></p>
 <h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>参考资料：</p>
 <ul>
@@ -294,7 +294,7 @@
 <h2 id="Part-4-NPM"><a href="#Part-4-NPM" class="headerlink" title="Part 4 NPM"></a>Part 4 NPM</h2><p>避免直接使用<code>apt-get</code>安装nodejs，而采用NPM进行nodejs环境管理</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考资料：</p>
 <ul>
-<li><a href="https://cloud.tencent.com/developer/article/1592229?from=article.detail.1772306&areaSource=106000.19&traceId=Tzg7WzbTDqDCL4Uv-k_8N">ubuntu16.04安装node.js、npm</a>：有用，照着来就行，对Ubuntu20.04也适用</li>
+<li><a href="https://cloud.tencent.com/developer/article/1592229?from=article.detail.1772306&amp;areaSource=106000.19&amp;traceId=Tzg7WzbTDqDCL4Uv-k_8N">ubuntu16.04安装node.js、npm</a>：有用，照着来就行，对Ubuntu20.04也适用</li>
 </ul>
 <h2 id="Part-5-Vue"><a href="#Part-5-Vue" class="headerlink" title="Part 5 Vue"></a>Part 5 Vue</h2><h2 id="Part-6-Django"><a href="#Part-6-Django" class="headerlink" title="Part 6 Django"></a>Part 6 Django</h2><h2 id="Part-7-腾讯云与Ubuntu"><a href="#Part-7-腾讯云与Ubuntu" class="headerlink" title="Part 7 腾讯云与Ubuntu"></a>Part 7 腾讯云与Ubuntu</h2><h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><p>使用<code>ed25519</code>算法生成密钥</p>
 <p>参考资料：</p>
@@ -308,13 +308,10 @@
 </blockquote>
 <h3 id="创建用户账户"><a href="#创建用户账户" class="headerlink" title="创建用户账户"></a>创建用户账户</h3><h4 id="默认方式创建用户"><a href="#默认方式创建用户" class="headerlink" title="默认方式创建用户"></a>默认方式创建用户</h4><p>创建名为 <code>username</code> 的账户，家目录为默认目录（多数为<code>/home/username</code>），需要根据提示设置用户密码（不能包含用户名）等信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser username</span><br></pre></td></tr></table></figure>
-
 <h4 id="指定家目录位置创建用户"><a href="#指定家目录位置创建用户" class="headerlink" title="指定家目录位置创建用户"></a>指定家目录位置创建用户</h4><h5 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --home /mnt/data/username username</span><br></pre></td></tr></table></figure>
-
 <p><del>设置用户对其家目录有合适的权限</del></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
-
 <h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
 <ol>
 <li><p>正常创建用户</p>
@@ -330,46 +327,38 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /home/username/.bashrc /mnt/data/username</span><br><span class="line">cp /home/username/.bash_profile /mnt/data/username</span><br></pre></td></tr></table></figure></li>
 <li><p>设置 SSH 密钥</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-
 </li>
+</ol>
+<ol>
 <li><p>设置 <code>.ssh</code> 的 SELinux 权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restorecon -v authorized_keys</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>可能报错，报错则需要</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcon -v -t ssh_home_t authorized_keys</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcon -v -t ssh_home_t authorized_keys</span><br></pre></td></tr></table></figure>
+</blockquote>
 </li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /mnt/data/username -m username</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>参考文章：<a href="https://blog.csdn.net/qq_24909089/article/details/81068112">Linux创建用户并指定目录为根目录</a></p>
 </blockquote>
 <h4 id="远程终端登录遇到-usr-bin-xauth-file-mnt-data-username-Xauthority-does-not-exist"><a href="#远程终端登录遇到-usr-bin-xauth-file-mnt-data-username-Xauthority-does-not-exist" class="headerlink" title="远程终端登录遇到 /usr/bin/xauth:  file /mnt/data/username/.Xauthority does not exist"></a>远程终端登录遇到 <code>/usr/bin/xauth:  file /mnt/data/username/.Xauthority does not exist</code></h4><p>在下述目录创建空的 <code>.Xauthority</code> 并设置合适的权限</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch /mnt/data/username/.Xauthority</span><br><span class="line">chmod 600 /mnt/data/username/.Xauthority</span><br></pre></td></tr></table></figure>
-
 <h3 id="删除用户账户"><a href="#删除用户账户" class="headerlink" title="删除用户账户"></a>删除用户账户</h3><h4 id="仅删除用户账户，不删除家目录等"><a href="#仅删除用户账户，不删除家目录等" class="headerlink" title="仅删除用户账户，不删除家目录等"></a>仅删除用户账户，不删除家目录等</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel username</span><br></pre></td></tr></table></figure>
-
 <h4 id="删除用户以及家目录"><a href="#删除用户以及家目录" class="headerlink" title="删除用户以及家目录"></a>删除用户以及家目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel -r username</span><br></pre></td></tr></table></figure>
-
 <h3 id="将用户添加到-sudo-组"><a href="#将用户添加到-sudo-组" class="headerlink" title="将用户添加到 sudo 组"></a>将用户添加到 sudo 组</h3><p>当希望用户具有 sudo 权限，且不想直接赋予 root 权限</p>
 <h4 id="Ubuntu-1"><a href="#Ubuntu-1" class="headerlink" title="Ubuntu"></a>Ubuntu</h4><p>可以使用 sudo 组管理</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG sudo username</span><br></pre></td></tr></table></figure>
-
 <h4 id="CentOS-1"><a href="#CentOS-1" class="headerlink" title="CentOS"></a>CentOS</h4><p>CentOS 使用 wheel 组关联</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG wheel username</span><br></pre></td></tr></table></figure>
-
 <h3 id="切换用户身份"><a href="#切换用户身份" class="headerlink" title="切换用户身份"></a>切换用户身份</h3><p>需要有切换的用户密码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - username</span><br></pre></td></tr></table></figure>
-
 <p>无参数时默认切换到 root</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
-
 <h3 id="为用户设置仅其可读写执行的目录"><a href="#为用户设置仅其可读写执行的目录" class="headerlink" title="为用户设置仅其可读写执行的目录"></a>为用户设置仅其可读写执行的目录</h3><blockquote>
 <p>一般用于在数据盘设置用户的数据目录</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
-
 <h3 id="迁移用户家目录"><a href="#迁移用户家目录" class="headerlink" title="迁移用户家目录"></a>迁移用户家目录</h3><blockquote>
 <p>以下旧家目录为 <code>/home/username</code>，新家目录为 <code>/data/newhome/username</code>，可能需要 sudo 权限</p>
 </blockquote>
@@ -379,63 +368,49 @@
 <li>更新用户配置 <code>usermod -d /data/newhome/username username</code></li>
 </ol>
 <h2 id="Part-9-查看配置信息"><a href="#Part-9-查看配置信息" class="headerlink" title="Part 9 查看配置信息"></a>Part 9 查看配置信息</h2><h3 id="查看操作系统"><a href="#查看操作系统" class="headerlink" title="查看操作系统"></a>查看操作系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
-
 <h3 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
-
 <h3 id="查看文件系统与磁盘"><a href="#查看文件系统与磁盘" class="headerlink" title="查看文件系统与磁盘"></a>查看文件系统与磁盘</h3><h4 id="显示文件系统的磁盘空间使用情况"><a href="#显示文件系统的磁盘空间使用情况" class="headerlink" title="显示文件系统的磁盘空间使用情况"></a>显示文件系统的磁盘空间使用情况</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>-h 表示以人类可读的格式显示结果</li>
 </ul>
 <h4 id="查看磁盘分区"><a href="#查看磁盘分区" class="headerlink" title="查看磁盘分区"></a>查看磁盘分区</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>-l 表示列出系统上所有的磁盘分区</li>
 </ul>
 <h4 id="查看文件系统类型"><a href="#查看文件系统类型" class="headerlink" title="查看文件系统类型"></a>查看文件系统类型</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blkid &lt;device&gt;</span><br></pre></td></tr></table></figure>
-
 <p>其中 <code>device</code> 是形如 <code>/dev/sda</code> 的硬盘设备名。</p>
 <p>结果形如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# blkid /dev/sda </span><br><span class="line">/dev/sda: LABEL=&quot;data&quot; UUID=&quot;e9200cdc-a559-4159-a8a7-587ae3c3287b&quot; TYPE=&quot;ext4&quot;</span><br></pre></td></tr></table></figure>
-
 <h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda</span><br></pre></td></tr></table></figure>
-
 <p>使用 <code>ext4</code> 文件系统格式化硬盘</p>
 <h2 id="Part-10-挂载数据盘到文件系统"><a href="#Part-10-挂载数据盘到文件系统" class="headerlink" title="Part 10 挂载数据盘到文件系统"></a>Part 10 挂载数据盘到文件系统</h2><h3 id="Step-1-创建挂载点"><a href="#Step-1-创建挂载点" class="headerlink" title="Step 1 创建挂载点"></a>Step 1 创建挂载点</h3><p>Linux 中，<code>/mnt</code> 通常被作为手动挂载的临时挂载点，<code>/mnt/data</code> 则表示挂载的数据目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /mnt/data</span><br></pre></td></tr></table></figure>
-
 <h3 id="Step-2-挂载数据盘"><a href="#Step-2-挂载数据盘" class="headerlink" title="Step 2 挂载数据盘"></a>Step 2 挂载数据盘</h3><p>使用 <code>mount</code> 将数据盘挂载到刚才创建的挂载点</p>
 <blockquote>
 <p>这里的 <code>/dev/sdb</code> 是通过 <code>fdisk -l</code> 查到的</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb /mnt/data</span><br></pre></td></tr></table></figure>
-
 <h3 id="Step-3-更新-etc-fstab-使挂载永久生效"><a href="#Step-3-更新-etc-fstab-使挂载永久生效" class="headerlink" title="Step 3 更新 /etc/fstab 使挂载永久生效"></a>Step 3 更新 <code>/etc/fstab</code> 使挂载永久生效</h3><p>打开 <code>/etc/fstab</code> ：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
-
 <p>在文件末尾添加以下行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sdb   /mnt/data   ext4   defaults   0   0</span><br></pre></td></tr></table></figure>
-
 <h3 id="Step-4-设置合适的权限"><a href="#Step-4-设置合适的权限" class="headerlink" title="Step 4 设置合适的权限"></a>Step 4 设置合适的权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755 /mnt/data</span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-11-SSH登录"><a href="#Part-11-SSH登录" class="headerlink" title="Part 11 SSH登录"></a>Part 11 SSH登录</h2><h3 id="设置SSH密钥登录"><a href="#设置SSH密钥登录" class="headerlink" title="设置SSH密钥登录"></a>设置SSH密钥登录</h3><p>参考：<a href="https://cloud.tencent.com/developer/article/1780788">Linux系列 | SSH 如何使用密钥登录服务器</a></p>
 <ol>
 <li>生成本机密钥：在本机生成 ssh-key</li>
-<li>手动上传公钥：在服务器的 <code>.ssh/authorized_keys</code> 文件中添加一行，内容为本机的公钥（<code>.pub </code>文件）</li>
+<li>手动上传公钥：在服务器的 <code>.ssh/authorized_keys</code> 文件中添加一行，内容为本机的公钥（<code>.pub</code>文件）</li>
 </ol>
 <p>配置完成后即可使用 SSH 登录</p>
 <h3 id="关闭密码登录"><a href="#关闭密码登录" class="headerlink" title="关闭密码登录"></a>关闭密码登录</h3><p>参考：<a href="https://blog.csdn.net/Baozijiaruqing/article/details/121390604">Linux 禁止密码登录，使用私钥登录</a></p>
 <ol>
 <li><p>修改 <code>/etc/ssh/sshd_config</code> ，添加行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>默认情况下 <code>sshd_config</code> 中存在一行 <code>#PasswordAuthentication yes</code>，将这行拷贝去掉注释并改为 no 即可</p>
 </blockquote>
 </li>
 <li><p>重启 sshd 服务</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>需要 sudo 权限和认证</p>
 </blockquote>
@@ -851,7 +826,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -861,6 +836,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

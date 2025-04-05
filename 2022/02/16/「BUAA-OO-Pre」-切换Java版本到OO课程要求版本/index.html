@@ -281,23 +281,18 @@
 <p>对于操作系统字长64位机器，选择Windows x64版本</p>
 <p>对于操作系统字长32位机器，选择Windows x86版本</p>
 <img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216094959453.png" class="" title="p1">
-
 <p>双击安装</p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>搜索栏搜索“系统环境变量”并打开</p>
 <img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095221176.png" class="" title="p2">
-
 <p>打开“环境变量”</p>
 <img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095326523.png" class="" title="p2">
-
 <h4 id="修改JAVA-HOME"><a href="#修改JAVA-HOME" class="headerlink" title="修改JAVA_HOME"></a>修改JAVA_HOME</h4><p>在系统变量中<strong>修改</strong>JAVA_HOME属性为<code>C:\Program Files\Java\jdk1.8.0_101</code>（具体路径因安装路径而异，不要包含<code>bin</code>）</p>
 <h4 id="修改CLASSPATH"><a href="#修改CLASSPATH" class="headerlink" title="修改CLASSPATH"></a>修改CLASSPATH</h4><p>在系统变量栏中，修改变量<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></p>
 <h4 id="修改PATH"><a href="#修改PATH" class="headerlink" title="修改PATH"></a>修改PATH</h4><p>在系统环境变量中，设置<code>PATH</code>，变量值<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</code>（<strong>不要覆盖掉原本的内容，将这个值加入到<code>PATH</code>的最前面</strong>）。</p>
 <h2 id="Part-3-验证已切换好Java版本"><a href="#Part-3-验证已切换好Java版本" class="headerlink" title="Part 3 验证已切换好Java版本"></a>Part 3 验证已切换好Java版本</h2><p>在<code>cmd</code>中输入<code>java -version</code>看到Java的版本号改变即可</p>
 <img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216095920052.png" class="" title="p2">
-
 <h2 id="Part-4-在IDEA中新建依赖于新JDK的工程"><a href="#Part-4-在IDEA中新建依赖于新JDK的工程" class="headerlink" title="Part 4 在IDEA中新建依赖于新JDK的工程"></a>Part 4 在IDEA中新建依赖于新JDK的工程</h2><p>打开IDEA(ultimate)，<code>File-&gt;new-&gt;Project</code>在<code>Project SDK</code>中选择切换后的JDK</p>
 <img src="/2022/02/16/%E3%80%8CBUAA-OO-Pre%E3%80%8D-%E5%88%87%E6%8D%A2Java%E7%89%88%E6%9C%AC%E5%88%B0OO%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82%E7%89%88%E6%9C%AC/image-20220216100231068.png" class="" title="p2">
-
 <h2 id="Part-5-笔者踩过的坑"><a href="#Part-5-笔者踩过的坑" class="headerlink" title="Part 5 笔者踩过的坑"></a>Part 5 笔者踩过的坑</h2><p>以前配置Java环境变量的时候，在用户变量和系统变量都修改了，但是切换Java版本时只修改了用户变量，导致未能生效。</p>
 
                 
@@ -699,7 +694,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -709,6 +704,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

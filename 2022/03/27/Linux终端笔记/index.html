@@ -271,34 +271,26 @@
 <p><code>cd ..</code>：进入上层目录。</p>
 <h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a><code>touch</code></h3><p>创建新文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch </span><br><span class="line">用法:touch [选项]... [文件]...</span><br><span class="line">eg:</span><br><span class="line">touch HelloWorld.c // 创建了一个名为HelloWorld.c的文件</span><br></pre></td></tr></table></figure>
-
 <h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a><code>mkdir</code></h3><p>make directory，创建文件目录（类似windows下的文件夹）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir</span><br><span class="line">用法:mkdir [选项]... 目录...</span><br><span class="line">eg:</span><br><span class="line">mkdir newFolder // 创建了一个名为newFolder的文件夹</span><br></pre></td></tr></table></figure>
-
 <h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a><code>pwd</code></h3><p>print working directory，查看当前的绝对路径。</p>
 <h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a><code>rmdir</code></h3><p>删除目录，目录不能为非空；如果想要删除非空目录，需要使用<code>rm -rf filename</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir </span><br><span class="line">用法:rmdir [选项]... 目录...</span><br></pre></td></tr></table></figure>
-
 <h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a><code>rm</code></h3><p><code>rm</code>：删除一个目录中的一个或多个文件或目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm - remove files or directories</span><br><span class="line">用法:rm [选项]... 文件...</span><br><span class="line">选项（常用）：</span><br><span class="line">        -r      递归删除目录及其内容</span><br><span class="line">        -f      强制删除。忽略不存在的文件，不提示确认</span><br></pre></td></tr></table></figure>
-
-<p>此外，rm 命令可以用 -i 选项，这个选项在使用文件扩展名字符删除多个文件时特别有用。使用这个选项，系统会要求你逐一确定是否要删除。这时，必须输入 y 并按 Enter 键，才能删除文件。如果仅按 Enter 键或其他字符，文件不会被删除。与之相对应的就是 -f 选项，强制删除文件或目录，不询问用户。使用该选项配合 -r 选项，进行递归强制删除，强制将指定目录下的所有文件与子目录一并删除可以达到毁灭性效果。例如：rm –rf &#x2F; 即可强制递归删除全盘文件，绝对不要尝试！</p>
+<p>此外，rm 命令可以用 -i 选项，这个选项在使用文件扩展名字符删除多个文件时特别有用。使用这个选项，系统会要求你逐一确定是否要删除。这时，必须输入 y 并按 Enter 键，才能删除文件。如果仅按 Enter 键或其他字符，文件不会被删除。与之相对应的就是 -f 选项，强制删除文件或目录，不询问用户。使用该选项配合 -r 选项，进行递归强制删除，强制将指定目录下的所有文件与子目录一并删除可以达到毁灭性效果。例如：rm –rf / 即可强制递归删除全盘文件，绝对不要尝试！</p>
 <p>使用rm命令要格外小心，因为一旦删除了一个文件，就无法再恢复它。所以，在删除文件之前，最好再看一下文件的内容，确定是否真要删除。<br>很多优秀的程序员会在目录下建一个文件夹类似回收站，如果要使用rm指令，先把要删除的文件移到这个文件夹里，然后再进行rm，一定时间之后再对回收站里的文件进行删除。</p>
 <h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a><code>cp</code></h3><p>复制文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp </span><br><span class="line">用法:cp [选项]... 源文件... 目录</span><br><span class="line">选项（常用）：</span><br><span class="line">        -r      递归复制目录及其子目录内的所有内容</span><br></pre></td></tr></table></figure>
-
 <h3 id="move"><a href="#move" class="headerlink" title="move"></a><code>move</code></h3><p>移动文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">写mv hello_world.c trashbin/就是将hello_world.c移动到trashbin这个文件夹了。</span><br><span class="line">不过mv还有一种更有意思的用法，mv file ../file_mv就是将当前目录中的file文件移动至上一层目录中且重命名为file_mv。聪明的你应该已经看出来，在Linux系统中想要对文件进行重命名操作，使用mv oldname newname命令就可以了。</span><br></pre></td></tr></table></figure>
-
 <h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a><code>echo</code></h3><p>回声。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果你在屏幕上输入echo hello_world， 你会发现它给你回显了一个hello_world，看起来是一个复读机的功能</span><br></pre></td></tr></table></figure>
-
 <p><code>echo one &gt; test.txt</code>：将<code>one</code>输入test.txt，为覆盖式，即覆原有所有文件，并在第一行写入<code>one</code></p>
 <p><code>echo two &gt;&gt; test.txt</code>：将<code>two</code>追加到test.txt后面</p>
 <p>事实上，这个指令非常万用。比方说，需要将一个特定字符串打印进入某个文件，可以用它；需要将某个字符串输入进另一个指令，也可以用它结合重定向实现。</p>
 <h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a><code>ls</code></h3><p>显示当前目录下的所有文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">用法:ls [选项]... [文件]...</span><br><span class="line">选项（常用）：</span><br><span class="line">        -a      不隐藏任何以&quot;.&quot;开始的项目</span><br><span class="line">        -l      每行只列出一个文件</span><br></pre></td></tr></table></figure>
-
 <p>事实上，对于隐藏文件，<code>ls</code>仍然不能访问，需要使用<code>la</code>。</p>
 <h3 id="Ctrl-C"><a href="#Ctrl-C" class="headerlink" title="Ctrl + C"></a><code>Ctrl + C</code></h3><p>终止当前程序执行。</p>
 <h3 id="Ctrl-Z"><a href="#Ctrl-Z" class="headerlink" title="Ctrl + Z"></a><code>Ctrl + Z</code></h3><p>挂起当前程序。</p>
@@ -324,6 +316,7 @@
 </ol>
 <h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a><code>netstat</code></h3><p>用于显示网络状态。</p>
 <p>参考文献：<a href="https://www.runoob.com/linux/linux-comm-netstat.html">Linux netstat命令</a></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -331,7 +324,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>l</code></td>
 <td>listening，显示监控中的服务器的socket</td>
 </tr>
@@ -347,10 +341,12 @@
 <td><code>p</code></td>
 <td>programs，显示正在使用Socket的程序识别码和程序名称</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="ln"><a href="#ln" class="headerlink" title="ln"></a><code>ln</code></h3><p>用于创建软链接。</p>
 <ul>
-<li><p><code>ln -s [源文件或目录] [目标文件或目录]</code>：创建软链接	</p>
+<li><p><code>ln -s [源文件或目录] [目标文件或目录]</code>：创建软链接    </p>
 <ul>
 <li>e.g. 想要在<code>/home/user_name</code>下创建目录<code>data</code>，使得<code>cd /home/user_name/data</code>等价于<code>cd /mnt/data/user_name</code>，需要<code>ln -s /mnt/data/user_name /home/user_name/data</code>，其中，不需要事先创建<code>/home/user_name/data</code>目录<ul>
 <li>注意，这个命令中的目录结尾都不要加<code>/</code>，即，<code>/mnt/data/user_name</code>是正确的，而<code>/mnt/data/user_name/</code>是<strong>错误的</strong></li>
@@ -363,7 +359,7 @@
 </ul>
 <h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a><code>scp</code></h3><p>secure copy protocol，允许用户在两个主机之间传输数据</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [选项] &lt;file_source&gt; &lt;file_target&gt;</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -371,14 +367,17 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-r</td>
 <td>递归，用于复制整个目录</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="zip"><a href="#zip" class="headerlink" title="zip"></a><code>zip</code></h3><p>压缩</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [选项] &lt;file_target&gt; &lt;file/dir_source&gt;</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -386,11 +385,14 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-r</td>
 <td>递归，用于压缩整个目录</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="符号链接"><a href="#符号链接" class="headerlink" title="符号链接"></a>符号链接</h3><p>创建符号链接指向可执行文件，从而可以直接使用。</p>
 <p>如，<code>/home/yujk/data/zdns/zdns</code> 是一个可执行文件，一般使用时需要形如 <code>../../../yujk/zdns/zdns</code> 来使用，不方便。通过符号链接到 <code>zdns</code> 后，可以直接使用 <code>zdns</code> 来运行。</p>
 <ul>
@@ -409,35 +411,22 @@
 </ul>
 <h2 id="Part-3-查看文件信息"><a href="#Part-3-查看文件信息" class="headerlink" title="Part 3 查看文件信息"></a>Part 3 查看文件信息</h2><h3 id="head"><a href="#head" class="headerlink" title="head"></a><code>head</code></h3><p>用于查看文件开头内容。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head [选项] [文件名]</span><br></pre></td></tr></table></figure>
-
 <h4 id="无选项运行"><a href="#无选项运行" class="headerlink" title="无选项运行"></a>无选项运行</h4><p>显示名为 <code>file_name</code> 的文件的开头（默认前 10 行）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head file_name</span><br></pre></td></tr></table></figure>
-
 <h4 id="显示前-N-行-n-N"><a href="#显示前-N-行-n-N" class="headerlink" title="显示前 N 行 -n N"></a>显示前 N 行 <code>-n N</code></h4><p>显示名为 <code>file_name</code> 的文件的前 <code>N</code> 行（）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n N file_name</span><br></pre></td></tr></table></figure>
-
 <h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a><code>tail</code></h3><p>用于查看文件末尾内容。</p>
 <h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a><code>wc</code></h3><p>word count，计算文件单词量等</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [选项] [文件名]</span><br></pre></td></tr></table></figure>
-
 <h4 id="显示文件行数-l"><a href="#显示文件行数-l" class="headerlink" title="显示文件行数 -l"></a>显示文件行数 <code>-l</code></h4><p>显示名为 <code>file_name</code> 的文件行数</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l file_name</span><br></pre></td></tr></table></figure>
-
 <p>显示多个文件行数</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l file_name1 file_name2 file_name3</span><br></pre></td></tr></table></figure>
-
 <h3 id="du"><a href="#du" class="headerlink" title="du"></a><code>du</code></h3><p>disk usage，显示文件和目录的磁盘使用情况</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du [选项] [文件或目录]</span><br></pre></td></tr></table></figure>
-
-<h4 id="以人类可读方式-h"><a href="#以人类可读方式-h" class="headerlink" title="以人类可读方式 -h"></a>以人类可读方式 <code>-h</code></h4><p>以人类可读（KB&#x2F;MB&#x2F;GB）方式显示 <code>path/to/directory</code> 目录&#x2F;文件磁盘使用情况</p>
+<h4 id="以人类可读方式-h"><a href="#以人类可读方式-h" class="headerlink" title="以人类可读方式 -h"></a>以人类可读方式 <code>-h</code></h4><p>以人类可读（KB/MB/GB）方式显示 <code>path/to/directory</code> 目录/文件磁盘使用情况</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h /path/to/directory</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h2 id="Part-4-杂项"><a href="#Part-4-杂项" class="headerlink" title="Part 4 杂项"></a>Part 4 杂项</h2><h3 id="判断Linux是CentOS还是Ubuntu"><a href="#判断Linux是CentOS还是Ubuntu" class="headerlink" title="判断Linux是CentOS还是Ubuntu"></a>判断Linux是CentOS还是Ubuntu</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>参考<a href="https://www.php.cn/linux-435827.html">这篇博客</a>，其中使用apt-get和yum判断比较快捷。</p>
 </blockquote>
@@ -847,7 +836,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -857,6 +846,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

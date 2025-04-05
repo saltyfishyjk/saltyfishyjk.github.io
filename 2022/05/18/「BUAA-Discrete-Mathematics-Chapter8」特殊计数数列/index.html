@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">270</span> and
+                                Words <span class="post-count">262</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -257,15 +257,22 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列"><a href="#「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列" class="headerlink" title="「BUAA Discrete Mathematics Chapter8」特殊计数数列"></a>「BUAA Discrete Mathematics Chapter8」特殊计数数列</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1-Catalan数"><a href="#Part-1-Catalan数" class="headerlink" title="Part 1 Catalan数"></a>Part 1 Catalan数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Catalan数列是序列<br>$$<br>C_{0}, C_1, C_2, \cdots , C_n, \cdots<br>$$<br>其中<br>$$<br>C_{n} &#x3D; \frac{1}{n+1}\tbinom{2n}{n} \quad (n &#x3D; 0, 1, 2, \cdots )<br>$$<br>是第 $ n $ 个Catalan数。</p>
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列"><a href="#「BUAA-Discrete-Mathematics-Chapter8」特殊计数数列" class="headerlink" title="「BUAA Discrete Mathematics Chapter8」特殊计数数列"></a>「BUAA Discrete Mathematics Chapter8」特殊计数数列</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1-Catalan数"><a href="#Part-1-Catalan数" class="headerlink" title="Part 1 Catalan数"></a>Part 1 Catalan数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Catalan数列是序列</p>
+<script type="math/tex; mode=display">
+C_{0}, C_1, C_2, \cdots , C_n, \cdots</script><p>其中</p>
+<script type="math/tex; mode=display">
+C_{n} = \frac{1}{n+1}\tbinom{2n}{n} \quad (n = 0, 1, 2, \cdots )</script><p>是第 $ n $ 个Catalan数。</p>
 <h2 id="Part2-差分序列和Stirling数"><a href="#Part2-差分序列和Stirling数" class="headerlink" title="Part2 差分序列和Stirling数"></a>Part2 差分序列和Stirling数</h2><h3 id="定理-8-2-1"><a href="#定理-8-2-1" class="headerlink" title="定理 8.2.1"></a>定理 8.2.1</h3><p>设序列的通项是 $ n $ 的 $ p $ 次多项式，即：</p>
-<p>$$<br>h_n &#x3D; a_pn^p + a_{p - 1}n^{p - 1} + \cdots + a_1n + a_0<br>$$</p>
-<p>则对所有的 $ n \ge 0 $ ， $ \Delta ^ {p + 1} h_n &#x3D; 0 $ </p>
+<script type="math/tex; mode=display">
+h_n = a_pn^p + a_{p - 1}n^{p - 1} + \cdots + a_1n + a_0</script><p>则对所有的 $ n \ge 0 $ ， $ \Delta ^ {p + 1} h_n = 0 $ </p>
 <h3 id="定理-8-2-2"><a href="#定理-8-2-2" class="headerlink" title="定理 8.2.2"></a>定理 8.2.2</h3><h3 id="定理-8-2-3"><a href="#定理-8-2-3" class="headerlink" title="定理 8.2.3"></a>定理 8.2.3</h3><h3 id="定理-8-2-4"><a href="#定理-8-2-4" class="headerlink" title="定理 8.2.4"></a>定理 8.2.4</h3><h3 id="定理-8-2-5"><a href="#定理-8-2-5" class="headerlink" title="定理 8.2.5"></a>定理 8.2.5</h3><p>第二类Stirling数 $ S(p, k) $</p>
-<h3 id="定理-8-2-6"><a href="#定理-8-2-6" class="headerlink" title="定理 8.2.6"></a>定理 8.2.6</h3><p>对每一个满足 $ 0 \le k \le p $ 的整数 $ k $ ，都有：<br>$$<br>S^{ # }(p,k) &#x3D; \sum_{t &#x3D; 0}^{k}(-1)^{t}<br>$$</p>
-<h3 id="定理-8-2-7-（Bell数的递推式）"><a href="#定理-8-2-7-（Bell数的递推式）" class="headerlink" title="定理 8.2.7 （Bell数的递推式）"></a>定理 8.2.7 （Bell数的递推式）</h3><p>如果 $ p \ge 1 $ ，则：<br>$$<br>B_p &#x3D; \tbinom{p - 1}{0}B_0 + \tbinom{p - 1}{1} B_1 + \cdots + \tbinom{p - 1}{p - 1} B_{p - 1}<br>$$<br>Bell数 $ B_p $ 给出了将 $ p $ 元素集合分到非空且不可区分盒子的划分数，注意这里没有指定盒子个数。</p>
+<h3 id="定理-8-2-6"><a href="#定理-8-2-6" class="headerlink" title="定理 8.2.6"></a>定理 8.2.6</h3><p>对每一个满足 $ 0 \le k \le p $ 的整数 $ k $ ，都有：</p>
+<script type="math/tex; mode=display">
+S^{ \# }(p,k) = \sum_{t = 0}^{k}(-1)^{t}</script><h3 id="定理-8-2-7-（Bell数的递推式）"><a href="#定理-8-2-7-（Bell数的递推式）" class="headerlink" title="定理 8.2.7 （Bell数的递推式）"></a>定理 8.2.7 （Bell数的递推式）</h3><p>如果 $ p \ge 1 $ ，则：</p>
+<script type="math/tex; mode=display">
+B_p = \tbinom{p - 1}{0}B_0 + \tbinom{p - 1}{1} B_1 + \cdots + \tbinom{p - 1}{p - 1} B_{p - 1}</script><p>Bell数 $ B_p $ 给出了将 $ p $ 元素集合分到非空且不可区分盒子的划分数，注意这里没有指定盒子个数。</p>
 <p>第一类Stirling数</p>
-<h3 id="定理-8-2-8"><a href="#定理-8-2-8" class="headerlink" title="定理 8.2.8"></a>定理 8.2.8</h3><p>第一类Stirling数 $ s(p,k) &#x3D; (p - 1)s(p - 1, k) +</p>
+<h3 id="定理-8-2-8"><a href="#定理-8-2-8" class="headerlink" title="定理 8.2.8"></a>定理 8.2.8</h3><p>第一类Stirling数 $ s(p,k) = (p - 1)s(p - 1, k) +</p>
 
                 
                 <hr>
@@ -666,7 +673,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -676,6 +683,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">967</span> and
+                                Words <span class="post-count">966</span> and
                                 Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -258,14 +258,14 @@
                 post-container">
 
                 <h1 id="「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机"><a href="#「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机" class="headerlink" title="「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机"></a>「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机</h1><h2 id="Part-0-背景"><a href="#Part-0-背景" class="headerlink" title="Part 0 背景"></a>Part 0 背景</h2><p><strong>BUAA Swift Programming</strong>是北航计算机学院在秋季学期开设的一门一般专业课，介绍Swift语言及相关知识。</p>
-<h3 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h3><p>想要开发Swift，最主流的做法是使用仅在macOS平台提供的Xcode IDE，其他诸如iPad Playground&#x2F;Linux等途径也可以编写Swift代码，但是对于课程最后要求的大作业可能较为吃力。故，工欲善其事必先利其器，这里记录笔者的环境与工具配置过程。</p>
+<h3 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h3><p>想要开发Swift，最主流的做法是使用仅在macOS平台提供的Xcode IDE，其他诸如iPad Playground/Linux等途径也可以编写Swift代码，但是对于课程最后要求的大作业可能较为吃力。故，工欲善其事必先利其器，这里记录笔者的环境与工具配置过程。</p>
 <p>由于笔者没有Mac，又担心双系统黑苹果存在的潜在风险，最终选择了使用虚拟机安装macOS的办法。</p>
 <ul>
 <li>操作系统：Windows10（家庭版）</li>
 <li>电脑型号：联想拯救者y7000p （2020款）</li>
 <li>CPU：8核Intel i7-10875H</li>
 <li>内存：16GB</li>
-<li>VMWare Workstation Pro：v16.2</li>
+<li>VMWare Workstation Pro：v16.2 </li>
 </ul>
 <p>上述是可能和虚拟机配置与安装有关系的参数，如果读者在按照本文操作的过程中遇到了复杂的问题，或许可以从软硬件环境的角度考虑。</p>
 <p>实现效果：</p>
@@ -276,7 +276,6 @@
 </ul>
 <h2 id="Part-1-下载macOS镜像与VMware解锁工具"><a href="#Part-1-下载macOS镜像与VMware解锁工具" class="headerlink" title="Part 1 下载macOS镜像与VMware解锁工具"></a>Part 1 下载macOS镜像与VMware解锁工具</h2><p><strong>笔者主要参考的教程文章为<a href="https://zhuanlan.zhihu.com/p/337036027">VMware虚拟机安装MacOS系统教程-知乎</a>。</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">资源包括：</span><br><span class="line">    1.解锁工具（MK-Unlocker + Unlocker_v3.0.3）</span><br><span class="line">    2.MacOS镜像懒人包（MacOS Mojave 10.14.6懒人包 + MacOS Catalina10.15.5懒人包 ）</span><br><span class="line">    3.优化卡顿工具（beamoff）</span><br><span class="line"></span><br><span class="line">链接：https://pan.baidu.com/s/1UYK4e--BA8512pSD5Xl4qA </span><br><span class="line"></span><br><span class="line">提取码：zqrr </span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-2-创建与安装虚拟机"><a href="#Part-2-创建与安装虚拟机" class="headerlink" title="Part 2 创建与安装虚拟机"></a>Part 2 创建与安装虚拟机</h2><p>直接参考<a href="https://zhuanlan.zhihu.com/p/337036027">VMware虚拟机安装MacOS系统教程-知乎</a>全文即可。</p>
 <p>注：</p>
 <ul>
@@ -284,10 +283,8 @@
 </li>
 <li><p>Xcode软件本体较大，需要确保虚拟机分配了足够大的硬盘。</p>
 </li>
-<li><p>可能会对VMware tools有所提示（如版本过低等），按照提示来即可。</p>
-</li>
-<li><p>尽管上述教程中的VMware版本为15.5，但是笔者使用16.2版本也没有报错。</p>
-</li>
+<li>可能会对VMware tools有所提示（如版本过低等），按照提示来即可。</li>
+<li>尽管上述教程中的VMware版本为15.5，但是笔者使用16.2版本也没有报错。</li>
 </ul>
 <h2 id="Part-3-安装Xcode"><a href="#Part-3-安装Xcode" class="headerlink" title="Part 3 安装Xcode"></a>Part 3 安装Xcode</h2><p>由于我们的macOS版本过低，无法在appstore直接安装。以下介绍安装过程。</p>
 <h3 id="Step-0-确定Xcode版本"><a href="#Step-0-确定Xcode版本" class="headerlink" title="Step 0 确定Xcode版本"></a>Step 0 确定Xcode版本</h3><p>由于课程要求Swift5，参考<a href="https://blog.csdn.net/liang890319/article/details/124751984">MacOS Xcode与Swift版本对应关系</a>并结合具体情况，我们发现Xcode10.2是最合适的版本。</p>
@@ -300,46 +297,52 @@
 <ul>
 <li>有可能在安装各式指令的时候遇到各种错误，其中一些是因为清华源之类的问题，这个时候翻墙可以解决大多数问题。</li>
 </ul>
-<h2 id="Part-5-其他问题"><a href="#Part-5-其他问题" class="headerlink" title="Part 5 其他问题"></a>Part 5 其他问题</h2><h3 id="键盘对应"><a href="#键盘对应" class="headerlink" title="键盘对应"></a>键盘对应</h3><table>
+<h2 id="Part-5-其他问题"><a href="#Part-5-其他问题" class="headerlink" title="Part 5 其他问题"></a>Part 5 其他问题</h2><h3 id="键盘对应"><a href="#键盘对应" class="headerlink" title="键盘对应"></a>键盘对应</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>macOS</th>
 <th>Windows</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Command</td>
 <td>win</td>
 </tr>
 <tr>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><table>
+</tbody>
+</table>
+</div>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">macOS</th>
+<th style="text-align:left">macOS</th>
 <th>Windows</th>
 <th>效果</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Command + A</td>
+<tbody>
+<tr>
+<td style="text-align:left">Command + A</td>
 <td>ctrl + A</td>
 <td>全选</td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td></td>
+<td style="text-align:left"></td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="Developer-tools-access需要控制另一个进程"><a href="#Developer-tools-access需要控制另一个进程" class="headerlink" title="Developer tools access需要控制另一个进程"></a><code>Developer tools access需要控制另一个进程</code></h3><p>使用Xcode时，可能出现标题所示的提示，每次重复输入密码很麻烦，可以参考<a href="https://blog.csdn.net/LLLLL__/article/details/105777183">这篇文章</a>解决这个问题。</p>
 
                 
@@ -741,7 +744,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -751,6 +754,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

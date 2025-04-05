@@ -262,9 +262,6 @@
 <h4 id="实现Runnable"><a href="#实现Runnable" class="headerlink" title="实现Runnable"></a>实现Runnable</h4><p>需要实现<code>run</code>方法，通过<code>Thread</code>调用<code>start()</code>启动线程。在这里我们更推荐使用实现<code>Runnable</code>而非继承<code>Thread</code>，因为这样可以让我们的类继承其他类，而Java单继承的特性意味着继承了<code>Thread</code>则不能继承其他类。</p>
 <h4 id="实现Callable"><a href="#实现Callable" class="headerlink" title="实现Callable"></a>实现Callable</h4><p>这个方法在本课程中没有多介绍，此处暂不展开。</p>
 <h3 id="对象头、锁和同步"><a href="#对象头、锁和同步" class="headerlink" title="对象头、锁和同步"></a>对象头、锁和同步</h3><h4 id="对象实例结构"><a href="#对象实例结构" class="headerlink" title="对象实例结构"></a>对象实例结构</h4><img src="/2022/04/16/%E3%80%8CBUAA-OO-Unit-2%E3%80%8D-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%86%E4%BA%AB/image-20220329220220915.png" class="" title="p2">
-
-
-
 <p>Java的实例对象储存在Heap中，其结构如上图示。</p>
 <h4 id="锁和同步"><a href="#锁和同步" class="headerlink" title="锁和同步"></a>锁和同步</h4><p>如上图示，对象头部分储存的信息包含<strong>最近持有该对象锁的线程ID</strong>。我们分为两个角度介绍锁，以下首先从代码形式介绍。</p>
 <p>我们使用的<code>synchronized</code>包含三种情况，分别是：</p>
@@ -276,32 +273,29 @@
 <p>class信息存储在method area中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> <span class="keyword">void</span> staic <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修饰代码块：指定加锁对象，对给定对象&#x2F;类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>修饰代码块：指定加锁对象，对给定对象/类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>上面的第一种介绍中主要侧重了从代码模板上的三种形式，对于谁获得了锁，获得了谁的锁可能表述的不是非常清晰，以下从<strong>对象锁</strong>和<strong>类锁</strong>进行第二个角度的归类。</p>
 <h4 id="对象锁"><a href="#对象锁" class="headerlink" title="对象锁"></a>对象锁</h4><p>包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象)。</p>
 <h5 id="方法锁形式"><a href="#方法锁形式" class="headerlink" title="方法锁形式"></a>方法锁形式</h5><p><code>synchronized</code>修饰普通实例方法，锁对象默认为this</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="代码块形式"><a href="#代码块形式" class="headerlink" title="代码块形式"></a>代码块形式</h5><p>手动指定锁定对象，可以是<code>this</code>，也可以是其他对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj) &#123; <span class="comment">// obj可以为this或其他对象</span></span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="类锁"><a href="#类锁" class="headerlink" title="类锁"></a>类锁</h4><p>指<code>synchronized</code>修饰静态的方法或指定锁对象为<code>Class</code>对象。这种情况下，所有对象共用一把锁。</p>
 <h5 id="静态方法形式"><a href="#静态方法形式" class="headerlink" title="静态方法形式"></a>静态方法形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="代码块形式-1"><a href="#代码块形式-1" class="headerlink" title="代码块形式"></a>代码块形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (classA.class) &#123;</span><br><span class="line">    <span class="comment">// TODO </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="调试可用技巧"><a href="#调试可用技巧" class="headerlink" title="调试可用技巧"></a>调试可用技巧</h3><ol>
 <li>jprofiler</li>
 <li><code>setName()</code>设置线程名</li>
-<li>IDEA debug ： <a href="https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&seid=11484063781420021590&spm_id_from=333.337.0.0">https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&amp;seid=11484063781420021590&amp;spm_id_from=333.337.0.0</a></li>
+<li>IDEA debug ： <a href="https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&amp;seid=11484063781420021590&amp;spm_id_from=333.337.0.0">https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&amp;seid=11484063781420021590&amp;spm_id_from=333.337.0.0</a></li>
 </ol>
 <h2 id="Part-2-如何合理使用同步锁"><a href="#Part-2-如何合理使用同步锁" class="headerlink" title="Part 2 如何合理使用同步锁"></a>Part 2 如何合理使用同步锁</h2><p>在我们的代码中，主要使用<code>synchronized</code>进行同步，其代码结构在上一个部分已经介绍过，以下介绍如何合理使用。</p>
-<p>以生产者-消费者模型为例，我们的共享数据是<strong>托盘</strong>，其中生产者向其中put，消费者从其中get，这两个操作是互斥的，分别加锁表示只有put&#x2F;get结束，这个对象才可以被继续访问。更一般化来讲，对于共享资源的读写，我们使其互斥，保证了数据的唯一性和安全性。</p>
+<p>以生产者-消费者模型为例，我们的共享数据是<strong>托盘</strong>，其中生产者向其中put，消费者从其中get，这两个操作是互斥的，分别加锁表示只有put/get结束，这个对象才可以被继续访问。更一般化来讲，对于共享资源的读写，我们使其互斥，保证了数据的唯一性和安全性。</p>
 <p>再以官方输出包为例，官方输出包类似打印机，我们希望同一时刻只有一台打印机在进行一个打印操作，因此，我们将官方输出包的打印操作封装为同步方法，保证了其安全，避免了时间戳错位的可能。</p>
 <p>与同步一起的重要操作还有<code>wait</code>、<code>sleep</code>和<code>notifyAll()</code>（<code>notify()</code>）。以生产者-消费者模型举例，当我们的消费者需要托盘中的产品时，如果没有，那么需要其进入<code>wait</code>或<code>sleep</code>进行等待，而非时刻占用CPU资源进行轮询。这时，如果我们的托盘中来了新商品，则需要其对消费者<code>notifyAll()</code>唤醒。更一般化来讲，我们将<strong>信使</strong>操作交给共享对象负责，由共享对象根据自己<strong>状态的变化</strong>来唤醒相关线程，节约了CPU资源。</p>
-<p>多线程的本意是想尽可能地提高效率，而加锁是一种降低效率确保安全的行为，因此，我们希望尽可能的划分清楚共享对象&#x2F;类和其中需要加锁的资源，尽可能减少加锁对线程效率的伤害，即，对于不涉及共享资源的操作，我们不设置其为同步的，以提高效率。</p>
+<p>多线程的本意是想尽可能地提高效率，而加锁是一种降低效率确保安全的行为，因此，我们希望尽可能的划分清楚共享对象/类和其中需要加锁的资源，尽可能减少加锁对线程效率的伤害，即，对于不涉及共享资源的操作，我们不设置其为同步的，以提高效率。</p>
 <h2 id="Part-3-在多线程进行架构设计及其具体在第一次作业中的体现"><a href="#Part-3-在多线程进行架构设计及其具体在第一次作业中的体现" class="headerlink" title="Part 3 在多线程进行架构设计及其具体在第一次作业中的体现"></a>Part 3 在多线程进行架构设计及其具体在第一次作业中的体现</h2><p>多线程问题丰富多样，我们以生产者-消费者模型为例窥得多线程下架构设计的一角。</p>
 <p>以第一次作业为例，我们的生产者为输入线程<code>InputThread</code>，托盘（共享对象）为候乘表<code>WaitTable</code>，消费者为电梯<code>Elevator</code>。为了简化描述，我们在这里略去了调度器。</p>
 <p><code>InputThread</code>获得标准输入，调用<code>WaitTable</code>的<code>put</code>方法置入新的passenger；当输入为空时，调用<code>WaitTable</code>的<code>setEnd</code>方法作为标志信号，提示输入结束，条件允许时可以结束。值得注意的是，我们在这里并没有涉及电梯如何操作，输入线程作为生产者不关心消费者的行为。</p>
@@ -707,7 +701,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -717,6 +711,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

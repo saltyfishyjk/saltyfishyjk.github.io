@@ -126,7 +126,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">312</span> and
+                                Words <span class="post-count">311</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -264,7 +264,7 @@
                 <h1 id="Vim笔记"><a href="#Vim笔记" class="headerlink" title="Vim笔记"></a>Vim笔记</h1><p>[TOC]</p>
 <h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>vim是一款强大的编辑器，网络上已经有大量其详细的实用教程与介绍。因此，本篇博客仅作学习笔记，不图大而全，也会随着笔者的使用及时更新。</p>
 <h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol>
-<li><a href="https://www.runoob.com/linux/linux-vim.html">菜鸟教程Linux vi&#x2F;vim</a> 适合作为百科全书检索</li>
+<li><a href="https://www.runoob.com/linux/linux-vim.html">菜鸟教程Linux vi/vim</a> 适合作为百科全书检索</li>
 <li><a href="https://coolshell.cn/articles/5426.html">简明 VIM 练级攻略</a> 适合系统训练</li>
 <li><a href="https://www.vim.org/">vim官方网站</a> 官方网站</li>
 </ol>
@@ -705,7 +705,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -715,6 +715,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

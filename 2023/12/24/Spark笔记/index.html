@@ -264,9 +264,6 @@
                 <h1 id="Spark-笔记"><a href="#Spark-笔记" class="headerlink" title="Spark 笔记"></a>Spark 笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Apache Spark 是一个开源的集群计算框架，可以执行大规模数据处理任务，经常和 Scala，Zeppelin 一起配合使用。</p>
 <p>这篇笔记主要记录 Scala + Spark + Zeppelin 的使用。</p>
 <h2 id="Part-1-Scala"><a href="#Part-1-Scala" class="headerlink" title="Part 1 Scala"></a>Part 1 Scala</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> myList = <span class="type">List</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="Part-2-Spark"><a href="#Part-2-Spark" class="headerlink" title="Part 2 Spark"></a>Part 2 Spark</h2><h3 id="SparkSession"><a href="#SparkSession" class="headerlink" title="SparkSession"></a>SparkSession</h3><p>管理 Spark 应用程序的上下文，类似 Java 中的 JVM。</p>
 <p>在 Zeppelin 中，不需要显示创建。</p>
 <h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><p>DataFrame 是 Spark SQL 中的主要数据抽象，以列的形式组织分布式数据集，类似关系数据库的 table。</p>
@@ -281,9 +278,6 @@
 <p>假设文件目录为 <code>/home/example</code></p>
 </blockquote>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取 Parquet 文件</span></span><br><span class="line"><span class="keyword">val</span> df = spark.read.parquet(<span class="string">&quot;/home/example&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 显示数据集内容</span></span><br><span class="line">df.show()</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h3>
                 
                 <hr>
@@ -688,7 +682,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -698,6 +692,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

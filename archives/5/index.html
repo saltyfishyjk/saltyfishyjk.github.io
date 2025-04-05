@@ -445,10 +445,7 @@
 Part 0 第四单元作业架构设计架构设计概要本单元的设计目标为扩展UML解析器，使之支持对UML类图、状态图和顺序图的分析，可以通过输入相应的指令来进行相关查询，并能根据UML规则进行一定的规范性验证。
 整个第四单元的三次作业是依次迭代的，没有进行重构，因此这里以第15次作业为例介绍架构设计如下图示。
 
-
-
-
-在本......
+在本次作业......
                 </div>
             </a>
             
@@ -514,8 +511,7 @@ Part 0 第四单元作业架构设计架构设计概要本单元的设计目标�
 磁盘块控制块
 位置：fs/fsformat.c
 12345struct Block&#123;    uint8_t data[BY2BLK];    uint32_t type;&#125;;
-
-其中，uint8_t是unsigned char，uint32_......
+其中，uint8_t是unsigned char，uint32_t......
                 </div>
             </a>
             
@@ -653,7 +649,11 @@ Part 1 第九次作业1.1 作业要求根据给定JML编写符合要求的在限
                     
                 </h3>
                 <div class="post-content-preview">
-                    「BUAA Discrete Mathematics Chapter8」特殊计数数列Part 0Part 1 Catalan数定义Catalan数列是序列$$C_{0}, C_1, C_2, \cdots , C_n, \cdots$$其中$$C_{n} &#x3D; \frac{1}{n+1}\tbinom{2n}{n} \quad (n &#x3D; 0, 1, 2, \cdots )$......
+                    「BUAA Discrete Mathematics Chapter8」特殊计数数列Part 0Part 1 Catalan数定义Catalan数列是序列
+
+C_{0}, C_1, C_2, \cdots , C_n, \cdots其中
+
+C_{n} = \frac{1}{n+1}\tbinom{2n}{n} \quad (n = 0, 1, 2, \cdots )是第 $ n $ 个Cat......
                 </div>
             </a>
             
@@ -689,9 +689,9 @@ Part 1 第九次作业1.1 作业要求根据给定JML编写符合要求的在限
 系统调用号基址。内核确定是哪类系统调用的唯一依据。
 1#define __SYSCALL_BASE 9527
 
-
 SYS_putchar位置：include/unisted.h
-1#define SYS_putchar 		((__SYSCALL_BASE ) + (0 ) )......
+1#define SYS_putchar 		((__SYSCALL_BASE ) + (0 ) )
+......
                 </div>
             </a>
             
@@ -758,11 +758,8 @@ Part 1-ggcc hello.c -g o hello
                 </h3>
                 <div class="post-content-preview">
                     「BUAA OS Lab3」难点梳理与理解总结
-
-
-
-进程创建进程控制块（Process Control Block）PCB是用来进程管理的数据结构，在我们的MOS中就是Env结构体，具体内容可以参考源码或**Lab 3 名词解释**。在后文中，我们可能混用PCB和Env，其实两者基本是一个东西。
-对于PCB，我们仿照Lab 2中的思路，为envs开辟空间，通过boot_map_segmen......
+进程创建进程控制块（Process Control Block）PCB是用来进程管理的数据结构，在我们的MOS中就是Env结构体，具体内容可以参考源码或Lab 3 名词解释。在后文中，我们可能混用PCB和Env，其实两者基本是一个东西。
+对于PCB，我们仿照Lab 2中的思路，为envs开辟空间，通过boot_map_segment将其map到......
                 </div>
             </a>
             
@@ -1261,7 +1258,7 @@ Part 1-ggcc hello.c -g o hello
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1271,6 +1268,21 @@ Part 1-ggcc hello.c -g o hello
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

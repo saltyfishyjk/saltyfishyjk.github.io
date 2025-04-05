@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">141</span> and
+                                Words <span class="post-count">139</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -257,9 +257,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用"><a href="#「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用" class="headerlink" title="「BUAA Discrete Mathematics Chapter6」容斥原理及应用"></a>「BUAA Discrete Mathematics Chapter6」容斥原理及应用</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h3><h4 id="定理6-1-1"><a href="#定理6-1-1" class="headerlink" title="定理6.1.1"></a>定理6.1.1</h4><p>集合 $ S $ 中<strong>不具有</strong>性质 $ P_1 , P_2, \cdots , P_m $ 的对象个数由下面的交错表达式给出：<br>$$<br>|\overline{A_1} \cap \overline{A_2} \cap \cdots\cap\overline{A_m}| &#x3D;<br>|S| - \sum|A_i| + \sum{|A_i \cap A_j|} - \sum|A_i \cap A_j \cap A_k| \ + \cdots + (-1)^m|A_1 \cap A_2 \cap \cdots \cap A_m|<br>$$</p>
-<h3 id="带重复的组合"><a href="#带重复的组合" class="headerlink" title="带重复的组合"></a>带重复的组合</h3><h3 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h3><h4 id="定理6-3-1"><a href="#定理6-3-1" class="headerlink" title="定理6.3.1"></a>定理6.3.1</h4><p>用 $ D_n $ 表示 $ {1,2, \cdots ,n} $ 的错位排列的数目。对于 $ n \ge 1 $ 有：<br>$$<br>D_n &#x3D; n!(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^n \frac{1}{n!})<br>$$</p>
-
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用"><a href="#「BUAA-Discrete-Mathematics-Chapter6」容斥原理及应用" class="headerlink" title="「BUAA Discrete Mathematics Chapter6」容斥原理及应用"></a>「BUAA Discrete Mathematics Chapter6」容斥原理及应用</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h3><h4 id="定理6-1-1"><a href="#定理6-1-1" class="headerlink" title="定理6.1.1"></a>定理6.1.1</h4><p>集合 $ S $ 中<strong>不具有</strong>性质 $ P_1 , P_2, \cdots , P_m $ 的对象个数由下面的交错表达式给出：</p>
+<script type="math/tex; mode=display">
+|\overline{A_1} \cap \overline{A_2} \cap \cdots\cap\overline{A_m}| = 
+|S| - \sum|A_i| + \sum{|A_i \cap A_j|} - \sum|A_i \cap A_j \cap A_k| \\ + \cdots + (-1)^m|A_1 \cap A_2 \cap \cdots \cap A_m|</script><h3 id="带重复的组合"><a href="#带重复的组合" class="headerlink" title="带重复的组合"></a>带重复的组合</h3><h3 id="错位排列"><a href="#错位排列" class="headerlink" title="错位排列"></a>错位排列</h3><h4 id="定理6-3-1"><a href="#定理6-3-1" class="headerlink" title="定理6.3.1"></a>定理6.3.1</h4><p>用 $ D_n $ 表示 $ {1,2, \cdots ,n} $ 的错位排列的数目。对于 $ n \ge 1 $ 有：</p>
+<script type="math/tex; mode=display">
+D_n = n!(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^n \frac{1}{n!})</script>
                 
                 <hr>
                 <!-- Pager -->
@@ -659,7 +662,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -669,6 +672,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

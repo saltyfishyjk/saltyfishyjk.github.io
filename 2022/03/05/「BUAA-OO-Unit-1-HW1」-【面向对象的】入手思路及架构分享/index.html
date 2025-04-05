@@ -261,23 +261,20 @@
 <h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><hr>
 <h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>实现本次作业过程中，笔者和助教及同学们讨论多次，对架构进行多次修改和重构，最终确定了当前设计，在此和大家分享<strong>作业入手思路</strong>及<strong>架构设计</strong>。</p>
 <h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客，您可以大致了解笔者从零开始对题意进行理解及架构设计的心路历程。</p>
-<h2 id="Part-1-作业入手思路"><a href="#Part-1-作业入手思路" class="headerlink" title="Part 1 作业入手思路"></a>Part 1 作业入手思路</h2><h3 id="面向对象与面向过程的思想"><a href="#面向对象与面向过程的思想" class="headerlink" title="面向对象与面向过程的思想"></a>面向对象与面向过程的思想</h3><p>经过假期Pre2和Pre3项目的迭代开发，我们已经初步接近了面向对象设计的一些特点。但是面向对象仍是较新鲜和陌生的东西，遇到第一次作业这种并不算轻松的任务很可能会下意识想回到面向对象的思路。然而，这并不是课程的训练方向，也大概率<em>并不适合</em>后续的迭代开发，因此，下面着重介绍如何以**（可能）较为面向对象**的思路理解和实现题目。</p>
+<h2 id="Part-1-作业入手思路"><a href="#Part-1-作业入手思路" class="headerlink" title="Part 1 作业入手思路"></a>Part 1 作业入手思路</h2><h3 id="面向对象与面向过程的思想"><a href="#面向对象与面向过程的思想" class="headerlink" title="面向对象与面向过程的思想"></a>面向对象与面向过程的思想</h3><p>经过假期Pre2和Pre3项目的迭代开发，我们已经初步接近了面向对象设计的一些特点。但是面向对象仍是较新鲜和陌生的东西，遇到第一次作业这种并不算轻松的任务很可能会下意识想回到面向对象的思路。然而，这并不是课程的训练方向，也大概率<em>并不适合</em>后续的迭代开发，因此，下面着重介绍如何以<strong>（可能）较为面向对象</strong>的思路理解和实现题目。</p>
 <h3 id="Training-advance"><a href="#Training-advance" class="headerlink" title="Training-advance"></a>Training-advance</h3><p>课程组提供的training对本次作业有相当的启示，事实上笔者的解析框架也基本借鉴自training，以下分析training的设计思路及架构。</p>
 <h4 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h4><h5 id="数据存储架构"><a href="#数据存储架构" class="headerlink" title="数据存储架构"></a>数据存储架构</h5><p><code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>，分别为表达式、项和因子，这也和题目的形式化表述相符合。其中，<code>Factor</code>接口被<code>Number</code>和<code>Expr</code>实现，即这两者都可以成为因子。</p>
 <h5 id="解析流程"><a href="#解析流程" class="headerlink" title="解析流程"></a>解析流程</h5><p><code>Parser</code>（语法分析）调用<code>Lexer</code>（词法分析），获取下一个<strong>词</strong>，在training中主要是<code>(</code>,<code>)</code>,<code>+</code>,<code>*</code>,<code>Number</code>。<code>Parser</code>以标点符号<code>+</code>和<code>*</code>区分当前层次。</p>
 <p>以<code>(1+2)*8+9</code>为例：</p>
 <img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" class="" title="p2">
-
 <h3 id="HW1作业实现思路"><a href="#HW1作业实现思路" class="headerlink" title="HW1作业实现思路"></a>HW1作业实现思路</h3><h4 id="数据存储架构-1"><a href="#数据存储架构-1" class="headerlink" title="数据存储架构"></a>数据存储架构</h4><p>首先给出笔者的UML类图：</p>
 <img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161041674.png" class="" title="p2">
-
 <p>面向对象的核心之一是识别类，并在类之间建立层次式协作关系（援引自Pre 2 Task 1 guidebook）。在本此作业中，<strong>识别类并设计合适的接口</strong>可以视作工作的核心。</p>
 <p>在上面介绍的<strong>training</strong>架构和思路中，<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>的架构一方面符合形式化语言描述的一个合法表达式拥有的结构，另一方面由于<code>Factor</code>以接口形式呈现，其具有良好的可拓展性，对于新的因子如<code>a*x^b</code>可以较好地支持。同时，<code>Factor</code>还内含了递归的支持，例如：<code>Expr</code>对象可以在有限次中展开至若干个<code>Number</code>对象。</p>
 <p>基于以上分析，以下介绍笔者的数据存储架构：</p>
 <img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161310042.png" class="" title="p2">
-
 <p>类似上述training部分的树形结构，同样采用<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>结构，其中<code>Factor</code>接口被<code>Unit</code>和<code>Expr</code>实现。<code>Unit</code>储存了一个形如$a\times x^b$的数据，并且被视作<strong>基元</strong>。</p>
-<p>上述架构可以实现将原始字符串解析为一个完整的树状结构，同时，对每个结点来说，其存储了本节点所拥有的所有信息，并且对外提供一个<strong>extend()<strong>服务接口，使得外部节点可以通过该服务获取该节点的</strong>基元信息</strong>。</p>
+<p>上述架构可以实现将原始字符串解析为一个完整的树状结构，同时，对每个结点来说，其存储了本节点所拥有的所有信息，并且对外提供一个<strong>extend()</strong>服务接口，使得外部节点可以通过该服务获取该节点的<strong>基元信息</strong>。</p>
 <p>因此，只需要搭建好<code>Expr</code>,<code>Term</code>,<code>Factor</code>三个类，设计这三个类的对外服务<code>extend()</code>方法，并且在<code>Parser</code>中以合适的方法调用即可。</p>
 <h2 id="Part-2-架构设计"><a href="#Part-2-架构设计" class="headerlink" title="Part 2 架构设计"></a>Part 2 架构设计</h2><p>Part1中已经较为详细地描述和定义了数据信息的存储，以下介绍架构设计。</p>
 <h4 id="Expr"><a href="#Expr" class="headerlink" title="Expr"></a><code>Expr</code></h4><h4 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
@@ -710,7 +707,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -720,6 +717,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

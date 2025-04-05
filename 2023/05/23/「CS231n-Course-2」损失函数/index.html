@@ -263,7 +263,7 @@
 
                 <h1 id="「CS231n-Course-2」损失函数"><a href="#「CS231n-Course-2」损失函数" class="headerlink" title="「CS231n Course 2」损失函数"></a>「CS231n Course 2」损失函数</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p>
 <ul>
-<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5?p=9&vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 3.1 损失函数</a></li>
+<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5?p=9&amp;vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 3.1 损失函数</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/20945670?refer=intelligentunit">知乎 线性分类笔记（中）</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/21102293?refer=intelligentunit">知乎 线性分类笔记（下）</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/21360434?refer=intelligentunit">知乎 最优化笔记（上）</a></li>
@@ -271,27 +271,50 @@
 <h2 id="Part-1-损失函数"><a href="#Part-1-损失函数" class="headerlink" title="Part 1 损失函数"></a>Part 1 损失函数</h2><p>损失函数，Loss Function，用于衡量我们对（评分函数给出的）结果的不满意程度。具体地，当评分函数输出结果和真实结果之间差异越大，损失函数越大，我们“越不满意”。</p>
 <p>损失函数由多种形式，以下是一些常用损失函数。</p>
 <h3 id="多类支持向量机损失（Multiclass-Support-Vector-Machine-Loss）"><a href="#多类支持向量机损失（Multiclass-Support-Vector-Machine-Loss）" class="headerlink" title="多类支持向量机损失（Multiclass Support Vector Machine Loss）"></a>多类支持向量机损失（Multiclass Support Vector Machine Loss）</h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>SVM的损失函数希望SVM在正确分类上的得分始终比不正确分类上的得分高出一个边界值$\Delta$；如果满足，则损失值为0；如果不满足，则开始计算损失值。</p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>第$i$个数据包含图像$x_i$（的像素）和其正确的分类标签$y_i$。评分函数$f$对于输入像素数据，由公式$f(x_i, W)$计算不同分类类别的分值，记为$s$。如，对第$j$个类别的得分是$s_j&#x3D;f(x_i, W)_j$，针对第$i$个数据的多类别SVM损失函数定义如下：<br>$$<br>L_i &#x3D; \sum <em>{j \ne y_i}max (0, s_j - s</em>{y_i} + \Delta)<br>$$<br>其中，$\Delta$是一个超参数，是某种“安全边距”。</p>
-<p>举例而言，有三个分类，分值为$s &#x3D; [13, -7, 11]$。第一个类别是正确类别，即，$y_i&#x3D;0$，且我们假设$\Delta&#x3D;10$，则根据上述公式代入计算得：<br>$$<br>L_i &#x3D; max (0, -7-13+10)+max(0, 11 - 13 + 10) &#x3D; 8<br>$$<br>其中，<br>$$<br>max(0, -7 - 13 + 10)<br>$$<br>$max$函数中，第一项是$0$，第二项是用第1个类别的（评分函数）得分减去正确类别（$y_i$，第0个类别）的得分，再加上超参数$\Delta$。可以这样理解：当对于该类别加上超参数$\Delta$（安全边距）后，正确类别（$y_i&#x3D;0$）的得分仍高于该值，那么说明这一项没有损失，即取$max$函数的前项$0$；反之，说明正确类别并没有高出错误类别一个安全边距，则差值即为该项产生的损失。</p>
-<p>特别地，线性评分函数如下：<br>$$<br>s &#x3D; f(x_i, W) &#x3D; W x_i<br>$$<br>那么可以得到$s_j$即$s$的第$j$行为（注意，这里行列向量意会即可，似乎和上文中的并不符合）：<br>$$<br>s_j &#x3D; w^{T}<em>{j}x_i<br>$$<br>$s</em>{y_i}$为：<br>$$<br>s_{y_i} &#x3D; w^{T}<em>{y_i}x_i<br>$$<br>因此，SVM的损失函数可以表达为：<br>$$<br>L_i &#x3D; \sum</em>{j \ne y_i}max(0, w_{j}^{T}x_i - w_{y_i}^{T}x_i+\Delta)<br>$$</p>
-<h4 id="折叶函数（hinge-loss）"><a href="#折叶函数（hinge-loss）" class="headerlink" title="折叶函数（hinge loss）"></a>折叶函数（hinge loss）</h4><p>hinge loss，也叫合页（损失）函数或折页（损失）函数（因为他长得像hinge）。它的表现形式如下：<br>$$<br>max(0, -)<br>$$<br>一般情况下提到hinge loss即是如上的版本。特别地，有时候会使用平方折叶损失（即L2-SVM）</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>第$i$个数据包含图像$x_i$（的像素）和其正确的分类标签$y_i$。评分函数$f$对于输入像素数据，由公式$f(x_i, W)$计算不同分类类别的分值，记为$s$。如，对第$j$个类别的得分是$s_j=f(x_i, W)_j$，针对第$i$个数据的多类别SVM损失函数定义如下：</p>
+<script type="math/tex; mode=display">
+L_i = \sum _{j \ne y_i}max (0, s_j - s_{y_i} + \Delta)</script><p>其中，$\Delta$是一个超参数，是某种“安全边距”。</p>
+<p>举例而言，有三个分类，分值为$s = [13, -7, 11]$。第一个类别是正确类别，即，$y_i=0$，且我们假设$\Delta=10$，则根据上述公式代入计算得：</p>
+<script type="math/tex; mode=display">
+L_i = max (0, -7-13+10)+max(0, 11 - 13 + 10) = 8</script><p>其中，</p>
+<script type="math/tex; mode=display">
+max(0, -7 - 13 + 10)</script><p>$max$函数中，第一项是$0$，第二项是用第1个类别的（评分函数）得分减去正确类别（$y_i$，第0个类别）的得分，再加上超参数$\Delta$。可以这样理解：当对于该类别加上超参数$\Delta$（安全边距）后，正确类别（$y_i=0$）的得分仍高于该值，那么说明这一项没有损失，即取$max$函数的前项$0$；反之，说明正确类别并没有高出错误类别一个安全边距，则差值即为该项产生的损失。</p>
+<p>特别地，线性评分函数如下：</p>
+<script type="math/tex; mode=display">
+s = f(x_i, W) = W x_i</script><p>那么可以得到$s_j$即$s$的第$j$行为（注意，这里行列向量意会即可，似乎和上文中的并不符合）：</p>
+<script type="math/tex; mode=display">
+s_j = w^{T}_{j}x_i</script><p>$s_{y_i}$为：</p>
+<script type="math/tex; mode=display">
+s_{y_i} = w^{T}_{y_i}x_i</script><p>因此，SVM的损失函数可以表达为：</p>
+<script type="math/tex; mode=display">
+L_i = \sum_{j \ne y_i}max(0, w_{j}^{T}x_i - w_{y_i}^{T}x_i+\Delta)</script><h4 id="折叶函数（hinge-loss）"><a href="#折叶函数（hinge-loss）" class="headerlink" title="折叶函数（hinge loss）"></a>折叶函数（hinge loss）</h4><p>hinge loss，也叫合页（损失）函数或折页（损失）函数（因为他长得像hinge）。它的表现形式如下：</p>
+<script type="math/tex; mode=display">
+max(0, -)</script><p>一般情况下提到hinge loss即是如上的版本。特别地，有时候会使用平方折叶损失（即L2-SVM）</p>
 <h3 id="正则化（Regularzition）"><a href="#正则化（Regularzition）" class="headerlink" title="正则化（Regularzition）"></a>正则化（Regularzition）</h3><p>在训练过程中，可能存在以下问题：</p>
 <ul>
 <li>$W$不唯一，很多相似的$W$可以正确分类所有数据</li>
 <li>过拟合</li>
 </ul>
 <p>正则化即为某些特定的（也可以是全部）权重$W$添加一些偏好，对其他不添加，以消除模糊性。具体地，向损失函数增加一个正则化惩罚（regularition penalty）$R(W)$。</p>
-<p>最常用的正则化惩罚是L2范式，对所有参数进行逐个元素的平方惩罚来抑制大数值的权重：<br>$$<br>R(W) &#x3D; \sum_{k}\sum_{l}W_{k,l}^{2}<br>$$<br>上式将$W$中所有元素平方后求和。完整的多类SVM损失函数如下：<br>$$<br>L &#x3D; \frac{1}{N}\sum_{i}L_i+\lambda R(W)<br>$$<br>其中，$\frac{1}{N}\sum_{i}L_i$是数据损失（data loss），即所有样例的平均损失；以及$\lambda R(W)$正则化损失（regularization loss）</p>
+<p>最常用的正则化惩罚是L2范式，对所有参数进行逐个元素的平方惩罚来抑制大数值的权重：</p>
+<script type="math/tex; mode=display">
+R(W) = \sum_{k}\sum_{l}W_{k,l}^{2}</script><p>上式将$W$中所有元素平方后求和。完整的多类SVM损失函数如下：</p>
+<script type="math/tex; mode=display">
+L = \frac{1}{N}\sum_{i}L_i+\lambda R(W)</script><p>其中，$\frac{1}{N}\sum_{i}L_i$是数据损失（data loss），即所有样例的平均损失；以及$\lambda R(W)$正则化损失（regularization loss）</p>
 <h3 id="Softmax分类器"><a href="#Softmax分类器" class="headerlink" title="Softmax分类器"></a>Softmax分类器</h3><blockquote>
 <p>关于Softmax函数的名字含义，可以这样理解：max函数仅输出最大值，而Softmax确保较小的值有较小的概率，不会直接丢弃，因此可以认为其是argmax函数的概率版本或soft版本</p>
 </blockquote>
 <p>SVM和Softmax分类器是最常用的两个分类器，Softmax分类器可以理解为逻辑回归分类器面对多个分类的一般化归纳。</p>
-<p>Softmax的损失函数和SVM有所不同。具体地，SVM是将$f(x_i, W)$作为每个分类的评分，由于没有定标，因此难以解释含义。而Softmax的输出是归一化的分类概率，更加直观，而且可以从概率上解释。Softmax分类其中函数映射$f(x_i;W)&#x3D;Wx_i$保持不变，但会对评分值<strong>视为每个分类的未归一化时的对数概率</strong>，根据这个表述，我们知道将该值先进行指数化，再归一化即可得到每个分类的概率。Softmax将SVM的折叶损失（hinge loss）替换为<strong>交叉熵损失（cross-entropy loss）</strong>：<br>$$<br>L_i &#x3D; -log(\frac{e^{f_{y_i}}}{\sum_{j}e^{f_j}})或等价的L_i &#x3D; -f_{y_i}+log(\sum_{j}e^f_j{})<br>$$<br>上式中，各值的含义如下：</p>
+<p>Softmax的损失函数和SVM有所不同。具体地，SVM是将$f(x_i, W)$作为每个分类的评分，由于没有定标，因此难以解释含义。而Softmax的输出是归一化的分类概率，更加直观，而且可以从概率上解释。Softmax分类其中函数映射$f(x_i;W)=Wx_i$保持不变，但会对评分值<strong>视为每个分类的未归一化时的对数概率</strong>，根据这个表述，我们知道将该值先进行指数化，再归一化即可得到每个分类的概率。Softmax将SVM的折叶损失（hinge loss）替换为<strong>交叉熵损失（cross-entropy loss）</strong>：</p>
+<script type="math/tex; mode=display">
+L_i = -log(\frac{e^{f_{y_i}}}{\sum_{j}e^{f_j}})或等价的L_i = -f_{y_i}+log(\sum_{j}e^f_j{})</script><p>上式中，各值的含义如下：</p>
 <ul>
 <li>$f_j$：分类评分向量$f$中的第$j$个元素</li>
 </ul>
-<p>和SVM相同，整个数据集的损失值是数据集中所有样本数据的损失值$L_i$的均值与正则化损失$R(W)$之和。其中，下式被称为Softmax函数：<br>$$<br>f_j(z)&#x3D;\frac{s^{z_j}}{\sum_{k}e^{z_k}}<br>$$<br>该函数的解释为：输入值是一个向量$z$，其元素为任意实数的评分值，函数对其进行压缩，输出一个向量，其中每个元素值在$0$和$1$之间，且所有元素之和为$1$。</p>
-<h3 id="SVM和Softmax的比较"><a href="#SVM和Softmax的比较" class="headerlink" title="SVM和Softmax的比较"></a>SVM和Softmax的比较</h3><p><img src="/2023/05/23/%E3%80%8CCS231n-Course-2%E3%80%8D%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/a90ce9e0ff533f3efee4747305382064_r.jpg" alt="img"></p>
+<p>和SVM相同，整个数据集的损失值是数据集中所有样本数据的损失值$L_i$的均值与正则化损失$R(W)$之和。其中，下式被称为Softmax函数：</p>
+<script type="math/tex; mode=display">
+f_j(z)=\frac{s^{z_j}}{\sum_{k}e^{z_k}}</script><p>该函数的解释为：输入值是一个向量$z$，其元素为任意实数的评分值，函数对其进行压缩，输出一个向量，其中每个元素值在$0$和$1$之间，且所有元素之和为$1$。</p>
+<h3 id="SVM和Softmax的比较"><a href="#SVM和Softmax的比较" class="headerlink" title="SVM和Softmax的比较"></a>SVM和Softmax的比较</h3><p><img src="a90ce9e0ff533f3efee4747305382064_r.jpg" alt="img"></p>
 <p>首先，可以注意到两者的$f$在这里都使用了普通的矩阵乘法$W x_i$；</p>
 <p>其次，观察到SVM对矩阵乘法的结果直接使用折叶损失函数（hinge loss），其中的超参数$\Delta$这里选择了$1$；</p>
 <p>然后，观察到Softmax首先对$f$的结果取exp，然后进行归一化（得到各分类的概率），再然后取$-log$得到损失（对正确答案的分类概率进行$-log$）。</p>
@@ -305,7 +328,9 @@
 <h4 id="方案2：随机本地搜索"><a href="#方案2：随机本地搜索" class="headerlink" title="方案2：随机本地搜索"></a>方案2：随机本地搜索</h4><p>每一个策略是每走一步随机尝试几个方向，若某个方向是向下的，则继续向这个方向走。具体地，从一个随机的$W$开始，生成一个随机的扰动$\delta W$，仅有$W + \delta W$的损失值变小时才更新。</p>
 <h4 id="方案3：跟随梯度"><a href="#方案3：跟随梯度" class="headerlink" title="方案3：跟随梯度"></a>方案3：跟随梯度</h4><p>方案2中我们其实是在权重空间中尝试找到一个方向，使得沿着该方向可以降低。而梯度（gradient）恰好是这样一个数学概念，计算出某个点的各个方向的倾斜程度，以便选择最陡峭的方向下山。</p>
 <p>一维函数种，斜率是某点的瞬时变化率；梯度是函数斜率的一般化表达，不是一个值，而是一个向量。在输入空间中，梯度是各个维度的斜率（偏导数）组成的向量。</p>
-<p>具体地，一维函数的求导公式（定义式）如下：<br>$$<br>\frac{df(x)}{dx} &#x3D; \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}<br>$$<br>当函数有多个参数的时候，即非一维函数，此时改称偏导数。梯度就是每个维度上的偏导数为元素组成的向量。</p>
+<p>具体地，一维函数的求导公式（定义式）如下：</p>
+<script type="math/tex; mode=display">
+\frac{df(x)}{dx} = \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}</script><p>当函数有多个参数的时候，即非一维函数，此时改称偏导数。梯度就是每个维度上的偏导数为元素组成的向量。</p>
 <h3 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h3><p>梯度计算主要有两种方法：</p>
 <ol>
 <li>数值梯度法：实现简单的近似方法，但是慢</li>
@@ -315,8 +340,13 @@
 <p>优点：实现简单</p>
 <p>缺点：是近似，有误差，计算开销大</p>
 <h4 id="分析梯度法"><a href="#分析梯度法" class="headerlink" title="分析梯度法"></a>分析梯度法</h4><p>使用微分分析的方法计算梯度，结果精准且速度快，但是容易出错，实践中常常将分析梯度法的结果和数值梯度法的结果相比较，验证分析梯度实现的正确性，这个步骤叫做<strong>梯度检查（gradient check）</strong>。</p>
-<p>以SVM的损失函数（hinge loss）为例：<br>$$<br>L_i &#x3D; \sum_{j \ne y_i}[max(0, w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta)]<br>$$<br>对函数微分得：<br>$$<br>\nabla_{w_{y_i}}L_i &#x3D; -(\sum_{j \ne y_i}\mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta &gt; 0))x_i<br>$$<br>其中，$\mathbb{l}$是一个示性函数，即对括号内的条件进行判断，若为真，则式值为1，否则为0。该公式的意思为，计算（计数）没有满足安全边距的分类的数量（这些分类对损失函数产生了贡献），然后乘以$x_i$，即得到梯度。该公式是对应正确分类的$W$的行向量的梯度，那么$j \ne y_i$行的梯度是：<br>$$<br>\nabla_{w_j}L_i &#x3D; \mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta &gt; 0)x_i<br>$$</p>
-<h4 id="小批量数据梯度下降（Mini-batch-gradient-descent）"><a href="#小批量数据梯度下降（Mini-batch-gradient-descent）" class="headerlink" title="小批量数据梯度下降（Mini-batch gradient descent）"></a>小批量数据梯度下降（Mini-batch gradient descent）</h4><p>大规模应用中的训练数据是百万量级的，训练成本很高，常用的方法是计算训练集中的小批量（batches）数据。如，在比较先进的CNN中，一个典型的小批量包含256个样本，而整个训练集的数量级在120万。</p>
+<p>以SVM的损失函数（hinge loss）为例：</p>
+<script type="math/tex; mode=display">
+L_i = \sum_{j \ne y_i}[max(0, w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta)]</script><p>对函数微分得：</p>
+<script type="math/tex; mode=display">
+\nabla_{w_{y_i}}L_i = -(\sum_{j \ne y_i}\mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta > 0))x_i</script><p>其中，$\mathbb{l}$是一个示性函数，即对括号内的条件进行判断，若为真，则式值为1，否则为0。该公式的意思为，计算（计数）没有满足安全边距的分类的数量（这些分类对损失函数产生了贡献），然后乘以$x_i$，即得到梯度。该公式是对应正确分类的$W$的行向量的梯度，那么$j \ne y_i$行的梯度是：</p>
+<script type="math/tex; mode=display">
+\nabla_{w_j}L_i = \mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta > 0)x_i</script><h4 id="小批量数据梯度下降（Mini-batch-gradient-descent）"><a href="#小批量数据梯度下降（Mini-batch-gradient-descent）" class="headerlink" title="小批量数据梯度下降（Mini-batch gradient descent）"></a>小批量数据梯度下降（Mini-batch gradient descent）</h4><p>大规模应用中的训练数据是百万量级的，训练成本很高，常用的方法是计算训练集中的小批量（batches）数据。如，在比较先进的CNN中，一个典型的小批量包含256个样本，而整个训练集的数量级在120万。</p>
 <h4 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h4><p>学习率，也叫步长，是神经网络训练中最重要的超参数设定之一。如果步长太小，则进度稳定但缓慢；若步长太大，进度快但有风险。</p>
 
                 
@@ -722,7 +752,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -732,6 +762,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -274,7 +274,6 @@
 <p>具体地，在深度学习中，训练阶段往往需要计算模型的梯度并使用梯度更新模型的参数，以进行反向传播和优化；在测试阶段，通常只需要进行前向传播以获取模型的输出，而不需要再计算梯度，因此，此时使用 <code>with torch.no_grad()</code> 可以节约资源，避免不必要的计算。</p>
 <p>e.g.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">lr = <span class="number">0.03</span></span><br><span class="line">num_epochs = <span class="number">3</span></span><br><span class="line">net = linreg</span><br><span class="line">loss = squared_loss</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> data_iter(batch_size, features, labels):</span><br><span class="line">        l = loss(net(X, w, b), y)  <span class="comment"># X和y的小批量损失</span></span><br><span class="line">        <span class="comment"># 因为l形状是(batch_size,1)，而不是一个标量。l中的所有元素被加到一起，</span></span><br><span class="line">        <span class="comment"># 并以此计算关于[w,b]的梯度</span></span><br><span class="line">        l.<span class="built_in">sum</span>().backward()</span><br><span class="line">        sgd([w, b], lr, batch_size)  <span class="comment"># 使用参数的梯度更新参数</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        train_l = loss(net(features, w, b), labels)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;epoch <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>, loss <span class="subst">&#123;<span class="built_in">float</span>(train_l.mean()):f&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>该代码片段来自<a href="https://zh-v2.d2l.ai/chapter_linear-networks/linear-regression-scratch.html">d2l</a>，其中，<code>with torch.no_grad()</code> 环境下进行 <code>loss</code> 的计算，用以直观表现每一个 epoch 后的优化效果（即应当观察到 loss 越来越小），此时并非要进行训练，因此只进行前向传播和计算（预测）即可。</p>
 
                 
@@ -682,7 +681,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -692,6 +691,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

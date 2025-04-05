@@ -124,7 +124,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">1.5k</span> and
+                                Words <span class="post-count">1.4k</span> and
                                 Reading Time <span class="post-count">7</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -259,8 +259,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Latex笔记"><a href="#Latex笔记" class="headerlink" title="Latex笔记"></a>Latex笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>LaTeX（&#x2F;ˈlɑːtɛx&#x2F;，常被读作&#x2F;ˈlɑːtɛk&#x2F;或&#x2F;ˈleɪtɛk&#x2F;） 是一种基于TeX的高品质排版系统，由美国计算机科学家莱斯利·兰伯特在20世纪80年代初期开发，非常适用于生成高印刷质量的科技和数学、物理文档，尤其擅长于复杂表格和数学公式的排版。LaTeX是科学文献交流和出版的事实标准。</p>
-<h2 id="Part-1-数学公式"><a href="#Part-1-数学公式" class="headerlink" title="Part 1 数学公式"></a>Part 1 数学公式</h2><h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><table>
+                <h1 id="Latex笔记"><a href="#Latex笔记" class="headerlink" title="Latex笔记"></a>Latex笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>LaTeX（/ˈlɑːtɛx/，常被读作/ˈlɑːtɛk/或/ˈleɪtɛk/） 是一种基于TeX的高品质排版系统，由美国计算机科学家莱斯利·兰伯特在20世纪80年代初期开发，非常适用于生成高印刷质量的科技和数学、物理文档，尤其擅长于复杂表格和数学公式的排版。LaTeX是科学文献交流和出版的事实标准。</p>
+<h2 id="Part-1-数学公式"><a href="#Part-1-数学公式" class="headerlink" title="Part 1 数学公式"></a>Part 1 数学公式</h2><h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>字母名称</th>
@@ -271,13 +272,14 @@
 <th>音标（美式）</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>alpha</td>
 <td><code>\alpha</code></td>
 <td>$\alpha$</td>
 <td><code>\Alpha</code></td>
 <td>$\Alpha$</td>
-<td>&#x2F;‘ælfə&#x2F;</td>
+<td>/‘ælfə/</td>
 </tr>
 <tr>
 <td>beta</td>
@@ -285,7 +287,7 @@
 <td>$ \beta $</td>
 <td><code>\Beta</code></td>
 <td>$\Beta$</td>
-<td>&#x2F;</td>
+<td>/</td>
 </tr>
 <tr>
 <td>gamma</td>
@@ -469,441 +471,408 @@
 <td>$\omega$</td>
 <td><code>\Omega</code></td>
 <td>$\Omega$</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b <span class="keyword">\\</span> c + d</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a + b \ c + d<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+a + b \\ c + d</script><hr>
 <h3 id="点乘"><a href="#点乘" class="headerlink" title="点乘"></a>点乘</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\cdot</span> b</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a \cdot b<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+a \cdot b</script><hr>
 <h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="matrix-语法"><a href="#matrix-语法" class="headerlink" title="matrix 语法"></a><code>matrix</code> 语法</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span> <span class="keyword">\&#123;</span> <span class="keyword">\begin</span>&#123;matrix&#125;</span><br><span class="line">1<span class="built_in">&amp;</span> 3 <span class="keyword">\\</span></span><br><span class="line">2<span class="built_in">&amp;</span> 4 <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\end</span>&#123;matrix&#125; <span class="keyword">\right</span><span class="keyword">\&#125;</span> </span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\left { \begin{matrix}<br>1&amp; 3 \<br>2&amp; 4 \<br>\end{matrix} \right}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\left \{ \begin{matrix}
+1& 3 \\
+2& 4 \\
+\end{matrix} \right\}</script><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\left [ \begin&#123;matrix&#125;</span><br><span class="line">1&amp; 3 \\</span><br><span class="line">2&amp; 4 \\</span><br><span class="line">\end&#123;matrix&#125; \right ] </span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\left [ \begin{matrix}<br>1&amp; 3 \<br>2&amp; 4 \<br>\end{matrix} \right ]<br>$$</p>
-<h4 id="array-语法"><a href="#array-语法" class="headerlink" title="array 语法"></a><code>array</code> 语法</h4><ul>
+<script type="math/tex; mode=display">
+\left [ \begin{matrix}
+1& 3 \\
+2& 4 \\
+\end{matrix} \right ]</script><h4 id="array-语法"><a href="#array-语法" class="headerlink" title="array 语法"></a><code>array</code> 语法</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span> |<span class="keyword">\begin</span>&#123;array&#125;&#123;cccc&#125;</span><br><span class="line">1 <span class="built_in">&amp;</span>6   <span class="built_in">&amp;</span> 9 <span class="keyword">\\</span></span><br><span class="line">7 <span class="built_in">&amp;</span>90 <span class="built_in">&amp;</span> f(x)  <span class="keyword">\\</span></span><br><span class="line">9 <span class="built_in">&amp;</span> <span class="keyword">\psi</span>(x) <span class="built_in">&amp;</span>g(x) <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\end</span>&#123;array&#125;<span class="keyword">\right</span>|</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\left |\begin{array}{cccc}<br>1 &amp;6   &amp; 9 \<br>7 &amp;90 &amp; f(x)  \<br>9 &amp; \psi(x) &amp;g(x) \<br>\end{array}\right|<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+\left |\begin{array}{cccc}
+1 &6   & 9 \\
+7 &90 & f(x)  \\
+9 & \psi(x) &g(x) \\
+\end{array}\right|</script><hr>
 <h3 id="根号"><a href="#根号" class="headerlink" title="根号"></a>根号</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\sqrt</span>&#123;[<span class="keyword">\alpha</span>, <span class="keyword">\alpha</span>]&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\sqrt{[\alpha, \beta]}<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+\sqrt{[\alpha, \beta]}</script><hr>
 <h3 id="垂直"><a href="#垂直" class="headerlink" title="垂直"></a>垂直</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\perp</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\alpha \perp \beta<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+\alpha \perp \beta</script><hr>
 <h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><h4 id="等价（双向箭头）"><a href="#等价（双向箭头）" class="headerlink" title="等价（双向箭头）"></a>等价（双向箭头）</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\iff</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\alpha \iff \beta<br>$$</p>
-<h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><ul>
+<script type="math/tex; mode=display">
+\alpha \iff \beta</script><h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\Rightarrow</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\alpha \Rightarrow \beta<br>$$</p>
-<hr>
+<script type="math/tex; mode=display">
+\alpha \Rightarrow \beta</script><hr>
 <h3 id="插入组合数"><a href="#插入组合数" class="headerlink" title="插入组合数"></a>插入组合数</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\tbinom</span>&#123;n&#125;&#123;k&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\tbinom{n}{k}<br>$$</p>
-<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><ul>
+<script type="math/tex; mode=display">
+\tbinom{n}{k}</script><h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\sum</span><span class="built_in">_</span>&#123;k=0&#125;<span class="built_in">^</span>&#123;n&#125;(a+b)<span class="keyword">\times</span> k</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\sum_{k&#x3D;0}^{n}(a+b)\times k<br>$$</p>
-<h3 id="累乘"><a href="#累乘" class="headerlink" title="累乘"></a>累乘</h3><ul>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{n}(a+b)\times k</script><h3 id="累乘"><a href="#累乘" class="headerlink" title="累乘"></a>累乘</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\prod</span><span class="built_in">_</span>&#123;i = 1&#125;<span class="built_in">^</span>&#123;n&#125; (i + 3)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\prod_{i &#x3D; 1}^{n} (i + 3)<br>$$</p>
-<h3 id="任意和存在"><a href="#任意和存在" class="headerlink" title="任意和存在"></a>任意和存在</h3><h4 id="任意"><a href="#任意" class="headerlink" title="任意"></a>任意</h4><ul>
+<script type="math/tex; mode=display">
+\prod_{i = 1}^{n} (i + 3)</script><h3 id="任意和存在"><a href="#任意和存在" class="headerlink" title="任意和存在"></a>任意和存在</h3><h4 id="任意"><a href="#任意" class="headerlink" title="任意"></a>任意</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\forall</span>&#125;x</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>{\forall}x<br>$$</p>
-<h4 id="存在"><a href="#存在" class="headerlink" title="存在"></a>存在</h4><ul>
+<script type="math/tex; mode=display">
+{\forall}x</script><h4 id="存在"><a href="#存在" class="headerlink" title="存在"></a>存在</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\exists</span>&#125;y</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>{\exists}y<br>$$</p>
-<h4 id="不存在"><a href="#不存在" class="headerlink" title="不存在"></a>不存在</h4><ul>
+<script type="math/tex; mode=display">
+{\exists}y</script><h4 id="不存在"><a href="#不存在" class="headerlink" title="不存在"></a>不存在</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\nexists</span>&#125;x</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>{\nexists}x<br>$$</p>
-<h3 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h3><ul>
+<script type="math/tex; mode=display">
+{\nexists}x</script><h3 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\frac</span>&#123;x<span class="built_in">^</span>2&#125;&#123;y+9&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\frac{x^2}{y+9}<br>$$</p>
-<h3 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h3><h4 id="取整-1"><a href="#取整-1" class="headerlink" title="取整"></a>取整</h4><ul>
+<script type="math/tex; mode=display">
+\frac{x^2}{y+9}</script><h3 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h3><h4 id="取整-1"><a href="#取整-1" class="headerlink" title="取整"></a>取整</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span>[ x <span class="keyword">\right</span>]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\left[ x \right]<br>$$</p>
-<h4 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h4><ul>
+<script type="math/tex; mode=display">
+\left[ x \right]</script><h4 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lceil</span> x <span class="keyword">\rceil</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\lceil x \rceil<br>$$</p>
-<h3 id="向下取整"><a href="#向下取整" class="headerlink" title="向下取整"></a>向下取整</h3><ul>
+<script type="math/tex; mode=display">
+\lceil x \rceil</script><h3 id="向下取整"><a href="#向下取整" class="headerlink" title="向下取整"></a>向下取整</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lfloor</span> x <span class="keyword">\rfloor</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\lfloor x \rfloor<br>$$</p>
-<hr>
-<h3 id="属于-不属于"><a href="#属于-不属于" class="headerlink" title="属于&#x2F;不属于"></a>属于&#x2F;不属于</h3><h4 id="属于"><a href="#属于" class="headerlink" title="属于"></a>属于</h4><ul>
+<script type="math/tex; mode=display">
+\lfloor x \rfloor</script><hr>
+<h3 id="属于-不属于"><a href="#属于-不属于" class="headerlink" title="属于/不属于"></a>属于/不属于</h3><h4 id="属于"><a href="#属于" class="headerlink" title="属于"></a>属于</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x <span class="keyword">\in</span> A</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>x \in A<br>$$</p>
-<h4 id="不属于"><a href="#不属于" class="headerlink" title="不属于"></a>不属于</h4><ul>
+<script type="math/tex; mode=display">
+x \in A</script><h4 id="不属于"><a href="#不属于" class="headerlink" title="不属于"></a>不属于</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y <span class="keyword">\notin</span> A</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>y \notin A<br>$$</p>
-<hr>
-<h3 id="包含于-真包含于-包含-真包含"><a href="#包含于-真包含于-包含-真包含" class="headerlink" title="包含于&#x2F;真包含于&#x2F;包含&#x2F;真包含"></a>包含于&#x2F;真包含于&#x2F;包含&#x2F;真包含</h3><h4 id="包含于"><a href="#包含于" class="headerlink" title="包含于"></a>包含于</h4><ul>
+<script type="math/tex; mode=display">
+y \notin A</script><hr>
+<h3 id="包含于-真包含于-包含-真包含"><a href="#包含于-真包含于-包含-真包含" class="headerlink" title="包含于/真包含于/包含/真包含"></a>包含于/真包含于/包含/真包含</h3><h4 id="包含于"><a href="#包含于" class="headerlink" title="包含于"></a>包含于</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\subseteq</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果</li>
 </ul>
-<p>$$<br>A \subseteq B<br>$$</p>
-<h4 id="真包含于"><a href="#真包含于" class="headerlink" title="真包含于"></a>真包含于</h4><ul>
+<script type="math/tex; mode=display">
+A \subseteq B</script><h4 id="真包含于"><a href="#真包含于" class="headerlink" title="真包含于"></a>真包含于</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\subset</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果</li>
 </ul>
-<p>$$<br>A \subset B<br>$$</p>
-<h4 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h4><ul>
+<script type="math/tex; mode=display">
+A \subset B</script><h4 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\supseteq</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>A \supseteq B<br>$$</p>
-<h4 id="真包含"><a href="#真包含" class="headerlink" title="真包含"></a>真包含</h4><ul>
+<script type="math/tex; mode=display">
+A \supseteq B</script><h4 id="真包含"><a href="#真包含" class="headerlink" title="真包含"></a>真包含</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\supset</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果</li>
 </ul>
-<p>$$<br>A \supset B<br>$$</p>
-<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><ul>
+<script type="math/tex; mode=display">
+A \supset B</script><h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\ldots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\cdots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\vdots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\ddots</span> b <span class="keyword">\\</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a \ldots b \<br>a \cdots b \<br>a \vdots b \<br>a \ddots b \<br>$$</p>
-<h3 id="小于（等于）-大于（等于）"><a href="#小于（等于）-大于（等于）" class="headerlink" title="小于（等于）&#x2F;大于（等于）"></a>小于（等于）&#x2F;大于（等于）</h3><ul>
+<script type="math/tex; mode=display">
+a \ldots b \\
+a \cdots b \\
+a \vdots b \\
+a \ddots b \\</script><h3 id="小于（等于）-大于（等于）"><a href="#小于（等于）-大于（等于）" class="headerlink" title="小于（等于）/大于（等于）"></a>小于（等于）/大于（等于）</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\le</span> b <span class="keyword">\\</span></span><br><span class="line">a &lt; b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\ge</span> b <span class="keyword">\\</span></span><br><span class="line">a &gt; b<span class="keyword">\\</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a \le b \<br>a &lt; b \<br>a \ge b \<br>a &gt; b\<br>$$</p>
-<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><ul>
+<script type="math/tex; mode=display">
+a \le b \\
+a < b \\
+a \ge b \\
+a > b\\</script><h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\quad</span> b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a \quad b \ abcd<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+a \quad b \\ abcd</script><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\ </span>b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a \ b \ abcd<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+a \ b \\ abcd</script><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\;</span> b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>a ; b \ abcd<br>$$</p>
-<h3 id="无穷"><a href="#无穷" class="headerlink" title="无穷"></a>无穷</h3><h4 id="正无穷"><a href="#正无穷" class="headerlink" title="正无穷"></a>正无穷</h4><ul>
+<script type="math/tex; mode=display">
+a \; b \\ abcd</script><h3 id="无穷"><a href="#无穷" class="headerlink" title="无穷"></a>无穷</h3><h4 id="正无穷"><a href="#正无穷" class="headerlink" title="正无穷"></a>正无穷</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+<span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>+\infty<br>$$</p>
-<h4 id="负无穷"><a href="#负无穷" class="headerlink" title="负无穷"></a>负无穷</h4><ul>
+<script type="math/tex; mode=display">
++\infty</script><h4 id="负无穷"><a href="#负无穷" class="headerlink" title="负无穷"></a>负无穷</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>-\infty<br>$$</p>
-<h3 id="无穷-1"><a href="#无穷-1" class="headerlink" title="无穷"></a>无穷</h3><ul>
+<script type="math/tex; mode=display">
+-\infty</script><h3 id="无穷-1"><a href="#无穷-1" class="headerlink" title="无穷"></a>无穷</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\infty<br>$$</p>
-<h3 id="字母上横线"><a href="#字母上横线" class="headerlink" title="字母上横线"></a>字母上横线</h3><ul>
+<script type="math/tex; mode=display">
+\infty</script><h3 id="字母上横线"><a href="#字母上横线" class="headerlink" title="字母上横线"></a>字母上横线</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\overline</span>&#123;a + b&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\overline{a + b}<br>$$</p>
-<h3 id="交集和并集"><a href="#交集和并集" class="headerlink" title="交集和并集"></a>交集和并集</h3><h4 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h4><ul>
+<script type="math/tex; mode=display">
+\overline{a + b}</script><h3 id="交集和并集"><a href="#交集和并集" class="headerlink" title="交集和并集"></a>交集和并集</h3><h4 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\cap</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>A \cap B<br>$$</p>
-<h4 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h4><ul>
+<script type="math/tex; mode=display">
+A \cap B</script><h4 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\cup</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>A \cup B<br>$$</p>
-<h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><ul>
+<script type="math/tex; mode=display">
+A \cup B</script><h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\log</span><span class="built_in">_</span>&#123;aa&#125;&#123;x&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\log_{aa}{x}<br>$$</p>
-<h3 id="撇"><a href="#撇" class="headerlink" title="撇"></a>撇</h3><ul>
+<script type="math/tex; mode=display">
+\log_{aa}{x}</script><h3 id="撇"><a href="#撇" class="headerlink" title="撇"></a>撇</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x<span class="built_in">^</span>&#123;<span class="keyword">\prime</span>&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>x^{\prime}<br>$$</p>
-<h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><ul>
+<script type="math/tex; mode=display">
+x^{\prime}</script><h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\nabla</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\nabla<br>$$</p>
-<h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><ul>
+<script type="math/tex; mode=display">
+\nabla</script><h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\partial</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\partial<br>$$</p>
-<h3 id="示性函数"><a href="#示性函数" class="headerlink" title="示性函数"></a>示性函数</h3><ul>
+<script type="math/tex; mode=display">
+\partial</script><h3 id="示性函数"><a href="#示性函数" class="headerlink" title="示性函数"></a>示性函数</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\mathbb&#123;l&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\mathbb{l}<br>$$</p>
-<h3 id="波浪线"><a href="#波浪线" class="headerlink" title="波浪线"></a>波浪线</h3><ul>
+<script type="math/tex; mode=display">
+\mathbb{l}</script><h3 id="波浪线"><a href="#波浪线" class="headerlink" title="波浪线"></a>波浪线</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\sim</span> B</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>A \sim B<br>$$</p>
-<h2 id="Part-2-排版与格式"><a href="#Part-2-排版与格式" class="headerlink" title="Part 2 排版与格式"></a>Part 2 排版与格式</h2><h3 id="命令newcommand"><a href="#命令newcommand" class="headerlink" title="命令newcommand"></a>命令<code>newcommand</code></h3><h4 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h4><p><code>newcommand</code>可以实现类似C语言<code>#define</code>的效果的纯字符串替换。</p>
+<script type="math/tex; mode=display">
+A \sim B</script><h2 id="Part-2-排版与格式"><a href="#Part-2-排版与格式" class="headerlink" title="Part 2 排版与格式"></a>Part 2 排版与格式</h2><h3 id="命令newcommand"><a href="#命令newcommand" class="headerlink" title="命令newcommand"></a>命令<code>newcommand</code></h3><h4 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h4><p><code>newcommand</code>可以实现类似C语言<code>#define</code>的效果的纯字符串替换。</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span><span class="keyword">\myName</span>&#123;saltyfishyjk&#125; <span class="comment">% 后文中调用\myName的地方会被渲染为大括号中的内容即saltyfishyjk</span></span><br></pre></td></tr></table></figure>
-
 <hr>
 <h3 id="伪代码块"><a href="#伪代码块" class="headerlink" title="伪代码块"></a>伪代码块</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;algorithm&#125;[H]</span><br><span class="line"></span><br><span class="line"><span class="keyword">\caption</span>&#123;k路归并问题优化做法&#125;</span><br><span class="line"><span class="keyword">\LinesNumbered</span></span><br><span class="line"><span class="keyword">\KwIn</span>&#123;正整数<span class="built_in">$</span>n<span class="built_in">$</span>，为数组长度，正整数<span class="built_in">$</span>k<span class="built_in">$</span>，为数组个数，<span class="built_in">$</span>k<span class="built_in">$</span>个长度为<span class="built_in">$</span>n<span class="built_in">$</span>的数组<span class="built_in">$</span>A[]<span class="built_in">$</span>&#125;</span><br><span class="line"><span class="keyword">\KwOut</span>&#123;长度为<span class="built_in">$</span>n k<span class="built_in">$</span>的数组<span class="built_in">$</span>Ans<span class="built_in">$</span>，为归并后的数组&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">$</span>global<span class="keyword">\ </span>pointer[k]<span class="built_in">$</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\Function</span>&#123;<span class="built_in">$</span>main(n,k,A)<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">    <span class="keyword">\For</span>&#123;<span class="built_in">$</span>i<span class="keyword">\leftarrow</span>0<span class="keyword">\ </span>to<span class="keyword">\ </span>k-1<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">        <span class="built_in">$</span>pointer[i] <span class="keyword">\leftarrow</span> 0<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>push<span class="keyword">\ </span>(A[i][pointer[i]],i)<span class="keyword">\ </span>to<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">\For</span>&#123;<span class="built_in">$</span>i<span class="keyword">\leftarrow</span>0<span class="keyword">\ </span>to<span class="keyword">\ </span>n k-1<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">        <span class="built_in">$</span>(val,index) <span class="keyword">\leftarrow</span> top<span class="keyword">\ </span>of<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>remove<span class="keyword">\ </span>top<span class="keyword">\ </span>from<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>Ans[i] <span class="keyword">\leftarrow</span> val<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>pointer[index] <span class="keyword">\leftarrow</span> pointer[index]+1<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="keyword">\If</span>&#123;<span class="built_in">$</span>pointer[index]&lt;&#123;length<span class="keyword">\ </span>of<span class="keyword">\ </span>A[index]&#125;<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">            <span class="built_in">$</span>push<span class="keyword">\ </span>(A[index][pointer[index]],index)<span class="keyword">\ </span>to<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">\textbf</span>&#123;<span class="built_in">$</span>return<span class="built_in">$</span>&#125;<span class="keyword">\;</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\end</span>&#123;algorithm&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <img src="/2022/04/09/Latex%E7%AC%94%E8%AE%B0/image-20220914183922345.png" class="" title="伪代码效果">
-
-
-
 <hr>
 <h3 id="大括号"><a href="#大括号" class="headerlink" title="大括号"></a>大括号</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T(n)=<span class="keyword">\left</span><span class="keyword">\&#123;</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;array&#125;&#123;l&#125;</span><br><span class="line">1<span class="keyword">\ </span>,<span class="keyword">\ </span>n=1<span class="keyword">\\</span></span><br><span class="line">T(n-2)+3n<span class="keyword">\ </span>,<span class="keyword">\ </span>n&gt;1</span><br><span class="line"><span class="keyword">\end</span>&#123;array&#125;</span><br><span class="line"><span class="keyword">\right</span>.</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>T(n)&#x3D;\left{<br>\begin{array}{l}<br>1\ ,\ n&#x3D;1\<br>T(n-2)+3n\ ,\ n&gt;1<br>\end{array}<br>\right.<br>$$</p>
-<h3 id="无序列表和有序列表"><a href="#无序列表和有序列表" class="headerlink" title="无序列表和有序列表"></a>无序列表和有序列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><ul>
+<script type="math/tex; mode=display">
+T(n)=\left\{
+\begin{array}{l}
+1\ ,\ n=1\\
+T(n-2)+3n\ ,\ n>1
+\end{array}
+\right.</script><h3 id="无序列表和有序列表"><a href="#无序列表和有序列表" class="headerlink" title="无序列表和有序列表"></a>无序列表和有序列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\item</span> one</span><br><span class="line"><span class="keyword">\itme</span> two</span><br></pre></td></tr></table></figure>
-
-
 <h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125; </span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">% 导入包</span></span><br><span class="line"><span class="keyword">\graphicspath</span>&#123;&#123;Figures/&#125;&#123;logo/&#125;&#125;  <span class="comment">% 添加路径</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\includegraphics</span>&#123;1.eps&#125;</span><br><span class="line">    <span class="keyword">\caption</span>&#123;Elliptic Paraboloid&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;1&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;figure&#125; </span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125; </span><br></pre></td></tr></table></figure>
-
-<h3 id="函数-操作符"><a href="#函数-操作符" class="headerlink" title="函数&#x2F;操作符"></a>函数&#x2F;操作符</h3><ul>
+<h3 id="函数-操作符"><a href="#函数-操作符" class="headerlink" title="函数/操作符"></a>函数/操作符</h3><ul>
 <li>源码：</li>
 </ul>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\operatorname</span>&#123;rank&#125;A = n</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>效果：</li>
 </ul>
-<p>$$<br>\operatorname{rank}A &#x3D; n<br>$$</p>
-<h2 id="Part-3-Tricks"><a href="#Part-3-Tricks" class="headerlink" title="Part 3 Tricks"></a>Part 3 Tricks</h2><h3 id="paragraph换行"><a href="#paragraph换行" class="headerlink" title="\paragraph换行"></a><code>\paragraph</code>换行</h3><p>默认状态下，<code>\paragraph&#123;&#125;</code>后不自动换行，可以使用类似如下的代码结构完成换行：</p>
+<script type="math/tex; mode=display">
+\operatorname{rank}A = n</script><h2 id="Part-3-Tricks"><a href="#Part-3-Tricks" class="headerlink" title="Part 3 Tricks"></a>Part 3 Tricks</h2><h3 id="paragraph换行"><a href="#paragraph换行" class="headerlink" title="\paragraph换行"></a><code>\paragraph</code>换行</h3><p>默认状态下，<code>\paragraph&#123;&#125;</code>后不自动换行，可以使用类似如下的代码结构完成换行：</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\parapraph</span>&#123; 段落 &#125;~&#123;&#125;</span><br><span class="line"><span class="keyword">\\</span></span><br><span class="line"></span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
-
 
                 
                 <hr>
@@ -1306,7 +1275,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1316,6 +1285,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

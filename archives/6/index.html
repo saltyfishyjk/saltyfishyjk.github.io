@@ -442,16 +442,13 @@
                 </h3>
                 <div class="post-content-preview">
                     「BUAA OS Lab2」 难点梳理与理解总结内存访问
-
-
-
 内存访问的流程：
 
 TLB根据虚拟地址查找
 若存在，在cache中查找；若不存在，按照页表查询，再查cache，更新TLB
 若cache命中则完成，若未命中，进行页面替换
 
-值得一提的是，这里有一个思考方式：我认为应当将虚拟地址如何划分和管理与如何进行物理内存管理这两件事分开考虑。也就是说，我们在虚拟空间中，按照我们的规则将不同......
+值得一提的是，这里有一个思考方式：我认为应当将虚拟地址如何划分和管理与如何进行物理内存管理这两件事分开考虑。也就是说，我们在虚拟空间中，按照我们的规则将不同的内容......
                 </div>
             </a>
             
@@ -696,7 +693,9 @@ Env1234567891011struct Env &#123;	struct Trapframe env_tf; // Saved registers 	L
                     
                 </h3>
                 <div class="post-content-preview">
-                    「BUAA Discrete Mathematics Chapter6」容斥原理及应用Part 0Part 1容斥原理定理6.1.1集合 $ S $ 中不具有性质 $ P_1 , P_2, \cdots , P_m $ 的对象个数由下面的交错表达式给出：$$|\overline{A_1} \cap \overline{A_2} \cap \cdots\cap\overline{A_m}| &......
+                    「BUAA Discrete Mathematics Chapter6」容斥原理及应用Part 0Part 1容斥原理定理6.1.1集合 $ S $ 中不具有性质 $ P_1 , P_2, \cdots , P_m $ 的对象个数由下面的交错表达式给出：
+
+|\overline{A_1} \cap \overline{A_2} \cap \cdots\cap\overline{A_m}| =......
                 </div>
             </a>
             
@@ -729,17 +728,13 @@ Env1234567891011struct Env &#123;	struct Trapframe env_tf; // Saved registers 	L
                 </h3>
                 <div class="post-content-preview">
                     「BUAA OS Lab2」名词解释
-
-
-
-变量和类型Pde和PtePage directory entry &#x2F; Page table entry
+变量和类型Pde和PtePage directory entry / Page table entry
 声明：
 12typedef u_long Pde; typedef u_long Pte;
-
 位置：include/mmu.h
 Pde表示一个一级页表项，Pde表示一个二级页表项。二者本质为u_long。
 
-PDX和PTXPage Di......
+PDX和PTXPage Directory i......
                 </div>
             </a>
             
@@ -776,10 +771,7 @@ PDX和PTXPage Di......
 Part 0 第一次电梯架构与调度基础第一次作业中，ABCDE座各有纵向电梯一部，乘客需求只有纵向。
 在这次作业，我们核心设计采用生产者-消费者模型，大致结构如下：
 
-
-
-
-其中，我们的InputHandler维护所有请求的一个大Dispatcher，其中储存所有楼座的待分发请......
+其中，我们的InputHandler维护所有请求的一个大Dispatcher，其中储存所有楼座的待分发请求，并......
                 </div>
             </a>
             
@@ -1278,7 +1270,7 @@ Part 0 第一次电梯架构与调度基础第一次作业中，ABCDE座各有�
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1288,6 +1280,21 @@ Part 0 第一次电梯架构与调度基础第一次作业中，ABCDE座各有�
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

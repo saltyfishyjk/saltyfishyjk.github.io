@@ -444,13 +444,14 @@
                     Vim笔记[TOC]
 Part 0 前言vim是一款强大的编辑器，网络上已经有大量其详细的实用教程与介绍。因此，本篇博客仅作学习笔记，不图大而全，也会随着笔者的使用及时更新。
 Part 1 相关资源
-菜鸟教程Linux vi&#x2F;vim 适合作为百科全书检索
+菜鸟教程Linux vi/vim 适合作为百科全书检索
 简明 VIM 练级攻略 适合系统训练
 vim官方网站 官方网站
 
 Part 2 命令模式
 i：进入输入模式
-:：进入底线命令模式......
+:：进入底线命令模式
+v：进入......
                 </div>
             </a>
             
@@ -742,9 +743,9 @@ Part 1 笔者参考的其他博......
 
 程序运行时，环境、操作等可能出现各种错误、故障，我们希望程序具有容错能力，给出错误信息。面向对象的程序设计里有异常处理机制，即，将程序的主要逻辑和容错处理逻辑分开，发现异常的地方不一定是处理异常的地方。
 
-输入&#x2F;输出流的概念
+输入/输出流的概念
 
-流：Java将信息的输入输出看作程序的流动，输出流就是将数据从程序空间......
+流：Java将信息的输入输出看作程序的流动，输出流就是将数据从程序空间输出到别的......
                 </div>
             </a>
             
@@ -1279,7 +1280,7 @@ Part 1 笔者参考的其他博......
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1289,6 +1290,21 @@ Part 1 笔者参考的其他博......
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

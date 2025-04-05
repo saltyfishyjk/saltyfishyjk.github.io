@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">2.9k</span> and
+                                Words <span class="post-count">2.8k</span> and
                                 Reading Time <span class="post-count">11</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -259,7 +259,7 @@
 
                 <h1 id="DNS笔记"><a href="#DNS笔记" class="headerlink" title="DNS笔记"></a>DNS笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>记录文献中学习到的 DNS 相关基础知识。</p>
 <h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h3 id="DNS-解析参与方"><a href="#DNS-解析参与方" class="headerlink" title="DNS 解析参与方"></a>DNS 解析参与方</h3><h4 id="客户端-DNS-Client-stub-resolver"><a href="#客户端-DNS-Client-stub-resolver" class="headerlink" title="客户端 DNS Client(stub resolver)"></a>客户端 DNS Client(stub resolver)</h4><p>发送一个请求到recursive resolver，使其作为代理代为查询。</p>
-<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>也叫递归侧&#x2F;resolver。</p>
+<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>也叫递归侧/resolver。</p>
 <p>接收从 client 发来的 DNS query，从 Root Nameserver 开始逐级查询。</p>
 <p>四种不同模式：</p>
 <ul>
@@ -271,12 +271,13 @@
 </ul>
 </li>
 </ul>
-<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><p>也叫权威侧&#x2F;Nameserver&#x2F;Server。</p>
+<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><p>也叫权威侧/Nameserver/Server。</p>
 <h5 id="ROOT"><a href="#ROOT" class="headerlink" title="ROOT"></a>ROOT</h5><p>根服务器，返回参考应答（ref-response），这是一种包含<strong>进一步的指向信息</strong>，而不包含所需的 IP 地址的响应。</p>
 <h5 id="TLD"><a href="#TLD" class="headerlink" title="TLD"></a>TLD</h5><p>Top-Level Domain，如 .com, .net 等，返回 ref-response</p>
 <h5 id="SLD"><a href="#SLD" class="headerlink" title="SLD"></a>SLD</h5><p>Second-Level Domain，如 cnn.com 等，（可能）返回权威应答（auth-response），包含<strong>最终 IP 地址</strong>的权威响应。</p>
-<h3 id="资源记录-RR"><a href="#资源记录-RR" class="headerlink" title="资源记录 RR"></a>资源记录 RR</h3><p>RR, resource record，定义为五元组：<br>$$<br>&lt;owner, type, class, TTL, RDATA&gt;<br>$$</p>
-<ul>
+<h3 id="资源记录-RR"><a href="#资源记录-RR" class="headerlink" title="资源记录 RR"></a>资源记录 RR</h3><p>RR, resource record，定义为五元组：</p>
+<script type="math/tex; mode=display">
+<owner, type, class, TTL, RDATA></script><ul>
 <li>$owner$：（RR）所有者，表明该 RR 属于哪个域名</li>
 <li>$type$：类型，表明该 RR 的类型，常见的如 A（IPv4地址记录）、MX、CNAME（域名别名）、NS（名称服务器）</li>
 <li>$Class$：类别，表明 RR 的上下文，IN 表示 Internet 最常见</li>
@@ -284,7 +285,7 @@
 <li>$RDATA$：数据，类型取决于 $type$</li>
 </ul>
 <h4 id="信任等级"><a href="#信任等级" class="headerlink" title="信任等级"></a>信任等级</h4><p>DNS 软件通过 RR 的信任等级来决定是否返回给用户、保存到内存或更新已有数据。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241111164851486.png" alt="image-20241111164851486"></p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p><img src="image-20241111164851486.png" alt="image-20241111164851486"></p>
 <blockquote>
 <p>[Usenix Security ‘24]{CAMP}: Compositional Amplification Attacks against {DNS}</p>
 </blockquote>
@@ -292,11 +293,11 @@
 <h4 id="NS-Name-Server"><a href="#NS-Name-Server" class="headerlink" title="NS(Name Server)"></a>NS(Name Server)</h4><p>NS记录，指定一个域名的权威 DNS 服务器</p>
 <h4 id="CNAME-Canonical-Name"><a href="#CNAME-Canonical-Name" class="headerlink" title="CNAME(Canonical Name)"></a>CNAME(Canonical Name)</h4><p>别名记录，将一个域名（别名）永久重定向到另一个域名（规范名称）。</p>
 <p>一个域名只应该有一个 CNAME[USENIX ‘24 CAMP]。</p>
-<h4 id="DNAME-Delegation-Name"><a href="#DNAME-Delegation-Name" class="headerlink" title="DNAME(Delegation Name)"></a>DNAME(Delegation Name)</h4><p>委托记录，实现域名的递归重定向，将一个域名的整个子域重定向到另一个域名，如 sub.example.com 有一个 DNAME 记录指向 sub.newdomain.com，则任何 sub.example.com 或其子域（如sub.example.com&#x2F;path）的查询会重定向到 sub.newdomain.com或相应的子域（如sub.newdomain.com&#x2F;path）</p>
+<h4 id="DNAME-Delegation-Name"><a href="#DNAME-Delegation-Name" class="headerlink" title="DNAME(Delegation Name)"></a>DNAME(Delegation Name)</h4><p>委托记录，实现域名的递归重定向，将一个域名的整个子域重定向到另一个域名，如 sub.example.com 有一个 DNAME 记录指向 sub.newdomain.com，则任何 sub.example.com 或其子域（如sub.example.com/path）的查询会重定向到 sub.newdomain.com或相应的子域（如sub.newdomain.com/path）</p>
 <p>一个域名只应该有一个 DNAME[USENIX ‘24 CAMP]。</p>
 <h4 id="RRSIG"><a href="#RRSIG" class="headerlink" title="RRSIG"></a>RRSIG</h4><h3 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h3><h4 id="引用响应-Ref-response"><a href="#引用响应-Ref-response" class="headerlink" title="引用响应 Ref-response"></a>引用响应 Ref-response</h4><p>Ref-response, referral response，由 NS 向 resolver 返回的包含指示下一步向谁发送 query 的响应。</p>
 <h4 id="权威响应-Auth-response"><a href="#权威响应-Auth-response" class="headerlink" title="权威响应 Auth-response"></a>权威响应 Auth-response</h4><p>Auth-response, authoritative response, 由 NS 向 resolver 返回的包含最终结果（IP）的响应，解析结束。</p>
-<h3 id="bailiwick"><a href="#bailiwick" class="headerlink" title="bailiwick"></a>bailiwick</h3><h4 id="in-bailiwick"><a href="#in-bailiwick" class="headerlink" title="in-bailiwick"></a>in-bailiwick</h4><h4 id="out-of-bailiwick"><a href="#out-of-bailiwick" class="headerlink" title="out-of-bailiwick"></a>out-of-bailiwick</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241110220821395.png" alt="image-20241110220821395"></p>
+<h3 id="bailiwick"><a href="#bailiwick" class="headerlink" title="bailiwick"></a>bailiwick</h3><h4 id="in-bailiwick"><a href="#in-bailiwick" class="headerlink" title="in-bailiwick"></a>in-bailiwick</h4><h4 id="out-of-bailiwick"><a href="#out-of-bailiwick" class="headerlink" title="out-of-bailiwick"></a>out-of-bailiwick</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="image-20241110220821395.png" alt="image-20241110220821395"></p>
 <blockquote>
 <p>[Usenix Security ‘24]{ResolverFuzz}: Automated Discovery of {DNS} Resolver Vulnerabilities with {Query-Response} Fuzzing</p>
 </blockquote>
@@ -313,7 +314,7 @@
 <h2 id="Part-3-胶水记录-Glue-Record"><a href="#Part-3-胶水记录-Glue-Record" class="headerlink" title="Part 3 胶水记录 Glue Record"></a>Part 3 胶水记录 Glue Record</h2><p>胶水记录是 DNS zone 中的一种 A 记录，在 RFC 1034 中记录。</p>
 <h2 id="Part-4-攻击"><a href="#Part-4-攻击" class="headerlink" title="Part 4 攻击"></a>Part 4 攻击</h2><h3 id="反射攻击-Reflective-attack"><a href="#反射攻击-Reflective-attack" class="headerlink" title="反射攻击 Reflective attack"></a>反射攻击 Reflective attack</h3><p>攻击者伪造目标 IP 地址，发送信息请求，使得服务器响应请求并将答复发送给目标 IP 地址。</p>
 <h3 id="放大攻击-Amplification-attack"><a href="#放大攻击-Amplification-attack" class="headerlink" title="放大攻击 Amplification attack"></a>放大攻击 Amplification attack</h3><p>利用脆弱服务对攻击者发送的请求做出大量回复，引起比原始请求大得多的响应。</p>
-<h2 id="Part-5-权威侧垂直结构"><a href="#Part-5-权威侧垂直结构" class="headerlink" title="Part 5 权威侧垂直结构"></a>Part 5 权威侧垂直结构</h2><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241113205257618.png" alt="image-20241113205257618"></p>
+<h2 id="Part-5-权威侧垂直结构"><a href="#Part-5-权威侧垂直结构" class="headerlink" title="Part 5 权威侧垂直结构"></a>Part 5 权威侧垂直结构</h2><p><img src="image-20241113205257618.png" alt="image-20241113205257618"></p>
 <blockquote>
 <p>[Usenix Security ‘24]Rethinking the Security Threats of Stale DNS Glue Records</p>
 </blockquote>
@@ -329,16 +330,16 @@
 <p>[Usenix Security ‘24]Rethinking the Security Threats of Stale DNS Glue Records</p>
 </blockquote>
 <h3 id="域内委托-in-domain"><a href="#域内委托-in-domain" class="headerlink" title="域内委托 in-domain"></a>域内委托 in-domain</h3><p>NS 记录配置了包含在被委托域名内的 nameserver，这种情况下<strong>胶水记录是必需的</strong>。</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116213748947.png" alt="image-20241116213748947"></p>
+<p><img src="image-20241116213748947.png" alt="image-20241116213748947"></p>
 <p>图中 test.com 的 NS 记录是 ns1.test.com，在 test.com 中，需要胶水记录打破循环。</p>
 <h3 id="兄弟域委托-sibling-domain"><a href="#兄弟域委托-sibling-domain" class="headerlink" title="兄弟域委托 sibling-domain"></a>兄弟域委托 sibling-domain</h3><p>NS 记录没有配置在被委托域名下，但是在另一个同一父域委派的区域中，<strong>胶水记录不是必需的</strong>。</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116213857202.png" alt="image-20241116213857202"></p>
+<p><img src="image-20241116213857202.png" alt="image-20241116213857202"></p>
 <p>图中 test.com 的 NS 记录是 ns1.foo.com，不在 test.com 中，而是在 foo.com 中，而 foo.com 的父域是 .com，和 test.com 是同一父域。尽管这种情况下胶水记录不是必需的，resolver 返回的 ref-response 一般也包含该记录。</p>
 <h3 id="域外委托-out-domain"><a href="#域外委托-out-domain" class="headerlink" title="域外委托 out-domain"></a>域外委托 out-domain</h3><p>NS 记录配置的 nameserver 跨越了 TLD，<strong>胶水记录不是必需的</strong>。</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116214842279.png" alt="image-20241116214842279"></p>
+<p><img src="image-20241116214842279.png" alt="image-20241116214842279"></p>
 <p>图中 test.com 的 NS 记录是 ns1.test.net，其 TLD 是 .net，和 test.com 的 TLD .com 不是一个。对于这种情况，resolver 返回的 ref-response 不应该包含胶水记录，应该重新对 ns1.test.net 发起主动解析。</p>
 <h2 id="Part-7-DNS-机制"><a href="#Part-7-DNS-机制" class="headerlink" title="Part 7 DNS 机制"></a>Part 7 DNS 机制</h2><h3 id="超时重传-timeout"><a href="#超时重传-timeout" class="headerlink" title="超时重传 timeout"></a>超时重传 timeout</h3><p>DNS 经典依赖的协议是 UDP，这是一种无状态的协议，即本身缺少送达承诺或者重传机制。DNS 为了提高可用性采取了 timeout 机制，确保 DNS 解析功能。</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241117111203774.png" alt="image-20241117111203774"></p>
+<p><img src="image-20241117111203774.png" alt="image-20241117111203774"></p>
 <blockquote>
 <p>[S&amp;P ‘24]DNSBomb: A New Practical-and-Powerful Pulsing DoS Attack Exploiting DNS Queries-and-Responses</p>
 </blockquote>
@@ -347,11 +348,10 @@
 </li>
 <li><p>4-b：请求 timeout 会指定一个最长的 resolver 对 DNS server 等待响应的时间，在这之后会认为这个请求超时。当 resolver 向 DNS server 发送一个请求时，会设定一个计时器 timer，BIND 默认为 800ms。当超时后还没有收到响应时，resolver 会使用一个更新的计时器重发请求（可能向不同的 nameserver），或者终止这个请求。</p>
 </li>
-<li><p>4-c：为了避免无限重试，一般会设置重试次数上限，对 Unbound 是11。当超时且没有得到响应时，resolver 会返回一个 ServFail 错误。</p>
-</li>
+<li>4-c：为了避免无限重试，一般会设置重试次数上限，对 Unbound 是11。当超时且没有得到响应时，resolver 会返回一个 ServFail 错误。</li>
 </ul>
 <h3 id="DNS-请求聚合"><a href="#DNS-请求聚合" class="headerlink" title="DNS 请求聚合"></a>DNS 请求聚合</h3><p>将多个</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241117152549851.png" alt="image-20241117152549851"></p>
+<p><img src="image-20241117152549851.png" alt="image-20241117152549851"></p>
 <blockquote>
 <p>[S&amp;P ‘24]DNSBomb: A New Practical-and-Powerful Pulsing DoS Attack Exploiting DNS Queries-and-Responses</p>
 </blockquote>
@@ -380,7 +380,7 @@
 <li>子区域也使用其私钥对其记录进行签名</li>
 <li>父区域对子区域的 DS 记录签名来证明权威性</li>
 </ul>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202192742295.png" alt="image-20241202192742295"></p>
+<p><img src="image-20241202192742295.png" alt="image-20241202192742295"></p>
 <h3 id="权威侧-server"><a href="#权威侧-server" class="headerlink" title="权威侧 server"></a>权威侧 server</h3><ul>
 <li>为 zone 签名</li>
 <li>向请求回答所需的记录</li>
@@ -391,7 +391,7 @@
 <li>对无效的结果返回 SERVFAIL</li>
 </ul>
 <h3 id="DNSKEY"><a href="#DNSKEY" class="headerlink" title="DNSKEY"></a>DNSKEY</h3><p>一种资源记录，包含区域的<strong>公钥</strong>，使用公钥密码学来签发和验证 RRsets 。每个区域会使用两种 DNSKEY 来为 DNS 记录签名</p>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202192950254.png" alt="image-20241202192950254"></p>
+<p><img src="image-20241202192950254.png" alt="image-20241202192950254"></p>
 <h4 id="ZSK-Zone-Signing-Key"><a href="#ZSK-Zone-Signing-Key" class="headerlink" title="ZSK, Zone-Signing-Key"></a>ZSK, Zone-Signing-Key</h4><ul>
 <li>为区域中的 RRSets 签名</li>
 <li>被 KSK 签名</li>
@@ -412,7 +412,7 @@
 </li>
 <li>RRSIG 是由一个和 DNSKEY 中公钥对应的私钥创造的</li>
 </ul>
-<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202184724494.png" alt="image-20241202184724494"></p>
+<p><img src="image-20241202184724494.png" alt="image-20241202184724494"></p>
 <h3 id="DS"><a href="#DS" class="headerlink" title="DS"></a>DS</h3><p>DS, <strong>D</strong>elegation <strong>S</strong>igner</p>
 <p>一种资源记录，本质上是 DNSKEY 的哈希，这些记录被上传到父区域，从而建立了到达根区域的信任链。父区域的 DS 记录和其他记录一样都是使用 RRSIG 验证的。</p>
 <h2 id="Part-11-Bind"><a href="#Part-11-Bind" class="headerlink" title="Part 11 Bind"></a>Part 11 Bind</h2><p>Bind9是流行的DNS软件，可以用作递归解析器或者权威服务器。</p>
@@ -433,15 +433,18 @@
 <li><p>编辑<code>/etc/bind/zones/twitter.com.</code></p>
 </li>
 <li><p>添加A记录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ A 10.161.0.7</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ A 10.161.0.7</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>重启bind9生效</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/named restart</span><br></pre></td></tr></table></figure>
-
 </li>
+</ol>
+<ol>
 <li><p>正确的<code>twitter.com</code>区域文件示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$TTL 300</span><br><span class="line">$ORIGIN twitter.com.</span><br><span class="line">@ SOA ns1.twitter.com. admin.twitter.com. 3418864001 900 900 1800 60</span><br><span class="line">;ns1.twitter.com. A 10.161.0.71</span><br><span class="line">@ NS ns1.twitter.com.</span><br><span class="line">ns1 A 10.161.0.71</span><br><span class="line">@ A 10.161.0.71</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$TTL 300</span><br><span class="line">$ORIGIN twitter.com.</span><br><span class="line">@ SOA ns1.twitter.com. admin.twitter.com. 3418864001 900 900 1800 60</span><br><span class="line">;ns1.twitter.com. A 10.161.0.71</span><br><span class="line">@ NS ns1.twitter.com.</span><br><span class="line">ns1 A 10.161.0.71</span><br><span class="line">@ A 10.161.0.71</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="Part-12-Unbound"><a href="#Part-12-Unbound" class="headerlink" title="Part 12 Unbound"></a>Part 12 Unbound</h2><p>Unbound一般用作递归解析器，不用做权威服务器。</p>
 <h3 id="设置root-hints"><a href="#设置root-hints" class="headerlink" title="设置root.hints"></a>设置<code>root.hints</code></h3><ol>
@@ -452,7 +455,6 @@
 </li>
 <li><p>确认内容</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">. 3600 IN NS ns1.</span><br><span class="line">ns1. 3600 IN A 10.171.0.71</span><br><span class="line"></span><br><span class="line">;ns1. A 10.171.0.71</span><br><span class="line">;. NS ns1.</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>前两行是正确的，后两行是错误的</p>
 </blockquote>
@@ -460,7 +462,6 @@
 </ol>
 <h3 id="配置关闭DNSSEC"><a href="#配置关闭DNSSEC" class="headerlink" title="配置关闭DNSSEC"></a>配置关闭DNSSEC</h3><p>在<code>/etc/unbound/unbound.conf</code>中添加字段：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val-permissive-mode: yes</span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-13-PowerDNS"><a href="#Part-13-PowerDNS" class="headerlink" title="Part 13 PowerDNS"></a>Part 13 PowerDNS</h2><h2 id="Part-14-dig"><a href="#Part-14-dig" class="headerlink" title="Part 14 dig"></a>Part 14 dig</h2><h3 id="dig-trace-example-com"><a href="#dig-trace-example-com" class="headerlink" title="dig +trace example.com"></a><code>dig +trace example.com</code></h3><p>可以看响应路径</p>
 
                 
@@ -862,7 +863,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -872,6 +873,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

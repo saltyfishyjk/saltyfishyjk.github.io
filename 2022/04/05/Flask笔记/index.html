@@ -273,16 +273,11 @@
 <li><code>from flask import Flask, request</code></li>
 </ul>
 <h4 id="写一个简单的demo展示页面"><a href="#写一个简单的demo展示页面" class="headerlink" title="写一个简单的demo展示页面"></a>写一个简单的demo展示页面</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">HelloWorld</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Welcome to my demo page&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>,debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>上述代码运行后，终端会给出可以访问的url，进入该链接后可以看到类似如下的页面：</p>
-
-
-
 
 <p>Tip：如果你的机器名含有中文或一些特殊字符，可能会报错<code>UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xd4 in position 0: invalid continuation byte</code></p>
 <h4 id="处理简单的请求"><a href="#处理简单的请求" class="headerlink" title="处理简单的请求"></a>处理简单的请求</h4><p>使用POST</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/ques&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ques</span>():</span><br><span class="line">    ans,score = serve(request.form[<span class="string">&#x27;question&#x27;</span>])</span><br><span class="line">    <span class="built_in">print</span>(request.headers)</span><br><span class="line">    <span class="built_in">print</span>(request.form[<span class="string">&#x27;question&#x27;</span>])</span><br><span class="line">    res = &#123;<span class="string">&#x27;answer&#x27;</span>:ans,<span class="string">&#x27;score&#x27;</span>:score&#125;</span><br><span class="line">    <span class="keyword">return</span> json.dumps(res,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment">#return &#x27;we are analysing your question...&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>可以使用postman发送各种类型的请求，操作简单。</p>
 <h4 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h4><p>在Flask中直接<code>print</code>并不能在终端中直接显示，对于调试有些困难。可以参考<a href="https://www.codenong.com/44405708/">关于python：Flask不会打印到控制台</a>中的方法。我使用了在<code>print</code>语句后使用<code>sys.stdout.flush()</code>实现了打印。</p>
 
@@ -687,7 +682,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -697,6 +692,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

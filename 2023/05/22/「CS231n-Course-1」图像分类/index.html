@@ -271,7 +271,7 @@
 <li><a href="https://zhuanlan.zhihu.com/p/20900216">知乎 图像分类笔记（下）</a>：本篇博客重要参考</li>
 <li><a href="https://zhuanlan.zhihu.com/p/20918580?refer=intelligentunit">知乎 线性分类笔记（上）</a>：本篇博客重要参考</li>
 </ul>
-<h2 id="Part-1-数据驱动"><a href="#Part-1-数据驱动" class="headerlink" title="Part 1 数据驱动"></a>Part 1 数据驱动</h2><p>图像分类问题中随着视角&#x2F;大小&#x2F;形状等的变化，可以让一个物体的图片产生巨大变化（把图像当作3维数组），这不利于编写一个算法来判断某张图像是否是一个“猫”。</p>
+<h2 id="Part-1-数据驱动"><a href="#Part-1-数据驱动" class="headerlink" title="Part 1 数据驱动"></a>Part 1 数据驱动</h2><p>图像分类问题中随着视角/大小/形状等的变化，可以让一个物体的图片产生巨大变化（把图像当作3维数组），这不利于编写一个算法来判断某张图像是否是一个“猫”。</p>
 <p>数据驱动的方法从数据出发，输入一个元素为像素值的数组，给其分配一个分类标签。完整流程：</p>
 <ul>
 <li>输入：包含N个图像的集合，包含图像和其对应的K种分类标签中的一种。该集合称为训练集。</li>
@@ -289,7 +289,7 @@
 <li>NN：通过给定的训练集，将测试集中的元素和训练集中的每一个元素计算”距离“，选择和其”距离“最小的图像的标签作为该测试集元素的标签</li>
 <li>KNN：NN是找和未知图像最像（距离越小，约”像“）的已知图像，将其标签作为未知图像的标签；KNN是找和未知图像最想的K个图像的标签，使其投票，将票数最高的标签作为对未知图像的预测。</li>
 </ul>
-<h3 id="可视化示意图"><a href="#可视化示意图" class="headerlink" title="可视化示意图"></a>可视化示意图</h3><p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/51aef845faa10195e33bdd4657592f86_r.jpg" alt="img"></p>
+<h3 id="可视化示意图"><a href="#可视化示意图" class="headerlink" title="可视化示意图"></a>可视化示意图</h3><p><img src="51aef845faa10195e33bdd4657592f86_r.jpg" alt="img"></p>
 <ul>
 <li>颜色区域：不同颜色代表不同分类</li>
 <li>点：每个标注出的点是一个训练数据，其颜色表示其分类标签；整张图中未标注点的部分为非训练数据，即，真实数据可能出现在任何一个未标注的点处，这里的颜色代表该(K)NN模型会将其预测为的分类。可以注意到，这里的点并非图像中的像素点，而是代表了一个高维数据（如一张图片）</li>
@@ -297,11 +297,11 @@
 </ul>
 <p>实际上，(K)NN工作时是先储存了所有训练数据，在test时将test数据和每一份训练数据计算距离并比较。因此，实际上训练过程是$O(1)$的（其实并没有做计算，只是把数据存储起来了），而预测过程是$O(n)$的（和训练数据中的每一个元素匹配）。</p>
 <p>一个可以交互的KNN 玩具模型：<a href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">http://vision.stanford.edu/teaching/cs231n-demos/knn/</a></p>
-<h3 id="超参数调优"><a href="#超参数调优" class="headerlink" title="超参数调优"></a>超参数调优</h3><p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/image-20230522214923716.png" alt="image-20230522214923716"></p>
-<p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/image-20230522221016320.png" alt="image-20230522221016320"></p>
+<h3 id="超参数调优"><a href="#超参数调优" class="headerlink" title="超参数调优"></a>超参数调优</h3><p><img src="image-20230522214923716.png" alt="image-20230522214923716"></p>
+<p><img src="image-20230522221016320.png" alt="image-20230522221016320"></p>
 <p>不好的做法：</p>
 <ul>
-<li>选择整个数据集（全部为训练集）上表现最好的：如KNN的K&#x3D;1时准确率为100%，但这不是一个更优的策略</li>
+<li>选择整个数据集（全部为训练集）上表现最好的：如KNN的K=1时准确率为100%，但这不是一个更优的策略</li>
 <li>将数据划分为训练集（train）和测试集（test），选择在测试集上表现最好的：不知道算法会在新数据上表现如何</li>
 </ul>
 <p>不错的做法：</p>
@@ -317,16 +317,15 @@
 <h3 id="评分函数"><a href="#评分函数" class="headerlink" title="评分函数"></a>评分函数</h3><p>评分函数是一个从图像到标签分值的参数化映射。</p>
 <p>我们有$N$个训练图像，每个图像的维度是$D$，共有$K$种不同的分类，可以表示如下：</p>
 <ul>
-<li><p>训练集：若干张图像，可以表示为$x_i \in R^D$</p>
-</li>
-<li><p>分类标签：$y_i, i &#x3D; 1, 2, …,N$且$y_i \in 1 … K$</p>
+<li>训练集：若干张图像，可以表示为$x_i \in R^D$</li>
+<li><p>分类标签：$y_i, i = 1, 2, …,N$且$y_i \in 1 … K$</p>
 </li>
 <li><p>评分函数：$f:R^D \rightarrow R^K$：原始图像像素到分类分值的映射</p>
 </li>
 </ul>
-<p>注意，这里图像维度是$D$的意思可以这样解释：图像的尺寸规格是$32 \times 32 \times 3$，则$D&#x3D;32 \times 32 \times 3 &#x3D; 3072$（这里适合用<code>NumPy</code>提供的<code>reshape</code>函数将图像矩阵转为列向量）。事实上，这已经属于“高维度”向量和向量空间了，但是我们依然用二维平面和线性函数（直线型）的概念做直观理解。</p>
-<h3 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h3><p>$$<br>f(x_i, W, b)&#x3D;Wx_i+b<br>$$</p>
-<p>该公式中，每个图像数据都被拉长为长度为$D$的列向量，大小为$[D \times 1]$，其中大小为$[K \times D]$的矩阵$W$和大小为$[K \times 1]$的列向量$b$是该函数的参数。</p>
+<p>注意，这里图像维度是$D$的意思可以这样解释：图像的尺寸规格是$32 \times 32 \times 3$，则$D=32 \times 32 \times 3 = 3072$（这里适合用<code>NumPy</code>提供的<code>reshape</code>函数将图像矩阵转为列向量）。事实上，这已经属于“高维度”向量和向量空间了，但是我们依然用二维平面和线性函数（直线型）的概念做直观理解。</p>
+<h3 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h3><script type="math/tex; mode=display">
+f(x_i, W, b)=Wx_i+b</script><p>该公式中，每个图像数据都被拉长为长度为$D$的列向量，大小为$[D \times 1]$，其中大小为$[K \times D]$的矩阵$W$和大小为$[K \times 1]$的列向量$b$是该函数的参数。</p>
 <ul>
 <li>参数：$W$和$b$，也会被称为权重</li>
 <li>$W$：权重（weights）。大小为$[K \times D]$，$K$行$N$列，每一行（行向量）表示一个分类器，针对一个分类，共针对$K$个分类。</li>
@@ -336,8 +335,10 @@
 <blockquote>
 <p>卷积神经网络映射图像像素值到分类分值的方法和上面类似，但是映射$f$要复杂一些，参数要更多</p>
 </blockquote>
-<h3 id="偏差和权重的合并技巧"><a href="#偏差和权重的合并技巧" class="headerlink" title="偏差和权重的合并技巧"></a>偏差和权重的合并技巧</h3><p>$f(x_i, W, b)&#x3D;Wx_i+b$看起来有些笨重，可以将$x_i$和$W$增加一个维度，称为默认的偏差维度，将其化简为：<br>$$<br>f(x_i, W)&#x3D;Wx_i<br>$$<br>具体地，之前的$x_i$是$[3072 \times 1]$，调整后变为$[3073 \times 1]$；之前的$W$是$[10 \times 3072]$，调整后变为$[10 \times 3073]$，具体如下：</p>
-<p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/3c69a5c87a43bfb07e2b59bfcbd2f149_r.jpg" alt="img"></p>
+<h3 id="偏差和权重的合并技巧"><a href="#偏差和权重的合并技巧" class="headerlink" title="偏差和权重的合并技巧"></a>偏差和权重的合并技巧</h3><p>$f(x_i, W, b)=Wx_i+b$看起来有些笨重，可以将$x_i$和$W$增加一个维度，称为默认的偏差维度，将其化简为：</p>
+<script type="math/tex; mode=display">
+f(x_i, W)=Wx_i</script><p>具体地，之前的$x_i$是$[3072 \times 1]$，调整后变为$[3073 \times 1]$；之前的$W$是$[10 \times 3072]$，调整后变为$[10 \times 3073]$，具体如下：</p>
+<p><img src="3c69a5c87a43bfb07e2b59bfcbd2f149_r.jpg" alt="img"></p>
 <h3 id="图像数据预处理"><a href="#图像数据预处理" class="headerlink" title="图像数据预处理"></a>图像数据预处理</h3><p>之前的例子中都是使用的图像的原始像素值。而对于输入特征的归一化处理非常常见和重要，如零均值的中心化。这一部分会和梯度下降相关。</p>
 
                 
@@ -743,7 +744,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -753,6 +754,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

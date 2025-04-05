@@ -261,39 +261,29 @@
 <h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>OO第一单元作业主题是表达式化简，具体为通过对表达式结构进行建模，完成单变量多项式的括号展开，体会层次化设计和面向对象的思想。如今，第一单元已经告一段落，在这里再次对自己的学习内容和成果加以总结。</p>
 <h2 id="Part-1-第一次作业"><a href="#Part-1-第一次作业" class="headerlink" title="Part 1 第一次作业"></a>Part 1 第一次作业</h2><p>第一次作业为对包含幂函数与常数的表达式进行化简，涉及相对简单的嵌套，UML类图如下所示。</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW1_remove.png" class="" title="p2">
-
 <h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>数据存储上，依照形式化表达设计为<code>Expr-&gt;Term-&gt;Factor</code>。<code>Parser</code>和<code>Lexer</code>作为工具类，分别承担句法分析和词法分析的功能。</p>
 <p>值得注意的是，本次架构中对于<code>Factor</code>的设计较为不完善，事实上没有区分<code>Num</code>和<code>Power</code>，而是将其统一为<code>Unit</code>类，存储一个形如$a \times x ^ b$的因子。</p>
 <p>在读取和存储过程中，<code>Parser</code>和<code>Lexer</code>合作，构建了一棵多叉表达式树。</p>
 <p><code>Factor</code>接口为因子类的公共接口，所有的因子都实现了这个接口；<code>Extendable</code>接口为拥有扩展行为的类的公共接口，所有因子类及<code>Term</code>都实现了这个接口。</p>
 <p>下图展示了这种读取和存储的过程的一个例子：</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" class="" title="p2">
-
-
-
 <p>获得答案的计算过程是和读取解析相<strong>解耦合</strong>的。在调用顶层<code>Expr</code>对象的<code>toString()</code>方法后，逐层向下调用<code>expend()</code>方法，得到展开式。这其中，得益于<code>Unit</code>类的统一性，每一层向上返回的都是一个<code>Unit</code>对象的集合，达到了形式上和接口的统一。</p>
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>本次作业部分方法复杂度如下图，其余方法复杂度较低，未在图中体现。</p>
 <p>可以看到，<code>Parser</code>中的<code>parseFactor()</code>方法复杂度较高，分析原因知，设计该方法时对于常数和幂函数的解析都全部列在其中，没有分别抽象为分别的方法；<code>Expr</code>中的<code>case2</code>方法和<code>caseMore</code>方法复杂度较高，分析原因知，这两个方法负责在输出时处理较为具体的如<code>x**2</code>体现为<code>x*x</code>等化简情形，因此较为琐碎，复杂度较高；<code>Expr</code>中的<code>expend()</code>方法复杂度较高，原因是没有将加法和合并同类项单独抽象出来，而是一股脑写在其中，导致复杂度较高。</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/image-20220324212929497.png" class="" title="p2">
-
-
-
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>本次作业在中测和强测中没有出现bug，在互测中出现bug。</p>
 <p>其中，互测的bug在于代码中化简$-x$打头时忘记输出。</p>
 <p>在对room内其他同学互测时，发现两个bug：一个是没有处理$0$作为指数的情况；另一个是没有处理表达式因子前有负号的情况。</p>
 <p>同时，我在此次作业中设计并实现了一个自动化评测机，这对检验程序的正确性有不小的帮助，将在<strong>Part 4 自动化评测</strong>部分介绍。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在设计本次作业之初，我设计过很多架构，在设计阶段就推倒重来若干次。尽管在Pre中的冒险者游戏中已经初步领会了面向对象的思想，但是面对较为抽象的表达式解析仍然显得无从下手。</p>
 <p>尽管如此，得益于<code>training</code>部分提供的<code>Parser</code>和<code>Lexer</code>思路以及和助教与同学们的帮助，我最终得以确定这个较为面向对象的设计。但是，这个架构依然存在相当的不足，在后面的迭代开发介绍中将会着重介绍。</p>
-<h2 id="Part-2-第二次作业"><a href="#Part-2-第二次作业" class="headerlink" title="Part 2 第二次作业"></a>Part 2 第二次作业</h2><h3 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h3><p>在本次作业中，我新增了<code>SeflDefineFunc</code>类和<code>Sum</code>类处理待解析表达式中的这两类函数调用；新增了<code>Func</code>类处理自定义函数的定义式；新增了<code>Num</code>和<code>Power</code>类将这两类因子抽离出来；新增了<code>Add</code>和<code>Mul</code>方法处理加法和乘法；新增了<code>Sin</code>和<code>Cos</code>类处理三角函数；修改了<code>Unit</code>类，其现在存储形如$a \times x^b \times \prod_{i&#x3D;1}^{n}(sin(expr_i))\prod_{j&#x3D;1}^{n}(cos(expr_j))$的基元。</p>
+<h2 id="Part-2-第二次作业"><a href="#Part-2-第二次作业" class="headerlink" title="Part 2 第二次作业"></a>Part 2 第二次作业</h2><h3 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h3><p>在本次作业中，我新增了<code>SeflDefineFunc</code>类和<code>Sum</code>类处理待解析表达式中的这两类函数调用；新增了<code>Func</code>类处理自定义函数的定义式；新增了<code>Num</code>和<code>Power</code>类将这两类因子抽离出来；新增了<code>Add</code>和<code>Mul</code>方法处理加法和乘法；新增了<code>Sin</code>和<code>Cos</code>类处理三角函数；修改了<code>Unit</code>类，其现在存储形如$a \times x^b \times \prod<em>{i=1}^{n}(sin(expr_i))\prod</em>{j=1}^{n}(cos(expr_j))$的基元。</p>
 <p>整体架构上，依然遵循<code>Expr-&gt;Term-Factor</code>的结构，其中，<code>Num,Power,SelfDefineFunc,Sum,Sin,Cos</code>都实现了<code>Factor</code>接口。</p>
 <p>在<code>sum</code>和自定义函数的代入过程中，没有采取在原字符串暴力替换的方法，而是采用了解析出变量式再替换的办法，更好符合了语义。</p>
 <p>UML类图如下所示，可以点开大图查看细节。</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW2_remove.png" class="" title="p2">
-
-
-
 <h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
-<li>简化和统一了接口与计算，<code>Add</code>和<code>Mul</code>始终只需要处理两个<code>Unit</code>集合（$a \times x^b \times \prod_{i&#x3D;1}^{n}(sin(expr_i))\prod_{j&#x3D;1}^{n}(cos(expr_j))$）的加法和乘法即可。</li>
+<li>简化和统一了接口与计算，<code>Add</code>和<code>Mul</code>始终只需要处理两个<code>Unit</code>集合（$a \times x^b \times \prod<em>{i=1}^{n}(sin(expr_i))\prod</em>{j=1}^{n}(cos(expr_j))$）的加法和乘法即可。</li>
 <li>数据存储和运算相解耦合。具体来说，在解析原字符串时，按照其结构存储为一棵多叉树；在运算过程中，从最顶层依次递归向下调用，获得<code>Unit</code>集合，结构清晰，同时不更改原有存储数据。</li>
 </ol>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
@@ -308,9 +298,6 @@
 </li>
 </ol>
 <h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/image-20220325122916747.png" class="" title="p2">
-
-
-
 <p>圈复杂度较高的方法如上图所示。其中，<code>Parser</code>中<code>caseSelfDefineFuncF/G/H</code>三个方法分别解析f,g,h自定义函数，其复杂度高的原因在于其中较多的进行了类似特判的操作，如在获取参数的时候是否是一个参数以及是否参数读取完毕。复盘来看，这更应该分别抽离出来方法执行相应操作。</p>
 <p><code>Expr</code>中的<code>caseCos</code>和<code>caseSin</code>方法复杂度高的原因在于，在输出字符串得时候，将化简和获取耦合在一起。举例而言，对于<code>sin(x)</code>，在该方法中特殊处理，使之不输出<code>sin((1*x))</code>。复盘来看，更应该对于这种特殊情况再抽象出方法单独处理，而不是耦合在其中。</p>
 <p><code>Parser</code>中的<code>caseSin()</code>和<code>caseCos()</code>复杂度较高，原因在于，对于其因子单独写了读取方法，而没有利用已有的读取整数和读取幂指数的方法。这更应该抽离出来，在每个需要读取指数的地方直接调用即可。</p>
@@ -318,9 +305,6 @@
 <p>经过和同学与助教讨论，一种较为泛用的工程方法是，大致确定所需要的类和功能，然后在代码中逐步完善乃至小范围重构。事实上，代码细节有相当多不够漂亮乃至不得不很丑陋的地方，这是在设计阶段难以考虑全面的，因此，应该在思路大体确定的情况下就快速进行代码开发，为后续的测试等留有余地，这是本次作业最大的感悟。</p>
 <h2 id="Part-3-第三次作业"><a href="#Part-3-第三次作业" class="headerlink" title="Part 3 第三次作业"></a>Part 3 第三次作业</h2><h3 id="架构-2"><a href="#架构-2" class="headerlink" title="架构"></a>架构</h3><p>本次作业进行了部分重构，具体为：扩展<code>Sin</code>和<code>Cos</code>类使之支持表达式因子的情况；新增<code>RemoveWhite</code>类，将对表达式的空白符即连续加减符号进行预处理的功能抽离出来；利用序列化与反序列化进行深拷贝。</p>
 <img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW3.png" class="" title="p2">
-
-
-
 <h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
 <li>架构依旧较为清晰，递归层次分明，对数据存储和数据处理解耦合。</li>
 <li>体现了面向对象设计的特点。</li>
@@ -329,9 +313,6 @@
 <li>可扩展性不强，如果还要新增如<code>tan</code>类等，需要对原有代码结构进行修改而非新增，并对<code>Unit</code>类进行重构，对<code>Add</code>和<code>Sum</code>类进行重构等。</li>
 </ol>
 <h3 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><img src="/2022/03/25/%E3%80%8CBUAA-OO-Unit-1-HW4%E3%80%8D%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/image-20220325122956354.png" class="" title="p2">
-
-
-
 <p>圈复杂度较高的方法如上图是，具体分析而言，本次作业中由于重写<code>equals()</code>方法，使得各层级的<code>equals()</code>方法内容较多，复杂度较高；<code>Add</code>和<code>Mul</code>中则由于计算与合并同类项没有解耦合，计算之后将结果插入时直接进行合并，使得这部分复杂度较高。</p>
 <h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>本次作业在中测和互测中没有出现问题，在强测中一个点判错。</p>
 <p>分析而言，是在合并同类项阶段，对两个<code>Unit</code>集合是否相等的判断出错。出错的方法为：将一个<code>Unit</code>集合映射到另一个<code>Unit</code>集合，如果每个元素都可以映射过去，则判等。事实上，这样做的巨大缺陷在于，如果两者为真子集关系，则会出现误合并。针对该bug，修复办法为判断双射才进行合并。</p>
@@ -341,7 +322,7 @@
 <p>性能方面，为了求稳妥没有处理哪怕最简单的拆括号，归根结底是对测试没有信心，自己在本地测试也不够充分，这在以后应当加强。</p>
 <h2 id="Part-4-自动化测试"><a href="#Part-4-自动化测试" class="headerlink" title="Part 4 自动化测试"></a>Part 4 自动化测试</h2><p>在本单元作业中，实现了一个自动化测试工具，其具体做法已经在讨论区分享过，这里附上链接<a href="https://www.cnblogs.com/saltyfishyjk/p/15974597.html#buaa-oo-unit-1-hw1%E9%9D%A2%E5%90%91%E6%B5%8B%E8%AF%95%E5%B0%8F%E7%99%BD%E7%9A%84%E7%AE%80%E6%98%93%E8%AF%84%E6%B5%8B%E6%9C%BA">「BUAA OO Unit 1 HW1」面向测试小白的简易评测机</a></p>
 <h3 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h3><p>测试机构建主要需要<code>python</code>语言知识以及<code>java</code>编译知识，实现一个支持随机数据的评测机在自测是很有用的，可以大规模覆盖评测，这有很大帮助。</p>
-<p>尽管测试机可以构造大量复杂度不同、情况不同的测试数据，但是对于特定数据可能不一定会恰巧出现，如有些同学设计了$sin(x)^2+cos(x)^2&#x3D;1$的优化，这需要手动构造数据验证，或在测试机中加入特殊数据池。</p>
+<p>尽管测试机可以构造大量复杂度不同、情况不同的测试数据，但是对于特定数据可能不一定会恰巧出现，如有些同学设计了$sin(x)^2+cos(x)^2=1$的优化，这需要手动构造数据验证，或在测试机中加入特殊数据池。</p>
 <p>研讨课分享时，我和大家分享了这个较为简陋和朴素的评测机结构，也向其他班级分享的同学学习了很多新的思路，如姜雨竺同学分享的开闭性原则等，这开拓了我的视野和思路。</p>
 <h2 id="Part-5-单元总结"><a href="#Part-5-单元总结" class="headerlink" title="Part 5 单元总结"></a>Part 5 单元总结</h2><p>本单元作业中，我更加深刻体会了面向对象的设计思想。特别地，在寒假Per2作业中作为引入的冒险者游戏的例子非常形象，很容易利用其理解面向对象以及Java语言的诸多特点，但是本单元作业相比较而言较为抽象的需求也可以很好地利用面向对象的思想，这是很大的收获。</p>
 <p>同时，在本单元作业中，我第一次亲手实现了一个简易评测机，并更加深入地体会测试在工程开发中的重要性。真实需求中可能没有足够充分和全面的数据供使用，需要自己构建数据乃至评测机以尽可能全面地检查程序。</p>
@@ -753,7 +734,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -763,6 +744,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

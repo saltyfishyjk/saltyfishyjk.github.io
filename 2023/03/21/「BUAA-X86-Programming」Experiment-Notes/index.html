@@ -263,16 +263,14 @@
 <li><a href="https://github.com/dhy2000/x86Course">dhy学长的仓库</a></li>
 </ul>
 <p>本课程主要学习的是最经典的8086</p>
-<h2 id="Part-1-8086结构与寄存器"><a href="#Part-1-8086结构与寄存器" class="headerlink" title="Part 1 8086结构与寄存器"></a>Part 1 8086结构与寄存器</h2><p><img src="/2023-03-21-%E3%80%8CBUAA-X86-Programming%E3%80%8DExperiment-Notes/image-20230324103942626.png" alt="image-20230324103942626"></p>
+<h2 id="Part-1-8086结构与寄存器"><a href="#Part-1-8086结构与寄存器" class="headerlink" title="Part 1 8086结构与寄存器"></a>Part 1 8086结构与寄存器</h2><p><img src="2023-03-21-「BUAA-X86-Programming」Experiment-Notes/image-20230324103942626.png" alt="image-20230324103942626"></p>
 <h3 id="通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位"><a href="#通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位" class="headerlink" title="通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位"></a>通用寄存器：4个，16位，每个又可分为<code>H</code>（high）和<code>L</code>（low）各8位</h3><ul>
-<li><p><code>AX</code>：16位，可分为2个8位<code>AH</code>和<code>AL</code>（累加器Add）</p>
-</li>
+<li><code>AX</code>：16位，可分为2个8位<code>AH</code>和<code>AL</code>（累加器Add）</li>
 <li><p><code>BX</code>：16位，可分为2个8位<code>BH</code>和<code>BL</code>（基址寄存器Base）</p>
 </li>
 <li><p><code>CX</code>：16位，可分为2个8位<code>CH</code>和<code>CL</code>（计数寄存器Count）</p>
 </li>
-<li><p><code>DX</code>：16位，可分为2个8位<code>DH</code>和<code>DL</code>（数据寄存器Data）</p>
-</li>
+<li><code>DX</code>：16位，可分为2个8位<code>DH</code>和<code>DL</code>（数据寄存器Data）</li>
 </ul>
 <h3 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h3><ul>
 <li><code>CS</code>：Code Segment，代码段</li>
@@ -296,7 +294,6 @@
 <li><code>SS:SP</code>：当前堆栈（<code>SS</code>指向堆栈基地址，<code>SP</code>是栈顶相对基地址的偏移）</li>
 </ul>
 <h2 id="Part-2-寻址方式与指令系统"><a href="#Part-2-寻址方式与指令系统" class="headerlink" title="Part 2 寻址方式与指令系统"></a>Part 2 寻址方式与指令系统</h2><h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">op dst, src ; 由“源”至“目的”</span><br></pre></td></tr></table></figure>
-
 <p>根据操作数（2个，1个，0个）的不同，可能有以下几种情况：</p>
 <ul>
 <li><code>op op2, op1</code></li>
@@ -328,21 +325,18 @@
 <li><code>edit.exe</code> 编辑器</li>
 </ul>
 <h2 id="Part-2-EDIT编辑器"><a href="#Part-2-EDIT编辑器" class="headerlink" title="Part 2 EDIT编辑器"></a>Part 2 <code>EDIT</code>编辑器</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
-<li><code>ctrl + f10</code>：捕捉&#x2F;释放鼠标</li>
+<li><code>ctrl + f10</code>：捕捉/释放鼠标</li>
 </ul>
 <h2 id="Part-3-MASM汇编器"><a href="#Part-3-MASM汇编器" class="headerlink" title="Part 3 MASM汇编器"></a>Part 3 <code>MASM</code>汇编器</h2><h2 id="Part-4-LINK链接器"><a href="#Part-4-LINK链接器" class="headerlink" title="Part 4 LINK链接器"></a>Part 4 <code>LINK</code>链接器</h2><h2 id="Part-5-DEBUG调试器"><a href="#Part-5-DEBUG调试器" class="headerlink" title="Part 5 DEBUG调试器"></a>Part 5 <code>DEBUG</code>调试器</h2><p>调试<code>tttt.exe</code>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debug tttt.exe</span><br></pre></td></tr></table></figure>
-
 <p>调试命令：</p>
 <ul>
-<li><p><code>d</code>：显示内存单元内容</p>
-<ul>
+<li><code>d</code>：显示内存单元内容<ul>
 <li>无参数默认从<code>CS:IP</code>开始，连续使用则地址接续向后移动</li>
 <li>添加形如<code>xxxx:yyyy</code>的参数可以指定其实地址，如<code>DS:0</code>，<code>78a:0</code>（不要求一定写四位数）</li>
 </ul>
 </li>
-<li><p><code>e</code>：修改指定内存单元的内容，每次修改一个字节</p>
-<ul>
+<li><code>e</code>：修改指定内存单元的内容，每次修改一个字节<ul>
 <li>须添加参数，形式如<code>d</code>命令，否则报错；如<code>r ds:0</code></li>
 <li>执行后会弹出形如<code>078a:0000 10.</code>，其中<code>078a:0000</code>是即将修改的字节（说明我们的<code>ds</code>的值就是<code>078a</code>），<code>10</code>是该字节中当前存放的值（十六进制），此时可以键入新值（十六进制）</li>
 <li>每次可以修改1个字节</li>
@@ -356,19 +350,15 @@
 </li>
 <li><p><code>u</code>：反汇编，查看机器码对应的汇编程序</p>
 <ul>
-<li>不指定&#x2F;指定起始地址：类似<code>d</code>命令</li>
+<li>不指定/指定起始地址：类似<code>d</code>命令</li>
 </ul>
 </li>
 <li><p><code>a</code>：修改汇编指令</p>
 </li>
-<li><p><code>t</code>：单步执行，类似<code>step in</code></p>
-</li>
-<li><p><code>p</code>：执行某个子程序&#x2F;循环等，类似<code>step over</code></p>
-</li>
-<li><p><code>g</code>：执行到某个指令地址处，类似断点</p>
-</li>
-<li><p><code>q</code>：退出调试器</p>
-</li>
+<li><code>t</code>：单步执行，类似<code>step in</code></li>
+<li><code>p</code>：执行某个子程序/循环等，类似<code>step over</code></li>
+<li><code>g</code>：执行到某个指令地址处，类似断点</li>
+<li><code>q</code>：退出调试器</li>
 </ul>
 <h2 id="Part-6-程序结构"><a href="#Part-6-程序结构" class="headerlink" title="Part 6 程序结构"></a>Part 6 程序结构</h2><h3 id="三列格式"><a href="#三列格式" class="headerlink" title="三列格式"></a>三列格式</h3><ol>
 <li>标号（符号、变量，<strong>不区分大小写</strong>）：编程逻辑地址（立即数）</li>
@@ -386,12 +376,12 @@
 <li><p>当前位置计数器，记录当前偏移值</p>
 </li>
 <li><p>最常见的用途是计算长度，如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TABLE DW 2,3,4 ...</span><br><span class="line">TABLE_LEN EQU $-TABLE</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TABLE DW 2,3,4 ...</span><br><span class="line">TABLE_LEN EQU $-TABLE</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="FAR-NEAR"><a href="#FAR-NEAR" class="headerlink" title="FAR, NEAR"></a><code>FAR, NEAR</code></h4><hr>
 <p>三段式：堆栈段、数据段、程序段</p>
 <h3 id="定义段"><a href="#定义段" class="headerlink" title="定义段"></a>定义段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[段名] SEGMENT [对齐类型][组合类型] [类别名]</span><br><span class="line">	; 本段中的程序和数据定义语句</span><br><span class="line">	; 分号;为注释符号</span><br><span class="line">[段名] ENDS</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>[段名]</code>：<ul>
 <li><code>STACK</code>堆栈段</li>
@@ -412,20 +402,15 @@
 </li>
 </ul>
 <h4 id="堆栈段"><a href="#堆栈段" class="headerlink" title="堆栈段"></a>堆栈段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">STACK		SEGMENT	PARA STACK</span><br><span class="line">STACK_AREA      DW      100h DUP(?)</span><br><span class="line">STACK_TOP	EQU	$-STACK_AREA</span><br><span class="line">STACK		ENDS</span><br></pre></td></tr></table></figure>
-
 <h4 id="数据段"><a href="#数据段" class="headerlink" title="数据段"></a>数据段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATA		SEGMENT	PARA</span><br><span class="line">TABLE_LEN       DW 16</span><br><span class="line">TABLE           DW 200,300,400,10,20,0,1,8</span><br><span class="line">                DW 41H,40,42H,3321h,60,0FFFFH,2,3</span><br><span class="line"></span><br><span class="line">MY_NAME         DB &#x27;My name is Zhang Wuji&#x27;,&#x27;$&#x27;</span><br><span class="line"></span><br><span class="line">ADD1            DD 20003000H</span><br><span class="line">ADD2            DD 12345678h</span><br><span class="line">DATA		ENDS</span><br></pre></td></tr></table></figure>
-
 <h4 id="程序段"><a href="#程序段" class="headerlink" title="程序段"></a>程序段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">CODE		SEGMENT</span><br><span class="line">		ASSUME	CS:CODE,DS:DATA</span><br><span class="line">		ASSUME	SS:STACK</span><br><span class="line">MAIN		PROC	FAR</span><br><span class="line">		</span><br><span class="line">START:          MOV     AX,STACK</span><br><span class="line">		MOV	SS,AX</span><br><span class="line">		MOV	SP,STACK_TOP</span><br><span class="line">		MOV	AX,DATA</span><br><span class="line">                MOV     DS,AX               ;SET SS,SP,DS</span><br><span class="line"></span><br><span class="line">                JMP     START1</span><br><span class="line">                LDS     SI,ADD1</span><br><span class="line">                LES     DI,ADD2</span><br><span class="line"></span><br><span class="line">                JMP     short l1</span><br><span class="line">                JMP     NEAR ptr  l1</span><br><span class="line">                JMP     FAR ptr   l1</span><br><span class="line">                JMP     BX</span><br><span class="line">                JMP     BX</span><br><span class="line">                JMP     Word PTR  [BX]</span><br><span class="line">                JMP     [BX]</span><br><span class="line">                JMP     DWORD PTR [BX]</span><br><span class="line">                JMP     DWORD PTR ADD1</span><br><span class="line">                CALL    BX</span><br><span class="line">                CALL    [BX]</span><br><span class="line">                CALL    WORD PTR [BX]</span><br><span class="line">                CALL    DWORD PTR ADD1</span><br><span class="line">                CALL    ADD1</span><br><span class="line"></span><br><span class="line">l1:             NOP</span><br><span class="line">START1:         NOP</span><br><span class="line">LP1:    	MOV     BX,1</span><br><span class="line">        	MOV     CX,TABLE_LEN</span><br><span class="line">        	DEC     CX</span><br><span class="line">                LEA     SI,TABLE        ;MOV SI,offset Table</span><br><span class="line">LP2:    	MOV     AX,[SI]</span><br><span class="line">        	CMP     AX,[SI+2]</span><br><span class="line">        	JBE     CONTINUE</span><br><span class="line">        	XCHG    AX,[SI+2]</span><br><span class="line">        	MOV     [SI],AX</span><br><span class="line">        	MOV     BX,0</span><br><span class="line">CONTINUE:</span><br><span class="line">       		ADD     SI,2</span><br><span class="line">        	LOOP    LP2</span><br><span class="line"></span><br><span class="line">	        CMP     BX,1</span><br><span class="line">        	JZ      EXIT</span><br><span class="line">        	JMP     SHORT   LP1</span><br><span class="line">EXIT:           MOV     DX,OFFSET MY_NAME</span><br><span class="line">                MOV     AH,9</span><br><span class="line">                INT     21H</span><br><span class="line"></span><br><span class="line">                MOV     AX,4C00H</span><br><span class="line">		INT     21H</span><br><span class="line">MAIN		ENDP</span><br><span class="line">CODE		ENDS		 </span><br><span class="line"></span><br><span class="line">		END     START</span><br><span class="line">END</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h3 id="定义过程（子程序）"><a href="#定义过程（子程序）" class="headerlink" title="定义过程（子程序）"></a>定义过程（子程序）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[过程名] PROC [NEAR|FAR]</span><br><span class="line">	; code</span><br><span class="line">[过程名] ENDP</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>[过程名]</code>：自己定义</li>
 <li><code>NEAR</code> ：<code>RET</code>指令在汇编后仍为<code>RET</code>，属于段内返回，从堆栈中弹出一个字作为<code>IP</code>值</li>
 <li><code>FAR</code>：<code>RET</code>指令在汇编后变成了<code>RETF</code>，属于段间返回，从堆栈中先后弹出两个字作为<code>IP</code>和<code>CS</code></li>
 </ul>
 <h3 id="定义数据"><a href="#定义数据" class="headerlink" title="定义数据"></a>定义数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[变量名] [伪指令] [值]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p><code>[伪指令]</code>：</p>
 <ul>
@@ -447,14 +432,11 @@
 </li>
 </ul>
 <h4 id="数组定义（DUP的使用）"><a href="#数组定义（DUP的使用）" class="headerlink" title="数组定义（DUP的使用）"></a>数组定义（<code>DUP</code>的使用）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ARRAY1 DB 2 DUP(0, 1, 0FFH, ?) ; 定义一个简单的二维数组</span><br><span class="line">ARRAY2 DB 100DUP(?) ; 定义一个一维数组</span><br></pre></td></tr></table></figure>
-
 <p>其中对<code>ARRAY1</code>的定义和如下等价：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARRAY1 DB 0, 1, 0FFH, ?, 0, 1, 0FFH, ?</span><br></pre></td></tr></table></figure>
-
 <p>对<code>ARRAY2</code>的定义是一段长度为100字节的连续空间且没有初始化（<code>$</code>表示不预置，无初值）</p>
 <p>嵌套<code>DUP</code>，相当于多维数组：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARRAY3 DB 2DUP(1, 2DUP(&#x27;A&#x27;, &#x27;B&#x27;), 0)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>&#39;A&#39;, &#39;B&#39;</code>：初值为字符（ASCII码），与<code>41h, 42h</code>等价</li>
 <li><code>DUP</code>可以嵌套，相当于多维数组</li>
@@ -462,9 +444,6 @@
 </ul>
 <h4 id="地址表达式"><a href="#地址表达式" class="headerlink" title="地址表达式"></a>地址表达式</h4><p>定义数据时可以使用<code>DW, DD</code>伪指令将标号或变量的偏移地址或整个逻辑地址存入到另一个变量中。使用<code>DD</code>来存储逻辑地址时，第一个字（低字）为偏移地址，第二个字（高字）为段地址。这里的参数实际上是一个地址表达式。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">X1 DW ? ;X1中的内容未预置</span><br><span class="line">X2 DW $ ;X2单元中是当前（X2）的偏移地址</span><br><span class="line">X3 DW X1 ;X3单元中是X1的偏移地址</span><br><span class="line">X4 DW L1 ;X4单元中是L1标号的偏移地址</span><br><span class="line">X5 DW P1 ;X5单元中是P1子程序的偏移地址</span><br><span class="line">X6 DD X1 ;X6单元中是X1的逻辑地址</span><br><span class="line">X7 DD L1 ;X7单元中是L1标号的逻辑地址</span><br><span class="line">X8 DD P1 ;X8单元中是P1子程序的逻辑地址</span><br></pre></td></tr></table></figure>
-
-
-
 
                 
                 <hr>
@@ -865,7 +844,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -875,6 +854,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -264,32 +264,29 @@
 <p>初入python，我们简化这个问题，直接给出比较常见的编码问题及解决方式：</p>
 <p>python源码也是一个文本文件，当源码包含中文注释的时候，需要指定保存为UTF-8编码，以使得python解释器读取源代码时，可以按照UTF-8读取。可以在<strong>文件开头</strong>写上如下注释：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
-
 <p>或</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br></pre></td></tr></table></figure>
-
 <p>进一步，对于一般情况，我们都直接在文件开头如此标注以规范代码，避免无谓的bug。</p>
 <h2 id="Part-2-类型转换"><a href="#Part-2-类型转换" class="headerlink" title="Part 2 类型转换"></a>Part 2 类型转换</h2><p>在python中，不需要显示声明变量类型，这对接触类C语言较多的同学可能不太适应。</p>
 <p>当使用<code>input()</code>函数输入时，如果不加以特殊指定，会得到一个字符串，这可能和我们的需求不吻合。面对类似这样的情况，我一般会使用强制类型转换来保证数据的合法性。</p>
 <p>举例而言，输入一个整数，可以用如下代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br></pre></td></tr></table></figure>
-
-<p>python中的强制类型转换是*类型（变量）*的形式，如<code>int(val)</code>会将<code>val</code>转为<code>int</code>类型。</p>
+<p>python中的强制类型转换是<em>类型（变量）</em>的形式，如<code>int(val)</code>会将<code>val</code>转为<code>int</code>类型。</p>
 <h2 id="Part-3-print"><a href="#Part-3-print" class="headerlink" title="Part 3 print()"></a>Part 3 <code>print()</code></h2><p><code>print()</code>函数是重要的输出（打印）函数，了解其使用十分重要。对于该函数较全面的入门级介绍，可以参考<a href="https://www.runoob.com/w3cnote/python3-print-func-b.html">菜鸟教程-Python3 print 函数用法总结</a>。在这里，我们总结一些比较常用的输出需求与对应解决方案：</p>
 <h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>在C中，<code>printf()</code>函数提供的格式化输出深入人心，python也支持类似的方案。</p>
 <h4 id="保留两位小数"><a href="#保留两位小数" class="headerlink" title="保留两位小数"></a>保留两位小数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">10.246</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;num : %.2f&quot;</span> %(num))</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num : 10.25</span><br></pre></td></tr></table></figure>
-
-<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><table>
+<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>格式化操作符</th>
 <th>功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>-</code></td>
 <td>左对齐</td>
 </tr>
@@ -297,53 +294,41 @@
 <td><code>0</code></td>
 <td>用<code>0</code>填充而非默认的空格</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="不换行输出"><a href="#不换行输出" class="headerlink" title="不换行输出"></a>不换行输出</h3><p>在不限制的情况下，<code>print()</code>会在输出结束后加一个换行。当我们不希望输出结束后换行的时候，可以用如下方案：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">70</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;BUAA&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>, end = <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(num, end = <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUAA70</span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-4-遍历"><a href="#Part-4-遍历" class="headerlink" title="Part 4 遍历"></a>Part 4 遍历</h2><p>在python中，循环遍历在整数区间内的遍历写法和C有较大不同。以C中<code>for (i = 0; i &lt; n, i++)</code>为例，在python中写法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n)</span><br></pre></td></tr></table></figure>
-
 <p>这其实是利用了<code>range()</code>这一重要函数，该函数也可以通过参数支持反向遍历、步长设置等，具体可以参考<a href="https://www.runoob.com/python/python-func-range.html">菜鸟教程-Python range() 函数用法</a>。</p>
 <h2 id="Part-5-一行输入多个变量"><a href="#Part-5-一行输入多个变量" class="headerlink" title="Part 5 一行输入多个变量"></a>Part 5 一行输入多个变量</h2><p>python中的<code>input()</code>函数是重要的标准输入函数，其返回一个类型为<code>string</code>的数据。</p>
 <p>一般地，可以用<code>input(str)</code>首先输出<code>str</code>提示希望获取的输入，接着获取一个输入数据。</p>
 <p>但是，当我们需要输入以某种形式分隔的多个变量的时候，一个好的方法是采用<code>split</code>作为参数。举例而言，我们要输入一行两个用空格分隔的整数的时候，可以采用的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>(),split())</span><br></pre></td></tr></table></figure>
-
 <p>若是一行两个用逗号分隔的整数，则可以用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27;,&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-6-Numpy库"><a href="#Part-6-Numpy库" class="headerlink" title="Part 6 Numpy库"></a>Part 6 Numpy库</h2><p>Numpy是一个重要的数学函数库，关于其更细致的介绍可以参考<a href="https://www.runoob.com/numpy/numpy-tutorial.html">菜鸟教程-NumPy 教程</a>。</p>
 <p>在作业中，涉及了矩阵的行列式计算，可以用如下库函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ans = np.linalg.det(D)</span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-7-split-函数"><a href="#Part-7-split-函数" class="headerlink" title="Part 7 split()函数"></a>Part 7 <code>split()</code>函数</h2><p>在<strong>Part 5</strong>中，介绍了输入一行有两个整数以空格分隔的情况。对于更一般的情况，如一行有一个浮点数和一个字符串以空格分隔，可以如下操作：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line">a = <span class="built_in">float</span>(arr[<span class="number">0</span>])</span><br><span class="line">b = arr[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
 <p>如此，<code>arr</code>是用空格分隔<code>input()</code>得到的字符串列表，<code>a</code>为将第0个字符串转为浮点数，<code>b</code>为第1个字符串。</p>
 <h2 id="Part-8-列表"><a href="#Part-8-列表" class="headerlink" title="Part 8 列表"></a>Part 8 列表</h2><p>列表(List)是python中最基本的数据结构，类似C和Java中的数组，但有一些不同点，详细的列表介绍可以参考<a href="https://www.runoob.com/python/python-lists.html">Python 列表(List) | 菜鸟教程 (runoob.com)</a>。这里介绍一些常用的列表性质和函数。</p>
 <h3 id="新建列表"><a href="#新建列表" class="headerlink" title="新建列表"></a>新建列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = []</span><br></pre></td></tr></table></figure>
-
 <h3 id="给列表增加元素"><a href="#给列表增加元素" class="headerlink" title="给列表增加元素"></a>给列表增加元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">arr.append(num)</span><br></pre></td></tr></table></figure>
-
 <h3 id="删除特定元素"><a href="#删除特定元素" class="headerlink" title="删除特定元素"></a>删除特定元素</h3><ol>
 <li><p><code>remove()</code><br>remove() 函数用于移除列表中某个值的第一个匹配项。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>.remove(obj)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>.remove(obj)</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> arr:</span><br></pre></td></tr></table></figure>
-
 <h3 id="通过下标（偏移量）访问列表元素"><a href="#通过下标（偏移量）访问列表元素" class="headerlink" title="通过下标（偏移量）访问列表元素"></a>通过下标（偏移量）访问列表元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(arr[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrSorted = <span class="built_in">sorted</span>(arr)</span><br></pre></td></tr></table></figure>
-
 <p>值得注意的是，<code>sorted</code>没有改变原有列表的内容，而是返回了一个新的排列后的列表。这也体现了python作为面向对象语言的特点。</p>
 <h3 id="查找元素在列表中的位置"><a href="#查找元素在列表中的位置" class="headerlink" title="查找元素在列表中的位置"></a>查找元素在列表中的位置</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">list</span>.index(value)</span><br></pre></td></tr></table></figure>
-
-
-
 
                 
                 <hr>
@@ -744,7 +729,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -754,6 +739,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

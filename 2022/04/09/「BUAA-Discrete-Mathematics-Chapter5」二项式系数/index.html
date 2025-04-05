@@ -257,48 +257,65 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><a href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数" class="headerlink" title="「BUAA Discrete Mathematics Chapter5」二项式系数"></a>「BUAA Discrete Mathematics Chapter5」二项式系数</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="Pascal公式"><a href="#Pascal公式" class="headerlink" title="Pascal公式"></a>Pascal公式</h3><p>$$<br>\tbinom{n}{k} &#x3D; \tbinom{n-1}{k}+\tbinom{n-1}{k-1}<br>$$</p>
-<h3 id="组合推理证明"><a href="#组合推理证明" class="headerlink" title="组合推理证明"></a>组合推理证明</h3><ul>
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><a href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数" class="headerlink" title="「BUAA Discrete Mathematics Chapter5」二项式系数"></a>「BUAA Discrete Mathematics Chapter5」二项式系数</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="Pascal公式"><a href="#Pascal公式" class="headerlink" title="Pascal公式"></a>Pascal公式</h3><script type="math/tex; mode=display">
+\tbinom{n}{k} = \tbinom{n-1}{k}+\tbinom{n-1}{k-1}</script><h3 id="组合推理证明"><a href="#组合推理证明" class="headerlink" title="组合推理证明"></a>组合推理证明</h3><ul>
 <li>一种依靠计数原理构建代数事实的证明方法</li>
 <li>基本框架：<ol>
 <li>定义一个集合$ S $</li>
-<li>通过一种计数方式得出$ |S|&#x3D;n $</li>
-<li>通过另一种计数方式得出$ |S| &#x3D; m $</li>
-<li>得出结论$ n&#x3D;m $</li>
+<li>通过一种计数方式得出$ |S|=n $</li>
+<li>通过另一种计数方式得出$ |S| = m $</li>
+<li>得出结论$ n=m $</li>
 </ol>
 </li>
 </ul>
-<h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><p>$$<br>(x+y)^n &#x3D; \sum_{k&#x3D;0}^{n}\tbinom{n}{k}x^{n-k}y^k<br>$$</p>
-<h3 id="求导法和积分法"><a href="#求导法和积分法" class="headerlink" title="求导法和积分法"></a>求导法和积分法</h3><p>对于一些不等式证明和计算，需要使用这两种方法，以下举例说明</p>
+<h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><script type="math/tex; mode=display">
+(x+y)^n = \sum_{k=0}^{n}\tbinom{n}{k}x^{n-k}y^k</script><h3 id="求导法和积分法"><a href="#求导法和积分法" class="headerlink" title="求导法和积分法"></a>求导法和积分法</h3><p>对于一些不等式证明和计算，需要使用这两种方法，以下举例说明</p>
 <h4 id="求导法"><a href="#求导法" class="headerlink" title="求导法"></a>求导法</h4><p>来源：《组合数学》P96 T15</p>
-<p>题目：求证对${\forall}n&gt;1$有$\tbinom{n}{1}-2\tbinom{n}{2}+3\tbinom{n}{3}+···+(-1)^{n-1}n\tbinom{n}{n}&#x3D;0$</p>
+<p>题目：求证对${\forall}n&gt;1$有$\tbinom{n}{1}-2\tbinom{n}{2}+3\tbinom{n}{3}+···+(-1)^{n-1}n\tbinom{n}{n}=0$</p>
 <p>解答：</p>
-<p>根据<br>$$<br>(1-x)^n&#x3D;\sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^{k}x^k<br>$$<br>求导得<br>$$<br>-n(1-x)^{n-1}&#x3D;\sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^kkx^{k-1}<br>$$<br>令$x&#x3D;1$即证毕。</p>
+<p>根据</p>
+<script type="math/tex; mode=display">
+(1-x)^n=\sum_{k=0}^{n}\tbinom{n}{k}(-1)^{k}x^k</script><p>求导得</p>
+<script type="math/tex; mode=display">
+-n(1-x)^{n-1}=\sum_{k=0}^{n}\tbinom{n}{k}(-1)^kkx^{k-1}</script><p>令$x=1$即证毕。</p>
 <h4 id="积分法"><a href="#积分法" class="headerlink" title="积分法"></a>积分法</h4><p>来源：《组合数学》P96 T18</p>
 <p>题目：求和$1-\frac{1}{2}\tbinom{n}{1}+\frac{1}{3}\tbinom{n}{2}-\frac{1}{4}\tbinom{n}{3}+···+(-1)^n\frac{1}{n+1}\tbinom{n}{n}$</p>
 <p>解答：</p>
-<p>根据<br>$$<br>(1-x)^n &#x3D; \sum_{k&#x3D;0}^{n} \tbinom{n}{k}(-1)^{k}x^k<br>$$<br>左右不定积分得<br>$$<br>-\frac{(1-x)^{n+1}} {n+1} &#x3D; \sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C<br>$$<br><strong>注意有$+C$</strong>。代入$x&#x3D;0$得$C&#x3D;-\frac{1}{n+1}$，代入$x&#x3D;1$得所求式值为$-\frac{1}{n+1}$</p>
+<p>根据</p>
+<script type="math/tex; mode=display">
+(1-x)^n = \sum_{k=0}^{n} \tbinom{n}{k}(-1)^{k}x^k</script><p>左右不定积分得</p>
+<script type="math/tex; mode=display">
+-\frac{(1-x)^{n+1}} {n+1} = \sum_{k=0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C</script><p><strong>注意有$+C$</strong>。代入$x=0$得$C=-\frac{1}{n+1}$，代入$x=1$得所求式值为$-\frac{1}{n+1}$</p>
 <h3 id="二项式系数的单峰性"><a href="#二项式系数的单峰性" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h3><p>为了介绍二项式系数的单峰性，我们首先介绍单峰性概念</p>
-<h4 id="单峰性"><a href="#单峰性" class="headerlink" title="单峰性"></a>单峰性</h4><p>设序列$ s_0, s_1, s_2, \cdots , s_n $，若存在一个整数$ t $，$ 0 \le t \le n $，使得：<br>$$<br>s_0 \le s_1 \le s_2 \cdots \le s_t , s_t \ge s_{t+1} \ge s_{t+2} \ge \cdots \ge s_n<br>$$<br>那么， 称序列是单峰的</p>
+<h4 id="单峰性"><a href="#单峰性" class="headerlink" title="单峰性"></a>单峰性</h4><p>设序列$ s_0, s_1, s_2, \cdots , s_n $，若存在一个整数$ t $，$ 0 \le t \le n $，使得：</p>
+<script type="math/tex; mode=display">
+s_0 \le s_1 \le s_2 \cdots \le s_t , s_t \ge s_{t+1} \ge s_{t+2} \ge \cdots \ge s_n</script><p>那么， 称序列是单峰的</p>
 <h4 id="二项式系数的单峰性-1"><a href="#二项式系数的单峰性-1" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h4><p>$ n $为正整数，二项式系数序列是单峰序列，其中：</p>
 <ul>
 <li>$ n $是偶数：</li>
 </ul>
-<p>$$<br>\tbinom{n}{0} &lt; \tbinom{n}{1} &lt; \cdots &lt; \tbinom{n}{\frac{n}{2}} , \tbinom{n}{\frac{n}{2}} &gt; \cdots &gt; \tbinom{n}{n - 1} &gt; \tbinom{n}{ n }<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\tbinom{n}{0} < \tbinom{n}{1} < \cdots < \tbinom{n}{\frac{n}{2}} , \tbinom{n}{\frac{n}{2}} > \cdots > \tbinom{n}{n - 1} > \tbinom{n}{ n }</script><ul>
 <li>$ n $是奇数：</li>
 </ul>
-<p>$$<br>\tbinom{n}{0} &lt; \tbinom{n}{1} &lt; \cdots &lt; \tbinom{n}{\frac{n-1}{2}} , \tbinom{n}{\frac{n+1}{2}} &gt; \cdots &gt; \tbinom{n}{n - 1} &gt; \tbinom{n}{ n }<br>$$</p>
-<h3 id="多项式定理"><a href="#多项式定理" class="headerlink" title="多项式定理"></a>多项式定理</h3><p>二项式定理给出对正整数$n$ ， $ (x + y ) ^ n $的公式，扩展到 $ (x_1 + x_2 + \cdots +x_t) ^ n $ 的公式，二项式系数的角色被多项式系数取代，其定义为：<br>$$<br>\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} &#x3D; \frac{n!}{n_1!n_2! \cdots n_t!}<br>$$<br>其中$ n_1, n_2, \cdots n_t $满足：<br>$$<br>n_1 + n_2 + \cdots + n_t &#x3D; n<br>$$<br>根据这种记法，可以将二项式系数表示为：<br>$$<br>\tbinom{n}{k} &#x3D; \tbinom{n}{k \quad n-k}<br>$$</p>
-<h4 id="帕斯卡公式"><a href="#帕斯卡公式" class="headerlink" title="帕斯卡公式"></a>帕斯卡公式</h4><h5 id="二项式"><a href="#二项式" class="headerlink" title="二项式"></a>二项式</h5><p>$$<br>\tbinom{n}{k \quad n-k} &#x3D;  \tbinom{n-1}{k \quad n - k - 1} + \tbinom{n-1}{k-1 \quad n - k}<br>$$</p>
-<h5 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h5><p>$$<br>\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} &#x3D; \tbinom{n - 1}{n_1-1 \ n_2 \ \cdots  \ n_t} + \tbinom{n - 1}{n_1 \ n_2 - 1 \ \cdots  \ n_t} + \cdots + \tbinom{n - 1}{n_1 \ n_2 \ \cdots  \ n_t - 1}<br>$$</p>
-<p>规律为：上面$ - 1 $，下面依次各$ - 1 $，应用加法原理。</p>
-<h4 id="多项式定理-1"><a href="#多项式定理-1" class="headerlink" title="多项式定理"></a>多项式定理</h4><p>$$<br>(x_1 + x_2 + \cdots + x_t) ^ n &#x3D; \sum\tbinom{n}{n_1 \ n_2 \cdots n_t}{x_1}^{n_1}{x_2}^{n_2}\cdots{x_t}^{n_t}<br>$$</p>
-<p>其中，求和是对 $ n_1 + n_2 + \cdots + n_t &#x3D; n $ 的所有非负整数解进行的。</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{0} < \tbinom{n}{1} < \cdots < \tbinom{n}{\frac{n-1}{2}} , \tbinom{n}{\frac{n+1}{2}} > \cdots > \tbinom{n}{n - 1} > \tbinom{n}{ n }</script><h3 id="多项式定理"><a href="#多项式定理" class="headerlink" title="多项式定理"></a>多项式定理</h3><p>二项式定理给出对正整数$n$ ， $ (x + y ) ^ n $的公式，扩展到 $ (x_1 + x_2 + \cdots +x_t) ^ n $ 的公式，二项式系数的角色被多项式系数取代，其定义为：</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} = \frac{n!}{n_1!n_2! \cdots n_t!}</script><p>其中$ n_1, n_2, \cdots n_t $满足：</p>
+<script type="math/tex; mode=display">
+n_1 + n_2 + \cdots + n_t = n</script><p>根据这种记法，可以将二项式系数表示为：</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{k} = \tbinom{n}{k \quad n-k}</script><h4 id="帕斯卡公式"><a href="#帕斯卡公式" class="headerlink" title="帕斯卡公式"></a>帕斯卡公式</h4><h5 id="二项式"><a href="#二项式" class="headerlink" title="二项式"></a>二项式</h5><script type="math/tex; mode=display">
+\tbinom{n}{k \quad n-k} =  \tbinom{n-1}{k \quad n - k - 1} + \tbinom{n-1}{k-1 \quad n - k}</script><h5 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h5><script type="math/tex; mode=display">
+\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} = \tbinom{n - 1}{n_1-1 \ n_2 \ \cdots  \ n_t} + \tbinom{n - 1}{n_1 \ n_2 - 1 \ \cdots  \ n_t} + \cdots + \tbinom{n - 1}{n_1 \ n_2 \ \cdots  \ n_t - 1}</script><p>规律为：上面$ - 1 $，下面依次各$ - 1 $，应用加法原理。</p>
+<h4 id="多项式定理-1"><a href="#多项式定理-1" class="headerlink" title="多项式定理"></a>多项式定理</h4><script type="math/tex; mode=display">
+(x_1 + x_2 + \cdots + x_t) ^ n = \sum\tbinom{n}{n_1 \ n_2 \cdots n_t}{x_1}^{n_1}{x_2}^{n_2}\cdots{x_t}^{n_t}</script><p>其中，求和是对 $ n_1 + n_2 + \cdots + n_t = n $ 的所有非负整数解进行的。</p>
 <h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>牛顿扩展了二项式定理，得到 $ (x + y) ^ \alpha$ 的展开式， $ \alpha $ 是任意实数。</p>
 <p>设 $ \alpha $是实数，对所有满足 $ 0 \le |x| &lt; |y| $ 的 $ x $ 和 $ y $ ，有：</p>
-<p>$$<br>(x + y) ^ {\alpha} &#x3D; \sum_{k &#x3D; 0}^{\infty}\tbinom{\alpha}{k}x^ky^{\alpha - k}<br>$$<br>其中<br>$$<br>\tbinom{\alpha}{k} &#x3D; \frac{\alpha(\alpha - 1) \cdots (\alpha - k - 1)}{k!}<br>$$</p>
-<h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
+<script type="math/tex; mode=display">
+(x + y) ^ {\alpha} = \sum_{k = 0}^{\infty}\tbinom{\alpha}{k}x^ky^{\alpha - k}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\tbinom{\alpha}{k} = \frac{\alpha(\alpha - 1) \cdots (\alpha - k - 1)}{k!}</script><h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
 <p>事实上，上述引出了反链的定义，以下逐个介绍链、最大链、反链。</p>
 <h4 id="链"><a href="#链" class="headerlink" title="链"></a>链</h4><p>$ S $的子集的集合$ C $是一条链(chain)，只要对于$ C $中的<strong>每一对</strong>子集，总有一个包含在另一个之中：$ A_1 $，$ A_2 $在$ C $中，且$ A_1 \ne A_2 $意味着$ A_1 \subset A_2 $或者$ A_2 \subset A_1 $。</p>
 <h4 id="最大链"><a href="#最大链" class="headerlink" title="最大链"></a>最大链</h4><p>链中不能挤入更多子集。</p>
@@ -309,8 +326,9 @@
 <li>链中每一个子集比它前面的子集的元素个数多$ 1 $ ；</li>
 <li>链中第一个子集的大小加上最后一个子集的大小等于$ n $ 。（如果这个链只含一个子集，那么这个子集既是第一个子集也是最后一个子集，所以其大小的两倍等于$ n $ ；即它的大小是 $ \frac{n}{2} $ ， $ n $ 是偶数。）</li>
 </ol>
-<p>对称链划分中的每一个链必须正好含有一个 $ \lfloor \frac{n}{2} \rfloor$ 子集（也正好含有一个$ \lceil \frac{n}{2} \rceil$ 子集）；因此，对称链划分中的链的个数等于<br>$$<br>\tbinom{n}{\lfloor \frac{n}{2} \rfloor} &#x3D; \tbinom{n}{\lceil \frac{n}{2} \rceil}<br>$$</p>
-
+<p>对称链划分中的每一个链必须正好含有一个 $ \lfloor \frac{n}{2} \rfloor$ 子集（也正好含有一个$ \lceil \frac{n}{2} \rceil$ 子集）；因此，对称链划分中的链的个数等于</p>
+<script type="math/tex; mode=display">
+\tbinom{n}{\lfloor \frac{n}{2} \rfloor} = \tbinom{n}{\lceil \frac{n}{2} \rceil}</script>
                 
                 <hr>
                 <!-- Pager -->
@@ -710,7 +728,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -720,6 +738,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

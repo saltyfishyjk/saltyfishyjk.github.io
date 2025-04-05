@@ -473,8 +473,8 @@
                 <div class="post-content-preview">
                     DNS笔记Part 0 前言记录文献中学习到的 DNS 相关基础知识。
 Part 1 基本概念DNS 解析参与方客户端 DNS Client(stub resolver)发送一个请求到recursive resolver，使其作为代理代为查询。
-（递归）解析器 DNS Recursive resolver也叫递归侧&#x2F;resolver。
-接收从 client 发来的 DNS quer......
+（递归）解析器 DNS Recursive resolver也叫递归侧/resolver。
+接收从 client 发来的 DNS query，从 R......
                 </div>
             </a>
             
@@ -582,11 +582,9 @@ nsqdNSQ 中的守护进程，负责接收、缓冲、投递和处理消息......
                     SQL笔记Part 0 前言SQL 语言用于数据库管理系统。后文中没有特殊说明，默认为 MySQL。
 Part 1 SELECTSELECT 用于从数据库中选取数据。
 选择特定列1SELECT column1, column2 FROM table_name;
-
-
-
 Part 2 WHEREWHERE 用于添加条件和过滤。
 运算符
+
 
 
 运算符
@@ -594,8 +592,11 @@ Part 2 WHEREWHERE 用于添加条件和过滤。
 
 
 
-&#x3D;
+
+=
 等于
+
+
 
 
 ...
@@ -669,10 +670,7 @@ Part 1 连接mstsc 远程桌面mstsc 是 Windows 自带的远程......
                     Spark 笔记Part 0 前言Apache Spark 是一个开源的集群计算框架，可以执行大规模数据处理任务，经常和 Scala，Zeppelin 一起配合使用。
 这篇笔记主要记录 Scala + Spark + Zeppelin 的使用。
 Part 1 Scala列表1val myList = List(1, 2, 3, 4, 5)
-
-
-
-Part 2 SparkSparkSessio......
+Part 2 SparkSparkSession管理......
                 </div>
             </a>
             
@@ -709,11 +707,11 @@ Part 2 SparkSparkSessio......
                 </h3>
                 <div class="post-content-preview">
                     Go笔记Part 0 前言Go，也称 Golang，是 Google 开发的编程语言，其轻量级协程使得在处理高并发需求时表现出色。
-Part 1 安装Linux - Ubuntu下载与安装参考博客：如何在 Debian &#x2F; Ubuntu 上安装 Go 开发环境
+Part 1 安装Linux - Ubuntu下载与安装参考博客：如何在 Debian / Ubuntu 上安装 Go 开发环境
 
 推荐使用其中的官方二进制包方式安装，因为 apt 方式安装的版本过旧
 
-设置国内代理参考博客：go get 报错:dia......
+设置国内代理参考博客：go get 报错:dial tcp......
                 </div>
             </a>
             
@@ -1285,7 +1283,7 @@ Part 1with torch.no_grad()PyTorch 中的一个上下文管理器（context manag
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1295,6 +1293,21 @@ Part 1with torch.no_grad()PyTorch 中的一个上下文管理器（context manag
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

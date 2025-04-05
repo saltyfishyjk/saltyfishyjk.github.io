@@ -515,7 +515,6 @@ Part 1 如何在Java中进行多线程编程三种使用线程的方法继承Thr
 
 1~~要删除的内容~~
 
-
 效果
 
 要删除的内容
@@ -666,8 +665,8 @@ Part 1 常用语法字体变色
                 </h3>
                 <div class="post-content-preview">
                     Gitment评论区配置与使用Part 0 前言为了进一步丰富本博客的功能，笔者依托Gitment配置了评论区。
-若您希望得知怎样在Hexo+Snail主题下配置Gitment评论区，请阅读**Part 1 ；若您希望能够在本博客文章下使用评论区，请跳过Part1直接阅读Part 2 **。
-Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系......
+若您希望得知怎样在Hexo+Snail主题下配置Gitment评论区，请阅读Part 1 ；若您希望能够在本博客文章下使用评论区，请跳过Part1直接阅读Part 2 。
+Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系统(官方......
                 </div>
             </a>
             
@@ -733,7 +732,14 @@ Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系..
                     
                 </h3>
                 <div class="post-content-preview">
-                    Latex笔记Part 0 前言LaTeX（&#x2F;ˈlɑːtɛx&#x2F;，常被读作&#x2F;ˈlɑːtɛk&#x2F;或&#x2F;ˈleɪtɛk&#x2F;） 是一种基于TeX的高品质排版系统，由美国计算机科学家莱斯利·兰伯特在20世纪80年代初期开发，非常适用于生成高印刷质量的科技和数学、物理文档，尤其擅长于复杂表格和数学公式的排版。LaTeX是科学文献交流和出版的事实标准。......
+                    Latex笔记Part 0 前言LaTeX（/ˈlɑːtɛx/，常被读作/ˈlɑːtɛk/或/ˈleɪtɛk/） 是一种基于TeX的高品质排版系统，由美国计算机科学家莱斯利·兰伯特在20世纪80年代初期开发，非常适用于生成高印刷质量的科技和数学、物理文档，尤其擅长于复杂表格和数学公式的排版。LaTeX是科学文献交流和出版的事实标准。
+Part 1 数学公式希腊字母
+
+
+
+字母名称
+小写代码
+......
                 </div>
             </a>
             
@@ -767,13 +773,13 @@ Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系..
                     
                 </h3>
                 <div class="post-content-preview">
-                    「BUAA Discrete Mathematics Chapter5」二项式系数Part 0Part 1Pascal公式$$\tbinom{n}{k} &#x3D; \tbinom{n-1}{k}+\tbinom{n-1}{k-1}$$
-组合推理证明
+                    「BUAA Discrete Mathematics Chapter5」二项式系数Part 0Part 1Pascal公式
+\tbinom{n}{k} = \tbinom{n-1}{k}+\tbinom{n-1}{k-1}组合推理证明
 一种依靠计数原理构建代数事实的证明方法
 基本框架：
 定义一个集合$ S $
-通过一种计数方式得出$ |S|&#x3D;n $
-通过另一种计数......
+通过一种计数方式得出$ |S|=n $
+通过另一种计数方式得出$ |S| = m ......
                 </div>
             </a>
             
@@ -1272,7 +1278,7 @@ Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系..
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -1282,6 +1288,21 @@ Part 1 配置Gitment参考资料Gitment：使用 GitHub Issues 搭建评论系..
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

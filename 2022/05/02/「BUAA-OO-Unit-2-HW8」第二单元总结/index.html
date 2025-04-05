@@ -271,9 +271,6 @@
 <hr>
 <h2 id="Part-1-第五次作业"><a href="#Part-1-第五次作业" class="headerlink" title="Part 1 第五次作业"></a>Part 1 第五次作业</h2><h3 id="1-1-作业要求"><a href="#1-1-作业要求" class="headerlink" title="1.1 作业要求"></a>1.1 作业要求</h3><p>模拟实现支持五座楼，每座十层，且每座有一台电梯可以在本座所有楼层间运行的多线程实时电梯系统。</p>
 <h3 id="1-2-架构设计"><a href="#1-2-架构设计" class="headerlink" title="1.2 架构设计"></a>1.2 架构设计</h3><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW5ClassUML-16515487274801.svg" class="" title="HW5ClassUML">
-
-
-
 <p>第五次作业类图如上图示。</p>
 <p><code>InputThread</code>负责输入，并将对应的<code>Passenger</code>委派给对应的楼座的<code>WaitTable</code>，对应楼座的电梯<code>Elevator</code>通过对应的<code>WaitTable</code>获取请求。这里，我还额外将存储<code>Passenger</code>的容器封装为一个<code>PassengerQueue</code>类，这将有利于未来迭代时更换实际上的容器而不更改<code>PassengerQueue</code>的接口。</p>
 <p>这次作业中我采用了生产者-消费者模型，具体如下：</p>
@@ -285,9 +282,6 @@
 <p>运行流程：生产者输入线程获取输入，按照乘客类别不同，分别投放到对应的楼座的托盘候乘表<code>WaitTable</code>，消费者电梯线程自己运行，同时扫描其所在的楼座的<code>WaitTable</code>，按照其自身调度队候乘表中乘客采取接客<code>getPassenger</code>方法。</p>
 <p>结束标识：输入得到<code>ctrl + D</code>结束信号时，调用所有<code>WaitTable</code>的<code>setEnd()</code>方法，首先结束掉同时满足对应楼座候乘表没有未运送乘客且电梯内部没有乘客的电梯线程；对于此时还在运行或不能被停止的电梯线程，<code>WaitTable</code>提供方法<code>isEnd()</code>，电梯可以通过该方法知道输入信号截止，并最终在对应楼座候乘表没有未运送乘客且电梯内没有乘客的时刻停止自身线程。</p>
 <h3 id="1-3-协作图"><a href="#1-3-协作图" class="headerlink" title="1.3 协作图"></a>1.3 协作图</h3>
-
-
-
 <h3 id="1-4-调度分析"><a href="#1-4-调度分析" class="headerlink" title="1.4 调度分析"></a>1.4 调度分析</h3><p>在第一单元中，任务需求较为简单。考虑到单元训练的重点是多线程设计以及为未来迭代做好准备，我秉持less is more的想法，在比较多种调度策略后最终选择了LOOK算法，其在满足较高的性能的同时实现复杂度较低，这意味着更低的出bug概率以及更好的可扩展性。考虑到网上资料中并没有详细描述LOOK具体原理和实现的文章，我这里简单谈谈我的<strong>个人认知</strong>，可做参考。</p>
 <ol>
 <li><p>当电梯有乘客时，以乘客中<strong>目标楼层距离当前楼层最远</strong>的请求为主请求确定目标楼层</p>
@@ -301,9 +295,6 @@
 <h4 id="别人bug"><a href="#别人bug" class="headerlink" title="别人bug"></a>别人bug</h4><p>在互测中，我主要通过评测机用大范围随机数据进行检验，没有检查出错误，但是有同学被其他屋内同学hack到，这意味着随机数据的局限性。</p>
 <h3 id="1-6-对象头、锁和同步"><a href="#1-6-对象头、锁和同步" class="headerlink" title="1.6 对象头、锁和同步"></a>1.6 对象头、锁和同步</h3><p>荣文戈老师上课介绍了对象头的相关知识，查阅相关资料后简要整理如下：</p>
 <h4 id="对象实例结构"><a href="#对象实例结构" class="headerlink" title="对象实例结构"></a>对象实例结构</h4><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/image-20220329220220915-16514962917821-16515487274803.png" class="" title="Java对象头">
-
-
-
 <p>Java的实例对象储存在Heap中，其结构如上图示。</p>
 <h4 id="锁和同步"><a href="#锁和同步" class="headerlink" title="锁和同步"></a>锁和同步</h4><p>如上图示，对象头部分储存的信息包含<strong>最近持有该对象锁的线程ID</strong>。而我们使用的<code>synchronized</code>包含三种情况，分别是：</p>
 <ol>
@@ -314,8 +305,9 @@
 <p>class信息存储在method area中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> <span class="keyword">void</span> staic <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修饰代码块：指定加锁对象，对给定对象&#x2F;类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>修饰代码块：指定加锁对象，对给定对象/类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>通过以上资料，我们可以更加清楚加锁是如何进行和记录的。</p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ol>
@@ -325,15 +317,11 @@
 <h4 id="对象锁"><a href="#对象锁" class="headerlink" title="对象锁"></a>对象锁</h4><p>包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象)。</p>
 <h5 id="方法锁形式"><a href="#方法锁形式" class="headerlink" title="方法锁形式"></a>方法锁形式</h5><p><code>synchronized</code>修饰普通实例方法，锁对象默认为this</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="代码块形式"><a href="#代码块形式" class="headerlink" title="代码块形式"></a>代码块形式</h5><p>手动指定锁定对象，可以是<code>this</code>，也可以是其他对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj) &#123; <span class="comment">// obj可以为this或其他对象</span></span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="类锁"><a href="#类锁" class="headerlink" title="类锁"></a>类锁</h4><p>指<code>synchronized</code>修饰静态的方法或指定锁对象为<code>Class</code>对象。这种情况下，所有对象共用一把锁。</p>
 <h5 id="静态方法形式"><a href="#静态方法形式" class="headerlink" title="静态方法形式"></a>静态方法形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="代码块形式-1"><a href="#代码块形式-1" class="headerlink" title="代码块形式"></a>代码块形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (classA.class) &#123;</span><br><span class="line">    <span class="comment">// TODO </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h4><p><a href="https://pdai.tech/md/java/thread/java-thread-x-key-synchronized.html#%E5%B8%A6%E7%9D%80bat%E5%A4%A7%E5%8E%82%E7%9A%84%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E5%8E%BB%E7%90%86%E8%A7%A3synchronized">关键字: synchronized详解</a></p>
 <h3 id="1-7-线程安全——封装安全输出类"><a href="#1-7-线程安全——封装安全输出类" class="headerlink" title="1.7 线程安全——封装安全输出类"></a>1.7 线程安全——封装安全输出类</h3><p>指导书中提示到，官方提出的输出包<strong>线程不安全</strong>，即，获得时间戳和输出不是原子操作，可能出现时间戳和输出内容不匹配的情况。经过lxh助教的提示，我们有以下两种思路处理这个问题。</p>
 <h4 id="每次调用加锁"><a href="#每次调用加锁" class="headerlink" title="每次调用加锁"></a>每次调用加锁</h4><p>第一种思路，我们可以在每次调用的时候都加锁，这样可以解决上述问题。得益于我们本次作业的输出较为简单，所以这样也不会显得很麻烦，但是当我们要包装为“原子操作”的类方法很多时，或者，祖传代码很长而我们只知道方法的接口的时候，可能会比较麻烦，以下介绍第二种方法。</p>
@@ -341,11 +329,9 @@
 <h5 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h5><p>利用单例模式，我们可以设计一个安全输出类，这个类只有一个对象，提供的方法的参数同我们想要使线程安全的类的方法的参数完全相同，并使方法为<code>synchronized</code>的，这样就可以保证每次调用同一个全局对象的方法，且是线程安全的。</p>
 <p>CODE:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.oocourse.TimableOutput;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OutputThread</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">OutputThread</span> <span class="variable">outputThread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OutputThread</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">OutputThread</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> OutputThread <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> outputThread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">println</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        TimableOutput.println(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Tip：构建上述<code>OutputThread</code>类后，我们仍需要在<code>MainClass</code>开头调用<code>TimableOutput.initStartTimestamp();</code>。</p>
 <h5 id="化简"><a href="#化简" class="headerlink" title="化简"></a>化简</h5><p>实际上，为了使方法更具有普适性（适应要封装为线程安全类的类有较多方法）以及应用完整的单例模式，上述代码在本例中略显冗余，可以如下化简：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.oocourse.TimableOutput;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OutputThread</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">println</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        TimableOutput.println(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="Part-2-第六次作业"><a href="#Part-2-第六次作业" class="headerlink" title="Part 2 第六次作业"></a>Part 2 第六次作业</h2><h3 id="2-1-作业要求"><a href="#2-1-作业要求" class="headerlink" title="2.1 作业要求"></a>2.1 作业要求</h3><p>模拟实现支持五座楼，每座十层，每座有一台基础电梯可以在本座所有楼层间运行，支持加装可在所有不同楼座同一层间运行的电梯，支持加装纵向电梯的多线程实时电梯系统。</p>
 <p>与第五次作业相比，本次作业的迭代要求为：</p>
 <ul>
@@ -354,9 +340,6 @@
 <li>支持同一层不同楼座的乘客需求</li>
 </ul>
 <h3 id="2-2-架构设计"><a href="#2-2-架构设计" class="headerlink" title="2.2 架构设计"></a>2.2 架构设计</h3><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW6ClassUML.png" class="" title="HW6ClassUML">
-
-
-
 <p>第六次作业UML类图如上图示。</p>
 <p>本次作业基于第五次作业迭代而来，没有进行大规模重构，因此主要介绍<strong>设计思路和迭代变化</strong>。</p>
 <h4 id="新需求分析"><a href="#新需求分析" class="headerlink" title="新需求分析"></a>新需求分析</h4><p>第二次作业的变化主要包括：增加横向电梯种类并支持在同楼层不同座之间的乘客需求和支持动态增加（纵向和横向）电梯数量。</p>
@@ -369,9 +352,6 @@
 <h4 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h4><p>在上述介绍中，电梯们对于所属请求群内的候乘表读相比写更频繁，可以采用读写锁来进一步优化提升性能。</p>
 <p>但是在实际验证中，我们发现读写锁对于性能提升非常有限，甚至在数据波动时反而会劣于<code>synchronized</code>。为了便于迭代和维护，最终我们仍选择全部使用<code>synchronized</code>实现，这是一种在架构鲁棒性和相对高性能之间的取舍。</p>
 <h3 id="2-3-协作图"><a href="#2-3-协作图" class="headerlink" title="2.3 协作图"></a>2.3 协作图</h3><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW6Sequence.svg" class="" title="HW6Sequence">
-
-
-
 <p>如上图示为本次作业协作图。</p>
 <p>可以注意到，本次作业和第五次作业相比，设计和迭代是线性的，没有改变架构和思路，这体现了我们架构较为优越的可扩展性和鲁棒性。</p>
 <h3 id="2-4-调度分析"><a href="#2-4-调度分析" class="headerlink" title="2.4 调度分析"></a>2.4 调度分析</h3><h4 id="横向LOOK"><a href="#横向LOOK" class="headerlink" title="横向LOOK"></a>横向LOOK</h4><p>纵向LOOK在<strong>Part1 第五次作业 1.4调度分析</strong>中已经介绍过，这里主要介绍横向LOOK：</p>
@@ -402,9 +382,6 @@
 <li>一层加装可达全部楼座的中转横向电梯</li>
 </ul>
 <h3 id="3-2-架构设计与新需求分析"><a href="#3-2-架构设计与新需求分析" class="headerlink" title="3.2 架构设计与新需求分析"></a>3.2 架构设计与新需求分析</h3><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW7ClassUML.svg" class="" title="HW7ClassUML">
-
-
-
 <p>本次作业架构设计如上图示。可以看出，整体结构基本没有发生变化，只为部分类增加部分内容。</p>
 <h4 id="支持自定义属性"><a href="#支持自定义属性" class="headerlink" title="支持自定义属性"></a>支持自定义属性</h4><p>只需要在电梯类内部新增属性即可。</p>
 <h4 id="支持自定义可达楼座"><a href="#支持自定义可达楼座" class="headerlink" title="支持自定义可达楼座"></a>支持自定义可达楼座</h4><p>通过公式<code>((M &gt;&gt; (P -&#39;A&#39;)) &amp; 1) + ((M &gt;&gt; (Q -&#39;A&#39;)) &amp; 1) == 2</code>判断是否可达即可。</p>
@@ -414,9 +391,6 @@
 <p>具体到策略，有静态分配和动态分配两种。静态分配即请求从输入线程获得时就已经划分好；动态分配即每次规划一段路，规划下一段时要重新计算。</p>
 <p>从可扩展性、和性能方面看，动态分配优于静态分配，但综合实现难度、优化程度以及鲁棒性，我最终选择较为容易实现的静态分配方法。</p>
 <h3 id="3-3-协作图"><a href="#3-3-协作图" class="headerlink" title="3.3 协作图"></a>3.3 协作图</h3><img src="/2022/05/02/%E3%80%8CBUAA-OO-Unit-2-HW8%E3%80%8D%E7%AC%AC%E4%BA%8C%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93/HW7Sequence-0.svg" class="" title="HW7Sequence-0">
-
-
-
 <p>如上图示为本次作业协作图。</p>
 <p>可以注意到，本次作业和第六次作业相比，设计和迭代是线性的，没有改变架构和思路，这体现了我们架构较为优越的可扩展性和鲁棒性。</p>
 <p>我们主要扩展了分段请求在没有真正完成时要再次加入<code>WaitTable</code>重新等待电梯运送。</p>
@@ -443,7 +417,6 @@
 <h2 id="Part-5-Tricks"><a href="#Part-5-Tricks" class="headerlink" title="Part 5 Tricks"></a>Part 5 Tricks</h2><p>在本单元作业实现中，有一些<del>不怎么高级的</del>小技巧<del>但很有用</del>，在这里记录和分享。</p>
 <h3 id="数据投喂包使用批处理代替手动输入cmd命令"><a href="#数据投喂包使用批处理代替手动输入cmd命令" class="headerlink" title="数据投喂包使用批处理代替手动输入cmd命令"></a>数据投喂包使用批处理代替手动输入cmd命令</h3><p>使用数据投喂包测试时每次在命令行输入<code>datainput_student_win64.exe | java -jar code.jar</code>较为繁琐，在Windows中可以通过写bat文件后每次双击来代替重复输入命令的操作。</p>
 <h4 id="run-bat"><a href="#run-bat" class="headerlink" title="run.bat"></a><code>run.bat</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datainput_student_win64.exe | java -jar code.jar</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-
 <p>直觉上比较类似sh脚本文件。第二行<code>pause</code>的作用是运行完之后不退出命令行界面。</p>
 <p>用记事本等编辑器写好上述文件后，双击<code>run.bat</code>即可运行。</p>
 <p>脚本最后一行若再加上<code>cmd \k</code>能让命令行界面可以继续使用。</p>
@@ -854,7 +827,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -864,6 +837,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

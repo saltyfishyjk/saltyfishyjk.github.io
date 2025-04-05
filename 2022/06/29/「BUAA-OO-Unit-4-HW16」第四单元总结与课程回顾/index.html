@@ -261,9 +261,6 @@
 <h2 id="Part-0-第四单元作业架构设计"><a href="#Part-0-第四单元作业架构设计" class="headerlink" title="Part 0 第四单元作业架构设计"></a>Part 0 第四单元作业架构设计</h2><h3 id="架构设计概要"><a href="#架构设计概要" class="headerlink" title="架构设计概要"></a>架构设计概要</h3><p>本单元的设计目标为扩展UML解析器，使之支持对UML类图、状态图和顺序图的分析，可以通过输入相应的指令来进行相关查询，并能根据UML规则进行一定的规范性验证。</p>
 <p>整个第四单元的三次作业是依次迭代的，没有进行重构，因此这里以第15次作业为例介绍架构设计如下图示。</p>
 <img src="/2022/06/29/%E3%80%8CBUAA-OO-Unit-4-HW16%E3%80%8D%E7%AC%AC%E5%9B%9B%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AF%BE%E7%A8%8B%E5%9B%9E%E9%A1%BE/hw15%E6%9E%B6%E6%9E%84.jpg" class="" title="hw15架构">
-
-
-
 <p>在本次作业中，我主要遵循以下几个原则进行设计：</p>
 <ol>
 <li>将<strong>所有</strong> <code>UML*</code>封装为<code>My*</code>，以便于统一管理和增设属性。</li>
@@ -285,7 +282,6 @@
 <h6 id="1-2-status"><a href="#1-2-status" class="headerlink" title="1.2 status"></a>1.2 <code>status</code></h6><p>标记此时AppRunner行为</p>
 <h5 id="2-行为"><a href="#2-行为" class="headerlink" title="2. 行为"></a>2. 行为</h5><p>主体运算逻辑在<code>run</code>中。</p>
 <h6 id="2-1-run"><a href="#2-1-run" class="headerlink" title="2.1 run"></a>2.1 <code>run</code></h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        beforeStartEvent();</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(inputStream);</span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextLine()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">            lineProcessEvent(line);</span><br><span class="line">        &#125;</span><br><span class="line">        scanner.close();</span><br><span class="line">        afterCompleteEvent();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        exceptionProcessEvent(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>以下步骤均在AppRunner中实现</p>
 </blockquote>
@@ -326,9 +322,6 @@
 <p>这里主要针对类和接口的泛化与接口的实现，对于作业中其他的属性以及后续作业的新要求，可以利用类似的思想</p>
 </blockquote>
 <h4 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h4><img src="/2022/06/29/%E3%80%8CBUAA-OO-Unit-4-HW16%E3%80%8D%E7%AC%AC%E5%9B%9B%E5%8D%95%E5%85%83%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AF%BE%E7%A8%8B%E5%9B%9E%E9%A1%BE/Page1.png" class="" title="Page1.png">
-
-
-
 <p>上图展示了三轮循环的工作实现与要点，以下结合该图逐个介绍。</p>
 <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><h5 id="Round-1-“实体”加入"><a href="#Round-1-“实体”加入" class="headerlink" title="Round 1 “实体”加入"></a>Round 1 “实体”加入</h5><p>第一轮遍历，加入类和接口实体，这时候泛化和接口实现等关系尚未加入，彼此处于孤立状态。</p>
 <h5 id="Round-2-“泛化”加入"><a href="#Round-2-“泛化”加入" class="headerlink" title="Round 2 “泛化”加入"></a>Round 2 “泛化”加入</h5><p>第二轮遍历，将泛化关系加入图中。</p>
@@ -412,26 +405,19 @@
 </li>
 <li><p><code>InteractionDuplicatedException</code></p>
 </li>
-<li><p><code>LifelineNotFoundException</code></p>
-</li>
-<li><p><code>LifelineDuplicatedException</code></p>
-</li>
-<li><p><code>LifelineNeverCreatedException</code></p>
-</li>
-<li><p><code>LifelineCreatedRepeatedlyException</code></p>
-</li>
+<li><code>LifelineNotFoundException</code></li>
+<li><code>LifelineDuplicatedException</code></li>
+<li><code>LifelineNeverCreatedException</code></li>
+<li><code>LifelineCreatedRepeatedlyException</code></li>
 </ul>
 <p>其中，在<code>MyImplementation</code>中，我们处理前两个关于交互不存在或有重名交互的情况；得到正确的唯一交互后，在<code>MyInteraction</code>中我们处理中间两个关于生命线不存在或有重名生命线的情况；最后，在得到正确的唯一生命线后，我们处理不存在创建消息或重复创建的情况。</p>
 <p>具体的方法原型可以参考如下：</p>
 <p><code>MyInplementation</code>中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> UmlLifeline <span class="title function_">getParticipantCreator</span><span class="params">(String interactionName, String lifelineName)</span></span><br><span class="line">        <span class="keyword">throws</span> InteractionNotFoundException, InteractionDuplicatedException,</span><br><span class="line">        LifelineNotFoundException, LifelineDuplicatedException,</span><br><span class="line">        LifelineNeverCreatedException, LifelineCreatedRepeatedlyException &#123;</span><br><span class="line">	<span class="comment">/* TODO */</span>           </span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-
 <p><code>MyInteraction</code>中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> UmlLifeline <span class="title function_">getParticipantCreator</span><span class="params">(String interactionName, String lifelineName)</span></span><br><span class="line">        <span class="keyword">throws</span> LifelineNotFoundException, LifelineDuplicatedException,</span><br><span class="line">        LifelineNeverCreatedException, LifelineCreatedRepeatedlyException &#123;</span><br><span class="line">    <span class="comment">/* TODO */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><code>MyLineLine</code>中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> UmlLifeline <span class="title function_">getParticipantCreator</span><span class="params">(String interactionName, String lifelineName)</span></span><br><span class="line">        <span class="keyword">throws</span> LifelineNeverCreatedException, LifelineCreatedRepeatedlyException &#123;</span><br><span class="line">    <span class="comment">/* TODO */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="Part-1-四个单元中架构设计思维和OO方法理解的演进"><a href="#Part-1-四个单元中架构设计思维和OO方法理解的演进" class="headerlink" title="Part 1 四个单元中架构设计思维和OO方法理解的演进"></a>Part 1 四个单元中架构设计思维和OO方法理解的演进</h2><h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>与Pre2中已经给出具体类如何设计不同，四个单元的作业内容不再给出如此具体的类搭建方法，需要一定的抽象能力。从第一单元的表达式，到第二单元的电梯，到第三单元的JML，到第四单元的UML，如何划分清晰的状态和功能特征，给出合适的抽象类至关重要。一种好的抽象可以有效提高代码的鲁棒性和健壮性，并降低代码重构的可能。</p>
 <h3 id="层次化"><a href="#层次化" class="headerlink" title="层次化"></a>层次化</h3><p>当使用面向对象的眼光来审视我们的任务时，模糊的层次化概念会在我们脑中朴素地浮现，但是，这是远远不够的，我们需要更清晰，更具体的抽象与层次化构建，搭建出既精简，又易扩展，还好维护的架构。第一单元的表达式层次化构建相对简单，training中也给出了具体的表达式因子-&gt;项-&gt;表达式的层次，并暗含递归关系；第二单元的电梯中，我采用了相对简单的无单独调度器的设计，基本只有电梯，候乘区和输入线程三种层次；第三单元中，JML规格已经限制了层次化设计；第四单元中，封装<code>My*</code>类、<code>MyDataBase</code>类和<code>MyCheckForUml</code>类的层次化设计令我受益匪浅。</p>
@@ -446,7 +432,7 @@
 <p>第一单元中，我主要利用python的科学计算库sympy，直接随机生成输入数据，并计算答案的正确与否。同时，通过设置常量池，对于部分边缘数据进行较为有效的覆盖。</p>
 <p>第二单元中，评测机主要采用随机数据生成与状态验证的办法，同时，由于本单元对CPU时间有较高要求，因此在linux中利用其计时工具检查是否存在轮询。</p>
 <p>第三和第四单元，评测机主要采用随机数据生成与对拍的方式进行验证。这两个单元中，官方数据的压力较小，为了保证我们随机数据的覆盖性，我们加大了数据的强度，尽可能保证评测机有效性。</p>
-<p>值得注意的是，上述评测机除了第一单元我亲自全流程完成过一个外，其他大多为和同学合作&#x2F;修改学长的评测机，不得不说这是一个非常耗时耗力的工作，同时，经验尚浅的我很可能不能保证随机数据的强度和覆盖性。</p>
+<p>值得注意的是，上述评测机除了第一单元我亲自全流程完成过一个外，其他大多为和同学合作/修改学长的评测机，不得不说这是一个非常耗时耗力的工作，同时，经验尚浅的我很可能不能保证随机数据的强度和覆盖性。</p>
 <p>尽管如此，搭建与修改评测机的过程依然收获良多，随机数据与边缘数据的生成，调用合适的库避免重复造轮子，与小伙伴对拍降低正确性验证难度等都让我在课程之外学到了更多知识，也更加让我意识到测试的重要性：你不会指望未来的生产中也总有官方评测机测试你的代码！</p>
 <h2 id="Part-3-课程收获"><a href="#Part-3-课程收获" class="headerlink" title="Part 3 课程收获"></a>Part 3 课程收获</h2><p>本学期的OO课程是大二以来体验最好的一门课。作为一门核心专业课，它不愧对“重课”“难课”的头衔，任务量与难度上都很难说轻松。但另一方面，这种“踮踮脚就可以够得到”的核心专业课，既做到了让我们走出舒适区，又不使课程难度过高而让人望而却步，为我带来了巨大的收获。</p>
 <p>课程中老师、助教和同学们的悉心帮助是我能够完成OO的重要原因，没有如此负责而高水平的老师和助教，没有热心的同学们，就没有完成了课程的我，在这里再次向大家表示最诚挚的谢意。</p>
@@ -876,7 +862,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -886,6 +872,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

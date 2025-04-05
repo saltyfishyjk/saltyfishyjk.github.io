@@ -272,13 +272,7 @@
 <li>阻塞状态：进程正在等待某一事件而暂停运行，即使处理机空闲，该进程也不能运行</li>
 </ul>
 <img src="/2022/05/04/%E3%80%8CBUAA-OS-Course%E3%80%8D%E8%BF%9B%E7%A8%8B/image-20220504201758908.png" class="" title="状态转换">
-
-
-
 <img src="/2022/05/04/%E3%80%8CBUAA-OS-Course%E3%80%8D%E8%BF%9B%E7%A8%8B/image-20220504201844691.png" class="" title="允许挂起">
-
-
-
 <h2 id="Part-1-进程控制"><a href="#Part-1-进程控制" class="headerlink" title="Part 1 进程控制"></a>Part 1 进程控制</h2><h3 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h3><p>进程控制块（Process Control Block, PCB）是系统用来描述进程的基本情况和运行状态的数据结构。</p>
 <p>由<strong>程序段</strong>、<strong>相关数据段</strong>和<strong>PCB</strong>三部分构成了进程映像（进程实体）。创建进程，实质上是创建进程映像的PCB；撤销进程，就是撤销进程的PCB。</p>
 <blockquote>
@@ -286,11 +280,11 @@
 </blockquote>
 <h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><h5 id="进程标识符"><a href="#进程标识符" class="headerlink" title="进程标识符"></a>进程标识符</h5><p>每个进程都有唯一的标识符，可以是字符串或数字。Linux中是一个整型数，在进程创建时由系统赋予。</p>
 <h5 id="程序和数据地址"><a href="#程序和数据地址" class="headerlink" title="程序和数据地址"></a>程序和数据地址</h5><p>把PCB和其程序与数据联系起来。</p>
-<h5 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h5><p>系统设计时会将相同状态的进程组成一个队列，如就绪进程队列等。等待进程队列会按照等待的事件组成多个等待队列，如等待打印机队列、等待磁盘I&#x2F;O完成队列等。</p>
+<h5 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h5><p>系统设计时会将相同状态的进程组成一个队列，如就绪进程队列等。等待进程队列会按照等待的事件组成多个等待队列，如等待打印机队列、等待磁盘I/O完成队列等。</p>
 <h5 id="现场保护区"><a href="#现场保护区" class="headerlink" title="现场保护区"></a>现场保护区</h5><p>当进程因为某种原因不能继续占用CPU时，（等待打印机等），释放CPU，这时，需要将CPU的各种状态信息保护起来，将来再次得到处理机时，恢复CPU的各种状态，继续运行。</p>
 <h5 id="同步与同步机制："><a href="#同步与同步机制：" class="headerlink" title="同步与同步机制："></a>同步与同步机制：</h5><p>用于实现进程间互斥、同步和通信所需的信号量等。</p>
 <h5 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h5><p>反应进程的紧迫程度，通常由用户指定和系统设置。</p>
-<h5 id="资源清单"><a href="#资源清单" class="headerlink" title="资源清单"></a>资源清单</h5><p>列出所拥有的除CPU外的资源记录，如I&#x2F;O设备、打开的文件列表等。</p>
+<h5 id="资源清单"><a href="#资源清单" class="headerlink" title="资源清单"></a>资源清单</h5><p>列出所拥有的除CPU外的资源记录，如I/O设备、打开的文件列表等。</p>
 <h5 id="链接字"><a href="#链接字" class="headerlink" title="链接字"></a>链接字</h5><p>根据进程所处的执行状态，进程相应的PCB加入到不同队列中。链接字指出该进程所在队列中下一个进程PCB的首地址。</p>
 <h4 id="组织方式"><a href="#组织方式" class="headerlink" title="组织方式"></a>组织方式</h4><ul>
 <li>线性表：将所有PCB连续存放在内存的系统区。</li>
@@ -302,7 +296,7 @@
 <li>保存进程执行断点</li>
 <li>切换内存映射（页表基址、flush TLB）</li>
 </ul>
-<h4 id="陷入-退出内核（模态切换，Mode-Switch）"><a href="#陷入-退出内核（模态切换，Mode-Switch）" class="headerlink" title="陷入&#x2F;退出内核（模态切换，Mode Switch）"></a>陷入&#x2F;退出内核（模态切换，Mode Switch）</h4><ul>
+<h4 id="陷入-退出内核（模态切换，Mode-Switch）"><a href="#陷入-退出内核（模态切换，Mode-Switch）" class="headerlink" title="陷入/退出内核（模态切换，Mode Switch）"></a>陷入/退出内核（模态切换，Mode Switch）</h4><ul>
 <li>CPU状态改变</li>
 <li>由中断、异常、Trap指令（系统调用）引起</li>
 <li>需要保存执行线程（寄存器、堆栈等）</li>
@@ -334,14 +328,14 @@
 <li>若该进程为运行态，保护其现场，将其状态转为阻塞态，停止运行</li>
 <li>将该PCB插入相应事件的等待队列，将处理机资源调度给其他就绪线程</li>
 </ul>
-<p>当该进程所期待的时间发生，如其启动的I&#x2F;O操作已完成或其所期待的数据已到达，由有关进程（如释放该I&#x2F;O设备的进程，或提供数据的进程）调用唤醒原语（Wakeup），将等待该事件的进程唤醒。唤醒原语的执行过程如下：</p>
+<p>当该进程所期待的时间发生，如其启动的I/O操作已完成或其所期待的数据已到达，由有关进程（如释放该I/O设备的进程，或提供数据的进程）调用唤醒原语（Wakeup），将等待该事件的进程唤醒。唤醒原语的执行过程如下：</p>
 <ul>
 <li>在该事件的等待队列中找到对应进程的PCB</li>
 <li>将其从等待队列中移出，并置其状态为就绪态。</li>
 <li>将该PCB插入就绪队列，等待调度</li>
 </ul>
 <p>值得注意的是，Block原语和Wakeup原语是一堆作用恰好相反的原语，须成对使用。Block由阻塞进程自我调用实现，Wakeup由一个被唤醒进程合作或其他相关的进程调用实现。</p>
-<h3 id="进程切换"><a href="#进程切换" class="headerlink" title="进程切换"></a>进程切换</h3><p>对于通常的进程，其创建、撤销及要求由系统设备完成的I&#x2F;O操作，都是利用系统调用而进入内核，再由内核中的相应处理程序予以完成。进程切换同样是在内核的支持下实现的，因此可以说，任何进程都是在操作系统内核的支持下运行的，是与内核紧密相关的。</p>
+<h3 id="进程切换"><a href="#进程切换" class="headerlink" title="进程切换"></a>进程切换</h3><p>对于通常的进程，其创建、撤销及要求由系统设备完成的I/O操作，都是利用系统调用而进入内核，再由内核中的相应处理程序予以完成。进程切换同样是在内核的支持下实现的，因此可以说，任何进程都是在操作系统内核的支持下运行的，是与内核紧密相关的。</p>
 <p>进程切换指处理机从一个进程的运行转到另一个进程的运行，在这个过程中，进程的运行环境产生了实质性的变化。进程切换的过程如下：</p>
 <ul>
 <li>保存处理机上下文，包括程序计数器和其他寄存器</li>
@@ -360,8 +354,8 @@
 <h3 id="程序段"><a href="#程序段" class="headerlink" title="程序段"></a>程序段</h3><p>程序段是能被进程调度程序调度到CPU执行的程序代码段。注意，程序可以被多个进程共享，即，多个进程可以运行同一个程序。</p>
 <h3 id="数据段"><a href="#数据段" class="headerlink" title="数据段"></a>数据段</h3><p>一个进程的数据段，可以是进程对应的程序架构处理的原始数据，也可以是程序执行时产生的中间或最终结果。</p>
 <h2 id="Part-3-进程的通信"><a href="#Part-3-进程的通信" class="headerlink" title="Part 3 进程的通信"></a>Part 3 进程的通信</h2><p>进程通信指进程之间的信息交换。PV操作是低级通信方式，高级通信方式是指以较高的效率传输大量数据的通信方式，有以下三类：</p>
-<h3 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a>共享存储</h3><p>通信的进程之间存在一块可以直接访问的共享空间，对这片共享空间读&#x2F;写实现进程之间的信息交换。对共享空间进行读&#x2F;写时，需要使用同步互斥工具（如P操作，V操作），对共享空间的读&#x2F;写进行控制。</p>
-<p>共享存储分为两种：低级方式的共享是基于数据结构的共享，高级方式的共享是基于存储区的共享。操作系统为通信进程提供可共享使用的存储空间和同步互斥工具，数据交换由用户自己安排读&#x2F;写指令完成。</p>
+<h3 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a>共享存储</h3><p>通信的进程之间存在一块可以直接访问的共享空间，对这片共享空间读/写实现进程之间的信息交换。对共享空间进行读/写时，需要使用同步互斥工具（如P操作，V操作），对共享空间的读/写进行控制。</p>
+<p>共享存储分为两种：低级方式的共享是基于数据结构的共享，高级方式的共享是基于存储区的共享。操作系统为通信进程提供可共享使用的存储空间和同步互斥工具，数据交换由用户自己安排读/写指令完成。</p>
 <h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3>
                 
                 <hr>
@@ -760,7 +754,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -770,6 +764,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

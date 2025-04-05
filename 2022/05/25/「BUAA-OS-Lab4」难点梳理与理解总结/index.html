@@ -288,9 +288,6 @@
 <p><strong>TOO LOW</strong></p>
 <p>KUc为1代表CPU处于用户态，此时如果进程试图访问内核空间，则会触发TLB异常。在Lab3中，我们的进程仍运行在内核态（可以通过我们设置的）。值得注意的是，在进程调度时，会首先调用<code>rfe</code>，因此，我们不能直接在<code>env_alloc</code>中设置KUc，而应当设置KUp，这样在调用<code>rfe</code>后会让我们的进程的CPU状态得到正确的设置。</p>
 <h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220511161832176.png" class="" title="系统调用流程">
-
-
-
 <p>上图是指导书给出的流程，已经比较详细，我们以其为本更细致介绍具体操作及各个函数的声明与实现位置。</p>
 <p>我们以<code>writef</code>为例梳理系统调用的一般流程：</p>
 <ol>
@@ -302,15 +299,7 @@
 <li>从系统调用函数返回，回到用户程序<code>writef</code>调用处</li>
 </ol>
 <h3 id="handle-sys"><a href="#handle-sys" class="headerlink" title="handle_sys"></a><code>handle_sys</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">NESTED(handle_sys,TF_SIZE, sp)</span><br><span class="line">    SAVE_ALL                            // Macro used to save trapframe</span><br><span class="line">    CLI                                 // Clean Interrupt Mask</span><br><span class="line">    nop</span><br><span class="line">    .set at                             // Resume use of $at</span><br><span class="line"></span><br><span class="line">    // TODO: Fetch EPC from Trapframe, calculate a proper value and store it back to trapframe.</span><br><span class="line">	/* EPC += 4 */</span><br><span class="line">	lw t0, TF_EPC(sp)</span><br><span class="line">	addiu t0, t0, 4</span><br><span class="line">	sw t0, TF_EPC(sp)</span><br><span class="line">    // TODO: Copy the syscall number into $a0.</span><br><span class="line">	lw a0, TF_REG4(sp)</span><br><span class="line">	</span><br><span class="line">    addiu   a0, a0, -__SYSCALL_BASE     // a0 &lt;- relative syscall number</span><br><span class="line">    sll     t0, a0, 2                   // t0 &lt;- relative syscall number times 4</span><br><span class="line">    la      t1, sys_call_table          // t1 &lt;- syscall table base</span><br><span class="line">    addu    t1, t1, t0                  // t1 &lt;- table entry of specific syscall</span><br><span class="line">    lw      t2, 0(t1)                   // t2 &lt;- function entry of specific syscall</span><br><span class="line"></span><br><span class="line">    lw      t0, TF_REG29(sp)            // t0 &lt;- user&#x27;s stack pointer</span><br><span class="line">    lw      t3, 16(t0)                  // t3 &lt;- the 5th argument of msyscall</span><br><span class="line">    lw      t4, 20(t0)                  // t4 &lt;- the 6th argument of msyscall</span><br><span class="line"></span><br><span class="line">    // TODO: Allocate a space of six arguments on current kernel stack and copy the six arguments to proper location</span><br><span class="line">    // a0, a1, a2, a3的寄存器编号分别是4，5，6，7，因此从栈的这些位置获取</span><br><span class="line">	lw a0, TF_REG4(sp)  </span><br><span class="line">	lw a1, TF_REG5(sp)  </span><br><span class="line">	lw a2, TF_REG6(sp)  </span><br><span class="line">	lw a3, TF_REG7(sp)  </span><br><span class="line">	addiu sp, sp, -24</span><br><span class="line">	sw t3, 16(sp)</span><br><span class="line">	sw t4, 20(sp)</span><br><span class="line"></span><br><span class="line">    jalr    t2                          // Invoke sys_* function</span><br><span class="line">    nop</span><br><span class="line"></span><br><span class="line">    // TODO: Resume current kernel stack</span><br><span class="line">	addiu sp, sp, 24 // recover stack</span><br><span class="line">    sw      v0, TF_REG2(sp)             // Store return value of function sys_* (in $v0) into trapframe</span><br><span class="line"></span><br><span class="line">    j       ret_from_exception          // Return from exeception</span><br><span class="line">    nop</span><br><span class="line">END(handle_sys)</span><br><span class="line"></span><br><span class="line">sys_call_table:                         // Syscall Table</span><br><span class="line">    .align 2</span><br><span class="line">    .word sys_putchar</span><br><span class="line">    .word sys_getenvid</span><br><span class="line">    .word sys_yield</span><br><span class="line">    .word sys_env_destroy</span><br><span class="line">    .word sys_set_pgfault_handler</span><br><span class="line">    .word sys_mem_alloc</span><br><span class="line">    .word sys_mem_map</span><br><span class="line">    .word sys_mem_unmap</span><br><span class="line">    .word sys_env_alloc</span><br><span class="line">    .word sys_set_env_status</span><br><span class="line">    .word sys_set_trapframe</span><br><span class="line">    .word sys_panic</span><br><span class="line">    .word sys_ipc_can_send</span><br><span class="line">    .word sys_ipc_recv</span><br><span class="line">    .word sys_cgetc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
 <h2 id="进程间通信（IPC）"><a href="#进程间通信（IPC）" class="headerlink" title="进程间通信（IPC）"></a>进程间通信（IPC）</h2><h2 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h2><h3 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h3><img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/4_fork_process.png" class="" title="fork流程">
-
-
-
 <p>父进程分支中，在正常执行之前，是fork在父进程中执行的流程，在正常执行之下是写时复制。同理，在子进程分支中，正常执行之上是fork在子进程中执行的流程，正常执行之下是写时复制。</p>
 <p>为了保证逻辑的连贯性，我们接下来分别从宏观视角的<strong>函数效果</strong>，微观实现的<strong>正常执行</strong>和<strong>写时复制</strong>进行介绍。</p>
 <h3 id="函数效果"><a href="#函数效果" class="headerlink" title="函数效果"></a>函数效果</h3><p>产生一个和原进程几乎一样的子进程，但二者互相独立。</p>
@@ -321,9 +310,6 @@
 <h4 id="父进程"><a href="#父进程" class="headerlink" title="父进程"></a>父进程</h4><p>父进程正常执行独有的部分从<code>duppage</code>开始。</p>
 <h5 id="duppage"><a href="#duppage" class="headerlink" title="duppage"></a><code>duppage</code></h5><p>父进程对子进程页面空间进行映射，并设置相应权限。这里需要着重注意的是权限问题。</p>
 <img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220525161304112.png" class="" title="duppage权限设置">
-
-
-
 <p>上图为指导书介绍，我们根据其首先进行实现，然后分析原因。</p>
 <p>对于该介绍，本质上其实是<code>if-else</code>块，我们首先处理第四类<strong>可写页面</strong>。若<code>perm &amp; PTE_R &amp;&amp; !(perm &amp; PTE_LIBRARY)</code>，则<code>perm |= PTE_COW</code>，进行保护。可以注意到，其实这还包含了第二类<strong>共享页面</strong>的情况，但这样做结果一样，因此没有问题。</p>
 <h5 id="为子进程申请异常处理栈"><a href="#为子进程申请异常处理栈" class="headerlink" title="为子进程申请异常处理栈"></a>为子进程申请异常处理栈</h5><p>调用<code>syscall_mem_alloc</code>，在UXSTACKTOP - BY2PG为子进程alloc一块异常处理栈。</p>
@@ -340,9 +326,6 @@
 <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>上面我们首先回顾了常规的缺页异常。对于写时复制来说，同样依赖异常处理。</p>
 <p>为了实现写时复制功能，我们在<code>lib/traps.c/trap_init</code>中注册了<code>handle_mod</code>，并使其跳转到<code>lib/traps.c/page_fault_handler</code>这一内核函数来处理</p>
 <img src="/2022/05/25/%E3%80%8CBUAA-OS-Lab4%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220525170301907.png" class="" title="写时复制流程">
-
-
-
 <p>上图为指导书给出的页写入异常处理流程，接下来我们结合流程分析具体过程。</p>
 <h4 id="page-fault-handler"><a href="#page-fault-handler" class="headerlink" title="page_fault_handler"></a><code>page_fault_handler</code></h4><p>进行写时复制前的一些处理，并在最后将<code>cp0_epc</code>指向<code>env_pgfault_handler</code>函数的入口。</p>
 <h4 id="pgfault"><a href="#pgfault" class="headerlink" title="pgfault"></a><code>pgfault</code></h4><p>事实上，<code>env_pgfault_handler</code>指向的函数就是<code>pgfault</code>（这个指向是在<code>fork</code>中实现的）。</p>
@@ -752,7 +735,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -762,6 +745,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

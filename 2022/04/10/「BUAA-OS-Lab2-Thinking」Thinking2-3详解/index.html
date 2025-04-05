@@ -122,7 +122,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">294</span> and
+                                Words <span class="post-count">291</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -260,26 +260,20 @@
                 <h1 id="「BUAA-OS-Lab2-Thinking」Thinking2-3详解"><a href="#「BUAA-OS-Lab2-Thinking」Thinking2-3详解" class="headerlink" title="「BUAA OS Lab2 Thinking」Thinking2.3详解"></a>「BUAA OS Lab2 Thinking」Thinking2.3详解</h1><p>Thinking2.3引用的函数与定义比较多且散乱，以下从题目入手逐层展开：</p>
 <p>通过<code>pmap.h</code>可以看到Page结构如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">    Page_LIST_entry_t pp_link;  <span class="comment">/* free list link */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Ref is the count of pointers (usually in page table entries)</span></span><br><span class="line">    <span class="comment">// to this page.  This only holds for pages allocated using</span></span><br><span class="line">    <span class="comment">// page_alloc.  Pages allocated at boot time using pmap.c&#x27;s &quot;alloc&quot;</span></span><br><span class="line">    <span class="comment">// do not have valid reference count fields.</span></span><br><span class="line"></span><br><span class="line">    u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>又知道<code>Page_LIST_entry_t</code>在宏定义<code>typedef LIST_ENTRY(Page) Page_LIST_entry_t;</code>中声明，查看<code>LIST_ENTRY</code>在<code>queue.h</code>中声明如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_ENTRY(type)                                                    \</span></span><br><span class="line"><span class="meta">        struct &#123;                                                                \</span></span><br><span class="line"><span class="meta">                struct type *le_next;   <span class="comment">/* next element */</span>                      \</span></span><br><span class="line"><span class="meta">                struct type **le_prev;  <span class="comment">/* address of previous next element */</span>  \</span></span><br><span class="line"><span class="meta">        &#125;</span></span><br></pre></td></tr></table></figure>
-
 <p>到此为止，可以确定<code>Page</code>结构体的展开结构如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span>                                                               </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">le_next</span>;</span> </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> **<span class="title">le_prev</span>;</span></span><br><span class="line">        &#125; pp_link;</span><br><span class="line">    u_short pp_ref;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>查看<code>queue.h</code>中的<code>LIST_HEAD</code>声明如下：</p>
 <blockquote>
 <p> 占老师锐评：这下工厂模式了</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_HEAD(name, type)                                               \</span></span><br><span class="line"><span class="meta">        struct name &#123;                                                           \</span></span><br><span class="line"><span class="meta">                struct type *lh_first;  <span class="comment">/* first element */</span>                     \</span></span><br><span class="line"><span class="meta">        &#125;</span></span><br></pre></td></tr></table></figure>
-
 <p>因此在<code>pmap.h</code>中声明的<code>IST_HEAD(Page_list, Page)</code>完成了<code>Page_list</code>的构建如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page_list</span> &#123;</span> </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">lh_first</span>;</span>                      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>再将<code>Page</code>结构体展开即可得：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page_list</span> &#123;</span> </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>  </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> *<span class="title">le_next</span>;</span> </span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">type</span> **<span class="title">le_prev</span>;</span></span><br><span class="line">        &#125; pp_link;</span><br><span class="line">    	u_short pp_ref;</span><br><span class="line">    &#125; *lh_first;                      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Tip：以上内容得益于占老师的大力支持\zry&#x2F;\zry&#x2F;\zry&#x2F;</p>
+<p>Tip：以上内容得益于占老师的大力支持\zry/\zry/\zry/</p>
 
                 
                 <hr>
@@ -680,7 +674,7 @@ const gitment = new Gitment({
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🐟&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot;]'></script>
         
 
         <!-- background effects end -->
@@ -690,6 +684,21 @@ const gitment = new Gitment({
     
         <script src="/js/ribbonDynamic.js"></script>
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
