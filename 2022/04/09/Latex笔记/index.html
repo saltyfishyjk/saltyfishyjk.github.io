@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Latex笔记 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/09/Latex笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Latex" title="Latex">Latex</a>
+                            
+                        </div>
+                        <h1>Latex笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-09
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.5k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="Latex笔记"><a href="#Latex笔记" class="headerlink" title="Latex笔记"></a>Latex笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>LaTeX（&#x2F;ˈlɑːtɛx&#x2F;，常被读作&#x2F;ˈlɑːtɛk&#x2F;或&#x2F;ˈleɪtɛk&#x2F;） 是一种基于TeX的高品质排版系统，由美国计算机科学家莱斯利·兰伯特在20世纪80年代初期开发，非常适用于生成高印刷质量的科技和数学、物理文档，尤其擅长于复杂表格和数学公式的排版。LaTeX是科学文献交流和出版的事实标准。</p>
+<h2 id="Part-1-数学公式"><a href="#Part-1-数学公式" class="headerlink" title="Part 1 数学公式"></a>Part 1 数学公式</h2><h3 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h3><table>
+<thead>
+<tr>
+<th>字母名称</th>
+<th>小写代码</th>
+<th>小写效果</th>
+<th>大写代码</th>
+<th>大写效果</th>
+<th>音标（美式）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alpha</td>
+<td><code>\alpha</code></td>
+<td>$\alpha$</td>
+<td><code>\Alpha</code></td>
+<td>$\Alpha$</td>
+<td>&#x2F;‘ælfə&#x2F;</td>
+</tr>
+<tr>
+<td>beta</td>
+<td><code>\beta</code></td>
+<td>$ \beta $</td>
+<td><code>\Beta</code></td>
+<td>$\Beta$</td>
+<td>&#x2F;</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td><code>\gamma</code></td>
+<td>$\gamma$</td>
+<td><code>\Gamma</code></td>
+<td>$\Gamma$</td>
+<td></td>
+</tr>
+<tr>
+<td>delta</td>
+<td><code>\delta</code></td>
+<td>$\delta$</td>
+<td><code>\Delta</code></td>
+<td>$\Delta$</td>
+<td></td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td><code>\epsilon</code></td>
+<td>$\epsilon$</td>
+<td><code>\Epsilon</code></td>
+<td>$\Epsilon$</td>
+<td></td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td><code>\varepsilon</code></td>
+<td>$\varepsilon$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>zeta</td>
+<td><code>\zeta</code></td>
+<td>$\zeta$</td>
+<td><code>\Zeta</code></td>
+<td>$\Zeta$</td>
+<td></td>
+</tr>
+<tr>
+<td>eta</td>
+<td><code>\eta</code></td>
+<td>$\eta$</td>
+<td><code>\Eta</code></td>
+<td>$\Eta$</td>
+<td></td>
+</tr>
+<tr>
+<td>theta</td>
+<td><code>\theta</code></td>
+<td>$\theta$</td>
+<td><code>\Theta</code></td>
+<td>$\Theta$</td>
+<td></td>
+</tr>
+<tr>
+<td>iota</td>
+<td><code>\iota</code></td>
+<td>$\iota$</td>
+<td><code>\Iota$</code></td>
+<td>$\Iota$</td>
+<td></td>
+</tr>
+<tr>
+<td>kappa</td>
+<td><code>\kappa</code></td>
+<td>$\kappa$</td>
+<td><code>\Kappa</code></td>
+<td>$\Kappa$</td>
+<td></td>
+</tr>
+<tr>
+<td>lambda</td>
+<td><code>\lambda</code></td>
+<td>$\lambda$</td>
+<td><code>\Lambda</code></td>
+<td>$\Lambda$</td>
+<td></td>
+</tr>
+<tr>
+<td>mu</td>
+<td><code>\mu</code></td>
+<td>$\mu$</td>
+<td><code>\Mu</code></td>
+<td>$\Mu$</td>
+<td></td>
+</tr>
+<tr>
+<td>xi</td>
+<td><code>\xi</code></td>
+<td>$\xi$</td>
+<td><code>\Xi</code></td>
+<td>$\Xi$</td>
+<td></td>
+</tr>
+<tr>
+<td>omicron</td>
+<td><code>\omicron</code></td>
+<td>$\omicron$</td>
+<td><code>\Omicron</code></td>
+<td>$\Omicron$</td>
+<td></td>
+</tr>
+<tr>
+<td>pi</td>
+<td><code>\pi</code></td>
+<td>$\pi$</td>
+<td><code>\Pi</code></td>
+<td>$\Pi$</td>
+<td></td>
+</tr>
+<tr>
+<td>rho</td>
+<td><code>\rho</code></td>
+<td>$\rho$</td>
+<td><code>\Rho</code></td>
+<td>$\Rho$</td>
+<td></td>
+</tr>
+<tr>
+<td>sigma</td>
+<td><code>\sigma</code></td>
+<td>$\sigma$</td>
+<td><code>\Sigma</code></td>
+<td>$\Sigma$</td>
+<td></td>
+</tr>
+<tr>
+<td>tau</td>
+<td><code>\tau</code></td>
+<td>$\tau$</td>
+<td><code>\Tau</code></td>
+<td>$\Tau$</td>
+<td></td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td><code>\upsilon</code></td>
+<td>$\upsilon$</td>
+<td><code>\Upsilon</code></td>
+<td>$\Upsilon$</td>
+<td></td>
+</tr>
+<tr>
+<td>phi</td>
+<td><code>\phi</code></td>
+<td>$\phi$</td>
+<td><code>\Phi</code></td>
+<td>$\Phi$</td>
+<td></td>
+</tr>
+<tr>
+<td>phi</td>
+<td><code>\varphi</code></td>
+<td>$\varphi$</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>chi</td>
+<td><code>\chi</code></td>
+<td>$\chi$</td>
+<td><code>\Chi</code></td>
+<td>$\Chi$</td>
+<td></td>
+</tr>
+<tr>
+<td>psi</td>
+<td><code>\psi</code></td>
+<td>$\psi$</td>
+<td><code>\Psi</code></td>
+<td>$\Psi$</td>
+<td></td>
+</tr>
+<tr>
+<td>omega</td>
+<td><code>\omega</code></td>
+<td>$\omega$</td>
+<td><code>\Omega</code></td>
+<td>$\Omega$</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b <span class="keyword">\\</span> c + d</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a + b \ c + d<br>$$</p>
+<hr>
+<h3 id="点乘"><a href="#点乘" class="headerlink" title="点乘"></a>点乘</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\cdot</span> b</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a \cdot b<br>$$</p>
+<hr>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><h4 id="matrix-语法"><a href="#matrix-语法" class="headerlink" title="matrix 语法"></a><code>matrix</code> 语法</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span> <span class="keyword">\&#123;</span> <span class="keyword">\begin</span>&#123;matrix&#125;</span><br><span class="line">1<span class="built_in">&amp;</span> 3 <span class="keyword">\\</span></span><br><span class="line">2<span class="built_in">&amp;</span> 4 <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\end</span>&#123;matrix&#125; <span class="keyword">\right</span><span class="keyword">\&#125;</span> </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\left { \begin{matrix}<br>1&amp; 3 \<br>2&amp; 4 \<br>\end{matrix} \right}<br>$$</p>
+<ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\left [ \begin&#123;matrix&#125;</span><br><span class="line">1&amp; 3 \\</span><br><span class="line">2&amp; 4 \\</span><br><span class="line">\end&#123;matrix&#125; \right ] </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\left [ \begin{matrix}<br>1&amp; 3 \<br>2&amp; 4 \<br>\end{matrix} \right ]<br>$$</p>
+<h4 id="array-语法"><a href="#array-语法" class="headerlink" title="array 语法"></a><code>array</code> 语法</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span> |<span class="keyword">\begin</span>&#123;array&#125;&#123;cccc&#125;</span><br><span class="line">1 <span class="built_in">&amp;</span>6   <span class="built_in">&amp;</span> 9 <span class="keyword">\\</span></span><br><span class="line">7 <span class="built_in">&amp;</span>90 <span class="built_in">&amp;</span> f(x)  <span class="keyword">\\</span></span><br><span class="line">9 <span class="built_in">&amp;</span> <span class="keyword">\psi</span>(x) <span class="built_in">&amp;</span>g(x) <span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\end</span>&#123;array&#125;<span class="keyword">\right</span>|</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\left |\begin{array}{cccc}<br>1 &amp;6   &amp; 9 \<br>7 &amp;90 &amp; f(x)  \<br>9 &amp; \psi(x) &amp;g(x) \<br>\end{array}\right|<br>$$</p>
+<hr>
+<h3 id="根号"><a href="#根号" class="headerlink" title="根号"></a>根号</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\sqrt</span>&#123;[<span class="keyword">\alpha</span>, <span class="keyword">\alpha</span>]&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\sqrt{[\alpha, \beta]}<br>$$</p>
+<hr>
+<h3 id="垂直"><a href="#垂直" class="headerlink" title="垂直"></a>垂直</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\perp</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\alpha \perp \beta<br>$$</p>
+<hr>
+<h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><h4 id="等价（双向箭头）"><a href="#等价（双向箭头）" class="headerlink" title="等价（双向箭头）"></a>等价（双向箭头）</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\iff</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\alpha \iff \beta<br>$$</p>
+<h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\alpha</span> <span class="keyword">\Rightarrow</span> <span class="keyword">\beta</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\alpha \Rightarrow \beta<br>$$</p>
+<hr>
+<h3 id="插入组合数"><a href="#插入组合数" class="headerlink" title="插入组合数"></a>插入组合数</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\tbinom</span>&#123;n&#125;&#123;k&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\tbinom{n}{k}<br>$$</p>
+<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\sum</span><span class="built_in">_</span>&#123;k=0&#125;<span class="built_in">^</span>&#123;n&#125;(a+b)<span class="keyword">\times</span> k</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\sum_{k&#x3D;0}^{n}(a+b)\times k<br>$$</p>
+<h3 id="累乘"><a href="#累乘" class="headerlink" title="累乘"></a>累乘</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\prod</span><span class="built_in">_</span>&#123;i = 1&#125;<span class="built_in">^</span>&#123;n&#125; (i + 3)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\prod_{i &#x3D; 1}^{n} (i + 3)<br>$$</p>
+<h3 id="任意和存在"><a href="#任意和存在" class="headerlink" title="任意和存在"></a>任意和存在</h3><h4 id="任意"><a href="#任意" class="headerlink" title="任意"></a>任意</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\forall</span>&#125;x</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>{\forall}x<br>$$</p>
+<h4 id="存在"><a href="#存在" class="headerlink" title="存在"></a>存在</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\exists</span>&#125;y</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>{\exists}y<br>$$</p>
+<h4 id="不存在"><a href="#不存在" class="headerlink" title="不存在"></a>不存在</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">\nexists</span>&#125;x</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>{\nexists}x<br>$$</p>
+<h3 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\frac</span>&#123;x<span class="built_in">^</span>2&#125;&#123;y+9&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\frac{x^2}{y+9}<br>$$</p>
+<h3 id="取整"><a href="#取整" class="headerlink" title="取整"></a>取整</h3><h4 id="取整-1"><a href="#取整-1" class="headerlink" title="取整"></a>取整</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\left</span>[ x <span class="keyword">\right</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\left[ x \right]<br>$$</p>
+<h4 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lceil</span> x <span class="keyword">\rceil</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\lceil x \rceil<br>$$</p>
+<h3 id="向下取整"><a href="#向下取整" class="headerlink" title="向下取整"></a>向下取整</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\lfloor</span> x <span class="keyword">\rfloor</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\lfloor x \rfloor<br>$$</p>
+<hr>
+<h3 id="属于-不属于"><a href="#属于-不属于" class="headerlink" title="属于&#x2F;不属于"></a>属于&#x2F;不属于</h3><h4 id="属于"><a href="#属于" class="headerlink" title="属于"></a>属于</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x <span class="keyword">\in</span> A</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>x \in A<br>$$</p>
+<h4 id="不属于"><a href="#不属于" class="headerlink" title="不属于"></a>不属于</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y <span class="keyword">\notin</span> A</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>y \notin A<br>$$</p>
+<hr>
+<h3 id="包含于-真包含于-包含-真包含"><a href="#包含于-真包含于-包含-真包含" class="headerlink" title="包含于&#x2F;真包含于&#x2F;包含&#x2F;真包含"></a>包含于&#x2F;真包含于&#x2F;包含&#x2F;真包含</h3><h4 id="包含于"><a href="#包含于" class="headerlink" title="包含于"></a>包含于</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\subseteq</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果</li>
+</ul>
+<p>$$<br>A \subseteq B<br>$$</p>
+<h4 id="真包含于"><a href="#真包含于" class="headerlink" title="真包含于"></a>真包含于</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\subset</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果</li>
+</ul>
+<p>$$<br>A \subset B<br>$$</p>
+<h4 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\supseteq</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>A \supseteq B<br>$$</p>
+<h4 id="真包含"><a href="#真包含" class="headerlink" title="真包含"></a>真包含</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\supset</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果</li>
+</ul>
+<p>$$<br>A \supset B<br>$$</p>
+<h3 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\ldots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\cdots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\vdots</span> b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\ddots</span> b <span class="keyword">\\</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a \ldots b \<br>a \cdots b \<br>a \vdots b \<br>a \ddots b \<br>$$</p>
+<h3 id="小于（等于）-大于（等于）"><a href="#小于（等于）-大于（等于）" class="headerlink" title="小于（等于）&#x2F;大于（等于）"></a>小于（等于）&#x2F;大于（等于）</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\le</span> b <span class="keyword">\\</span></span><br><span class="line">a &lt; b <span class="keyword">\\</span></span><br><span class="line">a <span class="keyword">\ge</span> b <span class="keyword">\\</span></span><br><span class="line">a &gt; b<span class="keyword">\\</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a \le b \<br>a &lt; b \<br>a \ge b \<br>a &gt; b\<br>$$</p>
+<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\quad</span> b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a \quad b \ abcd<br>$$</p>
+<ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\ </span>b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a \ b \ abcd<br>$$</p>
+<ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a <span class="keyword">\;</span> b <span class="keyword">\\</span> abcd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>a ; b \ abcd<br>$$</p>
+<h3 id="无穷"><a href="#无穷" class="headerlink" title="无穷"></a>无穷</h3><h4 id="正无穷"><a href="#正无穷" class="headerlink" title="正无穷"></a>正无穷</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+<span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>+\infty<br>$$</p>
+<h4 id="负无穷"><a href="#负无穷" class="headerlink" title="负无穷"></a>负无穷</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>-\infty<br>$$</p>
+<h3 id="无穷-1"><a href="#无穷-1" class="headerlink" title="无穷"></a>无穷</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\infty</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\infty<br>$$</p>
+<h3 id="字母上横线"><a href="#字母上横线" class="headerlink" title="字母上横线"></a>字母上横线</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\overline</span>&#123;a + b&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\overline{a + b}<br>$$</p>
+<h3 id="交集和并集"><a href="#交集和并集" class="headerlink" title="交集和并集"></a>交集和并集</h3><h4 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\cap</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>A \cap B<br>$$</p>
+<h4 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\cup</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>A \cup B<br>$$</p>
+<h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\log</span><span class="built_in">_</span>&#123;aa&#125;&#123;x&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\log_{aa}{x}<br>$$</p>
+<h3 id="撇"><a href="#撇" class="headerlink" title="撇"></a>撇</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x<span class="built_in">^</span>&#123;<span class="keyword">\prime</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>x^{\prime}<br>$$</p>
+<h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\nabla</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\nabla<br>$$</p>
+<h3 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\partial</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\partial<br>$$</p>
+<h3 id="示性函数"><a href="#示性函数" class="headerlink" title="示性函数"></a>示性函数</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\mathbb&#123;l&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\mathbb{l}<br>$$</p>
+<h3 id="波浪线"><a href="#波浪线" class="headerlink" title="波浪线"></a>波浪线</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A <span class="keyword">\sim</span> B</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>A \sim B<br>$$</p>
+<h2 id="Part-2-排版与格式"><a href="#Part-2-排版与格式" class="headerlink" title="Part 2 排版与格式"></a>Part 2 排版与格式</h2><h3 id="命令newcommand"><a href="#命令newcommand" class="headerlink" title="命令newcommand"></a>命令<code>newcommand</code></h3><h4 id="字符串替换"><a href="#字符串替换" class="headerlink" title="字符串替换"></a>字符串替换</h4><p><code>newcommand</code>可以实现类似C语言<code>#define</code>的效果的纯字符串替换。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span><span class="keyword">\myName</span>&#123;saltyfishyjk&#125; <span class="comment">% 后文中调用\myName的地方会被渲染为大括号中的内容即saltyfishyjk</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="伪代码块"><a href="#伪代码块" class="headerlink" title="伪代码块"></a>伪代码块</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;algorithm&#125;[H]</span><br><span class="line"></span><br><span class="line"><span class="keyword">\caption</span>&#123;k路归并问题优化做法&#125;</span><br><span class="line"><span class="keyword">\LinesNumbered</span></span><br><span class="line"><span class="keyword">\KwIn</span>&#123;正整数<span class="built_in">$</span>n<span class="built_in">$</span>，为数组长度，正整数<span class="built_in">$</span>k<span class="built_in">$</span>，为数组个数，<span class="built_in">$</span>k<span class="built_in">$</span>个长度为<span class="built_in">$</span>n<span class="built_in">$</span>的数组<span class="built_in">$</span>A[]<span class="built_in">$</span>&#125;</span><br><span class="line"><span class="keyword">\KwOut</span>&#123;长度为<span class="built_in">$</span>n k<span class="built_in">$</span>的数组<span class="built_in">$</span>Ans<span class="built_in">$</span>，为归并后的数组&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">$</span>global<span class="keyword">\ </span>pointer[k]<span class="built_in">$</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\Function</span>&#123;<span class="built_in">$</span>main(n,k,A)<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">    <span class="keyword">\For</span>&#123;<span class="built_in">$</span>i<span class="keyword">\leftarrow</span>0<span class="keyword">\ </span>to<span class="keyword">\ </span>k-1<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">        <span class="built_in">$</span>pointer[i] <span class="keyword">\leftarrow</span> 0<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>push<span class="keyword">\ </span>(A[i][pointer[i]],i)<span class="keyword">\ </span>to<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">\For</span>&#123;<span class="built_in">$</span>i<span class="keyword">\leftarrow</span>0<span class="keyword">\ </span>to<span class="keyword">\ </span>n k-1<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">        <span class="built_in">$</span>(val,index) <span class="keyword">\leftarrow</span> top<span class="keyword">\ </span>of<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>remove<span class="keyword">\ </span>top<span class="keyword">\ </span>from<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>Ans[i] <span class="keyword">\leftarrow</span> val<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="built_in">$</span>pointer[index] <span class="keyword">\leftarrow</span> pointer[index]+1<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        <span class="keyword">\If</span>&#123;<span class="built_in">$</span>pointer[index]&lt;&#123;length<span class="keyword">\ </span>of<span class="keyword">\ </span>A[index]&#125;<span class="built_in">$</span>&#125;&#123;</span><br><span class="line">            <span class="built_in">$</span>push<span class="keyword">\ </span>(A[index][pointer[index]],index)<span class="keyword">\ </span>to<span class="keyword">\ </span>priority<span class="keyword">\_</span>queue<span class="built_in">$</span><span class="keyword">\;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">\textbf</span>&#123;<span class="built_in">$</span>return<span class="built_in">$</span>&#125;<span class="keyword">\;</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\end</span>&#123;algorithm&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2022/04/09/Latex%E7%AC%94%E8%AE%B0/image-20220914183922345.png" class="" title="伪代码效果">
+
+
+
+<hr>
+<h3 id="大括号"><a href="#大括号" class="headerlink" title="大括号"></a>大括号</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">T(n)=<span class="keyword">\left</span><span class="keyword">\&#123;</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;array&#125;&#123;l&#125;</span><br><span class="line">1<span class="keyword">\ </span>,<span class="keyword">\ </span>n=1<span class="keyword">\\</span></span><br><span class="line">T(n-2)+3n<span class="keyword">\ </span>,<span class="keyword">\ </span>n&gt;1</span><br><span class="line"><span class="keyword">\end</span>&#123;array&#125;</span><br><span class="line"><span class="keyword">\right</span>.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>T(n)&#x3D;\left{<br>\begin{array}{l}<br>1\ ,\ n&#x3D;1\<br>T(n-2)+3n\ ,\ n&gt;1<br>\end{array}<br>\right.<br>$$</p>
+<h3 id="无序列表和有序列表"><a href="#无序列表和有序列表" class="headerlink" title="无序列表和有序列表"></a>无序列表和有序列表</h3><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\item</span> one</span><br><span class="line"><span class="keyword">\itme</span> two</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125; </span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">% 导入包</span></span><br><span class="line"><span class="keyword">\graphicspath</span>&#123;&#123;Figures/&#125;&#123;logo/&#125;&#125;  <span class="comment">% 添加路径</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\includegraphics</span>&#123;1.eps&#125;</span><br><span class="line">    <span class="keyword">\caption</span>&#123;Elliptic Paraboloid&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;1&#125;</span><br><span class="line">    <span class="keyword">\end</span>&#123;figure&#125; </span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="函数-操作符"><a href="#函数-操作符" class="headerlink" title="函数&#x2F;操作符"></a>函数&#x2F;操作符</h3><ul>
+<li>源码：</li>
+</ul>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\operatorname</span>&#123;rank&#125;A = n</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果：</li>
+</ul>
+<p>$$<br>\operatorname{rank}A &#x3D; n<br>$$</p>
+<h2 id="Part-3-Tricks"><a href="#Part-3-Tricks" class="headerlink" title="Part 3 Tricks"></a>Part 3 Tricks</h2><h3 id="paragraph换行"><a href="#paragraph换行" class="headerlink" title="\paragraph换行"></a><code>\paragraph</code>换行</h3><p>默认状态下，<code>\paragraph&#123;&#125;</code>后不自动换行，可以使用类似如下的代码结构完成换行：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\parapraph</span>&#123; 段落 &#125;~&#123;&#125;</span><br><span class="line"><span class="keyword">\\</span></span><br><span class="line"></span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/10/「BUAA-OS-Lab2-Thinking」Thinking2-3详解/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab2 Thinking」Thinking2.3详解">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/09/「BUAA-Discrete-Mathematics-Chapter5」二项式系数/" data-toggle="tooltip" data-placement="top" title="「BUAA Discrete Mathematics Chapter5」二项式系数">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sat Apr 09 2022 16:28:38 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Latex%E7%AC%94%E8%AE%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Latex笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 数学公式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">希腊字母</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8D%A2%E8%A1%8C"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">换行</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%82%B9%E4%B9%98"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">点乘</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">矩阵</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#matrix-%E8%AF%AD%E6%B3%95"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">matrix 语法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#array-%E8%AF%AD%E6%B3%95"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">array 语法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%B9%E5%8F%B7"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">根号</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9E%82%E7%9B%B4"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">垂直</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%AD%E5%A4%B4"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">箭头</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AD%89%E4%BB%B7%EF%BC%88%E5%8F%8C%E5%90%91%E7%AE%AD%E5%A4%B4%EF%BC%89"><span class="toc-nav-number">1.2.7.1.</span> <span class="toc-nav-text">等价（双向箭头）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="toc-nav-number">1.2.7.2.</span> <span class="toc-nav-text">推导</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%E7%BB%84%E5%90%88%E6%95%B0"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">插入组合数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B1%82%E5%92%8C"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">求和</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%B4%AF%E4%B9%98"><span class="toc-nav-number">1.2.10.</span> <span class="toc-nav-text">累乘</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%BB%E6%84%8F%E5%92%8C%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.2.11.</span> <span class="toc-nav-text">任意和存在</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%BB%E6%84%8F"><span class="toc-nav-number">1.2.11.1.</span> <span class="toc-nav-text">任意</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.2.11.2.</span> <span class="toc-nav-text">存在</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.2.11.3.</span> <span class="toc-nav-text">不存在</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E5%BC%8F"><span class="toc-nav-number">1.2.12.</span> <span class="toc-nav-text">分式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%96%E6%95%B4"><span class="toc-nav-number">1.2.13.</span> <span class="toc-nav-text">取整</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%96%E6%95%B4-1"><span class="toc-nav-number">1.2.13.1.</span> <span class="toc-nav-text">取整</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%91%E4%B8%8A%E5%8F%96%E6%95%B4"><span class="toc-nav-number">1.2.13.2.</span> <span class="toc-nav-text">向上取整</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%91%E4%B8%8B%E5%8F%96%E6%95%B4"><span class="toc-nav-number">1.2.14.</span> <span class="toc-nav-text">向下取整</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B1%9E%E4%BA%8E-%E4%B8%8D%E5%B1%9E%E4%BA%8E"><span class="toc-nav-number">1.2.15.</span> <span class="toc-nav-text">属于&#x2F;不属于</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B1%9E%E4%BA%8E"><span class="toc-nav-number">1.2.15.1.</span> <span class="toc-nav-text">属于</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%8D%E5%B1%9E%E4%BA%8E"><span class="toc-nav-number">1.2.15.2.</span> <span class="toc-nav-text">不属于</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8C%85%E5%90%AB%E4%BA%8E-%E7%9C%9F%E5%8C%85%E5%90%AB%E4%BA%8E-%E5%8C%85%E5%90%AB-%E7%9C%9F%E5%8C%85%E5%90%AB"><span class="toc-nav-number">1.2.16.</span> <span class="toc-nav-text">包含于&#x2F;真包含于&#x2F;包含&#x2F;真包含</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8C%85%E5%90%AB%E4%BA%8E"><span class="toc-nav-number">1.2.16.1.</span> <span class="toc-nav-text">包含于</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9C%9F%E5%8C%85%E5%90%AB%E4%BA%8E"><span class="toc-nav-number">1.2.16.2.</span> <span class="toc-nav-text">真包含于</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8C%85%E5%90%AB"><span class="toc-nav-number">1.2.16.3.</span> <span class="toc-nav-text">包含</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9C%9F%E5%8C%85%E5%90%AB"><span class="toc-nav-number">1.2.16.4.</span> <span class="toc-nav-text">真包含</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="toc-nav-number">1.2.17.</span> <span class="toc-nav-text">省略号</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%8F%E4%BA%8E%EF%BC%88%E7%AD%89%E4%BA%8E%EF%BC%89-%E5%A4%A7%E4%BA%8E%EF%BC%88%E7%AD%89%E4%BA%8E%EF%BC%89"><span class="toc-nav-number">1.2.18.</span> <span class="toc-nav-text">小于（等于）&#x2F;大于（等于）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A9%BA%E6%A0%BC"><span class="toc-nav-number">1.2.19.</span> <span class="toc-nav-text">空格</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%A9%B7"><span class="toc-nav-number">1.2.20.</span> <span class="toc-nav-text">无穷</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AD%A3%E6%97%A0%E7%A9%B7"><span class="toc-nav-number">1.2.20.1.</span> <span class="toc-nav-text">正无穷</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%B4%9F%E6%97%A0%E7%A9%B7"><span class="toc-nav-number">1.2.20.2.</span> <span class="toc-nav-text">负无穷</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%A9%B7-1"><span class="toc-nav-number">1.2.21.</span> <span class="toc-nav-text">无穷</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%97%E6%AF%8D%E4%B8%8A%E6%A8%AA%E7%BA%BF"><span class="toc-nav-number">1.2.22.</span> <span class="toc-nav-text">字母上横线</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86"><span class="toc-nav-number">1.2.23.</span> <span class="toc-nav-text">交集和并集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BA%A4%E9%9B%86"><span class="toc-nav-number">1.2.23.1.</span> <span class="toc-nav-text">交集</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B9%B6%E9%9B%86"><span class="toc-nav-number">1.2.23.2.</span> <span class="toc-nav-text">并集</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E6%95%B0"><span class="toc-nav-number">1.2.24.</span> <span class="toc-nav-text">对数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%92%87"><span class="toc-nav-number">1.2.25.</span> <span class="toc-nav-text">撇</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="toc-nav-number">1.2.26.</span> <span class="toc-nav-text">梯度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%81%8F%E5%AF%BC%E6%95%B0"><span class="toc-nav-number">1.2.27.</span> <span class="toc-nav-text">偏导数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A4%BA%E6%80%A7%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.2.28.</span> <span class="toc-nav-text">示性函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A2%E6%B5%AA%E7%BA%BF"><span class="toc-nav-number">1.2.29.</span> <span class="toc-nav-text">波浪线</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E6%8E%92%E7%89%88%E4%B8%8E%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 排版与格式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%91%BD%E4%BB%A4newcommand"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">命令newcommand</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">字符串替换</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">伪代码块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">大括号</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8%E5%92%8C%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">无序列表和有序列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">无序列表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">插入图片</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%BD%E6%95%B0-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">函数&#x2F;操作符</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Tricks"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Tricks</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#paragraph%E6%8D%A2%E8%A1%8C"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">\paragraph换行</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Latex" title="Latex">Latex</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

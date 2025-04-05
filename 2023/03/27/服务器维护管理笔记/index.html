@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          服务器维护管理笔记 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/27/服务器维护管理笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                              <a class="tag" href="/tags/#Server" title="Server">Server</a>
+                            
+                        </div>
+                        <h1>服务器维护管理笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-03-27
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.8k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="服务器维护管理笔记"><a href="#服务器维护管理笔记" class="headerlink" title="服务器维护管理笔记"></a>服务器维护管理笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>服务器的维护和管理是一件重要但是琐碎的工作，其中涉及很多细节处理。这些工作本身可能没有很高的技术门槛，但是却需要耗费相当的精力。因此，本笔记专门用于记录这方面的知识<del>踩过的坑</del>。</p>
+<p>本博客初稿的背景是2023敏捷软件工程课程，无特殊说明时，以下以此为背景。</p>
+<h2 id="Part-1-服务器选购"><a href="#Part-1-服务器选购" class="headerlink" title="Part 1 服务器选购"></a>Part 1 服务器选购</h2><h3 id="厂商"><a href="#厂商" class="headerlink" title="厂商"></a>厂商</h3><p>课程组提供了500元额度的经费，我们结合服务器租用、域名租用、DNS解析等服务最终选择了腾讯云这一高性价比厂商（不过还是得通过新人优惠才便宜）。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>这里主要借用一下<a href="https://www.buaaase.com/tasks/teamwork/devops">课程组的图</a>，方便快速锚定配置范围：</p>
+<p><img src="/2023/03/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/image-20230328221814986.png" alt="image-20230328221814986"></p>
+<p>也可以参考文章：<a href="https://zhuanlan.zhihu.com/p/447914035">如何选择云服务器配置？</a></p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>参考资料：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/463398630">腾讯云域名注册申请流程（图文详解）</a></li>
+</ul>
+<p>主要流程包括：</p>
+<ul>
+<li>腾讯云实名认证</li>
+<li>使用DNSPod（已被腾讯云收购）查询想要注册的域名是否可用，在此界面可以购买域名和（可选）DNS解析服务</li>
+<li>创建实名信息模板交由注册局审核</li>
+<li>根据域名所属进行备案（须和腾讯云实名认证一致）</li>
+</ul>
+<h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>由于熟悉且资料较多，因此选用Ubuntu 20.04 LTS。<strong>后文在不强调时也以此为默认配置</strong></p>
+<h2 id="Part-2-GitHub-Actions"><a href="#Part-2-GitHub-Actions" class="headerlink" title="Part 2 GitHub Actions"></a>Part 2 GitHub Actions</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/YAN-HUA/p/13530906.html">利用GitHub Actions自动化打包部署服务器</a>：有用，其中<code>appleboy/ssh-action</code>套件很有用，可以直接在服务器执行指令</li>
+</ul>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>参考资料：</p>
+<ul>
+<li><a href="https://docs.github.com/zh/actions/security-guides/encrypted-secrets">GitHub文档：加密机密</a>：GitHub官方中文文档，介绍的较为精要</li>
+</ul>
+<h2 id="Part-3-Conda"><a href="#Part-3-Conda" class="headerlink" title="Part 3 Conda"></a>Part 3 Conda</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://saltyfishyjk.github.io/2022/03/27/Conda%E7%AC%94%E8%AE%B0/">Conda 笔记</a></li>
+</ul>
+<h2 id="Part-4-NPM"><a href="#Part-4-NPM" class="headerlink" title="Part 4 NPM"></a>Part 4 NPM</h2><p>避免直接使用<code>apt-get</code>安装nodejs，而采用NPM进行nodejs环境管理</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考资料：</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1592229?from=article.detail.1772306&areaSource=106000.19&traceId=Tzg7WzbTDqDCL4Uv-k_8N">ubuntu16.04安装node.js、npm</a>：有用，照着来就行，对Ubuntu20.04也适用</li>
+</ul>
+<h2 id="Part-5-Vue"><a href="#Part-5-Vue" class="headerlink" title="Part 5 Vue"></a>Part 5 Vue</h2><h2 id="Part-6-Django"><a href="#Part-6-Django" class="headerlink" title="Part 6 Django"></a>Part 6 Django</h2><h2 id="Part-7-腾讯云与Ubuntu"><a href="#Part-7-腾讯云与Ubuntu" class="headerlink" title="Part 7 腾讯云与Ubuntu"></a>Part 7 腾讯云与Ubuntu</h2><h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><p>使用<code>ed25519</code>算法生成密钥</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_36938617/article/details/95234909">Ubuntu系统中防火墙的使用和开放端口</a>：介绍如何放开端口，有用；需要注意的是可能需要打开防火墙，再开放端口，再关闭防火墙，否则无法通过ssh连接服务器</li>
+<li><a href="https://cloud.tencent.com/document/product/1207/44573">管理密钥</a>：介绍如何在腾讯云服务器配置ssh公钥</li>
+</ul>
+<h2 id="Part-8-创建与管理用户"><a href="#Part-8-创建与管理用户" class="headerlink" title="Part 8 创建与管理用户"></a>Part 8 创建与管理用户</h2><p>为服务器上的每个用户配置账户是服务器管理的基本任务，特别是涉及到较多用户同时使用时（毕竟你不能允许每个人都登录 root 账户，这太危险混乱了）</p>
+<blockquote>
+<p>本节以 Ubuntu 22.04 为例，且都在管理员账户和权限下进行</p>
+</blockquote>
+<h3 id="创建用户账户"><a href="#创建用户账户" class="headerlink" title="创建用户账户"></a>创建用户账户</h3><h4 id="默认方式创建用户"><a href="#默认方式创建用户" class="headerlink" title="默认方式创建用户"></a>默认方式创建用户</h4><p>创建名为 <code>username</code> 的账户，家目录为默认目录（多数为<code>/home/username</code>），需要根据提示设置用户密码（不能包含用户名）等信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser username</span><br></pre></td></tr></table></figure>
+
+<h4 id="指定家目录位置创建用户"><a href="#指定家目录位置创建用户" class="headerlink" title="指定家目录位置创建用户"></a>指定家目录位置创建用户</h4><h5 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --home /mnt/data/username username</span><br></pre></td></tr></table></figure>
+
+<p><del>设置用户对其家目录有合适的权限</del></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
+
+<h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
+<ol>
+<li><p>正常创建用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新指定用户家目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /mnt/data/username username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置仅有该用户拥有家目录的读、写和执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown username:username /mnt/data/username</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从原来的家目录拷贝 <code>.bashrc</code> 和 <code>.bash_profile</code> 到新的家目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /home/username/.bashrc /mnt/data/username</span><br><span class="line">cp /home/username/.bash_profile /mnt/data/username</span><br></pre></td></tr></table></figure></li>
+<li><p>设置 SSH 密钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>设置 <code>.ssh</code> 的 SELinux 权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restorecon -v authorized_keys</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可能报错，报错则需要</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcon -v -t ssh_home_t authorized_keys</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /mnt/data/username -m username</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考文章：<a href="https://blog.csdn.net/qq_24909089/article/details/81068112">Linux创建用户并指定目录为根目录</a></p>
+</blockquote>
+<h4 id="远程终端登录遇到-usr-bin-xauth-file-mnt-data-username-Xauthority-does-not-exist"><a href="#远程终端登录遇到-usr-bin-xauth-file-mnt-data-username-Xauthority-does-not-exist" class="headerlink" title="远程终端登录遇到 /usr/bin/xauth:  file /mnt/data/username/.Xauthority does not exist"></a>远程终端登录遇到 <code>/usr/bin/xauth:  file /mnt/data/username/.Xauthority does not exist</code></h4><p>在下述目录创建空的 <code>.Xauthority</code> 并设置合适的权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch /mnt/data/username/.Xauthority</span><br><span class="line">chmod 600 /mnt/data/username/.Xauthority</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除用户账户"><a href="#删除用户账户" class="headerlink" title="删除用户账户"></a>删除用户账户</h3><h4 id="仅删除用户账户，不删除家目录等"><a href="#仅删除用户账户，不删除家目录等" class="headerlink" title="仅删除用户账户，不删除家目录等"></a>仅删除用户账户，不删除家目录等</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel username</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除用户以及家目录"><a href="#删除用户以及家目录" class="headerlink" title="删除用户以及家目录"></a>删除用户以及家目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo userdel -r username</span><br></pre></td></tr></table></figure>
+
+<h3 id="将用户添加到-sudo-组"><a href="#将用户添加到-sudo-组" class="headerlink" title="将用户添加到 sudo 组"></a>将用户添加到 sudo 组</h3><p>当希望用户具有 sudo 权限，且不想直接赋予 root 权限</p>
+<h4 id="Ubuntu-1"><a href="#Ubuntu-1" class="headerlink" title="Ubuntu"></a>Ubuntu</h4><p>可以使用 sudo 组管理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG sudo username</span><br></pre></td></tr></table></figure>
+
+<h4 id="CentOS-1"><a href="#CentOS-1" class="headerlink" title="CentOS"></a>CentOS</h4><p>CentOS 使用 wheel 组关联</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG wheel username</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换用户身份"><a href="#切换用户身份" class="headerlink" title="切换用户身份"></a>切换用户身份</h3><p>需要有切换的用户密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - username</span><br></pre></td></tr></table></figure>
+
+<p>无参数时默认切换到 root</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<h3 id="为用户设置仅其可读写执行的目录"><a href="#为用户设置仅其可读写执行的目录" class="headerlink" title="为用户设置仅其可读写执行的目录"></a>为用户设置仅其可读写执行的目录</h3><blockquote>
+<p>一般用于在数据盘设置用户的数据目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
+
+<h3 id="迁移用户家目录"><a href="#迁移用户家目录" class="headerlink" title="迁移用户家目录"></a>迁移用户家目录</h3><blockquote>
+<p>以下旧家目录为 <code>/home/username</code>，新家目录为 <code>/data/newhome/username</code>，可能需要 sudo 权限</p>
+</blockquote>
+<ol>
+<li>创建新的家目录 <code>mkdir /data/newhome/username</code></li>
+<li>迁移数据 <code>rsync -avx /home/username /data/newhome/username</code></li>
+<li>更新用户配置 <code>usermod -d /data/newhome/username username</code></li>
+</ol>
+<h2 id="Part-9-查看配置信息"><a href="#Part-9-查看配置信息" class="headerlink" title="Part 9 查看配置信息"></a>Part 9 查看配置信息</h2><h3 id="查看操作系统"><a href="#查看操作系统" class="headerlink" title="查看操作系统"></a>查看操作系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看文件系统与磁盘"><a href="#查看文件系统与磁盘" class="headerlink" title="查看文件系统与磁盘"></a>查看文件系统与磁盘</h3><h4 id="显示文件系统的磁盘空间使用情况"><a href="#显示文件系统的磁盘空间使用情况" class="headerlink" title="显示文件系统的磁盘空间使用情况"></a>显示文件系统的磁盘空间使用情况</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-h 表示以人类可读的格式显示结果</li>
+</ul>
+<h4 id="查看磁盘分区"><a href="#查看磁盘分区" class="headerlink" title="查看磁盘分区"></a>查看磁盘分区</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-l 表示列出系统上所有的磁盘分区</li>
+</ul>
+<h4 id="查看文件系统类型"><a href="#查看文件系统类型" class="headerlink" title="查看文件系统类型"></a>查看文件系统类型</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blkid &lt;device&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>device</code> 是形如 <code>/dev/sda</code> 的硬盘设备名。</p>
+<p>结果形如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# blkid /dev/sda </span><br><span class="line">/dev/sda: LABEL=&quot;data&quot; UUID=&quot;e9200cdc-a559-4159-a8a7-587ae3c3287b&quot; TYPE=&quot;ext4&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>ext4</code> 文件系统格式化硬盘</p>
+<h2 id="Part-10-挂载数据盘到文件系统"><a href="#Part-10-挂载数据盘到文件系统" class="headerlink" title="Part 10 挂载数据盘到文件系统"></a>Part 10 挂载数据盘到文件系统</h2><h3 id="Step-1-创建挂载点"><a href="#Step-1-创建挂载点" class="headerlink" title="Step 1 创建挂载点"></a>Step 1 创建挂载点</h3><p>Linux 中，<code>/mnt</code> 通常被作为手动挂载的临时挂载点，<code>/mnt/data</code> 则表示挂载的数据目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /mnt/data</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-2-挂载数据盘"><a href="#Step-2-挂载数据盘" class="headerlink" title="Step 2 挂载数据盘"></a>Step 2 挂载数据盘</h3><p>使用 <code>mount</code> 将数据盘挂载到刚才创建的挂载点</p>
+<blockquote>
+<p>这里的 <code>/dev/sdb</code> 是通过 <code>fdisk -l</code> 查到的</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb /mnt/data</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-3-更新-etc-fstab-使挂载永久生效"><a href="#Step-3-更新-etc-fstab-使挂载永久生效" class="headerlink" title="Step 3 更新 /etc/fstab 使挂载永久生效"></a>Step 3 更新 <code>/etc/fstab</code> 使挂载永久生效</h3><p>打开 <code>/etc/fstab</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾添加以下行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sdb   /mnt/data   ext4   defaults   0   0</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-4-设置合适的权限"><a href="#Step-4-设置合适的权限" class="headerlink" title="Step 4 设置合适的权限"></a>Step 4 设置合适的权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755 /mnt/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-11-SSH登录"><a href="#Part-11-SSH登录" class="headerlink" title="Part 11 SSH登录"></a>Part 11 SSH登录</h2><h3 id="设置SSH密钥登录"><a href="#设置SSH密钥登录" class="headerlink" title="设置SSH密钥登录"></a>设置SSH密钥登录</h3><p>参考：<a href="https://cloud.tencent.com/developer/article/1780788">Linux系列 | SSH 如何使用密钥登录服务器</a></p>
+<ol>
+<li>生成本机密钥：在本机生成 ssh-key</li>
+<li>手动上传公钥：在服务器的 <code>.ssh/authorized_keys</code> 文件中添加一行，内容为本机的公钥（<code>.pub </code>文件）</li>
+</ol>
+<p>配置完成后即可使用 SSH 登录</p>
+<h3 id="关闭密码登录"><a href="#关闭密码登录" class="headerlink" title="关闭密码登录"></a>关闭密码登录</h3><p>参考：<a href="https://blog.csdn.net/Baozijiaruqing/article/details/121390604">Linux 禁止密码登录，使用私钥登录</a></p>
+<ol>
+<li><p>修改 <code>/etc/ssh/sshd_config</code> ，添加行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>默认情况下 <code>sshd_config</code> 中存在一行 <code>#PasswordAuthentication yes</code>，将这行拷贝去掉注释并改为 no 即可</p>
+</blockquote>
+</li>
+<li><p>重启 sshd 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要 sudo 权限和认证</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Part-12-清理硬盘"><a href="#Part-12-清理硬盘" class="headerlink" title="Part 12 清理硬盘"></a>Part 12 清理硬盘</h2><h3 id="删除不需要的日志"><a href="#删除不需要的日志" class="headerlink" title="删除不需要的日志"></a>删除不需要的日志</h3><ul>
+<li>清理 journal 中超过 7 天以上的日志<ul>
+<li><code>sudo journalctl --vacuum-time=7d</code></li>
+</ul>
+</li>
+</ul>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/04/11/PC生产力工具最佳解决方案/" data-toggle="tooltip" data-placement="top" title="PC生产力工具最佳解决方案">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/03/21/「BUAA-X86-Programming」Experiment-Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA X86 Programming」Experiment Notes">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon Mar 27 2023 22:04:20 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%B4%E6%8A%A4%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">服务器维护管理笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%89%E8%B4%AD"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 服务器选购</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8E%82%E5%95%86"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">厂商</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%90%8D"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">域名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">操作系统</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-GitHub-Actions"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 GitHub Actions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8A%A0%E5%AF%86"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">加密</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-Conda"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 Conda</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-NPM"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 NPM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-Vue"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 Vue</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-Django"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 Django</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%8EUbuntu"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 腾讯云与Ubuntu</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90ssh-key"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">生成ssh key</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-%E5%88%9B%E5%BB%BA%E4%B8%8E%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 8 创建与管理用户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">创建用户账户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%BB%98%E8%AE%A4%E6%96%B9%E5%BC%8F%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-nav-number">1.9.1.1.</span> <span class="toc-nav-text">默认方式创建用户</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8C%87%E5%AE%9A%E5%AE%B6%E7%9B%AE%E5%BD%95%E4%BD%8D%E7%BD%AE%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-nav-number">1.9.1.2.</span> <span class="toc-nav-text">指定家目录位置创建用户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Ubuntu"><span class="toc-nav-number">1.9.1.2.1.</span> <span class="toc-nav-text">Ubuntu</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#CentOS"><span class="toc-nav-number">1.9.1.2.2.</span> <span class="toc-nav-text">CentOS</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%99%BB%E5%BD%95%E9%81%87%E5%88%B0-usr-bin-xauth-file-mnt-data-username-Xauthority-does-not-exist"><span class="toc-nav-number">1.9.1.3.</span> <span class="toc-nav-text">远程终端登录遇到 &#x2F;usr&#x2F;bin&#x2F;xauth:  file &#x2F;mnt&#x2F;data&#x2F;username&#x2F;.Xauthority does not exist</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">删除用户账户</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%85%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%EF%BC%8C%E4%B8%8D%E5%88%A0%E9%99%A4%E5%AE%B6%E7%9B%AE%E5%BD%95%E7%AD%89"><span class="toc-nav-number">1.9.2.1.</span> <span class="toc-nav-text">仅删除用户账户，不删除家目录等</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%AE%B6%E7%9B%AE%E5%BD%95"><span class="toc-nav-number">1.9.2.2.</span> <span class="toc-nav-text">删除用户以及家目录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%86%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0-sudo-%E7%BB%84"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">将用户添加到 sudo 组</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Ubuntu-1"><span class="toc-nav-number">1.9.3.1.</span> <span class="toc-nav-text">Ubuntu</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#CentOS-1"><span class="toc-nav-number">1.9.3.2.</span> <span class="toc-nav-text">CentOS</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD"><span class="toc-nav-number">1.9.4.</span> <span class="toc-nav-text">切换用户身份</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE%E4%BB%85%E5%85%B6%E5%8F%AF%E8%AF%BB%E5%86%99%E6%89%A7%E8%A1%8C%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-nav-number">1.9.5.</span> <span class="toc-nav-text">为用户设置仅其可读写执行的目录</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%81%E7%A7%BB%E7%94%A8%E6%88%B7%E5%AE%B6%E7%9B%AE%E5%BD%95"><span class="toc-nav-number">1.9.6.</span> <span class="toc-nav-text">迁移用户家目录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-9-%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">Part 9 查看配置信息</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">查看操作系统</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">查看内存</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%A3%81%E7%9B%98"><span class="toc-nav-number">1.10.3.</span> <span class="toc-nav-text">查看文件系统与磁盘</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-nav-number">1.10.3.1.</span> <span class="toc-nav-text">显示文件系统的磁盘空间使用情况</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-nav-number">1.10.3.2.</span> <span class="toc-nav-text">查看磁盘分区</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">1.10.3.3.</span> <span class="toc-nav-text">查看文件系统类型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-nav-number">1.10.3.4.</span> <span class="toc-nav-text">格式化</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-10-%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98%E5%88%B0%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">Part 10 挂载数据盘到文件系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-1-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%82%B9"><span class="toc-nav-number">1.11.1.</span> <span class="toc-nav-text">Step 1 创建挂载点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-2-%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E7%9B%98"><span class="toc-nav-number">1.11.2.</span> <span class="toc-nav-text">Step 2 挂载数据盘</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-3-%E6%9B%B4%E6%96%B0-etc-fstab-%E4%BD%BF%E6%8C%82%E8%BD%BD%E6%B0%B8%E4%B9%85%E7%94%9F%E6%95%88"><span class="toc-nav-number">1.11.3.</span> <span class="toc-nav-text">Step 3 更新 &#x2F;etc&#x2F;fstab 使挂载永久生效</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-4-%E8%AE%BE%E7%BD%AE%E5%90%88%E9%80%82%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-nav-number">1.11.4.</span> <span class="toc-nav-text">Step 4 设置合适的权限</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-11-SSH%E7%99%BB%E5%BD%95"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">Part 11 SSH登录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AESSH%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="toc-nav-number">1.12.1.</span> <span class="toc-nav-text">设置SSH密钥登录</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%B3%E9%97%AD%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-nav-number">1.12.2.</span> <span class="toc-nav-text">关闭密码登录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-12-%E6%B8%85%E7%90%86%E7%A1%AC%E7%9B%98"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">Part 12 清理硬盘</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E6%97%A5%E5%BF%97"><span class="toc-nav-number">1.13.1.</span> <span class="toc-nav-text">删除不需要的日志</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                          <a class="tag" href="/tags/#Server" title="Server">Server</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

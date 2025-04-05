@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA X86 Programming」Experiment Notes - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/21/「BUAA-X86-Programming」Experiment-Notes/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA X86 Programming" title="BUAA X86 Programming">BUAA X86 Programming</a>
+                            
+                        </div>
+                        <h1>「BUAA X86 Programming」Experiment Notes</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-03-21
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-X86-Programming」Experiment-Notes"><a href="#「BUAA-X86-Programming」Experiment-Notes" class="headerlink" title="「BUAA X86 Programming」Experiment Notes"></a>「BUAA X86 Programming」Experiment Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>本文主要为笔记性质，主要参考资料来源包括：</p>
+<ul>
+<li>熊桂喜老师课程资料（slides, 教材等）</li>
+<li><a href="https://github.com/dhy2000/x86Course">dhy学长的仓库</a></li>
+</ul>
+<p>本课程主要学习的是最经典的8086</p>
+<h2 id="Part-1-8086结构与寄存器"><a href="#Part-1-8086结构与寄存器" class="headerlink" title="Part 1 8086结构与寄存器"></a>Part 1 8086结构与寄存器</h2><p><img src="/2023-03-21-%E3%80%8CBUAA-X86-Programming%E3%80%8DExperiment-Notes/image-20230324103942626.png" alt="image-20230324103942626"></p>
+<h3 id="通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位"><a href="#通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位" class="headerlink" title="通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位"></a>通用寄存器：4个，16位，每个又可分为<code>H</code>（high）和<code>L</code>（low）各8位</h3><ul>
+<li><p><code>AX</code>：16位，可分为2个8位<code>AH</code>和<code>AL</code>（累加器Add）</p>
+</li>
+<li><p><code>BX</code>：16位，可分为2个8位<code>BH</code>和<code>BL</code>（基址寄存器Base）</p>
+</li>
+<li><p><code>CX</code>：16位，可分为2个8位<code>CH</code>和<code>CL</code>（计数寄存器Count）</p>
+</li>
+<li><p><code>DX</code>：16位，可分为2个8位<code>DH</code>和<code>DL</code>（数据寄存器Data）</p>
+</li>
+</ul>
+<h3 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h3><ul>
+<li><code>CS</code>：Code Segment，代码段</li>
+<li><code>DS</code>：Data Segment，数据段</li>
+<li><code>SS</code>：Stack Segment，堆栈段</li>
+<li><code>ES</code>：Extra Segment，附加段</li>
+</ul>
+<h3 id="指针寄存器"><a href="#指针寄存器" class="headerlink" title="指针寄存器"></a>指针寄存器</h3><ul>
+<li><code>SP</code>：Stack Pointer，堆栈指针</li>
+<li><code>BP</code>：Base Pointer，基址指针</li>
+</ul>
+<h3 id="变址寄存器"><a href="#变址寄存器" class="headerlink" title="变址寄存器"></a>变址寄存器</h3><ul>
+<li><code>SI</code>：Source，源</li>
+<li><code>DI</code>：Destination，目的</li>
+</ul>
+<h3 id="指令指针寄存器"><a href="#指令指针寄存器" class="headerlink" title="指令指针寄存器"></a>指令指针寄存器</h3><ul>
+<li><code>IP</code>：类似<code>PC</code></li>
+</ul>
+<h3 id="特定组合"><a href="#特定组合" class="headerlink" title="特定组合"></a>特定组合</h3><ul>
+<li><code>CS:IP</code>：当前可执行点（当前将执行的代码地址）（<code>CS</code>指向代码段基地址，<code>IP</code>指向当前指令相对基地址的偏移）</li>
+<li><code>SS:SP</code>：当前堆栈（<code>SS</code>指向堆栈基地址，<code>SP</code>是栈顶相对基地址的偏移）</li>
+</ul>
+<h2 id="Part-2-寻址方式与指令系统"><a href="#Part-2-寻址方式与指令系统" class="headerlink" title="Part 2 寻址方式与指令系统"></a>Part 2 寻址方式与指令系统</h2><h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">op dst, src ; 由“源”至“目的”</span><br></pre></td></tr></table></figure>
+
+<p>根据操作数（2个，1个，0个）的不同，可能有以下几种情况：</p>
+<ul>
+<li><code>op op2, op1</code></li>
+<li><code>op op1</code></li>
+<li><code>op</code></li>
+</ul>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><h4 id="与数据有关的寻址（6种）"><a href="#与数据有关的寻址（6种）" class="headerlink" title="与数据有关的寻址（6种）"></a>与数据有关的寻址（6种）</h4><ul>
+<li>立即寻址</li>
+<li>寄存器寻址</li>
+<li>直接寻址</li>
+<li>寄存器间接寻址</li>
+<li>寄存器相对寻址</li>
+<li>基址变址寻址</li>
+</ul>
+<h2 id="Part-1-DOSBox环境"><a href="#Part-1-DOSBox环境" class="headerlink" title="Part 1 DOSBox环境"></a>Part 1 DOSBox环境</h2><p>按照老师给的详细说明一步一步来即可配置好环境，没有什么坑点。</p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><ul>
+<li>打开DOSBox</li>
+<li><code>mount c c:\</code>  将主机目录<code>c:\</code>映射到虚拟盘符<code>c</code></li>
+<li><code>c:</code>  进入虚拟盘符<code>c</code></li>
+<li><code>cd masm</code>  进入工作目录</li>
+</ul>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><ul>
+<li><code>exit</code></li>
+</ul>
+<h3 id="工具简介"><a href="#工具简介" class="headerlink" title="工具简介"></a>工具简介</h3><ul>
+<li><code>masm.exe</code> 汇编器</li>
+<li><code>link.exe</code> 链接器</li>
+<li><code>debug.exe</code> 调试器</li>
+<li><code>edit.exe</code> 编辑器</li>
+</ul>
+<h2 id="Part-2-EDIT编辑器"><a href="#Part-2-EDIT编辑器" class="headerlink" title="Part 2 EDIT编辑器"></a>Part 2 <code>EDIT</code>编辑器</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
+<li><code>ctrl + f10</code>：捕捉&#x2F;释放鼠标</li>
+</ul>
+<h2 id="Part-3-MASM汇编器"><a href="#Part-3-MASM汇编器" class="headerlink" title="Part 3 MASM汇编器"></a>Part 3 <code>MASM</code>汇编器</h2><h2 id="Part-4-LINK链接器"><a href="#Part-4-LINK链接器" class="headerlink" title="Part 4 LINK链接器"></a>Part 4 <code>LINK</code>链接器</h2><h2 id="Part-5-DEBUG调试器"><a href="#Part-5-DEBUG调试器" class="headerlink" title="Part 5 DEBUG调试器"></a>Part 5 <code>DEBUG</code>调试器</h2><p>调试<code>tttt.exe</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debug tttt.exe</span><br></pre></td></tr></table></figure>
+
+<p>调试命令：</p>
+<ul>
+<li><p><code>d</code>：显示内存单元内容</p>
+<ul>
+<li>无参数默认从<code>CS:IP</code>开始，连续使用则地址接续向后移动</li>
+<li>添加形如<code>xxxx:yyyy</code>的参数可以指定其实地址，如<code>DS:0</code>，<code>78a:0</code>（不要求一定写四位数）</li>
+</ul>
+</li>
+<li><p><code>e</code>：修改指定内存单元的内容，每次修改一个字节</p>
+<ul>
+<li>须添加参数，形式如<code>d</code>命令，否则报错；如<code>r ds:0</code></li>
+<li>执行后会弹出形如<code>078a:0000 10.</code>，其中<code>078a:0000</code>是即将修改的字节（说明我们的<code>ds</code>的值就是<code>078a</code>），<code>10</code>是该字节中当前存放的值（十六进制），此时可以键入新值（十六进制）</li>
+<li>每次可以修改1个字节</li>
+</ul>
+</li>
+<li><p><code>r</code>：查看和修改寄存器</p>
+<ul>
+<li>查看：不加参数，可以查看所有寄存器信息和下一条指令的信息（<code>CS:IP</code>和指令内容）</li>
+<li>修改：指定寄存器名，如<code>AS</code>等</li>
+</ul>
+</li>
+<li><p><code>u</code>：反汇编，查看机器码对应的汇编程序</p>
+<ul>
+<li>不指定&#x2F;指定起始地址：类似<code>d</code>命令</li>
+</ul>
+</li>
+<li><p><code>a</code>：修改汇编指令</p>
+</li>
+<li><p><code>t</code>：单步执行，类似<code>step in</code></p>
+</li>
+<li><p><code>p</code>：执行某个子程序&#x2F;循环等，类似<code>step over</code></p>
+</li>
+<li><p><code>g</code>：执行到某个指令地址处，类似断点</p>
+</li>
+<li><p><code>q</code>：退出调试器</p>
+</li>
+</ul>
+<h2 id="Part-6-程序结构"><a href="#Part-6-程序结构" class="headerlink" title="Part 6 程序结构"></a>Part 6 程序结构</h2><h3 id="三列格式"><a href="#三列格式" class="headerlink" title="三列格式"></a>三列格式</h3><ol>
+<li>标号（符号、变量，<strong>不区分大小写</strong>）：编程逻辑地址（立即数）</li>
+<li>指令或伪指令（助记符）</li>
+<li>操作数</li>
+</ol>
+<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3><h4 id="SEGMENT-ENDS-END"><a href="#SEGMENT-ENDS-END" class="headerlink" title="SEGMENT, ENDS, END"></a><code>SEGMENT, ENDS, END</code></h4><ul>
+<li><code>SEGMENT, ENDS</code>：定义段</li>
+<li><code>END</code>：定义总结束，标号为程序入口，被编译设置为初始的<code>CS:IP</code></li>
+</ul>
+<h4 id="PROC-ENDP"><a href="#PROC-ENDP" class="headerlink" title="PROC, ENDP"></a><code>PROC, ENDP</code></h4><ul>
+<li><code>PROC, ENDP</code>：定义子程序</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title="$"></a><code>$</code></h4><ul>
+<li><p>当前位置计数器，记录当前偏移值</p>
+</li>
+<li><p>最常见的用途是计算长度，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TABLE DW 2,3,4 ...</span><br><span class="line">TABLE_LEN EQU $-TABLE</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="FAR-NEAR"><a href="#FAR-NEAR" class="headerlink" title="FAR, NEAR"></a><code>FAR, NEAR</code></h4><hr>
+<p>三段式：堆栈段、数据段、程序段</p>
+<h3 id="定义段"><a href="#定义段" class="headerlink" title="定义段"></a>定义段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[段名] SEGMENT [对齐类型][组合类型] [类别名]</span><br><span class="line">	; 本段中的程序和数据定义语句</span><br><span class="line">	; 分号;为注释符号</span><br><span class="line">[段名] ENDS</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>[段名]</code>：<ul>
+<li><code>STACK</code>堆栈段</li>
+<li><code>DATA</code>数据段</li>
+<li><code>CODE</code>程序段</li>
+</ul>
+</li>
+<li><code>[对齐类型]</code>：定义段在内存中分配时起始边界设定<ul>
+<li><code>PAGE</code>：本段从页的边界开始，一页是256字节</li>
+<li><code>PARA</code>：本段从节的边界开始，一节是16字节</li>
+<li><code>WORD</code>：本段从内存的偶字节地址（字对齐）开始，段间至多1字节</li>
+<li><code>BYTE</code>：本段从字节地址开始，段间无间隙</li>
+</ul>
+</li>
+<li><code>[组合类型]</code>：<ul>
+<li><code>STACK</code>：说明该段为堆栈段的一部分，连接程序在连接时会把所有同名的具有<code>STACK</code>组合类型的段连接成一个连续段，并将<code>SS</code>初始化为这个连续段的首地址，用段内的最大偏移地址初始化<code>SP</code>。正确地定义了段的<code>STACK</code>属性后可以在主程序中省略对<code>SS,SP</code>的初始化。</li>
+</ul>
+</li>
+</ul>
+<h4 id="堆栈段"><a href="#堆栈段" class="headerlink" title="堆栈段"></a>堆栈段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">STACK		SEGMENT	PARA STACK</span><br><span class="line">STACK_AREA      DW      100h DUP(?)</span><br><span class="line">STACK_TOP	EQU	$-STACK_AREA</span><br><span class="line">STACK		ENDS</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据段"><a href="#数据段" class="headerlink" title="数据段"></a>数据段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATA		SEGMENT	PARA</span><br><span class="line">TABLE_LEN       DW 16</span><br><span class="line">TABLE           DW 200,300,400,10,20,0,1,8</span><br><span class="line">                DW 41H,40,42H,3321h,60,0FFFFH,2,3</span><br><span class="line"></span><br><span class="line">MY_NAME         DB &#x27;My name is Zhang Wuji&#x27;,&#x27;$&#x27;</span><br><span class="line"></span><br><span class="line">ADD1            DD 20003000H</span><br><span class="line">ADD2            DD 12345678h</span><br><span class="line">DATA		ENDS</span><br></pre></td></tr></table></figure>
+
+<h4 id="程序段"><a href="#程序段" class="headerlink" title="程序段"></a>程序段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">CODE		SEGMENT</span><br><span class="line">		ASSUME	CS:CODE,DS:DATA</span><br><span class="line">		ASSUME	SS:STACK</span><br><span class="line">MAIN		PROC	FAR</span><br><span class="line">		</span><br><span class="line">START:          MOV     AX,STACK</span><br><span class="line">		MOV	SS,AX</span><br><span class="line">		MOV	SP,STACK_TOP</span><br><span class="line">		MOV	AX,DATA</span><br><span class="line">                MOV     DS,AX               ;SET SS,SP,DS</span><br><span class="line"></span><br><span class="line">                JMP     START1</span><br><span class="line">                LDS     SI,ADD1</span><br><span class="line">                LES     DI,ADD2</span><br><span class="line"></span><br><span class="line">                JMP     short l1</span><br><span class="line">                JMP     NEAR ptr  l1</span><br><span class="line">                JMP     FAR ptr   l1</span><br><span class="line">                JMP     BX</span><br><span class="line">                JMP     BX</span><br><span class="line">                JMP     Word PTR  [BX]</span><br><span class="line">                JMP     [BX]</span><br><span class="line">                JMP     DWORD PTR [BX]</span><br><span class="line">                JMP     DWORD PTR ADD1</span><br><span class="line">                CALL    BX</span><br><span class="line">                CALL    [BX]</span><br><span class="line">                CALL    WORD PTR [BX]</span><br><span class="line">                CALL    DWORD PTR ADD1</span><br><span class="line">                CALL    ADD1</span><br><span class="line"></span><br><span class="line">l1:             NOP</span><br><span class="line">START1:         NOP</span><br><span class="line">LP1:    	MOV     BX,1</span><br><span class="line">        	MOV     CX,TABLE_LEN</span><br><span class="line">        	DEC     CX</span><br><span class="line">                LEA     SI,TABLE        ;MOV SI,offset Table</span><br><span class="line">LP2:    	MOV     AX,[SI]</span><br><span class="line">        	CMP     AX,[SI+2]</span><br><span class="line">        	JBE     CONTINUE</span><br><span class="line">        	XCHG    AX,[SI+2]</span><br><span class="line">        	MOV     [SI],AX</span><br><span class="line">        	MOV     BX,0</span><br><span class="line">CONTINUE:</span><br><span class="line">       		ADD     SI,2</span><br><span class="line">        	LOOP    LP2</span><br><span class="line"></span><br><span class="line">	        CMP     BX,1</span><br><span class="line">        	JZ      EXIT</span><br><span class="line">        	JMP     SHORT   LP1</span><br><span class="line">EXIT:           MOV     DX,OFFSET MY_NAME</span><br><span class="line">                MOV     AH,9</span><br><span class="line">                INT     21H</span><br><span class="line"></span><br><span class="line">                MOV     AX,4C00H</span><br><span class="line">		INT     21H</span><br><span class="line">MAIN		ENDP</span><br><span class="line">CODE		ENDS		 </span><br><span class="line"></span><br><span class="line">		END     START</span><br><span class="line">END</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="定义过程（子程序）"><a href="#定义过程（子程序）" class="headerlink" title="定义过程（子程序）"></a>定义过程（子程序）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[过程名] PROC [NEAR|FAR]</span><br><span class="line">	; code</span><br><span class="line">[过程名] ENDP</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>[过程名]</code>：自己定义</li>
+<li><code>NEAR</code> ：<code>RET</code>指令在汇编后仍为<code>RET</code>，属于段内返回，从堆栈中弹出一个字作为<code>IP</code>值</li>
+<li><code>FAR</code>：<code>RET</code>指令在汇编后变成了<code>RETF</code>，属于段间返回，从堆栈中先后弹出两个字作为<code>IP</code>和<code>CS</code></li>
+</ul>
+<h3 id="定义数据"><a href="#定义数据" class="headerlink" title="定义数据"></a>定义数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[变量名] [伪指令] [值]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>[伪指令]</code>：</p>
+<ul>
+<li><code>DB</code>：变量，<code>define byte</code>，字节变量</li>
+<li><code>DW</code>：变量，<code>define word</code>，字变量</li>
+<li><code>DD</code>：变量，<code>define double word</code>，双字变量</li>
+<li><code>EQU</code>：常量，被编译为值，不占内存</li>
+</ul>
+</li>
+<li><p><code>[值]</code></p>
+<ul>
+<li>常数</li>
+<li><code>$</code>：当前位置计数器</li>
+<li><code>DUP</code>：重复操作符（用于定义数组或堆栈空间）</li>
+<li><code>?</code>：表达式，表示不预置任何内容</li>
+<li>字符串表达式</li>
+<li>地址表达式</li>
+</ul>
+</li>
+</ul>
+<h4 id="数组定义（DUP的使用）"><a href="#数组定义（DUP的使用）" class="headerlink" title="数组定义（DUP的使用）"></a>数组定义（<code>DUP</code>的使用）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ARRAY1 DB 2 DUP(0, 1, 0FFH, ?) ; 定义一个简单的二维数组</span><br><span class="line">ARRAY2 DB 100DUP(?) ; 定义一个一维数组</span><br></pre></td></tr></table></figure>
+
+<p>其中对<code>ARRAY1</code>的定义和如下等价：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARRAY1 DB 0, 1, 0FFH, ?, 0, 1, 0FFH, ?</span><br></pre></td></tr></table></figure>
+
+<p>对<code>ARRAY2</code>的定义是一段长度为100字节的连续空间且没有初始化（<code>$</code>表示不预置，无初值）</p>
+<p>嵌套<code>DUP</code>，相当于多维数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARRAY3 DB 2DUP(1, 2DUP(&#x27;A&#x27;, &#x27;B&#x27;), 0)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&#39;A&#39;, &#39;B&#39;</code>：初值为字符（ASCII码），与<code>41h, 42h</code>等价</li>
+<li><code>DUP</code>可以嵌套，相当于多维数组</li>
+<li>等价于<code>ARRAY3 DB 1, &#39;A&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;, 0, 1, &#39;A&#39;, &#39;B&#39;, &#39;A&#39;, &#39;B&#39;,0</code></li>
+</ul>
+<h4 id="地址表达式"><a href="#地址表达式" class="headerlink" title="地址表达式"></a>地址表达式</h4><p>定义数据时可以使用<code>DW, DD</code>伪指令将标号或变量的偏移地址或整个逻辑地址存入到另一个变量中。使用<code>DD</code>来存储逻辑地址时，第一个字（低字）为偏移地址，第二个字（高字）为段地址。这里的参数实际上是一个地址表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">X1 DW ? ;X1中的内容未预置</span><br><span class="line">X2 DW $ ;X2单元中是当前（X2）的偏移地址</span><br><span class="line">X3 DW X1 ;X3单元中是X1的偏移地址</span><br><span class="line">X4 DW L1 ;X4单元中是L1标号的偏移地址</span><br><span class="line">X5 DW P1 ;X5单元中是P1子程序的偏移地址</span><br><span class="line">X6 DD X1 ;X6单元中是X1的逻辑地址</span><br><span class="line">X7 DD L1 ;X7单元中是L1标号的逻辑地址</span><br><span class="line">X8 DD P1 ;X8单元中是P1子程序的逻辑地址</span><br></pre></td></tr></table></figure>
+
+
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/03/27/服务器维护管理笔记/" data-toggle="tooltip" data-placement="top" title="服务器维护管理笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/03/19/「BUAA-SE-Pair-Programming-Work」软工结对编程博客/" data-toggle="tooltip" data-placement="top" title="「BUAA SE Pair Programming Work」软工结对编程博客">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Tue Mar 21 2023 16:15:09 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-X86-Programming%E3%80%8DExperiment-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA X86 Programming」Experiment Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-8086%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 8086结构与寄存器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9A4%E4%B8%AA%EF%BC%8C16%E4%BD%8D%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%8F%88%E5%8F%AF%E5%88%86%E4%B8%BAH%EF%BC%88high%EF%BC%89%E5%92%8CL%EF%BC%88low%EF%BC%89%E5%90%848%E4%BD%8D"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">通用寄存器：4个，16位，每个又可分为H（high）和L（low）各8位</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">段寄存器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">指针寄存器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%98%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">变址寄存器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">指令指针寄存器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%B9%E5%AE%9A%E7%BB%84%E5%90%88"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">特定组合</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 寻址方式与指令系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">指令格式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">寻址方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%9C%89%E5%85%B3%E7%9A%84%E5%AF%BB%E5%9D%80%EF%BC%886%E7%A7%8D%EF%BC%89"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">与数据有关的寻址（6种）</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-DOSBox%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 1 DOSBox环境</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%80%E5%87%BA"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">工具简介</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-EDIT%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 2 EDIT编辑器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">快捷键</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-MASM%E6%B1%87%E7%BC%96%E5%99%A8"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 3 MASM汇编器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-LINK%E9%93%BE%E6%8E%A5%E5%99%A8"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 4 LINK链接器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-DEBUG%E8%B0%83%E8%AF%95%E5%99%A8"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 5 DEBUG调试器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 6 程序结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%89%E5%88%97%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">三列格式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%AA%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">伪指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#SEGMENT-ENDS-END"><span class="toc-nav-number">1.9.2.1.</span> <span class="toc-nav-text">SEGMENT, ENDS, END</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#PROC-ENDP"><span class="toc-nav-number">1.9.2.2.</span> <span class="toc-nav-text">PROC, ENDP</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">1.9.2.3.</span> <span class="toc-nav-text">$</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">操作符</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#FAR-NEAR"><span class="toc-nav-number">1.9.3.1.</span> <span class="toc-nav-text">FAR, NEAR</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89%E6%AE%B5"><span class="toc-nav-number">1.9.4.</span> <span class="toc-nav-text">定义段</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A0%86%E6%A0%88%E6%AE%B5"><span class="toc-nav-number">1.9.4.1.</span> <span class="toc-nav-text">堆栈段</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%AE%B5"><span class="toc-nav-number">1.9.4.2.</span> <span class="toc-nav-text">数据段</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%AE%B5"><span class="toc-nav-number">1.9.4.3.</span> <span class="toc-nav-text">程序段</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89%E8%BF%87%E7%A8%8B%EF%BC%88%E5%AD%90%E7%A8%8B%E5%BA%8F%EF%BC%89"><span class="toc-nav-number">1.9.5.</span> <span class="toc-nav-text">定义过程（子程序）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE"><span class="toc-nav-number">1.9.6.</span> <span class="toc-nav-text">定义数据</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%EF%BC%88DUP%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-nav-number">1.9.6.1.</span> <span class="toc-nav-text">数组定义（DUP的使用）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9C%B0%E5%9D%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-nav-number">1.9.6.2.</span> <span class="toc-nav-text">地址表达式</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA X86 Programming" title="BUAA X86 Programming">BUAA X86 Programming</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OS Lab3」难点梳理与理解总结 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/10/「BUAA-OS-Lab3」难点梳理与理解总结/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                            
+                        </div>
+                        <h1>「BUAA OS Lab3」难点梳理与理解总结</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-05-10
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">4.5k</span> and
+                                Reading Time <span class="post-count">19</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab3」难点梳理与理解总结"><a href="#「BUAA-OS-Lab3」难点梳理与理解总结" class="headerlink" title="「BUAA OS Lab3」难点梳理与理解总结"></a>「BUAA OS Lab3」难点梳理与理解总结</h1><img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220505214641951.png" class="" title="mmu.h">
+
+
+
+<h2 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h2><h3 id="进程控制块（Process-Control-Block）"><a href="#进程控制块（Process-Control-Block）" class="headerlink" title="进程控制块（Process Control Block）"></a>进程控制块（Process Control Block）</h3><p>PCB是用来进程管理的数据结构，在我们的MOS中就是<code>Env</code>结构体，具体内容可以参考源码或**<a href="https://saltyfishyjk.github.io/2022/04/26/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">Lab 3 名词解释</a>**。在后文中，我们可能混用PCB和<code>Env</code>，其实两者基本是一个东西。</p>
+<p>对于PCB，我们仿照Lab 2中的思路，为<code>envs</code>开辟空间，通过<code>boot_map_segment</code>将其<code>map</code>到UENVS空间。</p>
+<p>之后，我们类比<code>page_init</code>，将空闲进程块连缀成<code>env_free_list</code>，值得注意的是这里guidebook强调了顺序问题，需要稍加注意。</p>
+<h3 id="进程创建流程"><a href="#进程创建流程" class="headerlink" title="进程创建流程"></a>进程创建流程</h3><ol>
+<li>从<code>env_free_list</code>获取一个空的PCB</li>
+<li>对PCB进行初始化</li>
+<li>为进程分配资源</li>
+<li>从空闲链表中移出并开始执行</li>
+</ol>
+<h4 id="获取空PCB并初始化"><a href="#获取空PCB并初始化" class="headerlink" title="获取空PCB并初始化"></a>获取空PCB并初始化</h4><p>第1和第2步是在<code>env_alloc</code>中进行的，其代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span></span><br><span class="line"><span class="title function_">env_alloc</span><span class="params">(<span class="keyword">struct</span> Env **new, u_int parent_id)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> r;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 1: Get a new Env from env_free_list*/</span></span><br><span class="line">    <span class="comment">/* 从env_free_list中取出一个空的PCB */</span></span><br><span class="line">	<span class="keyword">if</span> (LIST_EMPTY(&amp;env_free_list)) &#123;</span><br><span class="line">		*new = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">return</span> -E_NO_FREE_ENV;</span><br><span class="line">	&#125;</span><br><span class="line">	e = LIST_FIRST(&amp;env_free_list);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Call a certain function (has been completed just now) to init kernel memory layout for this new Env.</span></span><br><span class="line"><span class="comment">     *The function mainly maps the kernel address to this new Env address. */</span></span><br><span class="line">    <span class="comment">/* 初始化新进程的地址空间，这个函数将在下面具体介绍 */</span></span><br><span class="line">	env_setup_vm(e);	</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: Initialize every field of new Env with appropriate values.*/</span></span><br><span class="line">    <span class="comment">/* 初始化Env结构体的一些变量，设置env_id, env_status, env_parent_id, env_runs */</span></span><br><span class="line">	e-&gt;env_id = mkenvid(e);</span><br><span class="line">	e-&gt;env_status = ENV_RUNNABLE;</span><br><span class="line">	e-&gt;env_parent_id = parent_id;</span><br><span class="line">	e-&gt;env_runs = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 4: Focus on initializing the sp register and cp0_status of env_tf field, located at this new Env. */</span></span><br><span class="line">    <span class="comment">/* e-&gt;env_tp.cp0_status的设置保证了可以正常响应中断 </span></span><br><span class="line"><span class="comment">     * 具体而言，0x1000,1004对应的32位二进制数中的第2、12、28位为1（最低位为0位）</span></span><br><span class="line"><span class="comment">     * 根据SR结构可以知道，分别将IEp置高（在进程启动前调用rfe指令会将该值拷贝到IEc从而Interrupt Enable即允许中断）、12位置高表示4号中断可以相应、28位置高表示允许在用户态下使用CP0寄存器 */</span></span><br><span class="line">    e-&gt;env_tf.cp0_status = <span class="number">0x10001004</span>;</span><br><span class="line">	e-&gt;env_tf.regs[<span class="number">29</span>] = USTACKTOP;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 5: Remove the new Env from env_free_list. */</span></span><br><span class="line">    <span class="comment">/* 将Env从链表中移出 */</span></span><br><span class="line">	LIST_REMOVE(e, env_link);</span><br><span class="line">	*new = e;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220507185749380.png" class="" title="SR">
+
+
+
+<p><code>env_setup_vm</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span></span><br><span class="line"><span class="title function_">env_setup_vm</span><span class="params">(<span class="keyword">struct</span> Env *e)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i, r;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">p</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    Pde *pgdir;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 1: Allocate a page for the page directory</span></span><br><span class="line"><span class="comment">     *   using a function you completed in the lab2 and add its pp_ref.</span></span><br><span class="line"><span class="comment">     *   pgdir is the page directory of Env e, assign value for it. */</span></span><br><span class="line">    <span class="comment">/* 为pgdir申请一个新的页，并将其pp_ref++ */</span></span><br><span class="line">	r = page_alloc(&amp;p);</span><br><span class="line">    <span class="keyword">if</span> (r != <span class="number">0</span>) &#123; <span class="comment">// page_alloc return 0 if success</span></span><br><span class="line">        panic(<span class="string">&quot;env_setup_vm - page alloc error\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">	p-&gt;pp_ref++;</span><br><span class="line">	pgdir = (Pde *)page2kva(p);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Zero pgdir&#x27;s field before UTOP. */</span></span><br><span class="line">	<span class="comment">/* 把UTOP下面的pgdir内容全部清零 */</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; PDX(UTOP); i++) &#123;</span><br><span class="line">		pgdir[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: Copy kernel&#x27;s boot_pgdir to pgdir. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Hint:</span></span><br><span class="line"><span class="comment">     *  The VA space of all envs is identical above UTOP</span></span><br><span class="line"><span class="comment">     *  (except at UVPT, which we&#x27;ve set below).</span></span><br><span class="line"><span class="comment">     *  See ./include/mmu.h for layout.</span></span><br><span class="line"><span class="comment">     *  Can you use boot_pgdir as a template?</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">for</span> (i = PDX(UTOP);i &lt; PTE2PT; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i != PDX(VPT) &amp;&amp; i != PDX(UVPT)) &#123;</span><br><span class="line">			pgdir[i] = boot_pgdir[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	e-&gt;env_pgdir = pgdir;</span><br><span class="line">	e-&gt;env_cr3 = PADDR(pgdir);</span><br><span class="line">    <span class="comment">/* UVPT maps the env&#x27;s own page table, with read-only permission.*/</span></span><br><span class="line">    e-&gt;env_pgdir[PDX(UVPT)]  = e-&gt;env_cr3 | PTE_V;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在我们的MOS中支持多进程，多进程彼此互不干扰，因此每个进程有自己的页表。</p>
+<p>在<code>env_setup_vm</code>中，我们首先调用<code>page_alloc</code>申请一个页目录页，通过<code>page2kva</code>获取该页的虚拟地址并转型为<code>Pde *</code>并赋给<code>pgdir</code>以便于访问。在这里我们再啰嗦一下，代码中要访问的地址都是虚拟地址。</p>
+<p>由于每个进程有自己单独的页表，这个页表会映射完整的4G空间，其中，由于用户态2G加上内核态2G，因此，内核态2G是公用的，因此我们拷贝内核页表。</p>
+<p>然后，我们进行一些PCB内容的初始化，具体为设置<code>pgdir</code>，设置<code>env_cr3</code>。</p>
+<p>这里，我们再啰嗦一下，每个进程都有自己的视图下的4G空间，不同进程都在同一个虚拟地址有数据是完全可能的。值得注意的是，获取pgdir的具体流程为：申请可用物理页一个，将物理页在kseg0映射的虚拟地址赋给<code>pgdir</code>。由kseg0和物理内存一一映射关系我们可以知道，我们是真正改变了内核虚拟空间的这部分内容，由于对于所有进程内核虚拟空间都是共享的，因此对于其他进程也可以看到。</p>
+<h4 id="为进程分配资源并将PCB从空闲链表中移出"><a href="#为进程分配资源并将PCB从空闲链表中移出" class="headerlink" title="为进程分配资源并将PCB从空闲链表中移出"></a>为进程分配资源并将PCB从空闲链表中移出</h4><p>首先明确目的：我们需要加载二进制镜像</p>
+<p>为了便于理解和对函数的补全，我们需要先从更高的抽象来知道各个函数如何协作完成了这一过程：</p>
+<ol>
+<li><p><code>loac_icode</code>函数首先申请一个空闲页，并将该进程<code>pgdir</code>对应的两届页表结构中的<code>USTOCK-BY2PG</code>映射刚才申请的空闲页中，并设置好权限。这里的权限为<code>PTE_R</code>，即，<code>writable</code>。然后，调用了<code>load_elf</code>函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">void</span></span><br><span class="line"><span class="title function_">load_icode</span><span class="params">(<span class="keyword">struct</span> Env *e, u_char *binary, u_int size)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Hint:</span></span><br><span class="line"><span class="comment">     *  You must figure out which permissions you&#x27;ll need</span></span><br><span class="line"><span class="comment">     *  for the different mappings you create.</span></span><br><span class="line"><span class="comment">     *  Remember that the binary image is an a.out format image,</span></span><br><span class="line"><span class="comment">     *  which contains both text and data.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">p</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    u_long entry_point;</span><br><span class="line">    u_long r;</span><br><span class="line">    u_long perm;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 1: alloc a page. */</span></span><br><span class="line">	perm = PTE_R;</span><br><span class="line">	<span class="keyword">if</span> ((r = page_alloc(&amp;p)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">/* Step 2: Use appropriate perm to set initial stack for new Env. */</span></span><br><span class="line">    <span class="comment">/* Hint: Should the user-stack be writable? */</span></span><br><span class="line">	<span class="keyword">if</span> ((r = page_insert(e-&gt;env_pgdir, p, USTACKTOP - BY2PG, perm)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ((r = load_elf(binary, size, &amp;entry_point, e, load_icode_mapper)) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: load the binary using elf loader. */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 4: Set CPU&#x27;s PC register as appropriate value. */</span></span><br><span class="line">    e-&gt;env_tf.pc = entry_point;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>load_elf</code>函数解析ELF，并利用函数指针<code>int(*map)</code>调用<code>load_icode_mapper()</code>函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">load_elf</span><span class="params">(u_char *binary, <span class="type">int</span> size, u_long *entry_point, <span class="type">void</span> *user_data,</span></span><br><span class="line"><span class="params">			 <span class="type">int</span> (*<span class="built_in">map</span>)(u_long va, <span class="type">u_int32_t</span> sgsize,</span></span><br><span class="line"><span class="params">						u_char *bin, <span class="type">u_int32_t</span> bin_size, <span class="type">void</span> *user_data))</span></span><br><span class="line">&#123;</span><br><span class="line">	Elf32_Ehdr *ehdr = (Elf32_Ehdr *)binary;</span><br><span class="line">	Elf32_Phdr *phdr = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="comment">/* As a loader, we just care about segment,</span></span><br><span class="line"><span class="comment">         * so we just parse program headers.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">	u_char *ptr_ph_table = <span class="literal">NULL</span>;</span><br><span class="line">        Elf32_Half ph_entry_count;</span><br><span class="line">        Elf32_Half ph_entry_size;</span><br><span class="line">        <span class="type">int</span> r;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// check whether `binary` is a ELF file.</span></span><br><span class="line">	<span class="keyword">if</span> (size &lt; <span class="number">4</span> || !is_elf_format(binary)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ptr_ph_table = binary + ehdr-&gt;e_phoff; <span class="comment">// 程序头表所在处与此文件头的偏移</span></span><br><span class="line">        ph_entry_count = ehdr-&gt;e_phnum; <span class="comment">// 程序头表入口数</span></span><br><span class="line">        ph_entry_size = ehdr-&gt;e_phentsize; <span class="comment">// 程序头表入口大小</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (ph_entry_count--) &#123;</span><br><span class="line">                phdr = (Elf32_Phdr *)ptr_ph_table;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (phdr-&gt;p_type == PT_LOAD) &#123;</span><br><span class="line">	<span class="comment">/* Your task here!  */</span></span><br><span class="line">        <span class="comment">/* Real map all section at correct virtual address.Return &lt; 0 if error. */</span></span><br><span class="line">        <span class="comment">/* Hint: Call the callback function you have achieved before. */</span></span><br><span class="line">					r = <span class="built_in">map</span>(phdr-&gt;p_vaddr, phdr-&gt;p_memsz,  binary + phdr-&gt;p_offset, phdr-&gt;p_filesz, user_data);</span><br><span class="line">					<span class="keyword">if</span> (r != <span class="number">0</span>) &#123;</span><br><span class="line">						<span class="keyword">return</span> r;</span><br><span class="line">					&#125;	</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ptr_ph_table += ph_entry_size;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        *entry_point = ehdr-&gt;e_entry;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>load_icode_mapper</code>函数根据传入的参数将ELF文件加载进内存。</p>
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220508144444536.png" class="" title="LOAD_ELF">
+
+
+
+<p>这个函数非常重要，而且指导书中基本是只抛给了我们一张图，因此我将在下面代码的注释中结合图示仔细讲解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">load_icode_mapper</span><span class="params">(u_long va, <span class="type">u_int32_t</span> sgsize,</span></span><br><span class="line"><span class="params">                             u_char *bin, <span class="type">u_int32_t</span> bin_size, <span class="type">void</span> *user_data)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">env</span> =</span> (<span class="keyword">struct</span> Env *)user_data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">p</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    u_long i = <span class="number">0</span>; <span class="comment">// 参考图中的i，标记目前已经自va加载了i字节。后面的前一部分可能i=0，这时加不加i本质上一样，但是我们用加i表示概念上的统一</span></span><br><span class="line">    <span class="type">int</span> r; <span class="comment">// 保存返回值，一般是错误码</span></span><br><span class="line">    u_long offset = va - ROUNDDOWN(va, BY2PG); <span class="comment">// va和离其最近的低于其的BY2PG的偏移量，事实上就是图中的offset</span></span><br><span class="line">	<span class="type">int</span> size; <span class="comment">// bcopy或者bzero中的参数</span></span><br><span class="line">	<span class="keyword">if</span> (offset != <span class="number">0</span>) &#123; <span class="comment">// offset不等于0，说明va没有页对齐，说明我们首先需要先将va到下一个页起点的这一块加载到内存中</span></span><br><span class="line">		p = page_lookup(env-&gt;env_pgdir, va + i, <span class="literal">NULL</span>); <span class="comment">// 值得注意的是，这里offset所在的虚拟页前面的内容可能已经被加载到物理内存中过，所以我们需要先查找va是否有对应一个物理页框</span></span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>) &#123; <span class="comment">// va没有对应的物理页框，说明需要申请一个页框</span></span><br><span class="line">			<span class="keyword">if</span> ((r = page_alloc(&amp;p)) != <span class="number">0</span>) &#123; <span class="comment">// 如果物理页申请不到就错误返回</span></span><br><span class="line">				<span class="keyword">return</span> r;</span><br><span class="line">			&#125;</span><br><span class="line">			page_insert(env-&gt;env_pgdir, p, va + i, PTE_R); <span class="comment">// 申请完的新的物理页框需要建立和va+i的映射关系</span></span><br><span class="line">		&#125;</span><br><span class="line">		size = MIN(bin_size - i, BY2PG - offset); <span class="comment">// 计算我们要拷贝多少字节。这里需要注意，当va并非页对齐的时候，不代表bin_size一定比BY2PG-offset大，有可能bin_size连va后面这残缺的半页都填不满。另外特别注意的是，我们不能多加载，不能把bin_size后的内容拷贝过来。</span></span><br><span class="line">		bcopy((<span class="type">void</span> *)bin,(<span class="type">void</span> *)(page2kva(p) + offset), size); <span class="comment">// 这里注意bcopy的三个参数分别是起点、终点和长度。我们将bin开始的MIN(bin_size, BY2PG - offset)这么长的内容拷贝到page2kva(p) + offset对应的地方。这里稍微再罗嗦一下，我们代码中任何访问地址的行为用的都是虚拟地址，所以要将page转为kva。</span></span><br><span class="line">		i = i + size; <span class="comment">// 更新我们已经加载了i字节</span></span><br><span class="line">	&#125;	</span><br><span class="line">    <span class="comment">/* Step 1: load all content of bin into memory. */</span></span><br><span class="line">        <span class="comment">/* Hint: You should alloc a new page. */</span></span><br><span class="line">    <span class="comment">// 在这部分中，我们要将bin_size恰好拷贝完</span></span><br><span class="line">	<span class="keyword">while</span> (i &lt; bin_size) &#123; <span class="comment">// 循环节有效的标志是我们没有拷贝完bin_size</span></span><br><span class="line">		size = MIN(BY2PG, bin_size - i); <span class="comment">// 每个循环节我们都要考虑：还没有拷贝完的内容（bin_size - i）是否大于等于1页，注意不能多拷贝</span></span><br><span class="line">		<span class="keyword">if</span> ((r = page_alloc(&amp;p)) != <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> r;</span><br><span class="line">		&#125;</span><br><span class="line">		page_insert(env-&gt;env_pgdir, p, va + i, PTE_R); <span class="comment">// 对新申请的页框建立映射关系</span></span><br><span class="line">		bcopy((<span class="type">void</span> *)(bin + i), (<span class="type">void</span> *)(page2kva(p)), size); <span class="comment">// 拷贝</span></span><br><span class="line">		i += size; <span class="comment">// 更新</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* Step 2: alloc pages to reach `sgsize` when `bin_size` &lt; `sgsize`.</span></span><br><span class="line"><span class="comment">     * hint: variable `i` has the value of `bin_size` now! */</span></span><br><span class="line">    <span class="comment">// 在这部分中，我们要将binsize-&gt;sgsize部分（如果有）填充为0</span></span><br><span class="line">	u_long bin_size_remain = (va + i) - ROUNDDOWN(va + i, BY2PG); <span class="comment">// 这里我没有直接抄login，用了一个新变量bin_size_remain指代如果va+i没有对齐，那么va+i在当前页多出来的那一部分的长度</span></span><br><span class="line">	<span class="keyword">if</span> (bin_size_remain != <span class="number">0</span>) &#123;</span><br><span class="line">		p = page_lookup(env-&gt;env_pgdir, va + i, <span class="literal">NULL</span>); <span class="comment">// 这里和处理offset时候的逻辑类似，都是先寻找va+i是不是已经映射到了页框</span></span><br><span class="line">		<span class="keyword">if</span> (p == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> ((r = page_alloc(&amp;p)) != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> r;</span><br><span class="line">			&#125;</span><br><span class="line">			page_insert(env-&gt;env_pgdir, p, va + i, PTE_R);</span><br><span class="line">		&#125;</span><br><span class="line">		size = MIN(sgsize - i, BY2PG - bin_size_remain); <span class="comment">// 这里也要继续注意，va+i页当前剩余了BY2PG - bin_size_remain这么多字节，但需要我们继续填充0的字节有sgsize-i，我们需要保证不多写</span></span><br><span class="line">		bzero((<span class="type">void</span> *)(page2kva(p) + bin_size_remain), size); <span class="comment">// 清零</span></span><br><span class="line">		i += size; <span class="comment">// 更新</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; sgsize) &#123; <span class="comment">// 如果该条件成立，意味着还需要继续填充0到sgsize</span></span><br><span class="line">		size = MIN(BY2PG, sgsize - i); <span class="comment">// 保证不多填</span></span><br><span class="line">        <span class="comment">// 申请页框+建立映射</span></span><br><span class="line">		<span class="keyword">if</span> (r = (page_alloc(&amp;p)) != <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> r;</span><br><span class="line">		&#125;</span><br><span class="line">		page_insert(env-&gt;env_pgdir, p, va + i, PTE_R);</span><br><span class="line">		bzero((<span class="type">void</span> *)(page2kva(p)), size);</span><br><span class="line">		i += size;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回<code>load_icode</code>函数，设置<code>PC</code>寄存器，使得可以正常进入执行。</p>
+</li>
+</ol>
+<p>上面实现了进程创建，在这之后，我们通过<code>env_create</code>调用<code>env_create_priority</code>进而创建进程。</p>
+<p>值得注意的是，我们在真正创建进程的时候，通过了<code>ENV_CREATE</code>这一封装宏。</p>
+<h2 id="进程运行和切换"><a href="#进程运行和切换" class="headerlink" title="进程运行和切换"></a>进程运行和切换</h2><p>这一部分涉及的函数主要是<code>env_run</code>。这里需要注意，我们说运行一个新进程，但也往往意味着进程切换而非单纯的进程运行，因此我们可以合并来考虑两者，类似共同的循环节，因此我们可以统一考虑进程切换。</p>
+<p>进程切换时，需要保存的内容有：</p>
+<ul>
+<li>进程本身的信息</li>
+<li>进程周围环境的信息</li>
+</ul>
+<p>整体流程如下：</p>
+<ul>
+<li>保存进程上下文信息，设置当前进程上下文中的<code>pc</code>为<code>epc</code></li>
+<li>切换<code>curenv</code>使其指向新进程</li>
+<li>调用<code>lcontext</code>函数，设置全局变量<code>mCONTEXT</code>为当前进程页目录地址，会在TLB重填时用到</li>
+<li>调用<code>env_pop_tf</code>保存现场</li>
+</ul>
+<p>以下我们以注释的形式解释<code>env_run</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">env_run</span><span class="params">(<span class="keyword">struct</span> Env *e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* Step 1: save register state of curenv. */</span></span><br><span class="line">    <span class="comment">/* Hint: if there is an environment running, </span></span><br><span class="line"><span class="comment">     *   you should switch the context and save the registers. </span></span><br><span class="line"><span class="comment">     *   You can imitate env_destroy() &#x27;s behaviors.*/</span></span><br><span class="line">    <span class="comment">/* 当curenv不为NULL的时候，将当前寄存器状态保存在old中并将old逐字节拷贝到curenv-&gt;env_tf中，另外，设置当前进程的pc值为cp0_epc，使其陷入中断 */</span></span><br><span class="line">    <span class="comment">/* 这里有一条规定，即，本实验的寄存器状态保存的地方是TIMESTACK */</span></span><br><span class="line">	<span class="keyword">if</span> (curenv) &#123;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> *<span class="title">old</span> =</span> (<span class="keyword">struct</span> Trapframe *)(TIMESTACK - <span class="keyword">sizeof</span>(<span class="keyword">struct</span> Trapframe));</span><br><span class="line">		bcopy(old, &amp;(curenv-&gt;env_tf), <span class="keyword">sizeof</span>(<span class="keyword">struct</span> Trapframe));</span><br><span class="line">		curenv-&gt;env_tf.pc = curenv-&gt;env_tf.cp0_epc;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 2: Set &#x27;curenv&#x27; to the new environment. */</span></span><br><span class="line">    <span class="comment">/* 使curenve指向新进程 */</span></span><br><span class="line">	curenv = e;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 3: Use lcontext() to switch to its address space. */</span></span><br><span class="line">    <span class="comment">/* 设置全局变量mCONTEXT为当前进程页目录地址 */</span></span><br><span class="line">	lcontext(curenv-&gt;env_pgdir);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Step 4: Use env_pop_tf() to restore the environment&#x27;s</span></span><br><span class="line"><span class="comment">     *   environment   registers and return to user mode.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * Hint: You should use GET_ENV_ASID there. Think why?</span></span><br><span class="line"><span class="comment">     *   (read &lt;see mips run linux&gt;, page 135-144)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">/* 保存现场 */</span></span><br><span class="line">	env_pop_tf(&amp;(curenv-&gt;env_tf), GET_ENV_ASID(curenv-&gt;env_id));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外有两点强调一下：</p>
+<ul>
+<li>在发生时钟中断的时候，操作系统将进程状态的栈顶地址保存进时钟栈<code>TIMESTACK</code>，进入时钟中断后，把TIMESTACK的值赋给寄存器们，再执行中断处理。</li>
+<li><code>TIMESTACK</code>是发生时钟中断后进程状态的存储区，而<code>KERNEL_SP</code>是发生系统调用后的进程状态的存储区。</li>
+<li><code>env_destroy</code>中，当<code>curenv == e</code>的时候，会将<code>KERNEL_SP</code>的<code>tf</code>拷贝到<code>TIMESTACK</code>中，据学姐说法是调用<code>sched_yield</code>获取下一个要执行的进程之前，要将环境恢复到调用当前进程之前的环境，或者也可能和kill到最后一个进程的时候要恢复到最初状态有关。这部分内容有待将来学习过程中补充或勘误。</li>
+<li>我们看到，<code>TIMESTACK</code>所在的页面不应当存在于可被申请的<code>page_free_list</code>中，因此需要在<code>page_init</code>中将其摘出</li>
+</ul>
+<h2 id="中断异常"><a href="#中断异常" class="headerlink" title="中断异常"></a>中断异常</h2><p>首先明确中断和异常的关系：引起控制流突变的就叫做异常，因此中断是异常的一种，且是仅有的一种异步异常。</p>
+<h3 id="相关寄存器"><a href="#相关寄存器" class="headerlink" title="相关寄存器"></a>相关寄存器</h3><p>中断和异常用到了CPU中的协处理器（CP0）中的12号（SR），13号（Cause）和14号（EPC）寄存器，介绍如下：</p>
+<table>
+<thead>
+<tr>
+<th>寄存器助记符</th>
+<th>CP0寄存器编号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SR</td>
+<td>12</td>
+<td>Status Reg，状态寄存器，包括中断引脚是能，其他CPU模式等位域</td>
+</tr>
+<tr>
+<td>Cause</td>
+<td>13</td>
+<td>记录导致异常的原因</td>
+</tr>
+<tr>
+<td>EPC</td>
+<td>14</td>
+<td>异常结束后程序恢复执行的位置</td>
+</tr>
+</tbody></table>
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220509180708841.png" class="" title="SR">
+
+
+
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220509180730435.png" class="" title="Cause">
+
+
+
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220509180745529.png" class="" title="EPC">
+
+
+
+<h3 id="处理异常流程"><a href="#处理异常流程" class="headerlink" title="处理异常流程"></a>处理异常流程</h3><ol>
+<li>设置EPC指向异常结束时重新返回的地址</li>
+<li>设置SR位，强制CPU进入内核态（有更高级的特权）并禁止中断</li>
+<li>设置Cause寄存器，记录异常发生的原因</li>
+<li>CPU开始从异常入口位置取值，此后交给软件处理（这就是我们要做的工作）</li>
+</ol>
+<img src="/2022/05/10/%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93/image-20220509180918572.png" class="" title="异常处理流程">
+
+
+
+<h3 id="时钟中断"><a href="#时钟中断" class="headerlink" title="时钟中断"></a>时钟中断</h3><p>实验中常用的是0号异常，即中断异常的处理函数，对我们来说，会有如下流程：</p>
+<ol>
+<li>跳转到异常分发代码<code>.text.exc_vec3</code></li>
+<li>跳到对应的异常处理函数（0号异常）处</li>
+<li><code>handle_int</code>中通过指令<code>andi t1, t0, STATUSF_IP4</code>来判断是否是4号中断，如果是的话跳转到<code>timer_irq</code>再跳转到<code>sched_yield</code>，选择下一个进程来执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">NESTED(except_vec3, 0, sp)</span><br><span class="line">	.set noat </span><br><span class="line">	.set noreorder</span><br><span class="line">1:</span><br><span class="line">	mfc0	k1, CP0_CAUSE # 将CP0_CAUSE拷贝到k1寄存器</span><br><span class="line">	la	k0, exception_handlers # 将exception_handlers基地址拷贝到k0寄存器</span><br><span class="line">	andi	k1, 0x7c # 获得 CP0_CAUSE 2 - 6位，由Cause寄存器结构知这部分就是异常码ExcCode</span><br><span class="line">	addu	k0, k1 # exception_handlers + ExcCode即对exception_handlers进行ExcCode大小的偏移，找到对应的异常处理函数</span><br><span class="line">	lw	k0, (k0) # 把找到的异常处理函数地址赋值给k0</span><br><span class="line">	nop</span><br><span class="line">	jr	k0 # 跳转到对应的异常处理函数</span><br><span class="line">	nop</span><br><span class="line">END(except_vec3)</span><br><span class="line">	.set at</span><br></pre></td></tr></table></figure>
+
+<h4 id="时钟初始化"><a href="#时钟初始化" class="headerlink" title="时钟初始化"></a>时钟初始化</h4><p>值得注意的是，上面的流程概览的前提是完成了时钟的初始化。以下是时钟初始化流程：</p>
+<ol>
+<li><code>init/init.c</code>中调用了<code>kclock_init</code>函数进行初始化</li>
+<li><code>kclock_init</code>直接调用<code>set_timer</code>设置时钟</li>
+<li><code>kclock_asm.S</code>实现了<code>set_timer</code>，具体为在0xb5,000,100位置写入0xc8，其中0xb5,000,000是模拟器gxemul映射实时钟的位置，偏移量0x100表示设置实时钟中断的频率，0xc8表示1秒钟中断200次。也就是说，如果在这里写入0，代表一秒钟中断0次，即关闭实时钟。R3000中实时钟绑定在了4号终端上，也就是说这里是在设置对4号中断的触发，注意是4号中断而非4号异常。</li>
+</ol>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>进程调度主要在<code>sched_yield</code>中实现，以下将结合代码具体讲解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">sched_yield</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count = <span class="number">0</span>; <span class="comment">// remaining time slices of current env</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> point = <span class="number">0</span>; <span class="comment">// current env_sched_list index</span></span><br><span class="line">    <span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span> =</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">/*  hint:</span></span><br><span class="line"><span class="comment">     *  1. if (count==0), insert `e` into `env_sched_list[1-point]`</span></span><br><span class="line"><span class="comment">     *     using LIST_REMOVE and LIST_INSERT_TAIL.</span></span><br><span class="line"><span class="comment">     *  2. if (env_sched_list[point] is empty), point = 1 - point;</span></span><br><span class="line"><span class="comment">     *     then search through `env_sched_list[point]` for a runnable env `e`, </span></span><br><span class="line"><span class="comment">     *     and set count = e-&gt;env_pri</span></span><br><span class="line"><span class="comment">     *  3. count--</span></span><br><span class="line"><span class="comment">     *  4. env_run()</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *  functions or macros below may be used (not all):</span></span><br><span class="line"><span class="comment">     *  LIST_INSERT_TAIL, LIST_REMOVE, LIST_FIRST, LIST_EMPTY</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="comment">/* 当前count为0即当前进程时间片消耗尽；e=NULL即还未开始调度第一个进程；当前进程的状态不是可运行的 */</span></span><br><span class="line">     <span class="keyword">if</span> (count == <span class="number">0</span> || e == <span class="literal">NULL</span> || e-&gt;env_status != ENV_RUNNABLE) &#123;</span><br><span class="line">         <span class="comment">/* e非NULL即当前有进程正在进行 */</span></span><br><span class="line">         <span class="keyword">if</span> (e != <span class="literal">NULL</span>) &#123;</span><br><span class="line">             <span class="comment">/* 从当前的sched链表中移出 */</span></span><br><span class="line">             LIST_REMOVE(e, env_sched_link);</span><br><span class="line">             <span class="comment">/* 当前进程的状态仍然是可运行的，则需要从sched链表中移出并将其插入另一个sched链表 */</span></span><br><span class="line">             <span class="keyword">if</span> (e-&gt;env_status != ENV_FREE) &#123;</span><br><span class="line">                 LIST_INSERT_TAIL(&amp;env_sched_list[<span class="number">1</span> - point], e, env_sched_link);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">             <span class="comment">/* 如果当前的sched链表空了，转向另外的链表 */</span></span><br><span class="line">             <span class="keyword">while</span>(LIST_EMPTY(&amp;env_sched_list[point])) &#123;</span><br><span class="line">                 point = <span class="number">1</span> - point;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">/* 取出链表中的第一个进程 */</span></span><br><span class="line">             e = LIST_FIRST(&amp;env_sched_list[point]);</span><br><span class="line">             <span class="comment">/* 如果这个进程状态是free的，直接删除 */</span></span><br><span class="line">             <span class="keyword">if</span> (e-&gt;env_status == ENV_FREE) &#123;</span><br><span class="line">                 LIST_REMOVE(e, env_sched_link);</span><br><span class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e-&gt;env_status == ENV_NOT_RUNNABLE) &#123;</span><br><span class="line">                 <span class="comment">/* 如果当前进程不可调度，将其转移到对面链表的末尾 */</span></span><br><span class="line">                 LIST_REMOVE(e, env_sched_link);</span><br><span class="line">                 LIST_INSERT_TAIL(&amp;env_sched_list[<span class="number">1</span> - point], e, env_sched_link);</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                 <span class="comment">/* 找到了合法的可调度进程，设置count为优先级即该进程要运行的时间片的数量，退出死循环 */</span></span><br><span class="line">                 count = e-&gt;env_pri;</span><br><span class="line">                 <span class="keyword">break</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">	<span class="comment">/* 消耗一个时间片 */</span></span><br><span class="line">     count--;</span><br><span class="line">	<span class="comment">/* 新进程被调度1次 */</span></span><br><span class="line">     e-&gt;env_runs++;</span><br><span class="line">	<span class="comment">// printf(&quot;\n%d\n&quot;,e-&gt;env_id);</span></span><br><span class="line">	<span class="comment">/* 运行进程 */</span></span><br><span class="line">     env_run(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/05/11/GCC笔记/" data-toggle="tooltip" data-placement="top" title="GCC笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/05/06/「BUAA-OS-Lab2」难点梳理与理解总结/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab2」难点梳理与理解总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Tue May 10 2022 17:19:17 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-OS-Lab3%E3%80%8D%E9%9A%BE%E7%82%B9%E6%A2%B3%E7%90%86%E4%B8%8E%E7%90%86%E8%A7%A3%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab3」难点梳理与理解总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">进程创建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97%EF%BC%88Process-Control-Block%EF%BC%89"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">进程控制块（Process Control Block）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">进程创建流程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E7%A9%BAPCB%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">获取空PCB并初始化</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%BA%E8%BF%9B%E7%A8%8B%E5%88%86%E9%85%8D%E8%B5%84%E6%BA%90%E5%B9%B6%E5%B0%86PCB%E4%BB%8E%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A7%BB%E5%87%BA"><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">为进程分配资源并将PCB从空闲链表中移出</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%BF%90%E8%A1%8C%E5%92%8C%E5%88%87%E6%8D%A2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">进程运行和切换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">中断异常</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">相关寄存器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">处理异常流程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%B6%E9%92%9F%E4%B8%AD%E6%96%AD"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">时钟中断</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%97%B6%E9%92%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">时钟初始化</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">进程调度</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

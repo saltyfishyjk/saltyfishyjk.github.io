@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/17/「BUAA-OO-Unit-2」-第二次电梯的架构设计与调度策略分享/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                            
+                        </div>
+                        <h1>「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-17
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.8k</span> and
+                                Reading Time <span class="post-count">6</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="第二次电梯的架构设计与调度策略"><a href="#第二次电梯的架构设计与调度策略" class="headerlink" title="第二次电梯的架构设计与调度策略"></a>第二次电梯的架构设计与调度策略</h1><p>[TOC]</p>
+<p>第八周研讨课，笔者依旧准备了讲稿和分享，但是没有选上，在这里和大家分享。</p>
+<h2 id="Part-0-第一次电梯架构与调度基础"><a href="#Part-0-第一次电梯架构与调度基础" class="headerlink" title="Part 0 第一次电梯架构与调度基础"></a>Part 0 第一次电梯架构与调度基础</h2><p>第一次作业中，ABCDE座各有纵向电梯一部，乘客需求只有纵向。</p>
+<p>在这次作业，我们核心设计采用生产者-消费者模型，大致结构如下：</p>
+<img src="/2022/04/17/%E3%80%8CBUAA-OO-Unit-2%E3%80%8D-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%94%B5%E6%A2%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5%E5%88%86%E4%BA%AB/image-20220417150151821.png" class="" title="p2">
+
+
+
+<p>其中，我们的InputHandler维护所有请求的一个大<code>Dispatcher</code>，其中储存所有楼座的待分发请求，并由大<code>Dispatcher</code>分发给五个楼座的小<code>Dispatcher</code>，各电梯只需和自己楼座的<code>Dispatcher</code>交互即可。</p>
+<p>对于多个请求，综合实际性能和实现难度，采取LOOK算法，尽可能同方向捎带。</p>
+<p>在上述设计中，我们的<strong>线程</strong>只有输入线程和五个电梯线程，秉持精简和易维护的架构设计理念，我们尽可能减少线程之间复杂的交互关系。</p>
+<h2 id="Part-1-迭代架构设计"><a href="#Part-1-迭代架构设计" class="headerlink" title="Part 1 迭代架构设计"></a>Part 1 迭代架构设计</h2><p>在上述第一次电梯的基础上，我们迭代到第二次电梯架构设计。</p>
+<h3 id="新需求分析"><a href="#新需求分析" class="headerlink" title="新需求分析"></a>新需求分析</h3><p>第二次作业的变化主要包括：增加横向电梯种类并支持在同楼层不同座之间的乘客需求和支持动态增加（纵向和横向）电梯数量。</p>
+<p>对于第一个需求，我们秉持开闭原则，增设<code>Elevator</code>父类，纵向电梯<code>ElevatorCol</code>和横向电梯<code>ElevatorRow</code>分别继承它，只需在子类重写<code>run</code>方法即可。</p>
+<p>对于第二个需求，我们采用工厂模式，通过<code>ElevatorFactory</code>生产具有我们需要的功能的电梯。</p>
+<h3 id="请求群"><a href="#请求群" class="headerlink" title="请求群"></a>请求群</h3><p>对于同楼座（层），我们首先定义<strong>请求群</strong>的概念，一个请求群内的所有请求对该群内的所有电梯均可视（即电梯都有接到该请求的能力），群内所有电梯都可接待所有请求。</p>
+<h3 id="类虚拟空间"><a href="#类虚拟空间" class="headerlink" title="类虚拟空间"></a>类虚拟空间</h3><p>同时，为了简化调度负担及结构复杂度，我们借用OS中<strong>虚拟空间</strong>的思路。</p>
+<p>对于群内的电梯，其可视所有请求，并且不认为有其他电梯，这样即可不更改第一次电梯中的LOOK策略，并便于应用自由竞争的调度策略，这将在下一部分简述。同时，通过类<strong>物理空间</strong>的理念，我们通过请求是否被真实满足来避免产生冲突，保证了架构的安全性。</p>
+<h2 id="Part-2-基于LOOK和自由竞争的调度策略"><a href="#Part-2-基于LOOK和自由竞争的调度策略" class="headerlink" title="Part 2 基于LOOK和自由竞争的调度策略"></a>Part 2 基于LOOK和自由竞争的调度策略</h2><h3 id="设计的核心理念"><a href="#设计的核心理念" class="headerlink" title="设计的核心理念"></a>设计的核心理念</h3><p>正确性、易维护性和可迭代性是我们架构设计的核心思想，秉持<code>less is more</code>的思路，我们尽可能在逻辑上简化调度策略，在实现难度和迭代维护难度与性能方面做取舍平衡，最终选择LOOK和自由竞争的策略。</p>
+<h3 id="LOOK"><a href="#LOOK" class="headerlink" title="LOOK"></a>LOOK</h3><p>纵向LOOK：</p>
+<ol>
+<li><p>当电梯有乘客时，以乘客中<strong>目标楼层距离当前楼层最远</strong>的请求为主请求确定目标楼层</p>
+</li>
+<li><p>当电梯没有乘客时，首先按照原方向，寻找<strong>距离当前楼层最远的有请求的</strong>楼层，找到则确定为目标楼层，这次寻找最终结果<strong>有可能会是当前层</strong>。如果寻找无果（沿方向的所有层包括本层都没有请求）则改变方向，继续寻找。若最后没有找到，则可以返回一个标志结束的值表示电梯进入空闲。</p>
+</li>
+</ol>
+<p>横向LOOK：</p>
+<ol>
+<li><p>当电梯有乘客时，依然希望寻找其中目标楼座距离当前楼座最远的请求为主请求，但是这里的距离不应该是简单的加减法，可以加上模运算（注意若出现负数直接取模不符合我们的要求）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dis = (target - nowBuilding + <span class="number">5</span>) % <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当电梯没有乘客时，原则上仍然按照第一次的方法寻找，只是如果第一次向上的尽头是10层，这一次顺时针尽头应该变为 <code>(now + 2) % 5；</code>向下的尽头是1层，这一次逆时针尽头应该变为<code>(now - 2 + 5) % 5</code>。</p>
+</li>
+</ol>
+<p>LOOK的性能在随机大数据中有较好的表现，同时易于实现。</p>
+<h3 id="自由竞争"><a href="#自由竞争" class="headerlink" title="自由竞争"></a>自由竞争</h3><p>在<strong>Part 1</strong>中，我们介绍了请求群和虚拟空间的想法，在这基础上，我们介绍自由竞争的具体实现。</p>
+<p>对于每台电梯（无论横纵），其均按照自己的LOOK进行调度运行；当其在访问本请求群内的请求时，不会考虑别的电梯是否正在前往其中某个请求，而只考虑是否满足自己的调度来运行。这样，我们只需要在电梯arrive每层的时候访问请求群内的请求即可，若其接到了请求，则在请求群内移除；若某格请求被其他电梯接走，而其事实上是使本电梯运行的动力，那么至多付出一层的代价，本电梯就会重新访问请求群并基于LOOK获得新的运行方向。</p>
+<p>上述设计较为精简，在面对大数据时表现均衡；同时，省去了中央调度的设计，类分布式的思路使得电梯自行运动而无需被指派任务；并且对电梯数量没有任何限制，覆盖了作业要求的15部要求。</p>
+<h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p>在上述介绍中，电梯们对于所属请求群内的候乘表读相比写更频繁，可以采用读写锁来进一步优化提升性能。</p>
+<h2 id="Part-3-未来需求预测与预迭代设计"><a href="#Part-3-未来需求预测与预迭代设计" class="headerlink" title="Part 3 未来需求预测与预迭代设计"></a>Part 3 未来需求预测与预迭代设计</h2><p>上面两个Part简介了第一次电梯设计并着重分析了第一次到第二次的迭代设计和开发，为了进一步说明我们设计的易维护性和可迭代性，我们预测下一次作业需求并简要介绍预迭代设计思路。</p>
+<h3 id="未来需求预测"><a href="#未来需求预测" class="headerlink" title="未来需求预测"></a>未来需求预测</h3><p>满足不同座不同层的需求，如E4-&gt;A2。</p>
+<h3 id="预迭代设计"><a href="#预迭代设计" class="headerlink" title="预迭代设计"></a>预迭代设计</h3><p>基于第二次电梯的设计，我们只需在架构上做如下迭代开发：</p>
+<h4 id="拆解需求"><a href="#拆解需求" class="headerlink" title="拆解需求"></a>拆解需求</h4><p>对于不同座不同层的需求，我们根据横向和纵向电梯数量与两个作业群的需求数量选择两种正交分解方式（先纵向后横向与先横向后纵向）中的一种，拆解为两个步骤。</p>
+<h4 id="分段满足"><a href="#分段满足" class="headerlink" title="分段满足"></a>分段满足</h4><p>对于拆解后的需求，我们采用类Experiment4中的操作，实现如果当前电梯处理完的请求并没有完全满足该请求，则制作新请求并传递给大<code>Dispatcher</code>，进一步由大<code>Dispatcher</code>分发给小<code>Dispatcher</code>。同时，修改<code>isEnd()</code>信号，使得所有请求（分段和不分段）都满足后所有电梯线程才可结束。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/20/「BUAA-OS-Lab2」名词解释/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab2」名词解释">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/16/「BUAA-OO-Unit-2」-多线程分享/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2」 多线程分享">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sun Apr 17 2022 22:26:04 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%94%B5%E6%A2%AF%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">第二次电梯的架构设计与调度策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%94%B5%E6%A2%AF%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%B0%83%E5%BA%A6%E5%9F%BA%E7%A1%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 第一次电梯架构与调度基础</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E8%BF%AD%E4%BB%A3%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 迭代架构设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">新需求分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%B7%E6%B1%82%E7%BE%A4"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">请求群</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%B1%BB%E8%99%9A%E6%8B%9F%E7%A9%BA%E9%97%B4"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">类虚拟空间</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%9F%BA%E4%BA%8ELOOK%E5%92%8C%E8%87%AA%E7%94%B1%E7%AB%9E%E4%BA%89%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 基于LOOK和自由竞争的调度策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">设计的核心理念</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LOOK"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">LOOK</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%87%AA%E7%94%B1%E7%AB%9E%E4%BA%89"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">自由竞争</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%BB%E5%86%99%E9%94%81"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">读写锁</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%9C%AA%E6%9D%A5%E9%9C%80%E6%B1%82%E9%A2%84%E6%B5%8B%E4%B8%8E%E9%A2%84%E8%BF%AD%E4%BB%A3%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 未来需求预测与预迭代设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%AA%E6%9D%A5%E9%9C%80%E6%B1%82%E9%A2%84%E6%B5%8B"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">未来需求预测</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%84%E8%BF%AD%E4%BB%A3%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">预迭代设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8B%86%E8%A7%A3%E9%9C%80%E6%B1%82"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">拆解需求</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E6%AE%B5%E6%BB%A1%E8%B6%B3"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">分段满足</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

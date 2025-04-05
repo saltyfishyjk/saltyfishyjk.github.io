@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          DNS笔记 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2024/11/10/DNS笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#DNS" title="DNS">DNS</a>
+                            
+                        </div>
+                        <h1>DNS笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2024-11-10
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.9k</span> and
+                                Reading Time <span class="post-count">11</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="DNS笔记"><a href="#DNS笔记" class="headerlink" title="DNS笔记"></a>DNS笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>记录文献中学习到的 DNS 相关基础知识。</p>
+<h2 id="Part-1-基本概念"><a href="#Part-1-基本概念" class="headerlink" title="Part 1 基本概念"></a>Part 1 基本概念</h2><h3 id="DNS-解析参与方"><a href="#DNS-解析参与方" class="headerlink" title="DNS 解析参与方"></a>DNS 解析参与方</h3><h4 id="客户端-DNS-Client-stub-resolver"><a href="#客户端-DNS-Client-stub-resolver" class="headerlink" title="客户端 DNS Client(stub resolver)"></a>客户端 DNS Client(stub resolver)</h4><p>发送一个请求到recursive resolver，使其作为代理代为查询。</p>
+<h4 id="（递归）解析器-DNS-Recursive-resolver"><a href="#（递归）解析器-DNS-Recursive-resolver" class="headerlink" title="（递归）解析器 DNS Recursive resolver"></a>（递归）解析器 DNS Recursive resolver</h4><p>也叫递归侧&#x2F;resolver。</p>
+<p>接收从 client 发来的 DNS query，从 Root Nameserver 开始逐级查询。</p>
+<p>四种不同模式：</p>
+<ul>
+<li>标准模式（recursive-only）：递归查询</li>
+<li>转发器（forwarder）：此时 resolver 作为转发器，将 query 转发给上游 recursive resolver，使其代为查询</li>
+<li>条件DNS（condiotional DNS, CDNS）：同时有 recursive 和 forwarder 两种模式，各有一个 DNS namespace 子空间，根据特定域名或客户端 IP 等进行选择性转发<ul>
+<li>CDNS without fallback：没有备用选项，上游 resolver 可能不可用</li>
+<li>CDNS with fallback：当上游 resolver 不可用时，系统使用备用的 resolver 保证请求可以被解析</li>
+</ul>
+</li>
+</ul>
+<h4 id="名称服务器-DNS-Nameserver"><a href="#名称服务器-DNS-Nameserver" class="headerlink" title="名称服务器 DNS Nameserver"></a>名称服务器 DNS Nameserver</h4><p>也叫权威侧&#x2F;Nameserver&#x2F;Server。</p>
+<h5 id="ROOT"><a href="#ROOT" class="headerlink" title="ROOT"></a>ROOT</h5><p>根服务器，返回参考应答（ref-response），这是一种包含<strong>进一步的指向信息</strong>，而不包含所需的 IP 地址的响应。</p>
+<h5 id="TLD"><a href="#TLD" class="headerlink" title="TLD"></a>TLD</h5><p>Top-Level Domain，如 .com, .net 等，返回 ref-response</p>
+<h5 id="SLD"><a href="#SLD" class="headerlink" title="SLD"></a>SLD</h5><p>Second-Level Domain，如 cnn.com 等，（可能）返回权威应答（auth-response），包含<strong>最终 IP 地址</strong>的权威响应。</p>
+<h3 id="资源记录-RR"><a href="#资源记录-RR" class="headerlink" title="资源记录 RR"></a>资源记录 RR</h3><p>RR, resource record，定义为五元组：<br>$$<br>&lt;owner, type, class, TTL, RDATA&gt;<br>$$</p>
+<ul>
+<li>$owner$：（RR）所有者，表明该 RR 属于哪个域名</li>
+<li>$type$：类型，表明该 RR 的类型，常见的如 A（IPv4地址记录）、MX、CNAME（域名别名）、NS（名称服务器）</li>
+<li>$Class$：类别，表明 RR 的上下文，IN 表示 Internet 最常见</li>
+<li>$TTL$：Time to Live，表明 RR 可以在 DNS 缓存中存在的时间，单位为秒</li>
+<li>$RDATA$：数据，类型取决于 $type$</li>
+</ul>
+<h4 id="信任等级"><a href="#信任等级" class="headerlink" title="信任等级"></a>信任等级</h4><p>DNS 软件通过 RR 的信任等级来决定是否返回给用户、保存到内存或更新已有数据。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241111164851486.png" alt="image-20241111164851486"></p>
+<blockquote>
+<p>[Usenix Security ‘24]{CAMP}: Compositional Amplification Attacks against {DNS}</p>
+</blockquote>
+<p>NS, CNAME, DNAME, SOA, A, AAAA</p>
+<h4 id="NS-Name-Server"><a href="#NS-Name-Server" class="headerlink" title="NS(Name Server)"></a>NS(Name Server)</h4><p>NS记录，指定一个域名的权威 DNS 服务器</p>
+<h4 id="CNAME-Canonical-Name"><a href="#CNAME-Canonical-Name" class="headerlink" title="CNAME(Canonical Name)"></a>CNAME(Canonical Name)</h4><p>别名记录，将一个域名（别名）永久重定向到另一个域名（规范名称）。</p>
+<p>一个域名只应该有一个 CNAME[USENIX ‘24 CAMP]。</p>
+<h4 id="DNAME-Delegation-Name"><a href="#DNAME-Delegation-Name" class="headerlink" title="DNAME(Delegation Name)"></a>DNAME(Delegation Name)</h4><p>委托记录，实现域名的递归重定向，将一个域名的整个子域重定向到另一个域名，如 sub.example.com 有一个 DNAME 记录指向 sub.newdomain.com，则任何 sub.example.com 或其子域（如sub.example.com&#x2F;path）的查询会重定向到 sub.newdomain.com或相应的子域（如sub.newdomain.com&#x2F;path）</p>
+<p>一个域名只应该有一个 DNAME[USENIX ‘24 CAMP]。</p>
+<h4 id="RRSIG"><a href="#RRSIG" class="headerlink" title="RRSIG"></a>RRSIG</h4><h3 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h3><h4 id="引用响应-Ref-response"><a href="#引用响应-Ref-response" class="headerlink" title="引用响应 Ref-response"></a>引用响应 Ref-response</h4><p>Ref-response, referral response，由 NS 向 resolver 返回的包含指示下一步向谁发送 query 的响应。</p>
+<h4 id="权威响应-Auth-response"><a href="#权威响应-Auth-response" class="headerlink" title="权威响应 Auth-response"></a>权威响应 Auth-response</h4><p>Auth-response, authoritative response, 由 NS 向 resolver 返回的包含最终结果（IP）的响应，解析结束。</p>
+<h3 id="bailiwick"><a href="#bailiwick" class="headerlink" title="bailiwick"></a>bailiwick</h3><h4 id="in-bailiwick"><a href="#in-bailiwick" class="headerlink" title="in-bailiwick"></a>in-bailiwick</h4><h4 id="out-of-bailiwick"><a href="#out-of-bailiwick" class="headerlink" title="out-of-bailiwick"></a>out-of-bailiwick</h4><h2 id="Part-2-解析流程"><a href="#Part-2-解析流程" class="headerlink" title="Part 2 解析流程"></a>Part 2 解析流程</h2><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241110220821395.png" alt="image-20241110220821395"></p>
+<blockquote>
+<p>[Usenix Security ‘24]{ResolverFuzz}: Automated Discovery of {DNS} Resolver Vulnerabilities with {Query-Response} Fuzzing</p>
+</blockquote>
+<ol>
+<li>Client 发起一个 Client-query $Q$</li>
+<li>Recursive resolver 收到 $Q$，并作为代理，向 ROOT Nameserver 发送 Resolver-query $Q_R$</li>
+<li>ROOT Nameserver 收到 $Q_R$，其根区域文件（root zone）中只包含 TLD 权威服务器的地址，因此向 Recursive resolver 返回一个 ref-response $R_R$，包含 TLD 的 NS 记录以及其 IP 地址</li>
+<li>Recursive resolver 收到 $R_R$ ，向 TLD 发送一个 $Q_R$</li>
+<li>TLD Nameserver 收到 $Q_R$，其 zone file 包含 SLD 的 NS 记录机器 IP 地址，将 $R_R$ 返回</li>
+<li>Recursive resolver 收到 $R_R$，向 SLD 发送一个 $Q_R$</li>
+<li>SLD Nameserver 收到 $Q_R$，其为被查询域名的权威名称服务器，包含具体的 NS 和 对应的 IP 地址，因此返回的是权威响应 $R_A$</li>
+<li>Recursive resolver 收到 $R_A$，包含了域名对应的 IP 地址，递归查询结束，将结果 $R$ 返回给 Client</li>
+</ol>
+<h2 id="Part-3-胶水记录-Glue-Record"><a href="#Part-3-胶水记录-Glue-Record" class="headerlink" title="Part 3 胶水记录 Glue Record"></a>Part 3 胶水记录 Glue Record</h2><p>胶水记录是 DNS zone 中的一种 A 记录，在 RFC 1034 中记录。</p>
+<h2 id="Part-4-攻击"><a href="#Part-4-攻击" class="headerlink" title="Part 4 攻击"></a>Part 4 攻击</h2><h3 id="反射攻击-Reflective-attack"><a href="#反射攻击-Reflective-attack" class="headerlink" title="反射攻击 Reflective attack"></a>反射攻击 Reflective attack</h3><p>攻击者伪造目标 IP 地址，发送信息请求，使得服务器响应请求并将答复发送给目标 IP 地址。</p>
+<h3 id="放大攻击-Amplification-attack"><a href="#放大攻击-Amplification-attack" class="headerlink" title="放大攻击 Amplification attack"></a>放大攻击 Amplification attack</h3><p>利用脆弱服务对攻击者发送的请求做出大量回复，引起比原始请求大得多的响应。</p>
+<h2 id="Part-5-权威侧垂直结构"><a href="#Part-5-权威侧垂直结构" class="headerlink" title="Part 5 权威侧垂直结构"></a>Part 5 权威侧垂直结构</h2><p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241113205257618.png" alt="image-20241113205257618"></p>
+<blockquote>
+<p>[Usenix Security ‘24]Rethinking the Security Threats of Stale DNS Glue Records</p>
+</blockquote>
+<p>域名空间 Domain name space  是树状结构，其中的每个节点 node 或叶子 leaf 都和一个资源集相关联，比其高的区域 zone 是父区域 parent zone，比其低的区域是子区域 child zone。</p>
+<ul>
+<li>最顶层：根区域 root zone <code>.</code></li>
+<li>Top-Level Domains：TLD，如 <code>.com</code>、<code>.net</code></li>
+<li>Second-Level Domains：SLD，如<code>exam.com</code>、<code>foo.com</code></li>
+</ul>
+<p>一个 DNS zone 只包含其子域的信息。如图所示，对于请求②，根返回一个 ref-response③，告知 resolver 关于 <code>.com</code> 的权威 nameserver 的信息；对于请求④，<code>.com</code> nameserver 返回一个 ref-response⑤，告知关于 <code>exam.com</code> 的权威 nameserver 的信息；对于请求⑥，<code>exam.com</code> nameserver 最终返回了 <code>exam.com</code> 的资源记录。</p>
+<h2 id="Part-6-域名授权（委托）-Domain-delegation"><a href="#Part-6-域名授权（委托）-Domain-delegation" class="headerlink" title="Part 6 域名授权（委托） Domain delegation"></a>Part 6 域名授权（委托） Domain delegation</h2><p>域名管理者通过配置委托 NS 记录和胶水记录（如需）来将其域名委托给特定的服务器。根据 NS 记录和域名的关系，共有三种授权类型：in-domain, sibling-domain 和 out-domain。</p>
+<blockquote>
+<p>[Usenix Security ‘24]Rethinking the Security Threats of Stale DNS Glue Records</p>
+</blockquote>
+<h3 id="域内委托-in-domain"><a href="#域内委托-in-domain" class="headerlink" title="域内委托 in-domain"></a>域内委托 in-domain</h3><p>NS 记录配置了包含在被委托域名内的 nameserver，这种情况下<strong>胶水记录是必需的</strong>。</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116213748947.png" alt="image-20241116213748947"></p>
+<p>图中 test.com 的 NS 记录是 ns1.test.com，在 test.com 中，需要胶水记录打破循环。</p>
+<h3 id="兄弟域委托-sibling-domain"><a href="#兄弟域委托-sibling-domain" class="headerlink" title="兄弟域委托 sibling-domain"></a>兄弟域委托 sibling-domain</h3><p>NS 记录没有配置在被委托域名下，但是在另一个同一父域委派的区域中，<strong>胶水记录不是必需的</strong>。</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116213857202.png" alt="image-20241116213857202"></p>
+<p>图中 test.com 的 NS 记录是 ns1.foo.com，不在 test.com 中，而是在 foo.com 中，而 foo.com 的父域是 .com，和 test.com 是同一父域。尽管这种情况下胶水记录不是必需的，resolver 返回的 ref-response 一般也包含该记录。</p>
+<h3 id="域外委托-out-domain"><a href="#域外委托-out-domain" class="headerlink" title="域外委托 out-domain"></a>域外委托 out-domain</h3><p>NS 记录配置的 nameserver 跨越了 TLD，<strong>胶水记录不是必需的</strong>。</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241116214842279.png" alt="image-20241116214842279"></p>
+<p>图中 test.com 的 NS 记录是 ns1.test.net，其 TLD 是 .net，和 test.com 的 TLD .com 不是一个。对于这种情况，resolver 返回的 ref-response 不应该包含胶水记录，应该重新对 ns1.test.net 发起主动解析。</p>
+<h2 id="Part-7-DNS-机制"><a href="#Part-7-DNS-机制" class="headerlink" title="Part 7 DNS 机制"></a>Part 7 DNS 机制</h2><h3 id="超时重传-timeout"><a href="#超时重传-timeout" class="headerlink" title="超时重传 timeout"></a>超时重传 timeout</h3><p>DNS 经典依赖的协议是 UDP，这是一种无状态的协议，即本身缺少送达承诺或者重传机制。DNS 为了提高可用性采取了 timeout 机制，确保 DNS 解析功能。</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241117111203774.png" alt="image-20241117111203774"></p>
+<blockquote>
+<p>[S&amp;P ‘24]DNSBomb: A New Practical-and-Powerful Pulsing DoS Attack Exploiting DNS Queries-and-Responses</p>
+</blockquote>
+<ul>
+<li><p>4-a：timeout 机制包括请求和响应两种。</p>
+</li>
+<li><p>4-b：请求 timeout 会指定一个最长的 resolver 对 DNS server 等待响应的时间，在这之后会认为这个请求超时。当 resolver 向 DNS server 发送一个请求时，会设定一个计时器 timer，BIND 默认为 800ms。当超时后还没有收到响应时，resolver 会使用一个更新的计时器重发请求（可能向不同的 nameserver），或者终止这个请求。</p>
+</li>
+<li><p>4-c：为了避免无限重试，一般会设置重试次数上限，对 Unbound 是11。当超时且没有得到响应时，resolver 会返回一个 ServFail 错误。</p>
+</li>
+</ul>
+<h3 id="DNS-请求聚合"><a href="#DNS-请求聚合" class="headerlink" title="DNS 请求聚合"></a>DNS 请求聚合</h3><p>将多个</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241117152549851.png" alt="image-20241117152549851"></p>
+<blockquote>
+<p>[S&amp;P ‘24]DNSBomb: A New Practical-and-Powerful Pulsing DoS Attack Exploiting DNS Queries-and-Responses</p>
+</blockquote>
+<ul>
+<li>5-a：没有 DNS 聚合机制<ul>
+<li>对每个 client 发来的请求，resolver 都向权威 nameserver 查询</li>
+</ul>
+</li>
+<li>5-b：有 DNS 聚合机制<ul>
+<li>对每个 client 发来的请求，如果域名相同，那么仅向权威 nameserver 查询 1 次</li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-8-IP-分片"><a href="#Part-8-IP-分片" class="headerlink" title="Part 8 IP 分片"></a>Part 8 IP 分片</h2><h2 id="Part-9-Resolver-分类"><a href="#Part-9-Resolver-分类" class="headerlink" title="Part 9 Resolver 分类"></a>Part 9 Resolver 分类</h2><h3 id="开放解析器-open-resolver"><a href="#开放解析器-open-resolver" class="headerlink" title="开放解析器 open resolver"></a>开放解析器 open resolver</h3><p>分布在互联网中，任何地址都可以向其发送 DNS 请求</p>
+<h3 id="服务有限网络的-resolver"><a href="#服务有限网络的-resolver" class="headerlink" title="服务有限网络的 resolver"></a>服务有限网络的 resolver</h3><p>分布在家中或者企业网络中，攻击者可以通过收集大规模网络测量平台的优势点 vantage point 或者使用家用代理网络来向其生成 DNS 请求</p>
+<h3 id="客户端解析器-stub-resolver"><a href="#客户端解析器-stub-resolver" class="headerlink" title="客户端解析器 stub resolver"></a>客户端解析器 stub resolver</h3><p>客户端解析器，不直接查询 DNS 请求，而是将其发给本地的递归解析器执行请求</p>
+<p>攻击者可以通过嵌入攻击者控制域名的在线广告或垃圾邮件来引导客户端发起 DNS 查询请求</p>
+<h2 id="Part-10-DNSSEC"><a href="#Part-10-DNSSEC" class="headerlink" title="Part 10 DNSSEC"></a>Part 10 DNSSEC</h2><blockquote>
+<p>参考资料：<a href="https://zhuanlan.zhihu.com/p/355579999">DNSSEC？禁止套娃！-知乎</a></p>
+</blockquote>
+<p>DNSSEC 保证了 DNS 中的源真实性（origin authenticity）和数据完整性（data integrity）。</p>
+<ul>
+<li>使用私钥对 RRsets 签名以验证权威性和完整性</li>
+<li>签名在 DNS 中发布，即为 RRSIG</li>
+<li>DNSKEY 公钥也发布从而使得 RRSIG 可以被验证</li>
+<li>子区域也使用其私钥对其记录进行签名</li>
+<li>父区域对子区域的 DS 记录签名来证明权威性</li>
+</ul>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202192742295.png" alt="image-20241202192742295"></p>
+<h3 id="权威侧-server"><a href="#权威侧-server" class="headerlink" title="权威侧 server"></a>权威侧 server</h3><ul>
+<li>为 zone 签名</li>
+<li>向请求回答所需的记录</li>
+<li>同事发送和记录相关联的数字签名</li>
+</ul>
+<h3 id="递归侧-resolver-验证"><a href="#递归侧-resolver-验证" class="headerlink" title="递归侧 resolver 验证"></a>递归侧 resolver 验证</h3><ul>
+<li>验证来自 server 的响应</li>
+<li>对无效的结果返回 SERVFAIL</li>
+</ul>
+<h3 id="DNSKEY"><a href="#DNSKEY" class="headerlink" title="DNSKEY"></a>DNSKEY</h3><p>一种资源记录，包含区域的<strong>公钥</strong>，使用公钥密码学来签发和验证 RRsets 。每个区域会使用两种 DNSKEY 来为 DNS 记录签名</p>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202192950254.png" alt="image-20241202192950254"></p>
+<h4 id="ZSK-Zone-Signing-Key"><a href="#ZSK-Zone-Signing-Key" class="headerlink" title="ZSK, Zone-Signing-Key"></a>ZSK, Zone-Signing-Key</h4><ul>
+<li>为区域中的 RRSets 签名</li>
+<li>被 KSK 签名</li>
+<li>使用 flag 256</li>
+</ul>
+<p>ZSK 用于为区域中的（其他，DNSKEY之外的）记录签名，使用 KSK 进行身份验证。</p>
+<h4 id="KSK-Key-Signing-Key"><a href="#KSK-Key-Signing-Key" class="headerlink" title="KSK, Key-Signing-Key"></a>KSK, Key-Signing-Key</h4><ul>
+<li>为 ZSK 签名</li>
+<li>指向父区域</li>
+<li>为 DNSKEY 记录生成 RRSIG</li>
+</ul>
+<h3 id="RRSIG-1"><a href="#RRSIG-1" class="headerlink" title="RRSIG"></a>RRSIG</h3><p>RRSIG, <strong>R</strong>esource <strong>R</strong>ecord <strong>SIG</strong>nature</p>
+<ul>
+<li>RRSIG和记录集合（RRset）相关联，包括 name, class, record type。</li>
+<li>对特定 name 的给定 type 的所有记录的签名<ul>
+<li>如，对 example.org 的 A 记录的签名形成一个 RRSIG：example.org A RRSIG</li>
+</ul>
+</li>
+<li>RRSIG 是由一个和 DNSKEY 中公钥对应的私钥创造的</li>
+</ul>
+<p><img src="/2024/11/10/DNS%E7%AC%94%E8%AE%B0/image-20241202184724494.png" alt="image-20241202184724494"></p>
+<h3 id="DS"><a href="#DS" class="headerlink" title="DS"></a>DS</h3><p>DS, <strong>D</strong>elegation <strong>S</strong>igner</p>
+<p>一种资源记录，本质上是 DNSKEY 的哈希，这些记录被上传到父区域，从而建立了到达根区域的信任链。父区域的 DS 记录和其他记录一样都是使用 RRSIG 验证的。</p>
+<h2 id="Part-11-Bind"><a href="#Part-11-Bind" class="headerlink" title="Part 11 Bind"></a>Part 11 Bind</h2><p>Bind9是流行的DNS软件，可以用作递归解析器或者权威服务器。</p>
+<h3 id="从源码安装特定版本Bind"><a href="#从源码安装特定版本Bind" class="headerlink" title="从源码安装特定版本Bind"></a>从源码安装特定版本Bind</h3><h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><p>使用 <code>./named -c /etc/bind/name.conf -g</code>来调试运行bind</p>
+<h3 id="设置A记录"><a href="#设置A记录" class="headerlink" title="设置A记录"></a>设置A记录</h3><blockquote>
+<p>下述以twitter.com为例</p>
+</blockquote>
+<ol>
+<li><p>确认区域文件位置</p>
+<ul>
+<li>在<code>/etc/bind/named.conf</code>中查看区域文件配置</li>
+<li>（一般）在<code>/etc/bind/named.conf.local</code>中查看区域文件具体位置，一般是<code>/etc/bind/named.conf.zones</code></li>
+<li>在<code>/etc/bind/named.conf.zones</code>中查看域名区域文件位置，一般是<code>/etc/bind/zones/twitter.com.</code></li>
+</ul>
+</li>
+<li><p>编辑区域文件</p>
+<ul>
+<li><p>编辑<code>/etc/bind/zones/twitter.com.</code></p>
+</li>
+<li><p>添加A记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ A 10.161.0.7</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>重启bind9生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/named restart</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>正确的<code>twitter.com</code>区域文件示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$TTL 300</span><br><span class="line">$ORIGIN twitter.com.</span><br><span class="line">@ SOA ns1.twitter.com. admin.twitter.com. 3418864001 900 900 1800 60</span><br><span class="line">;ns1.twitter.com. A 10.161.0.71</span><br><span class="line">@ NS ns1.twitter.com.</span><br><span class="line">ns1 A 10.161.0.71</span><br><span class="line">@ A 10.161.0.71</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Part-12-Unbound"><a href="#Part-12-Unbound" class="headerlink" title="Part 12 Unbound"></a>Part 12 Unbound</h2><p>Unbound一般用作递归解析器，不用做权威服务器。</p>
+<h3 id="设置root-hints"><a href="#设置root-hints" class="headerlink" title="设置root.hints"></a>设置<code>root.hints</code></h3><ol>
+<li><p>确认<code>root.hints</code>位置</p>
+<ul>
+<li>可能在<code>/etc/unbound/root.hints</code></li>
+</ul>
+</li>
+<li><p>确认内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">. 3600 IN NS ns1.</span><br><span class="line">ns1. 3600 IN A 10.171.0.71</span><br><span class="line"></span><br><span class="line">;ns1. A 10.171.0.71</span><br><span class="line">;. NS ns1.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>前两行是正确的，后两行是错误的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="配置关闭DNSSEC"><a href="#配置关闭DNSSEC" class="headerlink" title="配置关闭DNSSEC"></a>配置关闭DNSSEC</h3><p>在<code>/etc/unbound/unbound.conf</code>中添加字段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val-permissive-mode: yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-13-PowerDNS"><a href="#Part-13-PowerDNS" class="headerlink" title="Part 13 PowerDNS"></a>Part 13 PowerDNS</h2><h2 id="Part-14-dig"><a href="#Part-14-dig" class="headerlink" title="Part 14 dig"></a>Part 14 dig</h2><h3 id="dig-trace-example-com"><a href="#dig-trace-example-com" class="headerlink" title="dig +trace example.com"></a><code>dig +trace example.com</code></h3><p>可以看响应路径</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2025/03/11/Spring笔记/" data-toggle="tooltip" data-placement="top" title="Spring笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2024/04/07/TLS笔记/" data-toggle="tooltip" data-placement="top" title="TLS笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sun Nov 10 2024 21:18:47 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#DNS%E7%AC%94%E8%AE%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">DNS笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS-%E8%A7%A3%E6%9E%90%E5%8F%82%E4%B8%8E%E6%96%B9"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">DNS 解析参与方</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF-DNS-Client-stub-resolver"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">客户端 DNS Client(stub resolver)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89%E8%A7%A3%E6%9E%90%E5%99%A8-DNS-Recursive-resolver"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">（递归）解析器 DNS Recursive resolver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%8D%E7%A7%B0%E6%9C%8D%E5%8A%A1%E5%99%A8-DNS-Nameserver"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">名称服务器 DNS Nameserver</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ROOT"><span class="toc-nav-number">1.2.1.3.1.</span> <span class="toc-nav-text">ROOT</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#TLD"><span class="toc-nav-number">1.2.1.3.2.</span> <span class="toc-nav-text">TLD</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#SLD"><span class="toc-nav-number">1.2.1.3.3.</span> <span class="toc-nav-text">SLD</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95-RR"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">资源记录 RR</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%A1%E4%BB%BB%E7%AD%89%E7%BA%A7"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">信任等级</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">示例</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#NS-Name-Server"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">NS(Name Server)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#CNAME-Canonical-Name"><span class="toc-nav-number">1.2.2.4.</span> <span class="toc-nav-text">CNAME(Canonical Name)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#DNAME-Delegation-Name"><span class="toc-nav-number">1.2.2.5.</span> <span class="toc-nav-text">DNAME(Delegation Name)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#RRSIG"><span class="toc-nav-number">1.2.2.6.</span> <span class="toc-nav-text">RRSIG</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%8D%E5%BA%94"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">响应</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%BC%95%E7%94%A8%E5%93%8D%E5%BA%94-Ref-response"><span class="toc-nav-number">1.2.3.1.</span> <span class="toc-nav-text">引用响应 Ref-response</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9D%83%E5%A8%81%E5%93%8D%E5%BA%94-Auth-response"><span class="toc-nav-number">1.2.3.2.</span> <span class="toc-nav-text">权威响应 Auth-response</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#bailiwick"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">bailiwick</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#in-bailiwick"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">in-bailiwick</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#out-of-bailiwick"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">out-of-bailiwick</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 解析流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E8%83%B6%E6%B0%B4%E8%AE%B0%E5%BD%95-Glue-Record"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 胶水记录 Glue Record</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E6%94%BB%E5%87%BB"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 攻击</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%8D%E5%B0%84%E6%94%BB%E5%87%BB-Reflective-attack"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">反射攻击 Reflective attack</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB-Amplification-attack"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">放大攻击 Amplification attack</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-%E6%9D%83%E5%A8%81%E4%BE%A7%E5%9E%82%E7%9B%B4%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 权威侧垂直结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-%E5%9F%9F%E5%90%8D%E6%8E%88%E6%9D%83%EF%BC%88%E5%A7%94%E6%89%98%EF%BC%89-Domain-delegation"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 域名授权（委托） Domain delegation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%86%85%E5%A7%94%E6%89%98-in-domain"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">域内委托 in-domain</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%84%E5%BC%9F%E5%9F%9F%E5%A7%94%E6%89%98-sibling-domain"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">兄弟域委托 sibling-domain</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%9F%E5%A4%96%E5%A7%94%E6%89%98-out-domain"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">域外委托 out-domain</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-DNS-%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 DNS 机制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0-timeout"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">超时重传 timeout</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS-%E8%AF%B7%E6%B1%82%E8%81%9A%E5%90%88"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">DNS 请求聚合</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-IP-%E5%88%86%E7%89%87"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 8 IP 分片</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-9-Resolver-%E5%88%86%E7%B1%BB"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">Part 9 Resolver 分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%80%E6%94%BE%E8%A7%A3%E6%9E%90%E5%99%A8-open-resolver"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">开放解析器 open resolver</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%9C%89%E9%99%90%E7%BD%91%E7%BB%9C%E7%9A%84-resolver"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">服务有限网络的 resolver</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A7%A3%E6%9E%90%E5%99%A8-stub-resolver"><span class="toc-nav-number">1.10.3.</span> <span class="toc-nav-text">客户端解析器 stub resolver</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-10-DNSSEC"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">Part 10 DNSSEC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9D%83%E5%A8%81%E4%BE%A7-server"><span class="toc-nav-number">1.11.1.</span> <span class="toc-nav-text">权威侧 server</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%92%E5%BD%92%E4%BE%A7-resolver-%E9%AA%8C%E8%AF%81"><span class="toc-nav-number">1.11.2.</span> <span class="toc-nav-text">递归侧 resolver 验证</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNSKEY"><span class="toc-nav-number">1.11.3.</span> <span class="toc-nav-text">DNSKEY</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ZSK-Zone-Signing-Key"><span class="toc-nav-number">1.11.3.1.</span> <span class="toc-nav-text">ZSK, Zone-Signing-Key</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#KSK-Key-Signing-Key"><span class="toc-nav-number">1.11.3.2.</span> <span class="toc-nav-text">KSK, Key-Signing-Key</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#RRSIG-1"><span class="toc-nav-number">1.11.4.</span> <span class="toc-nav-text">RRSIG</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DS"><span class="toc-nav-number">1.11.5.</span> <span class="toc-nav-text">DS</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-11-Bind"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">Part 11 Bind</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%ACBind"><span class="toc-nav-number">1.12.1.</span> <span class="toc-nav-text">从源码安装特定版本Bind</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Docker"><span class="toc-nav-number">1.12.1.1.</span> <span class="toc-nav-text">Docker</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AEA%E8%AE%B0%E5%BD%95"><span class="toc-nav-number">1.12.2.</span> <span class="toc-nav-text">设置A记录</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-12-Unbound"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">Part 12 Unbound</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AEroot-hints"><span class="toc-nav-number">1.13.1.</span> <span class="toc-nav-text">设置root.hints</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%85%8D%E7%BD%AE%E5%85%B3%E9%97%ADDNSSEC"><span class="toc-nav-number">1.13.2.</span> <span class="toc-nav-text">配置关闭DNSSEC</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-13-PowerDNS"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">Part 13 PowerDNS</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-14-dig"><span class="toc-nav-number">1.15.</span> <span class="toc-nav-text">Part 14 dig</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dig-trace-example-com"><span class="toc-nav-number">1.15.1.</span> <span class="toc-nav-text">dig +trace example.com</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#DNS" title="DNS">DNS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

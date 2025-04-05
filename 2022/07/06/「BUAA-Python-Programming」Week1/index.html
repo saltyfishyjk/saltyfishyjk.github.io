@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA Python Programming」Week1 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/07/06/「BUAA-Python-Programming」Week1/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
+                            
+                        </div>
+                        <h1>「BUAA Python Programming」Week1</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-07-06
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.4k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-Python-Programming」Week1"><a href="#「BUAA-Python-Programming」Week1" class="headerlink" title="「BUAA Python Programming」Week1"></a>「BUAA Python Programming」Week1</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Python是一门热门的语言，在各个领域有广泛的应用。到目前笔者的学习进度来看，在北航计算机学院的核心专业课CO和OO中，自行搭建评测机的主流应用语言为python，并且</p>
+<p>BUAA Python Programming系列博客是北航计算机学院暑期课Python Programming（全英文）的同步学习笔记博客。</p>
+<p>受限于暑期课的容量，笔者可能结合其他资料与其他课程扩充博客内容。</p>
+<h2 id="Part-1-声明编码方式"><a href="#Part-1-声明编码方式" class="headerlink" title="Part 1 声明编码方式"></a>Part 1 声明编码方式</h2><p>在python中，字符编码是一个复杂的问题，感兴趣的读者可以参考<a href="https://zhuanlan.zhihu.com/p/74613584">Python字符编码问题</a>。</p>
+<p>初入python，我们简化这个问题，直接给出比较常见的编码问题及解决方式：</p>
+<p>python源码也是一个文本文件，当源码包含中文注释的时候，需要指定保存为UTF-8编码，以使得python解释器读取源代码时，可以按照UTF-8读取。可以在<strong>文件开头</strong>写上如下注释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br></pre></td></tr></table></figure>
+
+<p>进一步，对于一般情况，我们都直接在文件开头如此标注以规范代码，避免无谓的bug。</p>
+<h2 id="Part-2-类型转换"><a href="#Part-2-类型转换" class="headerlink" title="Part 2 类型转换"></a>Part 2 类型转换</h2><p>在python中，不需要显示声明变量类型，这对接触类C语言较多的同学可能不太适应。</p>
+<p>当使用<code>input()</code>函数输入时，如果不加以特殊指定，会得到一个字符串，这可能和我们的需求不吻合。面对类似这样的情况，我一般会使用强制类型转换来保证数据的合法性。</p>
+<p>举例而言，输入一个整数，可以用如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br></pre></td></tr></table></figure>
+
+<p>python中的强制类型转换是*类型（变量）*的形式，如<code>int(val)</code>会将<code>val</code>转为<code>int</code>类型。</p>
+<h2 id="Part-3-print"><a href="#Part-3-print" class="headerlink" title="Part 3 print()"></a>Part 3 <code>print()</code></h2><p><code>print()</code>函数是重要的输出（打印）函数，了解其使用十分重要。对于该函数较全面的入门级介绍，可以参考<a href="https://www.runoob.com/w3cnote/python3-print-func-b.html">菜鸟教程-Python3 print 函数用法总结</a>。在这里，我们总结一些比较常用的输出需求与对应解决方案：</p>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>在C中，<code>printf()</code>函数提供的格式化输出深入人心，python也支持类似的方案。</p>
+<h4 id="保留两位小数"><a href="#保留两位小数" class="headerlink" title="保留两位小数"></a>保留两位小数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">10.246</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;num : %.2f&quot;</span> %(num))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num : 10.25</span><br></pre></td></tr></table></figure>
+
+<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><table>
+<thead>
+<tr>
+<th>格式化操作符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-</code></td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>用<code>0</code>填充而非默认的空格</td>
+</tr>
+</tbody></table>
+<h3 id="不换行输出"><a href="#不换行输出" class="headerlink" title="不换行输出"></a>不换行输出</h3><p>在不限制的情况下，<code>print()</code>会在输出结束后加一个换行。当我们不希望输出结束后换行的时候，可以用如下方案：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">70</span></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;BUAA&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>, end = <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(num, end = <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUAA70</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-4-遍历"><a href="#Part-4-遍历" class="headerlink" title="Part 4 遍历"></a>Part 4 遍历</h2><p>在python中，循环遍历在整数区间内的遍历写法和C有较大不同。以C中<code>for (i = 0; i &lt; n, i++)</code>为例，在python中写法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n)</span><br></pre></td></tr></table></figure>
+
+<p>这其实是利用了<code>range()</code>这一重要函数，该函数也可以通过参数支持反向遍历、步长设置等，具体可以参考<a href="https://www.runoob.com/python/python-func-range.html">菜鸟教程-Python range() 函数用法</a>。</p>
+<h2 id="Part-5-一行输入多个变量"><a href="#Part-5-一行输入多个变量" class="headerlink" title="Part 5 一行输入多个变量"></a>Part 5 一行输入多个变量</h2><p>python中的<code>input()</code>函数是重要的标准输入函数，其返回一个类型为<code>string</code>的数据。</p>
+<p>一般地，可以用<code>input(str)</code>首先输出<code>str</code>提示希望获取的输入，接着获取一个输入数据。</p>
+<p>但是，当我们需要输入以某种形式分隔的多个变量的时候，一个好的方法是采用<code>split</code>作为参数。举例而言，我们要输入一行两个用空格分隔的整数的时候，可以采用的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>(),split())</span><br></pre></td></tr></table></figure>
+
+<p>若是一行两个用逗号分隔的整数，则可以用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split(<span class="string">&#x27;,&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-6-Numpy库"><a href="#Part-6-Numpy库" class="headerlink" title="Part 6 Numpy库"></a>Part 6 Numpy库</h2><p>Numpy是一个重要的数学函数库，关于其更细致的介绍可以参考<a href="https://www.runoob.com/numpy/numpy-tutorial.html">菜鸟教程-NumPy 教程</a>。</p>
+<p>在作业中，涉及了矩阵的行列式计算，可以用如下库函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ans = np.linalg.det(D)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-7-split-函数"><a href="#Part-7-split-函数" class="headerlink" title="Part 7 split()函数"></a>Part 7 <code>split()</code>函数</h2><p>在<strong>Part 5</strong>中，介绍了输入一行有两个整数以空格分隔的情况。对于更一般的情况，如一行有一个浮点数和一个字符串以空格分隔，可以如下操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = <span class="built_in">input</span>().split(<span class="string">&quot; &quot;</span>)</span><br><span class="line">a = <span class="built_in">float</span>(arr[<span class="number">0</span>])</span><br><span class="line">b = arr[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>如此，<code>arr</code>是用空格分隔<code>input()</code>得到的字符串列表，<code>a</code>为将第0个字符串转为浮点数，<code>b</code>为第1个字符串。</p>
+<h2 id="Part-8-列表"><a href="#Part-8-列表" class="headerlink" title="Part 8 列表"></a>Part 8 列表</h2><p>列表(List)是python中最基本的数据结构，类似C和Java中的数组，但有一些不同点，详细的列表介绍可以参考<a href="https://www.runoob.com/python/python-lists.html">Python 列表(List) | 菜鸟教程 (runoob.com)</a>。这里介绍一些常用的列表性质和函数。</p>
+<h3 id="新建列表"><a href="#新建列表" class="headerlink" title="新建列表"></a>新建列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = []</span><br></pre></td></tr></table></figure>
+
+<h3 id="给列表增加元素"><a href="#给列表增加元素" class="headerlink" title="给列表增加元素"></a>给列表增加元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">arr.append(num)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除特定元素"><a href="#删除特定元素" class="headerlink" title="删除特定元素"></a>删除特定元素</h3><ol>
+<li><p><code>remove()</code><br>remove() 函数用于移除列表中某个值的第一个匹配项。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>.remove(obj)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="遍历列表"><a href="#遍历列表" class="headerlink" title="遍历列表"></a>遍历列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> arr:</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过下标（偏移量）访问列表元素"><a href="#通过下标（偏移量）访问列表元素" class="headerlink" title="通过下标（偏移量）访问列表元素"></a>通过下标（偏移量）访问列表元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(arr[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrSorted = <span class="built_in">sorted</span>(arr)</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，<code>sorted</code>没有改变原有列表的内容，而是返回了一个新的排列后的列表。这也体现了python作为面向对象语言的特点。</p>
+<h3 id="查找元素在列表中的位置"><a href="#查找元素在列表中的位置" class="headerlink" title="查找元素在列表中的位置"></a>查找元素在列表中的位置</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="built_in">list</span>.index(value)</span><br></pre></td></tr></table></figure>
+
+
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/07/11/「BUAA-Python-Programming」Week2/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Week2">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/06/29/「BUAA-OO-Unit-4-HW16」第四单元总结与课程回顾/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 4 HW16」第四单元总结与课程回顾">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Wed Jul 06 2022 11:19:52 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-Python-Programming%E3%80%8DWeek1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Week1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%A3%B0%E6%98%8E%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 声明编码方式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-print"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 print()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">格式化输出</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%9D%E7%95%99%E4%B8%A4%E4%BD%8D%E5%B0%8F%E6%95%B0"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">保留两位小数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E9%BD%90"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">对齐</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E6%8D%A2%E8%A1%8C%E8%BE%93%E5%87%BA"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">不换行输出</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E9%81%8D%E5%8E%86"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 遍历</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-%E4%B8%80%E8%A1%8C%E8%BE%93%E5%85%A5%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 一行输入多个变量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-Numpy%E5%BA%93"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 Numpy库</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-split-%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 split()函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 8 列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%B0%E5%BB%BA%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">新建列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%99%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">给列表增加元素</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E7%89%B9%E5%AE%9A%E5%85%83%E7%B4%A0"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">删除特定元素</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%81%8D%E5%8E%86%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.9.4.</span> <span class="toc-nav-text">遍历列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87%E4%B8%8B%E6%A0%87%EF%BC%88%E5%81%8F%E7%A7%BB%E9%87%8F%EF%BC%89%E8%AE%BF%E9%97%AE%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0"><span class="toc-nav-number">1.9.5.</span> <span class="toc-nav-text">通过下标（偏移量）访问列表元素</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">1.9.6.</span> <span class="toc-nav-text">排序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E5%9C%A8%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">1.9.7.</span> <span class="toc-nav-text">查找元素在列表中的位置</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

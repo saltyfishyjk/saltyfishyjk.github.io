@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/05/「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                            
+                        </div>
+                        <h1>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-03-05
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.4k</span> and
+                                Reading Time <span class="post-count">4</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享"><a href="#「BUAA-OO-Unit-1-HW1」-【面向对象的】入手思路及架构分享" class="headerlink" title="「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享"></a>「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</h1><hr>
+<h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><hr>
+<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>实现本次作业过程中，笔者和助教及同学们讨论多次，对架构进行多次修改和重构，最终确定了当前设计，在此和大家分享<strong>作业入手思路</strong>及<strong>架构设计</strong>。</p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于本篇博客，您可以大致了解笔者从零开始对题意进行理解及架构设计的心路历程。</p>
+<h2 id="Part-1-作业入手思路"><a href="#Part-1-作业入手思路" class="headerlink" title="Part 1 作业入手思路"></a>Part 1 作业入手思路</h2><h3 id="面向对象与面向过程的思想"><a href="#面向对象与面向过程的思想" class="headerlink" title="面向对象与面向过程的思想"></a>面向对象与面向过程的思想</h3><p>经过假期Pre2和Pre3项目的迭代开发，我们已经初步接近了面向对象设计的一些特点。但是面向对象仍是较新鲜和陌生的东西，遇到第一次作业这种并不算轻松的任务很可能会下意识想回到面向对象的思路。然而，这并不是课程的训练方向，也大概率<em>并不适合</em>后续的迭代开发，因此，下面着重介绍如何以**（可能）较为面向对象**的思路理解和实现题目。</p>
+<h3 id="Training-advance"><a href="#Training-advance" class="headerlink" title="Training-advance"></a>Training-advance</h3><p>课程组提供的training对本次作业有相当的启示，事实上笔者的解析框架也基本借鉴自training，以下分析training的设计思路及架构。</p>
+<h4 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h4><h5 id="数据存储架构"><a href="#数据存储架构" class="headerlink" title="数据存储架构"></a>数据存储架构</h5><p><code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>，分别为表达式、项和因子，这也和题目的形式化表述相符合。其中，<code>Factor</code>接口被<code>Number</code>和<code>Expr</code>实现，即这两者都可以成为因子。</p>
+<h5 id="解析流程"><a href="#解析流程" class="headerlink" title="解析流程"></a>解析流程</h5><p><code>Parser</code>（语法分析）调用<code>Lexer</code>（词法分析），获取下一个<strong>词</strong>，在training中主要是<code>(</code>,<code>)</code>,<code>+</code>,<code>*</code>,<code>Number</code>。<code>Parser</code>以标点符号<code>+</code>和<code>*</code>区分当前层次。</p>
+<p>以<code>(1+2)*8+9</code>为例：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" class="" title="p2">
+
+<h3 id="HW1作业实现思路"><a href="#HW1作业实现思路" class="headerlink" title="HW1作业实现思路"></a>HW1作业实现思路</h3><h4 id="数据存储架构-1"><a href="#数据存储架构-1" class="headerlink" title="数据存储架构"></a>数据存储架构</h4><p>首先给出笔者的UML类图：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161041674.png" class="" title="p2">
+
+<p>面向对象的核心之一是识别类，并在类之间建立层次式协作关系（援引自Pre 2 Task 1 guidebook）。在本此作业中，<strong>识别类并设计合适的接口</strong>可以视作工作的核心。</p>
+<p>在上面介绍的<strong>training</strong>架构和思路中，<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>的架构一方面符合形式化语言描述的一个合法表达式拥有的结构，另一方面由于<code>Factor</code>以接口形式呈现，其具有良好的可拓展性，对于新的因子如<code>a*x^b</code>可以较好地支持。同时，<code>Factor</code>还内含了递归的支持，例如：<code>Expr</code>对象可以在有限次中展开至若干个<code>Number</code>对象。</p>
+<p>基于以上分析，以下介绍笔者的数据存储架构：</p>
+<img src="/2022/03/05/%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/image-20220305161310042.png" class="" title="p2">
+
+<p>类似上述training部分的树形结构，同样采用<code>Expr</code>-&gt;<code>Term</code>-&gt;<code>Factor</code>结构，其中<code>Factor</code>接口被<code>Unit</code>和<code>Expr</code>实现。<code>Unit</code>储存了一个形如$a\times x^b$的数据，并且被视作<strong>基元</strong>。</p>
+<p>上述架构可以实现将原始字符串解析为一个完整的树状结构，同时，对每个结点来说，其存储了本节点所拥有的所有信息，并且对外提供一个<strong>extend()<strong>服务接口，使得外部节点可以通过该服务获取该节点的</strong>基元信息</strong>。</p>
+<p>因此，只需要搭建好<code>Expr</code>,<code>Term</code>,<code>Factor</code>三个类，设计这三个类的对外服务<code>extend()</code>方法，并且在<code>Parser</code>中以合适的方法调用即可。</p>
+<h2 id="Part-2-架构设计"><a href="#Part-2-架构设计" class="headerlink" title="Part 2 架构设计"></a>Part 2 架构设计</h2><p>Part1中已经较为详细地描述和定义了数据信息的存储，以下介绍架构设计。</p>
+<h4 id="Expr"><a href="#Expr" class="headerlink" title="Expr"></a><code>Expr</code></h4><h4 id="数据成员"><a href="#数据成员" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li>以<code>HashSet</code>形式存储terms儿子结点们。</li>
+<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其terms儿子们<code>extend()</code>服务获得的基元们。</li>
+<li>用变量<code>index</code>存储该表达式的指数，以应对如<code>(1+x)**2</code>的情况</li>
+</ol>
+<h4 id="方法成员"><a href="#方法成员" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，代表自己作为<code>Factor</code>时内部储存的结点信息。</li>
+<li>实现<code>MULT()</code>方法，以应对当本对象<code>index</code>值不为1时，需要进行的乘法。</li>
+<li>实现<code>toString()</code>方法，根据自己的基元<code>HashMap</code>输出作业要求的答案。</li>
+</ol>
+<h3 id="Term"><a href="#Term" class="headerlink" title="Term"></a><code>Term</code></h3><h4 id="数据成员-1"><a href="#数据成员-1" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li>以<code>HashSet</code>形式存储factors儿子结点们。</li>
+<li>以<code>HashMap&lt;BigInteger, Unit&gt;</code>形式存储通过调用其factors儿子们<code>extend()</code>服务获得的基元们。</li>
+<li>用变量<code>pos</code>表示该项外面是否有负号，以应对如<code>x*-3</code>的情况。</li>
+</ol>
+<h4 id="方法成员-1"><a href="#方法成员-1" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，并返回给调用者一个<code>HashMap&lt;BigInteger, Unit&gt;</code>，为自己内部储存的结点信息。</li>
+<li>由于项的factor之间的关系是乘法（在training中有介绍），因此，也需要在这里实现<code>MULT</code>方法，和<code>Expr</code>类同。</li>
+</ol>
+<h3 id="Factor"><a href="#Factor" class="headerlink" title="Factor"></a><code>Factor</code></h3><p>接口，内部为空，仅表示实现该接口的类具有因子属性。</p>
+<h3 id="Unit"><a href="#Unit" class="headerlink" title="Unit"></a><code>Unit</code></h3><h4 id="数据成员-2"><a href="#数据成员-2" class="headerlink" title="数据成员"></a>数据成员</h4><ol>
+<li><code>constent</code>，表示$a\times x^b$中的$a$。</li>
+<li><code>index</code>，，表示$a\times x^b$中的$b$。</li>
+</ol>
+<h4 id="方法成员-2"><a href="#方法成员-2" class="headerlink" title="方法成员"></a>方法成员</h4><ol>
+<li>实现自己的<code>extend()</code>方法，事实上返回一个只有自己的<code>HashMap</code>。</li>
+</ol>
+<h4 id="Parser和Lexer"><a href="#Parser和Lexer" class="headerlink" title="Parser和Lexer"></a><code>Parser</code>和<code>Lexer</code></h4><p>基于training的架构，需要修改部分内容以适应本架构，此处不再展开。</p>
+<h2 id="Part-3-后记"><a href="#Part-3-后记" class="headerlink" title="Part 3 后记"></a>Part 3 后记</h2><p>本次作业能够完成，本架构可以得以实现并最终呈现在这里，离不开老师、助教和同学们的无私帮助，在此表示深深的感谢。</p>
+<p>本架构仍十分稚嫩而不成熟，十分欢迎各位在此讨论和批评。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/03/07/「BUAA-OO-Unit-1-HW1」面向测试小白的简易评测机/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 1 HW1」面向测试小白的简易评测机">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/02/26/「BUAA-OO-Pre」-Pre-2总结回顾概览/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Pre」 Pre 2总结回顾概览">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sat Mar 05 2022 16:40:52 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-OO-Unit-1-HW1%E3%80%8D-%E3%80%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E3%80%91%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 1 HW1」 【面向对象的】入手思路及架构分享</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%86%99%E4%BD%9C%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E4%BD%9C%E4%B8%9A%E5%85%A5%E6%89%8B%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 作业入手思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%9A%84%E6%80%9D%E6%83%B3"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">面向对象与面向过程的思想</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Training-advance"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">Training-advance</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">核心思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9E%B6%E6%9E%84"><span class="toc-nav-number">1.2.2.1.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%A7%A3%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.2.2.1.2.</span> <span class="toc-nav-text">解析流程</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HW1%E4%BD%9C%E4%B8%9A%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">HW1作业实现思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9E%B6%E6%9E%84-1"><span class="toc-nav-number">1.2.3.1.</span> <span class="toc-nav-text">数据存储架构</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 架构设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Expr"><span class="toc-nav-number">1.3.0.1.</span> <span class="toc-nav-text">Expr</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98"><span class="toc-nav-number">1.3.0.2.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E6%88%90%E5%91%98"><span class="toc-nav-number">1.3.0.3.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Term"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Term</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98-1"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E6%88%90%E5%91%98-1"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">方法成员</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Factor"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">Factor</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Unit"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">Unit</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98-2"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">数据成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E6%88%90%E5%91%98-2"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">方法成员</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Parser%E5%92%8CLexer"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">Parser和Lexer</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%90%8E%E8%AE%B0"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 后记</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

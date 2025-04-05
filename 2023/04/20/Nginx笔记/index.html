@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Nginx笔记 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/04/20/Nginx笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Server" title="Server">Server</a>
+                            
+                        </div>
+                        <h1>Nginx笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-04-20
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.1k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="Nginx笔记"><a href="#Nginx笔记" class="headerlink" title="Nginx笔记"></a>Nginx笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.runoob.com/w3cnote/nginx-setup-intro.html">Nginx 配置详解 - runoob</a></li>
+<li><a href="https://www.hxstrive.com/subject/nginx/750.htm">Nginx 教程 - 人人编程网</a></li>
+</ul>
+<p>Nginx音标为<code>/&#39;endʒɪneks/</code>，读音为<code>engine x</code>。</p>
+<p>Nginx适合承担HTTP服务器和反向代理服务器的工作，也可以提供方便的静态资源配置与访问。</p>
+<p>同时，Docker提供了不错的对Nginx的封装，很适合将其加入CI&#x2F;CD工作流。</p>
+<h2 id="Part-1-安装"><a href="#Part-1-安装" class="headerlink" title="Part 1 安装"></a>Part 1 安装</h2><blockquote>
+<p>环境：Ubuntu 20.04</p>
+</blockquote>
+<p>Ubuntu下安装Nginx的难度不大，没有什么坑。</p>
+<ul>
+<li><code>sudo apt-get install nginx</code></li>
+</ul>
+<p><em>TODO:忘记记录怎么启动起来的nginx服务了，好像执行过<code>sudo nginx -t</code>和<code>sudo nginx -s reload</code></em></p>
+<h2 id="Part-2-配置文件nginx-conf结构"><a href="#Part-2-配置文件nginx-conf结构" class="headerlink" title="Part 2 配置文件nginx.conf结构"></a>Part 2 配置文件<code>nginx.conf</code>结构</h2><p>参考资料：</p>
+<ul>
+<li><p><a href="http://nginx.org/en/docs/">Nginx官方英文文档</a>：纯英文，是最准确的资料</p>
+</li>
+<li><p><a href="https://docshome.gitbook.io/">Nginx中文文档（GitBook , 私人笔记）</a>：一个个人GitBook笔记网站，是对上面官方文档的翻译，但是<strong>注意，并非所有翻译都很恰当，应当两者结合阅读</strong>。</p>
+</li>
+<li><p><a href="https://www.runoob.com/w3cnote/nginx-setup-intro.html">Nginx配置文件 - runoob</a></p>
+</li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Nginx的命令行参数不多，配置文件<code>nginx.conf</code>是Nginx服务的核心，这决定了Nginx和其模块的工作方式。</p>
+<p>默认情况下，<code>nginx.conf</code>放在<code>/usr/local/nginx/conf</code>，<code>/etc/nginx</code> 或 <code>/usr/local/etc/nginx</code> 中。因此，当利用Docker构建CI&#x2F;CD时，需要注意将仓库中的<code>nginx.conf</code>文件移动到容器的合适位置。具体地，笔者曾在Dockerfile中用过<code>COPY nginx.conf /etc/nginx/nginx.conf</code>。</p>
+<blockquote>
+<p>VSCode提供了<code>NGINX Conf</code>插件，适合用来高亮文本和格式化文档。</p>
+</blockquote>
+<h3 id="nginx组成"><a href="#nginx组成" class="headerlink" title="nginx组成"></a>nginx组成</h3><p>nginx由模块（module）组成，模块由配置文件（nginx.conf）中的指令（directives）控制。指令又分为简单指令（simple directive）和块指令（block directive）。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li><p>简单指令</p>
+<ul>
+<li>结构：名称和参数组成，由空格分隔，以<code>;</code>结尾</li>
+<li>形如：<code>[名称] [参数];</code></li>
+</ul>
+</li>
+<li><p>块指令</p>
+<ul>
+<li>结构：和简单指令相同，但不以<code>;</code>结尾，而是以一组由<code>&#123;&#125;</code>包围的附加指令结尾。</li>
+<li>形如：<code>[名称] [参数] &#123;若干附加指令&#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>如果块指令的<code>&#123;&#125;</code>中可以包含其他指令，那么它被称为上下文（context）。</p>
+<h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><p>上下文包括：</p>
+<ul>
+<li><code>events</code></li>
+<li><code>http</code></li>
+<li><code>server</code></li>
+<li><code>location</code></li>
+</ul>
+<p>配置文件中在所有上下文之外的指令被认为是在主（main）上下文中。比如，<code>events</code>和<code>http</code>在<code>main</code>上下文中；<code>server</code>在<code>http</code>上下文中；<code>location</code>在<code>server</code>上下文中。因此可以形如：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span> nginx; <span class="comment"># 简单指令，在main中</span></span><br><span class="line"><span class="attribute">worker_processes</span> <span class="number">1</span>; <span class="comment"># 简单指令，在main中</span></span><br><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>; <span class="comment"># 简单指令，在events中</span></span><br><span class="line">&#125; <span class="comment"># 块指令，在main中</span></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>; <span class="comment"># 简单指令，在server中</span></span><br><span class="line">        <span class="section">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span> /app; <span class="comment"># 简单指令，在location中</span></span><br><span class="line">        &#125; <span class="comment"># 块指令，在server中</span></span><br><span class="line">    &#125; <span class="comment"># 块指令，在http中</span></span><br><span class="line">&#125; <span class="comment"># 块指令，在main中</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-3-main-context"><a href="#Part-3-main-context" class="headerlink" title="Part 3 main context"></a>Part 3 <code>main</code> context</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://blog.csdn.net/Leon_Jinhai_Sun/article/details/121044983">Nginx全局块的user指令</a></li>
+</ul>
+<p><code>main</code> 上下文是默认上下文，不显示声明，任何不隶属于任意其他上下文的指令均被认为是在<code>main</code>上下文中。</p>
+<p>e.g.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">user</span> nginx; <span class="comment"># 配置用户或用户组，格式为user user [group]默认为user nobody nobody，用于精确管理权限</span></span><br><span class="line"><span class="attribute">worker_processes</span> <span class="number">1</span>; <span class="comment"># 允许生成的进程数，默认为1</span></span><br><span class="line"><span class="attribute">pid</span> /var/run/nginx.pid <span class="comment"># 指定nginx进程运行文件的存放地址</span></span><br><span class="line">error_log /var/log/nginx/<span class="literal">error</span>.log <span class="literal">warn</span>; <span class="comment"># 指定日志路径和级别，本设置可以放入main, http, server；级别包括debug|info|notice|warn|error|crit|alert|emerg</span></span><br><span class="line"><span class="section">events</span> &#123; <span class="comment"># events块，在后续介绍</span></span><br><span class="line">    <span class="comment"># codes</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="section">http</span> &#123; <span class="comment"># http块，在后续介绍</span></span><br><span class="line">    <span class="comment"># codes</span></span><br><span class="line">    <span class="section">server</span> &#123; <span class="comment"># server块，在后续介绍</span></span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">        <span class="section">location</span> &#123; <span class="comment"># location块，在后续介绍</span></span><br><span class="line">            <span class="comment"># codes</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="section">location</span> &#123;</span><br><span class="line">            <span class="comment"># codes</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-4-events-context"><a href="#Part-4-events-context" class="headerlink" title="Part 4 events context"></a>Part 4 <code>events</code> context</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.hxstrive.com/subject/nginx/805.htm">events 配置块介绍 - 人人编程网</a></li>
+</ul>
+<p><code>events</code>模块包含了Nginx中处理连接的设置。</p>
+<p>e.g.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">events</span> &#123;</span><br><span class="line">    <span class="attribute">accept_mutex</span> <span class="literal">on</span>; <span class="comment">#设置网路连接序列化，防止惊群现象发生，默认为on</span></span><br><span class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>; <span class="comment">#设置一个进程是否同时接受多个网络连接，默认为off</span></span><br><span class="line">    <span class="comment">#use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span></span><br><span class="line">    <span class="attribute">worker_connections</span> <span class="number">1024</span>; <span class="comment"># 最大连接数，默认为512</span></span><br><span class="line">    <span class="attribute">client_header_buffer_size</span> <span class="number">4k</span>;</span><br><span class="line">    <span class="attribute">open_file_cache</span> max=<span class="number">2000</span> inactive=<span class="number">60s</span>;</span><br><span class="line">    <span class="attribute">open_file_cache_valid</span> <span class="number">60s</span>;</span><br><span class="line">    <span class="attribute">open_file_cache_min_uses</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常用设置是<code>worker_connections</code>，其余配置没有特殊需求可以保持默认，即，不添加描述字段。</p>
+<h2 id="Part-5-http-context"><a href="#Part-5-http-context" class="headerlink" title="Part 5 http context"></a>Part 5 <code>http</code> context</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.hxstrive.com/subject/nginx/806.htm">http配置块介绍 - 人人编程网</a></li>
+</ul>
+<p>e.g.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/mime.types; <span class="comment"># 文件扩展名与文件类型映射表</span></span><br><span class="line">    <span class="attribute">default_type</span> application/octet-stream; <span class="comment"># 默认文件类型，默认为text/plain</span></span><br><span class="line">    <span class="attribute">log_format</span> main <span class="string">&#x27;<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] &quot;<span class="variable">$request</span>&quot; &#x27;</span></span><br><span class="line">    <span class="string">&#x27;<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> &quot;<span class="variable">$http_referer</span>&quot; &#x27;</span></span><br><span class="line">    <span class="string">&#x27;&quot;<span class="variable">$http_user_agent</span>&quot; &quot;<span class="variable">$http_x_forwarded_for</span>&quot;&#x27;</span>;</span><br><span class="line">    <span class="attribute">access_log</span> /var/log/nginx/access.log main;</span><br><span class="line">    <span class="attribute">sendfile</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">keepalive_timeout</span> <span class="number">65</span>;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">        <span class="section">location</span> &#123;</span><br><span class="line">            <span class="comment"># codes</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="section">location</span> &#123;</span><br><span class="line">            <span class="comment"># codes</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a><code>include</code></h3><p>将文件扩展名与文件类型映射表包含或另一个文件到当前配置中。<code>mine.types</code>形如：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">types</span> &#123;</span><br><span class="line">    text/<span class="attribute">html</span>                                        html htm shtml;</span><br><span class="line">    text/<span class="attribute">css</span>                                         css;</span><br><span class="line">    text/<span class="attribute">xml</span>                                         xml;</span><br><span class="line">    image/<span class="attribute">gif</span>                                        gif;</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用<code>include</code>引入其他的<code>server</code>配置文件。</p>
+<h3 id="default-type"><a href="#default-type" class="headerlink" title="default_type"></a><code>default_type</code></h3><p>设置默认处理方式。</p>
+<h3 id="keepalive-timeout"><a href="#keepalive-timeout" class="headerlink" title="keepalive_timeout"></a><code>keepalive_timeout</code></h3><p>设置web服务器处理完一个请求后保持这个TCP连接的时间，Nginx默认为75秒。</p>
+<h2 id="Part-6-server"><a href="#Part-6-server" class="headerlink" title="Part 6 server"></a>Part 6 <code>server</code></h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.hxstrive.com/subject/nginx/807.htm">server 配置块介绍 - 人人编程网</a></li>
+</ul>
+<p>在Nginx中，一个server配置块代表了一个虚拟机主机。</p>
+<p>虚拟主机使用的是特殊的软硬件技术，它把一台运行在因特网上的服务器主机分成多台 “虚拟” 的主机，每台虚拟主机都可以是一个独立的网站，可以具有独立的域名，具有完整的 Internet 服务器功能（WWW、FTP、Email 等等），同一台主机上的虚拟主机之间是完全独立的。</p>
+<p>从网站访问者来看，每一台虚拟主机和一台独立主机完全一样。</p>
+<p>利用虚拟主机，不用为每个要运行的网站提供一台单独的 Nginx 服务器或单独运行一组 Nginx 进程。虚拟主机提供了在同一台服务器、同一组 Nginx 进程上运行多个网站的功能。</p>
+<p>e.g.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    <span class="attribute">access_log</span>  logs/host.access.log  main;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">    <span class="section">location</span> = /50x.html &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /prod-api &#123;</span><br><span class="line">        <span class="comment"># codes</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="listen"><a href="#listen" class="headerlink" title="listen"></a><code>listen</code></h3><p>Nginx通过<code>listen</code>指令指定的值监听网络请求，可以是IP协议，也可以是UNIX域套接字。若不设置<code>listen</code>指令，Nginx以超级用户运行时监听80端口，非超级用户运行时监听8000端口。</p>
+<p><code>listen</code>指令的值提供了丰富的参数，具体可以参考<a href="https://www.hxstrive.com/subject/nginx/807.htm">server 配置块介绍 - 人人编程网</a>。</p>
+<h3 id="server-name"><a href="#server-name" class="headerlink" title="server_name"></a><code>server_name</code></h3><p><code>server_name</code>指令主要用于配置基于名称的虚拟主机，在接收到客户请求后的匹配顺序为准确的<code>server_name</code>匹配 &gt; 以<code>*</code>通配符开始发字符串 &gt; 以<code>*</code>通配符结束的字符串 &gt; 正则表达式，具体可以参考<a href="https://www.hxstrive.com/subject/nginx/807.htm">server 配置块介绍 - 人人编程网</a>。</p>
+<h3 id="access-log"><a href="#access-log" class="headerlink" title="access_log"></a><code>access_log</code></h3><p>用于指定日志文件的存放路径和格式。</p>
+<h2 id="Part-7-location"><a href="#Part-7-location" class="headerlink" title="Part 7 location"></a>Part 7 <code>location</code></h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.hxstrive.com/subject/nginx/808.htm">location 配置块介绍 - 人人编程网</a></li>
+</ul>
+<p><code>location</code>配置块用来配置匹配的不同请求URL的处理方式。<code>location</code>块只能在<code>server</code>块中配置。</p>
+<p>e.g.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">root</span> /app;</span><br><span class="line">        <span class="attribute">index</span> index.html;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">    <span class="section">location</span> = /50x.html &#123;</span><br><span class="line">        <span class="attribute">root</span> /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="section">location</span> /prod-api &#123;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/prod-api/(.*)$</span> /<span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://101.43.219.110:8080/; <span class="comment">#后台接口地址</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$remote_addr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="location"><a href="#location" class="headerlink" title="location"></a><code>location</code></h3><ul>
+<li><p>格式</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> [ = | <span class="regexp">~ |</span> <span class="regexp">~* |</span><span class="regexp"> ^~</span> ] /URL &#123;</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数说明</p>
+<ul>
+<li>空：表示前缀匹配，代表跟请求中的URL从头开始匹配。</li>
+<li><code>=</code>：用于标准URL前，要求精确匹配，成功则立即处理，Nginx停止搜索其他匹配。</li>
+<li><code>^~</code>：用于标准URL前，要求一旦匹配就会立即处理，不在匹配其他正则URL，一般用来匹配目录</li>
+<li><code>~</code>：用于正则URL前，表示URL包含正则表达式，区分大小写</li>
+<li><code>~*</code>：用于正则URL前，表示URL包含正则表达式，不区分大小写</li>
+</ul>
+</li>
+</ul>
+<h3 id="命名location"><a href="#命名location" class="headerlink" title="命名location"></a>命名<code>location</code></h3><p>暂时没有用过，可以参考<a href="https://www.hxstrive.com/subject/nginx/808.htm">location 配置块介绍 - 人人编程网</a></p>
+<h3 id="URL匹配顺序"><a href="#URL匹配顺序" class="headerlink" title="URL匹配顺序"></a>URL匹配顺序</h3><p>可以参考<a href="https://www.hxstrive.com/subject/nginx/808.htm">location 配置块介绍 - 人人编程网</a></p>
+<h3 id="proxy-pass"><a href="#proxy-pass" class="headerlink" title="proxy_pass"></a><code>proxy_pass</code></h3><p>用来设置代理服务器的映射地址，可以使用http或https协议，地址可以使用域名、IP和可选端口。</p>
+<h2 id="Part-8-图床与静态资源"><a href="#Part-8-图床与静态资源" class="headerlink" title="Part 8 图床与静态资源"></a>Part 8 图床与静态资源</h2><h2 id="Part-9-Vue项目打包与部署"><a href="#Part-9-Vue项目打包与部署" class="headerlink" title="Part 9 Vue项目打包与部署"></a>Part 9 Vue项目打包与部署</h2><h2 id="Part-10-Docker部署"><a href="#Part-10-Docker部署" class="headerlink" title="Part 10 Docker部署"></a>Part 10 Docker部署</h2>
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/04/20/GitHub-Actions笔记/" data-toggle="tooltip" data-placement="top" title="GitHub Actions笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/04/20/Docker笔记/" data-toggle="tooltip" data-placement="top" title="Docker笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Thu Apr 20 2023 09:57:39 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Nginx%E7%AC%94%E8%AE%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Nginx笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6nginx-conf%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 配置文件nginx.conf结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nginx%E7%BB%84%E6%88%90"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">nginx组成</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">指令</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">上下文</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-main-context"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 main context</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-events-context"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 events context</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-http-context"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 http context</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#include"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">include</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#default-type"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">default_type</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#keepalive-timeout"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">keepalive_timeout</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-server"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 server</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#listen"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">listen</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#server-name"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">server_name</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#access-log"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">access_log</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-location"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 location</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#location"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">location</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%91%BD%E5%90%8Dlocation"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">命名location</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#URL%E5%8C%B9%E9%85%8D%E9%A1%BA%E5%BA%8F"><span class="toc-nav-number">1.8.3.</span> <span class="toc-nav-text">URL匹配顺序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#proxy-pass"><span class="toc-nav-number">1.8.4.</span> <span class="toc-nav-text">proxy_pass</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-%E5%9B%BE%E5%BA%8A%E4%B8%8E%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 8 图床与静态资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-9-Vue%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">Part 9 Vue项目打包与部署</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-10-Docker%E9%83%A8%E7%BD%B2"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">Part 10 Docker部署</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Server" title="Server">Server</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA SE Pair Programming Work」软工结对编程博客 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/19/「BUAA-SE-Pair-Programming-Work」软工结对编程博客/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                            
+                        </div>
+                        <h1>「BUAA SE Pair Programming Work」软工结对编程博客</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-03-19
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">13.1k</span> and
+                                Reading Time <span class="post-count">55</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-SE-Pair-Programming-Work」软工结对编程博客"><a href="#「BUAA-SE-Pair-Programming-Work」软工结对编程博客" class="headerlink" title="「BUAA SE Pair Programming Work」软工结对编程博客"></a>「BUAA SE Pair Programming Work」软工结对编程博客</h1><h2 id="Part-1-前言"><a href="#Part-1-前言" class="headerlink" title="Part 1 前言"></a>Part 1 前言</h2><table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">这个作业属于哪个课程</td>
+<td align="left"><a href="https://bbs.csdn.net/forums/buaa-ase2023">2023年北航敏捷软件工程</a></td>
+</tr>
+<tr>
+<td align="left">这个作业的要求在哪里</td>
+<td align="left"><a href="https://bbs.csdn.net/topics/613883108">结对项目-最长英语单词链</a></td>
+</tr>
+<tr>
+<td align="left">我们在这个课程的目标是</td>
+<td align="left">熟悉结对编程的<strong>方法论</strong>，并通过实际开发实现最长英语单词链这一产品进行<strong>实践</strong>。</td>
+</tr>
+<tr>
+<td align="left">这个作业在哪个<strong>具体方面</strong>帮助我实现目标</td>
+<td align="left">通过在最长英语单词链这一应用中实践结对编程的方法论。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>教学班级  ： 周四班                               </p>
+</li>
+<li><p>项目地址  ： <a href="https://github.com/Mmmusel/WordChain">https://github.com/Mmmusel/WordChain</a> </p>
+</li>
+<li><p>GUI项目地址 ： <a href="https://github.com/saltyfishyjk/WordChainGUI">https://github.com/saltyfishyjk/WordChainGUI</a></p>
+</li>
+</ul>
+<h2 id="Part-2-PSP预估耗时表格"><a href="#Part-2-PSP预估耗时表格" class="headerlink" title="Part 2 PSP预估耗时表格"></a>Part 2 PSP预估耗时表格</h2><blockquote>
+<p>PSP(Personal Software Process Stages)是一种结构化的软件开发过程，旨在帮助软件工程师更好地理解和改进自己的工作表现，通过对软件开发过程进行规范和跟踪，比较预测和实际的代码开发情况</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>yjk预估耗时（分钟）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计划</td>
+<td>20</td>
+</tr>
+<tr>
+<td>· 估计这个任务需要多少时间</td>
+<td>20</td>
+</tr>
+<tr>
+<td>开发</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>· 需求分析 (包括学习新技术)</td>
+<td>300</td>
+</tr>
+<tr>
+<td>· 生成设计文档</td>
+<td>40</td>
+</tr>
+<tr>
+<td>· 设计复审 (和同事审核设计文档)</td>
+<td>360</td>
+</tr>
+<tr>
+<td>· 代码规范 (为目前的开发制定合适的规范)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>· 具体设计</td>
+<td>90</td>
+</tr>
+<tr>
+<td>· 具体编码</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>· 代码复审</td>
+<td>400</td>
+</tr>
+<tr>
+<td>· 测试（自我测试，修改代码，提交修改）</td>
+<td>300</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>650</td>
+</tr>
+<tr>
+<td>· 测试报告</td>
+<td>200</td>
+</tr>
+<tr>
+<td>· 计算工作量</td>
+<td>150</td>
+</tr>
+<tr>
+<td>· 事后总结, 并提出过程改进计划</td>
+<td>300</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>3670</td>
+</tr>
+</tbody></table>
+<h2 id="Part-3-接口设计"><a href="#Part-3-接口设计" class="headerlink" title="Part 3 接口设计"></a>Part 3 接口设计</h2><blockquote>
+<p>版本一</p>
+</blockquote>
+<h3 id="3-1-Information-Hiding（信息隐藏）"><a href="#3-1-Information-Hiding（信息隐藏）" class="headerlink" title="3.1 Information Hiding（信息隐藏）"></a>3.1 Information Hiding（信息隐藏）</h3><blockquote>
+<p>Information Hiding（信息隐藏）是指将程序中最有可能发生变化的设计决策隔离起来，从而保护其他部分免受修改的影响。</p>
+</blockquote>
+<p>在我们的设计中，我们将<code>Edge</code>（边类）和<code>Graph</code>（图类）的内部属性和细节隐藏起来，通过<code>get</code>方法等约定接口暴露出必要的信息；我们将计算模块、运算模块、输出模块等进行封装，分别对外提供必要的函数接口，隐藏实现细节，以避免输入输出模块对计算模块内部细节的干扰或误操作等，方便后续在不影响程序功能的情况下修改和优化计算模块。</p>
+<h3 id="3-2-Interface-Design（接口设计）"><a href="#3-2-Interface-Design（接口设计）" class="headerlink" title="3.2 Interface Design（接口设计）"></a>3.2 Interface Design（接口设计）</h3><blockquote>
+<p>Interface Design（接口设计）是指定义程序中各个组件之间如何交互和通信的规范。接口设计应该清晰，简洁，一致和易于使用。</p>
+</blockquote>
+<p>在我们的设计中，使用图形化界面（GUI）使得用户可以方便地进行文本框输入和文件输入并查看结果，同时提供了丰富的提示信息和错误处理机制来应对各种可能的情况，提高用户的体验；同时，我们将关联性强的函数等放在一起，并使之接口约束规范清晰，方便通信和理解。</p>
+<h3 id="3-3-Loose-Coupling（松耦合）"><a href="#3-3-Loose-Coupling（松耦合）" class="headerlink" title="3.3 Loose Coupling（松耦合）"></a>3.3 Loose Coupling（松耦合）</h3><blockquote>
+<p>Loose Coupling（松耦合）是指程序中各个组件之间的关联程度很低，也就是说改变一个组件对另一个组件的影响很小。松耦合可以提高程序的可维护性和可扩展性。</p>
+</blockquote>
+<p>在我们的设计中，我们事先通过清晰的接口约束规定了输入模块、运算模块、输出模块等之间的交互，实现了松耦合，这样使得两个模块之间更加独立和灵活，同时方便我们进行单元测试或在遵守接口约束的前提下更换其中的某个模块而不影响其他的模块。同时，便于后期和其他队伍交换模块。</p>
+<h2 id="Part-4-计算模块接口的设计与实现"><a href="#Part-4-计算模块接口的设计与实现" class="headerlink" title="Part 4 计算模块接口的设计与实现"></a>Part 4 计算模块接口的设计与实现</h2><h3 id="4-0-存储与类的设计"><a href="#4-0-存储与类的设计" class="headerlink" title="4.0 存储与类的设计"></a>4.0 存储与类的设计</h3><h4 id="4-0-1-单词"><a href="#4-0-1-单词" class="headerlink" title="4.0.1 单词"></a>4.0.1 单词</h4><ul>
+<li>使用<code>string</code>来保存单词</li>
+</ul>
+<h4 id="4-0-2-结点"><a href="#4-0-2-结点" class="headerlink" title="4.0.2 结点"></a>4.0.2 结点</h4><ul>
+<li>使用整数<code>0-25</code>分别表示26个英文字母作为图的结点</li>
+</ul>
+<h4 id="4-0-3-Edge边类"><a href="#4-0-3-Edge边类" class="headerlink" title="4.0.3 Edge边类"></a>4.0.3 <code>Edge</code>边类</h4><ul>
+<li><p>一个<code>Edge</code>对象表示一个单词</p>
+</li>
+<li><p><code>int start, end</code>：单词的首、尾字母结点</p>
+</li>
+<li><p><code>int weight</code>：边的权重</p>
+</li>
+<li><p><code>string word</code>：边代表的单词</p>
+</li>
+</ul>
+<h4 id="4-0-4-Graph图类"><a href="#4-0-4-Graph图类" class="headerlink" title="4.0.4 Graph图类"></a>4.0.4 <code>Graph</code>图类</h4><ul>
+<li><code>int pointNum</code>：图中点的数量</li>
+<li><code>int inDegree[]</code>：图中点的入度</li>
+<li><code>vector &lt;Edge*&gt; edges[][]</code>：邻接矩阵，其中<code>edges[i][j]</code>为一个<code>vector&lt;Edge*&gt;</code>，记录从点<code>i</code>到点<code>j</code>的边的集合</li>
+<li><code>vector &lt;Edge*&gt; selfEdge[], edgesIn[], edgesOut[]</code>：分别表示每个点的自环边集合、入边集合和出边集合</li>
+</ul>
+<h3 id="4-1-接口说明"><a href="#4-1-接口说明" class="headerlink" title="4.1 接口说明"></a>4.1 接口说明</h3><h4 id="4-1-1-CORE模块接口参数说明"><a href="#4-1-1-CORE模块接口参数说明" class="headerlink" title="4.1.1 CORE模块接口参数说明"></a>4.1.1 CORE模块接口参数说明</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chains_all</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[])</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_char</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> enable_loop)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_word</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> enable_loop)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>为了使CORE模块便于与其他小组进行模块互换，我们按照课程组接口针对计算CORE模块封装以上三个接口，</p>
+<ul>
+<li><code>char* words[]</code>和<code>len</code>为从输入文本中提取出的单词数组</li>
+<li><code>char* result[]</code>为计算模块返回的输出文本，对于<code>-w</code>和<code>-c</code>指令计算最长单词链时<code>result[]</code>为单词链的单词数组，对于<code>-n</code>指令计算单词链总数时<code>result[]</code>为单词链数组。</li>
+<li><code>char head</code>, <code>tail</code>, <code>reject</code> 为 <code>-h</code>, <code>-t</code>, <code>-j </code>指令的约束字母，约定的规范输入为大小写字母代表存在对应指令的约束字母，当不存在此类指令的约束字母时传入<code>0</code>即为<code>NULL</code>。传入其他符号时按照传入参数异常处理。</li>
+<li><code>bool enable_loop</code> 对应是否使用<code>-r</code>指令允许输入文本成环。</li>
+</ul>
+<h4 id="4-1-2-CORE模块接口实现"><a href="#4-1-2-CORE模块接口实现" class="headerlink" title="4.1.2 CORE模块接口实现"></a>4.1.2 CORE模块接口实现</h4><ul>
+<li><p>在第一阶段开发过程中，我们将计算单词链的功能分为五种：<code>-n</code>, <code>-w</code>, <code>-w -r</code>, <code>-c</code>, <code>-c -r</code> , 每种计算模式对应一个计算函数。在API接口函数中，只需要根据传入的<code>bool enable_loop</code> 参数实现分发功能即可。</p>
+</li>
+<li><p>第二阶段封装过程遇到的主要问题：第一阶段编码时对于计算功能函数有注意提前独立成子模块，在封装时对于第一阶段计算模块的改动较小。但前期对于封装没有考虑全面的地方主要在input部分，第一阶段在input阶段就实现了去除-j单词包括建图等功能，导致输入模块和计算模块产生了一定程度的耦合，在封装时对于input部分的改动较大。</p>
+</li>
+<li><p>在第三阶段异常机制实现时，对于封装的主要改动是将原本的一种异常类拆分成了<code>coreException</code>和<code>inputException</code>。<code>coreException</code>属于CORE计算模块抛出的异常，包括成环及无解的情况；<code>inputException</code>属于命令行程序解析输入命令及文件时抛出的异常，包括命令格式错误及输入非法等更多异常情况。</p>
+</li>
+</ul>
+<h3 id="4-2-流程图与函数"><a href="#4-2-流程图与函数" class="headerlink" title="4.2 流程图与函数"></a>4.2 流程图与函数</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/overview.png"></p>
+<p>首先介绍设计和实现思路：</p>
+<ul>
+<li>首先设计和实现基本需求1：计算单词文本中可以构成多少个单词链（<code>-n</code>），该参数对应的正确情况一定不存在环，且和后续对“最长”的需求有所差别，并且不能与其他参数共同使用，故单独设计函数与接口实现流程。</li>
+<li>然后分析和设计基本需求4：指定单词链开头或结尾字母（<code>-h-t</code>）和基本需求5：指定单词链中所有单词均不允许出现的首字母（<code>-j</code>），这些参数对其他两个功能型参数（<code>-w-c</code>）都有整体影响，作为参数传入<code>-w-c</code>的函数实现中，在建图前或动态规划前后对输入或输出进行<code>filter</code>实现此类参数功能。</li>
+<li>然后分析和设计基本需求6：允许单词文本隐含单词环（<code>-r</code>），这一参数会较大影响其他两个功能型参数（<code>-w-c</code>）的设计思路。所以将<code>-w、-c</code>与是否使用<code>-r</code>两两组合成四种计算函数来实现。</li>
+<li>然后分别分析基本需求2：计算最多单词数量的单词链（<code>-w</code>）和基本需求3：计算字母最多的单词链（<code>-c</code>），这两个需求整体框架是相似的，仅在是否带边权计算和部分细节有所区别。</li>
+</ul>
+<h4 id="4-2-1-基本需求1：计算单词文本中可以构成多少个单词链（-n）"><a href="#4-2-1-基本需求1：计算单词文本中可以构成多少个单词链（-n）" class="headerlink" title="4.2.1 基本需求1：计算单词文本中可以构成多少个单词链（-n）"></a>4.2.1 基本需求1：计算单词文本中可以构成多少个单词链（<code>-n</code>）</h4><p>首先建图后判断是否成环，首先判断每个字母的自环是否会形成单词环，然后对于不存在自环单词环的图进行拓扑排序，即可通过拓扑结果判断是否存在环路。</p>
+<p>由于题目要求输出包含嵌套单词链的所有单词链，所以选择从每个起点进行dfs遍历过程中输出所有单词链。</p>
+<h4 id="4-2-2-基本需求4：指定单词链开头或结尾字母（-h-t）和基本需求5：指定单词链中所有单词均不允许出现的首字母（-j）"><a href="#4-2-2-基本需求4：指定单词链开头或结尾字母（-h-t）和基本需求5：指定单词链中所有单词均不允许出现的首字母（-j）" class="headerlink" title="4.2.2 基本需求4：指定单词链开头或结尾字母（-h-t）和基本需求5：指定单词链中所有单词均不允许出现的首字母（-j）"></a>4.2.2 基本需求4：指定单词链开头或结尾字母（<code>-h-t</code>）和基本需求5：指定单词链中所有单词均不允许出现的首字母（<code>-j</code>）</h4><p>在建图前或动态规划前后对输入或输出进行<code>filter</code>实现此类参数功能。</p>
+<p><code>-j</code>只需要在建图时过滤掉以<code>-j</code>指定忽略的字母开头的单词即可。需要注意的细节是当不包含<code>-r</code>参数时，需要先对<strong>原图</strong>进行环路判断之后，再进行<code>-j</code>的过滤。</p>
+<p><code>-h</code>相当于指定动态规划的起点。对于不存在<code>-h</code>的情况，所有字母均可以作为起点，所以动态规划开始前将所有起点按其是否包含自环或者自环字母数初始化即可。对于<code>-h</code>指定起点时，只对起点初始化，其余点的初始值设为-1。然后依据拓扑排序的顺序依次进行动态规划，跳过dp值小于0的点即可。</p>
+<p><code>-t</code>指定单词链终点。动态规划的状态设计<code>dp[i]</code>为以字母<code>i</code>结尾的最长链长，所以不包含<code>-t</code>时动态规划结束后比较最大dp值为最长链长；使用<code>-t</code>指定单词链结尾字母<code>end</code>时只需要在动态规划结束后找到<code>dp[end]</code>作为最长链长，如果<code>dp[end]&lt;1</code>为不存在合法单词链。</p>
+<h4 id="4-2-3-基本需求6：允许单词文本隐含单词环（-r）"><a href="#4-2-3-基本需求6：允许单词文本隐含单词环（-r）" class="headerlink" title="4.2.3 基本需求6：允许单词文本隐含单词环（-r）"></a>4.2.3 基本需求6：允许单词文本隐含单词环（<code>-r</code>）</h4><p>对于不包含<code>-r</code>参数时，先建图并判断是否包含自环形成的环路，再做拓扑排序判断是否成环。如果成环抛出<code>CoreException</code>。</p>
+<p>对于包含<code>-r</code>参数时计算最长链长的算法如下：</p>
+<ul>
+<li>首先去除环路：首先使用<code>tarjan</code>算法求解强连通分量，然后对每个强连通分类建子图。再将每个代表强连通分量的子图视为一个节点，建立去除强连通分量后的有向无环图。遍历原图的每一条边， 依据起点和终点是否在一个强连通分量内，将边划分入强连通分量子图或者有向无环图。</li>
+<li>然后在每个强连通分量子图中使用dfs计算图内节点两两之间包括自环的最大链长，记为<code>sccInnerDp[i][j]</code>。</li>
+<li>然后对去除强连通分量后的DAG图再做拓扑排序得到动态规划的顺序。</li>
+<li>动态规划更新到每个强连通分量时，由DAG图当前动态规划更新的所有前序节点dp值<code>sccOuterDp[i]</code>和子图内内节点两两之间的最长链长<code>sccInnerDp[i][j]</code>更新强连通分量子图内所有点作为节点的新dp值： <code>dp[j]=sccOuterDp[i]+sccInnerDp[i][j]</code>。遍历结束后将<code>sccOuterDp[i]</code>更新为<code>dp[i]</code>。</li>
+<li>最后再遍历DAG图中所有起点为此强连通分量内部节点的桥边，结合权值更新终点的<code>sccOuterDp[end]</code>值。</li>
+<li>最后获得最长链长的终点，再根据动态规划过程中记录的前向节点倒序遍历输出最长链。输出时需要输出自环边，以及需要使用dfs遍历输出强连通分量内部两个节点间的所有边。</li>
+</ul>
+<h4 id="4-2-4-基本需求2：计算最多单词数量的单词链（-w）"><a href="#4-2-4-基本需求2：计算最多单词数量的单词链（-w）" class="headerlink" title="4.2.4 基本需求2：计算最多单词数量的单词链（-w）"></a>4.2.4 基本需求2：计算最多单词数量的单词链（<code>-w</code>）</h4><p>对于不包含<code>-r</code>的情况，由拓扑排序排除成环情况后得到拓扑序，按传入的<code>-h</code>参数设定动态规划初始值为0(<code>-h</code>未指定首字母且此字母无自环)或1(<code>-h</code>未指定首字母且此字母有自环)或-1(不是<code>-h</code>指定的首字母)拓扑序进行动态规划，记录以当前字母为终点时的最大链长与前向节点。</p>
+<p>结合<code>-t</code>的指定终点字母的情况与所有字母的dp值，确定符合约束条件下的最长链的终点，然后逆序获得单词链中所有单词，遍历过程中遇到自环需要输出自环。</p>
+<p>对于包含<code>-r</code>的情况，对于环路的具体动态规划思路与方程可见<code>4.2.3 -r</code>的算法描述部分。大体思路为使用tarjan算法计算强连通分量，为所有强连通分量建立子图，然后将强连通分量视为一个节点分别建立无环DAG图，分别将强连通分量内部边与连接两个强连通分量的桥边分别划入强连通分量子图或去环后的DAG图。然后在强连通分量子图进行dfs计算图内节点两两之间的最大链长。然后对DAG图进行拓扑排序，按拓扑序依次更新DAG图内此强连通分量的所有节点的dp值。然后再更新此强连通分量的所有节点与其他强连通分量的连接桥边的后继节点的dp值。最后结合<code>-t</code>的指定终点字母的情况与所有字母的dp值，确定符合约束条件下的最长链的终点，然后逆序获得组成此单词链中所有单词，需要对强连通分量内部进行带长dfs以输出强连通分量内部组成的最长单词链。遍历过程中遇到自环需要输出自环。</p>
+<h4 id="4-2-5-基本需求3：计算字母最多的单词链（-c）"><a href="#4-2-5-基本需求3：计算字母最多的单词链（-c）" class="headerlink" title="4.2.5 基本需求3：计算字母最多的单词链（-c）"></a>4.2.5 基本需求3：计算字母最多的单词链（<code>-c</code>）</h4><p><code>-c</code>与<code>-w</code>的处理流程基本相同。以下仅说明<code>-c</code>相较<code>-w</code>的区别：</p>
+<p>首先在计算最大链长时，对于一个单词（一条边）-w处理时简单+1即可，意味着对于首位相同的单词任选其一即可。对于-c处理时对于首位相同的单词还需要考虑优先选择更长单词长度的单词纳入计算并打印输出。-w处理自环时只需要计入自环条数即可，-c处理自环时需要计入所有自环的字母数之和。</p>
+<p>其次<code>-w</code>只需要在动态规划结束后判断链长<code>&gt;=2</code>即可满足单词链的定义。但是由于<code>-c</code>在动态规划过程中的状态量为字母数，因此如果与<code>-w</code>完全一致的处理会出现动态规划最大值可能只有一个单词不符合单词链定义的情况。所以为了处理的简便，对于<code>-c</code>处理时在建图时删除所有孤立边（单词首尾均不存在自环且起点入度为0终点出度为0的单词），即可避免发生<code>-c</code>动态规划时结果不符合单词链长度<code>&gt;=2</code>的定义约束。</p>
+<h3 id="4-3-关键算法与独到之处"><a href="#4-3-关键算法与独到之处" class="headerlink" title="4.3 关键算法与独到之处"></a>4.3 关键算法与独到之处</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/api_pic.png" alt="api_pic"></p>
+<h4 id="4-3-1-Tarjan算法计算强连通分量"><a href="#4-3-1-Tarjan算法计算强连通分量" class="headerlink" title="4.3.1 Tarjan算法计算强连通分量"></a>4.3.1 Tarjan算法计算强连通分量</h4><p>我们选择tarjan算法将计算带环图的强连通分量优化到O(n)时间复杂度。</p>
+<p>Tarjan算法是一种用于求解有向图中强连通分量的算法，它使用深度优先搜索（DFS）来遍历图，并使用一个栈来记录每个顶点的搜索顺序。当一个顶点被发现并加入栈中时，Tarjan算法会尝试找到一个强连通分量，它会在遍历过程中将强连通分量中的所有顶点都从栈中移除。</p>
+<p>Tarjan算法的优点是可以在线性时间内求出有向图的所有强连通分量，而且不需要额外的空间。Tarjan算法的简要思路如下：</p>
+<ol>
+<li>对每个未访问过的顶点<code>u</code>，执行DFS，并给<code>u</code>赋予一个编号<code>dfn[u]</code>和一个最小能回溯到的编号<code>low[u]</code>，初始时都等于<code>u</code>的访问次序。</li>
+<li>在DFS过程中，每访问到一个顶点<code>u</code>，就把它压入栈中，并继续访问它的邻接顶点<code>v</code>。</li>
+<li>如果<code>v</code>已经在栈中，说明<code>v</code>和<code>u</code>在同一个强连通分量中，则更新<code>low[u]=min(low[u],dfn[v])</code>。</li>
+<li>如果<code>v</code>未被访问过，则递归地对<code>v</code>进行DFS，并更新<code>low[u]=min(low[u],low[v])</code>。</li>
+<li>如果<code>low[u]==dfn[u]</code>，说明<code>u</code>是当前强连通分量的根节点，则依次从栈中弹出该强连通分量中的所有顶点，并标记为已访问。</li>
+<li>重复以上步骤直到所有顶点都被访问过。</li>
+</ol>
+<p>使用tarjan算法$O(n)$时间复杂度计算强连通分量后，为所有强连通分量建立子图，然后将强连通分量视为一个节点分别建立无环DAG图，分别将强连通分量内部边与连接两个强连通分量的桥边分别划入强连通分量子图或去环后的DAG图。</p>
+<h4 id="4-3-2-c提前去除孤立边"><a href="#4-3-2-c提前去除孤立边" class="headerlink" title="4.3.2 -c提前去除孤立边"></a>4.3.2 -c提前去除孤立边</h4><p>由于<code>-c</code>在动态规划过程中的状态量为字母数，因此如果不做任何处理时动态规划最大值可能只有一个单词不符合单词链定义的情况。所以为了处理的简便，对于<code>-c</code>处理时在建图时删除所有孤立边（单词首尾均不存在自环且起点入度为0终点出度为0的单词），即可避免发生<code>-c</code>动态规划时结果不符合单词链长度<code>&gt;=2</code>的定义约束。</p>
+<h4 id="4-3-3-强连通分量的动态规划"><a href="#4-3-3-强连通分量的动态规划" class="headerlink" title="4.3.3 强连通分量的动态规划"></a>4.3.3 强连通分量的动态规划</h4><p>对于包含强连通分量的动态规划，首先需要依据去除环路后DAG图的拓扑顺序，然后还需要将动态规划过程细化到每个强连通分量内部的所有节点。所以将动态规划过程分为两个阶段，首先是第一阶段借助子图内内节点两两之间的最长链长<code>sccInnerDp[i][j]</code>更新强连通分量子图内所有点的<code>sccOuterDp[j]</code>。然后第二阶段再遍历DAG图中所有起点为此强连通分量内部节点的桥边，结合权值更新连通分量外桥边终点的<code>sccOuterDp[end]</code>值。因此我们需要在动态规划前计算好强连通分量子图内内节点两两之间的最长链长<code>sccInnerDp[i][j]</code>。</p>
+<h4 id="4-3-4-强连通分量内dfs使用贪心算法求解最长路径"><a href="#4-3-4-强连通分量内dfs使用贪心算法求解最长路径" class="headerlink" title="4.3.4 强连通分量内dfs使用贪心算法求解最长路径"></a>4.3.4 强连通分量内dfs使用贪心算法求解最长路径</h4><p>在每个强连通分量子图中使用dfs计算图内节点两两之间包括自环的最大链长时，这一部分的时间复杂度较高，我们在优化性能时采用了贪心算法进行剪枝优化，将dfs过程中对边的遍历改为对出度点的遍历。-w时对每个不同的出度点只需要选择任意一条边即可，优化掉首位相同的其他单词的遍历，dfs实现了剪枝。-c时也可以使用贪心算法，预先对相同出度点的边做按单词长度的排序，每次优先选最长的边作为本层dfs时标记的边进行下一层搜索即可，回溯时只对不同出度点进行回溯，不再进行相同出度点的其他边的深搜，也实现了和-w一样的剪枝优化。</p>
+<h2 id="Part-5-编译器编译通过无警告"><a href="#Part-5-编译器编译通过无警告" class="headerlink" title="Part 5 编译器编译通过无警告"></a>Part 5 编译器编译通过无警告</h2><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318214822087.png" alt="image-20230318214822087"></p>
+<h2 id="Part-6-UML图"><a href="#Part-6-UML图" class="headerlink" title="Part 6 UML图"></a>Part 6 UML图</h2><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318172409529.png" alt="image-20230318172409529"></p>
+<p>存储类包括 <code>Edge</code>边类和 <code>Graph</code>图类。 <code>Edge</code>边类和 <code>Graph</code>图类是聚合关系，图由边组成。计算功能封装在API接口中，可以分为<code>CountChains</code>, <code>charCountMax</code>, <code>wordCountMax</code>三个功能实现模块，与图类是依赖关系，计算接口会访问图类（被依赖类）中的一些public方法来获取特定信息。</p>
+<h2 id="Part-7-计算模块接口部分的性能改进"><a href="#Part-7-计算模块接口部分的性能改进" class="headerlink" title="Part 7 计算模块接口部分的性能改进"></a>Part 7 计算模块接口部分的性能改进</h2><h3 id="7-1-性能改进花费的时间"><a href="#7-1-性能改进花费的时间" class="headerlink" title="7.1 性能改进花费的时间"></a>7.1 性能改进花费的时间</h3><p>起初的计算强连通分量与求解强连通分量内部的算法性能较差，我们在第一阶段大概花费半天时间在性能改进上，主要工作包括查找性能较差的函数与分析原因、学习时间复杂度更低的算法、优化算法并进行迭代开发、回归测试。</p>
+<h3 id="7-2-程序中消耗最大的函数"><a href="#7-2-程序中消耗最大的函数" class="headerlink" title="7.2 程序中消耗最大的函数"></a>7.2 程序中消耗最大的函数</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230319101251184.png" alt="image-20230319101251184"></p>
+<p>我们使用VS插件对程序进行分析，发现关于带环图计算强连通分量、强连通分量内部dfs寻找最长路径部分的时间复杂度最高。</p>
+<h3 id="7-3-算法分析与改进"><a href="#7-3-算法分析与改进" class="headerlink" title="7.3 算法分析与改进"></a>7.3 算法分析与改进</h3><p>在计算强连通分量时，我们选择tarjan算法实现<code>O(V+E)</code>的时间复杂度。</p>
+<p>在每个强连通分量子图中使用dfs计算图内节点两两之间包括自环的最大链长时，优化前的算法对<strong>边</strong>遍历，后来优化的时候发现存在可以剪枝的dfs过程，即改为对<strong>点</strong>的遍历。在每个强连通分量子图中使用dfs计算图内节点两两之间包括自环的最大链长时，这一部分的时间复杂度较高，我们在优化性能时采用了贪心算法进行剪枝优化，将dfs过程中对边的遍历改为对出度点的遍历。-w时对每个不同的出度点只需要选择任意一条边即可，优化掉首位相同的其他单词的遍历，dfs实现了剪枝。-c时也可以使用贪心算法，预先对相同出度点的边做按单词长度的排序，每次优先选最长的边作为本层dfs时标记的边进行下一层搜索即可，回溯时只对不同出度点进行回溯，不再进行相同出度点的其他边的深搜，也实现了和-w一样的剪枝优化。</p>
+<h2 id="Part-8-Design-by-Contract与Code-Contract"><a href="#Part-8-Design-by-Contract与Code-Contract" class="headerlink" title="Part 8 Design by Contract与Code Contract"></a>Part 8 Design by Contract与Code Contract</h2><h3 id="8-1-Design-by-Contract-DbC"><a href="#8-1-Design-by-Contract-DbC" class="headerlink" title="8.1 Design by Contract (DbC)"></a>8.1 Design by Contract (DbC)</h3><ul>
+<li>Design by Contract (DbC) 或契约式设计是一种设计软件的方法，它要求软件设计者为软件组件定义正式、精确和可验证的接口规范，这些规范扩展了抽象数据类型的普通定义，增加了前置条件、后置条件和不变量。</li>
+<li>优点：获得更加优秀的设计，不会盲目、更清楚、更简单，更容易阅读、理解、找错，减少犯错，可靠性更高。</li>
+<li>缺点：对于程序语言有一定的要求，契约式编程需要一种机制来表达和检查契约。</li>
+</ul>
+<h3 id="8-2-Code-Contract"><a href="#8-2-Code-Contract" class="headerlink" title="8.2 Code Contract"></a>8.2 Code Contract</h3><ul>
+<li>Code Contract 或代码契约是一种实现 DbC 的工具。</li>
+<li>优点：提高了软件工程的效率和质量，保证了调用者和被调用者之间的协作和责任分明3。支持编译时或运行时的契约检查，可以发现潜在的错误或异常。</li>
+<li>缺点：增加了代码的复杂度和冗余，可能影响性能和可读性。需要花费额外的时间和精力来编写和维护契约。</li>
+</ul>
+<h3 id="8-3-在结对作业中的应用"><a href="#8-3-在结对作业中的应用" class="headerlink" title="8.3 在结对作业中的应用"></a>8.3 在结对作业中的应用</h3><ul>
+<li>在设计阶段确定好各个模块和函数的接口规范，如<code>Edge</code>和<code>Graph</code>类，各种对外服务的函数的输入输出、前置条件、后置条件、不变量和一致性等。</li>
+<li>在编码阶段使用Code Contract工具（如.Net框架）来具体实现上述接口规范，并进行单元测试来验证契约是否被满足。</li>
+<li>在代码评审和审阅阶段检查代码是否符合接口规范，并及时修改代码或完善契约。</li>
+</ul>
+<h2 id="Part-9-计算模块部分单元测试"><a href="#Part-9-计算模块部分单元测试" class="headerlink" title="Part 9 计算模块部分单元测试"></a>Part 9 计算模块部分单元测试</h2><p>我们使用Visual Studio中的单元测试框架对项目进行测试，并使用OpenCppCoverage扩展插件进行分支覆盖率的分析。</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318183537005.png" alt="image-20230318183537005"></p>
+<h3 id="9-1-单元测试代码"><a href="#9-1-单元测试代码" class="headerlink" title="9.1 单元测试代码"></a>9.1 单元测试代码</h3><p>我们的单元测试主要分为以下五类共47个测试点：</p>
+<h3 id="9-1-1-针对CORE计算核心API接口的测试"><a href="#9-1-1-针对CORE计算核心API接口的测试" class="headerlink" title="9.1.1 针对CORE计算核心API接口的测试"></a>9.1.1 针对CORE计算核心API接口的测试</h3><p>输入单词数组<code>char* words[]</code>，在测试代码里给出答案数组<code>char* ans[]</code>，通过调用接口<code>gen_chain_char()</code>获取程序输出<code>char *result[]</code>，然后使用单元测试框架下的<code>Assert::AreEqual</code>函数进行比对。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TEST_METHOD</span>(example_c_r_1) &#123;</span><br><span class="line">    <span class="type">char</span>* words[] = &#123; <span class="string">&quot;append&quot;</span>, <span class="string">&quot;deny&quot;</span>, <span class="string">&quot;yahoo&quot;</span>, <span class="string">&quot;oops&quot;</span>, <span class="string">&quot;strange&quot;</span>, <span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tuna&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;pig&quot;</span>, <span class="string">&quot;graph&quot;</span>, <span class="string">&quot;news&quot;</span>, <span class="string">&quot;silence&quot;</span>&#125;;</span><br><span class="line">    <span class="type">char</span>* ans[] = &#123;<span class="string">&quot;news&quot;</span>, <span class="string">&quot;silence&quot;</span>, <span class="string">&quot;eat&quot;</span>, <span class="string">&quot;tuna&quot;</span>, <span class="string">&quot;append&quot;</span>, <span class="string">&quot;deny&quot;</span>, <span class="string">&quot;yahoo&quot;</span>, <span class="string">&quot;oops&quot;</span>, <span class="string">&quot;strange&quot;</span>&#125;;</span><br><span class="line">    <span class="built_in">test_arg_c</span>(words, <span class="number">12</span>, ans, <span class="number">9</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_arg_c</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* ans[], <span class="type">int</span> ans_len, <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> enable_loop)</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span>** result = (<span class="type">char</span>**)<span class="built_in">malloc</span>(<span class="number">10000</span>);</span><br><span class="line">    <span class="type">int</span> out_len = <span class="built_in">gen_chain_char</span>(words, len, result, head, tail, reject, enable_loop);</span><br><span class="line">    Assert::<span class="built_in">AreEqual</span>(ans_len, out_len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ans_len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="literal">nullptr</span>) Assert::<span class="built_in">AreEqual</span>(<span class="built_in">strcmp</span>(ans[i], result[i]), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-2-针对面向Vuetify-GUI的API接口的测试"><a href="#9-1-2-针对面向Vuetify-GUI的API接口的测试" class="headerlink" title="9.1.2 针对面向Vuetify-GUI的API接口的测试"></a>9.1.2 针对面向Vuetify-GUI的API接口的测试</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TEST_METHOD</span>(example_api_2) &#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* input = <span class="string">&quot;de,ef,eff&quot;</span>;</span><br><span class="line">    <span class="type">char</span>* ans = <span class="string">&quot;de\neff\n&quot;</span>;</span><br><span class="line">    <span class="built_in">test_vuetify_api</span>(input, ans, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test_vuetify_api</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* input, <span class="type">char</span>* ans, <span class="type">int</span> type, <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> weighted)</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* result = <span class="built_in">vuetifyAPI</span>(input, type, head, tail, reject, weighted);</span><br><span class="line">    Assert::<span class="built_in">AreEqual</span>(<span class="built_in">strcmp</span>(ans, result), <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-3-针对命令行程序命令解析模块与文件读入模块的测试"><a href="#9-1-3-针对命令行程序命令解析模块与文件读入模块的测试" class="headerlink" title="9.1.3 针对命令行程序命令解析模块与文件读入模块的测试"></a>9.1.3 针对命令行程序命令解析模块与文件读入模块的测试</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TEST_METHOD</span>(example_main_5) &#123;</span><br><span class="line">    <span class="type">char</span>* args[] = &#123; <span class="string">&quot;&quot;</span>, <span class="string">&quot;-w&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">    <span class="type">int</span> ret = <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, ret);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-4-InPutException异常测试：针对命令行程序命令解析模块与文件读入模块"><a href="#9-1-4-InPutException异常测试：针对命令行程序命令解析模块与文件读入模块" class="headerlink" title="9.1.4 InPutException异常测试：针对命令行程序命令解析模块与文件读入模块"></a>9.1.4 InPutException异常测试：针对命令行程序命令解析模块与文件读入模块</h3><p>在测试代码中使用&#96;&#96;&#96;try {} catch {}&#96;并比对异常信息。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TEST_METHOD</span>(exception_7_undefined_cmd) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-q&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: undefined cmd.&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Assert::<span class="built_in">Fail</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-5-CoreException异常测试：针对计算模块"><a href="#9-1-5-CoreException异常测试：针对计算模块" class="headerlink" title="9.1.5 CoreException异常测试：针对计算模块"></a>9.1.5 CoreException异常测试：针对计算模块</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TEST_METHOD</span>(core_exception_2_no_solution) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* words[] = &#123; <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;cd&quot;</span>, <span class="string">&quot;ef&quot;</span> &#125;;</span><br><span class="line">        <span class="type">char</span>* ans[] = &#123; <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">test_arg_w</span>(words, <span class="number">3</span>, ans, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (CoreException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;CoreError: No Chain&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="9-2-单元测试函数"><a href="#9-2-单元测试函数" class="headerlink" title="9.2 单元测试函数"></a>9.2 单元测试函数</h3><p>结合9.1部分展示的几类单元测试代码，我们主要测试了以下几类函数：</p>
+<h3 id="9-2-1-CORE计算核心API"><a href="#9-2-1-CORE计算核心API" class="headerlink" title="9.2.1 CORE计算核心API"></a>9.2.1 CORE计算核心API</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chains_all</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[])</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_char</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> enable_loop)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_word</span><span class="params">(<span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> enable_loop)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2-2-面向Vuetify-GUI的API"><a href="#9-2-2-面向Vuetify-GUI的API" class="headerlink" title="9.2.2 面向Vuetify-GUI的API"></a>9.2.2 面向Vuetify-GUI的API</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> <span class="type">char</span>* <span class="title">vuetifyAPI</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* input, <span class="type">int</span> type, <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject, <span class="type">bool</span> weighted)</span> </span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2-3-命令行程序的命令解析、输入模块"><a href="#9-2-3-命令行程序的命令解析、输入模块" class="headerlink" title="9.2.3 命令行程序的命令解析、输入模块"></a>9.2.3 命令行程序的命令解析、输入模块</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">parseCmd</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">splitWord</span><span class="params">(<span class="type">char</span> *words[],<span class="type">const</span> <span class="type">char</span> *fileName, <span class="type">int</span> reject)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">checkBuf</span><span class="params">(string&amp; wordBuf)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-3-构造测试数据的思路"><a href="#9-3-构造测试数据的思路" class="headerlink" title="9.3 构造测试数据的思路"></a>9.3 构造测试数据的思路</h3><ul>
+<li><p>分支覆盖率：首先最基本的是通过OpenCppCoverage插件查看单元测试中未覆盖全面的语句，保证单元测试的基本样例可以覆盖所有分支。这部分主要针对的是计算模块以外的部分，包括命令行程序的命令解析、输入模块测试、接口的函数分发、多种异常是否完全覆盖等。</p>
+</li>
+<li><p>针对计算模块的功能正确性测试：这部分测试主要考虑：</p>
+<ul>
+<li>指令间的叠加组合，主要是<code>-c -w</code>与<code>-r -h -t -j</code>之间的多种组合</li>
+<li>输入图无自环、自环数量为1、自环数量&gt;1、头部自环、尾部自环</li>
+<li>输入图为DAG图、没有复杂强连通分量的简单环路、包含一个复杂强连通分量、多个复杂强连通分量由桥边链接</li>
+<li>相同输入在-c和-w得到不同输出</li>
+</ul>
+</li>
+<li><p>压力测试：完全图、两节点间存在多条不同边等</p>
+</li>
+<li><p>鲁棒性测试：空文件、不存在的文件、参数非法等</p>
+</li>
+<li><p>边界数据测试：单字母单词、重复单词、全部为自环、全部为孤立边等</p>
+</li>
+</ul>
+<h3 id="9-4-测试覆盖率"><a href="#9-4-测试覆盖率" class="headerlink" title="9.4 测试覆盖率"></a>9.4 测试覆盖率</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318183525112.png" alt="image-20230318183525112"></p>
+<h2 id="Part-10-计算模块部分异常处理说明"><a href="#Part-10-计算模块部分异常处理说明" class="headerlink" title="Part 10 计算模块部分异常处理说明"></a>Part 10 计算模块部分异常处理说明</h2><p>我们一共实现了14种输入模块异常InPutException，主要包括命令解析和文件读入出现的问题。</p>
+<p>计算模块一共实现3种异常CoreException ，主要包括输入单词成环、没有符合约束的单词链、输入参数非法。</p>
+<p>异常的设计目标和对应场景跟在下述每个测试点前用注释的形式说明。</p>
+<h3 id="10-1-输入模块异常InPutException-共14种"><a href="#10-1-输入模块异常InPutException-共14种" class="headerlink" title="10.1 输入模块异常InPutException 共14种"></a>10.1 输入模块异常InPutException 共14种</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//InPutException 1：输入字符串格式非法，不能被解析为已知命令</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_1_cmd_format_error) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: cmd format error&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 2：-n -w -c 不能重复使用</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_2_too_many_cmd) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-w&quot;</span>, <span class="string">&quot;-c&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: to many cmd. -n -w -c can only choose one and use once&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 3：-h -t -j 后只能输入单个英文字符</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_3_missing_char) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-j&quot;</span>, <span class="string">&quot;ttt&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: -j must followed by one char&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 4：-h/-t/-j 最多使用一次</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_4_redeclaration) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-w&quot;</span>, <span class="string">&quot;-h&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;-h&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">7</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>( <span class="string">&quot;Cmd Input Error: redeclaration of-h\0&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 5：-h -t -j 后只能输入英文字符</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_5_error_char) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-j&quot;</span>, <span class="string">&quot;.&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: -j must followed by a char&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 6：-h -t -j 后必须输入一个英文字符</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_6_missing_char) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-w&quot;</span>, <span class="string">&quot;-j&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: -j must followed by one char&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 7：未定义的命令参数</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_7_undefined_cmd) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-q&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: undefined cmd.&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 8：输入文件不是txt</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_8_txt) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;File Input Error: filename must be *.txt&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 9：命令字符串格式错误，遗漏&#x27;-&#x27;</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_9_cmd_format_error) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;n&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: cmd format error&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 10：没有输入文件</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_10_missing_input_file) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">2</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;File Input Error: please enter a filename&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 11：输入多个文件</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_11_too_many_files) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span>,<span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;File Input Error: you can only input one file&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 12：-n和-r使用</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_12_cmd_format_error) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span>, <span class="string">&quot;-r&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">4</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: -n should use seperately without -r&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 13：-n和-h/-t/-j使用</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_13_cmd_format_error) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span>, <span class="string">&quot;-h&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input.txt&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">5</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;Cmd Input Error: -n should use seperately without -h -t -j&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//InPutException 14：输入文件路径不存在</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(exception_14_file_not_exist) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* args[] = &#123; <span class="string">&quot;WordChain.exe&quot;</span>, <span class="string">&quot;-n&quot;</span>, <span class="string">&quot;D:\PROJECTS\WordChain\input_not_exist.txt&quot;</span>&#125;;</span><br><span class="line">        <span class="built_in">parseCmd</span>(<span class="number">3</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (InPutException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;File Input Error: file not exist&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="10-2-计算模块异常CoreException-共3种"><a href="#10-2-计算模块异常CoreException-共3种" class="headerlink" title="10.2 计算模块异常CoreException 共3种"></a>10.2 计算模块异常CoreException 共3种</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CoreException 1：-h/-t/-j必须是英文字符</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(core_exception_1_input_char_error) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* words[] = &#123; <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;cd&quot;</span> &#125;;</span><br><span class="line">        <span class="type">char</span>* ans[] = &#123; <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">test_arg_w</span>(words, <span class="number">3</span>, ans, <span class="number">0</span>, <span class="string">&#x27;4&#x27;</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (CoreException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;CoreError: -h -j -t must be a char&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//CoreException 2：没有合法单词链</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(core_exception_2_no_solution) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* words[] = &#123; <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;cd&quot;</span>, <span class="string">&quot;ef&quot;</span>&#125;;</span><br><span class="line">        <span class="type">char</span>* ans[] = &#123; <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">test_arg_w</span>(words, <span class="number">3</span>, ans, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (CoreException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;CoreError: No Chain&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//CoreException 3：未指定-r时或-n时输入单词存在环路</span></span><br><span class="line"><span class="built_in">TEST_METHOD</span>(core_exception_3_loop) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">char</span>* words[] = &#123; <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;bb&quot;</span>, <span class="string">&quot;bcb&quot;</span> &#125;;</span><br><span class="line">        <span class="type">char</span>* ans[] = &#123; <span class="string">&quot;&quot;</span> &#125;;</span><br><span class="line">        <span class="built_in">test_arg_w</span>(words, <span class="number">3</span>, ans, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span> (CoreException <span class="type">const</span>&amp; e) &#123;</span><br><span class="line">        Assert::<span class="built_in">AreEqual</span>(<span class="number">0</span>, <span class="built_in">strcmp</span>(<span class="string">&quot;CoreError: LOOP!&quot;</span>, e.<span class="built_in">GetInfo</span>().<span class="built_in">data</span>()));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-11-界面模块的详细设计"><a href="#Part-11-界面模块的详细设计" class="headerlink" title="Part 11 界面模块的详细设计"></a>Part 11 界面模块的详细设计</h2><h3 id="11-1-技术栈介绍"><a href="#11-1-技术栈介绍" class="headerlink" title="11.1 技术栈介绍"></a>11.1 技术栈介绍</h3><p>我们搭建的GUI应用使用了包括如下技术：</p>
+<ul>
+<li><a href="https://github.com/vuetifyjs/vuetify">Vuetify 2.6.0</a></li>
+<li><a href="https://github.com/vuejs/vue">Vue 2.6.14</a></li>
+<li><a href="https://github.com/electron/electron">Electron 13.0.0</a></li>
+<li><a href="https://github.com/node-ffi-napi/node-ffi-napi">node-ffi-napi 4.0.3</a></li>
+<li><a href="https://github.com/lodash/lodash">Lodash 4.0.0</a></li>
+<li><a href="https://github.com/moment/moment/">Moment.js 2.29.2</a></li>
+</ul>
+<p>打包所用的插件是 <a href="https://github.com/nklayman/vue-cli-plugin-electron-builder">vue-cli-plugin-electron-builder</a>，其使用的打包引擎是 <a href="https://github.com/electron-userland/electron-builder">electron-builder</a>。</p>
+<h3 id="11-2-设计风格"><a href="#11-2-设计风格" class="headerlink" title="11.2 设计风格"></a>11.2 设计风格</h3><p>使用Vuetify提供的Material Design风格界面，效果类似于OO课程网站。</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316191455553.png" alt="image-20230316191455553"></p>
+<p>具体地，左上板块为参数说明板块，左下板块为控制板块，右上板块为输入板块，右下板块为输出板块。</p>
+<h3 id="11-3-界面构建"><a href="#11-3-界面构建" class="headerlink" title="11.3 界面构建"></a>11.3 界面构建</h3><p>我们使用基于Vue编写的Material Design框架Vuetify提供的组件进行搭建，以下说明具体实现方法。</p>
+<h4 id="11-3-1-参数说明板块（左上）"><a href="#11-3-1-参数说明板块（左上）" class="headerlink" title="11.3.1 参数说明板块（左上）"></a>11.3.1 参数说明板块（左上）</h4><p>我们使用Vuetify的<code>v-card</code>卡片组件和<code>v-tabs</code>选项卡组件来在固定区域展示各参数的含义和详细介绍信息，包括<code>n,w,c,h,t,j,r</code>七个参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-card&gt;</span><br><span class="line">    &lt;v-tabs v-model=&quot;tab&quot; background-color=&quot;primary&quot; dark show-arrows&gt;</span><br><span class="line">      &lt;v-tab v-for=&quot;item in items&quot; :key=&quot;item.tab&quot;&gt;</span><br><span class="line">        &#123;&#123; item.tab &#125;&#125;</span><br><span class="line">      &lt;/v-tab&gt;</span><br><span class="line">    &lt;/v-tabs&gt;</span><br><span class="line">    &lt;v-tabs-items v-model=&quot;tab&quot;&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;计算单词文本中可以构成多少个单词链（能够构成所有单词链的数目）&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -n参数统计该单词文本中共有多少条单词链，包含嵌套单词链</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-n不要求和其他参数联合使用</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;计算最多单词数量的单词链&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -w参数加文件名的形式计算最多单词数量的英语单词链</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              需要保证单词的输出顺序满足其单词链顺序，即首尾相连</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              假如可能有多组最长的相连英语单词串，选取其中任意一组作为结果即可</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-w与-n -c 等功能性参数不兼容</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;计算字母最多的单词链&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -c参数计算字母最多的英语单词链</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              需要保证单词的输出顺序满足其单词链顺序，即首尾相连</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              假如可能有多组字母数最多的单词链，选取其中任意一组作为结果即可</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-c与-n -w这一类功能型参数不兼容，同时出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;指定单词链开头字母&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -c参数指定单词链的首字母</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-h属于附加型参数，单独出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              假参数-h与-t兼容，允许复合使用，此时需要同时满足首字母和尾字母条件</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;指定单词链开头字母&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -h参数指定单词链的首字母</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-h属于附加型参数，单独出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-h与-t兼容，允许复合使用，此时需要同时满足首字母和尾字母条件</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;指定单词链结尾字母&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -t参数指定单词链的尾字母</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-t属于附加型参数，单独出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-h与-t兼容，允许复合使用，此时需要同时满足首字母和尾字母条件</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;指定单词链中所有单词均不允许出现的首字母&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -j参数指定不允许出现的首字母</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-j属于附加型参数，单独出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-j与参数-h -t兼容，若-h与-j指定字母一致则以“不存在符合条件的单词链”处理</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">      &lt;v-tab-item&gt;</span><br><span class="line">        &lt;v-card flat&gt;</span><br><span class="line">          &lt;v-card-title class=&quot;headline&quot;&gt;允许单词文本隐含单词环&lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-card-text&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              -r参数表示允许单词文本隐含单词环</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-r属于附加型参数，单独出现属于异常</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              参数-r与参数-h及-t兼容，允许复合使用，此时需要同时满足首字母和尾字母条件</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">            &lt;p&gt;</span><br><span class="line">              特别指出，-r参数可能与-j参数复合使用，同时可能存在-h以及-t参数。这四个参数作为附加型参数，若出现逻辑上的冲突，以“不存在符合条件的单词链”处理。</span><br><span class="line">            &lt;/p&gt;</span><br><span class="line">          &lt;/v-card-text&gt;</span><br><span class="line">        &lt;/v-card&gt;</span><br><span class="line">      &lt;/v-tab-item&gt;</span><br><span class="line">    &lt;/v-tabs-items&gt;</span><br><span class="line">  &lt;/v-card&gt;</span><br><span class="line">&lt;/v-card&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果（以<code>n,w</code>参数为例）：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316192702434.png" alt="image-20230316192702434"></p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316192525483.png" alt="image-20230316192525483"></p>
+<h4 id="11-3-2-控制板块（左下）"><a href="#11-3-2-控制板块（左下）" class="headerlink" title="11.3.2 控制板块（左下）"></a>11.3.2 控制板块（左下）</h4><p>我们使用<code>Vuetify</code>的<code>v-card</code>卡片组件和<code>v-list</code>列表组件来支持切换不同功能性参数（<code>n,w,c</code>），并通过右列给出功能性参数允许的附加型参数（<code>h,t,r,j</code>）。</p>
+<p>template如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-card class=&quot;elevation-6 overflow-y-auto&quot; style=&quot;height: 100%&quot;&gt;</span><br><span class="line">    &lt;v-container fluid class=&quot;fill-height py-0&quot;&gt;</span><br><span class="line">      &lt;v-row class=&quot;align-center justify-center&quot; style=&quot;height: 100%&quot;&gt;</span><br><span class="line">        &lt;v-col class=&quot;pa-0&quot; cols=&quot;4&quot; style=&quot;height: 100%&quot;&gt;</span><br><span class="line">          &lt;v-list dark class=&quot;rounded-l pa-0 primary&quot; style=&quot;height: 100%&quot;&gt;</span><br><span class="line">            &lt;v-list-item-group mandatory active-class=&quot;indicator&quot; v-model=&quot;selectedMode&quot; style=&quot;height: 100%&quot;&gt;</span><br><span class="line">              &lt;v-list-item v-for=&quot;(item, i) in modes&quot; :key=&quot;i&quot; style=&quot;height: 33%&quot;&gt;</span><br><span class="line">                &lt;v-list-item-content&gt;</span><br><span class="line">                  &lt;v-list-item-title class=&quot;text-center&quot;&gt;</span><br><span class="line">                    &#123;&#123; item &#125;&#125;</span><br><span class="line">                  &lt;/v-list-item-title&gt;</span><br><span class="line">                &lt;/v-list-item-content&gt;</span><br><span class="line">              &lt;/v-list-item&gt;</span><br><span class="line">            &lt;/v-list-item-group&gt;</span><br><span class="line">          &lt;/v-list&gt;</span><br><span class="line">        &lt;/v-col&gt;</span><br><span class="line">        &lt;v-col cols=&quot;8&quot; style=&quot;height: 100%; display: flex&quot; class=&quot;justify-center&quot;&gt;</span><br><span class="line">          &lt;v-card-title v-if=&quot;noAvailableOptions&quot; class=&quot;justify-center text--secondary&quot;&gt;</span><br><span class="line">            无可用选项： &lt;br /&gt;</span><br><span class="line">            -n参数不能和其他参数一起使用</span><br><span class="line">          &lt;/v-card-title&gt;</span><br><span class="line">          &lt;v-col v-if=&quot;!noAvailableOptions&quot; style=&quot;height: 100%&quot; class=&quot;mode-options py-0 px-2&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;v-text-field label=&quot;首字母限制 -h&quot; class=&quot;my-0&quot; v-model=&quot;head&quot; :rules=&quot;[rules.singleLetter]&quot; /&gt;</span><br><span class="line">            &lt;v-text-field label=&quot;尾字母限制 -t&quot; class=&quot;my-0&quot; v-model=&quot;tail&quot; :rules=&quot;[rules.singleLetter]&quot; /&gt;</span><br><span class="line">            &lt;v-text-field label=&quot;不允许出现的首字母 -j&quot; class=&quot;my-0&quot; v-model=&quot;reject&quot; :rules=&quot;[rules.singleLetter]&quot; /&gt;</span><br><span class="line">            &lt;v-checkbox label=&quot;允许单词环 -r&quot; class=&quot;mt-0&quot; v-model=&quot;allowRing&quot;&gt;&lt;/v-checkbox&gt;</span><br><span class="line"></span><br><span class="line">          &lt;/v-col&gt;</span><br><span class="line">        &lt;/v-col&gt;</span><br><span class="line">      &lt;/v-row&gt;</span><br><span class="line">    &lt;/v-container&gt;</span><br><span class="line">  &lt;/v-card&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316193241822.png" alt="image-20230316193241822"></p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316193251343.png" alt="image-20230316193251343"></p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316193305340.png" alt="image-20230316193305340"></p>
+<h4 id="11-3-3-输入板块（右上）"><a href="#11-3-3-输入板块（右上）" class="headerlink" title="11.3.3 输入板块（右上）"></a>11.3.3 输入板块（右上）</h4><p>我们使用<code>v-btn</code>按钮组件和<code>v-card-text</code>卡片输入框组件来组合实现文本输入部分，支持直接输入单词、从本地选择并导入文本文件、清空文本输入框以及求解四个功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-card class=&quot;elevation-6&quot; style=&quot;height: 100%; display: flex; flex-direction: column&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;v-toolbar class=&quot;elevation-0 py-1&quot; style=&quot;flex-grow: 0&quot;&gt;</span><br><span class="line">      &lt;v-btn dark class=&quot;primary&quot; @click=&quot;importText&quot;&gt; 导入文本文件 &lt;v-icon right light&gt; mdi-file-import &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">      &lt;v-spacer /&gt;</span><br><span class="line">      &lt;v-btn dark class=&quot;primary&quot; @click=&quot;clearInputText&quot;&gt; 清空 &lt;v-icon right light&gt; mdi-cached &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">      &lt;v-spacer /&gt;</span><br><span class="line">      &lt;v-btn class=&quot;primary&quot; @click=&quot;solve&quot; :loading=&quot;calculating&quot; :dark=&quot;!calculating&quot; :disabled=&quot;calculating&quot;&gt;</span><br><span class="line">        求解</span><br><span class="line">        &lt;v-icon right light&gt; mdi-send &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">    &lt;/v-toolbar&gt;</span><br><span class="line"></span><br><span class="line">    &lt;v-card-text style=&quot;flex-grow: 1&quot; class=&quot;pt-3&quot;&gt;</span><br><span class="line">      &lt;v-textarea filled no-resize height=&quot;86%&quot; placeholder=&quot;在此处输入单词文本&quot; style=&quot;height: 100%&quot; v-model=&quot;inputText&quot; /&gt;</span><br><span class="line">    &lt;/v-card-text&gt;</span><br><span class="line">  &lt;/v-card&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316194142289.png" alt="image-20230316194142289"></p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316194240722.png" alt="image-20230316194240722"></p>
+<h4 id="11-3-4-输出板块（右下）"><a href="#11-3-4-输出板块（右下）" class="headerlink" title="11.3.4 输出板块（右下）"></a>11.3.4 输出板块（右下）</h4><p>我们使用<code>v-btn</code>按钮组件、<code>v-card-text</code>文本框组件和<code>v-chip</code>纸片组件来完成输出板块，支持将输出导出为文本文件，清空输出框以及展示计算用时的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;v-card class=&quot;elevation-6&quot; style=&quot;height: 100%; display: flex; flex-direction: column&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;v-toolbar class=&quot;elevation-0 py-1&quot; style=&quot;flex-grow: 0&quot;&gt;</span><br><span class="line">      &lt;v-btn dark class=&quot;primary&quot; @click=&quot;importText&quot;&gt; 导入文本文件 &lt;v-icon right light&gt; mdi-file-import &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">      &lt;v-spacer /&gt;</span><br><span class="line">      &lt;v-btn dark class=&quot;primary&quot; @click=&quot;clearInputText&quot;&gt; 清空 &lt;v-icon right light&gt; mdi-cached &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">      &lt;v-spacer /&gt;</span><br><span class="line">      &lt;v-btn class=&quot;primary&quot; @click=&quot;solve&quot; :loading=&quot;calculating&quot; :dark=&quot;!calculating&quot; :disabled=&quot;calculating&quot;&gt;</span><br><span class="line">        求解</span><br><span class="line">        &lt;v-icon right light&gt; mdi-send &lt;/v-icon&gt;</span><br><span class="line">      &lt;/v-btn&gt;</span><br><span class="line">    &lt;/v-toolbar&gt;</span><br><span class="line"></span><br><span class="line">    &lt;v-card-text style=&quot;flex-grow: 1&quot; class=&quot;pt-3&quot;&gt;</span><br><span class="line">      &lt;v-textarea filled no-resize height=&quot;86%&quot; placeholder=&quot;在此处输入单词文本&quot; style=&quot;height: 100%&quot; v-model=&quot;inputText&quot; /&gt;</span><br><span class="line">    &lt;/v-card-text&gt;</span><br><span class="line">  &lt;/v-card&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316200247024.png" alt="image-20230316200247024"></p>
+<h3 id="11-4-异常处理"><a href="#11-4-异常处理" class="headerlink" title="11.4 异常处理"></a>11.4 异常处理</h3><p>为了增强软件的鲁棒性，提高用户体验，我们在GUI部分设计了许多可以直接判断的特殊情况并给出反馈。</p>
+<h4 id="11-4-1-h-t-j参数输入异常"><a href="#11-4-1-h-t-j参数输入异常" class="headerlink" title="11.4.1 h,t,j参数输入异常"></a>11.4.1 <code>h,t,j</code>参数输入异常</h4><ul>
+<li><p>首先，在左上角的说明板块中明确说明<code>h,t,j</code>须为单个的英文字符（大小写均可）</p>
+</li>
+<li><p>在左下角的控制板块中，当输入框中检测到了长度大于<code>1</code>的字符串或非英文字符时，给出反馈，如下图：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316200950189.png" alt="image-20230316200950189"></p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316201008125.png" alt="image-20230316201008125"></p>
+</li>
+<li><p>如果用户不理睬控制板块输入框的错误提示并执意点击”求解“按钮，则直接进行错误反馈：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230316201210770.png" alt="image-20230316201210770"></p>
+</li>
+</ul>
+<h4 id="11-4-2-单词环异常处理"><a href="#11-4-2-单词环异常处理" class="headerlink" title="11.4.2 单词环异常处理"></a>11.4.2 单词环异常处理</h4><p>当没有勾选<code>-r</code>且输入隐含单词环时，会给出错误提示，且不进行计算：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318105749642-1679226614756-2.png" alt="image-20230318105749642"></p>
+<h4 id="11-4-3-无解"><a href="#11-4-3-无解" class="headerlink" title="11.4.3 无解"></a>11.4.3 无解</h4><p>当在用户给定的参数和输入下没有可行解时，会给出错误提示：</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230318105811809-1679226631624-4.png" alt="image-20230318105811809"></p>
+<h2 id="Part-12-界面模块与计算模块的对接"><a href="#Part-12-界面模块与计算模块的对接" class="headerlink" title="Part 12 界面模块与计算模块的对接"></a>Part 12 界面模块与计算模块的对接</h2><p>我们使用<code>node-ffi-napi</code>库完成Node.js环境与dll的对接。</p>
+<h3 id="12-1-动态库声明"><a href="#12-1-动态库声明" class="headerlink" title="12.1 动态库声明"></a>12.1 动态库声明</h3><p>dll源码声明如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> <span class="type">char</span>* <span class="title">vuetifyAPI</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* input, <span class="type">int</span> type, <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject,  <span class="type">bool</span> weighted)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* code details */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GUI模块实现方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> path = <span class="variable language_">window</span>.<span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> ffi = <span class="variable language_">window</span>.<span class="built_in">require</span>(<span class="string">&#x27;ffi-napi&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> corePtr = ffi.<span class="title class_">DynamicLibrary</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./COREDLL_031619.dll&#x27;</span>)).<span class="title function_">get</span>(<span class="string">&#x27;vuetifyAPI&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> core = ffi.<span class="title class_">ForeignFunction</span>(corePtr, <span class="string">&#x27;string&#x27;</span>, [<span class="string">&#x27;string&#x27;</span>, <span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;char&#x27;</span>, <span class="string">&#x27;char&#x27;</span>, <span class="string">&#x27;char&#x27;</span>, <span class="string">&#x27;bool&#x27;</span>])</span><br><span class="line"><span class="keyword">const</span> moment = <span class="variable language_">window</span>.<span class="built_in">require</span>(<span class="string">&#x27;moment&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-2-异步调用"><a href="#12-2-异步调用" class="headerlink" title="12.2 异步调用"></a>12.2 异步调用</h3><p>我们在 Vue 中为”求解”按钮的 <code>onclick</code> 事件绑定了以下的 handler：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">solve</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">true</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">outputText</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">runMessage</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">let</span> start = <span class="title function_">moment</span>()</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">length</span> &gt; <span class="number">1</span>) &#123; <span class="comment">// 判断各种异常</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-h参数须为长度为1的英文字母，当前输入长度大于1&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">length</span> &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-t参数须为长度为1的英文字母，当前输入长度大于1&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">reject</span>.<span class="property">length</span> &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-j参数须为长度为1的英文字母，当前输入长度大于1&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!(<span class="variable language_">this</span>.<span class="property">head</span>.<span class="property">length</span> == <span class="number">0</span> || (<span class="variable language_">this</span>.<span class="property">head</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;a&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">head</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>))</span><br><span class="line">    || (<span class="variable language_">this</span>.<span class="property">head</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;A&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">head</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;Z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)))) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-h参数须为长度为1的英文字母，当前输入非英文字母&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!(<span class="variable language_">this</span>.<span class="property">tail</span>.<span class="property">length</span> == <span class="number">0</span> || (<span class="variable language_">this</span>.<span class="property">tail</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;a&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>))</span><br><span class="line">    || (<span class="variable language_">this</span>.<span class="property">tail</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;A&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;Z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)))) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-t参数须为长度为1的英文字母，当前输入非英文字母&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!(<span class="variable language_">this</span>.<span class="property">reject</span>.<span class="property">length</span> == <span class="number">0</span> || (<span class="variable language_">this</span>.<span class="property">reject</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;a&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">reject</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>))</span><br><span class="line">    || (<span class="variable language_">this</span>.<span class="property">reject</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &gt;= <span class="string">&quot;A&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &amp;&amp; <span class="variable language_">this</span>.<span class="property">reject</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>) &lt;= <span class="string">&quot;Z&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>)))) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">reportError</span>(<span class="string">&quot;-j参数须为长度为1的英文字母，当前输入非英文字母&quot;</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    core.<span class="title function_">async</span>( <span class="comment">// 异步运算</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">inputText</span>,</span><br><span class="line">      [<span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">allowRing</span> ? <span class="number">3</span> : <span class="number">1</span>, <span class="variable language_">this</span>.<span class="property">allowRing</span> ? <span class="number">3</span> : <span class="number">1</span>, <span class="variable language_">this</span>.<span class="property">allowRing</span> ? <span class="number">3</span> : <span class="number">1</span>][<span class="variable language_">this</span>.<span class="property">selectedMode</span>],</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">noAvailableOptions</span> || !<span class="variable language_">this</span>.<span class="property">head</span> ? <span class="number">0</span> : <span class="variable language_">this</span>.<span class="property">head</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">noAvailableOptions</span> || !<span class="variable language_">this</span>.<span class="property">tail</span> ? <span class="number">0</span> : <span class="variable language_">this</span>.<span class="property">tail</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">noAvailableOptions</span> || !<span class="variable language_">this</span>.<span class="property">reject</span> ? <span class="number">0</span> : <span class="variable language_">this</span>.<span class="property">reject</span>.<span class="title function_">charCodeAt</span>(<span class="number">0</span>),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">selectedMode</span> === <span class="number">1</span>,</span><br><span class="line">      <span class="function">(<span class="params">e, d</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (e) <span class="variable language_">this</span>.<span class="title function_">reportError</span>(e)</span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/^WordList-GUI: /</span>.<span class="title function_">test</span>(d)) &#123;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="title function_">reportError</span>(d.<span class="title function_">substring</span>(<span class="number">14</span>))</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">outputText</span> = d</span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">runMessage</span> = <span class="string">&#x27;&#x27;</span> + <span class="title function_">moment</span>().<span class="title function_">diff</span>(start) + <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">calculating</span> = <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-3-实现效果"><a href="#12-3-实现效果" class="headerlink" title="12.3 实现效果"></a>12.3 实现效果</h3><p>&lt;video id&#x3D;”video” controls&#x3D;””src&#x3D;”.&#x2F;杰对博客&#x2F;demo.mp4” preload&#x3D;”none”&gt;</p>
+<h2 id="Part-13-描述结对的过程"><a href="#Part-13-描述结对的过程" class="headerlink" title="Part 13 描述结对的过程"></a>Part 13 描述结对的过程</h2><p>我们选择在海棠咖啡和新主楼H10咖啡厅进行结对。在这个过程中，我们有了合作工作的所有条件：WiFi、电源、可以随时沟通的环境、6元咖啡，以及最重要的，优秀的搭档。</p>
+<p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/%E6%9D%B0%E5%AF%B9%E8%BF%87%E7%A8%8B.jpg" alt="杰对过程"></p>
+<h2 id="Part-14-结对编程的优缺点与本次组合的优缺点"><a href="#Part-14-结对编程的优缺点与本次组合的优缺点" class="headerlink" title="Part 14 结对编程的优缺点与本次组合的优缺点"></a>Part 14 结对编程的优缺点与本次组合的优缺点</h2><h3 id="14-1-结对编程"><a href="#14-1-结对编程" class="headerlink" title="14.1 结对编程"></a>14.1 结对编程</h3><p>结对编程是一种敏捷软件开发的方法，两个程序员在一个计算机上共同工作。123 一个人输入代码，而另一个人审查他输入的每一行代码。2 输入代码的人称作驾驶员，审查代码的人称作观察员（或导航员）。</p>
+<h4 id="14-1-1-结对编程优点"><a href="#14-1-1-结对编程优点" class="headerlink" title="14.1.1 结对编程优点"></a>14.1.1 结对编程优点</h4><ul>
+<li>可以提高代码质量和可读性，减少错误和重复代码。</li>
+<li>可以促进知识共享和团队协作，增强信任和沟通。</li>
+<li>可以提高学习效率和创新能力，拓展思路和技能。</li>
+</ul>
+<h4 id="14-1-2-结对编程缺点"><a href="#14-1-2-结对编程缺点" class="headerlink" title="14.1.2 结对编程缺点"></a>14.1.2 结对编程缺点</h4><ul>
+<li>增加人力成本和沟通成本，需要更多的硬件设备和空间。</li>
+<li>降低个人自由度和隐私性，可能引起冲突和压力。</li>
+<li>需要适应不同的风格和习惯，可能影响个人效率和专注度。</li>
+</ul>
+<h3 id="14-2-结对对象"><a href="#14-2-结对对象" class="headerlink" title="14.2 结对对象"></a>14.2 结对对象</h3><h4 id="14-2-1-结对对象lzh优点"><a href="#14-2-1-结对对象lzh优点" class="headerlink" title="14.2.1 结对对象lzh优点"></a>14.2.1 结对对象lzh优点</h4><ul>
+<li>C++代码能力扎实，有丰富的OO和STL应用经验，可以写出强鲁棒性、强扩展性和强高可用性的代码</li>
+<li>优秀的项目管理水平，规划了完整可行的结对作业进度表，按部就班即可完成作业</li>
+<li>完善的代码和文档规范，可以让人快速理解，减少错误和重复代码</li>
+</ul>
+<h4 id="14-2-2-结对对象lzh缺点"><a href="#14-2-2-结对对象lzh缺点" class="headerlink" title="14.2.2 结对对象lzh缺点"></a>14.2.2 结对对象lzh缺点</h4><ul>
+<li>工作比较投入，沟通的间隔较长</li>
+</ul>
+<h4 id="14-2-3-结对对象yjk优点"><a href="#14-2-3-结对对象yjk优点" class="headerlink" title="14.2.3 结对对象yjk优点"></a>14.2.3 结对对象yjk优点</h4><ul>
+<li>擅长配置工具和环境</li>
+<li>有一定的团队合作和管理经验</li>
+<li>擅长文档文书工作</li>
+</ul>
+<h4 id="14-2-4-结对对象yjk缺点"><a href="#14-2-4-结对对象yjk缺点" class="headerlink" title="14.2.4 结对对象yjk缺点"></a>14.2.4 结对对象yjk缺点</h4><ul>
+<li>技术力弱，缺乏对具体问题和具体技术的分析解决预判能力</li>
+</ul>
+<h2 id="Part-15-PSP实际耗时表格"><a href="#Part-15-PSP实际耗时表格" class="headerlink" title="Part 15 PSP实际耗时表格"></a>Part 15 PSP实际耗时表格</h2><table>
+<thead>
+<tr>
+<th>itle</th>
+<th>yjk实际耗时（分钟）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计划</td>
+<td>20</td>
+</tr>
+<tr>
+<td>· 估计这个任务需要多少时间</td>
+<td>20</td>
+</tr>
+<tr>
+<td>开发</td>
+<td>3195</td>
+</tr>
+<tr>
+<td>· 需求分析 (包括学习新技术)</td>
+<td>280</td>
+</tr>
+<tr>
+<td>· 生成设计文档</td>
+<td>60</td>
+</tr>
+<tr>
+<td>· 设计复审 (和同事审核设计文档)</td>
+<td>350</td>
+</tr>
+<tr>
+<td>· 代码规范 (为目前的开发制定合适的规范)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>· 具体设计</td>
+<td>100</td>
+</tr>
+<tr>
+<td>· 具体编码</td>
+<td>1450</td>
+</tr>
+<tr>
+<td>· 代码复审</td>
+<td>350</td>
+</tr>
+<tr>
+<td>· 测试（自我测试，修改代码，提交修改）</td>
+<td>600</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>700</td>
+</tr>
+<tr>
+<td>· 测试报告</td>
+<td>250</td>
+</tr>
+<tr>
+<td>· 计算工作量</td>
+<td>200</td>
+</tr>
+<tr>
+<td>· 事后总结, 并提出过程改进计划</td>
+<td>250</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>3915</td>
+</tr>
+</tbody></table>
+<h2 id="Part-16-界面模块、测试模块和核心模块的松耦合"><a href="#Part-16-界面模块、测试模块和核心模块的松耦合" class="headerlink" title="Part 16 界面模块、测试模块和核心模块的松耦合"></a>Part 16 界面模块、测试模块和核心模块的松耦合</h2><p>与我们进行松耦合实践的组是：</p>
+<ul>
+<li>yyh 20373228</li>
+<li>lzn 20373290</li>
+</ul>
+<p>我们两组均使用C++作为项目语言；GUI部分我们采用electron+vue实现，他们使用PyQt实现。</p>
+<h3 id="16-1-我们的核心模块与他们的GUI"><a href="#16-1-我们的核心模块与他们的GUI" class="headerlink" title="16.1 我们的核心模块与他们的GUI"></a>16.1 我们的核心模块与他们的GUI</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/167f550f9a284da55fababa4c1da112.png" alt="167f550f9a284da55fababa4c1da112"></p>
+<h3 id="16-2-他们的核心模块与我们的GUI"><a href="#16-2-他们的核心模块与我们的GUI" class="headerlink" title="16.2 他们的核心模块与我们的GUI"></a>16.2 他们的核心模块与我们的GUI</h3><p><img src="/2023/03/19/%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2/image-20230319152335619.png" alt="image-20230319152335619"></p>
+<h3 id="16-3-遇到的问题与解决方案"><a href="#16-3-遇到的问题与解决方案" class="headerlink" title="16.3 遇到的问题与解决方案"></a>16.3 遇到的问题与解决方案</h3><h4 id="16-3-1-接口不一致"><a href="#16-3-1-接口不一致" class="headerlink" title="16.3.1 接口不一致"></a>16.3.1 接口不一致</h4><p>我们dll使用的接口规范为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> <span class="type">char</span>* <span class="title">vuetifyAPI</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* input, <span class="type">int</span> type, <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> reject,  <span class="type">bool</span> weighted)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>他们dll使用的接口规范为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chains_all</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[])</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_word</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> n_head, <span class="type">bool</span> enable_loop)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gen_chain_char</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* words[], <span class="type">int</span> len, <span class="type">char</span>* result[], <span class="type">char</span> head, <span class="type">char</span> tail, <span class="type">char</span> n_head, <span class="type">bool</span> enable_loop)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们的主要解决方案是：</p>
+<ul>
+<li>我们的核心模块加上他们的GUI时，额外声明这三个接口，并分别分发调用我们的接口</li>
+<li>他们的核心模块加上我们的GUI时，我们在源码中声明我们的接口<code>vuetifyAPI</code>，并分发给三个对应的接口</li>
+</ul>
+<p>在适配时遇到了一些环境和配置的问题，除此之外比较顺利。</p>
+<h4 id="16-3-2-编解码问题"><a href="#16-3-2-编解码问题" class="headerlink" title="16.3.2 编解码问题"></a>16.3.2 编解码问题</h4><p>在交换模块时，我们遇到了<code>Unicode</code>,<code>Base64</code>和<code>UTF-8</code>等编解码问题，综合使用了以下方法解决：</p>
+<ul>
+<li>使用<code>str()</code>函数将<code>PyQt4.QtCore.QString</code>类转换为标准字符串。</li>
+<li>使用<code>QTextCodec</code>类设置<code>PyQt</code>的默认编码方式；使用<code>QTextStream</code>类指定文件的编码方式。</li>
+<li>使用<code>QByteArray::toBase64()</code>和<code>QByteArray::fromBase64()</code>函数进行<code>Base64</code>编解码。</li>
+</ul>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/03/21/「BUAA-X86-Programming」Experiment-Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA X86 Programming」Experiment Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/03/14/Electron笔记/" data-toggle="tooltip" data-placement="top" title="Electron笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sun Mar 19 2023 20:52:05 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-SE-Pair-Programming-Work%E3%80%8D%E8%BD%AF%E5%B7%A5%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA SE Pair Programming Work」软工结对编程博客</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 1 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-PSP%E9%A2%84%E4%BC%B0%E8%80%97%E6%97%B6%E8%A1%A8%E6%A0%BC"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 2 PSP预估耗时表格</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 3 接口设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-Information-Hiding%EF%BC%88%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%EF%BC%89"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">3.1 Information Hiding（信息隐藏）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-Interface-Design%EF%BC%88%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%EF%BC%89"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">3.2 Interface Design（接口设计）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-Loose-Coupling%EF%BC%88%E6%9D%BE%E8%80%A6%E5%90%88%EF%BC%89"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3.3 Loose Coupling（松耦合）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 4 计算模块接口的设计与实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-0-%E5%AD%98%E5%82%A8%E4%B8%8E%E7%B1%BB%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">4.0 存储与类的设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-0-1-%E5%8D%95%E8%AF%8D"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">4.0.1 单词</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-0-2-%E7%BB%93%E7%82%B9"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">4.0.2 结点</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-0-3-Edge%E8%BE%B9%E7%B1%BB"><span class="toc-nav-number">1.4.1.3.</span> <span class="toc-nav-text">4.0.3 Edge边类</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-0-4-Graph%E5%9B%BE%E7%B1%BB"><span class="toc-nav-number">1.4.1.4.</span> <span class="toc-nav-text">4.0.4 Graph图类</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">4.1 接口说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-1-1-CORE%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">4.1.1 CORE模块接口参数说明</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-1-2-CORE%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">4.1.2 CORE模块接口实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-%E6%B5%81%E7%A8%8B%E5%9B%BE%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">4.2 流程图与函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-1-%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%821%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%8D%95%E8%AF%8D%E6%96%87%E6%9C%AC%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%9E%84%E6%88%90%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%8D%95%E8%AF%8D%E9%93%BE%EF%BC%88-n%EF%BC%89"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">4.2.1 基本需求1：计算单词文本中可以构成多少个单词链（-n）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-2-%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%824%EF%BC%9A%E6%8C%87%E5%AE%9A%E5%8D%95%E8%AF%8D%E9%93%BE%E5%BC%80%E5%A4%B4%E6%88%96%E7%BB%93%E5%B0%BE%E5%AD%97%E6%AF%8D%EF%BC%88-h-t%EF%BC%89%E5%92%8C%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%825%EF%BC%9A%E6%8C%87%E5%AE%9A%E5%8D%95%E8%AF%8D%E9%93%BE%E4%B8%AD%E6%89%80%E6%9C%89%E5%8D%95%E8%AF%8D%E5%9D%87%E4%B8%8D%E5%85%81%E8%AE%B8%E5%87%BA%E7%8E%B0%E7%9A%84%E9%A6%96%E5%AD%97%E6%AF%8D%EF%BC%88-j%EF%BC%89"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">4.2.2 基本需求4：指定单词链开头或结尾字母（-h-t）和基本需求5：指定单词链中所有单词均不允许出现的首字母（-j）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-3-%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%826%EF%BC%9A%E5%85%81%E8%AE%B8%E5%8D%95%E8%AF%8D%E6%96%87%E6%9C%AC%E9%9A%90%E5%90%AB%E5%8D%95%E8%AF%8D%E7%8E%AF%EF%BC%88-r%EF%BC%89"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">4.2.3 基本需求6：允许单词文本隐含单词环（-r）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-4-%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%822%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%80%E5%A4%9A%E5%8D%95%E8%AF%8D%E6%95%B0%E9%87%8F%E7%9A%84%E5%8D%95%E8%AF%8D%E9%93%BE%EF%BC%88-w%EF%BC%89"><span class="toc-nav-number">1.4.3.4.</span> <span class="toc-nav-text">4.2.4 基本需求2：计算最多单词数量的单词链（-w）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-5-%E5%9F%BA%E6%9C%AC%E9%9C%80%E6%B1%823%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%AD%97%E6%AF%8D%E6%9C%80%E5%A4%9A%E7%9A%84%E5%8D%95%E8%AF%8D%E9%93%BE%EF%BC%88-c%EF%BC%89"><span class="toc-nav-number">1.4.3.5.</span> <span class="toc-nav-text">4.2.5 基本需求3：计算字母最多的单词链（-c）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-%E5%85%B3%E9%94%AE%E7%AE%97%E6%B3%95%E4%B8%8E%E7%8B%AC%E5%88%B0%E4%B9%8B%E5%A4%84"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">4.3 关键算法与独到之处</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-1-Tarjan%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="toc-nav-number">1.4.4.1.</span> <span class="toc-nav-text">4.3.1 Tarjan算法计算强连通分量</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-2-c%E6%8F%90%E5%89%8D%E5%8E%BB%E9%99%A4%E5%AD%A4%E7%AB%8B%E8%BE%B9"><span class="toc-nav-number">1.4.4.2.</span> <span class="toc-nav-text">4.3.2 -c提前去除孤立边</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-3-%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-nav-number">1.4.4.3.</span> <span class="toc-nav-text">4.3.3 强连通分量的动态规划</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-4-%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%E5%86%85dfs%E4%BD%BF%E7%94%A8%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%9C%80%E9%95%BF%E8%B7%AF%E5%BE%84"><span class="toc-nav-number">1.4.4.4.</span> <span class="toc-nav-text">4.3.4 强连通分量内dfs使用贪心算法求解最长路径</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-%E7%BC%96%E8%AF%91%E5%99%A8%E7%BC%96%E8%AF%91%E9%80%9A%E8%BF%87%E6%97%A0%E8%AD%A6%E5%91%8A"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 5 编译器编译通过无警告</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-UML%E5%9B%BE"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 6 UML图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3%E9%83%A8%E5%88%86%E7%9A%84%E6%80%A7%E8%83%BD%E6%94%B9%E8%BF%9B"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 7 计算模块接口部分的性能改进</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-1-%E6%80%A7%E8%83%BD%E6%94%B9%E8%BF%9B%E8%8A%B1%E8%B4%B9%E7%9A%84%E6%97%B6%E9%97%B4"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">7.1 性能改进花费的时间</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-2-%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%B6%88%E8%80%97%E6%9C%80%E5%A4%A7%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">7.2 程序中消耗最大的函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-3-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E6%94%B9%E8%BF%9B"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">7.3 算法分析与改进</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-Design-by-Contract%E4%B8%8ECode-Contract"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 8 Design by Contract与Code Contract</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-1-Design-by-Contract-DbC"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">8.1 Design by Contract (DbC)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-2-Code-Contract"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">8.2 Code Contract</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-3-%E5%9C%A8%E7%BB%93%E5%AF%B9%E4%BD%9C%E4%B8%9A%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-nav-number">1.8.3.</span> <span class="toc-nav-text">8.3 在结对作业中的应用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-9-%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E9%83%A8%E5%88%86%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 9 计算模块部分单元测试</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">9.1 单元测试代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-1-%E9%92%88%E5%AF%B9CORE%E8%AE%A1%E7%AE%97%E6%A0%B8%E5%BF%83API%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">9.1.1 针对CORE计算核心API接口的测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-2-%E9%92%88%E5%AF%B9%E9%9D%A2%E5%90%91Vuetify-GUI%E7%9A%84API%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">9.1.2 针对面向Vuetify-GUI的API接口的测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-3-%E9%92%88%E5%AF%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%85%A5%E6%A8%A1%E5%9D%97%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.9.4.</span> <span class="toc-nav-text">9.1.3 针对命令行程序命令解析模块与文件读入模块的测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-4-InPutException%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95%EF%BC%9A%E9%92%88%E5%AF%B9%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%96%87%E4%BB%B6%E8%AF%BB%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.9.5.</span> <span class="toc-nav-text">9.1.4 InPutException异常测试：针对命令行程序命令解析模块与文件读入模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-1-5-CoreException%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95%EF%BC%9A%E9%92%88%E5%AF%B9%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.9.6.</span> <span class="toc-nav-text">9.1.5 CoreException异常测试：针对计算模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-2-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.9.7.</span> <span class="toc-nav-text">9.2 单元测试函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-2-1-CORE%E8%AE%A1%E7%AE%97%E6%A0%B8%E5%BF%83API"><span class="toc-nav-number">1.9.8.</span> <span class="toc-nav-text">9.2.1 CORE计算核心API</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-2-2-%E9%9D%A2%E5%90%91Vuetify-GUI%E7%9A%84API"><span class="toc-nav-number">1.9.9.</span> <span class="toc-nav-text">9.2.2 面向Vuetify-GUI的API</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-2-3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90%E3%80%81%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.9.10.</span> <span class="toc-nav-text">9.2.3 命令行程序的命令解析、输入模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-3-%E6%9E%84%E9%80%A0%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.9.11.</span> <span class="toc-nav-text">9.3 构造测试数据的思路</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-4-%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87"><span class="toc-nav-number">1.9.12.</span> <span class="toc-nav-text">9.4 测试覆盖率</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-10-%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E9%83%A8%E5%88%86%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">Part 10 计算模块部分异常处理说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#10-1-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97%E5%BC%82%E5%B8%B8InPutException-%E5%85%B114%E7%A7%8D"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">10.1 输入模块异常InPutException 共14种</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#10-2-%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E5%BC%82%E5%B8%B8CoreException-%E5%85%B13%E7%A7%8D"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">10.2 计算模块异常CoreException 共3种</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-11-%E7%95%8C%E9%9D%A2%E6%A8%A1%E5%9D%97%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">Part 11 界面模块的详细设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-1-%E6%8A%80%E6%9C%AF%E6%A0%88%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.11.1.</span> <span class="toc-nav-text">11.1 技术栈介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-2-%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC"><span class="toc-nav-number">1.11.2.</span> <span class="toc-nav-text">11.2 设计风格</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-3-%E7%95%8C%E9%9D%A2%E6%9E%84%E5%BB%BA"><span class="toc-nav-number">1.11.3.</span> <span class="toc-nav-text">11.3 界面构建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-3-1-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E6%9D%BF%E5%9D%97%EF%BC%88%E5%B7%A6%E4%B8%8A%EF%BC%89"><span class="toc-nav-number">1.11.3.1.</span> <span class="toc-nav-text">11.3.1 参数说明板块（左上）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-3-2-%E6%8E%A7%E5%88%B6%E6%9D%BF%E5%9D%97%EF%BC%88%E5%B7%A6%E4%B8%8B%EF%BC%89"><span class="toc-nav-number">1.11.3.2.</span> <span class="toc-nav-text">11.3.2 控制板块（左下）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-3-3-%E8%BE%93%E5%85%A5%E6%9D%BF%E5%9D%97%EF%BC%88%E5%8F%B3%E4%B8%8A%EF%BC%89"><span class="toc-nav-number">1.11.3.3.</span> <span class="toc-nav-text">11.3.3 输入板块（右上）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-3-4-%E8%BE%93%E5%87%BA%E6%9D%BF%E5%9D%97%EF%BC%88%E5%8F%B3%E4%B8%8B%EF%BC%89"><span class="toc-nav-number">1.11.3.4.</span> <span class="toc-nav-text">11.3.4 输出板块（右下）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-4-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.11.4.</span> <span class="toc-nav-text">11.4 异常处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-4-1-h-t-j%E5%8F%82%E6%95%B0%E8%BE%93%E5%85%A5%E5%BC%82%E5%B8%B8"><span class="toc-nav-number">1.11.4.1.</span> <span class="toc-nav-text">11.4.1 h,t,j参数输入异常</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-4-2-%E5%8D%95%E8%AF%8D%E7%8E%AF%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.11.4.2.</span> <span class="toc-nav-text">11.4.2 单词环异常处理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#11-4-3-%E6%97%A0%E8%A7%A3"><span class="toc-nav-number">1.11.4.3.</span> <span class="toc-nav-text">11.4.3 无解</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-12-%E7%95%8C%E9%9D%A2%E6%A8%A1%E5%9D%97%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%B9%E6%8E%A5"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">Part 12 界面模块与计算模块的对接</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-1-%E5%8A%A8%E6%80%81%E5%BA%93%E5%A3%B0%E6%98%8E"><span class="toc-nav-number">1.12.1.</span> <span class="toc-nav-text">12.1 动态库声明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-2-%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8"><span class="toc-nav-number">1.12.2.</span> <span class="toc-nav-text">12.2 异步调用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-3-%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-nav-number">1.12.3.</span> <span class="toc-nav-text">12.3 实现效果</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-13-%E6%8F%8F%E8%BF%B0%E7%BB%93%E5%AF%B9%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">Part 13 描述结对的过程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-14-%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E4%B8%8E%E6%9C%AC%E6%AC%A1%E7%BB%84%E5%90%88%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">Part 14 结对编程的优缺点与本次组合的优缺点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#14-1-%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B"><span class="toc-nav-number">1.14.1.</span> <span class="toc-nav-text">14.1 结对编程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-1-1-%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E4%BC%98%E7%82%B9"><span class="toc-nav-number">1.14.1.1.</span> <span class="toc-nav-text">14.1.1 结对编程优点</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-1-2-%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">1.14.1.2.</span> <span class="toc-nav-text">14.1.2 结对编程缺点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#14-2-%E7%BB%93%E5%AF%B9%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.14.2.</span> <span class="toc-nav-text">14.2 结对对象</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-2-1-%E7%BB%93%E5%AF%B9%E5%AF%B9%E8%B1%A1lzh%E4%BC%98%E7%82%B9"><span class="toc-nav-number">1.14.2.1.</span> <span class="toc-nav-text">14.2.1 结对对象lzh优点</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-2-2-%E7%BB%93%E5%AF%B9%E5%AF%B9%E8%B1%A1lzh%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">1.14.2.2.</span> <span class="toc-nav-text">14.2.2 结对对象lzh缺点</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-2-3-%E7%BB%93%E5%AF%B9%E5%AF%B9%E8%B1%A1yjk%E4%BC%98%E7%82%B9"><span class="toc-nav-number">1.14.2.3.</span> <span class="toc-nav-text">14.2.3 结对对象yjk优点</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#14-2-4-%E7%BB%93%E5%AF%B9%E5%AF%B9%E8%B1%A1yjk%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">1.14.2.4.</span> <span class="toc-nav-text">14.2.4 结对对象yjk缺点</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-15-PSP%E5%AE%9E%E9%99%85%E8%80%97%E6%97%B6%E8%A1%A8%E6%A0%BC"><span class="toc-nav-number">1.15.</span> <span class="toc-nav-text">Part 15 PSP实际耗时表格</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-16-%E7%95%8C%E9%9D%A2%E6%A8%A1%E5%9D%97%E3%80%81%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97%E5%92%8C%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9D%BE%E8%80%A6%E5%90%88"><span class="toc-nav-number">1.16.</span> <span class="toc-nav-text">Part 16 界面模块、测试模块和核心模块的松耦合</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#16-1-%E6%88%91%E4%BB%AC%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E4%B8%8E%E4%BB%96%E4%BB%AC%E7%9A%84GUI"><span class="toc-nav-number">1.16.1.</span> <span class="toc-nav-text">16.1 我们的核心模块与他们的GUI</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#16-2-%E4%BB%96%E4%BB%AC%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%88%91%E4%BB%AC%E7%9A%84GUI"><span class="toc-nav-number">1.16.2.</span> <span class="toc-nav-text">16.2 他们的核心模块与我们的GUI</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#16-3-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-nav-number">1.16.3.</span> <span class="toc-nav-text">16.3 遇到的问题与解决方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#16-3-1-%E6%8E%A5%E5%8F%A3%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-nav-number">1.16.3.1.</span> <span class="toc-nav-text">16.3.1 接口不一致</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#16-3-2-%E7%BC%96%E8%A7%A3%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.16.3.2.</span> <span class="toc-nav-text">16.3.2 编解码问题</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

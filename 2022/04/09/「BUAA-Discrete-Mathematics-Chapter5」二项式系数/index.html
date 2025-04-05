@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA Discrete Mathematics Chapter5」二项式系数 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/09/「BUAA-Discrete-Mathematics-Chapter5」二项式系数/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                            
+                        </div>
+                        <h1>「BUAA Discrete Mathematics Chapter5」二项式系数</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-09
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.3k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter5」二项式系数"><a href="#「BUAA-Discrete-Mathematics-Chapter5」二项式系数" class="headerlink" title="「BUAA Discrete Mathematics Chapter5」二项式系数"></a>「BUAA Discrete Mathematics Chapter5」二项式系数</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h2><h3 id="Pascal公式"><a href="#Pascal公式" class="headerlink" title="Pascal公式"></a>Pascal公式</h3><p>$$<br>\tbinom{n}{k} &#x3D; \tbinom{n-1}{k}+\tbinom{n-1}{k-1}<br>$$</p>
+<h3 id="组合推理证明"><a href="#组合推理证明" class="headerlink" title="组合推理证明"></a>组合推理证明</h3><ul>
+<li>一种依靠计数原理构建代数事实的证明方法</li>
+<li>基本框架：<ol>
+<li>定义一个集合$ S $</li>
+<li>通过一种计数方式得出$ |S|&#x3D;n $</li>
+<li>通过另一种计数方式得出$ |S| &#x3D; m $</li>
+<li>得出结论$ n&#x3D;m $</li>
+</ol>
+</li>
+</ul>
+<h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><p>$$<br>(x+y)^n &#x3D; \sum_{k&#x3D;0}^{n}\tbinom{n}{k}x^{n-k}y^k<br>$$</p>
+<h3 id="求导法和积分法"><a href="#求导法和积分法" class="headerlink" title="求导法和积分法"></a>求导法和积分法</h3><p>对于一些不等式证明和计算，需要使用这两种方法，以下举例说明</p>
+<h4 id="求导法"><a href="#求导法" class="headerlink" title="求导法"></a>求导法</h4><p>来源：《组合数学》P96 T15</p>
+<p>题目：求证对${\forall}n&gt;1$有$\tbinom{n}{1}-2\tbinom{n}{2}+3\tbinom{n}{3}+···+(-1)^{n-1}n\tbinom{n}{n}&#x3D;0$</p>
+<p>解答：</p>
+<p>根据<br>$$<br>(1-x)^n&#x3D;\sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^{k}x^k<br>$$<br>求导得<br>$$<br>-n(1-x)^{n-1}&#x3D;\sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^kkx^{k-1}<br>$$<br>令$x&#x3D;1$即证毕。</p>
+<h4 id="积分法"><a href="#积分法" class="headerlink" title="积分法"></a>积分法</h4><p>来源：《组合数学》P96 T18</p>
+<p>题目：求和$1-\frac{1}{2}\tbinom{n}{1}+\frac{1}{3}\tbinom{n}{2}-\frac{1}{4}\tbinom{n}{3}+···+(-1)^n\frac{1}{n+1}\tbinom{n}{n}$</p>
+<p>解答：</p>
+<p>根据<br>$$<br>(1-x)^n &#x3D; \sum_{k&#x3D;0}^{n} \tbinom{n}{k}(-1)^{k}x^k<br>$$<br>左右不定积分得<br>$$<br>-\frac{(1-x)^{n+1}} {n+1} &#x3D; \sum_{k&#x3D;0}^{n}\tbinom{n}{k}(-1)^k\frac{x^{k+1}}{k+1}+C<br>$$<br><strong>注意有$+C$</strong>。代入$x&#x3D;0$得$C&#x3D;-\frac{1}{n+1}$，代入$x&#x3D;1$得所求式值为$-\frac{1}{n+1}$</p>
+<h3 id="二项式系数的单峰性"><a href="#二项式系数的单峰性" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h3><p>为了介绍二项式系数的单峰性，我们首先介绍单峰性概念</p>
+<h4 id="单峰性"><a href="#单峰性" class="headerlink" title="单峰性"></a>单峰性</h4><p>设序列$ s_0, s_1, s_2, \cdots , s_n $，若存在一个整数$ t $，$ 0 \le t \le n $，使得：<br>$$<br>s_0 \le s_1 \le s_2 \cdots \le s_t , s_t \ge s_{t+1} \ge s_{t+2} \ge \cdots \ge s_n<br>$$<br>那么， 称序列是单峰的</p>
+<h4 id="二项式系数的单峰性-1"><a href="#二项式系数的单峰性-1" class="headerlink" title="二项式系数的单峰性"></a>二项式系数的单峰性</h4><p>$ n $为正整数，二项式系数序列是单峰序列，其中：</p>
+<ul>
+<li>$ n $是偶数：</li>
+</ul>
+<p>$$<br>\tbinom{n}{0} &lt; \tbinom{n}{1} &lt; \cdots &lt; \tbinom{n}{\frac{n}{2}} , \tbinom{n}{\frac{n}{2}} &gt; \cdots &gt; \tbinom{n}{n - 1} &gt; \tbinom{n}{ n }<br>$$</p>
+<ul>
+<li>$ n $是奇数：</li>
+</ul>
+<p>$$<br>\tbinom{n}{0} &lt; \tbinom{n}{1} &lt; \cdots &lt; \tbinom{n}{\frac{n-1}{2}} , \tbinom{n}{\frac{n+1}{2}} &gt; \cdots &gt; \tbinom{n}{n - 1} &gt; \tbinom{n}{ n }<br>$$</p>
+<h3 id="多项式定理"><a href="#多项式定理" class="headerlink" title="多项式定理"></a>多项式定理</h3><p>二项式定理给出对正整数$n$ ， $ (x + y ) ^ n $的公式，扩展到 $ (x_1 + x_2 + \cdots +x_t) ^ n $ 的公式，二项式系数的角色被多项式系数取代，其定义为：<br>$$<br>\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} &#x3D; \frac{n!}{n_1!n_2! \cdots n_t!}<br>$$<br>其中$ n_1, n_2, \cdots n_t $满足：<br>$$<br>n_1 + n_2 + \cdots + n_t &#x3D; n<br>$$<br>根据这种记法，可以将二项式系数表示为：<br>$$<br>\tbinom{n}{k} &#x3D; \tbinom{n}{k \quad n-k}<br>$$</p>
+<h4 id="帕斯卡公式"><a href="#帕斯卡公式" class="headerlink" title="帕斯卡公式"></a>帕斯卡公式</h4><h5 id="二项式"><a href="#二项式" class="headerlink" title="二项式"></a>二项式</h5><p>$$<br>\tbinom{n}{k \quad n-k} &#x3D;  \tbinom{n-1}{k \quad n - k - 1} + \tbinom{n-1}{k-1 \quad n - k}<br>$$</p>
+<h5 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h5><p>$$<br>\tbinom{n}{n_1 \ n_2 \ \cdots  \ n_t} &#x3D; \tbinom{n - 1}{n_1-1 \ n_2 \ \cdots  \ n_t} + \tbinom{n - 1}{n_1 \ n_2 - 1 \ \cdots  \ n_t} + \cdots + \tbinom{n - 1}{n_1 \ n_2 \ \cdots  \ n_t - 1}<br>$$</p>
+<p>规律为：上面$ - 1 $，下面依次各$ - 1 $，应用加法原理。</p>
+<h4 id="多项式定理-1"><a href="#多项式定理-1" class="headerlink" title="多项式定理"></a>多项式定理</h4><p>$$<br>(x_1 + x_2 + \cdots + x_t) ^ n &#x3D; \sum\tbinom{n}{n_1 \ n_2 \cdots n_t}{x_1}^{n_1}{x_2}^{n_2}\cdots{x_t}^{n_t}<br>$$</p>
+<p>其中，求和是对 $ n_1 + n_2 + \cdots + n_t &#x3D; n $ 的所有非负整数解进行的。</p>
+<h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>牛顿扩展了二项式定理，得到 $ (x + y) ^ \alpha$ 的展开式， $ \alpha $ 是任意实数。</p>
+<p>设 $ \alpha $是实数，对所有满足 $ 0 \le |x| &lt; |y| $ 的 $ x $ 和 $ y $ ，有：</p>
+<p>$$<br>(x + y) ^ {\alpha} &#x3D; \sum_{k &#x3D; 0}^{\infty}\tbinom{\alpha}{k}x^ky^{\alpha - k}<br>$$<br>其中<br>$$<br>\tbinom{\alpha}{k} &#x3D; \frac{\alpha(\alpha - 1) \cdots (\alpha - k - 1)}{k!}<br>$$</p>
+<h3 id="Sperner定理"><a href="#Sperner定理" class="headerlink" title="Sperner定理"></a>Sperner定理</h3><p>有一个$ n $元集合$ S_n $，从中选出若干个子集，满足没有任何两个子集之间存在包含关系，最多能选出$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个。</p>
+<p>事实上，上述引出了反链的定义，以下逐个介绍链、最大链、反链。</p>
+<h4 id="链"><a href="#链" class="headerlink" title="链"></a>链</h4><p>$ S $的子集的集合$ C $是一条链(chain)，只要对于$ C $中的<strong>每一对</strong>子集，总有一个包含在另一个之中：$ A_1 $，$ A_2 $在$ C $中，且$ A_1 \ne A_2 $意味着$ A_1 \subset A_2 $或者$ A_2 \subset A_1 $。</p>
+<h4 id="最大链"><a href="#最大链" class="headerlink" title="最大链"></a>最大链</h4><p>链中不能挤入更多子集。</p>
+<h4 id="反链"><a href="#反链" class="headerlink" title="反链"></a>反链</h4><p>$ S $的子集的集合$ C $是反链，当且仅当$ C $中的子集不互相包含。</p>
+<p>通过以上定义，可以得到Sperner定理的等价表述：设$ S $是$ n $元素集合，那么$ S $上的一个反链至多包含$ \tbinom{n}{\lfloor \frac{n}{2} \rfloor}$个集合。</p>
+<h3 id="对称链划分"><a href="#对称链划分" class="headerlink" title="对称链划分"></a>对称链划分</h3><p>当下面两个条件满足时，$ {1, 2, \cdots , n} $ 的所有子集的集合的链划分是一个对称链划分：</p>
+<ol>
+<li>链中每一个子集比它前面的子集的元素个数多$ 1 $ ；</li>
+<li>链中第一个子集的大小加上最后一个子集的大小等于$ n $ 。（如果这个链只含一个子集，那么这个子集既是第一个子集也是最后一个子集，所以其大小的两倍等于$ n $ ；即它的大小是 $ \frac{n}{2} $ ， $ n $ 是偶数。）</li>
+</ol>
+<p>对称链划分中的每一个链必须正好含有一个 $ \lfloor \frac{n}{2} \rfloor$ 子集（也正好含有一个$ \lceil \frac{n}{2} \rceil$ 子集）；因此，对称链划分中的链的个数等于<br>$$<br>\tbinom{n}{\lfloor \frac{n}{2} \rfloor} &#x3D; \tbinom{n}{\lceil \frac{n}{2} \rceil}<br>$$</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/09/Latex笔记/" data-toggle="tooltip" data-placement="top" title="Latex笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/05/Flask笔记/" data-toggle="tooltip" data-placement="top" title="Flask笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sat Apr 09 2022 15:44:59 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-Discrete-Mathematics-Chapter5%E3%80%8D%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter5」二项式系数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Pascal%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Pascal公式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E5%90%88%E6%8E%A8%E7%90%86%E8%AF%81%E6%98%8E"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">组合推理证明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B1%82%E5%AF%BC%E6%B3%95%E5%92%8C%E7%A7%AF%E5%88%86%E6%B3%95"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">求导法和积分法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%B1%82%E5%AF%BC%E6%B3%95"><span class="toc-nav-number">1.2.4.1.</span> <span class="toc-nav-text">求导法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%A7%AF%E5%88%86%E6%B3%95"><span class="toc-nav-number">1.2.4.2.</span> <span class="toc-nav-text">积分法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0%E7%9A%84%E5%8D%95%E5%B3%B0%E6%80%A7"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8D%95%E5%B3%B0%E6%80%A7"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">单峰性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E7%B3%BB%E6%95%B0%E7%9A%84%E5%8D%95%E5%B3%B0%E6%80%A7-1"><span class="toc-nav-number">1.2.5.2.</span> <span class="toc-nav-text">二项式系数的单峰性</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">多项式定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B8%95%E6%96%AF%E5%8D%A1%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">1.2.6.1.</span> <span class="toc-nav-text">帕斯卡公式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F"><span class="toc-nav-number">1.2.6.1.1.</span> <span class="toc-nav-text">二项式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-nav-number">1.2.6.1.2.</span> <span class="toc-nav-text">多项式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86-1"><span class="toc-nav-number">1.2.6.2.</span> <span class="toc-nav-text">多项式定理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%9B%E9%A1%BF%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">牛顿二项式定理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sperner%E5%AE%9A%E7%90%86"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">Sperner定理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%93%BE"><span class="toc-nav-number">1.2.8.1.</span> <span class="toc-nav-text">链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7%E9%93%BE"><span class="toc-nav-number">1.2.8.2.</span> <span class="toc-nav-text">最大链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%8D%E9%93%BE"><span class="toc-nav-number">1.2.8.3.</span> <span class="toc-nav-text">反链</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E7%A7%B0%E9%93%BE%E5%88%92%E5%88%86"><span class="toc-nav-number">1.2.9.</span> <span class="toc-nav-text">对称链划分</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「CS231n Course 4」卷积神经网络 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/06/12/「CS231n-Course-4」卷积神经网络/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                            
+                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                            
+                              <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                            
+                        </div>
+                        <h1>「CS231n Course 4」卷积神经网络</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-06-12
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">3.5k</span> and
+                                Reading Time <span class="post-count">12</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「CS231n-Course-4」卷积神经网络"><a href="#「CS231n-Course-4」卷积神经网络" class="headerlink" title="「CS231n Course 4」卷积神经网络"></a>「CS231n Course 4」卷积神经网络</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5/?p=16&vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 5.1 卷积和池化</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22038289?refer=intelligentunit">知乎 卷积神经网络笔记</a></li>
+<li><a href="https://cs231n.github.io/convolutional-networks/">CS231n Convolutional Neural Networks Note(official)</a></li>
+<li><a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/cifar10.html">浏览器中运行的CNN demo</a></li>
+</ul>
+<h2 id="Part-1-卷积神经网络概述"><a href="#Part-1-卷积神经网络概述" class="headerlink" title="Part 1 卷积神经网络概述"></a>Part 1 卷积神经网络概述</h2><p>卷积神经网络（Convolutional Neural Network, CNN）和上一章中讲述的神经网络非常相似：由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元得到一些输入，进行内积运算（dot product）再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。再最后一层（往往是全连接层），网络依旧有一个损失函数（如SVM或Softmax），并且在神经网络中实现的各种技巧和要点依旧适用于卷积神经网络。</p>
+<h3 id="CNN和NN相比的变化"><a href="#CNN和NN相比的变化" class="headerlink" title="CNN和NN相比的变化"></a>CNN和NN相比的变化</h3><p>CNN的结构基于一个假设：输入数据是图像。基于该假设，CNN向结构中添加了一些特有的性质，使得前向传播函数（forward function）更加高效，并且可以大幅降低网络中参数的数量。</p>
+<h3 id="结构概述"><a href="#结构概述" class="headerlink" title="结构概述"></a>结构概述</h3><h4 id="回顾：常规神经网络（Regular-Neural-Network但不是RNN）"><a href="#回顾：常规神经网络（Regular-Neural-Network但不是RNN）" class="headerlink" title="回顾：常规神经网络（Regular Neural Network但不是RNN）"></a>回顾：常规神经网络（Regular Neural Network<del>但不是RNN</del>）</h4><p>在上一章中，神经网络的输入是一个向量，然后在一系列隐层中对其做变换。其中，每个隐层是由若干神经元组成的，每个神经元都与前一层中的所有神经元连接（全连接）。但是在一个隐层中，神经元相互独立而不进行任何连接。最后的全连接层被称为”输出层“，在分类问题中，输出值被看作是不同类别的评分值。</p>
+<h4 id="常规神经网络对于大尺寸图像的效果不尽如人意"><a href="#常规神经网络对于大尺寸图像的效果不尽如人意" class="headerlink" title="常规神经网络对于大尺寸图像的效果不尽如人意"></a>常规神经网络对于大尺寸图像的效果不尽如人意</h4><p>观察常规神经网络的工作，其将图像（如CIFAR10中的 $32 \times 32 \times 3$ ，表示宽和高为 $32$ 个像素，$3$ 个颜色通道）展开为一个列向量，那么每一个全连接神经元就包含 $32 \times 32 \times 3&#x3D;3072$ 个权重，这个数量级目前看来还好。但是如果图像尺寸更大，如 $200 \times 200 \times 3$ ，那么神经元就会包含 $200 \times 200 \times 3&#x3D;120,000$ 个权重值，而网络中不止包含一个神经元，所以网络的参数量会快速膨胀。由此也可以发现，全连接结构不适合更大尺寸的图像，这种全连接的方式效率低下，参数量过大也很快会导致网络过拟合。</p>
+<h4 id="神经元的三维排列"><a href="#神经元的三维排列" class="headerlink" title="神经元的三维排列"></a>神经元的三维排列</h4><p>CNN针对输入全部是图像的情况，将结构调整地更加合理，获得了不小的优势。</p>
+<p>与常规神经网络不同，CNN中的各层的神经元是3维排列的：<strong>宽度</strong>、<strong>高度</strong>和<strong>深度</strong>（此处的深度是指激活数据体（activation volume）的三个维度，不是神经网络的深度，整个网络的深度指的是网络的层数）。</p>
+<p>举例而言，CIFAR-10中的图像是CNN的输入，该数据体（volume）的维度是 $32 \times 32 \times 3$ （宽度7高度和深度）。可以看到，层中的神经元只与前一层中的一小块区域连接，而非全连接，因为在CNN的最后部分会将全尺寸的图像压缩为包含分类评分的一个向量，向量是在深度方向排列的。</p>
+<p>e.g.</p>
+<table>
+<tr>
+    <td>
+        <img src='NN v.s. CNN1.jpeg' align='center' width=8000>
+    </td>
+    <td>
+        <img src='NN v.s. CNN2.jpeg' align='center' width=8000>
+    </td>
+    </tr>    
+</table>
+
+
+
+
+
+
+<p>左边是一个 $3$ 层的神经网络；右边是一个CNN，其神经元以 $3$ 个维度（宽度、高度、深度）进行排列。CNN的每一层将 $3$ 维的输入数据（3D input volume）变化为神经元 $3$ 维的激活数据（3D output volume of neuron activations）并输出。在本例中，红色的输入层就是图像，因此其宽度和高度就是图像的尺寸（dimensions of the image），而深度是 $3$ （RGB通道）。</p>
+<blockquote>
+<p>CNN是由层组成的，每一层都有一个简单的API：用一些含参或者不含参的可导的函数，将输入的3D数据变换为3D的输出数据</p>
+</blockquote>
+<h2 id="Part-2-构建CNN的层"><a href="#Part-2-构建CNN的层" class="headerlink" title="Part 2 构建CNN的层"></a>Part 2 构建CNN的层</h2><p>CNN是由各种层按照顺序排列组成的，网络中的每个层使用一个可微分的函数将激活数据从一个层传递到另一个层。</p>
+<p>CNN中主要有三种层：卷积层（Convolutional Layer）、池化层（Pooling Layer）和全连接层（Fully-Connected Layer）（全连接层和常规NN中的一样）。</p>
+<p>通过这些层的叠加，就可以构建一个完整的CNN。</p>
+<p><strong>网络结构示例</strong>：[输入层-卷积层-ReLU层-全连接层]（[INPUT-CONV-ReLU-POOL-FC]）</p>
+<ul>
+<li><p>输入 $[32 \times 32 \times 3]$ 存有图像的原始像素值，本例中图像宽度和高度为 $32$ ，有 $3$ 个颜色通道</p>
+</li>
+<li><p>卷积层中，神经元和输入层的一个局部区域项链，每个神经元都计算自己与输入层相连的小区域与自己权重的内积。卷积层会计算所有神经元的输出。如果使用12个卷积核（filter，也叫滤波器），得到的输出数据体的维度是 $[32 \times 32 \times 12]$ 。</p>
+<blockquote>
+<p>笔者注：这里应该是使用了零填充（zero pad），因此卷积核没有将输入的维度压缩</p>
+</blockquote>
+</li>
+<li><p>ReLU层会逐个元素进行激活函数操作，如使用 $max(0,x)$ 作为激活函数。该层不改变数据尺寸，仍是 $[32 \times 32 \times 12]$。</p>
+</li>
+<li><p>池化层在空间维度（宽度和高度）进行降采样（downsampling），降低了数据尺寸到 $[16 \times 16 \times 12]$。</p>
+</li>
+<li><p>全连接层计算分类评分，数据尺寸变为 $[1 \times 1 \times 10]$，这 $10$ 个数字对应 CIFAR-10 中 $10$ 个类别的分类评分值。和常规神经网络中的一样，其中每个神经元与前一层中所有神经元相连接。</p>
+</li>
+</ul>
+<p>由此看来，CNN一层层地将图像从原始像素值变换成最终的分类评分制。其中有的层含有参数，有的没有，具体地：</p>
+<ul>
+<li>卷积层和全连接层对输入执行变换操作时，不仅会用到激活函数，还会用到很多参数（神经元的突触权值和偏差）。</li>
+<li>ReLU层和池化层则是进行一个固定不变的函数操作，没有参数或者权值更新。</li>
+</ul>
+<p>卷积层和全连接层中的参数会随着梯度下降而被训练，这样CNN计算出的分类评分就能和训练集中的每个图像的标签相吻合。</p>
+<p><strong>小结</strong></p>
+<ul>
+<li>上述的简单CNN中，就是通过一系列的层将输入数据变换为输出数据（如分类评分）</li>
+<li>CNN结构中有几种不同的类型（目前流行的有卷积层、全连接层、ReLU层和池化层）</li>
+<li>每个层的输入是 3D 数据，然后使用一个可导的函数将其变换为 3D 的输出数据</li>
+<li>有的层有参数，有的没有（卷积层和全连接层有参数，ReLU层和池化层没有）</li>
+<li>有的层有额外的超参数，有的没有（卷积层、全连接层和池化层有，ReLU层没有）</li>
+</ul>
+<p>一个CNN激活输出demo：</p>
+<p><img src="/2023/06/12/%E3%80%8CCS231n-Course-4%E3%80%8D%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/CNN_demo.jpeg" alt="CNN_demo"></p>
+<p>在这个例子中，左边的输入层存有原始图像像素，右边的输出层存有类别分类评分。在处理流程中，每个激活数据体是铺成一列来展示的。</p>
+<hr>
+<h3 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h3><p>卷积层是构建CNN的核心层，它产生了网络中大部分的计算量。</p>
+<h4 id="概述和直观介绍"><a href="#概述和直观介绍" class="headerlink" title="概述和直观介绍"></a>概述和直观介绍</h4><p>卷积层的参数是由一些<strong>可学习的（learnable）<strong>卷积核的</strong>集合</strong>构成的。每个卷积核（filter）在空间上（宽度和高度，width and height）都比较小，但是深度和输入数据一致。</p>
+<p>举例来说，CNN第一层的一个典型卷积核的尺寸可以是 $5 \times 5 \times 3$ （宽度和高度是 $5$ 像素，深度是 $3$ 是因为图像的深度是 $3$，即颜色通道）。在前向传播（forward pass）的时候，让每个卷积核在输入数据的宽度和高度上滑动（更精确地说是<strong>卷积（convolve）</strong>），然后计算卷积核和输入数据任一处的内积。当卷积核沿着输入数据的宽度和高度滑过后，会生成一个 <strong>2 维</strong> 的激活图（activation map），激活图给出了每个空间位置处的卷积核的反应（response）。直观地说，网络会让卷积核学习到当其看到某些类型的视觉特征时就激活，具体的视觉特征可能是某些方位上的边界，或者在第一层上某些颜色的半点，甚至可以是网络更高层上的蜂巢状或者车轮状图案。</p>
+<p>在每个卷积层上，会有一整个集合的卷积核（如 $12$ 个），每个都会生成一个不同的二维激活图（$2$ D activation map）。将这些激活映射在深度方向上层叠起来就生成了输出数据。</p>
+<h4 id="以大脑比喻的视角"><a href="#以大脑比喻的视角" class="headerlink" title="以大脑比喻的视角"></a>以大脑比喻的视角</h4><p>输出的 3D 数据中的每个数据项可以被看作是神经元的一个输出，而这个神经元只观察输入数据的一小部分，并且和空间上左右两边的所有神经元共享参数（因为这些数字都是使用同一个卷积核得到的结果）。现在讨论神经元的连接、他们在空间中的排列以及他们参数共享的模式。</p>
+<h4 id="局部连接"><a href="#局部连接" class="headerlink" title="局部连接"></a>局部连接</h4><p>处理图像这类高纬度输入时，让每个神经元都与前一层中的所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接，该连接（connectivity）的空间大小叫做神经元的<strong>感受野（receptive field）</strong>，它的尺寸是一个超参数（其实就是卷积核的空间尺寸）。在深度方向上，这个连接的大小总是和输入量的深度相等。</p>
+<p>再次强调，我们对待空间维度（宽和高）与深度维度是不同的：连接在空间（宽和高）上是局部的，但是在深度上总是和输入数据的深度一致。</p>
+<p><strong>e.g.1</strong></p>
+<p>假设输入数据的尺寸是 $[32 \times 32 \times 3]$ （如CIFAR-10的RGB图像）；如果感受野（或卷积核尺寸）是 $5 \times 5$ ，那么卷积层中的每个每个神经元会有输入数据体中 $[5 \times 5 \times 3]$ 区域的权重，共 $5 \times 5 \times 3&#x3D;75$ 个权重（还要再加一个偏差参数 bias parameter）。这个连接在深度维度上的大小必须为 $3$ ，这是和输入数据体的深度保持一致。</p>
+<p><strong>e.g.2</strong></p>
+<p>假设输入数据体的尺寸是 $[16 \times 16 \times 20]$，感受野尺寸是 $3 \times 3$，那么卷积层中每个神经元和输入数据体有 $3\times 3\times 20&#x3D;180$ 个连接。</p>
+<blockquote>
+<p>在空间上连接是局部的，但是在深度上是和输入数据体一致的</p>
+</blockquote>
+<hr>
+<table>
+<tr>
+    <td>
+        <img src='depthcol.jpeg' align='center' width=8000>
+    </td>
+    <td>
+        <img src='neuron_model.jpeg' align='center' width=8000>
+    </td>
+    </tr>    
+</table>
+
+<ul>
+<li>左边：红色的是输入数据体（如CIFAR-10中的图像），蓝色的部分是第一个卷积层中的神经元。<strong>卷积层中的每个神经元都只与输入数据体的一个局部在空间上相连，但是与输入数据体的所有深度维度全部相连（在这个例子中，是RGB三个颜色通道）</strong>。在深度方向上，有多个神经元（本例中是 $5$ 个），他们都接收输入数据的同一块区域（感受野相同）。</li>
+<li>右边：神经网络章节中介绍的神经元保持不变，仍计算权重和输入的内积，然后进行激活函数运算。区别在于，卷积层的连接被限制在一个局部空间。</li>
+</ul>
+<hr>
+<h4 id="空间排列"><a href="#空间排列" class="headerlink" title="空间排列"></a>空间排列</h4><p>接下来讨论输出数据体中神经元的数量以及它们的排列方式。有 $3$ 个超参数控制输出数据体的尺寸：深度（depth）、步长（stride）和零填充（zero-padding）</p>
+<ol>
+<li><p>深度（depth）。输出数据体的深度是一个超参数，其和使用的<strong>卷积核数量</strong>一致，而每个卷积核在输入数据中寻找不同的东西。举例来说，如果第一个卷积层的输入是原始图像，那么在深度维度上的不同神经元将可能被不同方向的边界（various oriented edges），或者是颜色斑点（blobs of color）激活。</p>
+</li>
+<li><p>步长（stride）。其次，在滑动卷积核时，必须指定步长。当步长为 $1$ 时，卷积核每次移动 $1$ 个像素。当步长为 $2$ （或不常用的 $3$，这在实际中很少使用），卷积核每次滑动时移动 $2$ 个像素。这个操作会让输出数据体在空间上变小。</p>
+<blockquote>
+<p>选择步长时，应当保证可以卷积核可以正好移动覆盖完。</p>
+</blockquote>
+</li>
+<li><p>零填充（zero-padding）。有时候，我们不希望出现数据体尺寸变小的情况，因此可以使用零填充。零填充就是指在输入数据体的边缘用 $0$ 填充，其尺寸是一个超参数。零填充可以控制输出数据体的空间尺寸（最常用的是用来保持输入数据体在空间上的尺寸，这样输入和输出的宽高相等）</p>
+</li>
+</ol>
+<p>输出数据体在空间上的尺寸可以通过数据体尺寸（W），卷积层中神经元的感受野尺寸（F），步长（S）和零填充的数量（P）的函数来计算</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/06/16/「BUAA-SE-Individual-Work3」提问回顾与个人总结/" data-toggle="tooltip" data-placement="top" title="「BUAA SE Individual Work3」提问回顾与个人总结">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/05/24/Marp笔记/" data-toggle="tooltip" data-placement="top" title="Marp笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon Jun 12 2023 10:35:23 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CCS231n-Course-4%E3%80%8D%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「CS231n Course 4」卷积神经网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 卷积神经网络概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CNN%E5%92%8CNN%E7%9B%B8%E6%AF%94%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">CNN和NN相比的变化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">结构概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%9E%E9%A1%BE%EF%BC%9A%E5%B8%B8%E8%A7%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88Regular-Neural-Network%E4%BD%86%E4%B8%8D%E6%98%AFRNN%EF%BC%89"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">回顾：常规神经网络（Regular Neural Network但不是RNN）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B8%B8%E8%A7%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AF%B9%E4%BA%8E%E5%A4%A7%E5%B0%BA%E5%AF%B8%E5%9B%BE%E5%83%8F%E7%9A%84%E6%95%88%E6%9E%9C%E4%B8%8D%E5%B0%BD%E5%A6%82%E4%BA%BA%E6%84%8F"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">常规神经网络对于大尺寸图像的效果不尽如人意</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E4%B8%89%E7%BB%B4%E6%8E%92%E5%88%97"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">神经元的三维排列</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E6%9E%84%E5%BB%BACNN%E7%9A%84%E5%B1%82"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 构建CNN的层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">卷积层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0%E5%92%8C%E7%9B%B4%E8%A7%82%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">概述和直观介绍</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A5%E5%A4%A7%E8%84%91%E6%AF%94%E5%96%BB%E7%9A%84%E8%A7%86%E8%A7%92"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">以大脑比喻的视角</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B1%80%E9%83%A8%E8%BF%9E%E6%8E%A5"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">局部连接</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%A9%BA%E9%97%B4%E6%8E%92%E5%88%97"><span class="toc-nav-number">1.3.1.4.</span> <span class="toc-nav-text">空间排列</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                        
+                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                        
+                          <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

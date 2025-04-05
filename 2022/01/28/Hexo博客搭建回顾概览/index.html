@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Hexo博客搭建回顾概览 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/01/28/Hexo博客搭建回顾概览/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                        </div>
+                        <h1>Hexo博客搭建回顾概览</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-01-28
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.1k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="Hexo博客（Snail主题）搭建回顾概览"><a href="#Hexo博客（Snail主题）搭建回顾概览" class="headerlink" title="Hexo博客（Snail主题）搭建回顾概览"></a>Hexo博客（Snail主题）搭建回顾概览</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>该Part记录一些背景信息，有助于读者<strong>了解这篇博客的写作背景、定位、对读者的前置知识期望</strong>。建议脑海中只有”想像大家一样搭建hexo博客“的同学阅读本部分，其他同学可直接跳至Part 1开始阅读。</p>
+<hr>
+<h3 id="写作背景"><a href="#写作背景" class="headerlink" title="写作背景"></a>写作背景</h3><p>笔者在6系第一学期的祭祖中阅读参考了大量的学长学姐和同届大神的博客，受益匪浅，csdn和cnblog都是很不错的适合博客小白的平台，同时<strong>易于在百度检索中出现</strong>；除此之外，基于github page的hexo博客吸引了我的兴趣，虽不易于百度检索，但是<strong>利于对个人博客收集整理</strong>，这便是搭建本博客的初衷。</p>
+<p>笔者的设备是Windows 10家庭版。</p>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><p>基于这篇博客提供的<strong>其他搭建博客详细指导链接</strong>和笔者自己的补充，预期读者可以依此搭建属于自己的Snail主题hexo博客。</p>
+<h4 id="您在这里可以期望获得："><a href="#您在这里可以期望获得：" class="headerlink" title="您在这里可以期望获得："></a>您在这里可以期望获得：</h4><ol>
+<li>笔者在搭建博客中踩过的坑</li>
+<li>一些较详细的指导搭建博客链接</li>
+<li>基于第2条中的搭建博客链接的一些补充</li>
+<li>包括链接博客内容在内的搭建博客所需的充分知识</li>
+<li>依照本博客给出的方法搭建出类似<a href="https://saltyfishyjk.github.io/">本博客</a>的个人博客</li>
+</ol>
+<h4 id="您在这里无法期望获得："><a href="#您在这里无法期望获得：" class="headerlink" title="您在这里无法期望获得："></a>您在这里无法期望获得：</h4><ol>
+<li>应用到的技术的深层原理</li>
+<li>Snail主题之外的其他hexo主题博客搭建方法</li>
+</ol>
+<h3 id="对读者前置知识的期望"><a href="#对读者前置知识的期望" class="headerlink" title="对读者前置知识的期望"></a>对读者前置知识的期望</h3><p>我们希望读者最好可以拥有以下知识，或在阅读本博客时及时查阅学习。</p>
+<ol>
+<li>了解Git和GitHub基础知识</li>
+<li>能够应用编辑器（如visual studio code）查看各种非常规类型配置文件</li>
+<li>能够访问GitHub或能够使用VPN</li>
+<li>命令行的使用与Linux基本命令</li>
+</ol>
+<h2 id="Part-1-笔者参考的其他博客"><a href="#Part-1-笔者参考的其他博客" class="headerlink" title="Part 1 笔者参考的其他博客"></a>Part 1 笔者参考的其他博客</h2><ol>
+<li><a href="https://segmentfault.com/a/1190000017986794">Hexo+GitHub Page搭建技术博客（重要参考）</a></li>
+<li><a href="https://github.com/dusign/hexo-theme-snail">Snail主题官方仓库（给出了重要基本指导）</a></li>
+<li><a href="https://hexo.io/">hexo官网（可以获得hexo基本知识如hexo命令等）</a></li>
+<li><a href="https://www.cnblogs.com/yafine/p/12112210.html">hexo+github搭建博客(超级详细版，精细入微)</a></li>
+<li><a href="https://blog.csdn.net/qwe435541908/article/details/93140354">解决npm install安装慢的问题</a></li>
+<li><a href="https://developers.weixin.qq.com/community/develop/doc/0006e4a6280c78ea8e266455b51c00">利用vscode打开.styl文件的办法</a></li>
+<li><a href="https://blog.csdn.net/qq_32074689/article/details/86769767">解决hexo中文博客打不开的问题</a></li>
+<li><a href="https://www.cnblogs.com/bzsheng/p/13802829.html">解决博客中插入图片的问题</a></li>
+</ol>
+<p>以上为笔者在搭建博客的过程中所参考过的其他博客，前两个最为重要，读者可以将本博客与它们结合阅读。</p>
+<h2 id="Part-2-笔者踩过的坑"><a href="#Part-2-笔者踩过的坑" class="headerlink" title="Part 2 笔者踩过的坑"></a>Part 2 笔者踩过的坑</h2><h3 id="设置GitHub默认分支为master"><a href="#设置GitHub默认分支为master" class="headerlink" title="设置GitHub默认分支为master"></a>设置GitHub默认分支为master</h3><p>由于美国的一些政治因素，GitHub在2020年将默认分支由多年来一直使用的master改为了main，这导致了学习2020年10月之前的博客教程时，现在的用户需要考虑默认分支不同导致的潜在问题。因此，<strong>直接将自己GitHub账户的默认分支改为master即可与大家保持一致</strong>，避免无谓的bug。</p>
+<h3 id="直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客"><a href="#直接按照Snail主题官方仓库（给出了重要基本指导）的README-md搭建博客" class="headerlink" title="直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客"></a>直接按照<a href="https://github.com/dusign/hexo-theme-snail">Snail主题官方仓库（给出了重要基本指导）</a>的README.md搭建博客</h3><p>笔者曾尝试先应用默认主题，再更换为snail主题的方法，但是由于未知原因一直失败，但直接按照snail主题给出的指令操作即可。因此，建议读者直接按此操作。</p>
+<h3 id="执行hexo-g-d时关闭代理"><a href="#执行hexo-g-d时关闭代理" class="headerlink" title="执行hexo g -d时关闭代理"></a>执行<code>hexo g -d</code>时关闭代理</h3><p>在此先推荐一款访问GitHub的工具<a href="https://gitee.com/docmirror/dev-sidecar">DevSideCar</a>，傻瓜式操作非常易用。</p>
+<p>在使用DevSideCar时，可能会遇到执行<code>hexo g -d</code>命令时上传失败，这并非因为操作错误，而是因为网络原因，只需要关闭代理即可。</p>
+<h2 id="Part-3-个性化设置博客界面"><a href="#Part-3-个性化设置博客界面" class="headerlink" title="Part 3 个性化设置博客界面"></a>Part 3 个性化设置博客界面</h2><p>如果你完全按照上文及相关链接的操作进行，那么下面的操作对你应当是适用的。</p>
+<h3 id="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"><a href="#在Snail主题官方仓库（给出了重要基本指导）已经给出的设置" class="headerlink" title="在Snail主题官方仓库（给出了重要基本指导）已经给出的设置"></a>在<a href="https://github.com/dusign/hexo-theme-snail">Snail主题官方仓库（给出了重要基本指导）</a>已经给出的设置</h3><ol>
+<li>修改<strong>Site</strong>，按照官方指导即可。</li>
+<li>修改<strong>Site Settings</strong>，其中的<code>img</code>文件夹的相对地址是<code>blog\source\img</code>，其中<code>blog</code>是官方指导最开始的<code>hexo init blog</code>命令生成的<code>blog</code>文件夹。在该img文件夹下放入你所想要的图片并修改配置文件中相应代码。</li>
+<li>修改<strong>SNS Settings</strong>，按照官方指导即可。<ol>
+<li>修改<strong>Sidebar Settings</strong>，对于不需要的Sidebar，直接注释掉或删掉对应栏目即可；<strong>friends</strong>链接的<code>title</code>是在你的博客界面显示的文字，点击会跳转到<code>href</code>指向的链接。</li>
+</ol>
+</li>
+<li><strong>theme</strong>部分应该无需自己修改。</li>
+<li><strong>Deployment</strong>部分依照官方指导修改即可，其具体格式可进一步参考<a href="https://segmentfault.com/a/1190000017986794">Hexo+GitHub Page搭建技术博客（重要参考）</a>。</li>
+<li><strong>Background effects</strong>部分按照官方指导修改即可，也可以关闭以减少CPU消耗，其中<strong>content</strong>部分可以修改为自己喜欢的emoji或语句，做个小彩蛋（比如本博客[doge]）。</li>
+</ol>
+<h3 id="官方指导未给出的设置配置"><a href="#官方指导未给出的设置配置" class="headerlink" title="官方指导未给出的设置配置"></a>官方指导未给出的设置配置</h3><h4 id="更改右上角导航栏"><a href="#更改右上角导航栏" class="headerlink" title="更改右上角导航栏"></a>更改右上角导航栏</h4><p>例子：如想删去下图右上角的<strong>TAGS</strong>栏目，只需要在<code>blog\source</code>目录下删去<code>tags</code>文件夹即可。<img src="/2022/01/28/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%9B%9E%E9%A1%BE%E6%A6%82%E8%A7%88/pic1.jpg" class="" title="这是一张图片"></p>
+<p>如果想增加栏目，可以查阅hexo命令hexo new page使用方法，此处不详述。</p>
+<h3 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h3><p>可以使用<code>hexo new &#39;title&#39;</code>的命令生成<code>.md</code>博客源文件，在其中使用<code>markdown</code>语法书写即可。</p>
+<h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>参考<a href="https://www.cnblogs.com/bzsheng/p/13802829.html">解决博客中插入图片的问题</a>中的方案，其中前两种方法笔者已经亲测可用，最后的typora的方法没有尝试。</p>
+<blockquote>
+<p>2024.01.24 更新</p>
+</blockquote>
+<h5 id="Typora-Hexo"><a href="#Typora-Hexo" class="headerlink" title="Typora + Hexo"></a>Typora + Hexo</h5><p>通过在博客 markdown 文档开头的 YAML 格式元数据中增加一行形如下的内容，可以设置该文档在本地的根 URL，从而引用图片时可以省略 <code>./2023-05-11-「BUAA-Computer-Network-Experiment」Notes</code> ，将图片保存在该目录下（此处需要辅以 Typora 设置图床目录为<code>./$&#123;filename&#125;</code>），直接在<code>()</code>中写图片文件名即可，可以做到 Typora 和博客网页中都能看到图片而不用做额外的修改。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">typora-root-url:</span> <span class="string">./2023-05-11-「BUAA-Computer-Network-Experiment」Notes</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-4-使用过程踩坑"><a href="#Part-4-使用过程踩坑" class="headerlink" title="Part 4 使用过程踩坑"></a>Part 4 使用过程踩坑</h2><p>在使用过程中，笔者陆续遇到若干问题，在这里记录问题和解决办法。</p>
+<h3 id="FATAL-Port-4000-has-been-used-Try-other-port-instead"><a href="#FATAL-Port-4000-has-been-used-Try-other-port-instead" class="headerlink" title="FATAL Port 4000 has been used. Try other port instead"></a><code>FATAL Port 4000 has been used. Try other port instead</code></h3><p>执行 <code>hexo s</code> 的时候遇到了提示 <code>FATAL Port 4000 has been used. Try other port instead</code>，即，4000端口被调用。</p>
+<p>网络上一些办法是找到占用4000端口的进程并杀掉，其实不必如此大费周章，在调用<code>hexo s</code>时加上参数<code>-p 4001</code>即<code>hexo s -p 4001</code>即可使用4001端口，避免了4000端口被占用的问题。</p>
+<h2 id="Part-5-LaTeX支持"><a href="#Part-5-LaTeX支持" class="headerlink" title="Part 5 LaTeX支持"></a>Part 5 LaTeX支持</h2><p>为了支持LaTeX渲染，我们需要利用Mathjax，而Mathjax依赖于kramed，hexo的默认渲染器是marked，因此我们需要以下步骤：</p>
+<h3 id="卸载marked"><a href="#卸载marked" class="headerlink" title="卸载marked"></a>卸载marked</h3><p><code>npm uninstall hexo-renderer-marked --save</code></p>
+<h3 id="安装kramed"><a href="#安装kramed" class="headerlink" title="安装kramed"></a>安装kramed</h3><p><code>npm install hexo-renderer-kramed --save</code></p>
+<h3 id="卸载hexo-math"><a href="#卸载hexo-math" class="headerlink" title="[卸载hexo-math]"></a>[卸载hexo-math]</h3><p><code>npm uninstall hexo-math --save</code></p>
+<h3 id="安装mathjax"><a href="#安装mathjax" class="headerlink" title="安装mathjax"></a>安装mathjax</h3><p><code>npm install hexo-renderer-mathjax --save</code></p>
+<h3 id="更新mathjax的CDN标签"><a href="#更新mathjax的CDN标签" class="headerlink" title="更新mathjax的CDN标签"></a>更新mathjax的CDN标签</h3><p>打开 <code>node_modules/hexo-renderer-mathjax/mathjax.html</code>, 修改 <code>&lt;scripts&gt;</code> 标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改<code>_config.yml</code></h3><p>找到<code>math</code>配置并更改为以下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改博客开头"><a href="#修改博客开头" class="headerlink" title="修改博客开头"></a>修改博客开头</h3><p>博客文章的开头加入<code>mathjax:true</code>，具体如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title<span class="punctuation">:</span> Hexo博客搭建回顾概览</span><br><span class="line">date<span class="punctuation">:</span> <span class="number">2022</span><span class="number">-01</span><span class="number">-28</span> <span class="number">11</span><span class="punctuation">:</span><span class="number">33</span><span class="punctuation">:</span><span class="number">04</span></span><br><span class="line">mathjax<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>到此为止即配置完成。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
+<li><a href="https://www.dusign.net/2019/10/14/Hexo-Configuration/">Super Snail提供的Mathjax支持攻略</a></li>
+<li><a href="https://www.jianshu.com/p/9b9c241146bc">Hexo渲染LaTeX公式</a></li>
+</ol>
+<h2 id="Part-6-文章修改标题"><a href="#Part-6-文章修改标题" class="headerlink" title="Part 6 文章修改标题"></a>Part 6 文章修改标题</h2><p>如果后期要对某篇文章修改标题，只需在其.md文件的顶部修改<code>title</code>值即可，不需要修改.md文件名。</p>
+<h2 id="Part-7-修改网页ico"><a href="#Part-7-修改网页ico" class="headerlink" title="Part 7 修改网页ico"></a>Part 7 修改网页ico</h2><p>在<code>/img</code>下放入你的ico文件，再在<code>/themes/snail/layout/_partial/head.ejs</code>中找到<code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;&lt;%= config.root %&gt;img/ironman-draw.png&quot;&gt;</code>中的<code>ironman-draw.png</code>改为你刚放入<code>/img</code>的文件名即可（需要带扩展名）</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>感谢您阅读至此，这篇博客到此也就告一段落了，后续笔者若有新的心得会更新本博客。</p>
+<p>这篇博客远非尽善尽美，笔者也只是提供了若干其他博客资源和自己亲历的坑，若有不足之处还望批评指正。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/02/10/Java程序设计（2022春）——第五章输入输出笔记与思考/" data-toggle="tooltip" data-placement="top" title="Java程序设计（2022春）——第五章输入输出笔记与思考">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/01/27/BUAA-CO-冒险之旅回顾/" data-toggle="tooltip" data-placement="top" title="BUAA CO 冒险之旅回顾">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Jan 28 2022 00:00:00 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Hexo%E5%8D%9A%E5%AE%A2%EF%BC%88Snail%E4%B8%BB%E9%A2%98%EF%BC%89%E6%90%AD%E5%BB%BA%E5%9B%9E%E9%A1%BE%E6%A6%82%E8%A7%88"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Hexo博客（Snail主题）搭建回顾概览</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%86%99%E4%BD%9C%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">写作背景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">定位</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%82%A8%E5%9C%A8%E8%BF%99%E9%87%8C%E5%8F%AF%E4%BB%A5%E6%9C%9F%E6%9C%9B%E8%8E%B7%E5%BE%97%EF%BC%9A"><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">您在这里可以期望获得：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%82%A8%E5%9C%A8%E8%BF%99%E9%87%8C%E6%97%A0%E6%B3%95%E6%9C%9F%E6%9C%9B%E8%8E%B7%E5%BE%97%EF%BC%9A"><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">您在这里无法期望获得：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E8%AF%BB%E8%80%85%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E7%9A%84%E6%9C%9F%E6%9C%9B"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">对读者前置知识的期望</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E7%AC%94%E8%80%85%E5%8F%82%E8%80%83%E7%9A%84%E5%85%B6%E4%BB%96%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 笔者参考的其他博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E7%AC%94%E8%80%85%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 笔者踩过的坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AEGitHub%E9%BB%98%E8%AE%A4%E5%88%86%E6%94%AF%E4%B8%BAmaster"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">设置GitHub默认分支为master</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8C%89%E7%85%A7Snail%E4%B8%BB%E9%A2%98%E5%AE%98%E6%96%B9%E4%BB%93%E5%BA%93%EF%BC%88%E7%BB%99%E5%87%BA%E4%BA%86%E9%87%8D%E8%A6%81%E5%9F%BA%E6%9C%AC%E6%8C%87%E5%AF%BC%EF%BC%89%E7%9A%84README-md%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">直接按照Snail主题官方仓库（给出了重要基本指导）的README.md搭建博客</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%89%A7%E8%A1%8Chexo-g-d%E6%97%B6%E5%85%B3%E9%97%AD%E4%BB%A3%E7%90%86"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">执行hexo g -d时关闭代理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E7%95%8C%E9%9D%A2"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 个性化设置博客界面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9C%A8Snail%E4%B8%BB%E9%A2%98%E5%AE%98%E6%96%B9%E4%BB%93%E5%BA%93%EF%BC%88%E7%BB%99%E5%87%BA%E4%BA%86%E9%87%8D%E8%A6%81%E5%9F%BA%E6%9C%AC%E6%8C%87%E5%AF%BC%EF%BC%89%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">在Snail主题官方仓库（给出了重要基本指导）已经给出的设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%98%E6%96%B9%E6%8C%87%E5%AF%BC%E6%9C%AA%E7%BB%99%E5%87%BA%E7%9A%84%E8%AE%BE%E7%BD%AE%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">官方指导未给出的设置配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9B%B4%E6%94%B9%E5%8F%B3%E4%B8%8A%E8%A7%92%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">更改右上角导航栏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">写博客</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">插入图片</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Typora-Hexo"><span class="toc-nav-number">1.4.3.1.1.</span> <span class="toc-nav-text">Typora + Hexo</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E8%B8%A9%E5%9D%91"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 使用过程踩坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FATAL-Port-4000-has-been-used-Try-other-port-instead"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">FATAL Port 4000 has been used. Try other port instead</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-LaTeX%E6%94%AF%E6%8C%81"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 LaTeX支持</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8D%B8%E8%BD%BDmarked"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">卸载marked</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85kramed"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">安装kramed</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8D%B8%E8%BD%BDhexo-math"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">[卸载hexo-math]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85mathjax"><span class="toc-nav-number">1.6.4.</span> <span class="toc-nav-text">安装mathjax</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9B%B4%E6%96%B0mathjax%E7%9A%84CDN%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.6.5.</span> <span class="toc-nav-text">更新mathjax的CDN标签</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%AE%E6%94%B9-config-yml"><span class="toc-nav-number">1.6.6.</span> <span class="toc-nav-text">修改_config.yml</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%A4%B4"><span class="toc-nav-number">1.6.7.</span> <span class="toc-nav-text">修改博客开头</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.6.8.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-%E6%96%87%E7%AB%A0%E4%BF%AE%E6%94%B9%E6%A0%87%E9%A2%98"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 文章修改标题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-%E4%BF%AE%E6%94%B9%E7%BD%91%E9%A1%B5ico"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 修改网页ico</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">后记</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#HexoBlog" title="HexoBlog">HexoBlog</a>
+                        
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

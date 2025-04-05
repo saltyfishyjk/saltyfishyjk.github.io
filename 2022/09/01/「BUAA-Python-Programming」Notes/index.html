@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA Python Programming」Notes - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/09/01/「BUAA-Python-Programming」Notes/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
+                            
+                              <a class="tag" href="/tags/#PyTorch" title="PyTorch">PyTorch</a>
+                            
+                        </div>
+                        <h1>「BUAA Python Programming」Notes</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-09-01
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.8k</span> and
+                                Reading Time <span class="post-count">11</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-Python-Programming」Notes"><a href="#「BUAA-Python-Programming」Notes" class="headerlink" title="「BUAA Python Programming」Notes"></a>「BUAA Python Programming」Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>尽管Python暑期课已经告一段落，但是和Python的旅程并没有迎来结束<del>Python在做胶水方面实在太强大辣</del>，因此，在这里开一篇新博客记录一些常用的笔记备忘。</p>
+<h2 id="Part-1-json处理"><a href="#Part-1-json处理" class="headerlink" title="Part 1 json处理"></a>Part 1 json处理</h2><p>Python的<code>json</code>库提供了强大的json处理工具，在工作中十分常用。</p>
+<h3 id="读取json"><a href="#读取json" class="headerlink" title="读取json"></a>读取json</h3><h4 id="json-load"><a href="#json-load" class="headerlink" title="json.load"></a><code>json.load</code></h4><p>从文件中读取json。</p>
+<p>e.g.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file_dir = <span class="string">&quot;./data.json&quot;</span> <span class="comment"># 文件中存储了多个json</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file_dir, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># 设置utf-8以正常读取中文字符</span></span><br><span class="line">    s = json.load(f) <span class="comment"># 读取后，s为一个dict，每个元素是一个list</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Yes&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-2-字符串处理"><a href="#Part-2-字符串处理" class="headerlink" title="Part 2 字符串处理"></a>Part 2 字符串处理</h2><h3 id="strip"><a href="#strip" class="headerlink" title="strip()"></a><code>strip()</code></h3><p>移除字符串头尾指定字符（通常为空格和换行符）</p>
+<p>e.g.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.strip([chars]) <span class="comment"># chars : 移除字符串头尾指定的字符序列</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace()"></a><code>replace()</code></h3><p>以指定字符串替换字符串中指定子串，还可以用来实现删除字符串中全部指定子串。</p>
+<p>e.g.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;Hello, BUAA!\nHello, TsingHua\n&quot;</span></span><br><span class="line">s1 = s.replace(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;Wow&quot;</span>)  <span class="comment"># 替换Hello为Wow</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s1 : \n&quot;</span> + s1)</span><br><span class="line">s2 = s.replace(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;&quot;</span>)  <span class="comment"># 删除全部Hello</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s2 : \n&quot;</span> + s2)</span><br></pre></td></tr></table></figure>
+
+<p>output:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s1 : </span><br><span class="line">Wow, BUAA!</span><br><span class="line">Wow, TsingHua</span><br><span class="line"></span><br><span class="line">s2 : </span><br><span class="line">, BUAA!</span><br><span class="line">, TsingHua</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-3-文件处理"><a href="#Part-3-文件处理" class="headerlink" title="Part 3 文件处理"></a>Part 3 文件处理</h2><p>python提供了强大的文件处理能力，掌握这些接口可以方便地造轮子<del>（bushi）</del>。</p>
+<h3 id="判断文件存在与删除"><a href="#判断文件存在与删除" class="headerlink" title="判断文件存在与删除"></a>判断文件存在与删除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">flag_path = os.path.exists(path) <span class="comment"># 判断是否存在path路径下的文件，不区分文件和文件夹</span></span><br><span class="line">flag_file = os.path.isfile(file_name) <span class="comment"># 判断是否存在file_name文件</span></span><br><span class="line"><span class="keyword">if</span> flag_path:</span><br><span class="line">	os.remove(path) <span class="comment"># 删除文件</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="文件读写操作"><a href="#文件读写操作" class="headerlink" title="文件读写操作"></a>文件读写操作</h3><p>参考：<a href="https://blog.csdn.net/weixin_39715460/article/details/112840570">python 写入文件 wb_一篇搞懂python文件读写操作（r&#x2F;r+&#x2F;rb&#x2F;w&#x2F;w+&#x2F;wb&#x2F;a&#x2F;a+&#x2F;ab）</a></p>
+<h2 id="Part-4-加密"><a href="#Part-4-加密" class="headerlink" title="Part 4 加密"></a>Part 4 加密</h2><p>在WEB开发等工作中，对于密码等涉密信息加密是常见的操作，python提供了简洁优雅的加密函数与接口。</p>
+<h3 id="md5加密"><a href="#md5加密" class="headerlink" title="md5加密"></a>md5加密</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5_encode</span>(<span class="params">s</span>):</span><br><span class="line">    s_new = s</span><br><span class="line">    hl = hashlib.md5()</span><br><span class="line">    hl.update(s_new.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="keyword">return</span> hl.hexdigest()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-5-Matplotlib绘图"><a href="#Part-5-Matplotlib绘图" class="headerlink" title="Part 5 Matplotlib绘图"></a>Part 5 Matplotlib绘图</h2><p>在写论文时，经常会遇到需要绘制示意图的情况。对于科研绘图，网络上有各种建议，这里记录使用Python绘图的笔记。</p>
+<p>相比于Visio、PowerPoint等绘图方式，Python绘图的突出优点包括图片由代码生成，具有高可复用性<del>并且对手残友好</del>，且其导出的svg矢量图也十分适合论文排版；对于有一定代码经验和基础的同学较为友好，语法较为简单；数学方面的图表支持较为强大，对于坐标等对精度有较高要求的绘制可以通过代码精确控制，避免手绘的随机性。</p>
+<p>以下是一些质量较高的参考资料：</p>
+<ul>
+<li><a href="https://www.matplotlib.org.cn/">Matplotlib中文网</a></li>
+<li><a href="https://www.runoob.com/matplotlib/matplotlib-tutorial.html">Matplotlib教程-Runoob</a></li>
+</ul>
+<h3 id="Matplotlib简介"><a href="#Matplotlib简介" class="headerlink" title="Matplotlib简介"></a>Matplotlib简介</h3><p>matplotlib是2D绘图领域使用较为广泛的套件，性能强大，语法简单。更多介绍可以参考<a href="https://www.runoob.com/w3cnote/matplotlib-tutorial.html">Matplotlib 教程-Runoob</a></p>
+<h3 id="导入相关包"><a href="#导入相关包" class="headerlink" title="导入相关包"></a>导入相关包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置支持中文字体"><a href="#设置支持中文字体" class="headerlink" title="设置支持中文字体"></a>设置支持中文字体</h3><p>matplotlib.rc(‘font’, family&#x3D;’FangSong’) # 这里以仿宋字体为例，其他支持的字体可以自行搜索</p>
+<blockquote>
+<p>更多字体设置，可以参考<a href="https://zhuanlan.zhihu.com/p/104081310">彻底解决Python里matplotlib不显示中文的问题-ZhiHu</a></p>
+</blockquote>
+<h3 id="设置坐标轴刻度显示范围"><a href="#设置坐标轴刻度显示范围" class="headerlink" title="设置坐标轴刻度显示范围"></a>设置坐标轴刻度显示范围</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置x,y坐标轴的刻度显示范围</span></span><br><span class="line">plt.xlim(-<span class="number">120</span>, <span class="number">120</span>)</span><br><span class="line">plt.ylim(-<span class="number">120</span>, <span class="number">120</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="获得figure和axes"><a href="#获得figure和axes" class="headerlink" title="获得figure和axes"></a>获得figure和axes</h3><blockquote>
+<p>figure可以类比“纸”；axes可以类比“区域”。更详细的介绍可以参考<a href="https://zhuanlan.zhihu.com/p/137057629">Matplotlib中的plt和ax都是啥？-ZhiHu</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参数分别为图片保存名，dpi，格式</span></span><br><span class="line">plt.savefig(<span class="string">&quot;img.svg&quot;</span>, dpi=<span class="number">300</span>, <span class="built_in">format</span>=<span class="string">&quot;svg&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="标记文字"><a href="#标记文字" class="headerlink" title="标记文字"></a>标记文字</h3><blockquote>
+<p>满足需要在特定位置显示特定文字的需求</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x1, y1 = <span class="number">3</span>, <span class="number">4</span></span><br><span class="line">text = <span class="string">r&quot;$\alpha _1$&quot;</span></span><br><span class="line">ax.text(x1, y1, text)</span><br><span class="line"><span class="comment"># 三个参数分别为横坐标x，纵坐标y，显示文字text，并且text支持LaTeX公式</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制线"><a href="#绘制线" class="headerlink" title="绘制线"></a>绘制线</h3><blockquote>
+<p>这里的绘制线是基础行为，后续的直线绘制、圆绘制、曲线绘制等都基于此</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制一条直线，x范围为[x1, x2]，y范围为[y1, y2]</span></span><br><span class="line">x1, y1 = <span class="number">1</span>, <span class="number">2</span></span><br><span class="line">x2, y2 = <span class="number">4</span>, <span class="number">5</span></span><br><span class="line">ax.plot([x1, x2], [y1, y2]， color=<span class="string">&#x27;black&#x27;</span>, linestyle=<span class="string">&#x27;-&#x27;</span>, zorder=<span class="number">1</span>, label=<span class="string">r&#x27;example line&#x27;</span>)</span><br><span class="line"><span class="comment"># 前两个参数为横纵坐标范围，是必选项；后面参数是可选项：color设置颜色，linestyle设置线的类型，zorder设置图层级别</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于上文中对plt和ax的介绍，我们后续会更多的采用ax来使代码更具扩展性</p>
+<p>label参数支持 $\LaTeX$数学公式，可以使用$$编辑并显示行内公式</p>
+<p>关于color的更多资料，可以参考<a href="https://www.runoob.com/matplotlib/matplotlib-line.html">Matplotlib 绘图线-Runoob</a></p>
+<p>关于linestyle的更多资料，可以参考<a href="https://www.runoob.com/matplotlib/matplotlib-line.html">Matplotlib 绘图线-Runoob</a></p>
+<p>关于zorder的更多资料，可以参考<a href="https://www.matplotlib.org.cn/gallery/misc/zorder_demo.html">Zorder演示-Zorder中文网</a></p>
+</blockquote>
+<h3 id="绘制点"><a href="#绘制点" class="headerlink" title="绘制点"></a>绘制点</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x3, y3 = <span class="number">4</span>, <span class="number">2</span></span><br><span class="line">ax.scatter(x3, y3, color=<span class="string">&#x27;black&#x27;</span>, color=<span class="string">&#x27;black&#x27;</span>, linewidth=<span class="number">4</span>, zorder=<span class="number">20</span>, marker=<span class="string">&#x27;.&#x27;</span>, label=<span class="string">&#x27;example point&#x27;</span>)</span><br><span class="line"><span class="comment"># 前两个参数为横纵坐标，是必选项；后面参数是可选项：color设置颜色，linewidth设置点的大小，zorder设置图层级别，marker设置点的类型，label设置图例中的文字说明</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于marker的更多资料，可以参考<a href="https://www.runoob.com/matplotlib/matplotlib-marker.html">Matplotlib 绘图标记-Runoob</a></p>
+</blockquote>
+<h3 id="绘制箭头"><a href="#绘制箭头" class="headerlink" title="绘制箭头"></a>绘制箭头</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x1, y1 = <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">x2, y2 = <span class="number">7</span>, <span class="number">6</span></span><br><span class="line">ax.arrow(x1, y1, x2 - x1, y2 - y1, head_width=<span class="number">4</span>, head_length=<span class="number">4</span>, color=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line"><span class="comment"># 前四个参数分别为起点x，起点y，deltax， deltay</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于arrow的更多资料，可以参考<a href="https://vimsky.com/examples/usage/matplotlib-axes-axes-arrow-in-python.html">matplotlib.axes.Axes.arrow()函数</a></p>
+</blockquote>
+<h3 id="绘制圆"><a href="#绘制圆" class="headerlink" title="绘制圆"></a>绘制圆</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制圆</span></span><br><span class="line">theta = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">200</span>) <span class="comment"># 设置角</span></span><br><span class="line">circle_x = <span class="number">100</span> * np.cos(theta) <span class="comment"># 设置x</span></span><br><span class="line">circle_y = <span class="number">100</span> * np.sin(theta) <span class="comment"># 设置y</span></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line">ax.plot(circle_x, circle_y, color=<span class="string">&quot;black&quot;</span>, linewidth=<span class="number">1</span>, label=<span class="string">r&#x27;理想编队队形, $R=100m$&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)<span class="comment"># 以x和y绘图，本质上是用了x=r*cos(theta), y=r*sin(theta)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="以圆弧绘制角符号"><a href="#以圆弧绘制角符号" class="headerlink" title="以圆弧绘制角符号"></a>以圆弧绘制角符号</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">draw_angle_with_points</span>(<span class="params">x0, y0, x1, y1, x2, y2, r=<span class="number">10</span>, dx=<span class="number">0</span>, dy=<span class="number">0</span>, text=<span class="literal">None</span>, show_text=<span class="literal">False</span></span>):</span><br><span class="line">	<span class="keyword">if</span> y1 &gt; y0:</span><br><span class="line">		x1_high, y1_high = x1, y1</span><br><span class="line">		x1_low, y1_low = x0, y0</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		x1_high, y1_high = x0, y0</span><br><span class="line">		x1_low, y1_low = x1, y1</span><br><span class="line">	delta_y1 = y1_high - y1_low</span><br><span class="line">	delta_x1 = x1_high - x1_low</span><br><span class="line">	angle1 = np.arctan(delta_y1 / delta_x1)</span><br><span class="line">	<span class="keyword">if</span> y2 &gt; y0:</span><br><span class="line">		x2_high, y2_high = x2, y2</span><br><span class="line">		x2_low, y2_low = x0, y0</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		x2_high, y2_high = x0, y0</span><br><span class="line">		x2_low, y2_low = x2, y2</span><br><span class="line">	delta_y2 = y2_high - y2_low</span><br><span class="line">	delta_x2 = x2_high - x2_low</span><br><span class="line">	angle2 = np.arctan(delta_y2 / delta_x2)</span><br><span class="line">	draw_angle(x=x0, y=y0, r=r, st=angle1, ed=angle2, dx=dx, dy=dy, text=text, show_text=show_text)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>思路其实不复杂：给出圆心、弧的起始角度、弧的终点角度即可计算出圆</p>
+</blockquote>
+<h3 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h3><p>有时候会遇到希望某个图形显示在其他图形上面或下面的需求，这时候可以利用库提供的图层属性，使用类似PR的逻辑处理图形之间的关系。</p>
+<p>在上文中其实已经有所介绍，即使用<code>zorder</code>设置图层级别，更详细的使用方法可以参考<a href="https://www.matplotlib.org.cn/gallery/misc/zorder_demo.html">Zorder演示 | Matplotlib 中文</a></p>
+<h3 id="图片比例"><a href="#图片比例" class="headerlink" title="图片比例"></a>图片比例</h3><p>笔者在应用中发现，可能会遇到明明应该是长宽比1:2，但是看起来却很不像，这可能是因为绘图时自动根据布局进行调整。我的解决办法是在四边较远的地方都放置透明且图层级别最低的点，这样“撑”起了图的正确比例。</p>
+<h2 id="Part-6-Numpy科学计算"><a href="#Part-6-Numpy科学计算" class="headerlink" title="Part 6 Numpy科学计算"></a>Part 6 Numpy科学计算</h2><h3 id="Numpy简介"><a href="#Numpy简介" class="headerlink" title="Numpy简介"></a>Numpy简介</h3><p>近年来，Matlab的使用在内地越来越被限制，在具有敏感背景的高校更是如此。在这样的环境下，使用python是优秀的选择，BUAA《数学建模》课程与数学建模国赛都更推荐python。其中，Numpy库起到了重要的作用。</p>
+<p>NumPy 通常与 SciPy（Scientific Python）和 Matplotlib（绘图库）一起使用， 这种组合广泛用于替代 MatLab，是一个强大的科学计算环境，有助于我们通过 Python 学习数据科学或者机器学习。更多的介绍，可以参考<a href="https://www.runoob.com/numpy/numpy-tutorial.html">NumPy 教程-Runoob</a></p>
+<h3 id="导入相关包-1"><a href="#导入相关包-1" class="headerlink" title="导入相关包"></a>导入相关包</h3><p>numpy社区推荐导入时使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<h3 id="矩阵-times-向量"><a href="#矩阵-times-向量" class="headerlink" title="矩阵$\times$向量"></a>矩阵$\times$向量</h3><p><code>@</code>运算符用于矩阵和向量之间的乘法，其中第二位运算数会被转置。</p>
+<p>e.g.：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x0 = np.array([<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">mat = np.array([[<span class="number">0.6</span>, <span class="number">0.1</span>, <span class="number">0.3</span>], [<span class="number">0.1</span>, <span class="number">0.9</span>, <span class="number">0</span>], [<span class="number">0.3</span>, <span class="number">0</span>, <span class="number">0.7</span>]])</span><br><span class="line">ans = mat @ x0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-7-处理Excel"><a href="#Part-7-处理Excel" class="headerlink" title="Part 7 处理Excel"></a>Part 7 处理Excel</h2><p>参考：<a href="https://blog.csdn.net/weixin_44288604/article/details/120731317">python实现——处理Excel表格（超详细）</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取文件全名</span></span><br><span class="line">excel_name = excel_file.name</span><br><span class="line"><span class="comment"># 获取文件名</span></span><br><span class="line">mobile = os.path.splitext(excel_name)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 获取文件后缀</span></span><br><span class="line">ext = os.path.splitext(excel_name)[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 重定义文件名</span></span><br><span class="line">excel_name = <span class="string">f&#x27;avatar-<span class="subst">&#123;mobile&#125;</span><span class="subst">&#123;ext&#125;</span>&#x27;</span></span><br><span class="line"><span class="comment"># 从配置文件中加载excel保存路径</span></span><br><span class="line">excel_path = os.path.join(EXCEL_UPLOAD, excel_name)</span><br><span class="line"><span class="comment"># 保存文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(excel_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">	fp.write(excel_file.read())</span><br><span class="line"><span class="comment"># 解析文件</span></span><br><span class="line">os.chdir(EXCEL_UPLOAD)</span><br><span class="line">workbook = openpyxl.load_workbook(excel_name)</span><br><span class="line">sheet = workbook[<span class="string">&#x27;Sheet1&#x27;</span>]</span><br><span class="line">ret_json = []</span><br><span class="line">n = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sheet.iter_rows():</span><br><span class="line">	key = <span class="string">&#x27;None&#x27;</span></span><br><span class="line">	value = <span class="string">&#x27;None&#x27;</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;i = &#x27;</span> + <span class="built_in">str</span>(i) + <span class="string">&#x27; j = &#x27;</span> + <span class="built_in">str</span>(j) + <span class="string">&#x27; value = &#x27;</span> + <span class="built_in">str</span>(j.value))</span><br><span class="line">		<span class="keyword">if</span> key == <span class="string">&#x27;None&#x27;</span>:</span><br><span class="line">			key = <span class="built_in">str</span>(j.value)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			value = <span class="built_in">str</span>(j.value)</span><br><span class="line">	ret_json.append(&#123;key: value&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-8-自定义类与排序"><a href="#Part-8-自定义类与排序" class="headerlink" title="Part 8 自定义类与排序"></a>Part 8 自定义类与排序</h2><p>e.g. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于计算用户推荐商品排序</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserGoodClass</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">	<span class="comment"># id为编号，like为是否收藏，num为购物车中数量（没有加入购物车即为0）</span></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, <span class="built_in">id</span>, name, price, seller_id, maker, picture, description, date, shelf_life, like, num</span>):</span><br><span class="line">		<span class="variable language_">self</span>.<span class="built_in">id</span> = <span class="built_in">id</span></span><br><span class="line">		<span class="variable language_">self</span>.name = name</span><br><span class="line">		<span class="variable language_">self</span>.price = price</span><br><span class="line">		<span class="variable language_">self</span>.seller_id = seller_id</span><br><span class="line">		<span class="variable language_">self</span>.maker = maker</span><br><span class="line">		<span class="variable language_">self</span>.picture = picture</span><br><span class="line">		<span class="variable language_">self</span>.description = description</span><br><span class="line">		<span class="variable language_">self</span>.date = date</span><br><span class="line">		<span class="variable language_">self</span>.shelf_life = shelf_life</span><br><span class="line">		<span class="variable language_">self</span>.like = like</span><br><span class="line">		<span class="variable language_">self</span>.num = num</span><br><span class="line">		<span class="variable language_">self</span>.value = <span class="number">5</span> * <span class="variable language_">self</span>.num + <span class="number">3</span> * like</span><br><span class="line">		<span class="comment"># print(&#x27;name : &#x27; + self.name + &#x27; value : &#x27; + str(self.value))</span></span><br><span class="line">	<span class="comment"># 定义小于符号</span></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">__lt__</span>(<span class="params">self, other</span>):</span><br><span class="line">		<span class="keyword">return</span> <span class="variable language_">self</span>.value &gt; other.value</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成该类的对象</span></span><br><span class="line">goodObj = UserGoodClass(<span class="built_in">id</span>=good_id, name=good.name, price=good.price, seller_id=good.seller_id, maker=good.maker, picture=good.picture, description=good.description, date=good.date, shelf_life=good.shelf_life, like=like, num=num)</span><br><span class="line"><span class="comment"># 扩充入列表</span></span><br><span class="line">ret_list.append(goodObj)</span><br><span class="line"><span class="comment"># 排序</span></span><br><span class="line">ret_list.sort()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-9-yield"><a href="#Part-9-yield" class="headerlink" title="Part 9 yield"></a>Part 9 <code>yield</code></h2><p>参考：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/268605982">如何理解Python中的yield用法? - 知乎</a></li>
+<li><a href="https://www.runoob.com/w3cnote/python-yield-used-analysis.html">Python yield 使用浅析 - runoob</a></li>
+</ul>
+<p><code>yield</code> 是 python 中的关键字，用于定义生成器函数。当一个函数中使用了 <code>yield</code> 函数时，它即被标记为生成器函数，而非普通的函数（这里笔者理解普通函数的行为是调用后即进入函数逐条语句执行）。生成器函数的执行不会像普通函数一样立即返回结果，而是在迭代器调用时逐步生成数据，并在调用 <code>yield</code> 时暂停执行并保存当前状态。<code>yield</code> 的优势在于处理大量数据，可以按需生成数据，无需一次性加载所有数据到内存中，在深度学习中比较常用。</p>
+<p>e.g.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># input: batch大小、特征矩阵和标签向量</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">data_iter</span>(<span class="params">batch_size, features, labels</span>):</span><br><span class="line">    num_examples = <span class="built_in">len</span>(features) <span class="comment"># 计算样本总数</span></span><br><span class="line">    indices = <span class="built_in">list</span>(<span class="built_in">range</span>(num_examples)) <span class="comment"># 创建一个 0 到 num_examples - 1 的整数列表以表示样本的索引</span></span><br><span class="line">    <span class="comment"># 这些样本是随机读取的，没有特定的顺序</span></span><br><span class="line">    random.shuffle(indices) <span class="comment"># 随机打乱样本的索引列表</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_examples, batch_size):</span><br><span class="line">        <span class="comment"># 在索引列表 indices 中以 batch_size 为步长迭代遍历，每次迭代获取一个批次大小的样本</span></span><br><span class="line">        batch_indices = torch.tensor(</span><br><span class="line">            indices[i: <span class="built_in">min</span>(i + batch_size, num_examples)])</span><br><span class="line">        <span class="comment"># 使用 yield，将当前批次大小的特征数据和标签数据作为生成器的输出</span></span><br><span class="line">        <span class="keyword">yield</span> features[batch_indices], labels[batch_indices]</span><br></pre></td></tr></table></figure>
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/01/02/Java-Programming-Notes/" data-toggle="tooltip" data-placement="top" title="Java Programming Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/08/29/「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机/" data-toggle="tooltip" data-placement="top" title="「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Thu Sep 01 2022 16:13:49 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-Python-Programming%E3%80%8DNotes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Python Programming」Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-json%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 json处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%BB%E5%8F%96json"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">读取json</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#json-load"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">json.load</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 字符串处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#strip"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">strip()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#replace"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">replace()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 文件处理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E5%AD%98%E5%9C%A8%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">判断文件存在与删除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">文件读写操作</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E5%8A%A0%E5%AF%86"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 加密</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#md5%E5%8A%A0%E5%AF%86"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">md5加密</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-Matplotlib%E7%BB%98%E5%9B%BE"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 Matplotlib绘图</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Matplotlib%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">Matplotlib简介</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3%E5%8C%85"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">导入相关包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">设置支持中文字体</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%9D%90%E6%A0%87%E8%BD%B4%E5%88%BB%E5%BA%A6%E6%98%BE%E7%A4%BA%E8%8C%83%E5%9B%B4"><span class="toc-nav-number">1.6.4.</span> <span class="toc-nav-text">设置坐标轴刻度显示范围</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%8E%B7%E5%BE%97figure%E5%92%8Caxes"><span class="toc-nav-number">1.6.5.</span> <span class="toc-nav-text">获得figure和axes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%84%E8%A7%88"><span class="toc-nav-number">1.6.6.</span> <span class="toc-nav-text">预览</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87"><span class="toc-nav-number">1.6.7.</span> <span class="toc-nav-text">保存图片</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%87%E8%AE%B0%E6%96%87%E5%AD%97"><span class="toc-nav-number">1.6.8.</span> <span class="toc-nav-text">标记文字</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%98%E5%88%B6%E7%BA%BF"><span class="toc-nav-number">1.6.9.</span> <span class="toc-nav-text">绘制线</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%98%E5%88%B6%E7%82%B9"><span class="toc-nav-number">1.6.10.</span> <span class="toc-nav-text">绘制点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%98%E5%88%B6%E7%AE%AD%E5%A4%B4"><span class="toc-nav-number">1.6.11.</span> <span class="toc-nav-text">绘制箭头</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%98%E5%88%B6%E5%9C%86"><span class="toc-nav-number">1.6.12.</span> <span class="toc-nav-text">绘制圆</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A5%E5%9C%86%E5%BC%A7%E7%BB%98%E5%88%B6%E8%A7%92%E7%AC%A6%E5%8F%B7"><span class="toc-nav-number">1.6.13.</span> <span class="toc-nav-text">以圆弧绘制角符号</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E5%B1%82"><span class="toc-nav-number">1.6.14.</span> <span class="toc-nav-text">图层</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E7%89%87%E6%AF%94%E4%BE%8B"><span class="toc-nav-number">1.6.15.</span> <span class="toc-nav-text">图片比例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-6-Numpy%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Part 6 Numpy科学计算</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Numpy%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">Numpy简介</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3%E5%8C%85-1"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">导入相关包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A9%E9%98%B5-times-%E5%90%91%E9%87%8F"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">矩阵$\times$向量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-7-%E5%A4%84%E7%90%86Excel"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Part 7 处理Excel</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-8-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E4%B8%8E%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">Part 8 自定义类与排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-9-yield"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">Part 9 yield</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#BUAA Python Programming" title="BUAA Python Programming">BUAA Python Programming</a>
+                        
+                          <a class="tag" href="/tags/#PyTorch" title="PyTorch">PyTorch</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

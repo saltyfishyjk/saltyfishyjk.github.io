@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「CS231n Course 1」图像分类 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/05/22/「CS231n-Course-1」图像分类/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                            
+                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                            
+                              <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                            
+                        </div>
+                        <h1>「CS231n Course 1」图像分类</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-05-22
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「CS231n-Course-1」图像分类"><a href="#「CS231n-Course-1」图像分类" class="headerlink" title="「CS231n Course 1」图像分类"></a>「CS231n Course 1」图像分类</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p><a href="https://cs231n.github.io/">CS231n</a>全称为CS231n: Convolutional Neural Networks for Visual Recognition（2023学年），即《视觉识别的卷积神经网络》，广受欢迎和好评，是面向计算机视觉的深度学习课程，节奏对入门者比较友好。</p>
+<p>笔者主要通过CS231n了解和学习深度学习，这一系列博客是个人学习笔记，会尽可能列出所有参考来源。</p>
+<h3 id="学习和参考资料"><a href="#学习和参考资料" class="headerlink" title="学习和参考资料"></a>学习和参考资料</h3><ul>
+<li><a href="http://cs231n.stanford.edu/">CS231n官网</a>：每次开课会更新，但是笔者没有学习最新的课程</li>
+<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5/?vd_source=b0a8793490273b09808dbd6f72d3465c">b站2017年录播（双语字幕）</a>：主要网课参考</li>
+<li><a href="https://zhuanlan.zhihu.com/p/21930884">知乎2016年授权笔记翻译集</a>：主要笔记参考</li>
+<li><a href="https://zhuanlan.zhihu.com/p/20894041?refer=intelligentunit">知乎 图像分类笔记（上）</a>：本篇博客重要参考</li>
+<li><a href="https://zhuanlan.zhihu.com/p/20900216">知乎 图像分类笔记（下）</a>：本篇博客重要参考</li>
+<li><a href="https://zhuanlan.zhihu.com/p/20918580?refer=intelligentunit">知乎 线性分类笔记（上）</a>：本篇博客重要参考</li>
+</ul>
+<h2 id="Part-1-数据驱动"><a href="#Part-1-数据驱动" class="headerlink" title="Part 1 数据驱动"></a>Part 1 数据驱动</h2><p>图像分类问题中随着视角&#x2F;大小&#x2F;形状等的变化，可以让一个物体的图片产生巨大变化（把图像当作3维数组），这不利于编写一个算法来判断某张图像是否是一个“猫”。</p>
+<p>数据驱动的方法从数据出发，输入一个元素为像素值的数组，给其分配一个分类标签。完整流程：</p>
+<ul>
+<li>输入：包含N个图像的集合，包含图像和其对应的K种分类标签中的一种。该集合称为训练集。</li>
+<li>学习：使用训练集学习每个类应该是什么样的。该步骤一般称为训练分类器或学习一个模型。</li>
+<li>评价：让分类器预测一个未曾见过的图像的分类标签，并以此评价分类器的质量。</li>
+</ul>
+<h2 id="Part-2-K-Nearest-Neighbour分类器（NN和KNN）"><a href="#Part-2-K-Nearest-Neighbour分类器（NN和KNN）" class="headerlink" title="Part 2 (K) Nearest Neighbour分类器（NN和KNN）"></a>Part 2 (K) Nearest Neighbour分类器（NN和KNN）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>训练集：用来学习一个(K)NN模型的带标签数据（图像-标签 pair）</li>
+<li>测试集：用模型预测测试集（不在训练集中出现过）的图像的分类标签</li>
+<li>距离函数：包含曼哈顿距离（L1距离）、欧几里得距离（L2距离）等，用来评价图像之间的相似程度。</li>
+<li>准确率：评价模型预测的得分</li>
+<li>超参数（Hyperparameter）：在开始机器学习之前就人为设置好的参数。用于区别于模型参数这一通过训练得到的参数。具体地，KNN中K的选择就是一种超参数，距离函数的选择也是一种超参数。</li>
+</ul>
+<h3 id="NN和KNN"><a href="#NN和KNN" class="headerlink" title="NN和KNN"></a>NN和KNN</h3><ul>
+<li>NN：通过给定的训练集，将测试集中的元素和训练集中的每一个元素计算”距离“，选择和其”距离“最小的图像的标签作为该测试集元素的标签</li>
+<li>KNN：NN是找和未知图像最像（距离越小，约”像“）的已知图像，将其标签作为未知图像的标签；KNN是找和未知图像最想的K个图像的标签，使其投票，将票数最高的标签作为对未知图像的预测。</li>
+</ul>
+<h3 id="可视化示意图"><a href="#可视化示意图" class="headerlink" title="可视化示意图"></a>可视化示意图</h3><p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/51aef845faa10195e33bdd4657592f86_r.jpg" alt="img"></p>
+<ul>
+<li>颜色区域：不同颜色代表不同分类</li>
+<li>点：每个标注出的点是一个训练数据，其颜色表示其分类标签；整张图中未标注点的部分为非训练数据，即，真实数据可能出现在任何一个未标注的点处，这里的颜色代表该(K)NN模型会将其预测为的分类。可以注意到，这里的点并非图像中的像素点，而是代表了一个高维数据（如一张图片）</li>
+<li>可以注意到，KNN的表现更加平滑</li>
+</ul>
+<p>实际上，(K)NN工作时是先储存了所有训练数据，在test时将test数据和每一份训练数据计算距离并比较。因此，实际上训练过程是$O(1)$的（其实并没有做计算，只是把数据存储起来了），而预测过程是$O(n)$的（和训练数据中的每一个元素匹配）。</p>
+<p>一个可以交互的KNN 玩具模型：<a href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">http://vision.stanford.edu/teaching/cs231n-demos/knn/</a></p>
+<h3 id="超参数调优"><a href="#超参数调优" class="headerlink" title="超参数调优"></a>超参数调优</h3><p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/image-20230522214923716.png" alt="image-20230522214923716"></p>
+<p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/image-20230522221016320.png" alt="image-20230522221016320"></p>
+<p>不好的做法：</p>
+<ul>
+<li>选择整个数据集（全部为训练集）上表现最好的：如KNN的K&#x3D;1时准确率为100%，但这不是一个更优的策略</li>
+<li>将数据划分为训练集（train）和测试集（test），选择在测试集上表现最好的：不知道算法会在新数据上表现如何</li>
+</ul>
+<p>不错的做法：</p>
+<ul>
+<li>将数据划分为训练集（train）、验证集（validation）和测试集（test）：选择在验证集上表现最好的，并用其在test上测试来评估</li>
+<li>交叉验证，将数据分为不同fold和测试（test），循环将不同fold作为验证（validation）：适合小数据集，不适合深度学习（训练成本过高）</li>
+</ul>
+<h2 id="Part-3-线性分类"><a href="#Part-3-线性分类" class="headerlink" title="Part 3 线性分类"></a>Part 3 线性分类</h2><p>简单直观的分类方法，但是对建立神经网络和卷积网络非常重要。</p>
+<h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>评分函数（score function）：原始图像数据到类别分值的映射。即，input 原始图像数据，output该图像数据到（各）类别的分值，得分高低代表图像属于该类的可能性高低。</li>
+<li>损失函数（loss function）：量化预测分类标签的得分和真实标签之间的一致性。该问题可以转化为一个最优化问题，即，通过更新评分函数的参数来使得最小化损失函数值。</li>
+</ul>
+<h3 id="评分函数"><a href="#评分函数" class="headerlink" title="评分函数"></a>评分函数</h3><p>评分函数是一个从图像到标签分值的参数化映射。</p>
+<p>我们有$N$个训练图像，每个图像的维度是$D$，共有$K$种不同的分类，可以表示如下：</p>
+<ul>
+<li><p>训练集：若干张图像，可以表示为$x_i \in R^D$</p>
+</li>
+<li><p>分类标签：$y_i, i &#x3D; 1, 2, …,N$且$y_i \in 1 … K$</p>
+</li>
+<li><p>评分函数：$f:R^D \rightarrow R^K$：原始图像像素到分类分值的映射</p>
+</li>
+</ul>
+<p>注意，这里图像维度是$D$的意思可以这样解释：图像的尺寸规格是$32 \times 32 \times 3$，则$D&#x3D;32 \times 32 \times 3 &#x3D; 3072$（这里适合用<code>NumPy</code>提供的<code>reshape</code>函数将图像矩阵转为列向量）。事实上，这已经属于“高维度”向量和向量空间了，但是我们依然用二维平面和线性函数（直线型）的概念做直观理解。</p>
+<h3 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h3><p>$$<br>f(x_i, W, b)&#x3D;Wx_i+b<br>$$</p>
+<p>该公式中，每个图像数据都被拉长为长度为$D$的列向量，大小为$[D \times 1]$，其中大小为$[K \times D]$的矩阵$W$和大小为$[K \times 1]$的列向量$b$是该函数的参数。</p>
+<ul>
+<li>参数：$W$和$b$，也会被称为权重</li>
+<li>$W$：权重（weights）。大小为$[K \times D]$，$K$行$N$列，每一行（行向量）表示一个分类器，针对一个分类，共针对$K$个分类。</li>
+<li>$b$：偏差向量（bias vector）。假如我们预先知道数据中“猫”多于“狗”，那么可以给“猫”对应的类别设置更大的偏差值来表示对其的偏好</li>
+<li>$W$和$b$是可变的，会在训练中迭代变化。一旦训练完成，训练数据可以丢弃，仅留下学习到的$W$和$b$参数即可用于测试，这是区别于KNN的一点。</li>
+</ul>
+<blockquote>
+<p>卷积神经网络映射图像像素值到分类分值的方法和上面类似，但是映射$f$要复杂一些，参数要更多</p>
+</blockquote>
+<h3 id="偏差和权重的合并技巧"><a href="#偏差和权重的合并技巧" class="headerlink" title="偏差和权重的合并技巧"></a>偏差和权重的合并技巧</h3><p>$f(x_i, W, b)&#x3D;Wx_i+b$看起来有些笨重，可以将$x_i$和$W$增加一个维度，称为默认的偏差维度，将其化简为：<br>$$<br>f(x_i, W)&#x3D;Wx_i<br>$$<br>具体地，之前的$x_i$是$[3072 \times 1]$，调整后变为$[3073 \times 1]$；之前的$W$是$[10 \times 3072]$，调整后变为$[10 \times 3073]$，具体如下：</p>
+<p><img src="/2023/05/22/%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/3c69a5c87a43bfb07e2b59bfcbd2f149_r.jpg" alt="img"></p>
+<h3 id="图像数据预处理"><a href="#图像数据预处理" class="headerlink" title="图像数据预处理"></a>图像数据预处理</h3><p>之前的例子中都是使用的图像的原始像素值。而对于输入特征的归一化处理非常常见和重要，如零均值的中心化。这一部分会和梯度下降相关。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/05/23/「CS231n-Course-2」损失函数/" data-toggle="tooltip" data-placement="top" title="「CS231n Course 2」损失函数">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/05/11/「BUAA-Computer-Network-Experiment」Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA Computer Network Experiment」Notes">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon May 22 2023 19:48:33 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CCS231n-Course-1%E3%80%8D%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「CS231n Course 1」图像分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">学习和参考资料</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 数据驱动</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-K-Nearest-Neighbour%E5%88%86%E7%B1%BB%E5%99%A8%EF%BC%88NN%E5%92%8CKNN%EF%BC%89"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 (K) Nearest Neighbour分类器（NN和KNN）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">基本概念</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NN%E5%92%8CKNN"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">NN和KNN</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">可视化示意图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">超参数调优</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 线性分类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">基本概念</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%84%E5%88%86%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">评分函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">线性分类器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%81%8F%E5%B7%AE%E5%92%8C%E6%9D%83%E9%87%8D%E7%9A%84%E5%90%88%E5%B9%B6%E6%8A%80%E5%B7%A7"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">偏差和权重的合并技巧</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">图像数据预处理</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                        
+                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                        
+                          <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「CS231n Course 2」损失函数 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/05/23/「CS231n-Course-2」损失函数/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                            
+                              <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                            
+                              <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                            
+                        </div>
+                        <h1>「CS231n Course 2」损失函数</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-05-23
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.5k</span> and
+                                Reading Time <span class="post-count">9</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「CS231n-Course-2」损失函数"><a href="#「CS231n-Course-2」损失函数" class="headerlink" title="「CS231n Course 2」损失函数"></a>「CS231n Course 2」损失函数</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>参考资料：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Gb4y1X7Q5?p=9&vd_source=b0a8793490273b09808dbd6f72d3465c">b站 CS231n 3.1 损失函数</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20945670?refer=intelligentunit">知乎 线性分类笔记（中）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21102293?refer=intelligentunit">知乎 线性分类笔记（下）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21360434?refer=intelligentunit">知乎 最优化笔记（上）</a></li>
+</ul>
+<h2 id="Part-1-损失函数"><a href="#Part-1-损失函数" class="headerlink" title="Part 1 损失函数"></a>Part 1 损失函数</h2><p>损失函数，Loss Function，用于衡量我们对（评分函数给出的）结果的不满意程度。具体地，当评分函数输出结果和真实结果之间差异越大，损失函数越大，我们“越不满意”。</p>
+<p>损失函数由多种形式，以下是一些常用损失函数。</p>
+<h3 id="多类支持向量机损失（Multiclass-Support-Vector-Machine-Loss）"><a href="#多类支持向量机损失（Multiclass-Support-Vector-Machine-Loss）" class="headerlink" title="多类支持向量机损失（Multiclass Support Vector Machine Loss）"></a>多类支持向量机损失（Multiclass Support Vector Machine Loss）</h3><h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>SVM的损失函数希望SVM在正确分类上的得分始终比不正确分类上的得分高出一个边界值$\Delta$；如果满足，则损失值为0；如果不满足，则开始计算损失值。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>第$i$个数据包含图像$x_i$（的像素）和其正确的分类标签$y_i$。评分函数$f$对于输入像素数据，由公式$f(x_i, W)$计算不同分类类别的分值，记为$s$。如，对第$j$个类别的得分是$s_j&#x3D;f(x_i, W)_j$，针对第$i$个数据的多类别SVM损失函数定义如下：<br>$$<br>L_i &#x3D; \sum <em>{j \ne y_i}max (0, s_j - s</em>{y_i} + \Delta)<br>$$<br>其中，$\Delta$是一个超参数，是某种“安全边距”。</p>
+<p>举例而言，有三个分类，分值为$s &#x3D; [13, -7, 11]$。第一个类别是正确类别，即，$y_i&#x3D;0$，且我们假设$\Delta&#x3D;10$，则根据上述公式代入计算得：<br>$$<br>L_i &#x3D; max (0, -7-13+10)+max(0, 11 - 13 + 10) &#x3D; 8<br>$$<br>其中，<br>$$<br>max(0, -7 - 13 + 10)<br>$$<br>$max$函数中，第一项是$0$，第二项是用第1个类别的（评分函数）得分减去正确类别（$y_i$，第0个类别）的得分，再加上超参数$\Delta$。可以这样理解：当对于该类别加上超参数$\Delta$（安全边距）后，正确类别（$y_i&#x3D;0$）的得分仍高于该值，那么说明这一项没有损失，即取$max$函数的前项$0$；反之，说明正确类别并没有高出错误类别一个安全边距，则差值即为该项产生的损失。</p>
+<p>特别地，线性评分函数如下：<br>$$<br>s &#x3D; f(x_i, W) &#x3D; W x_i<br>$$<br>那么可以得到$s_j$即$s$的第$j$行为（注意，这里行列向量意会即可，似乎和上文中的并不符合）：<br>$$<br>s_j &#x3D; w^{T}<em>{j}x_i<br>$$<br>$s</em>{y_i}$为：<br>$$<br>s_{y_i} &#x3D; w^{T}<em>{y_i}x_i<br>$$<br>因此，SVM的损失函数可以表达为：<br>$$<br>L_i &#x3D; \sum</em>{j \ne y_i}max(0, w_{j}^{T}x_i - w_{y_i}^{T}x_i+\Delta)<br>$$</p>
+<h4 id="折叶函数（hinge-loss）"><a href="#折叶函数（hinge-loss）" class="headerlink" title="折叶函数（hinge loss）"></a>折叶函数（hinge loss）</h4><p>hinge loss，也叫合页（损失）函数或折页（损失）函数（因为他长得像hinge）。它的表现形式如下：<br>$$<br>max(0, -)<br>$$<br>一般情况下提到hinge loss即是如上的版本。特别地，有时候会使用平方折叶损失（即L2-SVM）</p>
+<h3 id="正则化（Regularzition）"><a href="#正则化（Regularzition）" class="headerlink" title="正则化（Regularzition）"></a>正则化（Regularzition）</h3><p>在训练过程中，可能存在以下问题：</p>
+<ul>
+<li>$W$不唯一，很多相似的$W$可以正确分类所有数据</li>
+<li>过拟合</li>
+</ul>
+<p>正则化即为某些特定的（也可以是全部）权重$W$添加一些偏好，对其他不添加，以消除模糊性。具体地，向损失函数增加一个正则化惩罚（regularition penalty）$R(W)$。</p>
+<p>最常用的正则化惩罚是L2范式，对所有参数进行逐个元素的平方惩罚来抑制大数值的权重：<br>$$<br>R(W) &#x3D; \sum_{k}\sum_{l}W_{k,l}^{2}<br>$$<br>上式将$W$中所有元素平方后求和。完整的多类SVM损失函数如下：<br>$$<br>L &#x3D; \frac{1}{N}\sum_{i}L_i+\lambda R(W)<br>$$<br>其中，$\frac{1}{N}\sum_{i}L_i$是数据损失（data loss），即所有样例的平均损失；以及$\lambda R(W)$正则化损失（regularization loss）</p>
+<h3 id="Softmax分类器"><a href="#Softmax分类器" class="headerlink" title="Softmax分类器"></a>Softmax分类器</h3><blockquote>
+<p>关于Softmax函数的名字含义，可以这样理解：max函数仅输出最大值，而Softmax确保较小的值有较小的概率，不会直接丢弃，因此可以认为其是argmax函数的概率版本或soft版本</p>
+</blockquote>
+<p>SVM和Softmax分类器是最常用的两个分类器，Softmax分类器可以理解为逻辑回归分类器面对多个分类的一般化归纳。</p>
+<p>Softmax的损失函数和SVM有所不同。具体地，SVM是将$f(x_i, W)$作为每个分类的评分，由于没有定标，因此难以解释含义。而Softmax的输出是归一化的分类概率，更加直观，而且可以从概率上解释。Softmax分类其中函数映射$f(x_i;W)&#x3D;Wx_i$保持不变，但会对评分值<strong>视为每个分类的未归一化时的对数概率</strong>，根据这个表述，我们知道将该值先进行指数化，再归一化即可得到每个分类的概率。Softmax将SVM的折叶损失（hinge loss）替换为<strong>交叉熵损失（cross-entropy loss）</strong>：<br>$$<br>L_i &#x3D; -log(\frac{e^{f_{y_i}}}{\sum_{j}e^{f_j}})或等价的L_i &#x3D; -f_{y_i}+log(\sum_{j}e^f_j{})<br>$$<br>上式中，各值的含义如下：</p>
+<ul>
+<li>$f_j$：分类评分向量$f$中的第$j$个元素</li>
+</ul>
+<p>和SVM相同，整个数据集的损失值是数据集中所有样本数据的损失值$L_i$的均值与正则化损失$R(W)$之和。其中，下式被称为Softmax函数：<br>$$<br>f_j(z)&#x3D;\frac{s^{z_j}}{\sum_{k}e^{z_k}}<br>$$<br>该函数的解释为：输入值是一个向量$z$，其元素为任意实数的评分值，函数对其进行压缩，输出一个向量，其中每个元素值在$0$和$1$之间，且所有元素之和为$1$。</p>
+<h3 id="SVM和Softmax的比较"><a href="#SVM和Softmax的比较" class="headerlink" title="SVM和Softmax的比较"></a>SVM和Softmax的比较</h3><p><img src="/2023/05/23/%E3%80%8CCS231n-Course-2%E3%80%8D%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/a90ce9e0ff533f3efee4747305382064_r.jpg" alt="img"></p>
+<p>首先，可以注意到两者的$f$在这里都使用了普通的矩阵乘法$W x_i$；</p>
+<p>其次，观察到SVM对矩阵乘法的结果直接使用折叶损失函数（hinge loss），其中的超参数$\Delta$这里选择了$1$；</p>
+<p>然后，观察到Softmax首先对$f$的结果取exp，然后进行归一化（得到各分类的概率），再然后取$-log$得到损失（对正确答案的分类概率进行$-log$）。</p>
+<p>可以注意到，SVM对于”安全边距“以上的答案不予关心，认为损失为$0$，而由Softmax损失函数的计算公式可以知道，Softmax永远不会对答案满意，会不断调整来降低损失值。</p>
+<blockquote>
+<p>一个用于理解线性分类器和损失的<a href="http://vision.stanford.edu/teaching/cs231n-demos/linear-classify/">交互式网页</a></p>
+</blockquote>
+<h2 id="Part-2-优化"><a href="#Part-2-优化" class="headerlink" title="Part 2 优化"></a>Part 2 优化</h2><p>（最）优化，optimization，是寻找能使得损失函数值最小化的参数$W$的过程。</p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><h4 id="方案1：随机搜索"><a href="#方案1：随机搜索" class="headerlink" title="方案1：随机搜索"></a>方案1：随机搜索</h4><p>随机尝试很多不同的权重，看哪个最好，将其中表现最好的权重$W$取出。</p>
+<p>这个方案不好，在验证集的表现是15.5%，比完全随机猜测的结果（10%）略好。</p>
+<h4 id="方案2：随机本地搜索"><a href="#方案2：随机本地搜索" class="headerlink" title="方案2：随机本地搜索"></a>方案2：随机本地搜索</h4><p>每一个策略是每走一步随机尝试几个方向，若某个方向是向下的，则继续向这个方向走。具体地，从一个随机的$W$开始，生成一个随机的扰动$\delta W$，仅有$W + \delta W$的损失值变小时才更新。</p>
+<h4 id="方案3：跟随梯度"><a href="#方案3：跟随梯度" class="headerlink" title="方案3：跟随梯度"></a>方案3：跟随梯度</h4><p>方案2中我们其实是在权重空间中尝试找到一个方向，使得沿着该方向可以降低。而梯度（gradient）恰好是这样一个数学概念，计算出某个点的各个方向的倾斜程度，以便选择最陡峭的方向下山。</p>
+<p>一维函数种，斜率是某点的瞬时变化率；梯度是函数斜率的一般化表达，不是一个值，而是一个向量。在输入空间中，梯度是各个维度的斜率（偏导数）组成的向量。</p>
+<p>具体地，一维函数的求导公式（定义式）如下：<br>$$<br>\frac{df(x)}{dx} &#x3D; \lim_{h \rightarrow 0} \frac{f(x+h) - f(x)}{h}<br>$$<br>当函数有多个参数的时候，即非一维函数，此时改称偏导数。梯度就是每个维度上的偏导数为元素组成的向量。</p>
+<h3 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h3><p>梯度计算主要有两种方法：</p>
+<ol>
+<li>数值梯度法：实现简单的近似方法，但是慢</li>
+<li>分析梯度法：计算迅速，结果精准，但是实现时容易出错</li>
+</ol>
+<h4 id="数值梯度法"><a href="#数值梯度法" class="headerlink" title="数值梯度法"></a>数值梯度法</h4><p>取一个很小的$h$（实践中在$10^{-5}$级别），使用定义式计算。</p>
+<p>优点：实现简单</p>
+<p>缺点：是近似，有误差，计算开销大</p>
+<h4 id="分析梯度法"><a href="#分析梯度法" class="headerlink" title="分析梯度法"></a>分析梯度法</h4><p>使用微分分析的方法计算梯度，结果精准且速度快，但是容易出错，实践中常常将分析梯度法的结果和数值梯度法的结果相比较，验证分析梯度实现的正确性，这个步骤叫做<strong>梯度检查（gradient check）</strong>。</p>
+<p>以SVM的损失函数（hinge loss）为例：<br>$$<br>L_i &#x3D; \sum_{j \ne y_i}[max(0, w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta)]<br>$$<br>对函数微分得：<br>$$<br>\nabla_{w_{y_i}}L_i &#x3D; -(\sum_{j \ne y_i}\mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta &gt; 0))x_i<br>$$<br>其中，$\mathbb{l}$是一个示性函数，即对括号内的条件进行判断，若为真，则式值为1，否则为0。该公式的意思为，计算（计数）没有满足安全边距的分类的数量（这些分类对损失函数产生了贡献），然后乘以$x_i$，即得到梯度。该公式是对应正确分类的$W$的行向量的梯度，那么$j \ne y_i$行的梯度是：<br>$$<br>\nabla_{w_j}L_i &#x3D; \mathbb{l}(w_{j}^Tx_i - w_{y_i}^Tx_i+\Delta &gt; 0)x_i<br>$$</p>
+<h4 id="小批量数据梯度下降（Mini-batch-gradient-descent）"><a href="#小批量数据梯度下降（Mini-batch-gradient-descent）" class="headerlink" title="小批量数据梯度下降（Mini-batch gradient descent）"></a>小批量数据梯度下降（Mini-batch gradient descent）</h4><p>大规模应用中的训练数据是百万量级的，训练成本很高，常用的方法是计算训练集中的小批量（batches）数据。如，在比较先进的CNN中，一个典型的小批量包含256个样本，而整个训练集的数量级在120万。</p>
+<h4 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h4><p>学习率，也叫步长，是神经网络训练中最重要的超参数设定之一。如果步长太小，则进度稳定但缓慢；若步长太大，进度快但有风险。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/05/24/「CS231n-Course-3」神经网络简介/" data-toggle="tooltip" data-placement="top" title="「CS231n Course 3」神经网络简介">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/05/22/「CS231n-Course-1」图像分类/" data-toggle="tooltip" data-placement="top" title="「CS231n Course 1」图像分类">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Tue May 23 2023 10:43:06 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CCS231n-Course-2%E3%80%8D%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「CS231n Course 2」损失函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 损失函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%9A%E7%B1%BB%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E6%8D%9F%E5%A4%B1%EF%BC%88Multiclass-Support-Vector-Machine-Loss%EF%BC%89"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">多类支持向量机损失（Multiclass Support Vector Machine Loss）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">核心思想</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">例子</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8A%98%E5%8F%B6%E5%87%BD%E6%95%B0%EF%BC%88hinge-loss%EF%BC%89"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">折叶函数（hinge loss）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%EF%BC%88Regularzition%EF%BC%89"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">正则化（Regularzition）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Softmax%E5%88%86%E7%B1%BB%E5%99%A8"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">Softmax分类器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SVM%E5%92%8CSoftmax%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">SVM和Softmax的比较</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E4%BC%98%E5%8C%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 优化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%B9%E6%A1%88"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">方案</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%A1%881%EF%BC%9A%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">方案1：随机搜索</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%A1%882%EF%BC%9A%E9%9A%8F%E6%9C%BA%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">方案2：随机本地搜索</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%96%B9%E6%A1%883%EF%BC%9A%E8%B7%9F%E9%9A%8F%E6%A2%AF%E5%BA%A6"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">方案3：跟随梯度</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">梯度计算</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E5%80%BC%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">数值梯度法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E6%9E%90%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">分析梯度法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E6%95%B0%E6%8D%AE%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88Mini-batch-gradient-descent%EF%BC%89"><span class="toc-nav-number">1.3.2.3.</span> <span class="toc-nav-text">小批量数据梯度下降（Mini-batch gradient descent）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-nav-number">1.3.2.4.</span> <span class="toc-nav-text">学习率</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#CS231n" title="CS231n">CS231n</a>
+                        
+                          <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+                        
+                          <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

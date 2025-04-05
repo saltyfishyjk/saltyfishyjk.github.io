@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA SE Individual Work3」提问回顾与个人总结 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/06/16/「BUAA-SE-Individual-Work3」提问回顾与个人总结/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                            
+                        </div>
+                        <h1>「BUAA SE Individual Work3」提问回顾与个人总结</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-06-16
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.6k</span> and
+                                Reading Time <span class="post-count">8</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-SE-Individual-Work3」提问回顾与个人总结"><a href="#「BUAA-SE-Individual-Work3」提问回顾与个人总结" class="headerlink" title="「BUAA SE Individual Work3」提问回顾与个人总结"></a>「BUAA SE Individual Work3」提问回顾与个人总结</h1><h2 id="Part-1-前言"><a href="#Part-1-前言" class="headerlink" title="Part 1 前言"></a>Part 1 前言</h2><table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">这个作业属于哪个课程</td>
+<td align="left"><a href="https://bbs.csdn.net/forums/buaa-ase2023">2023年北航敏捷软件工程</a></td>
+</tr>
+<tr>
+<td align="left">这个作业的要求在哪里</td>
+<td align="left"><a href="https://bbs.csdn.net/topics/615769461">个人作业-提问回顾与个人总结</a></td>
+</tr>
+<tr>
+<td align="left">我们在这个课程的目标是</td>
+<td align="left">熟悉结对编程的<strong>方法论</strong>，并通过实际开发实现最长英语单词链这一产品进行<strong>实践</strong>。</td>
+</tr>
+<tr>
+<td align="left">这个作业在哪个<strong>具体方面</strong>帮助我实现目标</td>
+<td align="left">通过在最长英语单词链这一应用中实践结对编程的方法论。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>教学班级  ： 周四班                               </li>
+<li>提问博客地址：<a href="https://bbs.csdn.net/topics/613630584">「BUAA SE Individual Work1」阅读和提问</a></li>
+</ul>
+<h2 id="Part-2-对自己曾经提出的问题进行解答"><a href="#Part-2-对自己曾经提出的问题进行解答" class="headerlink" title="Part 2 对自己曾经提出的问题进行解答"></a>Part 2 对自己曾经提出的问题进行解答</h2><h3 id="问题1：根据软件的不同、团队规模的不同以及团队成员的不同，最合适的团队模式肯定有所区别。那么在一个团队刚成立的时候，该如何快速先行选择一个团队模式开展工作，且这个模式虽然未必最佳但是至少是次最佳？"><a href="#问题1：根据软件的不同、团队规模的不同以及团队成员的不同，最合适的团队模式肯定有所区别。那么在一个团队刚成立的时候，该如何快速先行选择一个团队模式开展工作，且这个模式虽然未必最佳但是至少是次最佳？" class="headerlink" title="问题1：根据软件的不同、团队规模的不同以及团队成员的不同，最合适的团队模式肯定有所区别。那么在一个团队刚成立的时候，该如何快速先行选择一个团队模式开展工作，且这个模式虽然未必最佳但是至少是次最佳？"></a>问题1：根据软件的不同、团队规模的不同以及团队成员的不同，最合适的团队模式肯定有所区别。那么在一个团队刚成立的时候，该如何快速先行选择一个团队模式开展工作，且这个模式虽然未必最佳但是至少是次最佳？</h3><p>在本学期的软工团队项目中，我通过实践和讨论找到了这个问题的一个解决方案。</p>
+<p>具体地，在项目开始前，我和一些选过本门课程的学长学姐沟通讨论，了解他们的团队合作方案，其中对我帮助最大的是去年的无际软工队，是我们团队合作学习的榜样。</p>
+<p>另外，我们还进行了团队内的讨论，了解彼此的擅长和不擅长的工作，尽可能发挥各自的长处，这也让我们的团队合作模式具有特色。具体地，我们由1PM+4前端+2后端组成，我作为PM主要负责进度协调、文档管理、运行维护、博客撰写等工作，前端和后端以常见的模式分工。这带来了巨大的好处，也就是我们基本保证了每位成员都在做其擅长且较愿意做的工作。</p>
+<p>当然，这个过程也不是一成不变的。在项目推进中，我们也根据实际情况逐步调整了合作模式与具体分工，更好地适应了变化。</p>
+<h3 id="问题2：如何合适地分而治之？"><a href="#问题2：如何合适地分而治之？" class="headerlink" title="问题2：如何合适地分而治之？"></a>问题2：如何合适地分而治之？</h3><p>在团队项目中，我通过实践找到了这个问题的一个解决方案。</p>
+<p>我作为PM，确实没有对前后端所有技术都精通，但是得益于过去的项目经验，我对前后端的技术和工作都有一定把握。在这个基础上，我们主要采用团队敲定项目内容和实现方案后，由开发人员具体来进行时间安排和进度规划，PM主要进行协调以及判断是否可行，是否留有了充分的时间缓冲等。</p>
+<h3 id="问题3：如何推行高效工作工具如源代码管理工具Git等？"><a href="#问题3：如何推行高效工作工具如源代码管理工具Git等？" class="headerlink" title="问题3：如何推行高效工作工具如源代码管理工具Git等？"></a>问题3：如何推行高效工作工具如源代码管理工具Git等？</h3><p>在本学期，我通过实践和讨论解决了这个问题。</p>
+<p>首先，在项目开始前，我和 @TA熊 深入讨论了推广团队合作工具的问题：<a href="https://bbs.csdn.net/topics/613944863">讨论：关于团队的技术栈和项目管理工具选择</a>，这一富有成效的讨论得到了一个初步解决方案：结合工具的特点、人的特点、过去工作&#x2F;项目的经验，尝试设想【真实的场景和需求】，而非被创造的需求。具体地，我们采用了如下方案：</p>
+<ol>
+<li>代码托管平台：GitHub</li>
+<li>部署：GitHub Actions + 云服务器（可能选择腾讯云等提供商，已经有过成功案例）</li>
+<li>即时通讯：微信+腾讯会议（进行碎片化的、快速的沟通）</li>
+<li>【待确定】文档管理（公共知识库）：notion &#x2F;飞书（工作场景包括数据统计、协作编辑、信息组织、公共作业完成、开发规范、任务分配、进度（看板）管理等）</li>
+</ol>
+<p>可以注意到，上述工具链中有不少“老熟人”，其中的GitHub、腾讯云、微信、腾讯会议都是大家日常生活中就常用的生产力工具，唯一的新面孔是notion，而其支持markdown语法的特性也大大平缓了大家的学习曲线。</p>
+<p>在实践中，我们通过上述方案快速搭建起了一套行之有效、易于上手的工具链，真正做到了让团队不沉迷于工具的选择层面，而更专注于业务本身。</p>
+<h3 id="问题4：对于渐进发布的产品，如何使用合适的工具或解决方案以实现最佳DevOps？"><a href="#问题4：对于渐进发布的产品，如何使用合适的工具或解决方案以实现最佳DevOps？" class="headerlink" title="问题4：对于渐进发布的产品，如何使用合适的工具或解决方案以实现最佳DevOps？"></a>问题4：对于渐进发布的产品，如何使用合适的工具或解决方案以实现最佳DevOps？</h3><p>我通过实践搞清楚了这件事。</p>
+<p>在本学期软工之前，我就对DevOps、Docker、CI&#x2F;CD等工具有所耳闻，但是只停留在听说过的程度，对其长什么样，如何使用，有什么效果还是整体比较模糊的。在本学期的团队项目实践过程中，我大量调研了GitHub Actions、CI&#x2F;CD、Docker、DockerHub等工具，最终确定并实践了我们的解决方案，搭建了行之有效的DevOps工具链，真正做到了持续部署持续交付。同时，在本学期我还进行了一次Talk，主题就是CI&#x2F;CD，向大家介绍我们的工作经验，取得了良好的反响。</p>
+<h3 id="问题5：如何用科学的方法或者技术辅助提高领导力进而快速带领团队成长？"><a href="#问题5：如何用科学的方法或者技术辅助提高领导力进而快速带领团队成长？" class="headerlink" title="问题5：如何用科学的方法或者技术辅助提高领导力进而快速带领团队成长？"></a>问题5：如何用科学的方法或者技术辅助提高领导力进而快速带领团队成长？</h3><p>我通过实践弄清楚了这件事。</p>
+<p>对于软工团队项目这样规模的组织，既需要有个人魅力和领导能力的PM，也需要精简高效的组织架构和规则，两条腿走路才能不偏废。</p>
+<p>具体地，本学期中我们在初期即确定了奖励和惩罚规则，规则的数量不多，但是为大家划定了清晰的要求，大家也都在本学期中充分遵守了这些规则，一套简洁有效的组织架构就此诞生；另外，我作为PM也较有责任心和规划意识，对关键的时间节点和应有的进度有清晰的把握，我相信这也给成员们带来了安心和踏实，也让我们有信心应对可能发生的突发情况。</p>
+<hr>
+<p>总的来说，本学期初提的五个问题都已经得到了良好的解决，至少找到了一个不错的切实可行的解决方案，这也让我更加深刻意识到了软件工程是一门实践的科学。</p>
+<h2 id="Part-3-在项目的需求-设计-实现-测试-发布-维护阶段（一共6-个阶段）中都学到了什么“知识点”"><a href="#Part-3-在项目的需求-设计-实现-测试-发布-维护阶段（一共6-个阶段）中都学到了什么“知识点”" class="headerlink" title="Part 3 在项目的需求&#x2F;设计&#x2F;实现&#x2F;测试&#x2F;发布&#x2F;维护阶段（一共6 个阶段）中都学到了什么“知识点”"></a>Part 3 在项目的需求&#x2F;设计&#x2F;实现&#x2F;测试&#x2F;发布&#x2F;维护阶段（一共6 个阶段）中都学到了什么“知识点”</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>主要的设计和架构比较清晰，但是对于用户的使用需求的把握仍有进步空间。如果可以重来的话，我们会进行更完善的用户调研，对各项工作的优先级进行更细致的划分；在用户使用方面，我们发现出现了明显的倾斜，如学生们对物理答疑的需求较大，但是物理的辅导师人数却相对较少，且回答热情不高，这是本软件之外的问题，但是也应作为现状和用户需求的一部分纳入考虑，如进行更广泛的宣传动员、实施更行之有效的奖励激励政策。</p>
+<h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p>设计部分，我学到了使用EoLink等现代工具辅助可以达到事半功倍的效果。在ER图绘制中，需要反复磋商讨论确定前后端的对接方案，但是即使如此，在实践过程中仍可能需要将进行一些调整，需要让每一个团队成员都清楚地了解设计的变更。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>在实现过程中，我充分意识到了官方文档、GitHub、StackOverflows等工具的重要性，不能只依赖中文资料。具体地，在实现一个向窗口发送 <code>ctrl + C</code> 命令时，在中文互联网查了很多，但没有得到有效的解决方案，而一旦切换到英文搜索，就在StackOverflows找到了答案。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>充分的测试必不可少。在Alpha阶段的第一个内测版本中，我们进行了部分测试即上线，立刻收获了内测用户的大量问题反馈，这充分说明当时我们的测试不够充分和全面。而在Beta公测前，我们就在测试服进行了较全面充分的测试，最终上线时也顶住了压力，没有出严重的问题。</p>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>软件的发布需要团队成员一起确认，以防止开发分支存在已知的重要问题上线到生产环境产生问题。数据库的迁移也十分重要，如表的新建与更新等，需要可向前兼容地合并到生产环境。</p>
+<p>可靠性和鲁棒性是十分重要的，一些花哨的功能实现的不好或者没有实现影响不大，而核心功能不能出任何问题，向前兼容也是必须要实现的功能。</p>
+<h3 id="维护"><a href="#维护" class="headerlink" title="维护"></a>维护</h3><p>CI&#x2F;CD是非常行之有效的运维工具链，本学期我通过GitHub Actions、Docker等工具充分实现了持续部署和持续交付，实现了复杂动作的自动化，提升了项目的可维护性。</p>
+<h2 id="Part-4-理解与心得"><a href="#Part-4-理解与心得" class="headerlink" title="Part 4 理解与心得"></a>Part 4 理解与心得</h2><p>在个人项目中，我对代码托管平台进行了较为充分的调研，让我从用户转变到开发者的角度近距离观察了这一和我们工作生活关系紧密的工具，让我对软件有了更深刻的理解。</p>
+<p>在结对编程和团队项目中，我都非常幸运拥有非常棒的队友，他们强大、可靠、善于沟通，我们一起完成了非常有影响力的工作，没有他们的帮助，也没有这个学期产出的优秀项目；在这之中，我也大大锻炼了自己的合作能力，提高了沟通能力和技巧，为以后的团队合作奠定了基础。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/08/04/PyTorch-Notes/" data-toggle="tooltip" data-placement="top" title="PyTorch Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/06/12/「CS231n-Course-4」卷积神经网络/" data-toggle="tooltip" data-placement="top" title="「CS231n Course 4」卷积神经网络">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Jun 16 2023 19:22:05 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-SE-Individual-Work3%E3%80%8D%E6%8F%90%E9%97%AE%E5%9B%9E%E9%A1%BE%E4%B8%8E%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA SE Individual Work3」提问回顾与个人总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 1 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%AF%B9%E8%87%AA%E5%B7%B1%E6%9B%BE%E7%BB%8F%E6%8F%90%E5%87%BA%E7%9A%84%E9%97%AE%E9%A2%98%E8%BF%9B%E8%A1%8C%E8%A7%A3%E7%AD%94"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 2 对自己曾经提出的问题进行解答</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%981%EF%BC%9A%E6%A0%B9%E6%8D%AE%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%B8%8D%E5%90%8C%E3%80%81%E5%9B%A2%E9%98%9F%E8%A7%84%E6%A8%A1%E7%9A%84%E4%B8%8D%E5%90%8C%E4%BB%A5%E5%8F%8A%E5%9B%A2%E9%98%9F%E6%88%90%E5%91%98%E7%9A%84%E4%B8%8D%E5%90%8C%EF%BC%8C%E6%9C%80%E5%90%88%E9%80%82%E7%9A%84%E5%9B%A2%E9%98%9F%E6%A8%A1%E5%BC%8F%E8%82%AF%E5%AE%9A%E6%9C%89%E6%89%80%E5%8C%BA%E5%88%AB%E3%80%82%E9%82%A3%E4%B9%88%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9B%A2%E9%98%9F%E5%88%9A%E6%88%90%E7%AB%8B%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E8%AF%A5%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%85%88%E8%A1%8C%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA%E5%9B%A2%E9%98%9F%E6%A8%A1%E5%BC%8F%E5%BC%80%E5%B1%95%E5%B7%A5%E4%BD%9C%EF%BC%8C%E4%B8%94%E8%BF%99%E4%B8%AA%E6%A8%A1%E5%BC%8F%E8%99%BD%E7%84%B6%E6%9C%AA%E5%BF%85%E6%9C%80%E4%BD%B3%E4%BD%86%E6%98%AF%E8%87%B3%E5%B0%91%E6%98%AF%E6%AC%A1%E6%9C%80%E4%BD%B3%EF%BC%9F"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">问题1：根据软件的不同、团队规模的不同以及团队成员的不同，最合适的团队模式肯定有所区别。那么在一个团队刚成立的时候，该如何快速先行选择一个团队模式开展工作，且这个模式虽然未必最佳但是至少是次最佳？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%982%EF%BC%9A%E5%A6%82%E4%BD%95%E5%90%88%E9%80%82%E5%9C%B0%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%EF%BC%9F"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">问题2：如何合适地分而治之？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%983%EF%BC%9A%E5%A6%82%E4%BD%95%E6%8E%A8%E8%A1%8C%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C%E5%B7%A5%E5%85%B7%E5%A6%82%E6%BA%90%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Git%E7%AD%89%EF%BC%9F"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">问题3：如何推行高效工作工具如源代码管理工具Git等？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%984%EF%BC%9A%E5%AF%B9%E4%BA%8E%E6%B8%90%E8%BF%9B%E5%8F%91%E5%B8%83%E7%9A%84%E4%BA%A7%E5%93%81%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%90%88%E9%80%82%E7%9A%84%E5%B7%A5%E5%85%B7%E6%88%96%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%9C%80%E4%BD%B3DevOps%EF%BC%9F"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">问题4：对于渐进发布的产品，如何使用合适的工具或解决方案以实现最佳DevOps？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%985%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%A8%E7%A7%91%E5%AD%A6%E7%9A%84%E6%96%B9%E6%B3%95%E6%88%96%E8%80%85%E6%8A%80%E6%9C%AF%E8%BE%85%E5%8A%A9%E6%8F%90%E9%AB%98%E9%A2%86%E5%AF%BC%E5%8A%9B%E8%BF%9B%E8%80%8C%E5%BF%AB%E9%80%9F%E5%B8%A6%E9%A2%86%E5%9B%A2%E9%98%9F%E6%88%90%E9%95%BF%EF%BC%9F"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">问题5：如何用科学的方法或者技术辅助提高领导力进而快速带领团队成长？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%9C%80%E6%B1%82-%E8%AE%BE%E8%AE%A1-%E5%AE%9E%E7%8E%B0-%E6%B5%8B%E8%AF%95-%E5%8F%91%E5%B8%83-%E7%BB%B4%E6%8A%A4%E9%98%B6%E6%AE%B5%EF%BC%88%E4%B8%80%E5%85%B16-%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%89%E4%B8%AD%E9%83%BD%E5%AD%A6%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88%E2%80%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E2%80%9D"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 3 在项目的需求&#x2F;设计&#x2F;实现&#x2F;测试&#x2F;发布&#x2F;维护阶段（一共6 个阶段）中都学到了什么“知识点”</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">需求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">设计</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">实现</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">测试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%91%E5%B8%83"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">发布</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%B4%E6%8A%A4"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">维护</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BF%83%E5%BE%97"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 4 理解与心得</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

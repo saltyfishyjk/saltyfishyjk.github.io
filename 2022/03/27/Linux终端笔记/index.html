@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Linux终端笔记 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/27/Linux终端笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                            
+                        </div>
+                        <h1>Linux终端笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-03-27
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="Linux终端笔记"><a href="#Linux终端笔记" class="headerlink" title="Linux终端笔记"></a>Linux终端笔记</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Linux是一个重要的操作系统，著名发行版有 Ubuntu 等。服务器多采用Linux系统，掌握常见的Linux命令对远程使用服务器有重要意义。同时，OS课程要求在Linux环境中完成实验。</p>
+<p>本博客主要作为个人笔记。</p>
+<h2 id="Part-1-相关资源"><a href="#Part-1-相关资源" class="headerlink" title="Part 1 相关资源"></a>Part 1 相关资源</h2><ol>
+<li><a href="https://www.runoob.com/linux/linux-tutorial.html">菜鸟教程-Linux教程</a> 适合作为字典查阅</li>
+</ol>
+<h2 id="Part-2-常用指令"><a href="#Part-2-常用指令" class="headerlink" title="Part 2 常用指令"></a>Part 2 常用指令</h2><p>以下指令在Linux终端中执行</p>
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a><code>clear</code></h3><p>清屏。</p>
+<h3 id="cd"><a href="#cd" class="headerlink" title="cd"></a><code>cd</code></h3><p>change directory，进入某个目录。</p>
+<p><code>cd xxx</code>：进入xxx目录（需要xxx目录在当前位置下）。</p>
+<p><code>cd ..</code>：进入上层目录。</p>
+<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a><code>touch</code></h3><p>创建新文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch </span><br><span class="line">用法:touch [选项]... [文件]...</span><br><span class="line">eg:</span><br><span class="line">touch HelloWorld.c // 创建了一个名为HelloWorld.c的文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a><code>mkdir</code></h3><p>make directory，创建文件目录（类似windows下的文件夹）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir</span><br><span class="line">用法:mkdir [选项]... 目录...</span><br><span class="line">eg:</span><br><span class="line">mkdir newFolder // 创建了一个名为newFolder的文件夹</span><br></pre></td></tr></table></figure>
+
+<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a><code>pwd</code></h3><p>print working directory，查看当前的绝对路径。</p>
+<h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a><code>rmdir</code></h3><p>删除目录，目录不能为非空；如果想要删除非空目录，需要使用<code>rm -rf filename</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir </span><br><span class="line">用法:rmdir [选项]... 目录...</span><br></pre></td></tr></table></figure>
+
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a><code>rm</code></h3><p><code>rm</code>：删除一个目录中的一个或多个文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rm - remove files or directories</span><br><span class="line">用法:rm [选项]... 文件...</span><br><span class="line">选项（常用）：</span><br><span class="line">        -r      递归删除目录及其内容</span><br><span class="line">        -f      强制删除。忽略不存在的文件，不提示确认</span><br></pre></td></tr></table></figure>
+
+<p>此外，rm 命令可以用 -i 选项，这个选项在使用文件扩展名字符删除多个文件时特别有用。使用这个选项，系统会要求你逐一确定是否要删除。这时，必须输入 y 并按 Enter 键，才能删除文件。如果仅按 Enter 键或其他字符，文件不会被删除。与之相对应的就是 -f 选项，强制删除文件或目录，不询问用户。使用该选项配合 -r 选项，进行递归强制删除，强制将指定目录下的所有文件与子目录一并删除可以达到毁灭性效果。例如：rm –rf &#x2F; 即可强制递归删除全盘文件，绝对不要尝试！</p>
+<p>使用rm命令要格外小心，因为一旦删除了一个文件，就无法再恢复它。所以，在删除文件之前，最好再看一下文件的内容，确定是否真要删除。<br>很多优秀的程序员会在目录下建一个文件夹类似回收站，如果要使用rm指令，先把要删除的文件移到这个文件夹里，然后再进行rm，一定时间之后再对回收站里的文件进行删除。</p>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a><code>cp</code></h3><p>复制文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp </span><br><span class="line">用法:cp [选项]... 源文件... 目录</span><br><span class="line">选项（常用）：</span><br><span class="line">        -r      递归复制目录及其子目录内的所有内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="move"><a href="#move" class="headerlink" title="move"></a><code>move</code></h3><p>移动文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">写mv hello_world.c trashbin/就是将hello_world.c移动到trashbin这个文件夹了。</span><br><span class="line">不过mv还有一种更有意思的用法，mv file ../file_mv就是将当前目录中的file文件移动至上一层目录中且重命名为file_mv。聪明的你应该已经看出来，在Linux系统中想要对文件进行重命名操作，使用mv oldname newname命令就可以了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a><code>echo</code></h3><p>回声。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果你在屏幕上输入echo hello_world， 你会发现它给你回显了一个hello_world，看起来是一个复读机的功能</span><br></pre></td></tr></table></figure>
+
+<p><code>echo one &gt; test.txt</code>：将<code>one</code>输入test.txt，为覆盖式，即覆原有所有文件，并在第一行写入<code>one</code></p>
+<p><code>echo two &gt;&gt; test.txt</code>：将<code>two</code>追加到test.txt后面</p>
+<p>事实上，这个指令非常万用。比方说，需要将一个特定字符串打印进入某个文件，可以用它；需要将某个字符串输入进另一个指令，也可以用它结合重定向实现。</p>
+<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a><code>ls</code></h3><p>显示当前目录下的所有文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">用法:ls [选项]... [文件]...</span><br><span class="line">选项（常用）：</span><br><span class="line">        -a      不隐藏任何以&quot;.&quot;开始的项目</span><br><span class="line">        -l      每行只列出一个文件</span><br></pre></td></tr></table></figure>
+
+<p>事实上，对于隐藏文件，<code>ls</code>仍然不能访问，需要使用<code>la</code>。</p>
+<h3 id="Ctrl-C"><a href="#Ctrl-C" class="headerlink" title="Ctrl + C"></a><code>Ctrl + C</code></h3><p>终止当前程序执行。</p>
+<h3 id="Ctrl-Z"><a href="#Ctrl-Z" class="headerlink" title="Ctrl + Z"></a><code>Ctrl + Z</code></h3><p>挂起当前程序。</p>
+<h3 id="Ctrl-D"><a href="#Ctrl-D" class="headerlink" title="Ctrl + D"></a><code>Ctrl + D</code></h3><p>终止输入。</p>
+<h3 id="Ctrl-L"><a href="#Ctrl-L" class="headerlink" title="Ctrl + L"></a><code>Ctrl + L</code></h3><p>清屏，效果和clear相同。</p>
+<h3 id="cat-proc-version"><a href="#cat-proc-version" class="headerlink" title="cat /proc/version"></a><code>cat /proc/version</code></h3><p>查看Linux版本</p>
+<h3 id="watch-nvidia-smi"><a href="#watch-nvidia-smi" class="headerlink" title="watch nvidia-smi"></a><code>watch nvidia-smi</code></h3><p>查看服务器的GPU情况，确定对应的CUDA版本</p>
+<h3 id="arch"><a href="#arch" class="headerlink" title="arch"></a><code>arch</code></h3><p>查看CPU架构，可能获得<code>x86_64</code>等答案。</p>
+<h3 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a><code>lsb_release -a</code></h3><p>查看Ubuntu版本</p>
+<h3 id="screen系列指令"><a href="#screen系列指令" class="headerlink" title="screen系列指令"></a><code>screen</code>系列指令</h3><ul>
+<li><code>screen -S &lt;会话名&gt;</code> ：创建并进入名为&lt;会话名&gt;的screen会话</li>
+<li><code>screen -ls</code>：查看当前存在的所有<code>screen</code>会话</li>
+<li><code>screen -x &lt;会话ID&gt;</code>：重新接入会话ID为&lt;会话ID&gt;的screen会话（配合<code>screen -ls</code>使用</li>
+<li><code>screen -r &lt;会话名&gt;</code>：重新接入会话名为&lt;会话名&gt;的screen会话，与-x参数作用相同</li>
+<li><code>screen - X -S &lt;会话ID&gt;</code>：kill会话</li>
+<li>ctrl + a, d：退出当前会话窗口</li>
+<li>ctrl + a, w：列出当前所有的会话窗口</li>
+<li>ctrl + a, k：杀死当前窗口，同时结束当前窗口</li>
+<li><code>exit</code>：在某一个screen中使用该命令可以退出并kill该窗口</li>
+</ul>
+<h3 id="java"><a href="#java" class="headerlink" title="java"></a><code>java</code></h3><ol>
+<li><code>java -version</code>：查看jdk版本</li>
+</ol>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a><code>netstat</code></h3><p>用于显示网络状态。</p>
+<p>参考文献：<a href="https://www.runoob.com/linux/linux-comm-netstat.html">Linux netstat命令</a></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>l</code></td>
+<td>listening，显示监控中的服务器的socket</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>numeric，直接使用IP地址，而不通过域名服务器</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>tcp，显示TCP传输协议的连线状况</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>programs，显示正在使用Socket的程序识别码和程序名称</td>
+</tr>
+</tbody></table>
+<h3 id="ln"><a href="#ln" class="headerlink" title="ln"></a><code>ln</code></h3><p>用于创建软链接。</p>
+<ul>
+<li><p><code>ln -s [源文件或目录] [目标文件或目录]</code>：创建软链接	</p>
+<ul>
+<li>e.g. 想要在<code>/home/user_name</code>下创建目录<code>data</code>，使得<code>cd /home/user_name/data</code>等价于<code>cd /mnt/data/user_name</code>，需要<code>ln -s /mnt/data/user_name /home/user_name/data</code>，其中，不需要事先创建<code>/home/user_name/data</code>目录<ul>
+<li>注意，这个命令中的目录结尾都不要加<code>/</code>，即，<code>/mnt/data/user_name</code>是正确的，而<code>/mnt/data/user_name/</code>是<strong>错误的</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>rm -rf [软链接名称]</code>：删除软链接</p>
+</li>
+</ul>
+<h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a><code>scp</code></h3><p>secure copy protocol，允许用户在两个主机之间传输数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [选项] &lt;file_source&gt; &lt;file_target&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>递归，用于复制整个目录</td>
+</tr>
+</tbody></table>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip"></a><code>zip</code></h3><p>压缩</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [选项] &lt;file_target&gt; &lt;file/dir_source&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>递归，用于压缩整个目录</td>
+</tr>
+</tbody></table>
+<h3 id="符号链接"><a href="#符号链接" class="headerlink" title="符号链接"></a>符号链接</h3><p>创建符号链接指向可执行文件，从而可以直接使用。</p>
+<p>如，<code>/home/yujk/data/zdns/zdns</code> 是一个可执行文件，一般使用时需要形如 <code>../../../yujk/zdns/zdns</code> 来使用，不方便。通过符号链接到 <code>zdns</code> 后，可以直接使用 <code>zdns</code> 来运行。</p>
+<ul>
+<li>创建符号链接<ul>
+<li><code>sudo ln -s /home/yujk/data/zdns/zdns /usr/local/bin/zdns</code></li>
+</ul>
+</li>
+<li>确保<code>usr/local/bin</code>在<code>PATH</code>中<ul>
+<li><code>echo $PATH</code></li>
+</ul>
+</li>
+<li>赋予可执行文件执行权限<ul>
+<li><code>sudo chmod +x /home/yujk/data/zdns/zdns</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-3-查看文件信息"><a href="#Part-3-查看文件信息" class="headerlink" title="Part 3 查看文件信息"></a>Part 3 查看文件信息</h2><h3 id="head"><a href="#head" class="headerlink" title="head"></a><code>head</code></h3><p>用于查看文件开头内容。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head [选项] [文件名]</span><br></pre></td></tr></table></figure>
+
+<h4 id="无选项运行"><a href="#无选项运行" class="headerlink" title="无选项运行"></a>无选项运行</h4><p>显示名为 <code>file_name</code> 的文件的开头（默认前 10 行）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head file_name</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示前-N-行-n-N"><a href="#显示前-N-行-n-N" class="headerlink" title="显示前 N 行 -n N"></a>显示前 N 行 <code>-n N</code></h4><p>显示名为 <code>file_name</code> 的文件的前 <code>N</code> 行（）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n N file_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a><code>tail</code></h3><p>用于查看文件末尾内容。</p>
+<h3 id="wc"><a href="#wc" class="headerlink" title="wc"></a><code>wc</code></h3><p>word count，计算文件单词量等</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [选项] [文件名]</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示文件行数-l"><a href="#显示文件行数-l" class="headerlink" title="显示文件行数 -l"></a>显示文件行数 <code>-l</code></h4><p>显示名为 <code>file_name</code> 的文件行数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l file_name</span><br></pre></td></tr></table></figure>
+
+<p>显示多个文件行数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l file_name1 file_name2 file_name3</span><br></pre></td></tr></table></figure>
+
+<h3 id="du"><a href="#du" class="headerlink" title="du"></a><code>du</code></h3><p>disk usage，显示文件和目录的磁盘使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du [选项] [文件或目录]</span><br></pre></td></tr></table></figure>
+
+<h4 id="以人类可读方式-h"><a href="#以人类可读方式-h" class="headerlink" title="以人类可读方式 -h"></a>以人类可读方式 <code>-h</code></h4><p>以人类可读（KB&#x2F;MB&#x2F;GB）方式显示 <code>path/to/directory</code> 目录&#x2F;文件磁盘使用情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h /path/to/directory</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Part-4-杂项"><a href="#Part-4-杂项" class="headerlink" title="Part 4 杂项"></a>Part 4 杂项</h2><h3 id="判断Linux是CentOS还是Ubuntu"><a href="#判断Linux是CentOS还是Ubuntu" class="headerlink" title="判断Linux是CentOS还是Ubuntu"></a>判断Linux是CentOS还是Ubuntu</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考<a href="https://www.php.cn/linux-435827.html">这篇博客</a>，其中使用apt-get和yum判断比较快捷。</p>
+</blockquote>
+<h3 id="下载指令"><a href="#下载指令" class="headerlink" title="下载指令"></a>下载指令</h3><p>参考文章：<a href="https://blog.csdn.net/qq_38806886/article/details/88920201">ubuntu几种不同的下载指令（apt-get,wget,git clone,pip etc）</a></p>
+<p>从指定url下载文件：<code>wget</code></p>
+<h3 id="查看内存信息"><a href="#查看内存信息" class="headerlink" title="查看内存信息"></a>查看内存信息</h3><p><code>free -h</code>：可显示总内存、已使用内存、空闲内存等</p>
+<h3 id="查看硬盘信息"><a href="#查看硬盘信息" class="headerlink" title="查看硬盘信息"></a>查看硬盘信息</h3><p><code>df -h</code></p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/03/28/「BUAA-OS-Lab1」内核、Boot和prinitf/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab1」内核、Boot和prinitf">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/03/27/pip笔记/" data-toggle="tooltip" data-placement="top" title="pip笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sun Mar 27 2022 19:26:44 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux%E7%BB%88%E7%AB%AF%E7%AC%94%E8%AE%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Linux终端笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 相关资源</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 常用指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#clear"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">clear</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cd"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">cd</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#touch"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">touch</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mkdir"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">mkdir</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pwd"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">pwd</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#rmdir"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">rmdir</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#rm"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">rm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cp"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">cp</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#move"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">move</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#echo"><span class="toc-nav-number">1.3.10.</span> <span class="toc-nav-text">echo</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ls"><span class="toc-nav-number">1.3.11.</span> <span class="toc-nav-text">ls</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ctrl-C"><span class="toc-nav-number">1.3.12.</span> <span class="toc-nav-text">Ctrl + C</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ctrl-Z"><span class="toc-nav-number">1.3.13.</span> <span class="toc-nav-text">Ctrl + Z</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ctrl-D"><span class="toc-nav-number">1.3.14.</span> <span class="toc-nav-text">Ctrl + D</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ctrl-L"><span class="toc-nav-number">1.3.15.</span> <span class="toc-nav-text">Ctrl + L</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cat-proc-version"><span class="toc-nav-number">1.3.16.</span> <span class="toc-nav-text">cat &#x2F;proc&#x2F;version</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#watch-nvidia-smi"><span class="toc-nav-number">1.3.17.</span> <span class="toc-nav-text">watch nvidia-smi</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#arch"><span class="toc-nav-number">1.3.18.</span> <span class="toc-nav-text">arch</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#lsb-release-a"><span class="toc-nav-number">1.3.19.</span> <span class="toc-nav-text">lsb_release -a</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#screen%E7%B3%BB%E5%88%97%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.3.20.</span> <span class="toc-nav-text">screen系列指令</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#java"><span class="toc-nav-number">1.3.21.</span> <span class="toc-nav-text">java</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#netstat"><span class="toc-nav-number">1.3.22.</span> <span class="toc-nav-text">netstat</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ln"><span class="toc-nav-number">1.3.23.</span> <span class="toc-nav-text">ln</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#scp"><span class="toc-nav-number">1.3.24.</span> <span class="toc-nav-text">scp</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#zip"><span class="toc-nav-number">1.3.25.</span> <span class="toc-nav-text">zip</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5"><span class="toc-nav-number">1.3.26.</span> <span class="toc-nav-text">符号链接</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 查看文件信息</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#head"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">head</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%97%A0%E9%80%89%E9%A1%B9%E8%BF%90%E8%A1%8C"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">无选项运行</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%98%BE%E7%A4%BA%E5%89%8D-N-%E8%A1%8C-n-N"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">显示前 N 行 -n N</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tail"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">tail</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#wc"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">wc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E8%A1%8C%E6%95%B0-l"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">显示文件行数 -l</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#du"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">du</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A5%E4%BA%BA%E7%B1%BB%E5%8F%AF%E8%AF%BB%E6%96%B9%E5%BC%8F-h"><span class="toc-nav-number">1.4.4.1.</span> <span class="toc-nav-text">以人类可读方式 -h</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E6%9D%82%E9%A1%B9"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 杂项</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%A4%E6%96%ADLinux%E6%98%AFCentOS%E8%BF%98%E6%98%AFUbuntu"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">判断Linux是CentOS还是Ubuntu</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">下载指令</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">查看内存信息</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A1%AC%E7%9B%98%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text">查看硬盘信息</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

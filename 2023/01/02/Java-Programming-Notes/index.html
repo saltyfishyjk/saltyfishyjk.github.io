@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Java Programming Notes - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/01/02/Java-Programming-Notes/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                            
+                              <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
+                            
+                        </div>
+                        <h1>Java Programming Notes</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-01-02
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="Java-Programming-Notes"><a href="#Java-Programming-Notes" class="headerlink" title="Java Programming Notes"></a>Java Programming Notes</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>笔者的Java水平和需求的Java水平有显著差距<del>菜狗是这样的</del>，这里整理一些常用的知识。</p>
+<h2 id="Part-1-容器"><a href="#Part-1-容器" class="headerlink" title="Part 1 容器"></a>Part 1 容器</h2><h3 id="PriorityQueue优先队列"><a href="#PriorityQueue优先队列" class="headerlink" title="PriorityQueue优先队列"></a><code>PriorityQueue</code>优先队列</h3><p>官方文档：<a href="https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/PriorityQueue.html">PriorityQueue</a></p>
+<h4 id="自定义类和排序方法"><a href="#自定义类和排序方法" class="headerlink" title="自定义类和排序方法"></a>自定义类和排序方法</h4><ul>
+<li>设计自定义类，继承<code>Comparable</code>接口并重写<code>compareTo</code>方法，形如下例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SellOrder</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;SellOrder&gt; &#123;</span><br><span class="line">	<span class="type">int</span> price;</span><br><span class="line">	<span class="type">int</span> amount;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">SellOrder</span><span class="params">(<span class="type">int</span> price, <span class="type">int</span> amount)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.price = price;</span><br><span class="line">		<span class="built_in">this</span>.amount = amount;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(SellOrder o)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">this</span>.price - o.price;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>以该类为容器元素类型，形如下例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getNumberOfBacklogOrders</span><span class="params">(<span class="type">int</span>[][] orders)</span> &#123;</span><br><span class="line">    	<span class="type">int</span> <span class="variable">MOD</span> <span class="operator">=</span> <span class="number">1000000007</span>;</span><br><span class="line">    	PriorityQueue&lt;SellOrder&gt; sellOrders = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">    	PriorityQueue&lt;BuyOrder&gt; buyOrders = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">    	</span><br><span class="line">    	<span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> orders.length;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    		<span class="type">int</span> <span class="variable">priceNow</span> <span class="operator">=</span> orders[i][<span class="number">0</span>];</span><br><span class="line">    		<span class="type">int</span> <span class="variable">amountNow</span> <span class="operator">=</span> orders[i][<span class="number">1</span>];</span><br><span class="line">    		<span class="type">int</span> <span class="variable">orderType</span> <span class="operator">=</span> orders[i][<span class="number">2</span>];</span><br><span class="line">    		<span class="keyword">if</span> (orderType == <span class="number">0</span>) &#123;</span><br><span class="line">    			<span class="comment">// 采购订单buy</span></span><br><span class="line">    			<span class="keyword">while</span> (amountNow &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    				<span class="keyword">if</span> (sellOrders.isEmpty()) &#123;</span><br><span class="line">    					<span class="keyword">break</span>;</span><br><span class="line">    				&#125;</span><br><span class="line">    				<span class="type">SellOrder</span> <span class="variable">sellOrder</span> <span class="operator">=</span> sellOrders.poll();</span><br><span class="line">    				<span class="keyword">if</span> (sellOrder.price &lt;= priceNow) &#123;</span><br><span class="line">    					<span class="keyword">if</span> (sellOrder.amount &gt; amountNow) &#123;</span><br><span class="line">    						sellOrder.amount = sellOrder.amount - amountNow;</span><br><span class="line">    						amountNow -= amountNow;</span><br><span class="line">    						sellOrders.add(sellOrder);</span><br><span class="line">    						<span class="keyword">break</span>;</span><br><span class="line">    					&#125; <span class="keyword">else</span> <span class="keyword">if</span> (sellOrder.amount &lt; amountNow) &#123;</span><br><span class="line">    						<span class="comment">/* 说明当前订单还有没匹配完的部分，继续匹配 */</span></span><br><span class="line">    						amountNow -= sellOrder.amount;</span><br><span class="line">    					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    						<span class="comment">/* 正好匹配消除 */</span></span><br><span class="line">    						amountNow -= amountNow;</span><br><span class="line">    						<span class="keyword">break</span>;</span><br><span class="line">    					&#125;</span><br><span class="line">    				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    					<span class="comment">/* 说明不匹配，把sell订单添加回去并退出循环 */</span></span><br><span class="line">    					sellOrders.add(sellOrder);</span><br><span class="line">    					<span class="keyword">break</span>;</span><br><span class="line">    				&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">    			<span class="keyword">if</span> (amountNow &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    				<span class="type">BuyOrder</span> <span class="variable">buyOrder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BuyOrder</span>(priceNow, amountNow);</span><br><span class="line">    				buyOrders.add(buyOrder);</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    	<span class="keyword">while</span> (!sellOrders.isEmpty()) &#123;</span><br><span class="line">    		<span class="type">SellOrder</span> <span class="variable">sellOrder</span> <span class="operator">=</span> sellOrders.poll();</span><br><span class="line">    		ans = (ans + sellOrder.amount) % MOD;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">while</span> (!buyOrders.isEmpty()) &#123;</span><br><span class="line">    		<span class="type">BuyOrder</span> <span class="variable">buyOrder</span> <span class="operator">=</span> buyOrders.poll();</span><br><span class="line">    		ans = (ans + buyOrder.amount) % MOD;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于上例中<code>PriorityQueue</code>，其内部元素是<code>SellOrder</code>对象，因此自动奥找<code>SellOrder</code>重载的<code>compareTo</code>方法进行排序。</p>
+<h4 id="Integer的大根堆"><a href="#Integer的大根堆" class="headerlink" title="Integer的大根堆"></a><code>Integer</code>的大根堆</h4><p>Java的容器<code>PriorityQueue</code>缺省是小根堆，因此想要构造大根堆需要额外完成比较器并传入构造器，举例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; heap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Integer&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Integer o1, Integer o2)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> o2 - o1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ArrayList数组列表"><a href="#ArrayList数组列表" class="headerlink" title="ArrayList数组列表"></a><code>ArrayList</code>数组列表</h3><p><code>ArrayList</code> 是动态数组。</p>
+<h4 id="声明-ArrayList-对象"><a href="#声明-ArrayList-对象" class="headerlink" title="声明 ArrayList 对象"></a>声明 <code>ArrayList</code> 对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 声明一个元素类型为 Integer 的 ArrayList 对象</span></span><br><span class="line">        ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="声明二维-ArrayList-对象"><a href="#声明二维-ArrayList-对象" class="headerlink" title="声明二维 ArrayList 对象"></a>声明二维 <code>ArrayList</code> 对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Soltution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 声明一个元素为 ArrayList&lt;Integer&gt; 对象的 ArrayList 对象</span></span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; arrayList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 将一个 ArrayList&lt;Integer&gt; 对象插入二维 ArrayList 对象中</span></span><br><span class="line">        ArrayList&lt;Integer&gt; element = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        arrayList.add(element);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="边遍历边删除"><a href="#边遍历边删除" class="headerlink" title="边遍历边删除"></a>边遍历边删除</h4><p>参考文章：<a href="https://blog.csdn.net/Jiangshan11/article/details/83038857">ConcurrentModificationException异常</a></p>
+<p>当遇到该需求时，需要使用迭代器进行遍历，同时使用迭代器提供的方法进行删除，才可以避免错误。在多线程时，还需要考虑额外的问题。举例如下（单线程）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Worker</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Worker&gt; &#123;</span><br><span class="line">	<span class="type">int</span> leftToRight;</span><br><span class="line">	<span class="type">int</span> pickOld;</span><br><span class="line">	<span class="type">int</span> rightToLeft;</span><br><span class="line">	<span class="type">int</span> putNew;</span><br><span class="line">	<span class="type">int</span> id;</span><br><span class="line">	<span class="type">int</span> <span class="variable">endTime</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Worker</span><span class="params">(<span class="type">int</span> leftToRight,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> pickOld,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> rightToLeft,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> putNew,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> id)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.leftToRight = leftToRight;</span><br><span class="line">		<span class="built_in">this</span>.pickOld = pickOld;</span><br><span class="line">		<span class="built_in">this</span>.rightToLeft = rightToLeft;</span><br><span class="line">		<span class="built_in">this</span>.putNew = putNew;</span><br><span class="line">		<span class="built_in">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Worker</span><span class="params">(<span class="type">int</span> leftToRight,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> pickOld,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> rightToLeft,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> putNew,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> id,</span></span><br><span class="line"><span class="params">			<span class="type">int</span> endTime)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>(leftToRight, pickOld, rightToLeft, putNew, id);</span><br><span class="line">		<span class="built_in">this</span>.endTime = endTime;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ArrayList&lt;Worker&gt; workL = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">Iterator&lt;Worker&gt; iterator = workL.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    <span class="type">Worker</span> <span class="variable">now</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">    <span class="keyword">if</span> (now.endTime &lt;= cur) &#123;</span><br><span class="line">    	<span class="comment">// workL.remove(now);</span></span><br><span class="line">    	iterator.remove();</span><br><span class="line">    	waitL.add(now);</span><br><span class="line">    	move = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-2-数组"><a href="#Part-2-数组" class="headerlink" title="Part 2 数组"></a>Part 2 数组</h2><h3 id="声明数组对象"><a href="#声明数组对象" class="headerlink" title="声明数组对象"></a>声明数组对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 声明大小为 100 的数组</span></span><br><span class="line">        <span class="type">int</span>[] arr1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">        <span class="comment">// 声明大小为 N 的数组</span></span><br><span class="line">        <span class="type">int</span> N;</span><br><span class="line">        <span class="type">int</span>[] arr2 = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="声明二维数组对象"><a href="#声明二维数组对象" class="headerlink" title="声明二维数组对象"></a>声明二维数组对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 声明第 1 维大小为 100 的二维数组</span></span><br><span class="line">        <span class="type">int</span>[][] arr = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>][];</span><br><span class="line">        <span class="comment">// 插入时需要再每次声明一维数组</span></span><br><span class="line">        arr[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="一维数组排序"><a href="#一维数组排序" class="headerlink" title="一维数组排序"></a>一维数组排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] nums = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="comment">// 使用Arrays.sort进行排序（默认升序）</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="comment">// 使用 Lambda 表达式降序排序</span></span><br><span class="line">        Arrays.sort(nums, (a, b)-&gt;Integer.compare(b, a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二维数组排序"><a href="#二维数组排序" class="headerlink" title="二维数组排序"></a>二维数组排序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] arr;</span><br><span class="line">        <span class="comment">// 二维数组的元素是一维数组，两个一维数组比较时以其第0个元素升序排序</span></span><br><span class="line">        Arrays.sort(arr, (a, b)-&gt;a[<span class="number">0</span>]-b[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-3-其他"><a href="#Part-3-其他" class="headerlink" title="Part 3 其他"></a>Part 3 其他</h2><h3 id="公约数"><a href="#公约数" class="headerlink" title="公约数"></a>公约数</h3><h4 id="辗转相除法的while循环实现"><a href="#辗转相除法的while循环实现" class="headerlink" title="辗转相除法的while循环实现"></a>辗转相除法的<code>while</code>循环实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> tmp;</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        c = a % b;</span><br><span class="line">        a = b;</span><br><span class="line">        b = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/02/13/curl-Notes/" data-toggle="tooltip" data-placement="top" title="curl Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/09/01/「BUAA-Python-Programming」Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Notes">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon Jan 02 2023 23:12:10 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java-Programming-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java Programming Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%AE%B9%E5%99%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PriorityQueue%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">PriorityQueue优先队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%92%8C%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">自定义类和排序方法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Integer%E7%9A%84%E5%A4%A7%E6%A0%B9%E5%A0%86"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">Integer的大根堆</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ArrayList%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">ArrayList数组列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A3%B0%E6%98%8E-ArrayList-%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">声明 ArrayList 对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A3%B0%E6%98%8E%E4%BA%8C%E7%BB%B4-ArrayList-%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">声明二维 ArrayList 对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BE%B9%E9%81%8D%E5%8E%86%E8%BE%B9%E5%88%A0%E9%99%A4"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">边遍历边删除</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E6%95%B0%E7%BB%84"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 数组</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A3%B0%E6%98%8E%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">声明数组对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A3%B0%E6%98%8E%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">声明二维数组对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">一维数组排序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">二维数组排序</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%85%B6%E4%BB%96"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 其他</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">公约数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E7%9A%84while%E5%BE%AA%E7%8E%AF%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">辗转相除法的while循环实现</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tools" title="Tools">Tools</a>
+                        
+                          <a class="tag" href="/tags/#Java Programming" title="Java Programming">Java Programming</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

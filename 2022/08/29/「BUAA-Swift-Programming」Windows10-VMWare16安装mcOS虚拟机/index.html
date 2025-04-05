@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/08/29/「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA Swift Programming" title="BUAA Swift Programming">BUAA Swift Programming</a>
+                            
+                        </div>
+                        <h1>「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-08-29
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">967</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机"><a href="#「BUAA-Swift-Programming」Windows10-VMWare16安装mcOS虚拟机" class="headerlink" title="「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机"></a>「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机</h1><h2 id="Part-0-背景"><a href="#Part-0-背景" class="headerlink" title="Part 0 背景"></a>Part 0 背景</h2><p><strong>BUAA Swift Programming</strong>是北航计算机学院在秋季学期开设的一门一般专业课，介绍Swift语言及相关知识。</p>
+<h3 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h3><p>想要开发Swift，最主流的做法是使用仅在macOS平台提供的Xcode IDE，其他诸如iPad Playground&#x2F;Linux等途径也可以编写Swift代码，但是对于课程最后要求的大作业可能较为吃力。故，工欲善其事必先利其器，这里记录笔者的环境与工具配置过程。</p>
+<p>由于笔者没有Mac，又担心双系统黑苹果存在的潜在风险，最终选择了使用虚拟机安装macOS的办法。</p>
+<ul>
+<li>操作系统：Windows10（家庭版）</li>
+<li>电脑型号：联想拯救者y7000p （2020款）</li>
+<li>CPU：8核Intel i7-10875H</li>
+<li>内存：16GB</li>
+<li>VMWare Workstation Pro：v16.2</li>
+</ul>
+<p>上述是可能和虚拟机配置与安装有关系的参数，如果读者在按照本文操作的过程中遇到了复杂的问题，或许可以从软硬件环境的角度考虑。</p>
+<p>实现效果：</p>
+<ul>
+<li>macOS：10.14.6</li>
+<li>XCode：10.2.1</li>
+<li>Swift：5.0.1</li>
+</ul>
+<h2 id="Part-1-下载macOS镜像与VMware解锁工具"><a href="#Part-1-下载macOS镜像与VMware解锁工具" class="headerlink" title="Part 1 下载macOS镜像与VMware解锁工具"></a>Part 1 下载macOS镜像与VMware解锁工具</h2><p><strong>笔者主要参考的教程文章为<a href="https://zhuanlan.zhihu.com/p/337036027">VMware虚拟机安装MacOS系统教程-知乎</a>。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">资源包括：</span><br><span class="line">    1.解锁工具（MK-Unlocker + Unlocker_v3.0.3）</span><br><span class="line">    2.MacOS镜像懒人包（MacOS Mojave 10.14.6懒人包 + MacOS Catalina10.15.5懒人包 ）</span><br><span class="line">    3.优化卡顿工具（beamoff）</span><br><span class="line"></span><br><span class="line">链接：https://pan.baidu.com/s/1UYK4e--BA8512pSD5Xl4qA </span><br><span class="line"></span><br><span class="line">提取码：zqrr </span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-2-创建与安装虚拟机"><a href="#Part-2-创建与安装虚拟机" class="headerlink" title="Part 2 创建与安装虚拟机"></a>Part 2 创建与安装虚拟机</h2><p>直接参考<a href="https://zhuanlan.zhihu.com/p/337036027">VMware虚拟机安装MacOS系统教程-知乎</a>全文即可。</p>
+<p>注：</p>
+<ul>
+<li><p>其中开启Intel VT介绍的较为简略，可以参考<a href="https://www.bilibili.com/read/cv3201929/">联想拯救者笔记本Y7000开启vt模式详细流程</a>开启。</p>
+</li>
+<li><p>Xcode软件本体较大，需要确保虚拟机分配了足够大的硬盘。</p>
+</li>
+<li><p>可能会对VMware tools有所提示（如版本过低等），按照提示来即可。</p>
+</li>
+<li><p>尽管上述教程中的VMware版本为15.5，但是笔者使用16.2版本也没有报错。</p>
+</li>
+</ul>
+<h2 id="Part-3-安装Xcode"><a href="#Part-3-安装Xcode" class="headerlink" title="Part 3 安装Xcode"></a>Part 3 安装Xcode</h2><p>由于我们的macOS版本过低，无法在appstore直接安装。以下介绍安装过程。</p>
+<h3 id="Step-0-确定Xcode版本"><a href="#Step-0-确定Xcode版本" class="headerlink" title="Step 0 确定Xcode版本"></a>Step 0 确定Xcode版本</h3><p>由于课程要求Swift5，参考<a href="https://blog.csdn.net/liang890319/article/details/124751984">MacOS Xcode与Swift版本对应关系</a>并结合具体情况，我们发现Xcode10.2是最合适的版本。</p>
+<h3 id="Step-1-下载Xcode-xip"><a href="#Step-1-下载Xcode-xip" class="headerlink" title="Step 1 下载Xcode.xip"></a>Step 1 下载Xcode.xip</h3><p>在<a href="https://developer.apple.com/download/all/?q=xcode">Apple Developer Xcode Download</a>寻找正确版本的Xcode的xip包并下载。软件较大，可能需要下载较长时间。</p>
+<h3 id="Step-2-解压并安装Xcode"><a href="#Step-2-解压并安装Xcode" class="headerlink" title="Step 2 解压并安装Xcode"></a>Step 2 解压并安装Xcode</h3><p>参考<a href="https://blog.csdn.net/paocai_2019/article/details/102964705">apple Xcode xip安装</a>进行安装。</p>
+<h2 id="Part-4-安装Consolas"><a href="#Part-4-安装Consolas" class="headerlink" title="Part 4 安装Consolas"></a>Part 4 安装Consolas</h2><p>到<strong>Part 3</strong>结束，读者应当已经建立好虚拟机并配置好Xcode，<strong>Part 4</strong>主要介绍如何安装和配置Consolas，属于选读内容<del>实际上是因为笔者把几乎所有IDE都配置了Consolas的强迫症</del></p>
+<p>如果你按照上文所述流程走到这里，那你的macOS几乎还是一张白纸，在接下来的过程中可能出现各种报错（主要是指令未安装的报错），如何安装这些指令不再赘述，简单百度即可。</p>
+<p>笔者主要参考了<a href="https://blog.csdn.net/qy924120316/article/details/123191028">Mac安装Consolas</a>，其中如果<code>cabextract PowerPointViewer.exe</code>报错<code>PowerPointViewer.exe: no valid cabinets found</code>，则可以在<a href="https://sourceforge.net/projects/mscorefonts2/">这里</a>下载PowerPointViewer.exe并替换原文件，重新执行后续指令即可。</p>
+<p>注：</p>
+<ul>
+<li>有可能在安装各式指令的时候遇到各种错误，其中一些是因为清华源之类的问题，这个时候翻墙可以解决大多数问题。</li>
+</ul>
+<h2 id="Part-5-其他问题"><a href="#Part-5-其他问题" class="headerlink" title="Part 5 其他问题"></a>Part 5 其他问题</h2><h3 id="键盘对应"><a href="#键盘对应" class="headerlink" title="键盘对应"></a>键盘对应</h3><table>
+<thead>
+<tr>
+<th>macOS</th>
+<th>Windows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command</td>
+<td>win</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><table>
+<thead>
+<tr>
+<th align="left">macOS</th>
+<th>Windows</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Command + A</td>
+<td>ctrl + A</td>
+<td>全选</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="Developer-tools-access需要控制另一个进程"><a href="#Developer-tools-access需要控制另一个进程" class="headerlink" title="Developer tools access需要控制另一个进程"></a><code>Developer tools access需要控制另一个进程</code></h3><p>使用Xcode时，可能出现标题所示的提示，每次重复输入密码很麻烦，可以参考<a href="https://blog.csdn.net/LLLLL__/article/details/105777183">这篇文章</a>解决这个问题。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/09/01/「BUAA-Python-Programming」Notes/" data-toggle="tooltip" data-placement="top" title="「BUAA Python Programming」Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/08/13/Django笔记/" data-toggle="tooltip" data-placement="top" title="Django笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon Aug 29 2022 22:02:32 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-Swift-Programming%E3%80%8DWindows10-VMWare16%E5%AE%89%E8%A3%85mcOS%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Swift Programming」Windows10+VMWare16安装mcOS虚拟机</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 背景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">环境与工具</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E4%B8%8B%E8%BD%BDmacOS%E9%95%9C%E5%83%8F%E4%B8%8EVMware%E8%A7%A3%E9%94%81%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 下载macOS镜像与VMware解锁工具</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 创建与安装虚拟机</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%AE%89%E8%A3%85Xcode"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 安装Xcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-0-%E7%A1%AE%E5%AE%9AXcode%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">Step 0 确定Xcode版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-1-%E4%B8%8B%E8%BD%BDXcode-xip"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">Step 1 下载Xcode.xip</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step-2-%E8%A7%A3%E5%8E%8B%E5%B9%B6%E5%AE%89%E8%A3%85Xcode"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">Step 2 解压并安装Xcode</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E5%AE%89%E8%A3%85Consolas"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 安装Consolas</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-5-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">Part 5 其他问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%AE%E7%9B%98%E5%AF%B9%E5%BA%94"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">键盘对应</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">快捷键</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Developer-tools-access%E9%9C%80%E8%A6%81%E6%8E%A7%E5%88%B6%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">Developer tools access需要控制另一个进程</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA Swift Programming" title="BUAA Swift Programming">BUAA Swift Programming</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

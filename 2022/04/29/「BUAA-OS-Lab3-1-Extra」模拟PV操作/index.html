@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OS Lab3-1-Extra」模拟PV操作 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/29/「BUAA-OS-Lab3-1-Extra」模拟PV操作/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                            
+                        </div>
+                        <h1>「BUAA OS Lab3-1-Extra」模拟PV操作</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-29
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">3.1k</span> and
+                                Reading Time <span class="post-count">12</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab3-1-Extra」模拟PV操作"><a href="#「BUAA-OS-Lab3-1-Extra」模拟PV操作" class="headerlink" title="「BUAA OS Lab3-1-Extra」模拟PV操作"></a>「BUAA OS Lab3-1-Extra」模拟PV操作</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>本篇博客记录Lab3-1-Extra模拟PV操作的实现，<strong>Part 1</strong>为题目描述，<strong>Part 2</strong>为设计分析，<strong>Part 3</strong>为课上源码（已AC并开源）参考，读者可自取所需。</p>
+<p>同时，本博客系统已支持评论区，欢迎您参考<a href="https://saltyfishyjk.github.io/2022/04/12/Gitment%E8%AF%84%E8%AE%BA%E5%8C%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8/"> Gitment评论区配置与使用</a>中Part2开通您在本博客的权限，留下您的想法。</p>
+<hr>
+<h2 id="Part-1-题目描述"><a href="#Part-1-题目描述" class="headerlink" title="Part 1 题目描述"></a>Part 1 题目描述</h2><p>在理论课中，我们学习到了 PV 操作，它是一种实现进程同步和互斥的方法。本次题目我们将模拟 PV 操作。 下面对 PV 操作相关知识进行回顾，若自信理论课学习充分，可以跳过。</p>
+<blockquote>
+<p>PV 操作与信号量处理相关。对于一个信号量（将其记为 S ），在物理意义上其表示一种资源的个数，必须且只 能设置一次初值。信号量的数值只能通过 P、V 操作改变。</p>
+<p>P 操作：物理意义上表示消耗资源。具体行为是检查信号量初值，若<strong>大于 0</strong>，表示有空闲资源，并分配一个资 源；若<strong>等于 0</strong>，表示没有空闲资源，此时进程阻塞等待；资源的语义下，信号量值不会出现**小于 0 **的情况，但理论课中，我们用其相反数表示正在等待的进程个数。<br>V 操作：物理意义上表示增加资源。具体行为是首先将信号量 S 加一，之后随机唤醒一个进程，也就是使其进入 就绪队列准备被调度运行。</p>
+<p>一个信号量维护一种资源，一个信号量对应一个等待队列，不同信号量维护的资源之间不能共享。 等待表示进程进入阻塞状态，除非得到自己想要的资源，否则不能进行任何其他活动。</p>
+<p>一种资源可以有多个，一个进程也可以同时占有多个资源、多种资源。</p>
+</blockquote>
+<p>由于 lab3-1 阶段进程无法运行与调度，因此我们将通过<strong>模拟</strong>的方式来完成。模拟的行为与实际运行有一定的差异，因 此请认真阅读下面对本题机制的具体描述。<br> S_init</p>
+<h3 id="初始化信号量"><a href="#初始化信号量" class="headerlink" title="初始化信号量"></a>初始化信号量</h3><p>在全局维护<strong>两个</strong>信号量，通过在所有 PV 操作前调用指定的初始化函数，将相关信号量初值设置为特定值   <code>x</code> ，在物理 意义上其表示目前共有   <code>x</code> 个资源可供使用。<br>以下机制描述均针对<strong>某一个信号量及其维护的某一种资源</strong>。</p>
+<h3 id="P操作"><a href="#P操作" class="headerlink" title="P操作"></a>P操作</h3><p>物理意义上表示消耗资源。具体行为：检查信号量，<strong>若大于 0</strong>，表示有空闲资源，因此申请成功，进程获得资源，更 新信号量大小并更新进程状态；<strong>若等于 0</strong>，表示没有空闲资源可供使用，此时进程更新状态，进入等待队列并<strong>排在队尾</strong>等待资源；资源的语义下，信号量值不会出现小于 0的情况。<strong>你可能维护进程持有的资源个数</strong>，需要在 P 操作执行 时一并更新：若成功获得资源，则进程拥有资源个数加一。</p>
+<h3 id="V操作"><a href="#V操作" class="headerlink" title="V操作"></a>V操作</h3><p>物理意义上表示释放资源。具体行为：检查等待队列，若此时<strong>有进程在等待资源</strong>，则将资源分配给队首进程，本进程 与获得资源的进程均更新状态；若此时<strong>无进程等待资源</strong>，则信号量加一并更新本进程状态。你<strong>可能维护进程持有的资源个数</strong>，需要在 V 操作执行时一并更新：若成功释放资源，则进程拥有资源个数减一，此处有一种未定义行为，当进 程持有资源个数为 0 时，不继续减一，即保持进程持有资源个数<strong>非负</strong>。</p>
+<h3 id="错误检查"><a href="#错误检查" class="headerlink" title="错误检查"></a>错误检查</h3><p>与实际运行不同，在模拟中，P、V 操作由顶层函数统一发出，但从实际运行逻辑看，进程可能无法执行这一操作。具 体地，当进程处于等待资源状态时，其无法主动执行 P、V 的任何操作，若此时对此进程发出操作命令，将不按前述 逻辑执行，而是直接返回错误码。</p>
+<h3 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h3><p>你需要在   <code>lib/env.c </code>中完成以下函数：</p>
+<h4 id="全局初始化信号量-S-init"><a href="#全局初始化信号量-S-init" class="headerlink" title="全局初始化信号量 S_init"></a>全局初始化信号量 <code>S_init</code></h4><ul>
+<li>函数原型： <code>void S_init(int s, int num)</code></li>
+<li>测试时此函数仅会被调用两次，且调用时间在所有 PV 操作前，用于将编号为 s 的信号量初始值设置为 num 数 值。两次调用时 s 的值分别为 1 和 2 ，表示两个不同信号量。</li>
+</ul>
+<p>注意：函数名中 S 为大写字母，传入参数 s 为小写字母。</p>
+<h4 id="P操作-P"><a href="#P操作-P" class="headerlink" title="P操作   P"></a>P操作   <code>P</code></h4><ul>
+<li>函数原型：<code> int P(struct Env* e, int s)</code></li>
+<li>调用此函数后，e 所指向的进程申请获得一个由 s 信号量管理的资源，这里 s 取值仅限于 1 和 2 ，具体逻辑见上述。</li>
+</ul>
+<p>若操作能够执行（不论是否成功得到资源，都算能够执行），函数返回 0；反之（进程在执行此操作时已处于等 待队列中），不执行操作，并返回 -1.</p>
+<h4 id="V操作-V"><a href="#V操作-V" class="headerlink" title="V操作   V"></a>V操作  <code> V</code></h4><ul>
+<li>函数原型：<code> int V(struct Env* e, int s)</code></li>
+<li>调用此函数后，e 所指向的进程释放一个由s信号量管理的资源，这里 s 取值仅限于 1 和 2 ，具体逻辑见上述。</li>
+<li>由于评测截取实际应用中的一部分PV操作，<strong>其中可能出现一种未定义行为，即在进程手中没有此资源时仍执行了 V 操作，我们约定此时仍按照释放一个资源执行，但进程自己维护的本资源个数保持为 0，不再减一。</strong></li>
+</ul>
+<h4 id="进程状态查看-get-status"><a href="#进程状态查看-get-status" class="headerlink" title="进程状态查看   get_status"></a>进程状态查看   <code>get_status</code></h4><ul>
+<li>函数原型： int get_status(struct Env* e)</li>
+<li>调用此函数，返回进程状态对应的数值（表述方便，记为b）：<ul>
+<li>若进程正在队列中等待资源分配，b &#x3D; 1</li>
+<li>若进程未处于等待状态且占有任一资源，b &#x3D; 2</li>
+<li>若进程未处于等待状态且未占有任何资源，b &#x3D; 3</li>
+</ul>
+</li>
+</ul>
+<h4 id="进程创建函数-my-env-create"><a href="#进程创建函数-my-env-create" class="headerlink" title="进程创建函数 my_env_create"></a>进程创建函数 <code>my_env_create</code></h4><ul>
+<li>函数原型：<code> int my_env_create()</code></li>
+<li>调用此函数，功能类似于<code> env_create_priority</code>，由于本题目下进程不实际运行，无需加载二进制镜像，也无 需设置进程优先级，因此本函数没有参数。为便于评测，请返回创建进程的 <code>env_id</code>，若创建失败，请返回 <code> -1</code>. 在 此基础上你可以根据自己的实现机制增添其他初始化内容。</li>
+</ul>
+<p>评测中此函数可能在任何时刻调用。</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><hr>
+<p>PV操作及信号量机制的实现所依赖的数据结构一般为：一个整数（信号量）+ 一个队列（等待队列）。 等待队列的实现方法可自行选择，一种方法可以参考 env_free_list 的实现机制。<br>再次强调，不同信号量维护的资源不能共用，比如，若一个进程在等待<code> 2</code> 信号量的资源，1信号量所维护的资源的释放不能解除此进程的等待状态。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><hr>
+<ul>
+<li>对于所有在 <code>lib/env.c</code> 中新增的函数，请在<code>include/env.h</code>中添加相应的函数声明。</li>
+<li>由于评测指令数较多，请务必在提交评测前注释掉所有新增函数内的 <code>printf </code>代码，以免超时。</li>
+<li>如果你需要在进程控制块中维护相应内容，请在<code>Env</code>结构体中新增字段，不要借用其他 lab 的字段。同时，你需要保证<code>sizeof(struct Env)</code>不超过256.</li>
+<li>PV 操作部分我们不对算法复杂度有严格要求，但评测中 <code>get_status </code>大量调用，此函数请务必使用 O(1) 算法，否则可能超时。</li>
+</ul>
+<hr>
+<h3 id="评测逻辑"><a href="#评测逻辑" class="headerlink" title="评测逻辑"></a>评测逻辑</h3><p>在评测中，我们会替换<code> init.c</code> 文件，在初始化操作系统后，首先调用<code>S_init</code>函数初始化信号量，之后按一定的顺序<br>调用 P，V 两个函数，并在其中穿插<code>my_env_create</code>创建进程以及<code>get_status </code>检查特定进程的状态。</p>
+<h2 id="Part-2-设计分析"><a href="#Part-2-设计分析" class="headerlink" title="Part 2 设计分析"></a>Part 2 设计分析</h2><p>主要设计思路为<strong>模拟</strong>，以下针对可能的坑点做简要介绍。</p>
+<h3 id="资源维护"><a href="#资源维护" class="headerlink" title="资源维护"></a>资源维护</h3><p>修正后的指导书明确指出，一个进程可能得到多种资源，对每种资源可能获得多个。</p>
+<p>因此，我们一方面需要对两种资源的等待队列分别维护，另一方面也需要利用计数器等更精确地保存进程的资源获得情况。</p>
+<h3 id="Env结构体"><a href="#Env结构体" class="headerlink" title="Env结构体"></a><code>Env</code>结构体</h3><p>新增<code>status</code>变量表示状态；新增<code>has1</code>,<code>wait1</code>,<code>cnt1</code>分别表示是否持有1资源，是否正在等待1资源，持有1资源数量，对于资源2同理新增对应变量。</p>
+<h3 id="P操作-1"><a href="#P操作-1" class="headerlink" title="P操作"></a><code>P</code>操作</h3><p>注意当申请到资源的时候给<strong>对应的</strong>资源计数器自增1。如果申请资源失败，加入对应资源的等待队列并修改状态。</p>
+<h3 id="V操作-1"><a href="#V操作-1" class="headerlink" title="V操作"></a><code>V</code>操作</h3><p>注意当释放资源的时候，<strong>只释放1个</strong>，释放后有可能仍持有资源。如果当前并不持有该资源，需要注意资源计数器不能为负数。</p>
+<h2 id="Part-3-课上源码"><a href="#Part-3-课上源码" class="headerlink" title="Part 3 课上源码"></a>Part 3 课上源码</h2><hr>
+<h3 id="Env结构体-1"><a href="#Env结构体-1" class="headerlink" title="Env结构体"></a><code>Env</code>结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Env</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Trapframe</span> <span class="title">env_tf</span>;</span>        <span class="comment">// Saved registers</span></span><br><span class="line">	LIST_ENTRY(Env) env_link;       <span class="comment">// Free list</span></span><br><span class="line">	u_int env_id;                   <span class="comment">// Unique environment identifier</span></span><br><span class="line">	u_int env_parent_id;            <span class="comment">// env_id of this env&#x27;s parent</span></span><br><span class="line">	u_int env_status;               <span class="comment">// Status of the environment</span></span><br><span class="line">	Pde  *env_pgdir;                <span class="comment">// Kernel virtual address of page dir</span></span><br><span class="line">	u_int env_cr3;</span><br><span class="line">	LIST_ENTRY(Env) env_sched_link;</span><br><span class="line">        u_int env_pri;</span><br><span class="line">	<span class="comment">// Lab 4 IPC</span></span><br><span class="line">	u_int env_ipc_value;            <span class="comment">// data value sent to us </span></span><br><span class="line">	u_int env_ipc_from;             <span class="comment">// envid of the sender  </span></span><br><span class="line">	u_int env_ipc_recving;          <span class="comment">// env is blocked receiving</span></span><br><span class="line">	u_int env_ipc_dstva;		<span class="comment">// va at which to map received page</span></span><br><span class="line">	u_int env_ipc_perm;		<span class="comment">// perm of page mapping received</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Lab 4 fault handling</span></span><br><span class="line">	u_int env_pgfault_handler;      <span class="comment">// page fault state</span></span><br><span class="line">	u_int env_xstacktop;            <span class="comment">// top of exception stack</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// Lab 6 scheduler counts</span></span><br><span class="line">	u_int env_runs;			<span class="comment">// number of times been env_run&#x27;ed</span></span><br><span class="line">	u_int env_nop;                  <span class="comment">// align to avoid mul instruction</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* alter for lab3-1-Extra */</span></span><br><span class="line">	<span class="type">int</span> status;</span><br><span class="line">	<span class="type">int</span> has1;</span><br><span class="line">	<span class="type">int</span> has2;</span><br><span class="line">	<span class="type">int</span> wait1;</span><br><span class="line">	<span class="type">int</span> wait2;</span><br><span class="line">	<span class="type">int</span> cnt1;</span><br><span class="line">	<span class="type">int</span> cnt2;</span><br><span class="line">    <span class="comment">/* alter for lab3-1-Extra finished */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="资源等待队列"><a href="#资源等待队列" class="headerlink" title="资源等待队列"></a>资源等待队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* alter for lab3-1-Extra */</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> sig[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env_list</span> <span class="title">env_wait1_list</span>;</span></span><br><span class="line"><span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">Env_list</span> <span class="title">env_wait2_list</span>;</span></span><br><span class="line"><span class="comment">/* alter for lab3-1-Extra finished*/</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="S-init"><a href="#S-init" class="headerlink" title="S_init"></a><code>S_init</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">S_init</span><span class="params">(<span class="type">int</span> s, <span class="type">int</span> num)</span> &#123;</span><br><span class="line">	sig[s] = num;</span><br><span class="line">	LIST_INIT(&amp;env_wait1_list);</span><br><span class="line">	LIST_INIT(&amp;env_wait2_list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="P操作-2"><a href="#P操作-2" class="headerlink" title="P操作"></a><code>P</code>操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">P</span><span class="params">(<span class="keyword">struct</span> Env *e, <span class="type">int</span> s)</span> &#123;</span><br><span class="line">	<span class="comment">//printf(&quot;env_id = %d s = %d s left : %d \n&quot;, e-&gt;env_id, s, sig[s]);</span></span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (sig[s] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		sig[s]--;</span><br><span class="line">		e-&gt;status = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="number">1</span>) &#123;</span><br><span class="line">			e-&gt;cnt1 = e-&gt;cnt1 + <span class="number">1</span>;</span><br><span class="line">			e-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;cnt2 = e-&gt;cnt2 + <span class="number">1</span>;</span><br><span class="line">			e-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		e-&gt;status = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="number">1</span>) &#123; </span><br><span class="line">			LIST_INSERT_TAIL(&amp;env_wait1_list, e, env_link);</span><br><span class="line">			e-&gt;wait1 = <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			LIST_INSERT_TAIL(&amp;env_wait2_list, e, env_link);</span><br><span class="line">			e-&gt;wait2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//return -1;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="V操作-2"><a href="#V操作-2" class="headerlink" title="V操作"></a><code>V</code>操作</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">V</span><span class="params">(<span class="keyword">struct</span> Env* e, <span class="type">int</span> s)</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">eNow</span>;</span></span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (s == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (LIST_EMPTY(&amp;env_wait1_list)) &#123; </span><br><span class="line">			sig[s]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			eNow = LIST_FIRST(&amp;env_wait1_list);</span><br><span class="line">			<span class="comment">//eNow-&gt;status = 2;</span></span><br><span class="line">			eNow-&gt;wait1 = <span class="number">0</span>;</span><br><span class="line">			eNow-&gt;cnt1 = eNow-&gt;cnt1 + <span class="number">1</span>;</span><br><span class="line">			eNow-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (eNow-&gt;wait1 == <span class="number">1</span> || eNow-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (eNow-&gt;has1 == <span class="number">1</span> || eNow-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">2</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">3</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			LIST_REMOVE(eNow, env_link);</span><br><span class="line">		&#125;</span><br><span class="line">		e-&gt;cnt1 = e-&gt;cnt1 - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (e-&gt;cnt1 &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			e-&gt;cnt1 = <span class="number">0</span>;</span><br><span class="line">			e-&gt;has1 = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;has1 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//e-&gt;has1 = 0;</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (LIST_EMPTY(&amp;env_wait2_list)) &#123;</span><br><span class="line">			sig[s]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			eNow = LIST_FIRST(&amp;env_wait2_list);</span><br><span class="line">			<span class="comment">//eNow-&gt;status = 2;</span></span><br><span class="line">			eNow-&gt;wait2 = <span class="number">0</span>;</span><br><span class="line">			eNow-&gt;cnt2 = eNow-&gt;cnt2 + <span class="number">1</span>;</span><br><span class="line">			eNow-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (eNow-&gt;wait1 == <span class="number">1</span> || eNow-&gt;wait2 == <span class="number">1</span>) &#123;	</span><br><span class="line">				eNow-&gt;status = <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (eNow-&gt;has1 == <span class="number">1</span> || eNow-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">2</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				eNow-&gt;status = <span class="number">3</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			LIST_REMOVE(eNow, env_link);</span><br><span class="line">		&#125;</span><br><span class="line">		e-&gt;cnt2 = e-&gt;cnt2 - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (e-&gt;cnt2 &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			e-&gt;cnt2 = <span class="number">0</span>;</span><br><span class="line">			e-&gt;has2 = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			e-&gt;has2 = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//e-&gt;has2 = 0;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (e-&gt;wait1 == <span class="number">1</span> || e-&gt;wait2 == <span class="number">1</span>) &#123;</span><br><span class="line">		e-&gt;status = <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (e-&gt;has1 == <span class="number">1</span> || e-&gt;has2 == <span class="number">1</span>) &#123;</span><br><span class="line">		e-&gt;status = <span class="number">2</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		e-&gt;status = <span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="my-env-create"><a href="#my-env-create" class="headerlink" title="my_env_create()"></a><code>my_env_create()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">my_env_create</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Env</span> *<span class="title">e</span>;</span></span><br><span class="line">	<span class="keyword">if</span> (env_alloc(&amp;e, <span class="number">0</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> e-&gt;env_id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="get-status"><a href="#get-status" class="headerlink" title="get_status()"></a><code>get_status()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">get_status</span><span class="params">(<span class="keyword">struct</span> Env *e)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> e-&gt;status;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Part-4-后记"><a href="#Part-4-后记" class="headerlink" title="Part 4 后记"></a>Part 4 后记</h2><p>由于<del>上机时评测姬咕咕咕了20min</del>，这次的Extra写得十分仓促，很可能有冗余设计（比如有了<code>cnt</code>变量就应当可以用<code>cnt</code>为0表示不持有资源而无需<code>has</code>变量），欢迎大家批评指正。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/30/「BUAA-OO-Unit-3」-JML笔记/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 3」 JML笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/26/「BUAA-OS-Lab3」名词解释/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Lab3」名词解释">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Apr 29 2022 19:24:11 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-OS-Lab3-1-Extra%E3%80%8D%E6%A8%A1%E6%8B%9FPV%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab3-1-Extra」模拟PV操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 题目描述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">初始化信号量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#P%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">P操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#V%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">V操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%99%E8%AF%AF%E6%A3%80%E6%9F%A5"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">错误检查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">题目要求</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%85%A8%E5%B1%80%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BF%A1%E5%8F%B7%E9%87%8F-S-init"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">全局初始化信号量 S_init</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#P%E6%93%8D%E4%BD%9C-P"><span class="toc-nav-number">1.2.5.2.</span> <span class="toc-nav-text">P操作   P</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#V%E6%93%8D%E4%BD%9C-V"><span class="toc-nav-number">1.2.5.3.</span> <span class="toc-nav-text">V操作   V</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E6%9F%A5%E7%9C%8B-get-status"><span class="toc-nav-number">1.2.5.4.</span> <span class="toc-nav-text">进程状态查看   get_status</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0-my-env-create"><span class="toc-nav-number">1.2.5.5.</span> <span class="toc-nav-text">进程创建函数 my_env_create</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">提示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-nav-number">1.2.7.</span> <span class="toc-nav-text">注意</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%84%E6%B5%8B%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.2.8.</span> <span class="toc-nav-text">评测逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E8%AE%BE%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 设计分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B5%84%E6%BA%90%E7%BB%B4%E6%8A%A4"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">资源维护</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">Env结构体</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#P%E6%93%8D%E4%BD%9C-1"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">P操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#V%E6%93%8D%E4%BD%9C-1"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">V操作</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E8%AF%BE%E4%B8%8A%E6%BA%90%E7%A0%81"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 课上源码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Env%E7%BB%93%E6%9E%84%E4%BD%93-1"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">Env结构体</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B5%84%E6%BA%90%E7%AD%89%E5%BE%85%E9%98%9F%E5%88%97"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">资源等待队列</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#S-init"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">S_init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#P%E6%93%8D%E4%BD%9C-2"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">P操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#V%E6%93%8D%E4%BD%9C-2"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">V操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#my-env-create"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">my_env_create()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#get-status"><span class="toc-nav-number">1.4.7.</span> <span class="toc-nav-text">get_status()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E5%90%8E%E8%AE%B0"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 后记</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

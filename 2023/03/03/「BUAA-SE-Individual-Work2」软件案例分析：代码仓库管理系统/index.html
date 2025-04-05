@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2023/03/03/「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                            
+                        </div>
+                        <h1>「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2023-03-03
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">14.3k</span> and
+                                Reading Time <span class="post-count">50</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统"><a href="#「BUAA-SE-Individual-Work2」软件案例分析：代码仓库管理系统" class="headerlink" title="「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统"></a>「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><table>
+<thead>
+<tr>
+<th align="left">项目</th>
+<th align="left">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">这个作业属于哪个课程</td>
+<td align="left"><a href="https://bbs.csdn.net/forums/buaa-ase2023">2023年北航敏捷软件工程</a></td>
+</tr>
+<tr>
+<td align="left">这个作业的要求在哪里</td>
+<td align="left"><a href="https://bbs.csdn.net/topics/613598122">个人作业-软件案例分析（作业说明链接）</a></td>
+</tr>
+<tr>
+<td align="left">我在这个课程的目标是</td>
+<td align="left">掌握团队管理和协作能力，学习现代软件工程开发的模式，以工业化水平持续开发高质量软件</td>
+</tr>
+<tr>
+<td align="left">这个作业在哪个<strong>具体方面</strong>帮助我实现目标</td>
+<td align="left">通过使用科学的工程化方法实地调研具体的软件，间接学习软工知识，提高自己对于软件特别是高质量软件的认知和理解，学习如何使得自己的软件避免低质量软件或失败软件的问题，并吸取高质量软件或成功软件的经验</td>
+</tr>
+</tbody></table>
+<h3 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h3><p>本作业选题为<strong>5. 代码仓库管理系统</strong>，对GitHub、gitlab（私有化部署）和gitlink三个产品进行案例分析。</p>
+<h3 id="选题理由"><a href="#选题理由" class="headerlink" title="选题理由"></a>选题理由</h3><p>这三个产品各具特点：</p>
+<ul>
+<li>GitHub是全球最大开源社区，孕育很多成功的开源项目，在微软接管后近年来也发生了许多新的变化</li>
+<li>gitlab（私有化部署）是面向组织和企业的成熟解决方案，通过部署在私有服务器和私有网络内提供了盈利的商业方案；同时，gitlab本身是海外产品，但国内由极狐代理</li>
+<li>gitlink是CCF主导的开源创新服务平台，平台本身也是开源的</li>
+</ul>
+<p>以上三个平台在境内&#x2F;境外，（主要）盈利&#x2F;非盈利，社区&#x2F;商业，（平台本身）闭源&#x2F;开源，提供单一代码托管功能&#x2F;提供工作流解决方案，社区主导&#x2F;企业主导&#x2F;政府组织主导等各有不同，在不同维度上分别具有特色和代表性，适合作为项目案例分析。</p>
+<p>同时，作为本次软工团队的PM，我也正好借此机会仔细学习和研究这些平台，为团队选择最佳实践。</p>
+<h2 id="Part-1-调研与评测"><a href="#Part-1-调研与评测" class="headerlink" title="Part 1 调研与评测"></a>Part 1 调研与评测</h2><h3 id="1-1-软件评测"><a href="#1-1-软件评测" class="headerlink" title="1.1 软件评测"></a>1.1 软件评测</h3><h4 id="1-1-1-GitHub"><a href="#1-1-1-GitHub" class="headerlink" title="1.1.1 GitHub"></a>1.1.1 GitHub</h4><p>GitHub是一个基于Git实现的在线代码仓库，是目前全球最大的代码托管平台，可以帮助程序员之间互相交流和学习。GitHub不仅是代码托管平台，更是开源社区，有着大量的活跃开发者。</p>
+<h5 id="1-1-1-1-基本使用"><a href="#1-1-1-1-基本使用" class="headerlink" title="1.1.1.1 基本使用"></a>1.1.1.1 基本使用</h5><ul>
+<li><p>网站访问方面，仅使用普通国内网络，无法正常访问GitHub或无法加载图片或访问很慢，需要通过修改hosts或使用devside-car等代理软件或使用其他科学上网方法。这是有一定门槛的，特别是对于非开发者的一般用户。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303195809025.png" alt="image-20230303195809025"></p>
+</li>
+<li><p>网站注册方面，可以使用邮箱注册，无需手机号，较为方便。</p>
+</li>
+<li><p>网站首页可以看见最近仓库，following（关注的动态），lasted changes以及上方功能导航栏。最近GitHub还开发了<code>for you</code>这一新功能的beta版，提供更个性化的推荐。画面整体简洁清晰，没有多余的广告或其他推送内容。但是，GitHub并没有提供中文页面，需要用户有一定的英文能力。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BD%BF%E7%94%A8GitHub.png" alt="使用GitHub"></p>
+</li>
+<li><p>个人页面：可以看到个人信息与简介、pin（置顶）、仓库、项目、star（收藏）、近期贡献与活动等</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303200619204.png" alt="image-20230303200619204"></p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303200628092.png" alt="image-20230303200628092"></p>
+</li>
+<li><p>仓库：可以看到仓库的目录、README、LICENSE、About、Releases等信息，快速了解仓库。同时，可以切换branch（分支）、使用git&#x2F;http clone仓库、使用新功能CodeSpaces这一WebIDE在线开发。同时，可以设置仓库为public或private来控制自己的仓库是否可被外部访问。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201021277.png" alt="image-20230303201021277"></p>
+</li>
+<li><p>GitHub提供Issues、Pull requests来支持开源社区用户们提出想法&#x2F;发现bug&#x2F;提出需求&#x2F;申请合并开发的某一功能。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201255742.png" alt="image-20230303201255742"></p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201336451.png" alt="image-20230303201336451"></p>
+</li>
+<li><p>GitHub提供GitHub Actions来支持CI&#x2F;CD（持续集成、持续部署），为各类开发者都提供了DevOps解决方案</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201528209.png" alt="image-20230303201528209"></p>
+</li>
+<li><p>GitHub提供MarketPlace，开放了诸多权限和API，方便开发者向社区贡献高质量app</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201609650.png" alt="image-20230303201609650"></p>
+</li>
+<li><p>GitHub提供了Explore模块，下有Topics、Trending、Collections等子模块，为这一社区提供了社交平台和技术交流平台</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303201711394.png" alt="image-20230303201711394"></p>
+</li>
+<li><p>GitHub提供了GitHub Pages，可以在其上部署个人博客或网站等轻量级web应用，笔者在其上依托hexo框架搭建了个人博客：<a href="saltyfishyjk.github.io">笔者的博客</a></p>
+<p>该服务使用便捷且免费，但同样存在GitHub的通病：访问和部署较慢，经常因为网络错误而部署或访问失败。特别是对于其他普通用户想要访问GitHub Page，困难很大。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303204220779.png" alt="image-20230303204220779"></p>
+</li>
+</ul>
+<h5 id="1-1-1-2-软件使用体验"><a href="#1-1-1-2-软件使用体验" class="headerlink" title="1.1.1.2 软件使用体验"></a>1.1.1.2 软件使用体验</h5><p>GitHub作为目前全球最大的代码托管平台，在被微软收购后更显专业与强劲，为开发者提供了代码仓库管理、开源软件获取与分享、技术交流等的平台，瞄准用户痛点解决使用需求问题，在数据量、界面、功能和准确度上都是当之无愧的第一代码托管平台，在这一细分领域是绝对的霸主。同时，系统使用稳定，长期使用中没有发现什么bug。</p>
+<p>然而，GitHub的最大问题就是在国内访问困难，虽然对于绝大多数开发者而言只是一个小门槛，但是对于更多的非开发者用户，这是一道高高的墙，将他们排除在外。</p>
+<h5 id="1-1-1-3-产品改进意见"><a href="#1-1-1-3-产品改进意见" class="headerlink" title="1.1.1.3 产品改进意见"></a>1.1.1.3 产品改进意见</h5><ul>
+<li>增加国内服务器，提高国内用户访问体验</li>
+<li>增加中文，提高中文用户使用体验</li>
+</ul>
+<h5 id="1-1-1-4-软件评分"><a href="#1-1-1-4-软件评分" class="headerlink" title="1.1.1.4 软件评分"></a>1.1.1.4 软件评分</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>类别</th>
+<th>描述</th>
+<th>评分 （满分 10 分, 良好 6 分, 及格 4 分，聊胜于无 1 分, 很差 -3 分）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>功能</strong></td>
+<td>核心功能</td>
+<td>分析三个核心功能，功能设计和质量。</td>
+<td>10</td>
+</tr>
+<tr>
+<td></td>
+<td>细节</td>
+<td>有什么为用户考虑的细节?</td>
+<td>9</td>
+</tr>
+<tr>
+<td></td>
+<td>用户体验</td>
+<td>当用户完成功能时，不干扰用户 (例如: 是否不断弹出不相关广告)。</td>
+<td>10（无广告）</td>
+</tr>
+<tr>
+<td></td>
+<td>辅助功能</td>
+<td>一些辅助功能如皮肤等</td>
+<td>10（GitHub风格的代码高亮等，清晰易用）</td>
+</tr>
+<tr>
+<td></td>
+<td>差异化功能</td>
+<td>这个软件独特的功能. 它对用户的吸引力有多大?</td>
+<td>10（是最大的代码开源社区，有最高质量的内容）</td>
+</tr>
+<tr>
+<td></td>
+<td>软件的效能</td>
+<td>占用内存, 启动速度, 内存泄漏情况</td>
+<td>8（在国内访问不太方便，会出现卡顿等情况）</td>
+</tr>
+<tr>
+<td><strong>体验</strong></td>
+<td>软件的适应性</td>
+<td>在联网&#x2F;断网, 大小屏幕, 没有鼠标的情况下都可以顺畅操作. 和不同平台的软件能流畅协作</td>
+<td>6（对大陆的网络适配差，但是掌握科学方法后体验良好）</td>
+</tr>
+<tr>
+<td></td>
+<td>成长性</td>
+<td>记住用户的选择, 适应用户的特点，用户越用越方便</td>
+<td>10</td>
+</tr>
+<tr>
+<td></td>
+<td>用户有控制权</td>
+<td>系统状态有反馈，等待时间要合适。关键操作有确认提示，有明确的错误信息。 让用户方便地从错误中恢复工作, 快捷操作键可调整。</td>
+<td>9（依旧是网络原因-1分）</td>
+</tr>
+<tr>
+<td><strong>自选</strong></td>
+<td>自选评分项目</td>
+<td>用户粘性</td>
+<td>10（高质量社区、高质量内容和高质量服务非常能够吸引目标客户）</td>
+</tr>
+</tbody></table>
+<h5 id="1-1-1-5-结论"><a href="#1-1-1-5-结论" class="headerlink" title="1.1.1.5 结论"></a>1.1.1.5 结论</h5><p>总分：90&#x2F;100，<strong>非常推荐</strong></p>
+<h4 id="1-1-2-gitlab（私有化部署）"><a href="#1-1-2-gitlab（私有化部署）" class="headerlink" title="1.1.2 gitlab（私有化部署）"></a>1.1.2 gitlab（私有化部署）</h4><p>GitLab的目标客户群体是需要自建代码仓库的企业、学校、政府等组织，它的应用场景是搭建私有或公共的代码仓库，实现代码管理、协作开发、持续集成、持续交付等功能。</p>
+<p>笔者作为面向对象设计与构造的助教Leader，拥有OO gitlab私有化部署的管理员权限，在过去的半年中有幸较为全面地体验和使用了这一解决方案。</p>
+<h5 id="1-1-2-1-基本使用"><a href="#1-1-2-1-基本使用" class="headerlink" title="1.1.2.1 基本使用"></a>1.1.2.1 基本使用</h5><ul>
+<li><p>网站访问方面，由于部署在校内服务器，所以需要校园网。这很符合我们的需求。同时，由于服务器物理上在校内，所以访问很快，体验很好。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303203902255.png" alt="image-20230303203902255"></p>
+</li>
+<li><p>用户登录和注册方面，gitlab支持接入其他认证系统，oo gitlab接入了北航的统一认证系统，安全可靠速度快，同时管理员可以方便地管理用户权限</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303204738104.png" alt="image-20230303204738104"></p>
+</li>
+<li><p>网站首页方面，可以看到项目、群组、里程碑、代码片段、动态以及管理员等栏目，围绕gitlab解决方案的核心，清晰易懂。笔者设置了首页显示群组，可以清晰看到管理的主要群组列表。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303210210121.png" alt="image-20230303210210121"></p>
+</li>
+<li><p>管理员页面，由于GitLab的目标客户群是需要自建代码仓库的企业、学校政府等组织，因此有管理员页面，针对这种私有化部署提供完善的分级权限管理。</p>
+<p>由于课程隐私，不展示其中的具体页面，通过文字的形式介绍主要内容。仪表盘可以实时概览最重要数据的直观统计信息，项目、用户和群组可以分别看到组织内的所有内容，并进行最高级别权限的管理，其他还有应用等栏目，囊括了数据分析、API控制、CI&#x2F;CD管理等。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303212820638.png" alt="image-20230303212820638"></p>
+</li>
+<li><p>仓库方面，和GitHub类似，可以克隆、管理自己权限范围内的仓库。不过可以明显感觉到，gitlab更私有化，不太具有社交属性，一切围绕组织管理和生产力开展。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303213403394.png" alt="image-20230303213403394"></p>
+</li>
+<li><p>个人页面方面，和GitHub类似，可以查看近期活动、动态、个人信息管理等</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303213427069.png" alt="image-20230303213427069"></p>
+</li>
+<li><p>Web IDE方面，gitlab也具有自己的web ide，但是相比于有vscode加持的GitHub而言，功能略显单薄，且只能编辑而无法在测试或生产环境中直接运行。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303213555028.png" alt="image-20230303213555028"></p>
+</li>
+</ul>
+<h5 id="1-1-2-2-软件使用体验"><a href="#1-1-2-2-软件使用体验" class="headerlink" title="1.1.2.2 软件使用体验"></a>1.1.2.2 软件使用体验</h5><p>GitLab的目标客户群体是需要自建代码仓库的企业、学校、政府等组织，它的应用场景是搭建私有或公共的代码仓库，实现代码管理、协作开发、持续集成、持续交付等功能。它的运营现状是稳定发展，拥有超过300万用户和1000万仓库，被评为最受欢迎的DevOps工具之一。</p>
+<p>在OO课程组的运行中，gitlab非常符合需求：可以私有化部署在自己的服务器上；提供了丰富的API实现客制化；封闭性和安全性极佳；在项目协作、代码管理方面表现优异；提供了多数GitHub的功能，同时去掉了社交属性，让企业等组织可以专注于开发。</p>
+<h5 id="1-1-2-3-产品改进意见"><a href="#1-1-2-3-产品改进意见" class="headerlink" title="1.1.2.3 产品改进意见"></a>1.1.2.3 产品改进意见</h5><ul>
+<li>web ide有待提升，目前仅是代码编辑器。</li>
+<li>首页有待提升，目前可以设置为项目或群组，较为死板，可以提供更多快速浏览的信息。</li>
+<li>支持更多中文，目前翻译进度是96%</li>
+<li>减少更新提醒影响。目前OO开课期间对gitlab的稳定性要求高，但是gitlab一直提醒要升级，比较烦人。</li>
+</ul>
+<h5 id="1-1-2-4-软件评分"><a href="#1-1-2-4-软件评分" class="headerlink" title="1.1.2.4 软件评分"></a>1.1.2.4 软件评分</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>类别</th>
+<th>描述</th>
+<th>评分 （满分 10 分, 良好 6 分, 及格 4 分，聊胜于无 1 分, 很差 -3 分）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>功能</strong></td>
+<td>核心功能</td>
+<td>分析三个核心功能，功能设计和质量。</td>
+<td>10</td>
+</tr>
+<tr>
+<td></td>
+<td>细节</td>
+<td>有什么为用户考虑的细节?</td>
+<td>10（管理员模式下可以扮演任意用户，非常方便）</td>
+</tr>
+<tr>
+<td></td>
+<td>用户体验</td>
+<td>当用户完成功能时，不干扰用户 (例如: 是否不断弹出不相关广告)。</td>
+<td>10（付费软件没有广告）</td>
+</tr>
+<tr>
+<td></td>
+<td>辅助功能</td>
+<td>一些辅助功能如皮肤等</td>
+<td>9（有较为多彩的颜色和皮肤）</td>
+</tr>
+<tr>
+<td></td>
+<td>差异化功能</td>
+<td>这个软件独特的功能. 它对用户的吸引力有多大?</td>
+<td>10（在私有化部署领域独树一帜，体验良好，为中小企业和组织提供了独立git托管平台的全套解决方案）</td>
+</tr>
+<tr>
+<td></td>
+<td>软件的效能</td>
+<td>占用内存, 启动速度, 内存泄漏情况</td>
+<td>9（尽管服务器物理部署在校内，但是访问速度有待提升，网页体验有待优化）</td>
+</tr>
+<tr>
+<td><strong>体验</strong></td>
+<td>软件的适应性</td>
+<td>在联网&#x2F;断网, 大小屏幕, 没有鼠标的情况下都可以顺畅操作. 和不同平台的软件能流畅协作</td>
+<td>9（尽管校内部署使得限制了校园网内访问很优秀，但是外网访问较为繁琐，需要有一定的计算机网络制知识）</td>
+</tr>
+<tr>
+<td></td>
+<td>成长性</td>
+<td>记住用户的选择, 适应用户的特点，用户越用越方便</td>
+<td>9（gitlab升级频率高，快速响应用户们的新需求）</td>
+</tr>
+<tr>
+<td></td>
+<td>用户有控制权</td>
+<td>系统状态有反馈，等待时间要合适。关键操作有确认提示，有明确的错误信息。 让用户方便地从错误中恢复工作, 快捷操作键可调整。</td>
+<td>9（CI&#x2F;CD等功能清楚明确）</td>
+</tr>
+<tr>
+<td><strong>自选</strong></td>
+<td>自选评分项目</td>
+<td>用户粘性</td>
+<td>9（使用了gitlab的私有化部署服务后，没有更换产品的欲望，粘性较大）</td>
+</tr>
+</tbody></table>
+<h5 id="1-1-2-5-结论"><a href="#1-1-2-5-结论" class="headerlink" title="1.1.2.5 结论"></a>1.1.2.5 结论</h5><p>总分：94&#x2F;100，<strong>非常推荐</strong></p>
+<h4 id="1-1-3-gitlink"><a href="#1-1-3-gitlink" class="headerlink" title="1.1.3 gitlink"></a>1.1.3 gitlink</h4><p>GitLink是一个专注于中国市场和教育领域的开源创新服务平台，提供了针对中国特色的功能和服务，如CCF认证、国产化部署、中文支持等。GitLink也是本身是开源的，可以自由下载和修改。</p>
+<h5 id="1-1-3-1-基本使用"><a href="#1-1-3-1-基本使用" class="headerlink" title="1.1.3.1 基本使用"></a>1.1.3.1 基本使用</h5><ul>
+<li><p>网站访问方面，gitlink作为CCF提供的主要目标客户在国内的代码仓库管理系统，访问速度快</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303223021561.png" alt="image-20230303223021561"></p>
+</li>
+<li><p>网站注册方面，可以使用qq、GitHub等第三方账号登陆，不过需要绑定手机号</p>
+</li>
+<li><p>网站首页可以看到大型滚动条目，主要是gitlink近期的宣传内容；上方可以看到开源项目、开源大赛、开源夏令营和教学实践四个栏目，可以发现作为CCF主导的平台，其侧重点和GitHub等有较大区别。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303223238444.png" alt="image-20230303223238444"></p>
+</li>
+<li><p>个人页面，与GitHub类似，可以查看数据统计、待办事项、近期活动以及贡献度等，汉化较好</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303223329562.png" alt="image-20230303223329562"></p>
+</li>
+<li><p>仓库页面，整体结构和GitHub比较相似，特别的，其中Issue被翻译为“疑修”，确实有些信达雅，不过可能开发者们还是会更倾向叫他issue。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304195750803.png" alt="image-20230304195750803"></p>
+</li>
+<li><p>开源项目栏目，可以看到gitlink将项目们分为若干类，点击每一类可以查看对应的项目，这一点做的比较直观新颖，是GitHub没有的功能。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303223524900.png" alt="image-20230303223524900"></p>
+</li>
+<li><p>开源大赛栏目，集散了国内的大型软件开源比赛，很有特色和创新性，是GitHub没有的功能。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230303224624090.png" alt="image-20230303224624090"></p>
+</li>
+<li><p>开源夏令营栏目，是CCF指导下的高校学生暑期编程活动，是开源夏令营相关信息的集散地，含有详情、报名、比赛、规划、辅导等信息。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304195401060.png" alt="image-20230304195401060"></p>
+</li>
+<li><p>教学实践栏目，包含开设的课程、班级、开源竞赛等信息</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304195506651.png" alt="image-20230304195506651"></p>
+</li>
+<li><p>论坛交流栏目，提供了一个论坛服务，关于开源的各种话题</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304195558185.png" alt="image-20230304195558185"></p>
+</li>
+</ul>
+<h5 id="1-1-3-2-软件使用体验"><a href="#1-1-3-2-软件使用体验" class="headerlink" title="1.1.3.2 软件使用体验"></a>1.1.3.2 软件使用体验</h5><p>软件整体使用较为流畅，页面具有CCF系列网站的特点，同时融入了不少特色服务，比如开源大赛、开源夏令营、教学实践和论坛交流等栏目，可以看出gitlink并不满足于实现一个类似中国版GitHub的定位，而是试图将和开源相关的内容尽可能融合进来。</p>
+<p>整体使用下来最大的感觉就是大而全，在很多特色功能的投入确实令人耳目一新，不过由于生态发展处于初期且用户少，因此整个平台显得比较冷清，开源项目的star寥寥无几，论坛的活跃帖子和用户也很少；不过对于开源夏令营和开源大赛等用户来说，作为功能性网站也比较可用。</p>
+<p>与此同时，GitLink存在诸多细小的bug，虽然对使用的影响有限，但是会给人糟糕的印象，具体将会在后续bug分析部分进一步阐述。</p>
+<h5 id="1-1-3-3-产品改进意见"><a href="#1-1-3-3-产品改进意见" class="headerlink" title="1.1.3.3 产品改进意见"></a>1.1.3.3 产品改进意见</h5><ul>
+<li>修复存在的诸多bug。目前GitLink的开源仓库有数十个issues没有修复，修复好这些bug会提升使用体验。、</li>
+<li>明确自己的定位，究竟是市场产品，还是政府门户，究竟要做什么样的系统和平台。</li>
+<li>提高产品体验，吸引更多用户。目前平台用户少，没有成熟的生态和足够多的高质量内容，对用户吸引力小。</li>
+</ul>
+<h5 id="1-1-3-4-软件评分"><a href="#1-1-3-4-软件评分" class="headerlink" title="1.1.3.4 软件评分"></a>1.1.3.4 软件评分</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>类别</th>
+<th>描述</th>
+<th>评分 （满分 10 分, 良好 6 分, 及格 4 分，聊胜于无 1 分, 很差 -3 分）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>功能</strong></td>
+<td>核心功能</td>
+<td>分析三个核心功能，功能设计和质量。</td>
+<td>7</td>
+</tr>
+<tr>
+<td></td>
+<td>细节</td>
+<td>有什么为用户考虑的细节?</td>
+<td>8（开源夏令营、开源大赛等较有特色）</td>
+</tr>
+<tr>
+<td></td>
+<td>用户体验</td>
+<td>当用户完成功能时，不干扰用户 (例如: 是否不断弹出不相关广告)。</td>
+<td>9</td>
+</tr>
+<tr>
+<td></td>
+<td>辅助功能</td>
+<td>一些辅助功能如皮肤等</td>
+<td>7</td>
+</tr>
+<tr>
+<td></td>
+<td>差异化功能</td>
+<td>这个软件独特的功能. 它对用户的吸引力有多大?</td>
+<td>8（开源夏令营等较为新颖）</td>
+</tr>
+<tr>
+<td></td>
+<td>软件的效能</td>
+<td>占用内存, 启动速度, 内存泄漏情况</td>
+<td>8（尽管是国内网站，但是访问有较明显卡顿）</td>
+</tr>
+<tr>
+<td><strong>体验</strong></td>
+<td>软件的适应性</td>
+<td>在联网&#x2F;断网, 大小屏幕, 没有鼠标的情况下都可以顺畅操作. 和不同平台的软件能流畅协作</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>成长性</td>
+<td>记住用户的选择, 适应用户的特点，用户越用越方便</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>用户有控制权</td>
+<td>系统状态有反馈，等待时间要合适。关键操作有确认提示，有明确的错误信息。 让用户方便地从错误中恢复工作, 快捷操作键可调整。</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>自选</strong></td>
+<td>自选评分项目</td>
+<td>用户粘性</td>
+<td>6（生态和高质量内容不佳，用户粘性不佳）</td>
+</tr>
+</tbody></table>
+<h5 id="1-1-3-5-结论"><a href="#1-1-3-5-结论" class="headerlink" title="1.1.3.5 结论"></a>1.1.3.5 结论</h5><p>总分：70&#x2F;100，<strong>一般</strong></p>
+<h4 id="1-1-4-用户调研与采访"><a href="#1-1-4-用户调研与采访" class="headerlink" title="1.1.4 用户调研与采访"></a>1.1.4 用户调研与采访</h4><h5 id="1-1-4-1-采访对象的背景"><a href="#1-1-4-1-采访对象的背景" class="headerlink" title="1.1.4.1 采访对象的背景"></a>1.1.4.1 采访对象的背景</h5><p>被采访者是北航计算机学院20级学生，为欧阳老师软工班学生。曾使用过GitHub和OO课程的gitlab，有较丰富的个人和团队协作开发经验，每天使用GitHub，对代码仓库管理系统有着较丰富的认识、理解和需求。</p>
+<h5 id="1-1-4-2-对代码仓库管理系统的需求"><a href="#1-1-4-2-对代码仓库管理系统的需求" class="headerlink" title="1.1.4.2 对代码仓库管理系统的需求"></a>1.1.4.2 对代码仓库管理系统的需求</h5><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/InkedQ1.jpg" alt="InkedQ1"></p>
+<blockquote>
+<p>文字</p>
+</blockquote>
+<blockquote>
+<p>Q：对于一个代码仓库管理系统，你在目前的（各方面）有什么样的需求？比如个人管理、大型开源项目协作、小组项目、企业级项目？<br>A：1.不需要VPN即可顺畅使用；2.提供代码历史版本对比及管理（合并、修复、删除、恢复等）；3.提供简单的社交功能，如留言、评论、收藏等；4.免费，无广告，界面简洁；5.项目团队成员均习惯于使用该系统（比如Github，达成业内共识）；6.开源项目丰富，即存在大量活跃用户保证社区环境。</p>
+</blockquote>
+<h5 id="1-1-4-3-各个系统对于需求的满足程度；系统之间横向比较的优劣；造成体验不佳的原因"><a href="#1-1-4-3-各个系统对于需求的满足程度；系统之间横向比较的优劣；造成体验不佳的原因" class="headerlink" title="1.1.4.3 各个系统对于需求的满足程度；系统之间横向比较的优劣；造成体验不佳的原因"></a>1.1.4.3 各个系统对于需求的满足程度；系统之间横向比较的优劣；造成体验不佳的原因</h5><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/InkedQ2.jpg" alt="InkedQ2"></p>
+<blockquote>
+<p>文字</p>
+</blockquote>
+<blockquote>
+<p>Q：对于你的上述需求，这些代码仓库管理系统做的如何？横向比较（对某个需求，各个代码仓库管理系统之间）上而言各有什么优劣？你认为造成体验不佳的，是系统开发原因（偏技术），还是用户定位原因，抑或是政策或者其他原因？<br>A：1.Github及Gitlab需要VPN才能顺畅浏览，实际情况是挂着代理也常常长时间下载&#x2F;上传失败，是政策原因所致，Gitlab（Edu）、Coding和Gitlink没有这个问题；2.所有系统都有基本的版本及代码管理功能，其中Coding的历史数据分析做得最好，是加分项；34.鉴于用户定位不同，Github和Gitlink主要向各类程序员服务，面向社群对象最广，提供了基本的社交功能且免费，而Coding专注于团队项目开发（面向企业），Gitlab更专注于构建学校平台（面向学校），所以在社交方面有所阉割且进行收费；56.取决于业界共识，仍处于Github一家独大的状态，即用户最多&amp;开源项目最多的正向循环，因此其他系统想要打破垄断，要么做出妥协接入Github及其他社交账号吸纳用户（Gitlab与Gitlink），要么做出差异化考虑专注于更细的领域（Coding，接入企业微信，封闭在腾讯生态）。</p>
+</blockquote>
+<h5 id="1-1-4-4-各个系统浏览和使用的产品栏目与功能；系统之间横向比较的亮点和困难；初次上手软件的难度；对于非cs专业-cs专业低年级的同学，上手难度如何；对于这些难点，会如何解决，一般人会有搜索和解决这些问题的能力吗"><a href="#1-1-4-4-各个系统浏览和使用的产品栏目与功能；系统之间横向比较的亮点和困难；初次上手软件的难度；对于非cs专业-cs专业低年级的同学，上手难度如何；对于这些难点，会如何解决，一般人会有搜索和解决这些问题的能力吗" class="headerlink" title="1.1.4.4 各个系统浏览和使用的产品栏目与功能；系统之间横向比较的亮点和困难；初次上手软件的难度；对于非cs专业&#x2F;cs专业低年级的同学，上手难度如何；对于这些难点，会如何解决，一般人会有搜索和解决这些问题的能力吗"></a>1.1.4.4 各个系统浏览和使用的产品栏目与功能；系统之间横向比较的亮点和困难；初次上手软件的难度；对于非cs专业&#x2F;cs专业低年级的同学，上手难度如何；对于这些难点，会如何解决，一般人会有搜索和解决这些问题的能力吗</h5><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/InkedQ3.jpg" alt="InkedQ3"></p>
+<blockquote>
+<p>文字</p>
+</blockquote>
+<blockquote>
+<p>Q：对于这些代码仓库管理系统，你都浏览和使用了哪些产品栏目&#x2F;功能？他们在横向比较上分别有什么优缺点？他们分别有什么使用上的亮点和困难？对于你现在的技术水平，初次上手这些软件难度如何？如果是一个非cs专业&#x2F;cs专业低年级的一般同学，上手难度（门槛）又会如何？对于这些难点，你会如何解决，一般人会有搜索和解决这些问题的能力吗？<br>A：主要浏览了这些系统的个人主页、开源项目、登录&#x2F;注册页面、代码&#x2F;项目管理页面。<br>github和gitlab的个人主页做得最好，gitlink基本在模仿github的UI设计但有些不伦不类，coding则把主页内容下沉到仪表盘等子页面中，放弃了大部分轻量级用户，为团队项目做了针对性设计。<br>github与gitlab的检索页面隐藏的很深（需要点击左上角icon跳转至首页才能进行全局检索），对新用户&#x2F;一般同学不太友好，gitlink的开源项目检索icon则在顶部导航栏常驻且标明，从功能上来说相对更友好，但UI设计风格因为顶部的常驻导航栏也有些出戏，并不讨喜，至于Coding则似乎完全舍弃了开源项目这方面内容（至少没在目录中找到）。<br>登陆注册方面，github和gitlink是可以以游客模式进行浏览，gitlab和coding则必须先登录再使用（十分讨厌），但gitlab提供了github账号登录接口，coding提供了企业微信扫码登录的选择，勉强算可以接受，此外gitlink在支持游客模式的情况下还提供了github,gitee等账号登录接口，算是个亮点。<br>代码及项目管理页面github，gitlink和gitlab出奇的一致，大概是github养成的用户习惯，gitlink和gitlab等后来者也不得不遵循吧，这个代码管理工具最基本页面的设计上没有明显漏洞，功能齐全且子页面跳转的指示也比较明确，但coding几乎所有功能都要付费才能解锁（甚至没有功能预览），显然相比其他三个免费系统人气会更低吧。<br>关于上手难度，这些代码管理工具在了解git的使用方法后便可上手，尤其github和gitlab对于空仓库会给出一些常用git命令示例用于指导如何构建仓库，其他两者没有详细使用过所以不做评价。但如果完全没有git相关知识的话这些系统都没有提供相关的类似说明书的教程，所以对纯新手是不友好的（不过个人认为代码管理工具本身具备一定专业知识壁垒，不开发新手教程是可接受的），纯新手可能只能将其作为代码&#x2F;项目的浏览&#x2F;检索平台进行使用。至于git知识，现有的各类博客网站&#x2F;视频网站上都有很多相关教程，学习难度很低，大约十分钟就能上手基本功能。<br>最后想提一下UI设计问题，个人认为github&#x3D;coding≥gitlab＞gitlink，虽然说审美是很主观的问题，但还是有些公认的准则，比如简洁（github，gitlab，coding）、排版合理（github，coding）、配色不冲突（github，gitlab，coding）、没有广告（github，gitlab）。</p>
+</blockquote>
+<h5 id="1-1-4-5-从用户角度希望这些系统如何改进；对于这些软件给出评价"><a href="#1-1-4-5-从用户角度希望这些系统如何改进；对于这些软件给出评价" class="headerlink" title="1.1.4.5 从用户角度希望这些系统如何改进；对于这些软件给出评价"></a>1.1.4.5 从用户角度希望这些系统如何改进；对于这些软件给出评价</h5><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/InkedQ4.jpg" alt="InkedQ4"></p>
+<blockquote>
+<p>文字</p>
+</blockquote>
+<blockquote>
+<p>Q：对于刚才提到的这些系统的问题，从用户的角度，你希望他们分别如何改进？对于现状，请你给出对这些软件的评价，非常不推荐&#x2F;不推荐&#x2F;一般&#x2F;好，不错&#x2F;非常推荐<br>A：1.支持游客模式访问；2.将免费版本与付费版本解耦（当然，免费最好）；3.找些靠谱的设计师画点简洁美观的UI（实在不会照抄Github也行啊）；4.Github和Gitlab在个人主页上方的搜索框可以进行全局检索就更好了，就不再需要通过icon回到主页进行检索；5.提供Github账号登录接口（可以关联数据就更好了）。<br>Github（非常推荐），Gitlab（一般），Gitlink（不推荐），Coding（一般）</p>
+</blockquote>
+<h3 id="1-2-Bug分析和提交"><a href="#1-2-Bug分析和提交" class="headerlink" title="1.2 Bug分析和提交"></a>1.2 Bug分析和提交</h3><h4 id="1-2-1-Bug1：GitLink开源项目页码大于9之后无法跳转和访问"><a href="#1-2-1-Bug1：GitLink开源项目页码大于9之后无法跳转和访问" class="headerlink" title="1.2.1 Bug1：GitLink开源项目页码大于9之后无法跳转和访问"></a>1.2.1 Bug1：GitLink开源项目页码大于9之后无法跳转和访问</h4><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304205224284.png" alt="image-20230304205224284"></p>
+<h5 id="1-2-1-1-测试环境"><a href="#1-2-1-1-测试环境" class="headerlink" title="1.2.1.1 测试环境"></a>1.2.1.1 测试环境</h5><p>Windows10+Chrome110.0.5481.178</p>
+<h5 id="1-2-1-2-可复现性及复现步骤"><a href="#1-2-1-2-可复现性及复现步骤" class="headerlink" title="1.2.1.2 可复现性及复现步骤"></a>1.2.1.2 可复现性及复现步骤</h5><p>100%复现。</p>
+<p>步骤：</p>
+<ul>
+<li><p>打开<a href="https://www.gitlink.org.cn/explore/all">页面</a></p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305084008364.png" alt="image-20230305084008364"></p>
+</li>
+<li><p>点击左侧“项目类别”中的程序开发</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305084019288.png" alt="image-20230305084019288"></p>
+</li>
+<li><p>在下方页码处输入任意大于9的数字，即会出现上图示的“暂无数据”，而事实上下方显示这里足足有6万多页。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230304205224284.png" alt="image-20230304205224284"></p>
+</li>
+</ul>
+<h5 id="1-2-1-3-Bug具体情况描述和严重性"><a href="#1-2-1-3-Bug具体情况描述和严重性" class="headerlink" title="1.2.1.3 Bug具体情况描述和严重性"></a>1.2.1.3 Bug具体情况描述和严重性</h5><p>在该页面中无法自由跳转到任何大于9的页面。</p>
+<p>该bug比较严重，可能隐藏了诸如数据库漏洞、服务器漏洞、HTTP服务请求攻击等隐患，可能被hack。</p>
+<h5 id="1-2-1-4-Bug分析"><a href="#1-2-1-4-Bug分析" class="headerlink" title="1.2.1.4 Bug分析"></a>1.2.1.4 Bug分析</h5><p>怀疑是查询服务过载崩溃，或数据库内数据无效。这一bug较为严重，因为最多的仓库都在这个栏目下，也是GitLink宣传的140万仓库的主题，但是仅9页就不能再查看，难免让人怀疑数据造假。</p>
+<p>根本原因可能是没有做充分测试，也预想用户不会通过这种方式寻找仓库，因此搁置没有处理这个bug。</p>
+<h5 id="1-2-1-5-Bug改进建议"><a href="#1-2-1-5-Bug改进建议" class="headerlink" title="1.2.1.5 Bug改进建议"></a>1.2.1.5 Bug改进建议</h5><p>改善搜索和跳转方式，优化数据库查询方式，提高服务器带宽和并发性。</p>
+<h5 id="1-2-1-6-Bug反馈"><a href="#1-2-1-6-Bug反馈" class="headerlink" title="1.2.1.6 Bug反馈"></a>1.2.1.6 Bug反馈</h5><p>已经在<a href="https://www.gitlink.org.cn/Gitlink/forgeplus/issues/72332">gitlink仓库</a>提交了issue。</p>
+<h4 id="1-2-2-Bug2：GitLink个人展示页面不按预期跳转"><a href="#1-2-2-Bug2：GitLink个人展示页面不按预期跳转" class="headerlink" title="1.2.2 Bug2：GitLink个人展示页面不按预期跳转"></a>1.2.2 Bug2：GitLink个人展示页面不按预期跳转</h4><h5 id="1-2-2-1-测试环境"><a href="#1-2-2-1-测试环境" class="headerlink" title="1.2.2.1 测试环境"></a>1.2.2.1 测试环境</h5><p>Windows10+Chrome110.0.5481.178</p>
+<h5 id="1-2-2-2-可复现性及复现步骤"><a href="#1-2-2-2-可复现性及复现步骤" class="headerlink" title="1.2.2.2 可复现性及复现步骤"></a>1.2.2.2 可复现性及复现步骤</h5><p>100%复现</p>
+<p>步骤：</p>
+<ul>
+<li><p>打开gitlink个人主页页面</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305083137942.png" alt="image-20230305083137942"></p>
+</li>
+<li><p>点击除“活动概览”之外的任一栏目</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305083146916.png" alt="image-20230305083146916"></p>
+</li>
+<li><p>点击左侧“展示个人简介”</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305083157943.png" alt="image-20230305083157943"></p>
+</li>
+<li><p>发现只会在栏目处多一个“个人简介”，而不会跳转到该页面，会给用户错误的预期和感受，让用户以为这一按钮操作无效。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/gitlink%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B.png"></p>
+</li>
+<li><p>而如果先点击“活动概览”，再点击“展示个人简介”，则可以跳转到“个人简介”页面，这是正确的行为预期。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305083703981.png" alt="image-20230305083703981"></p>
+</li>
+</ul>
+<h5 id="1-2-2-3-Bug具体情况描述和严重性"><a href="#1-2-2-3-Bug具体情况描述和严重性" class="headerlink" title="1.2.2.3 Bug具体情况描述和严重性"></a>1.2.2.3 Bug具体情况描述和严重性</h5><p>在gitlink个人主页的“活动概览”之外的栏目中点击“展示个人简介”，无法按照预期自动跳转到该页面。</p>
+<p>这一bug严重性不大，主要是前端UI和用户体验方面的影响。</p>
+<h5 id="1-2-2-4-Bug分析"><a href="#1-2-2-4-Bug分析" class="headerlink" title="1.2.2.4 Bug分析"></a>1.2.2.4 Bug分析</h5><p>怀疑是前端处理的时候只处理了“数据统计”栏目下的跳转逻辑，其他逻辑忘记写了。</p>
+<p>根本原因可能是测试不足，而且不属于功能性bug，因此开发和测试团队没有发现。</p>
+<h5 id="1-2-2-5-Bug改进建议"><a href="#1-2-2-5-Bug改进建议" class="headerlink" title="1.2.2.5 Bug改进建议"></a>1.2.2.5 Bug改进建议</h5><p>直接修改“展示个人简介”按钮的逻辑，使得无论此时页面显示的内容如何，点击后都增加“个人简介”栏目并跳转过去。</p>
+<h5 id="1-2-2-6-Bug反馈"><a href="#1-2-2-6-Bug反馈" class="headerlink" title="1.2.2.6 Bug反馈"></a>1.2.2.6 Bug反馈</h5><p>已经在<a href="https://www.gitlink.org.cn/Gitlink/forgeplus/issues/72333">gitlink仓库</a>提交了issue</p>
+<h4 id="1-2-3-Bug3：GitLink论坛交流栏目点击点赞和评论按钮没有反应"><a href="#1-2-3-Bug3：GitLink论坛交流栏目点击点赞和评论按钮没有反应" class="headerlink" title="1.2.3 Bug3：GitLink论坛交流栏目点击点赞和评论按钮没有反应"></a>1.2.3 Bug3：GitLink论坛交流栏目点击点赞和评论按钮没有反应</h4><p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/c01be4052ac689e6e3b8a775c112692.png" alt="c01be4052ac689e6e3b8a775c112692"></p>
+<h5 id="1-2-3-1-测试环境"><a href="#1-2-3-1-测试环境" class="headerlink" title="1.2.3.1 测试环境"></a>1.2.3.1 测试环境</h5><p>Windows10+Chrome110.0.5481.178</p>
+<h5 id="1-2-3-2-可复现性及复现步骤"><a href="#1-2-3-2-可复现性及复现步骤" class="headerlink" title="1.2.3.2 可复现性及复现步骤"></a>1.2.3.2 可复现性及复现步骤</h5><p>可复现性100%</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/c01be4052ac689e6e3b8a775c112692.png" alt="c01be4052ac689e6e3b8a775c112692"></p>
+<p>步骤：</p>
+<ul>
+<li>进入<a href="https://forum.gitlink.org.cn/forums">gitlink论坛交流主页面</a></li>
+<li>将鼠标光标移动到任意一篇帖子的“点赞”或“评论”按钮上</li>
+<li>发现鼠标由箭头变为手形光标，但是点击没有效果，不会增加点赞数，也不会展开评论或跳转入这篇文章，与用户预期不符</li>
+</ul>
+<h5 id="1-2-3-3-Bug具体情况描述和严重性分析"><a href="#1-2-3-3-Bug具体情况描述和严重性分析" class="headerlink" title="1.2.3.3 Bug具体情况描述和严重性分析"></a>1.2.3.3 Bug具体情况描述和严重性分析</h5><p>gitlink论坛交流板块的帖子的“点赞”和“评论”按钮点击没有效果。</p>
+<p>这一bug严重性不大，主要是前端UI和用户体验方面的影响。</p>
+<h5 id="1-2-3-4-Bug分析"><a href="#1-2-3-4-Bug分析" class="headerlink" title="1.2.3.4 Bug分析"></a>1.2.3.4 Bug分析</h5><p>前端可能写了组件的样式，但是没有写对应的行为和跳转逻辑。</p>
+<h5 id="1-2-3-5-Bug改进建议"><a href="#1-2-3-5-Bug改进建议" class="headerlink" title="1.2.3.5 Bug改进建议"></a>1.2.3.5 Bug改进建议</h5><p>前端增加这两个组件的行为和跳转逻辑以符合用户预期。</p>
+<h5 id="1-2-3-6-Bug反馈"><a href="#1-2-3-6-Bug反馈" class="headerlink" title="1.2.3.6 Bug反馈"></a>1.2.3.6 Bug反馈</h5><p>已经在<a href="https://www.gitlink.org.cn/Gitlink/forgeplus/issues/72334">gitlink仓库</a>提交了issue</p>
+<h2 id="Part-2-分析"><a href="#Part-2-分析" class="headerlink" title="Part 2 分析"></a>Part 2 分析</h2><h3 id="2-1-工作量分析"><a href="#2-1-工作量分析" class="headerlink" title="2.1 工作量分析"></a>2.1 工作量分析</h3><p>Q：使用此服务的所有功能，估计这个软件&#x2F;网站&#x2F;服务做到这个程度大约需要多少时间(团队人数6人左右，计算机大学毕业生，并有专业UI支持)。</p>
+<h4 id="2-1-1-GitHub"><a href="#2-1-1-GitHub" class="headerlink" title="2.1.1 GitHub"></a>2.1.1 GitHub</h4><p>GitHub不仅是一个网站、一个代码仓库管理系统，更是一个大型的开原生态和开发者社区，为了简化和聚焦我们的研究目标，我们仅考虑GitHub网站版包括的服务。</p>
+<p>我预估完成GitHub需要20周左右。</p>
+<ul>
+<li>市场调研、目标客户群体画像、成员分工、技术栈磨合：1-2周</li>
+<li>需求分析、模型设计：3-4周</li>
+<li>主要代码开发与测试，包括后端实现、前端开发、分布式优化等：10~12周</li>
+<li>生产测试、压力测试，内测与公测：2~3周</li>
+<li>市场投放、持续部署、持续维护：1~2周</li>
+</ul>
+<h4 id="2-1-2-GitLab（私有化部署）"><a href="#2-1-2-GitLab（私有化部署）" class="headerlink" title="2.1.2 GitLab（私有化部署）"></a>2.1.2 GitLab（私有化部署）</h4><p>GitLab的目标客户群体是需要自建代码仓库的企业、学校、政府等组织，它的应用场景是搭建私有或公共的代码仓库，实现代码管理、协作开发、持续集成、持续交付等功能。</p>
+<p>我预估完成GitLab需要25周左右。</p>
+<ul>
+<li>市场调研、可行性分析、用户画像、政策研究：4~5周</li>
+<li>成员分工、技术栈磨合、原型设计：2~3周</li>
+<li>主要代码开发与测试，包括后端实现、前端开发、分布式优化等：14~15周</li>
+<li>压力测试、主要目标客户群体测试：1~2周</li>
+<li>市场投放，持续部署，持续跟进，持续维护：1~2周</li>
+</ul>
+<h4 id="2-1-3-GitLink"><a href="#2-1-3-GitLink" class="headerlink" title="2.1.3 GitLink"></a>2.1.3 GitLink</h4><p>GitLink是一个专注于中国市场和教育领域的开源创新服务平台，提供了针对中国特色的功能和服务，如CCF认证、国产化部署、中文支持等。</p>
+<p>我预计完成GitLink需要15周左右。</p>
+<ul>
+<li>政府调研、政策支持：1~2周</li>
+<li>成员分工、技术栈磨合、模型设计：2~3周</li>
+<li>主要代码开发与测试，包括后端实现、前端开发、分布式优化等：8~12周</li>
+<li>压力测试、主要目标客户群体测试：1~2周</li>
+</ul>
+<h3 id="2-2-软件质量分析"><a href="#2-2-软件质量分析" class="headerlink" title="2.2 软件质量分析"></a>2.2 软件质量分析</h3><h4 id="2-2-1-GitHub"><a href="#2-2-1-GitHub" class="headerlink" title="2.2.1 GitHub"></a>2.2.1 GitHub</h4><h5 id="2-2-1-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？"><a href="#2-2-1-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？" class="headerlink" title="2.2.1.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？"></a>2.2.1.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</h5><p>GitHub是代码仓库管理系统领域内的标杆产品，奠定和引领了领域内的设计范式，拥有庞大的开源社区和丰富的第三方集成。它适合个人或小型团队进行公开项目的开发和协作，也提供付费版本支持私有项目和高级功能。</p>
+<p>这个产品的综合质量在同类产品中估计排名第1。</p>
+<h5 id="2-2-1-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议"><a href="#2-2-1-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议" class="headerlink" title="2.2.1.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)"></a>2.2.1.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</h5><p><strong>提高对中国市场的重视程度</strong>。目前在技术上，GitHub已经做的非常优秀；但是在市场特别是中国市场，GitHub并没有针对性的优化和本土化，比如网络等。</p>
+<h4 id="2-2-2-GitLab（私有化部署）"><a href="#2-2-2-GitLab（私有化部署）" class="headerlink" title="2.2.2 GitLab（私有化部署）"></a>2.2.2 GitLab（私有化部署）</h4><h5 id="2-2-2-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？"><a href="#2-2-2-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？" class="headerlink" title="2.2.2.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？"></a>2.2.2.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</h5><p>GitLab是一个面向企业的代码仓库软件，提供了一整套的DevOps解决方案，包括持续集成、持续交付、监控、安全等。它适合大型互联网公司或需要自建仓库服务器的场景，也有免费版本支持公共项目和私有项目。</p>
+<p>对于中小企业的安全、隐私等要求上，GitLab提供了完整高效可行的解决方案，这个产品的综合质量在同类产品中估计排名第2，仅次于GitHub；但是在细分市场如中国市场，GitLab可能会更受欢迎。</p>
+<h5 id="2-2-2-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议"><a href="#2-2-2-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议" class="headerlink" title="2.2.2.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)"></a>2.2.2.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</h5><p><strong>增加人员培训</strong>。GitLab提供的技术很完善，但是技术迭代很快，且客户可能不都很熟悉GitLab，因此可以提供更多的培训和指导。</p>
+<h4 id="2-2-3-GitLink"><a href="#2-2-3-GitLink" class="headerlink" title="2.2.3 GitLink"></a>2.2.3 GitLink</h4><h5 id="2-2-3-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？"><a href="#2-2-3-1-分析这个软件目前的优劣-和类似软件相比-，这个产品的质量在同类产品中估计名列第几？" class="headerlink" title="2.2.3.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？"></a>2.2.3.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</h5><p>GitLink是一个相对较新的代码仓库平台，是“确实开源”的，并且支持多种编程语言和框架。它适合那些想要尝试新技术或不满足于GitHub和GitLab功能的开发者。</p>
+<p>在目前的产品市场上，GitLink可能可以进入前十名，但是考虑到国内现在还有Gitee，Coding，GitCode等平台，因此具体排名可能会有所波动。</p>
+<h5 id="2-2-3-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议"><a href="#2-2-3-2-从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面-具体建议" class="headerlink" title="2.2.3.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)"></a>2.2.3.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</h5><p><strong>修复bug，提高用户体验</strong>。尽管GitLink提供了很多特色服务，但是系统存在的诸多细小bug会给用户造成不好的印象，修复这些bug，提升用户体验可以有效提升产品质感。</p>
+<h2 id="Part-3-建议和规划"><a href="#Part-3-建议和规划" class="headerlink" title="Part 3 建议和规划"></a>Part 3 建议和规划</h2><h3 id="3-1-市场概况"><a href="#3-1-市场概况" class="headerlink" title="3.1 市场概况"></a>3.1 市场概况</h3><h4 id="3-1-1-市场有多大？"><a href="#3-1-1-市场有多大？" class="headerlink" title="3.1.1 市场有多大？"></a>3.1.1 市场有多大？</h4><p>对于代码仓库管理系统这一细分领域的市场究竟有多大没有具体的报告，不过可以参考相关的报告，比如根据Statista的数据，2018年全球软件开发者人数约为2300万人，预计2024年将增长到2800万人；根据GitHub发布的报告，2020年GitHub平台上新增了1500万开发者和600万组织。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305151310405.png" alt="image-20230305151310405"></p>
+<h4 id="3-1-2-直接的用户有多少，潜在的用户又有多少？"><a href="#3-1-2-直接的用户有多少，潜在的用户又有多少？" class="headerlink" title="3.1.2 直接的用户有多少，潜在的用户又有多少？"></a>3.1.2 直接的用户有多少，潜在的用户又有多少？</h4><p>根据GitHub的年度报告，目前有9,400万开发者，仅去年就增长了27%，增长了约2,050万开发者。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305151746941.png" alt="image-20230305151746941"></p>
+<p>随着疫情带来的影响逐渐深入，chatGPT为代表的人工智能技术开始深入人们的生活，预计计算机相关专业的热度将持续上涨，计算机相关从业人员（学生、转行人士、跨领域人士）将不断增加，可以预期每年有2,000万以上的潜在用户转化为直接用户。</p>
+<h3 id="3-2-市场现状"><a href="#3-2-市场现状" class="headerlink" title="3.2 市场现状"></a>3.2 市场现状</h3><h4 id="3-2-1-目前市场上有什么样的产品了？"><a href="#3-2-1-目前市场上有什么样的产品了？" class="headerlink" title="3.2.1 目前市场上有什么样的产品了？"></a>3.2.1 目前市场上有什么样的产品了？</h4><p>代码仓库管理系统的产品可以根据不同的维度进行分类，如功能、部署方式、开源性等。</p>
+<ul>
+<li>按照功能维度，代码仓库管理系统的产品可以分为单纯的代码托管平台和集成开发环境（IDE）。前者主要提供代码存储、版本控制、协作开发等功能，如GitHub、Gitee、Bitbucket等；后者除了提供代码托管功能外，还提供编译、调试、测试、部署等功能，如Coding、阿里云效、Azure DevOps等。</li>
+<li>按照部署方式维度，代码仓库管理系统的产品可以分为云端服务和本地部署。前者通过互联网提供服务，用户无需安装软件或购买硬件，如GitHub、Gitee等；后者需要用户在自己的服务器上安装软件或购买硬件，如GitLab、SVN等。</li>
+<li>按照开源性维度，代码仓库管理系统的产品可以分为开源和闭源。前者遵循某种开源协议，允许用户查看或修改源码，如GitLab、SVN等；后者不公开源码，只提供二进制文件或服务接口，如GitHub、Coding等。</li>
+</ul>
+<h4 id="3-2-2-上述产品的定位、优势和劣势在哪？"><a href="#3-2-2-上述产品的定位、优势和劣势在哪？" class="headerlink" title="3.2.2 上述产品的定位、优势和劣势在哪？"></a>3.2.2 上述产品的定位、优势和劣势在哪？</h4><ul>
+<li>GitHub的定位是全球最大的开发者社区和代码托管平台，它的优势是拥有庞大的用户群和丰富的开源项目，支持多种编程语言和协作工具，提供高质量的服务和安全性；它的劣势是在国内访问速度较慢，需要科学上网，而且价格较高，不适合个人或小型团队使用。</li>
+<li>GitLab 的 定位 是 开 源 的 DevOps 平 台 ，它的优势是提供全面的开发和运维生命周期管理功能，支持自主配置和扩展，提高效率 和协作性。</li>
+<li>GitLink是一个新一代的开源创新服务平台，基于Git打造分布式代码托管环境。它的优势是提供了一站式的过程管理、高效的流水线运维、多层次的代码分析和多维度的用户画像。它的劣势是相对较新，知名度和用户量还不够高，而且与其他平台的兼容性和迁移性可能有一定难度。</li>
+</ul>
+<h4 id="3-2-3-上述产品之间呈现什么样的关系，哪些为竞品关系？以及竞争中的各方态势如何？"><a href="#3-2-3-上述产品之间呈现什么样的关系，哪些为竞品关系？以及竞争中的各方态势如何？" class="headerlink" title="3.2.3 上述产品之间呈现什么样的关系，哪些为竞品关系？以及竞争中的各方态势如何？"></a>3.2.3 上述产品之间呈现什么样的关系，哪些为竞品关系？以及竞争中的各方态势如何？</h4><p>GitHub、GitLab和GitLink都是基于web的Git仓库，提供了分享开源项目的平台，为开发团队提供了存储、分享、发布和合作开发项目的中心化云存储的场所</p>
+<ul>
+<li>GitHub是最火的开源项目托管平台，拥有超过900万的开发者用户。它主要面向个人用户和小型团队，提供免费的公共仓库和收费的私有仓库</li>
+<li>GitLab是一个类似于GitHub的平台，但它更适合大型企业和组织，提供了更多的功能和定制选项。它支持自己搭建私有服务器或使用云托管服务</li>
+<li>GitLink（确实开源）是一个新一代的开源创新服务平台，基于Git打造分布式代码托管环境。它的优势是提供了一站式的过程管理、高效的流水线运维、多层次的代码分析和多维度的用户画像。</li>
+</ul>
+<p><a href="https://octoverse.github.com/">GitHub在2022年发布的年度报告</a>，有超过9400万开发者活跃在GitHub上，2022年的开源贡献达到了四亿一千三百万，这表明越来越多的学生以及个人开发者加入其中，越来越多的企业和商业组织愿意为此付费以及对更好的代码仓库管理系统有需求。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305150400101.png" alt="image-20230305150400101"></p>
+<p>根据<a href="https://ir.gitlab.com/news-releases/news-release-details/gitlab-reports-fourth-quarter-and-full-year-fiscal-2022">GitLab公布的财报</a>，可以发现其营收大幅增加，各项经营指标增长势头迅猛，这表示私有化部署的代码仓库管理系统的需求愈发旺盛，这一细分市场仍是快速增长的蓝海。</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305150844144.png" alt="image-20230305150844144"></p>
+<p>根据GitLink官方数据，目前平台已经入驻超过5万开发者，超过1000个组织和超过140万个仓库，并有着国内数十家高校、研究院、企业和社会组织作为合作单位</p>
+<p><img src="/2023-03-03-%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/image-20230305155509004.png" alt="image-20230305155509004"></p>
+<p>目前这三家彼此都有一定的竞争关系，不过目前的生态区位比较明显，对于个人开发者和某些大型企业，其会选择GitHub作为托管平台；对于涉及安全和隐私问题的企业和组织，更倾向于选购GitLab在自己的服务器和网络上进行私有化部署；对于部分国内高校和科研院所，会更倾向于信赖GitLink为代表的全国产高可控的平台。</p>
+<h3 id="3-3-市场与产品生态"><a href="#3-3-市场与产品生态" class="headerlink" title="3.3 市场与产品生态"></a>3.3 市场与产品生态</h3><h4 id="3-3-1-这个产品的核心用户群是什么样的人？典型用户是什么样的？学历，年龄，专业，爱好，收入，表面需求，潜在需求都是什么？"><a href="#3-3-1-这个产品的核心用户群是什么样的人？典型用户是什么样的？学历，年龄，专业，爱好，收入，表面需求，潜在需求都是什么？" class="headerlink" title="3.3.1 这个产品的核心用户群是什么样的人？典型用户是什么样的？学历，年龄，专业，爱好，收入，表面需求，潜在需求都是什么？"></a>3.3.1 这个产品的核心用户群是什么样的人？典型用户是什么样的？学历，年龄，专业，爱好，收入，表面需求，潜在需求都是什么？</h4><ul>
+<li>GitHub的核心用户群是全球的开源软件项目开发者，他们主要使用GitHub来托管代码、交流和学习。GitHub的典型用户可能是具有高等教育背景、年轻或中年、专业为计算机科学或相关领域、爱好编程和创新、收入中等或高等的人。他们的表面需求是一个方便快捷的代码托管平台，他们的潜在需求是一个能够展示自己能力、结识志同道合的人、参与有意义的项目和贡献社区的平台。</li>
+<li>GitLab的核心用户群是大型企业和组织的内部软件项目开发者，他们主要使用GitLab来搭建私有服务器或使用云托管服务，进行代码管理和协作。GitLab的典型用户可能是具有高等教育背景、年轻或中年、专业为计算机科学或相关领域、爱好编程和效率、收入中等或高等的人。他们的表面需求是一个功能强大且可定制的代码仓库软件，他们的潜在需求是一个能够提高工作效率、保障数据安全和质量、促进团队沟通和协作的软件。</li>
+<li>GitLink（确实开源）的核心用户群是对区块链技术感兴趣或信任的软件项目开发者，他们主要使用GitLink来利用智能合约来管理项目、分配任务和奖励贡献者。GitLink（确实开源） 的典型用户可能是具有高等教育背景、年轻或中年、专业为计算机科学或相关领域、爱好编程和创新、收入中等或高等且愿意冒险投资新技术的人。他们的表面需求是一个基于区块链技术的去中心化代码协作平台，他们的潜在需求是一个能够解决传统平台存在信任问题，并且安全可靠的平台。</li>
+</ul>
+<h4 id="3-3-2-产品的用户群体之间是否存在一定的关系？是否有利用其相互作用二次构成特定用户生态的可能性？"><a href="#3-3-2-产品的用户群体之间是否存在一定的关系？是否有利用其相互作用二次构成特定用户生态的可能性？" class="headerlink" title="3.3.2 产品的用户群体之间是否存在一定的关系？是否有利用其相互作用二次构成特定用户生态的可能性？"></a>3.3.2 产品的用户群体之间是否存在一定的关系？是否有<strong>利用其相互作用二次构成特定用户生态</strong>的可能性？</h4><ul>
+<li>GitHub的用户群体主要是全球的开源软件项目开发者，他们可以在GitHub上找到最新最热门的项目和技术，也可以参与到各种社区活动中，与其他开发者交流和学习。</li>
+<li>GitLab的用户群体主要是大型企业和组织的内部软件项目开发者，他们可以在GitLab上搭建私有服务器或使用云托管服务，进行代码管理和协作。GitLab提供了完善的管理界面和权限控制，以及持续集成、持续交付、安全扫描等功能，能够提高工作效率和质量。</li>
+<li>GitLink（确实开源） 的用户群体主要是对区块链技术感兴趣或信任的软件项目开发者，他们可以在GitLink上利用智能合约来管理项目、分配任务和奖励贡献者。GitLink基于区块链技术实现了去中心化代码协作平台，能够解决传统平台存在信任问题，并且能够公平地奖励自己及其他贡献者。</li>
+</ul>
+<p>可以发现，这些平台的用户不是相互独立的，他们的交集是较大的，在一定条件下是可以相互转化的。</p>
+<p>这些平台之间也有一定的相互作用和影响。例如：</p>
+<ul>
+<li>GitHub上的一些开源项目可能会被GitLab或GitLink上的企业或组织采用或修改，并且可能会反馈给原作者或社区。</li>
+<li>GitLab或GitLink上的一些企业或组织可能会将自己的部分代码或产品开源到GitHub上，并且可能会吸引更多的关注或贡献。</li>
+<li>GitHub、GitLab或GitLink上的一些用户可能会同时使用多个平台来满足不同场景下的需求。</li>
+</ul>
+<p>因此，利用这些平台之间的相互作用二次构成特定用户生态是有可能性的。例如：</p>
+<ul>
+<li>可以利用GitHub上丰富多样的开源资源来培养和吸引更多对编程感兴趣并愿意分享知识和经验的人。</li>
+<li>可以利用GitLab上强大灵活的功能来打造一个高效安全并能够持续创新和改进产品质量和服务水平</li>
+<li>可以利用GitLink上创新前沿并具有激励机制</li>
+</ul>
+<h4 id="3-3-3-产品的子产品，以及其他相关产品之间是否存在一定的关系？是否有利用各个产品特性之间的相互关系二次构成产品生态的可能性？"><a href="#3-3-3-产品的子产品，以及其他相关产品之间是否存在一定的关系？是否有利用各个产品特性之间的相互关系二次构成产品生态的可能性？" class="headerlink" title="3.3.3 产品的子产品，以及其他相关产品之间是否存在一定的关系？是否有利用各个产品特性之间的相互关系二次构成产品生态的可能性？"></a>3.3.3 产品的子产品，以及其他相关产品之间是否存在一定的关系？是否有利用各个产品特性之间的相互关系二次构成产品生态的可能性？</h4><p>GitHub、GitLab和GitLink（确实开源）等代码仓库管理系统的子产品，以及其他相关产品之间存在一定的关系，但也有各自的特色和优势。</p>
+<ul>
+<li><p>GitHub的子产品主要有GitHub Pages、GitHub Actions、GitHub Gist等。</p>
+<ul>
+<li>GitHub Pages是一个免费的静态网站托管服务，可以让用户将自己的项目或个人网站部署到GitHub上，并且支持自定义域名和HTTPS加密。</li>
+<li>GitHub Actions是一个持续集成和持续交付服务，可以让用户在GitHub上自动化执行各种工作流程，例如编译、测试、部署等。</li>
+<li>GitHub Gist是一个代码片段分享服务，可以让用户快速地创建和分享代码片段，并且支持多种语言和格式。</li>
+</ul>
+</li>
+<li><p>GitLab的子产品主要有GitLab CI&#x2F;CD、GitLab Runner、GitLab Container Registry等。</p>
+<ul>
+<li>GitLab CI&#x2F;CD是一个持续集成和持续交付服务，可以让用户在GitLab上定义和执行各种工作流程，并且支持多种运行环境和触发方式。</li>
+<li>GitLab Runner是一个用于执行GitLab CI&#x2F;CD工作流程的应用程序，可以在不同的平台和架构上运行，并且支持多种执行器和缓存机制。</li>
+<li>GitLab Container Registry是一个容器镜像仓库服务，可以让用户在GitLab上存储和管理自己的容器镜像，并且支持权限控制和安全扫描。</li>
+</ul>
+</li>
+<li><p>GitLink（确实开源） 的子产品主要有引擎模块、智能合约模块、数据分析模块等。</p>
+<ul>
+<li>引擎模块是一个基于Git的分布式代码托管环境，可以让用户在GitLink上创建和管理自己的项目，并且提供了订阅、讨论、文本渲染、在线编辑等功能。</li>
+<li>引擎模块还集成了建木，一个DevOps领域的小能手，可以为用户提供自动化的代码扫描、编译打包、单元测试等服务。</li>
+<li>智能合约模块是一个基于区块链技术的智能合约开发平台，可以让用户在GitLink上编写和部署自己的智能合约，并且支持多种语言和框架。</li>
+<li>数据分析模块是一个基于大数据技术的数据分析平台，可以让用户在GitLink上对自己的项目进行多层次的代码分析，并且提供了多维度的用户画像。</li>
+</ul>
+</li>
+</ul>
+<p>除了这些子产品之外，GitHub、GitLab和GitLink（确实开源）等代码仓库管理系统还有其他相关产品，例如GitHub Enterprise、GitLab Enterprise Edition、GitLink Enterprise等，这些产品一般针对企业或机构用户提供更高级的功能和服务。</p>
+<p>利用各个产品特性之间的相互关系二次构成产品生态的可能性是存在的，例如GitHub与Microsoft Azure DevOps Services、GitLab与Google Cloud Platform、GitLink与中国计算机学会（CCF）等都有一定程度的合作或联动。</p>
+<h3 id="3-4-产品规划"><a href="#3-4-产品规划" class="headerlink" title="3.4 产品规划"></a>3.4 产品规划</h3><h4 id="3-4-1-你要在当前软件的基础上设计什么样的新功能？为何要做这个功能，而不是其他功能？为什么用户会用你的产品-功能？你的创新在哪里？可以用NABCD分析。"><a href="#3-4-1-你要在当前软件的基础上设计什么样的新功能？为何要做这个功能，而不是其他功能？为什么用户会用你的产品-功能？你的创新在哪里？可以用NABCD分析。" class="headerlink" title="3.4.1 你要在当前软件的基础上设计什么样的新功能？为何要做这个功能，而不是其他功能？为什么用户会用你的产品&#x2F;功能？你的创新在哪里？可以用NABCD分析。"></a>3.4.1 你要在当前软件的基础上设计什么样的新功能？为何要做这个功能，而不是其他功能？为什么用户会用你的产品&#x2F;功能？你的创新在哪里？可以用NABCD分析。</h4><p>我觉得GitLink（确实开源）还可以增加一个基于人工智能的代码生成和优化功能，可以让用户根据自己的需求或描述，自动地生成或优化相应的代码。我会用NABCD分析来说明这个功能的价值和创新。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Need</td>
+<td>用户需要一个基于人工智能的代码生成和优化功能，因为这样可以节省用户的时间和精力，提高用户的效率和质量，解决用户在编程过程中遇到的各种问题和困难。</td>
+</tr>
+<tr>
+<td>Approach</td>
+<td>我的方法是利用深度学习和自然语言处理等技术，构建一个能够理解用户需求或描述，并且能够生成或优化相应代码的人工智能模型。这个模型可以根据不同的语言和框架进行适配和调整，也可以根据不同的项目进行训练和更新。</td>
+</tr>
+<tr>
+<td>Benefit</td>
+<td>好处是可以为用户提供一个方便、快捷、智能、高效、高质量的编程助手，可以帮助用户完成各种复杂或简单的编程任务，例如创建一个网站、开发一个小程序、优化一个算法等。这样可以让用户节省时间和精力，提高效率和质量，增强竞争力和创造力。</td>
+</tr>
+<tr>
+<td>Competition</td>
+<td>竞争对手是其他类似功能或产品，例如CodeGuru、Codota、Kite等。这些功能或产品也提供了一定程度的代码生成或优化服务，但是它们通常只针对特定的语言或框架，并且只能提供一些简单或局部的建议或修改，并不能完全满足用户的需求或描述。</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>将这个功能集成到GitHub、GitLab、GitLink（确实开源）等代码仓库管理系统中，并且提供给所有注册用户免费使用。这样可以让更多的用户体验到这个功能带来的便利和价值，并且也可以收集更多的反馈和数据来改进模型和服务。</td>
+</tr>
+</tbody></table>
+<h4 id="3-4-2-如果你是项目经理，可以招聘6个人，并且有4个月的时间，你认为应该如何配置角色-开发，测试，美工等等-才能在第16周如期发布软件的改进版本，并取得预想中的成绩。"><a href="#3-4-2-如果你是项目经理，可以招聘6个人，并且有4个月的时间，你认为应该如何配置角色-开发，测试，美工等等-才能在第16周如期发布软件的改进版本，并取得预想中的成绩。" class="headerlink" title="3.4.2 如果你是项目经理，可以招聘6个人，并且有4个月的时间，你认为应该如何配置角色(开发，测试，美工等等) 才能在第16周如期发布软件的改进版本，并取得预想中的成绩。"></a>3.4.2 如果你是项目经理，可以招聘<strong>6个人</strong>，并且有4个月的时间，你认为应该如何配置角色(开发，测试，美工等等) 才能在第16周如期发布软件的改进版本，并取得预想中的成绩。</h4><ul>
+<li>一名产品经理，负责需求分析、市场调研、用户反馈、竞品分析等工作，确保产品符合用户和市场的需求和期望。</li>
+<li>一名设计师&#x2F;美工，负责界面设计、交互设计、用户体验设计等工作，确保产品美观、易用、友好。</li>
+<li>两名开发工程师，负责人工智能模型的开发、训练、测试、部署等工作，确保模型能够准确地理解用户需求或描述，并且能够生成或优化相应代码。</li>
+<li>一名测试工程师，负责功能测试、性能测试、兼容性测试等工作，确保产品稳定、可靠、高效。</li>
+<li>一名运维工程师，负责服务器配置、监控、维护等工作，确保产品可用性、安全性。</li>
+</ul>
+<h4 id="3-4-3-请为你的团队设计16个周期每周的详细规划。"><a href="#3-4-3-请为你的团队设计16个周期每周的详细规划。" class="headerlink" title="3.4.3 请为你的团队设计16个周期每周的详细规划。"></a>3.4.3 请为你的团队设计16个周期每周的详细规划。</h4><table>
+<thead>
+<tr>
+<th>周次</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>产品经理进行需求分析、市场调研、用户反馈、竞品分析等工作，确定产品的目标用户、核心功能、价值主张等，并输出产品需求文档。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>设计师&#x2F;美工根据产品需求文档进行界面设计、交互设计、用户体验设计等工作，并输出产品原型图和设计稿。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>开发工程师根据产品原型图和设计稿进行人工智能模型的开发，选择合适的算法、框架、数据集等，并输出模型架构和代码框架。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>开发工程师继续进行人工智能模型的开发，完成模型的训练、测试、优化等，并输出模型参数和评估指标。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>开发工程师继续进行人工智能模型的开发，完成模型的部署、接口定义、文档编写等，并输出模型服务和使用说明。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>测试工程师根据产品需求文档和使用说明进行功能测试，检查模型是否能够正确地理解用户需求或描述，并且能够生成或优化相应代码，并输出测试报告和缺陷列表。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>测试工程师根据产品需求文档和使用说明进行性能测试，检查模型是否能够快速地响应用户请求，并且能够处理大量并发请求，并输出测试报告和缺陷列表。</td>
+</tr>
+<tr>
+<td>8</td>
+<td>测试工程师根据产品需求文档和使用说明进行兼容性测试，检查模型是否能够支持不同的平台、浏览器、设备等，并输出测试报告和缺陷列表。</td>
+</tr>
+<tr>
+<td>9</td>
+<td>开发工程师根据缺陷列表进行问题修复，确保所有的功能正常运行，并且没有明显的性能或兼容性问题，并输出修复报告和最终版本代码。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>运维工程师根据最终版本代码进行服务器配置，选择合适的硬件资源、网络环境、安全策略等，并输出服务器配置方案和部署指南。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>运维工程师根据部署指南进行服务器部署，将最终版本代码上传到服务器上，并启动服务并验证可用性，并输出部署报告和运行日志。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>运维工程师根据运行日志进行服务器监控，实时观察服务状态、资源占用率、异常事件等，并输出监控报告和预警机制。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>运维工程师根据监控报告和预警机制进行服务器维护，及时处理任何可能影响服务可用性或安全性的问题，并输出维护报告和改进建议。</td>
+</tr>
+<tr>
+<td>14</td>
+<td>产品经理组织内部评审会议，邀请团队成员以及其他相关人员参与评估产品质量与满意度，并收集反馈意见与建议并输出评审报告与改进计划。</td>
+</tr>
+<tr>
+<td>15</td>
+<td>产品经理组织外部试用活动，邀请目标用户以及其他潜在用户参与体验产品功能与效果，并收集反馈意见与建议并输出试用报告与改</td>
+</tr>
+<tr>
+<td>16</td>
+<td>产品经理根据评审报告、试用报告和改进计划进行产品优化，协调团队成员对产品进行必要的调整和完善，并输出最终版本产品和发布方案。</td>
+</tr>
+</tbody></table>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2023/03/11/C-Programming-Notes/" data-toggle="tooltip" data-placement="top" title="C++ Programming Notes">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2023/02/25/「BUAA-SE-Individual-Work1」阅读和提问/" data-toggle="tooltip" data-placement="top" title="「BUAA SE Individual Work1」阅读和提问">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Fri Mar 03 2023 16:48:09 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-SE-Individual-Work2%E3%80%8D%E8%BD%AF%E4%BB%B6%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA SE Individual Work2」软件案例分析：代码仓库管理系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%89%E9%A2%98"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">选题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%89%E9%A2%98%E7%90%86%E7%94%B1"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">选题理由</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E8%B0%83%E7%A0%94%E4%B8%8E%E8%AF%84%E6%B5%8B"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 调研与评测</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-%E8%BD%AF%E4%BB%B6%E8%AF%84%E6%B5%8B"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.1 软件评测</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-1-GitHub"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">1.1.1 GitHub</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">1.2.1.1.1.</span> <span class="toc-nav-text">1.1.1.1 基本使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-2-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="toc-nav-number">1.2.1.1.2.</span> <span class="toc-nav-text">1.1.1.2 软件使用体验</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-3-%E4%BA%A7%E5%93%81%E6%94%B9%E8%BF%9B%E6%84%8F%E8%A7%81"><span class="toc-nav-number">1.2.1.1.3.</span> <span class="toc-nav-text">1.1.1.3 产品改进意见</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-4-%E8%BD%AF%E4%BB%B6%E8%AF%84%E5%88%86"><span class="toc-nav-number">1.2.1.1.4.</span> <span class="toc-nav-text">1.1.1.4 软件评分</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-1-5-%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">1.2.1.1.5.</span> <span class="toc-nav-text">1.1.1.5 结论</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-2-gitlab%EF%BC%88%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">1.1.2 gitlab（私有化部署）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-2-1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">1.2.1.2.1.</span> <span class="toc-nav-text">1.1.2.1 基本使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-2-2-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="toc-nav-number">1.2.1.2.2.</span> <span class="toc-nav-text">1.1.2.2 软件使用体验</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-2-3-%E4%BA%A7%E5%93%81%E6%94%B9%E8%BF%9B%E6%84%8F%E8%A7%81"><span class="toc-nav-number">1.2.1.2.3.</span> <span class="toc-nav-text">1.1.2.3 产品改进意见</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-2-4-%E8%BD%AF%E4%BB%B6%E8%AF%84%E5%88%86"><span class="toc-nav-number">1.2.1.2.4.</span> <span class="toc-nav-text">1.1.2.4 软件评分</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-2-5-%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">1.2.1.2.5.</span> <span class="toc-nav-text">1.1.2.5 结论</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-3-gitlink"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">1.1.3 gitlink</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-3-1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">1.2.1.3.1.</span> <span class="toc-nav-text">1.1.3.1 基本使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-3-2-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C"><span class="toc-nav-number">1.2.1.3.2.</span> <span class="toc-nav-text">1.1.3.2 软件使用体验</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-3-3-%E4%BA%A7%E5%93%81%E6%94%B9%E8%BF%9B%E6%84%8F%E8%A7%81"><span class="toc-nav-number">1.2.1.3.3.</span> <span class="toc-nav-text">1.1.3.3 产品改进意见</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-3-4-%E8%BD%AF%E4%BB%B6%E8%AF%84%E5%88%86"><span class="toc-nav-number">1.2.1.3.4.</span> <span class="toc-nav-text">1.1.3.4 软件评分</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-3-5-%E7%BB%93%E8%AE%BA"><span class="toc-nav-number">1.2.1.3.5.</span> <span class="toc-nav-text">1.1.3.5 结论</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-1-4-%E7%94%A8%E6%88%B7%E8%B0%83%E7%A0%94%E4%B8%8E%E9%87%87%E8%AE%BF"><span class="toc-nav-number">1.2.1.4.</span> <span class="toc-nav-text">1.1.4 用户调研与采访</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-4-1-%E9%87%87%E8%AE%BF%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-nav-number">1.2.1.4.1.</span> <span class="toc-nav-text">1.1.4.1 采访对象的背景</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-4-2-%E5%AF%B9%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-nav-number">1.2.1.4.2.</span> <span class="toc-nav-text">1.1.4.2 对代码仓库管理系统的需求</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-4-3-%E5%90%84%E4%B8%AA%E7%B3%BB%E7%BB%9F%E5%AF%B9%E4%BA%8E%E9%9C%80%E6%B1%82%E7%9A%84%E6%BB%A1%E8%B6%B3%E7%A8%8B%E5%BA%A6%EF%BC%9B%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E6%A8%AA%E5%90%91%E6%AF%94%E8%BE%83%E7%9A%84%E4%BC%98%E5%8A%A3%EF%BC%9B%E9%80%A0%E6%88%90%E4%BD%93%E9%AA%8C%E4%B8%8D%E4%BD%B3%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-nav-number">1.2.1.4.3.</span> <span class="toc-nav-text">1.1.4.3 各个系统对于需求的满足程度；系统之间横向比较的优劣；造成体验不佳的原因</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-4-4-%E5%90%84%E4%B8%AA%E7%B3%BB%E7%BB%9F%E6%B5%8F%E8%A7%88%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BA%A7%E5%93%81%E6%A0%8F%E7%9B%AE%E4%B8%8E%E5%8A%9F%E8%83%BD%EF%BC%9B%E7%B3%BB%E7%BB%9F%E4%B9%8B%E9%97%B4%E6%A8%AA%E5%90%91%E6%AF%94%E8%BE%83%E7%9A%84%E4%BA%AE%E7%82%B9%E5%92%8C%E5%9B%B0%E9%9A%BE%EF%BC%9B%E5%88%9D%E6%AC%A1%E4%B8%8A%E6%89%8B%E8%BD%AF%E4%BB%B6%E7%9A%84%E9%9A%BE%E5%BA%A6%EF%BC%9B%E5%AF%B9%E4%BA%8E%E9%9D%9Ecs%E4%B8%93%E4%B8%9A-cs%E4%B8%93%E4%B8%9A%E4%BD%8E%E5%B9%B4%E7%BA%A7%E7%9A%84%E5%90%8C%E5%AD%A6%EF%BC%8C%E4%B8%8A%E6%89%8B%E9%9A%BE%E5%BA%A6%E5%A6%82%E4%BD%95%EF%BC%9B%E5%AF%B9%E4%BA%8E%E8%BF%99%E4%BA%9B%E9%9A%BE%E7%82%B9%EF%BC%8C%E4%BC%9A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%8C%E4%B8%80%E8%88%AC%E4%BA%BA%E4%BC%9A%E6%9C%89%E6%90%9C%E7%B4%A2%E5%92%8C%E8%A7%A3%E5%86%B3%E8%BF%99%E4%BA%9B%E9%97%AE%E9%A2%98%E7%9A%84%E8%83%BD%E5%8A%9B%E5%90%97"><span class="toc-nav-number">1.2.1.4.4.</span> <span class="toc-nav-text">1.1.4.4 各个系统浏览和使用的产品栏目与功能；系统之间横向比较的亮点和困难；初次上手软件的难度；对于非cs专业&#x2F;cs专业低年级的同学，上手难度如何；对于这些难点，会如何解决，一般人会有搜索和解决这些问题的能力吗</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-1-4-5-%E4%BB%8E%E7%94%A8%E6%88%B7%E8%A7%92%E5%BA%A6%E5%B8%8C%E6%9C%9B%E8%BF%99%E4%BA%9B%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B%EF%BC%9B%E5%AF%B9%E4%BA%8E%E8%BF%99%E4%BA%9B%E8%BD%AF%E4%BB%B6%E7%BB%99%E5%87%BA%E8%AF%84%E4%BB%B7"><span class="toc-nav-number">1.2.1.4.5.</span> <span class="toc-nav-text">1.1.4.5 从用户角度希望这些系统如何改进；对于这些软件给出评价</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-Bug%E5%88%86%E6%9E%90%E5%92%8C%E6%8F%90%E4%BA%A4"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">1.2 Bug分析和提交</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-1-Bug1%EF%BC%9AGitLink%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E9%A1%B5%E7%A0%81%E5%A4%A7%E4%BA%8E9%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E8%B7%B3%E8%BD%AC%E5%92%8C%E8%AE%BF%E9%97%AE"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">1.2.1 Bug1：GitLink开源项目页码大于9之后无法跳转和访问</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.2.2.1.1.</span> <span class="toc-nav-text">1.2.1.1 测试环境</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-2-%E5%8F%AF%E5%A4%8D%E7%8E%B0%E6%80%A7%E5%8F%8A%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.2.2.1.2.</span> <span class="toc-nav-text">1.2.1.2 可复现性及复现步骤</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-3-Bug%E5%85%B7%E4%BD%93%E6%83%85%E5%86%B5%E6%8F%8F%E8%BF%B0%E5%92%8C%E4%B8%A5%E9%87%8D%E6%80%A7"><span class="toc-nav-number">1.2.2.1.3.</span> <span class="toc-nav-text">1.2.1.3 Bug具体情况描述和严重性</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-4-Bug%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.1.4.</span> <span class="toc-nav-text">1.2.1.4 Bug分析</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-5-Bug%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.2.2.1.5.</span> <span class="toc-nav-text">1.2.1.5 Bug改进建议</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-1-6-Bug%E5%8F%8D%E9%A6%88"><span class="toc-nav-number">1.2.2.1.6.</span> <span class="toc-nav-text">1.2.1.6 Bug反馈</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-2-Bug2%EF%BC%9AGitLink%E4%B8%AA%E4%BA%BA%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%8C%89%E9%A2%84%E6%9C%9F%E8%B7%B3%E8%BD%AC"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">1.2.2 Bug2：GitLink个人展示页面不按预期跳转</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.2.2.2.1.</span> <span class="toc-nav-text">1.2.2.1 测试环境</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-2-%E5%8F%AF%E5%A4%8D%E7%8E%B0%E6%80%A7%E5%8F%8A%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.2.2.2.2.</span> <span class="toc-nav-text">1.2.2.2 可复现性及复现步骤</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-3-Bug%E5%85%B7%E4%BD%93%E6%83%85%E5%86%B5%E6%8F%8F%E8%BF%B0%E5%92%8C%E4%B8%A5%E9%87%8D%E6%80%A7"><span class="toc-nav-number">1.2.2.2.3.</span> <span class="toc-nav-text">1.2.2.3 Bug具体情况描述和严重性</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-4-Bug%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.2.4.</span> <span class="toc-nav-text">1.2.2.4 Bug分析</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-5-Bug%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.2.2.2.5.</span> <span class="toc-nav-text">1.2.2.5 Bug改进建议</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-2-6-Bug%E5%8F%8D%E9%A6%88"><span class="toc-nav-number">1.2.2.2.6.</span> <span class="toc-nav-text">1.2.2.6 Bug反馈</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-2-3-Bug3%EF%BC%9AGitLink%E8%AE%BA%E5%9D%9B%E4%BA%A4%E6%B5%81%E6%A0%8F%E7%9B%AE%E7%82%B9%E5%87%BB%E7%82%B9%E8%B5%9E%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8C%89%E9%92%AE%E6%B2%A1%E6%9C%89%E5%8F%8D%E5%BA%94"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">1.2.3 Bug3：GitLink论坛交流栏目点击点赞和评论按钮没有反应</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.2.2.3.1.</span> <span class="toc-nav-text">1.2.3.1 测试环境</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-2-%E5%8F%AF%E5%A4%8D%E7%8E%B0%E6%80%A7%E5%8F%8A%E5%A4%8D%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.2.2.3.2.</span> <span class="toc-nav-text">1.2.3.2 可复现性及复现步骤</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-3-Bug%E5%85%B7%E4%BD%93%E6%83%85%E5%86%B5%E6%8F%8F%E8%BF%B0%E5%92%8C%E4%B8%A5%E9%87%8D%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.3.3.</span> <span class="toc-nav-text">1.2.3.3 Bug具体情况描述和严重性分析</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-4-Bug%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.3.4.</span> <span class="toc-nav-text">1.2.3.4 Bug分析</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-5-Bug%E6%94%B9%E8%BF%9B%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.2.2.3.5.</span> <span class="toc-nav-text">1.2.3.5 Bug改进建议</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-2-3-6-Bug%E5%8F%8D%E9%A6%88"><span class="toc-nav-number">1.2.2.3.6.</span> <span class="toc-nav-text">1.2.3.6 Bug反馈</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-%E5%B7%A5%E4%BD%9C%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">2.1 工作量分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-1-1-GitHub"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">2.1.1 GitHub</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-1-2-GitLab%EF%BC%88%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">2.1.2 GitLab（私有化部署）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-1-3-GitLink"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">2.1.3 GitLink</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2.2 软件质量分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-2-1-GitHub"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">2.2.1 GitHub</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-1-1-%E5%88%86%E6%9E%90%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%89%8D%E7%9A%84%E4%BC%98%E5%8A%A3-%E5%92%8C%E7%B1%BB%E4%BC%BC%E8%BD%AF%E4%BB%B6%E7%9B%B8%E6%AF%94-%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E8%B4%A8%E9%87%8F%E5%9C%A8%E5%90%8C%E7%B1%BB%E4%BA%A7%E5%93%81%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%90%8D%E5%88%97%E7%AC%AC%E5%87%A0%EF%BC%9F"><span class="toc-nav-number">1.3.2.1.1.</span> <span class="toc-nav-text">2.2.1.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-1-2-%E4%BB%8E%E5%90%84%E6%96%B9%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8E%A8%E7%90%86%E5%87%BA%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%9B%A2%E9%98%9F%E5%9C%A8%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%96%B9%E9%9D%A2%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E7%9A%84%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E9%9D%A2-%E5%85%B7%E4%BD%93%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.3.2.1.2.</span> <span class="toc-nav-text">2.2.1.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-2-2-GitLab%EF%BC%88%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%EF%BC%89"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">2.2.2 GitLab（私有化部署）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-2-1-%E5%88%86%E6%9E%90%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%89%8D%E7%9A%84%E4%BC%98%E5%8A%A3-%E5%92%8C%E7%B1%BB%E4%BC%BC%E8%BD%AF%E4%BB%B6%E7%9B%B8%E6%AF%94-%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E8%B4%A8%E9%87%8F%E5%9C%A8%E5%90%8C%E7%B1%BB%E4%BA%A7%E5%93%81%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%90%8D%E5%88%97%E7%AC%AC%E5%87%A0%EF%BC%9F"><span class="toc-nav-number">1.3.2.2.1.</span> <span class="toc-nav-text">2.2.2.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-2-2-%E4%BB%8E%E5%90%84%E6%96%B9%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8E%A8%E7%90%86%E5%87%BA%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%9B%A2%E9%98%9F%E5%9C%A8%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%96%B9%E9%9D%A2%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E7%9A%84%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E9%9D%A2-%E5%85%B7%E4%BD%93%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.3.2.2.2.</span> <span class="toc-nav-text">2.2.2.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-2-3-GitLink"><span class="toc-nav-number">1.3.2.3.</span> <span class="toc-nav-text">2.2.3 GitLink</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-3-1-%E5%88%86%E6%9E%90%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E7%9B%AE%E5%89%8D%E7%9A%84%E4%BC%98%E5%8A%A3-%E5%92%8C%E7%B1%BB%E4%BC%BC%E8%BD%AF%E4%BB%B6%E7%9B%B8%E6%AF%94-%EF%BC%8C%E8%BF%99%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E8%B4%A8%E9%87%8F%E5%9C%A8%E5%90%8C%E7%B1%BB%E4%BA%A7%E5%93%81%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%90%8D%E5%88%97%E7%AC%AC%E5%87%A0%EF%BC%9F"><span class="toc-nav-number">1.3.2.3.1.</span> <span class="toc-nav-text">2.2.3.1 分析这个软件目前的优劣(和类似软件相比)，这个产品的质量在同类产品中估计名列第几？</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-2-3-2-%E4%BB%8E%E5%90%84%E6%96%B9%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8E%A8%E7%90%86%E5%87%BA%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%9B%A2%E9%98%9F%E5%9C%A8%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E6%96%B9%E9%9D%A2%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E7%9A%84%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%B9%E9%9D%A2-%E5%85%B7%E4%BD%93%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.3.2.3.2.</span> <span class="toc-nav-text">2.2.3.2 从各方面的问题，推理出这个软件团队在软件工程方面可以提高的一个重要方面(具体建议)</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%BB%BA%E8%AE%AE%E5%92%8C%E8%A7%84%E5%88%92"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 建议和规划</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-%E5%B8%82%E5%9C%BA%E6%A6%82%E5%86%B5"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">3.1 市场概况</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-1-%E5%B8%82%E5%9C%BA%E6%9C%89%E5%A4%9A%E5%A4%A7%EF%BC%9F"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">3.1.1 市场有多大？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-2-%E7%9B%B4%E6%8E%A5%E7%9A%84%E7%94%A8%E6%88%B7%E6%9C%89%E5%A4%9A%E5%B0%91%EF%BC%8C%E6%BD%9C%E5%9C%A8%E7%9A%84%E7%94%A8%E6%88%B7%E5%8F%88%E6%9C%89%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="toc-nav-number">1.4.1.2.</span> <span class="toc-nav-text">3.1.2 直接的用户有多少，潜在的用户又有多少？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-%E5%B8%82%E5%9C%BA%E7%8E%B0%E7%8A%B6"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">3.2 市场现状</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-1-%E7%9B%AE%E5%89%8D%E5%B8%82%E5%9C%BA%E4%B8%8A%E6%9C%89%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%A7%E5%93%81%E4%BA%86%EF%BC%9F"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">3.2.1 目前市场上有什么样的产品了？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-2-%E4%B8%8A%E8%BF%B0%E4%BA%A7%E5%93%81%E7%9A%84%E5%AE%9A%E4%BD%8D%E3%80%81%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF%E5%9C%A8%E5%93%AA%EF%BC%9F"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">3.2.2 上述产品的定位、优势和劣势在哪？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-3-%E4%B8%8A%E8%BF%B0%E4%BA%A7%E5%93%81%E4%B9%8B%E9%97%B4%E5%91%88%E7%8E%B0%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%B8%BA%E7%AB%9E%E5%93%81%E5%85%B3%E7%B3%BB%EF%BC%9F%E4%BB%A5%E5%8F%8A%E7%AB%9E%E4%BA%89%E4%B8%AD%E7%9A%84%E5%90%84%E6%96%B9%E6%80%81%E5%8A%BF%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="toc-nav-number">1.4.2.3.</span> <span class="toc-nav-text">3.2.3 上述产品之间呈现什么样的关系，哪些为竞品关系？以及竞争中的各方态势如何？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-%E5%B8%82%E5%9C%BA%E4%B8%8E%E4%BA%A7%E5%93%81%E7%94%9F%E6%80%81"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">3.3 市场与产品生态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-1-%E8%BF%99%E4%B8%AA%E4%BA%A7%E5%93%81%E7%9A%84%E6%A0%B8%E5%BF%83%E7%94%A8%E6%88%B7%E7%BE%A4%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA%EF%BC%9F%E5%85%B8%E5%9E%8B%E7%94%A8%E6%88%B7%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%E5%AD%A6%E5%8E%86%EF%BC%8C%E5%B9%B4%E9%BE%84%EF%BC%8C%E4%B8%93%E4%B8%9A%EF%BC%8C%E7%88%B1%E5%A5%BD%EF%BC%8C%E6%94%B6%E5%85%A5%EF%BC%8C%E8%A1%A8%E9%9D%A2%E9%9C%80%E6%B1%82%EF%BC%8C%E6%BD%9C%E5%9C%A8%E9%9C%80%E6%B1%82%E9%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">3.3.1 这个产品的核心用户群是什么样的人？典型用户是什么样的？学历，年龄，专业，爱好，收入，表面需求，潜在需求都是什么？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-2-%E4%BA%A7%E5%93%81%E7%9A%84%E7%94%A8%E6%88%B7%E7%BE%A4%E4%BD%93%E4%B9%8B%E9%97%B4%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E4%B8%80%E5%AE%9A%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F%E6%98%AF%E5%90%A6%E6%9C%89%E5%88%A9%E7%94%A8%E5%85%B6%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E4%BA%8C%E6%AC%A1%E6%9E%84%E6%88%90%E7%89%B9%E5%AE%9A%E7%94%A8%E6%88%B7%E7%94%9F%E6%80%81%E7%9A%84%E5%8F%AF%E8%83%BD%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">3.3.2 产品的用户群体之间是否存在一定的关系？是否有利用其相互作用二次构成特定用户生态的可能性？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-3-%E4%BA%A7%E5%93%81%E7%9A%84%E5%AD%90%E4%BA%A7%E5%93%81%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E4%BA%A7%E5%93%81%E4%B9%8B%E9%97%B4%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E4%B8%80%E5%AE%9A%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F%E6%98%AF%E5%90%A6%E6%9C%89%E5%88%A9%E7%94%A8%E5%90%84%E4%B8%AA%E4%BA%A7%E5%93%81%E7%89%B9%E6%80%A7%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BA%92%E5%85%B3%E7%B3%BB%E4%BA%8C%E6%AC%A1%E6%9E%84%E6%88%90%E4%BA%A7%E5%93%81%E7%94%9F%E6%80%81%E7%9A%84%E5%8F%AF%E8%83%BD%E6%80%A7%EF%BC%9F"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">3.3.3 产品的子产品，以及其他相关产品之间是否存在一定的关系？是否有利用各个产品特性之间的相互关系二次构成产品生态的可能性？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-4-%E4%BA%A7%E5%93%81%E8%A7%84%E5%88%92"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">3.4 产品规划</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-1-%E4%BD%A0%E8%A6%81%E5%9C%A8%E5%BD%93%E5%89%8D%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%E8%AE%BE%E8%AE%A1%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD%EF%BC%9F%E4%B8%BA%E4%BD%95%E8%A6%81%E5%81%9A%E8%BF%99%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E6%88%B7%E4%BC%9A%E7%94%A8%E4%BD%A0%E7%9A%84%E4%BA%A7%E5%93%81-%E5%8A%9F%E8%83%BD%EF%BC%9F%E4%BD%A0%E7%9A%84%E5%88%9B%E6%96%B0%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F%E5%8F%AF%E4%BB%A5%E7%94%A8NABCD%E5%88%86%E6%9E%90%E3%80%82"><span class="toc-nav-number">1.4.4.1.</span> <span class="toc-nav-text">3.4.1 你要在当前软件的基础上设计什么样的新功能？为何要做这个功能，而不是其他功能？为什么用户会用你的产品&#x2F;功能？你的创新在哪里？可以用NABCD分析。</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-2-%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AF%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%8B%9B%E8%81%986%E4%B8%AA%E4%BA%BA%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%9C%894%E4%B8%AA%E6%9C%88%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%8C%E4%BD%A0%E8%AE%A4%E4%B8%BA%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%E8%A7%92%E8%89%B2-%E5%BC%80%E5%8F%91%EF%BC%8C%E6%B5%8B%E8%AF%95%EF%BC%8C%E7%BE%8E%E5%B7%A5%E7%AD%89%E7%AD%89-%E6%89%8D%E8%83%BD%E5%9C%A8%E7%AC%AC16%E5%91%A8%E5%A6%82%E6%9C%9F%E5%8F%91%E5%B8%83%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%94%B9%E8%BF%9B%E7%89%88%E6%9C%AC%EF%BC%8C%E5%B9%B6%E5%8F%96%E5%BE%97%E9%A2%84%E6%83%B3%E4%B8%AD%E7%9A%84%E6%88%90%E7%BB%A9%E3%80%82"><span class="toc-nav-number">1.4.4.2.</span> <span class="toc-nav-text">3.4.2 如果你是项目经理，可以招聘6个人，并且有4个月的时间，你认为应该如何配置角色(开发，测试，美工等等) 才能在第16周如期发布软件的改进版本，并取得预想中的成绩。</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-3-%E8%AF%B7%E4%B8%BA%E4%BD%A0%E7%9A%84%E5%9B%A2%E9%98%9F%E8%AE%BE%E8%AE%A116%E4%B8%AA%E5%91%A8%E6%9C%9F%E6%AF%8F%E5%91%A8%E7%9A%84%E8%AF%A6%E7%BB%86%E8%A7%84%E5%88%92%E3%80%82"><span class="toc-nav-number">1.4.4.3.</span> <span class="toc-nav-text">3.4.3 请为你的团队设计16个周期每周的详细规划。</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-SE" title="BUAA-SE">BUAA-SE</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OO Unit 2」 多线程分享 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/04/16/「BUAA-OO-Unit-2」-多线程分享/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                            
+                        </div>
+                        <h1>「BUAA OO Unit 2」 多线程分享</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-04-16
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.6k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OO-Unit-2」-多线程分享"><a href="#「BUAA-OO-Unit-2」-多线程分享" class="headerlink" title="「BUAA OO Unit 2」 多线程分享"></a>「BUAA OO Unit 2」 多线程分享</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>第六周研讨课，笔者依旧准备了讲稿和分享，但是没有选上，在这里和大家分享。</p>
+<h2 id="Part-1-如何在Java中进行多线程编程"><a href="#Part-1-如何在Java中进行多线程编程" class="headerlink" title="Part 1 如何在Java中进行多线程编程"></a>Part 1 如何在Java中进行多线程编程</h2><h3 id="三种使用线程的方法"><a href="#三种使用线程的方法" class="headerlink" title="三种使用线程的方法"></a>三种使用线程的方法</h3><h4 id="继承Thread"><a href="#继承Thread" class="headerlink" title="继承Thread"></a>继承Thread</h4><p>需要继承<code>Thread</code>类，并重写<code>run</code>方法，调用<code>start()</code>启动线程。</p>
+<h4 id="实现Runnable"><a href="#实现Runnable" class="headerlink" title="实现Runnable"></a>实现Runnable</h4><p>需要实现<code>run</code>方法，通过<code>Thread</code>调用<code>start()</code>启动线程。在这里我们更推荐使用实现<code>Runnable</code>而非继承<code>Thread</code>，因为这样可以让我们的类继承其他类，而Java单继承的特性意味着继承了<code>Thread</code>则不能继承其他类。</p>
+<h4 id="实现Callable"><a href="#实现Callable" class="headerlink" title="实现Callable"></a>实现Callable</h4><p>这个方法在本课程中没有多介绍，此处暂不展开。</p>
+<h3 id="对象头、锁和同步"><a href="#对象头、锁和同步" class="headerlink" title="对象头、锁和同步"></a>对象头、锁和同步</h3><h4 id="对象实例结构"><a href="#对象实例结构" class="headerlink" title="对象实例结构"></a>对象实例结构</h4><img src="/2022/04/16/%E3%80%8CBUAA-OO-Unit-2%E3%80%8D-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%86%E4%BA%AB/image-20220329220220915.png" class="" title="p2">
+
+
+
+<p>Java的实例对象储存在Heap中，其结构如上图示。</p>
+<h4 id="锁和同步"><a href="#锁和同步" class="headerlink" title="锁和同步"></a>锁和同步</h4><p>如上图示，对象头部分储存的信息包含<strong>最近持有该对象锁的线程ID</strong>。我们分为两个角度介绍锁，以下首先从代码形式介绍。</p>
+<p>我们使用的<code>synchronized</code>包含三种情况，分别是：</p>
+<ol>
+<li><p>修饰实例方法： 作用于当前对象实例加锁，进入同步代码前要获得<strong>当前对象实例的锁</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修饰静态方法：给当前类加锁，会作用于类的所有对象实例，进入同步代码前要获得<strong>当前 class 的锁</strong>。</p>
+<p>class信息存储在method area中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> <span class="keyword">void</span> staic <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修饰代码块：指定加锁对象，对给定对象&#x2F;类加锁。<code>synchronized(this|object)</code> 表示进入同步代码库前要获得<strong>给定对象的锁</strong>。<code>synchronized(类.class)</code> 表示进入同步代码前要获得 <strong>当前 class 的锁</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="built_in">this</span>) &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>上面的第一种介绍中主要侧重了从代码模板上的三种形式，对于谁获得了锁，获得了谁的锁可能表述的不是非常清晰，以下从<strong>对象锁</strong>和<strong>类锁</strong>进行第二个角度的归类。</p>
+<h4 id="对象锁"><a href="#对象锁" class="headerlink" title="对象锁"></a>对象锁</h4><p>包括方法锁(默认锁对象为this,当前实例对象)和同步代码块锁(自己指定锁对象)。</p>
+<h5 id="方法锁形式"><a href="#方法锁形式" class="headerlink" title="方法锁形式"></a>方法锁形式</h5><p><code>synchronized</code>修饰普通实例方法，锁对象默认为this</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="代码块形式"><a href="#代码块形式" class="headerlink" title="代码块形式"></a>代码块形式</h5><p>手动指定锁定对象，可以是<code>this</code>，也可以是其他对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (obj) &#123; <span class="comment">// obj可以为this或其他对象</span></span><br><span class="line">    <span class="comment">// CODE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="类锁"><a href="#类锁" class="headerlink" title="类锁"></a>类锁</h4><p>指<code>synchronized</code>修饰静态的方法或指定锁对象为<code>Class</code>对象。这种情况下，所有对象共用一把锁。</p>
+<h5 id="静态方法形式"><a href="#静态方法形式" class="headerlink" title="静态方法形式"></a>静态方法形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="代码块形式-1"><a href="#代码块形式-1" class="headerlink" title="代码块形式"></a>代码块形式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (classA.class) &#123;</span><br><span class="line">    <span class="comment">// TODO </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="调试可用技巧"><a href="#调试可用技巧" class="headerlink" title="调试可用技巧"></a>调试可用技巧</h3><ol>
+<li>jprofiler</li>
+<li><code>setName()</code>设置线程名</li>
+<li>IDEA debug ： <a href="https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&seid=11484063781420021590&spm_id_from=333.337.0.0">https://www.bilibili.com/video/BV1Hf4y1t77J?from=search&amp;seid=11484063781420021590&amp;spm_id_from=333.337.0.0</a></li>
+</ol>
+<h2 id="Part-2-如何合理使用同步锁"><a href="#Part-2-如何合理使用同步锁" class="headerlink" title="Part 2 如何合理使用同步锁"></a>Part 2 如何合理使用同步锁</h2><p>在我们的代码中，主要使用<code>synchronized</code>进行同步，其代码结构在上一个部分已经介绍过，以下介绍如何合理使用。</p>
+<p>以生产者-消费者模型为例，我们的共享数据是<strong>托盘</strong>，其中生产者向其中put，消费者从其中get，这两个操作是互斥的，分别加锁表示只有put&#x2F;get结束，这个对象才可以被继续访问。更一般化来讲，对于共享资源的读写，我们使其互斥，保证了数据的唯一性和安全性。</p>
+<p>再以官方输出包为例，官方输出包类似打印机，我们希望同一时刻只有一台打印机在进行一个打印操作，因此，我们将官方输出包的打印操作封装为同步方法，保证了其安全，避免了时间戳错位的可能。</p>
+<p>与同步一起的重要操作还有<code>wait</code>、<code>sleep</code>和<code>notifyAll()</code>（<code>notify()</code>）。以生产者-消费者模型举例，当我们的消费者需要托盘中的产品时，如果没有，那么需要其进入<code>wait</code>或<code>sleep</code>进行等待，而非时刻占用CPU资源进行轮询。这时，如果我们的托盘中来了新商品，则需要其对消费者<code>notifyAll()</code>唤醒。更一般化来讲，我们将<strong>信使</strong>操作交给共享对象负责，由共享对象根据自己<strong>状态的变化</strong>来唤醒相关线程，节约了CPU资源。</p>
+<p>多线程的本意是想尽可能地提高效率，而加锁是一种降低效率确保安全的行为，因此，我们希望尽可能的划分清楚共享对象&#x2F;类和其中需要加锁的资源，尽可能减少加锁对线程效率的伤害，即，对于不涉及共享资源的操作，我们不设置其为同步的，以提高效率。</p>
+<h2 id="Part-3-在多线程进行架构设计及其具体在第一次作业中的体现"><a href="#Part-3-在多线程进行架构设计及其具体在第一次作业中的体现" class="headerlink" title="Part 3 在多线程进行架构设计及其具体在第一次作业中的体现"></a>Part 3 在多线程进行架构设计及其具体在第一次作业中的体现</h2><p>多线程问题丰富多样，我们以生产者-消费者模型为例窥得多线程下架构设计的一角。</p>
+<p>以第一次作业为例，我们的生产者为输入线程<code>InputThread</code>，托盘（共享对象）为候乘表<code>WaitTable</code>，消费者为电梯<code>Elevator</code>。为了简化描述，我们在这里略去了调度器。</p>
+<p><code>InputThread</code>获得标准输入，调用<code>WaitTable</code>的<code>put</code>方法置入新的passenger；当输入为空时，调用<code>WaitTable</code>的<code>setEnd</code>方法作为标志信号，提示输入结束，条件允许时可以结束。值得注意的是，我们在这里并没有涉及电梯如何操作，输入线程作为生产者不关心消费者的行为。</p>
+<p><code>Elevator</code>自行运行，执行开关门和上下行的操作。在电梯停放在某层时，根据自身是否为空检索本层或所有楼层的<code>WaitTable</code>中的passenger，对于满足条件的passenger，调用<code>WaitTable</code>的<code>get</code>方法，将其从<code>WaitTable</code>转移到电梯内。这里的接客策略由电梯或额外的调度器提供支持，需要<code>WaitTable</code>提供的只有<code>get</code>的服务。当<code>WaitTable</code>为空且没有结束时，电梯挂起，等待<code>WaitTable</code>中获取新passenger时唤醒。当<code>WaitTablel</code>为空且输入结束，电梯内部送客结束，结束线程。</p>
+<p><code>WaitTable</code>作为共享对象，对外提供<code>get</code>和<code>put</code>方法，并且根据设计的完善和一致性，在这样的同步方法内都提供<code>notifyAll</code>，唤醒相关线程。作为信使，其还提供<code>setEnd()</code>和<code>isEnd()</code>方法，让输入结束的讯号通过这个共享对象传递。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/04/17/「BUAA-OO-Unit-2」-第二次电梯的架构设计与调度策略分享/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2」 第二次电梯的架构设计与调度策略分享">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/04/15/「BUAA-OO-Unit-1」-第一单元测试与数据构造/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 1」 第一单元测试与数据构造">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Sat Apr 16 2022 08:50:01 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-OO-Unit-2%E3%80%8D-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%88%86%E4%BA%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OO Unit 2」 多线程分享</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%A6%82%E4%BD%95%E5%9C%A8Java%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 如何在Java中进行多线程编程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">三种使用线程的方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BB%A7%E6%89%BFThread"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">继承Thread</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9E%E7%8E%B0Runnable"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">实现Runnable</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9E%E7%8E%B0Callable"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">实现Callable</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%A4%B4%E3%80%81%E9%94%81%E5%92%8C%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">对象头、锁和同步</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">对象实例结构</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%94%81%E5%92%8C%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">锁和同步</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E9%94%81"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">对象锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E9%94%81%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.2.2.3.1.</span> <span class="toc-nav-text">方法锁形式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.2.2.3.2.</span> <span class="toc-nav-text">代码块形式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%B1%BB%E9%94%81"><span class="toc-nav-number">1.2.2.4.</span> <span class="toc-nav-text">类锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.2.2.4.1.</span> <span class="toc-nav-text">静态方法形式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97%E5%BD%A2%E5%BC%8F-1"><span class="toc-nav-number">1.2.2.4.2.</span> <span class="toc-nav-text">代码块形式</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B0%83%E8%AF%95%E5%8F%AF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">调试可用技巧</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E5%90%8C%E6%AD%A5%E9%94%81"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 如何合理使用同步锁</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E5%9C%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%9B%E8%A1%8C%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%8F%8A%E5%85%B6%E5%85%B7%E4%BD%93%E5%9C%A8%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 在多线程进行架构设计及其具体在第一次作业中的体现</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OO" title="BUAA-OO">BUAA-OO</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

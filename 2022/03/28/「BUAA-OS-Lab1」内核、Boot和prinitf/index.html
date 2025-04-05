@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA OS Lab1」内核、Boot和prinitf - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/03/28/「BUAA-OS-Lab1」内核、Boot和prinitf/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                            
+                        </div>
+                        <h1>「BUAA OS Lab1」内核、Boot和prinitf</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-03-28
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">5.2k</span> and
+                                Reading Time <span class="post-count">24</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-OS-Lab1」内核、Boot和prinitf"><a href="#「BUAA-OS-Lab1」内核、Boot和prinitf" class="headerlink" title="「BUAA OS Lab1」内核、Boot和prinitf"></a>「BUAA OS Lab1」内核、Boot和prinitf</h1><h2 id="Part-0-前言"><a href="#Part-0-前言" class="headerlink" title="Part 0 前言"></a>Part 0 前言</h2><p>Lab1的要求包括：从操作系统角度理解 MIPS 体系结构、掌握操作系统启动的基本流程、掌握 ELF 文件的结构和功能和完成 printf 函数的编写。实验指导书有详尽的介绍，这里不再重复造轮子，仅针对学习和实验过程中的体会和思考加以记录。</p>
+<h2 id="Part-1-操作系统的启动"><a href="#Part-1-操作系统的启动" class="headerlink" title="Part 1 操作系统的启动"></a>Part 1 操作系统的启动</h2><h3 id="实验的环境"><a href="#实验的环境" class="headerlink" title="实验的环境"></a>实验的环境</h3><p>区分以下几个概念是重要的：</p>
+<p>模拟硬件环境：GXemul，这是一款计算机架构仿真器，可以模拟需要的CPU等硬件环境，这也是我们进行仿真实验的平台。</p>
+<p>编写代码的平台：Linux。我们的跳板机的操作系统是Linux，我们输入的各种如<code>cd</code>，<code>ls</code>等指令就是Linux指令。</p>
+<p>交叉编译：我们的跳板机是x86平台，其编译器服务于x86平台，但我们希望在跳板机中写出的操作系统运行于MIPS平台，因此，我们需要的是编译出可以在MIPS平台运行的程序，普通编译器做不到这一点。交叉编译器，就是在一个体系结构的平台上编译出另一个体系结构的程序的编译器。</p>
+<h3 id="启动操作系统"><a href="#启动操作系统" class="headerlink" title="启动操作系统"></a>启动操作系统</h3><p>系统加电后，操作系统将要启动，这是一个复杂纠结的过程，以下简要总结思考路径。</p>
+<ol>
+<li>内核代码要能够运行，必须要被CPU直接访问，排除磁盘。</li>
+<li>内核代码需要稳定，掉电后依然不能失去，排除易失性存储器内存RAM。RAM掉电后会丢失全部数据。</li>
+<li>排除法知，现仅剩CPU可以直接访问的非易失性存储器ROM和FLASH。</li>
+<li>上述两种存储器的存储空间一般会被映射到CPU寻址空间的确定区域，是有限的，不能装载内核较大的一版操作系统。</li>
+<li>我们希望一个计算机硬件可以支持多个操作系统，并且希望操作系统便于移植而不和特定硬件完全绑死。</li>
+</ol>
+<p>基于以上考虑，硬件初始化工作用<code>bootloader</code>程序完成，有以下好处和特点：</p>
+<ol>
+<li>其单独将硬件初始化工作从操作系统中抽离，实现硬件启动和软件启动的分离，因此需要在非易失性存储器中存放的硬件启动指令不多。</li>
+<li>bootloader完成硬件初始化后，为软件启动做相应准备，如，将内核镜像文件从存放的存储器（如磁盘）读取到RAM。即，我们可以在bootloader后选择加载哪一个内核镜像，达成多重开机的功能，也达成一个硬件运行多个操作系统的功能。</li>
+<li>bootloader清晰地划分了硬件启动和软件启动的边界，这样虽然也不能使操作系统不依赖硬件，但是明显提高了操作系统和硬件交互的抽象层次。</li>
+</ol>
+<h3 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h3><p>Bootloader大多分为stage1和stage2两部分，一下简述这两部分工作。</p>
+<h4 id="stage1"><a href="#stage1" class="headerlink" title="stage1"></a>stage1</h4><p>初始化硬件设备，包括watchdog timer、中断、时钟、内存。此时内存RAM尚未初始化完成，因此stage1直接运行在bootloader的存储设备上（如FLASH）。此外，stage1会为加载stage2准备RAM空间，将stage2的代码复制到RAM空间，设置堆栈，最后跳转到stage2的入口函数。</p>
+<h4 id="stage2"><a href="#stage2" class="headerlink" title="stage2"></a>stage2</h4><p>stage2运行在RAM中，充足的运行环境使得可以用C语言实现复杂功能。初始化stage2需要使用的硬件设备和其他功能，将内核镜像文件从存储器读到RAM中，设置内核的启动参数，将CPU指令寄存器的内容设置为内核入口函数的地址，将控制权从bootloader转交给操作系统内核。</p>
+<p><img src="/2022-03-28-%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf.assets/image-20220330152009977.png" alt="image-20220330152009977"></p>
+<h2 id="Part-2-Kernal"><a href="#Part-2-Kernal" class="headerlink" title="Part 2 Kernal"></a>Part 2 Kernal</h2><h3 id="顶层Makefile"><a href="#顶层Makefile" class="headerlink" title="顶层Makefile"></a>顶层Makefile</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Main makefile</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright (C) 2007 Beihang University</span></span><br><span class="line"><span class="comment"># Written by Zhu Like ( zlike@cse.buaa.edu.cn )</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line">drivers_dir	  := drivers <span class="comment"># 赋值符号，对变量的定义语句</span></span><br><span class="line">boot_dir	  := boot</span><br><span class="line">init_dir	  := init</span><br><span class="line">lib_dir		  := lib</span><br><span class="line">tools_dir	  := tools</span><br><span class="line">test_dir	  := </span><br><span class="line"><span class="comment">#上面定义了各种文件夹名称</span></span><br><span class="line">vmlinux_elf	  := gxemul/vmlinux</span><br><span class="line"><span class="comment">#这个是我们最终需要生成的内核elf文件</span></span><br><span class="line">link_script   := <span class="variable">$(tools_dir)</span>/scse0_3.lds <span class="comment">#链接用的脚本，指导连接器将多个.o文件链接成目标可执行的脚本</span></span><br><span class="line"></span><br><span class="line">modules		  := boot drivers init lib <span class="comment"># modules定义了内核所包含的所有模块</span></span><br><span class="line">objects		  := <span class="variable">$(boot_dir)</span>/start.o			  \ <span class="comment"># objects表示要编译出内核所依赖的所有.o文件；\表示这一行没有结束，下一行的内容和这一行是连在一起的，提高了文件的可读性</span></span><br><span class="line">				 <span class="variable">$(init_dir)</span>/main.o			  \</span><br><span class="line">				 <span class="variable">$(init_dir)</span>/init.o			  \</span><br><span class="line">			   	 <span class="variable">$(drivers_dir)</span>/gxconsole/console.o \</span><br><span class="line">				 <span class="variable">$(lib_dir)</span>/*.o				  \</span><br><span class="line"><span class="comment">#定义了需要生成的各种文件</span></span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>: all $(modules) clean # 表明列在其后的目标不受修改时间的约束。即，一旦该规则被调用，无视make工具编译时有关时间戳的性质，无论依赖文件是否被修改，一定保证它被执行</span></span><br><span class="line"></span><br><span class="line"><span class="section">all: <span class="variable">$(modules)</span> vmlinux #我们的“最终目标”，其中列出的dependencies表明构建整个项目依赖于构建好所有的模块以及vmlinunx</span></span><br><span class="line"></span><br><span class="line"><span class="section">vmlinux: <span class="variable">$(modules)</span> # vmlinux的构建依赖于所有的模块</span></span><br><span class="line">	<span class="variable">$(LD)</span> -o <span class="variable">$(vmlinux_elf)</span> -N -T <span class="variable">$(link_script)</span> <span class="variable">$(objects)</span> <span class="comment"># 调用了链接器将之前构建的各模块产生的所有.o问年间在linker script的指导下链接到一起，产生最终的vmlinux可执行文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##注意,这里调用了一个叫做$(LD)的程序</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(modules)</span>: <span class="comment"># 定义了每个模块的构建方法是调用对应模块目录下的Makefile</span></span><br><span class="line">	<span class="variable">$(MAKE)</span> --directory=<span class="variable">$@</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入各个子文件夹进行make</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean: # 40-45行定义了如何清理所有被构建出来的文件</span></span><br><span class="line">	for d in <span class="variable">$(modules)</span>;	\</span><br><span class="line">		do					\</span><br><span class="line">			<span class="variable">$(MAKE)</span> --directory=$$d clean; \</span><br><span class="line">		done; \</span><br><span class="line">	rm -rf *.o *~ <span class="variable">$(vmlinux_elf)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span> <span class="keyword">include</span>.mk</span><br></pre></td></tr></table></figure>
+
+<p>完成lab1课下后回看这份代码，会有新的体会。</p>
+<ol>
+<li>tool 目录下只有 scse0_3.lds 这个 linker script 文件，我们会在下面的小节中详细讲解。</li>
+<li>gxemul 目录存放着 GXemul 仿真器启动内核文件时所需要的配置文件，另外代码编译完成后生成的名为“vmlinux”的内核文件也会放在这个目录下。</li>
+<li>boot 目录中需要注意的是 start.S 文件。这个文件中的 _start 函数是 CPU 控制权被转交给内核后执行的第一个函数，主要工作是初始化硬件相关的设置，为之后操作系统初始化做准备，最后跳转到 init&#x2F;main.c 文件中定义的 main 函数。</li>
+<li>init 目录中主要有两个代码文件 main.c 和 init.c，其作用是初始化操作系统。通过分析函数调用关系，我们可以发现最终调用的函数是 init.c 文件中的 mips_init()函数。在本实验中此函数只是简单的打印输出，而在之后的实验中会逐步添加新的内核功能，所以诸如内存初始化等具体方面的初始化函数都会在这里被调用。</li>
+<li>include 目录中存放系统头文件。在本实验中需要用到的头文件是 mmu.h 文件，这个文件中有一张内存布局图，我们在填写 linker script 的时候需要根据这个图来设 置相应节的加载地址。</li>
+<li>lib 目录存放一些常用库函数，这里主要存放一些打印的函数。</li>
+<li>driver 目录中存放驱动相关的代码，这里主要存放的是终端输出相关的函数。</li>
+</ol>
+<h3 id="start-S"><a href="#start-S" class="headerlink" title="start.S"></a><code>start.S</code></h3><p>位置：<code>boot/start.S</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;asm/regdef.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;asm/cp0regdef.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;asm/asm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            .section .data.stk</span><br><span class="line">KERNEL_STACK:</span><br><span class="line">            .space <span class="number">0x8000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            .text</span><br><span class="line"><span class="title function_">LEAF</span><span class="params">(_start)</span> <span class="comment">/*LEAF is defined in asm.h and LEAF functions don&#x27;t call other functions*/</span></span><br><span class="line"></span><br><span class="line">    .<span class="built_in">set</span>    mips2      <span class="comment">/*.set is used to instruct how the assembler works and control the order of instructions */</span></span><br><span class="line">    .<span class="built_in">set</span>    reorder</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Disable interrupts */</span></span><br><span class="line">    mtc0    zero, CP0_STATUS</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Disable watch exception. */</span></span><br><span class="line">    mtc0    zero, CP0_WATCHLO</span><br><span class="line">    mtc0    zero, CP0_WATCHHI</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* disable kernel mode cache */</span></span><br><span class="line">    mfc0    t0, CP0_CONFIG</span><br><span class="line">    and t0, ~0x7</span><br><span class="line">    ori t0, 0x2</span><br><span class="line">    mtc0    t0, CP0_CONFIG</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">      Exercise 1.4. Please complete this part.</span></span><br><span class="line"><span class="comment">      To do: </span></span><br><span class="line"><span class="comment">      set up stack.</span></span><br><span class="line"><span class="comment">      hint: you can reference the memory layout in the include/mmu.h.</span></span><br><span class="line"><span class="comment">      call main func.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/* ans begin*/</span></span><br><span class="line">    li sp, 0x80400000</span><br><span class="line">    li t0, 0x80400000</span><br><span class="line">    <span class="meta">#sw t0, mCONTEXT</span></span><br><span class="line">    jal main</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*ans end*/</span></span><br><span class="line"></span><br><span class="line">loop:</span><br><span class="line">    j   loop</span><br><span class="line">    nop</span><br><span class="line"><span class="title function_">END</span><span class="params">(_start)</span>            <span class="comment">/*the function defined in asm.h*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="main-c"><a href="#main-c" class="headerlink" title="main.c"></a><code>main.c</code></h3><p>地址：<code>init/main.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2001 MontaVista Software Inc.</span></span><br><span class="line"><span class="comment"> * Author: Jun Sun, jsun@mvista.com or jsun@junsun.net</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This program is free software; you can redistribute  it and/or modify it</span></span><br><span class="line"><span class="comment"> * under  the terms of  the GNU General  Public License as published by the</span></span><br><span class="line"><span class="comment"> * Free Software Foundation;  either version 2 of the  License, or (at your</span></span><br><span class="line"><span class="comment"> * option) any later version.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;printf.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pmap.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;main.c:\tmain is start ...\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    mips_init();</span><br><span class="line">    panic(<span class="string">&quot;main is over is error!&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="init-c"><a href="#init-c" class="headerlink" title="init.c"></a><code>init.c</code></h3><p>地址：<code>init/init.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;asm/asm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pmap.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;env.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;printf.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;kclock.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;trap.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">mips_init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;init.c:\tmips_init() is called\n&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//for your degree,don&#x27;t delete these.</span></span><br><span class="line">    <span class="comment">//------------|</span></span><br><span class="line">    <span class="meta">#<span class="keyword">ifdef</span> FTEST</span></span><br><span class="line">    FTEST();</span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">ifdef</span> PTEST</span></span><br><span class="line">    ENV_CREATE(PTEST);</span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="comment">//-----------|</span></span><br><span class="line">    panic(<span class="string">&quot;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ELF"><a href="#ELF" class="headerlink" title="ELF"></a>ELF</h3><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><p><img src="/2022-03-28-%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf.assets/image-20220330163247799.png" alt="image-20220330163247799"></p>
+<ol>
+<li>ELF Header，包括程序的基本信息，比如体系结构和操作系统，同时也包含了Section Header Table和Program Header Table相对文件的偏移量(offset)。</li>
+<li>Program Header Table，也可以称为Segment Table，主要包含程序中各个Segment的信息，Segment的信息需要在运行时刻使用。</li>
+<li>Section Header Table，主要包含各个Section的信息，Section的信息需要在程序编译和链接的时候使用。</li>
+<li>Segments，就是各个Segment。Segment 则记录了每一段数据（包括代码等内容） 需要被载入到哪里，记录了用于指导应用程序加载的各类信息。</li>
+<li>Sections，就是各个Section。就是各个 Section。Section 记录了程序的代码段、数据段等各个段的内容，主要是链接器在链接的过程中需要使用。</li>
+</ol>
+<p>Program Header Table和Section Header Table指向了同样的地方，这就说明两者所代表的内容是重合的，这意味着两者只是同一个东西的不同视图，产生这种情况的原因在于ELF文件需要在两种场合使用：</p>
+<ol>
+<li>组成可重定位文件，参与可执行文件和可共享文件的链接。</li>
+<li>组成可执行文件或者可共享文件，在运行时为加载器提供信息。</li>
+</ol>
+<h3 id="kerelf-h"><a href="#kerelf-h" class="headerlink" title="kerelf.h"></a><code>kerelf.h</code></h3><p>地址：<code>./readelf/kerelf.h</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This file defines standard ELF types, structures, and macros.</span></span><br><span class="line"><span class="comment">   Copyright (C) 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.</span></span><br><span class="line"><span class="comment">   This file is part of the GNU C Library.</span></span><br><span class="line"><span class="comment">   Contributed by Ian Lance Taylor &lt;ian@cygnus.com&gt;.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   The GNU C Library is free software; you can redistribute it and/or</span></span><br><span class="line"><span class="comment">   modify it under the terms of the GNU Library General Public License as</span></span><br><span class="line"><span class="comment">   published by the Free Software Foundation; either version 2 of the</span></span><br><span class="line"><span class="comment">   License, or (at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   The GNU C Library is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span></span><br><span class="line"><span class="comment">   Library General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   You should have received a copy of the GNU Library General Public</span></span><br><span class="line"><span class="comment">   License along with the GNU C Library; see the file COPYING.LIB.  If not,</span></span><br><span class="line"><span class="comment">   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,</span></span><br><span class="line"><span class="comment">   Boston, MA 02111-1307, USA.  */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _KER_ELF_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _KER_ELF_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ELF defination file from GNU C Library. We simplefied this</span></span><br><span class="line"><span class="comment"> * file for our lab, removing definations about ELF64, structs and</span></span><br><span class="line"><span class="comment"> * enums which we don&#x27;t care.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;types.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">u_int64_t</span>               <span class="type">uint64_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">u_int32_t</span>               <span class="type">uint32_t</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">u_int16_t</span>               <span class="type">uint16_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Type for a 16-bit quantity.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint16_t</span> Elf32_Half;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Types for signed and unsigned 32-bit quantities.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint32_t</span> Elf32_Word;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int32_t</span>  Elf32_Sword;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Types for signed and unsigned 64-bit quantities.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint64_t</span> Elf32_Xword;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int64_t</span>  Elf32_Sxword;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Type of addresses.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint32_t</span> Elf32_Addr;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Type of file offsets.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint32_t</span> Elf32_Off;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Type for section indices, which are 16-bit quantities.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint16_t</span> Elf32_Section;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Type of symbol indices.  */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">uint32_t</span> Elf32_Symndx;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The ELF file header.  This appears at the start of every ELF file.  */</span></span><br><span class="line"><span class="comment">/* ELF 文件的文件头。所有的ELF文件均以此为起始 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EI_NIDENT (16)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span>   e_ident[EI_NIDENT];     <span class="comment">/* Magic number and other info */</span></span><br><span class="line">    <span class="comment">// 存放魔数以及其他信息</span></span><br><span class="line">    Elf32_Half      e_type;                 <span class="comment">/* Object file type */</span></span><br><span class="line">    <span class="comment">// 文件类型 </span></span><br><span class="line">    Elf32_Half      e_machine;              <span class="comment">/* Architecture */</span></span><br><span class="line">    <span class="comment">// 机器架构</span></span><br><span class="line">    Elf32_Word      e_version;              <span class="comment">/* Object file version */</span></span><br><span class="line">    <span class="comment">// 文件版本</span></span><br><span class="line">    Elf32_Addr      e_entry;                <span class="comment">/* Entry point virtual address */</span></span><br><span class="line">    <span class="comment">// 入口点的虚拟地址</span></span><br><span class="line">    Elf32_Off       e_phoff;                <span class="comment">/* Program header table file offset */</span></span><br><span class="line">    <span class="comment">// 程序头表所在处与此文件头的偏移</span></span><br><span class="line">    Elf32_Off       e_shoff;                <span class="comment">/* Section header table file offset */</span></span><br><span class="line">    <span class="comment">// 节头表所在处与此文件头的偏移，ELF文件头地址加上该偏移即为节头表第一项地址</span></span><br><span class="line">    Elf32_Word      e_flags;                <span class="comment">/* Processor-specific flags */</span></span><br><span class="line">    <span class="comment">// 针对处理器的标记</span></span><br><span class="line">    Elf32_Half      e_ehsize;               <span class="comment">/* ELF header size in bytes */</span></span><br><span class="line">    <span class="comment">// ELF文件头的大小（单位为字节）</span></span><br><span class="line">    Elf32_Half      e_phentsize;            <span class="comment">/* Program header table entry size */</span></span><br><span class="line">    <span class="comment">// 程序头表入口大小</span></span><br><span class="line">    Elf32_Half      e_phnum;                <span class="comment">/* Program header table entry count */</span></span><br><span class="line">    <span class="comment">// 程序头表入口数</span></span><br><span class="line">    Elf32_Half      e_shentsize;            <span class="comment">/* Section header table entry size */</span></span><br><span class="line">    <span class="comment">// 节头表入口大小</span></span><br><span class="line">    Elf32_Half      e_shnum;                <span class="comment">/* Section header table entry count */</span></span><br><span class="line">    <span class="comment">// 节头表入口数</span></span><br><span class="line">    Elf32_Half      e_shstrndx;             <span class="comment">/* Section header string table index */</span></span><br><span class="line">    <span class="comment">// 节头字符串编号</span></span><br><span class="line">&#125; Elf32_Ehdr;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="comment">// section name</span></span><br><span class="line">  Elf32_Word sh_name;</span><br><span class="line">  <span class="comment">// section type</span></span><br><span class="line">  Elf32_Word sh_type;</span><br><span class="line">  <span class="comment">// section flags</span></span><br><span class="line">  Elf32_Word sh_flags;</span><br><span class="line">  <span class="comment">// section addr</span></span><br><span class="line">  Elf32_Addr sh_addr;</span><br><span class="line">  <span class="comment">// offset from elf head of this entry</span></span><br><span class="line">  Elf32_Off sh_offset;</span><br><span class="line">  <span class="comment">// byte size of this section</span></span><br><span class="line">  Elf32_Word sh_size;</span><br><span class="line">  <span class="comment">// link</span></span><br><span class="line">  Elf32_Word sh_link;</span><br><span class="line">  <span class="comment">// extra info</span></span><br><span class="line">  Elf32_Word sh_info;</span><br><span class="line">  <span class="comment">// alignment</span></span><br><span class="line">  Elf32_Word sh_addralign;</span><br><span class="line">  <span class="comment">// entry size</span></span><br><span class="line">  Elf32_Word sh_entsize;</span><br><span class="line"> &#125;Elf32_Shdr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="comment">// segment type</span></span><br><span class="line">  Elf32_Word p_type;</span><br><span class="line">  <span class="comment">// offset from elf file head of this entry</span></span><br><span class="line">  Elf32_Off p_offset;</span><br><span class="line">  <span class="comment">// virtual addr of this segment</span></span><br><span class="line">  Elf32_Addr p_vaddr;</span><br><span class="line">  <span class="comment">// physical addr, in linux, this value is meanless and has same value of p_vaddr</span></span><br><span class="line">  Elf32_Addr p_paddr;</span><br><span class="line">  <span class="comment">// file size of this segment</span></span><br><span class="line">  Elf32_Word p_filesz;</span><br><span class="line">  <span class="comment">// memory size of this segment</span></span><br><span class="line">  Elf32_Word p_memsz;</span><br><span class="line">  <span class="comment">// segment flag</span></span><br><span class="line">  Elf32_Word p_flags;</span><br><span class="line">  <span class="comment">// alignment</span></span><br><span class="line">  Elf32_Word p_align;</span><br><span class="line"> &#125;Elf32_Phdr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Legal values for p_type (segment type).  */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_NULL         0               <span class="comment">/* Program header table entry unused */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_LOAD         1               <span class="comment">/* Loadable program segment */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_DYNAMIC      2               <span class="comment">/* Dynamic linking information */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_INTERP       3               <span class="comment">/* Program interpreter */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_NOTE         4               <span class="comment">/* Auxiliary information */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_SHLIB        5               <span class="comment">/* Reserved */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_PHDR         6               <span class="comment">/* Entry for header table itself */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_NUM          7               <span class="comment">/* Number of defined types.  */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_LOOS         0x60000000      <span class="comment">/* Start of OS-specific */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_HIOS         0x6fffffff      <span class="comment">/* End of OS-specific */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_LOPROC       0x70000000      <span class="comment">/* Start of processor-specific */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PT_HIPROC       0x7fffffff      <span class="comment">/* End of processor-specific */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Legal values for p_flags (segment flags).  */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PF_X            (1 &lt;&lt; 0)        <span class="comment">/* Segment is executable */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PF_W            (1 &lt;&lt; 1)        <span class="comment">/* Segment is writable */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PF_R            (1 &lt;&lt; 2)        <span class="comment">/* Segment is readable */</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PF_MASKPROC     0xf0000000      <span class="comment">/* Processor-specific */</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">readelf</span><span class="params">(u_char *binary,<span class="type">int</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* kerelf.h */</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="readelf-c"><a href="#readelf-c" class="headerlink" title="readelf.c"></a><code>readelf.c</code></h3><p>地址：<code>./readelf/readelf.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This is a simplefied ELF reader.</span></span><br><span class="line"><span class="comment"> * You can contact me if you find any bugs.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Luming Wang&lt;wlm199558@126.com&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;kerelf.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/* Overview:</span></span><br><span class="line"><span class="comment"> *   Check whether it is a ELF file.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Pre-Condition:</span></span><br><span class="line"><span class="comment"> *   binary must longer than 4 byte.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Post-Condition:</span></span><br><span class="line"><span class="comment"> *   Return 0 if `binary` isn&#x27;t an elf. Otherwise</span></span><br><span class="line"><span class="comment"> * return 1.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">is_elf_format</span><span class="params">(u_char *binary)</span></span><br><span class="line">&#123; <span class="comment">// 对魔数判等，若不等则说明不是elf格式文件</span></span><br><span class="line">        Elf32_Ehdr *ehdr = (Elf32_Ehdr *)binary;</span><br><span class="line">        <span class="keyword">if</span> (ehdr-&gt;e_ident[EI_MAG0] == ELFMAG0 &amp;&amp;</span><br><span class="line">                ehdr-&gt;e_ident[EI_MAG1] == ELFMAG1 &amp;&amp;</span><br><span class="line">                ehdr-&gt;e_ident[EI_MAG2] == ELFMAG2 &amp;&amp;</span><br><span class="line">                ehdr-&gt;e_ident[EI_MAG3] == ELFMAG3) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Overview:</span></span><br><span class="line"><span class="comment"> *   read an elf format binary file. get ELF&#x27;s information</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Pre-Condition:</span></span><br><span class="line"><span class="comment"> *   `binary` can&#x27;t be NULL and `size` is the size of binary.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Post-Condition:</span></span><br><span class="line"><span class="comment"> *   Return 0 if success. Otherwise return &lt; 0.</span></span><br><span class="line"><span class="comment"> *   If success, output address of every section in ELF.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    Exercise 1.2. Please complete func &quot;readelf&quot;. </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">readelf</span><span class="params">(u_char *binary, <span class="type">int</span> size)</span></span><br><span class="line">&#123;</span><br><span class="line">        Elf32_Ehdr *ehdr = (Elf32_Ehdr *)binary; <span class="comment">// 强转ehdr指向文件头</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> Nr;</span><br><span class="line"></span><br><span class="line">        Elf32_Shdr *shdr = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">        u_char *ptr_sh_table = <span class="literal">NULL</span>;</span><br><span class="line">        Elf32_Half sh_entry_count;</span><br><span class="line">        Elf32_Half sh_entry_size;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// check whether `binary` is a ELF file.</span></span><br><span class="line">        <span class="keyword">if</span> (size &lt; <span class="number">4</span> || !is_elf_format(binary)) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;not a standard elf format\n&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get section table addr, section header number and section header size</span></span><br><span class="line">            ptr_sh_table = binary + ehdr -&gt; e_shoff;</span><br><span class="line">            sh_entry_count = ehdr -&gt; e_shnum;</span><br><span class="line">            sh_entry_size = ehdr -&gt; e_shentsize;</span><br><span class="line">        <span class="comment">// for each section header, output section number and section addr.</span></span><br><span class="line">            <span class="keyword">for</span> (Nr = <span class="number">0</span>; Nr &lt; sh_entry_count; Nr++) &#123;</span><br><span class="line">                shdr = (Elf32_Shdr *)(ptr_sh_table + Nr * sh_entry_size);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d:0x%x\n&quot;</span>, Nr, shdr-&gt;sh_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">// hint: section number starts at 0.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;                                                     </span><br></pre></td></tr></table></figure>
+
+<h3 id="main-c-1"><a href="#main-c-1" class="headerlink" title="main.c"></a><code>main.c</code></h3><p>地址：<code>./readelf/main.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> <span class="title function_">readelf</span><span class="params">(u_char* binary, <span class="type">int</span> size)</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        overview: input a elf format file name from control line, call the readelf function</span></span><br><span class="line"><span class="comment">                  to parse it.</span></span><br><span class="line"><span class="comment">        params:</span></span><br><span class="line"><span class="comment">                argc: the number of parameters</span></span><br><span class="line"><span class="comment">                argv: array of parameters, argv[1] shuold be the file name.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">        FILE* fp;</span><br><span class="line">        <span class="type">int</span> fsize;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> *p;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(argc &lt; <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Please input the filename.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((fp = fopen(argv[<span class="number">1</span>],<span class="string">&quot;rb&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found\n&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fseek(fp,<span class="number">0L</span>,SEEK_END);</span><br><span class="line">        fsize = ftell(fp);</span><br><span class="line">        p = (u_char *)<span class="built_in">malloc</span>(fsize+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">                fclose(fp);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fseek(fp,<span class="number">0L</span>,SEEK_SET);</span><br><span class="line">        fread(p,fsize,<span class="number">1</span>,fp);</span><br><span class="line">        p[fsize] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	readelf(p,fsize);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="MIPS内存布局"><a href="#MIPS内存布局" class="headerlink" title="MIPS内存布局"></a>MIPS内存布局</h3><p><img src="/2022-03-28-%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf.assets/image-20220320222345638.png" alt="image-20220320222345638"></p>
+<p>从硬件角度讲，这四个区域的情况如下：</p>
+<ol>
+<li>User Space(kuseg) 0x00000000-0x7FFFFFFF(2G)：这些是用户模式下可用的地址。在使用这些地址的时候，程序会通过MMU映射到实际的物理地址上。</li>
+<li>Kernel Space Unmapped Cached(kseg0) 0x80000000-0x9FFFFFFF(512MB)：只需要将地址的高3位清零，这些地址就被转换为物理地址。 也就是说，逻辑地址到物理地址的映射关系是硬件直接确定，不通过MMU。因为转换很简单，我们常常把这些地址称为“无需转换的”。 一般情况下，都是通过cache 对这段区域的地址进行访问。</li>
+<li>Kernel Space Unmapped Uncached(kseg1) 0xA0000000-0xBFFFFFFF(512MB)：这一段地址的转换规则与前者相似， 通过将高 3 位清零的方法将地址映射为相应的物理地址,重复映射到了低端 512MB 的物理地址。需要注意的是，kseg1 不通过cache 进行存取。</li>
+<li>Kernel Space Mapped Cached(kseg2) 0xC0000000-0xFFFFFFFF(1GB)：这段地址只能在内核态下使用并且需要MMU 的转换。</li>
+</ol>
+<p>需要通过MMU映射访问的地址得在建立虚拟内存机制后才能正常使用， 是由操作系统所管理的。因此，在载入内核时，我们只能选用不需要通过MMU的内存空间，因为此时尚未建立虚存机制。好了，满足这一条件的只有kseg0和kseg1了。 而kseg1是不经过cache的，一般用于访问外部设备。所以，我们的内核只能放在kseg0了。</p>
+<h3 id="MMU-H"><a href="#MMU-H" class="headerlink" title="MMU.H"></a><code>MMU.H</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _MMU_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _MMU_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;types.h&quot;</span></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This file contains:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  Part 1.  MIPS definitions.</span></span><br><span class="line"><span class="comment"> *  Part 2.  Our conventions.</span></span><br><span class="line"><span class="comment"> *  Part 3.  Our helper functions.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Part 1.  MIPS definitions.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BY2PG       4096        <span class="comment">// bytes to a page</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PDMAP       (4*1024*1024)   <span class="comment">// bytes mapped by a page directory entry</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PGSHIFT     12</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PDX(va)     ((((u_long)(va))&gt;&gt;22) &amp; 0x03FF)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTX(va)     ((((u_long)(va))&gt;&gt;12) &amp; 0x03FF)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTE_ADDR(pte)   ((u_long)(pte)&amp;~0xFFF)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// page number field of address</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PPN(va)     (((u_long)(va))&gt;&gt;12)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> VPN(va)     PPN(va)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> VA2PFN(va)      (((u_long)(va)) &amp; 0xFFFFF000 ) <span class="comment">// va 2 PFN for EntryLo0/1</span></span></span><br><span class="line"><span class="comment">//$#define VA2PDE(va)       (((u_long)(va)) &amp; 0xFFC00000 ) // for context</span></span><br><span class="line"><span class="comment">/* Page Table/Directory Entry flags</span></span><br><span class="line"><span class="comment"> *   these are defined by the hardware</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTE_G       0x0100  <span class="comment">// Global bit</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTE_V       0x0200  <span class="comment">// Valid bit</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTE_R       0x0400  <span class="comment">// Dirty bit ,&#x27;0&#x27; means only read ,otherwise make interrupt</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PTE_UC      0x0800  <span class="comment">// unCached</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Part 2.  Our conventions.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> o     4G -----------&gt;  +----------------------------+------------0x100000000</span></span><br><span class="line"><span class="comment"> o                      |       ...                  |  kseg3</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+------------0xe000 0000</span></span><br><span class="line"><span class="comment"> o                      |       ...                  |  kseg2</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+------------0xc000 0000</span></span><br><span class="line"><span class="comment"> o                      |   Interrupts &amp; Exception   |  kseg1</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+------------0xa000 0000</span></span><br><span class="line"><span class="comment"> o                      |      Invalid memory        |   /|\</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+----|-------Physics Memory Max</span></span><br><span class="line"><span class="comment"> o                      |       ...                  |  kseg0</span></span><br><span class="line"><span class="comment"> o  VPT,KSTACKTOP-----&gt; +----------------------------+----|-------0x8040 0000-------end</span></span><br><span class="line"><span class="comment"> o                      |       Kernel Stack         |    | KSTKSIZE            /|\</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+----|------                |</span></span><br><span class="line"><span class="comment"> o                      |       Kernel Text          |    |                    PDMAP</span></span><br><span class="line"><span class="comment"> o      KERNBASE -----&gt; +----------------------------+----|-------0x8001 0000    | </span></span><br><span class="line"><span class="comment"> o                      |   Interrupts &amp; Exception   |   \|/                    \|/</span></span><br><span class="line"><span class="comment"> o      ULIM     -----&gt; +----------------------------+------------0x8000 0000------- </span></span><br><span class="line"><span class="comment"> o                      |         User VPT           |     PDMAP                /|\</span></span><br><span class="line"><span class="comment"> o      UVPT     -----&gt; +----------------------------+------------0x7fc0 0000    |</span></span><br><span class="line"><span class="comment"> o                      |         PAGES              |     PDMAP                 |</span></span><br><span class="line"><span class="comment"> o      UPAGES   -----&gt; +----------------------------+------------0x7f80 0000    |</span></span><br><span class="line"><span class="comment"> o                      |         ENVS               |     PDMAP                 |</span></span><br><span class="line"><span class="comment"> o  UTOP,UENVS   -----&gt; +----------------------------+------------0x7f40 0000    |</span></span><br><span class="line"><span class="comment"> o  UXSTACKTOP -/       |     user exception stack   |     BY2PG                 |</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+------------0x7f3f f000    |</span></span><br><span class="line"><span class="comment"> o                      |       Invalid memory       |     BY2PG                 |</span></span><br><span class="line"><span class="comment"> o      USTACKTOP ----&gt; +----------------------------+------------0x7f3f e000    |</span></span><br><span class="line"><span class="comment"> o                      |     normal user stack      |     BY2PG                 |</span></span><br><span class="line"><span class="comment"> o                      +----------------------------+------------0x7f3f d000    |</span></span><br><span class="line"><span class="comment"> a                      |                            |                           |</span></span><br><span class="line"><span class="comment"> a                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                           |</span></span><br><span class="line"><span class="comment"> a                      .                            .                           |</span></span><br><span class="line"><span class="comment"> a                      .                            .                         kuseg</span></span><br><span class="line"><span class="comment"> a                      .                            .                           |</span></span><br><span class="line"><span class="comment"> a                      |~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                           |</span></span><br><span class="line"><span class="comment"> a                      |                            |                           |</span></span><br><span class="line"><span class="comment"> o       UTEXT   -----&gt; +----------------------------+                           |</span></span><br><span class="line"><span class="comment"> o                      |                            |     2 * PDMAP            \|/</span></span><br><span class="line"><span class="comment"> a     0 ------------&gt;  +----------------------------+ -----------------------------</span></span><br><span class="line"><span class="comment"> o</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> KERNBASE 0x80010000</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> VPT (ULIM + PDMAP )</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> KSTACKTOP (VPT-0x100)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> KSTKSIZE (8*BY2PG)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ULIM 0x80000000</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UVPT (ULIM - PDMAP)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UPAGES (UVPT - PDMAP)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UENVS (UPAGES - PDMAP)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UTOP UENVS</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UXSTACKTOP (0x82000000)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> USTACKTOP (UTOP - 2*BY2PG)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UTEXT 0x00400000</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Part 3.  Our helper functions.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">bcopy</span><span class="params">(<span class="type">const</span> <span class="type">void</span> *, <span class="type">void</span> *, <span class="type">size_t</span>)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">bzero</span><span class="params">(<span class="type">void</span> *, <span class="type">size_t</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">char</span> bootstacktop[], bootstack[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> u_long npage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> u_long Pde;</span><br><span class="line"><span class="keyword">typedef</span> u_long Pte;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PADDR(kva)                      \</span></span><br><span class="line"><span class="meta">(&#123;                              \</span></span><br><span class="line"><span class="meta">    u_long a = (u_long) (kva);              \</span></span><br><span class="line"><span class="meta">    <span class="keyword">if</span> (a &lt; ULIM)                   \</span></span><br><span class="line"><span class="meta">        panic(<span class="string">&quot;PADDR called with invalid kva %08lx&quot;</span>, a);\</span></span><br><span class="line"><span class="meta">    a - ULIM;                       \</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// translates from physical address to kernel virtual address</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> KADDR(pa)                       \</span></span><br><span class="line"><span class="meta">(&#123;                              \</span></span><br><span class="line"><span class="meta">    u_long ppn = PPN(pa);                   \</span></span><br><span class="line"><span class="meta">    <span class="keyword">if</span> (ppn &gt;= npage)                   \</span></span><br><span class="line"><span class="meta">        panic(<span class="string">&quot;KADDR called with invalid pa %08lx&quot;</span>, (u_long)pa);\</span></span><br><span class="line"><span class="meta">    (pa) + ULIM;                    \</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> assert(x)   \</span></span><br><span class="line"><span class="meta">    do &#123;    <span class="keyword">if</span> (!(x)) panic(<span class="string">&quot;assertion failed: %s&quot;</span>, #x); &#125; while (0)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// !_MMU_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Linker-Script"><a href="#Linker-Script" class="headerlink" title="Linker Script"></a>Linker Script</h3><p>LinkerScript记录了各个section如何映射到segment，以及各个segment应该被加载到的位置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.text 保存可执行文件的操作指令</span><br><span class="line">.data 保存已初始化的全局变量和静态变量</span><br><span class="line">.bss 保存未初始化的全局变量和静态变量</span><br></pre></td></tr></table></figure>
+
+<h2 id="Part-3-printf"><a href="#Part-3-printf" class="headerlink" title="Part 3 printf"></a>Part 3 printf</h2><h3 id="printf-c"><a href="#printf-c" class="headerlink" title="printf.c"></a>printf.c</h3><p>地址：<code>lib/printf.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2001 MontaVista Software Inc.</span></span><br><span class="line"><span class="comment"> * Author: Jun Sun, jsun@mvista.com or jsun@junsun.net</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This program is free software; you can redistribute  it and/or modify it</span></span><br><span class="line"><span class="comment"> * under  the terms of  the GNU General  Public License as published by the</span></span><br><span class="line"><span class="comment"> * Free Software Foundation;  either version 2 of the  License, or (at your</span></span><br><span class="line"><span class="comment"> * option) any later version.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;printf.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;print.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;drivers/gxconsole/dev_cons.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printcharc</span><span class="params">(<span class="type">char</span> ch)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">halt</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">myoutput</span><span class="params">(<span class="type">void</span> *arg, <span class="type">char</span> *s, <span class="type">int</span> l)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// special termination call</span></span><br><span class="line">    <span class="keyword">if</span> ((l==<span class="number">1</span>) &amp;&amp; (s[<span class="number">0</span>] == <span class="string">&#x27;\0&#x27;</span>)) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt; l; i++) &#123;</span><br><span class="line">    printcharc(s[i]);</span><br><span class="line">    <span class="keyword">if</span> (s[i] == <span class="string">&#x27;\n&#x27;</span>) printcharc(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printf</span><span class="params">(<span class="type">char</span> *fmt, ...)</span></span><br><span class="line">&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line">    va_start(ap, fmt);</span><br><span class="line">    lp_Print(myoutput, <span class="number">0</span>, fmt, ap);</span><br><span class="line">    va_end(ap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span></span><br><span class="line">_panic(<span class="type">const</span> <span class="type">char</span> *file, <span class="type">int</span> line, <span class="type">const</span> <span class="type">char</span> *fmt,...)</span><br><span class="line">&#123;</span><br><span class="line">    va_list ap;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    va_start(ap, fmt);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;panic at %s:%d: &quot;</span>, file, line);</span><br><span class="line">    lp_Print(myoutput, <span class="number">0</span>, (<span class="type">char</span> *)fmt, ap);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    va_end(ap);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="console-c"><a href="#console-c" class="headerlink" title="console.c"></a>console.c</h3><p>地址：<code>drivers/gxconsole/console.c</code></p>
+<h2 id="Part-4-测试printf详细流程"><a href="#Part-4-测试printf详细流程" class="headerlink" title="Part 4 测试printf详细流程"></a>Part 4 测试printf详细流程</h2><p>笔者在完成Exercise1.5后，对于如何测试运行写好的<code>printf</code>摸索了一阵，在这里简单记录。我们假设读者目前完成了Exercise1.1-1.5全部内容。</p>
+<ol>
+<li><p>在学号目录下，执行<code>make clean</code>，清除已有的编译结果，避免潜在的问题。</p>
+</li>
+<li><p>在学号目录下，执行<code>make</code>，在<code>gxemul</code>目录下得到<code>vmlinux</code>内核文件。这个阶段可能出现Error报错，可以仔细阅读报错信息。</p>
+</li>
+<li><p>执行<code>/OSLAB/gxemul -E testmips -C R3000 -M 64 ./gxemul/vmlinux</code>命令，得到测试结果。如果出现了指导书PDF83页中的内容，说明<code>printf</code>已经编写正确。</p>
+<p>值得注意的是，命令中不是<code>gxemul</code>，而是<code>/OSLAB/gxemul</code>，若使用<code>gxemul</code>会报错<code>-bash: gxemul: command not found</code>，算是对指导书的小小捉虫。</p>
+</li>
+<li><p>ctrl+C中断模拟，quit退出仿真器，ctrl+z仿真器挂在后台，fg将GXemul作业调至前台</p>
+</li>
+</ol>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/03/28/CMD笔记/" data-toggle="tooltip" data-placement="top" title="CMD笔记">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/03/27/Linux终端笔记/" data-toggle="tooltip" data-placement="top" title="Linux终端笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Mon Mar 28 2022 08:59:02 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-OS-Lab1%E3%80%8D%E5%86%85%E6%A0%B8%E3%80%81Boot%E5%92%8Cprinitf"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA OS Lab1」内核、Boot和prinitf</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 操作系统的启动</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">实验的环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">启动操作系统</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Bootloader"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">Bootloader</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stage1"><span class="toc-nav-number">1.2.3.1.</span> <span class="toc-nav-text">stage1</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stage2"><span class="toc-nav-number">1.2.3.2.</span> <span class="toc-nav-text">stage2</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-Kernal"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 Kernal</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A1%B6%E5%B1%82Makefile"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">顶层Makefile</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#start-S"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">start.S</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#main-c"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">main.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#init-c"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">init.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ELF"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">ELF</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">文件结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#kerelf-h"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">kerelf.h</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#readelf-c"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">readelf.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#main-c-1"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">main.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MIPS%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-nav-number">1.3.10.</span> <span class="toc-nav-text">MIPS内存布局</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MMU-H"><span class="toc-nav-number">1.3.11.</span> <span class="toc-nav-text">MMU.H</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linker-Script"><span class="toc-nav-number">1.3.12.</span> <span class="toc-nav-text">Linker Script</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-printf"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 printf</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#printf-c"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">printf.c</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#console-c"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">console.c</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E6%B5%8B%E8%AF%95printf%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 测试printf详细流程</span></a></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA-OS" title="BUAA-OS">BUAA-OS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

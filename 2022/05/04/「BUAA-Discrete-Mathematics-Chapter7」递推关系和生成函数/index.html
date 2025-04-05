@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="A hexo theme">
+    <meta name="keyword"  content="saltyfishyjk, yjk, @saltyfishyjk, @yjk, saltyfishyjk&#39;s Blog">
+    <link rel="shortcut icon" href="/img/x.ico">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          「BUAA Discrete Mathematics Chapter7」递推关系和生成函数 - saltyfishyjk
+        
+    </title>
+
+    <link rel="canonical" href="https://saltyfishyjk.github.io/2022/05/04/「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="saltyfishyjk's Blog" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                            
+                        </div>
+                        <h1>「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by saltyfishyjk on
+                            2022-05-04
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">2.3k</span> and
+                                Reading Time <span class="post-count">10</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">saltyfishyjk&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://home.cnblogs.com/u/saltyfishyjk" target="_blank">Chinese Blog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数"><a href="#「BUAA-Discrete-Mathematics-Chapter7」递推关系和生成函数" class="headerlink" title="「BUAA Discrete Mathematics Chapter7」递推关系和生成函数"></a>「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</h1><h2 id="Part-0"><a href="#Part-0" class="headerlink" title="Part 0"></a>Part 0</h2><h2 id="Part-1-生成函数"><a href="#Part-1-生成函数" class="headerlink" title="Part 1 生成函数"></a>Part 1 生成函数</h2><h3 id="为什么研究生成函数"><a href="#为什么研究生成函数" class="headerlink" title="为什么研究生成函数"></a>为什么研究生成函数</h3><p>生成函数也叫母函数，研究生成函数是因为其适合求解<strong>计数问题</strong>。</p>
+<p>一方面，我们将生成函数看作代数对象，用代数手段计算一个问题的可能性的数目；另一方面，生成函数是<strong>无限可微分函数的泰勒级数</strong>。因此，如果找到这样的函数和它的泰勒级数，那么泰勒级数的系数就给出了问题的解。值得注意的是，我们讨论收敛的级数并且只在形式上操作幂函数。</p>
+<h3 id="生成函数定义"><a href="#生成函数定义" class="headerlink" title="生成函数定义"></a>生成函数定义</h3><p>设</p>
+<p>$$<br>h_0,h_1,h_2, \cdots , h_n , \cdots<br>$$</p>
+<p>是无穷数列，定义这个数列的<strong>生成函数</strong>为无穷级数：</p>
+<p>$$<br>g(x) &#x3D; h_0+h_1x+h_2x^2+ \cdots +h_nx^n+\cdots<br>$$</p>
+<p>即，生成函数的 $ x ^ n $ 的系数是数列第 $ n $ 项（从 $ 0 $ 开始） $ h_n $ 。我们可以将 $ x ^ n $视作占位符。</p>
+<p>对于有限数列：</p>
+<p>$$<br>h_0,h_1,h_2,\cdots,h_m<br>$$</p>
+<p>可以看成无穷数列：</p>
+<p>$$<br>h_0,h_1,h_2,\cdots,h_m,0,0,\cdots<br>$$</p>
+<p>因而也可以得到对应的生成函数：</p>
+<p>$$<br>g(x) &#x3D; h_0+h_1x+h_2x^2+ \cdots +h_mx^m<br>$$</p>
+<h3 id="多重集的组合与排列"><a href="#多重集的组合与排列" class="headerlink" title="多重集的组合与排列"></a>多重集的组合与排列</h3><p>设集合 $ S $ 包含重数分别为 $ n_1, n_2, \cdots n_t $ 的 $ t $ 类元素，</p>
+<ul>
+<li><p>$ S $ 的 $ r $ 组合（当 $ \forall n_i \ge r(i &#x3D; 1,2,\cdots ,t) $ 时）的个数为：<br>$$<br>\tbinom{r + t - 1}{r}<br>$$</p>
+<ul>
+<li>如果存在一个 $ n_i &lt; r $ ：容斥原理</li>
+<li>或者也可以对每类元素的出现个数进行约束：采用我们本章的<strong>生成函数</strong></li>
+</ul>
+</li>
+<li><p>$ S $ 的排列的个数： $ \frac{n!}{n_1!n_2!\cdots n_t!} $ </p>
+<ul>
+<li>或者也可以对每类元素的出现个数进行约束：采用我们本章的<strong>指数生成函数</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="常见展开式"><a href="#常见展开式" class="headerlink" title="常见展开式"></a>常见展开式</h3><ul>
+<li><p>$$<br>(1+x)^n &#x3D; \sum_{k &#x3D; 0}^{n} \tbinom{n}{k}x^k<br>$$</p>
+</li>
+<li><p>$$<br>(1-x)^n &#x3D; \sum_{k &#x3D; 0}^{n}(-1)^k\tbinom{n}{k}x^k<br>$$</p>
+</li>
+</ul>
+<p>对满足 $ |x| &lt; 1 $ 的任意 $ x $ ，有：</p>
+<ul>
+<li><p>$$<br>\frac{1}{(1+x)^n} &#x3D; \sum_{k&#x3D;0}^{\infty}(-1)^k\tbinom{n + k - 1}{k}x^k<br>$$</p>
+</li>
+<li><p>$$<br>\frac{1}{(1-x)^n} &#x3D; \sum_{k&#x3D;0}^{\infty}\tbinom{n + k - 1}{k}x^k<br>$$</p>
+</li>
+</ul>
+<p>$ n  &#x3D; 1 $ 时，得：</p>
+<ul>
+<li><p>$$<br>\frac{1}{(1+x)} &#x3D; \sum_{k&#x3D;0}^{\infty}(-1)^kx^k \quad (|x|&lt;1)<br>$$</p>
+</li>
+<li><p>$$<br>\frac{1}{(1-x)} &#x3D; \sum_{k&#x3D;0}^{\infty}x^k \quad (|x| &lt; 1)<br>$$</p>
+</li>
+</ul>
+<p>令 $ x &#x3D; y ^ m $ ，得：</p>
+<ul>
+<li><p>$$<br>\frac{1}{(1+y^m)} &#x3D; \sum_{k&#x3D;0}^{\infty}(-1)^k{y^m}^k \quad (|y|&lt;1)<br>$$</p>
+</li>
+<li><p>$$<br>\frac{1}{(1-y^m)} &#x3D; \sum_{k&#x3D;0}^{\infty}{y^m}^k \quad (|y|&lt;1)<br>$$</p>
+</li>
+</ul>
+<hr>
+<h3 id="生成函数的应用"><a href="#生成函数的应用" class="headerlink" title="生成函数的应用"></a>生成函数的应用</h3><h4 id="利用生成函数求解多重集的组合个数"><a href="#利用生成函数求解多重集的组合个数" class="headerlink" title="利用生成函数求解多重集的组合个数"></a>利用生成函数求解多重集的组合个数</h4><p>思路：对于给定的有限制的多重集问题，其可以被表述为：</p>
+<p>$$<br>e_1 + e_2 + \cdots + e_k &#x3D; n<br>$$</p>
+<p>其中，对每个因子 $ e_i $ 的限制可以被体现在其生成函数中，表现如下：</p>
+<p>$$<br>g(x) &#x3D; (\sum^{e_1}{x^{e_1}}) \times (\sum^{e_2}{x^{e_2}}) \times \cdots \times (\sum^{e_k}{x^{e_k}})<br>$$</p>
+<p>对于 $ \sum^{e_i}{x^{e_i}} $ ，可以通过上述常见展开式化为一个有理式，如 $ \frac{1}{(1-x)^2}$ ，将 $ k $ 个有理式的乘积化简得到的有理式可以再推出第k项的系数，即为 $ h_k $ 的系数。</p>
+<p>特别地，如果 $ e_i $ 前有系数，如 $ 2e_1 $ ，进行变量替换，并给新变量加上倍数限制即可。</p>
+<hr>
+<h3 id="排列逆序与定理7-2-1"><a href="#排列逆序与定理7-2-1" class="headerlink" title="排列逆序与定理7.2.1"></a>排列逆序与定理7.2.1</h3><h4 id="排列逆序"><a href="#排列逆序" class="headerlink" title="排列逆序"></a>排列逆序</h4><p>对于集合 $ {1,2, \cdots ,n } $的排列 $ \pi &#x3D; i_1,i_2,\cdots i_n$ 中的逆序指的是 $ k &lt; l $ 且 $ i_k &gt; i_l $ 的有序数对 $ (i_k, i_l) $ 。这样的逆序数我们记作 $ inv (\pi) $ 。</p>
+<p>设 $ h(n, t) $ 表示 $ { 1,2,\cdots ,n } $ 的排列中有 $ t $ 个逆序的排列的个数</p>
+<h4 id="定理7-2-1"><a href="#定理7-2-1" class="headerlink" title="定理7.2.1"></a>定理7.2.1</h4><p>数列 $ h(n,0),h(n,1),h(n,2),\cdots h(n,n(n-1)&#x2F;2) $ 的生成函数为：</p>
+<p>$$<br>g(x) &#x3D; h(n,0)+h(n,1)x+h(n,2)x^2 +\cdots + h(n,n(n-1)&#x2F;2)x^{n(n-1)&#x2F;2} &#x3D; \frac{\prod_{j&#x3D;1}^{n}{1-x^j}}{(1-x)^n}<br>$$</p>
+<hr>
+<h2 id="Part-2-指数生成函数"><a href="#Part-2-指数生成函数" class="headerlink" title="Part 2 指数生成函数"></a>Part 2 指数生成函数</h2><h3 id="为什么需要指数生成函数"><a href="#为什么需要指数生成函数" class="headerlink" title="为什么需要指数生成函数"></a>为什么需要指数生成函数</h3><p>在<strong>Part 1 生成函数</strong>中，我们介绍了利用 $ {1,x,x^2,\cdots ,x^k,\cdots} $ 获得生成函数的方法，并解决了一些计数数列问题，如多重集的组合问题。</p>
+<p>而在多重集的排列问题中，更有效的办法是考虑通过 $ { 1,x,\frac{x^2}{2!},\cdots \frac{x^n}{n!} , \cdots } $ 获得<strong>指数生成函数</strong>。</p>
+<h3 id="指数生成函数定义"><a href="#指数生成函数定义" class="headerlink" title="指数生成函数定义"></a>指数生成函数定义</h3><p>对于给定数列：</p>
+<p>$$<br>h_0,h_1,h_2, \cdots , h_n , \cdots<br>$$</p>
+<p>其指数生成函数定义为：</p>
+<p>$$<br>g^{(e)}(x) &#x3D; \sum_{n&#x3D;0}^{\infty}h_n\frac{x^n}{n!} &#x3D; h_0+h_1x+h_2\frac{x^2}{2!}+\cdots+h_n\frac{x^n}{n!}+\cdots<br>$$</p>
+<h3 id="定理7-3-1"><a href="#定理7-3-1" class="headerlink" title="定理7.3.1"></a>定理7.3.1</h3><p>对于有 $ k $ 种不同类型的对象且每种对象都有有限重数的多重集合 $ S $ ，下述定理给出其 $ n $ 排列数的指数生成函数：</p>
+<p>设 $ S $ 是多重集合 $ { n_1 \cdot a_1,n_2 \cdot a_2, \cdots , n_k \cdot a_k } $ ， 其中 $ n_1, n_2, \cdots , n_k $ 是非负整数，设 $ h_n $ 是 $ S $ 的 $ n $ 排列数，则数列 $ h_0, h_1, h_2, \cdots h_n , \cdots $ 的指数生成函数 $ g^{(e)}(x) $ 由下式给出：</p>
+<p>$$<br>g^{(e)}(x) &#x3D; f_{n_1}(x)f_{n_2}(x)\cdots f_{n_k}(x)<br>$$</p>
+<p>其中，对于 $ i &#x3D; 1,2,\cdots,k $ ，有：</p>
+<p>$$<br>f_{n_i}(x) &#x3D; 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^{n_i}}{ {n_i}!}<br>$$</p>
+<p>值得注意的是，上式也可以推广到无穷重数，即存在 $ n_i $ 为 $ \infty $。</p>
+<h3 id="常用展开式"><a href="#常用展开式" class="headerlink" title="常用展开式"></a>常用展开式</h3><ul>
+<li><p>$$<br>e^x &#x3D; \sum_{n&#x3D;0}^{\infty} \frac{x^n}{n!} &#x3D; 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \cdots<br>$$</p>
+</li>
+<li><p>$$<br>e ^ {-x} &#x3D; \sum _{n &#x3D; 0} ^{\infty} (-1)^{n} \frac{x^n}{n!} &#x3D; 1 - x + \frac{x^2}{2!} + \cdots + (-1)^n \frac{x^n}{n!} + \cdots<br>$$</p>
+</li>
+<li><p>$$<br>\frac{1}{2} (e^x + e^{-x}) &#x3D; 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \cdots + \frac{x^{2n}}{(2n)!} + \cdots<br>$$</p>
+</li>
+<li><p>$$<br>\frac{1}{2}(e^{x} - e^{-x}) &#x3D; x + \frac{x^3}{3!} + \frac{x^5}{5!} + \cdots + \frac{x^{2n+1}}{(2n+1)!} + \cdots<br>$$</p>
+</li>
+</ul>
+<h2 id="Part-3-线性齐次递推关系"><a href="#Part-3-线性齐次递推关系" class="headerlink" title="Part 3 线性齐次递推关系"></a>Part 3 线性齐次递推关系</h2><p>给定下述 $ k $ 阶线性递推关系：<br>$$<br>h_n &#x3D; a_1 h_{n - 1} + a_2 h_{n - 2} + \cdots + a_k h_{n - k} + b_n \quad (n \ge k)<br>$$<br>当 $ b_n &#x3D; 0 $ 时，为线性<strong>齐次</strong>递推关系；如果 $ a_i $ 为常数，则为<strong>常系数</strong>线性递推关系。</p>
+<p>我们在这里研究的主要是 $ k $ 阶常系数线性齐次递推关系。</p>
+<h3 id="定理7-4-1"><a href="#定理7-4-1" class="headerlink" title="定理7.4.1"></a>定理7.4.1</h3><p>设 $ q $ 是一个非零的数。 $ h_n &#x3D; q^n $ 是下面常系数线性齐次递推关系<br>$$<br>h_n - a_1h_{n - 1} - a_2 h_{n - 2} - \cdots - a_k h_{n - k} &#x3D; 0 \quad (a_k \ne 0, n \ge k)<br>$$<br>的解，当且仅当 $ q $ 是下面多项式方程<br>$$<br>x^k - a_1 x^{k - 1} - a_2 x^{k - 2} - \cdots - a_k &#x3D; 0<br>$$<br>的根。如果多项式方程有 $ k $ 个不同的根 $ q_1, q_2, \cdots , q_k $ ，则<br>$$<br>h_n &#x3D; c_1 q_1^{n} + c_2 q_2^{n} + \cdots + c_k q_k^{n}<br>$$<br>在下述意义之下是原常系数线性齐次递推关系的通解：无论给定怎样的初始值 $ h_0, h_1, \cdots , h_{k - 1} $ ，均存在常数 $ c_1, c_2, \cdots  c_k $ 使得 $ h_n $ 通项是满足递推关系和初始值的唯一解。</p>
+<h3 id="特征方程法"><a href="#特征方程法" class="headerlink" title="特征方程法"></a>特征方程法</h3><p>定理7.4.1中给出的多项式方程即为特征方程， $ q $ 即为特征根，因此特征方程法解题步骤归纳如下：</p>
+<ul>
+<li>列出特征方程</li>
+<li>求出特征根 $ { q_1, q_2, \cdots , q_k } $ （一元多次方程组，因式分解.etc）</li>
+<li>利用初始值求通解 $ { c_1, c_2, \cdots , c_k} $ （多元一次方程组，线性代数问题）</li>
+</ul>
+<p>值得注意的是，上面的解法中我们要求了 $ q_i $ 彼此不同，但是如果不满足这一条件，即，出现了重根，可以参考《组合数学》P236的解决办法。更一般而言，我们给出定理7.4.2：</p>
+<h3 id="定理7-4-2"><a href="#定理7-4-2" class="headerlink" title="定理7.4.2"></a>定理7.4.2</h3><p>设 $ q_1, q_2, \cdots , q_t $ 是常系数线性齐次递推关系<br>$$<br>h_n &#x3D; a_1 h_{n - 1} + a_2 h_{n - 2} + \cdots + a_k h_{n - k} \quad , a_k \ne 0 \quad (n \ge k)<br>$$<br>的特征方程<strong>互不相同</strong>的根。如果 $ q_i $ 是特征方程的 $ s_i $ 重根，那么这个递推关系的通解中对应 $ q_i $ 的部分是<br>$$<br>H_n^{(i)} &#x3D; c_1 q_i^n + c_2nq_i^n + \cdots + c_{s_i}n^{s_i - 1}q_i^n &#x3D; (c_1 + c_2n + \cdots + c_{s_i}n^{s_i - 1})q_i^n<br>$$<br>这个递推关系的通解是：<br>$$<br>h_n &#x3D; H_n^{(1)} + H_n^{(2)} + \cdots + H_n^{(t)}<br>$$<br>我们重新总结利用特征方程法求解常系数齐次递推关系的一般方法：</p>
+<ul>
+<li>写出特征方程</li>
+<li>求解特征方程<ul>
+<li>没有重根，根据定理7.4.1直接给出通解</li>
+<li>有重根，根据定理7.4.2求出通解</li>
+</ul>
+</li>
+<li>将初始条件代入，得到满足初始条件的解</li>
+</ul>
+<h3 id="生成函数法"><a href="#生成函数法" class="headerlink" title="生成函数法"></a>生成函数法</h3><p>可以参考《组合数学》P146的例子</p>
+<h2 id="Part-4-非线性齐次递推关系"><a href="#Part-4-非线性齐次递推关系" class="headerlink" title="Part 4 非线性齐次递推关系"></a>Part 4 非线性齐次递推关系</h2><h3 id="迭代求解-数学归纳"><a href="#迭代求解-数学归纳" class="headerlink" title="迭代求解 &amp; 数学归纳"></a>迭代求解 &amp; 数学归纳</h3><h3 id="生成函数"><a href="#生成函数" class="headerlink" title="生成函数"></a>生成函数</h3><h3 id="特征方程"><a href="#特征方程" class="headerlink" title="特征方程"></a>特征方程</h3><ol>
+<li>求齐次的通解</li>
+<li>求非齐次的特解</li>
+<li>组合齐次的通解和非齐次的特解，得到非齐次的通解</li>
+<li>通过初始条件求得通解中出现的常数值</li>
+</ol>
+<h4 id="尝试特解的方法"><a href="#尝试特解的方法" class="headerlink" title="尝试特解的方法"></a>尝试特解的方法</h4><p>根据 $ b_n $ 的特点来尝试特解：</p>
+<h5 id="b-n-是-n-的-k-次多项式"><a href="#b-n-是-n-的-k-次多项式" class="headerlink" title="$ b_n $ 是 $ n $ 的 $ k $ 次多项式"></a>$ b_n $ 是 $ n $ 的 $ k $ 次多项式</h5><p>尝试 $ h_n $ 是 $ n $ 的 $ k $ 次多项式：</p>
+<ul>
+<li>若 $ b_n &#x3D; d $ ，尝试 $ h_n &#x3D; r $ （常数）</li>
+<li>若 $ b_n &#x3D; dn + c $ （ $ d,c $ 是常数 ），尝试 $ h_n &#x3D; rn+s $ （ $h,s $ 是常数）</li>
+<li>若 $ b_n &#x3D; an^2 + dn + c $ ，（ $ a,b,c $ 是常数 ），尝试 $ h_n &#x3D; rn^2 + sn + t $ （ $ r,s,t $ 是常数 ）</li>
+</ul>
+<h5 id="b-n-d-n-（-d-是常数-）是指数形式"><a href="#b-n-d-n-（-d-是常数-）是指数形式" class="headerlink" title="$ b_n &#x3D; d^n $ （ $ d $ 是常数 ）是指数形式"></a>$ b_n &#x3D; d^n $ （ $ d $ 是常数 ）是指数形式</h5><p>尝试 $ h_n &#x3D; pd^n $ （ $ p $ 是常数 ）也是指数形式</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/05/04/「BUAA-OS-Course」进程/" data-toggle="tooltip" data-placement="top" title="「BUAA OS Course」进程">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/05/02/「BUAA-OO-Unit-2-HW8」第二单元总结/" data-toggle="tooltip" data-placement="top" title="「BUAA OO Unit 2 HW8」第二单元总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: 'Wed May 04 2022 09:57:06 GMT+0800', // optional
+    owner: "saltyfishyjk",
+    repo: "saltyfishyjk.github.io",
+    oauth: {
+      client_id: "17737ec06ef80355865e",
+      client_secret: "d79eba1e32e61803f07e93646964a7978e09f515",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E3%80%8CBUAA-Discrete-Mathematics-Chapter7%E3%80%8D%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%92%8C%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">「BUAA Discrete Mathematics Chapter7」递推关系和生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A0%94%E7%A9%B6%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">为什么研究生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">生成函数定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88%E4%B8%8E%E6%8E%92%E5%88%97"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">多重集的组合与排列</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%B8%E8%A7%81%E5%B1%95%E5%BC%80%E5%BC%8F"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">常见展开式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">生成函数的应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88%E4%B8%AA%E6%95%B0"><span class="toc-nav-number">1.2.5.1.</span> <span class="toc-nav-text">利用生成函数求解多重集的组合个数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8E%92%E5%88%97%E9%80%86%E5%BA%8F%E4%B8%8E%E5%AE%9A%E7%90%867-2-1"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">排列逆序与定理7.2.1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8E%92%E5%88%97%E9%80%86%E5%BA%8F"><span class="toc-nav-number">1.2.6.1.</span> <span class="toc-nav-text">排列逆序</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9A%E7%90%867-2-1"><span class="toc-nav-number">1.2.6.2.</span> <span class="toc-nav-text">定理7.2.1</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E6%8C%87%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 指数生成函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">为什么需要指数生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">指数生成函数定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E7%90%867-3-1"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">定理7.3.1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8%E5%B1%95%E5%BC%80%E5%BC%8F"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">常用展开式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 线性齐次递推关系</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E7%90%867-4-1"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">定理7.4.1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B%E6%B3%95"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">特征方程法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9A%E7%90%867-4-2"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">定理7.4.2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E6%B3%95"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">生成函数法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-4-%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part 4 非线性齐次递推关系</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B1%82%E8%A7%A3-%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">迭代求解 &amp; 数学归纳</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">生成函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">特征方程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%B0%9D%E8%AF%95%E7%89%B9%E8%A7%A3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.5.3.1.</span> <span class="toc-nav-text">尝试特解的方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#b-n-%E6%98%AF-n-%E7%9A%84-k-%E6%AC%A1%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-nav-number">1.5.3.1.1.</span> <span class="toc-nav-text">$ b_n $ 是 $ n $ 的 $ k $ 次多项式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#b-n-d-n-%EF%BC%88-d-%E6%98%AF%E5%B8%B8%E6%95%B0-%EF%BC%89%E6%98%AF%E6%8C%87%E6%95%B0%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.5.3.1.2.</span> <span class="toc-nav-text">$ b_n &#x3D; d^n $ （ $ d $ 是常数 ）是指数形式</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#BUAA Discrete Mathematics" title="BUAA Discrete Mathematics">BUAA Discrete Mathematics</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://thysrael.github.io/" target="_blank">Thysrael</a></li>
+                    
+                        <li><a href="https://wxx0105.cn/" target="_blank">贤弟安全</a></li>
+                    
+                        <li><a href="https://iszry.github.io" target="_blank">Matcha Flavor</a></li>
+                    
+                        <li><a href="https://master-tan.github.io/" target="_blank">Tan&#39;s Blog</a></li>
+                    
+                        <li><a href="https://mksasx.github.io/" target="_blank">AustinMa</a></li>
+                    
+                        <li><a href="https://bluebean-cloud.github.io/" target="_blank">Bluebean</a></li>
+                    
+                        <li><a href="https://chlience.cn/" target="_blank">Chlience</a></li>
+                    
+                        <li><a href="https://sunnyduan-oss.github.io/" target="_blank">甜胖妮</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/saltyfishyjk">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/gu-long-mo-yu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; saltyfishyjk 2025 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/saltyfishyjk/saltyfishyjk.github.io">
+                        <i>saltyfishyjk</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=saltyfishyjk&repo=saltyfishyjk.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://saltyfishyjk.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🐟&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>
