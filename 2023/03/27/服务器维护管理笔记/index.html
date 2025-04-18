@@ -281,7 +281,7 @@
 <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><p>由于熟悉且资料较多，因此选用Ubuntu 20.04 LTS。<strong>后文在不强调时也以此为默认配置</strong></p>
 <h2 id="Part-2-GitHub-Actions"><a href="#Part-2-GitHub-Actions" class="headerlink" title="Part 2 GitHub Actions"></a>Part 2 GitHub Actions</h2><p>参考资料：</p>
 <ul>
-<li><a href="https://www.cnblogs.com/YAN-HUA/p/13530906.html">利用GitHub Actions自动化打包部署服务器</a>：有用，其中<code>appleboy/ssh-action</code>套件很有用，可以直接在服务器执行指令</li>
+<li><a href="https://www.cnblogs.com/YAN-HUA/p/13530906.html">利用GitHub Actions自动化打包部署服务器</a>：有用，其中 <code>appleboy/ssh-action</code>套件很有用，可以直接在服务器执行指令</li>
 </ul>
 <h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>参考资料：</p>
 <ul>
@@ -291,12 +291,12 @@
 <ul>
 <li><a href="https://saltyfishyjk.github.io/2022/03/27/Conda%E7%AC%94%E8%AE%B0/">Conda 笔记</a></li>
 </ul>
-<h2 id="Part-4-NPM"><a href="#Part-4-NPM" class="headerlink" title="Part 4 NPM"></a>Part 4 NPM</h2><p>避免直接使用<code>apt-get</code>安装nodejs，而采用NPM进行nodejs环境管理</p>
+<h2 id="Part-4-NPM"><a href="#Part-4-NPM" class="headerlink" title="Part 4 NPM"></a>Part 4 NPM</h2><p>避免直接使用 <code>apt-get</code>安装nodejs，而采用NPM进行nodejs环境管理</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>参考资料：</p>
 <ul>
 <li><a href="https://cloud.tencent.com/developer/article/1592229?from=article.detail.1772306&amp;areaSource=106000.19&amp;traceId=Tzg7WzbTDqDCL4Uv-k_8N">ubuntu16.04安装node.js、npm</a>：有用，照着来就行，对Ubuntu20.04也适用</li>
 </ul>
-<h2 id="Part-5-Vue"><a href="#Part-5-Vue" class="headerlink" title="Part 5 Vue"></a>Part 5 Vue</h2><h2 id="Part-6-Django"><a href="#Part-6-Django" class="headerlink" title="Part 6 Django"></a>Part 6 Django</h2><h2 id="Part-7-腾讯云与Ubuntu"><a href="#Part-7-腾讯云与Ubuntu" class="headerlink" title="Part 7 腾讯云与Ubuntu"></a>Part 7 腾讯云与Ubuntu</h2><h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><p>使用<code>ed25519</code>算法生成密钥</p>
+<h2 id="Part-5-Vue"><a href="#Part-5-Vue" class="headerlink" title="Part 5 Vue"></a>Part 5 Vue</h2><h2 id="Part-6-Django"><a href="#Part-6-Django" class="headerlink" title="Part 6 Django"></a>Part 6 Django</h2><h2 id="Part-7-腾讯云与Ubuntu"><a href="#Part-7-腾讯云与Ubuntu" class="headerlink" title="Part 7 腾讯云与Ubuntu"></a>Part 7 腾讯云与Ubuntu</h2><h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><p>使用 <code>ed25519</code>算法生成密钥</p>
 <p>参考资料：</p>
 <ul>
 <li><a href="https://blog.csdn.net/qq_36938617/article/details/95234909">Ubuntu系统中防火墙的使用和开放端口</a>：介绍如何放开端口，有用；需要注意的是可能需要打开防火墙，再开放端口，再关闭防火墙，否则无法通过ssh连接服务器</li>
@@ -306,30 +306,24 @@
 <blockquote>
 <p>本节以 Ubuntu 22.04 为例，且都在管理员账户和权限下进行</p>
 </blockquote>
-<h3 id="创建用户账户"><a href="#创建用户账户" class="headerlink" title="创建用户账户"></a>创建用户账户</h3><h4 id="默认方式创建用户"><a href="#默认方式创建用户" class="headerlink" title="默认方式创建用户"></a>默认方式创建用户</h4><p>创建名为 <code>username</code> 的账户，家目录为默认目录（多数为<code>/home/username</code>），需要根据提示设置用户密码（不能包含用户名）等信息</p>
+<h3 id="创建用户账户"><a href="#创建用户账户" class="headerlink" title="创建用户账户"></a>创建用户账户</h3><h4 id="默认方式创建用户"><a href="#默认方式创建用户" class="headerlink" title="默认方式创建用户"></a>默认方式创建用户</h4><p>创建名为 <code>username</code> 的账户，家目录为默认目录（多数为 <code>/home/username</code>），需要根据提示设置用户密码（不能包含用户名）等信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser username</span><br></pre></td></tr></table></figure>
-<h4 id="指定家目录位置创建用户"><a href="#指定家目录位置创建用户" class="headerlink" title="指定家目录位置创建用户"></a>指定家目录位置创建用户</h4><h5 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
+<h4 id="指定家目录位置创建用户"><a href="#指定家目录位置创建用户" class="headerlink" title="指定家目录位置创建用户"></a>指定家目录位置创建用户</h4><h5 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser --home /mnt/data/username username</span><br></pre></td></tr></table></figure>
 <p><del>设置用户对其家目录有合适的权限</del></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R username:username /mnt/data/username</span><br><span class="line">sudo chmod 700 /mnt/data/username</span><br></pre></td></tr></table></figure>
-<h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code> </p>
+<h5 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h5><p>创建用户 <code>username</code>，并设置其家目录为 <code>/mnt/data/username</code></p>
 <ol>
 <li><p>正常创建用户</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure></li>
 <li><p>重新指定用户家目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /mnt/data/username username</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /mnt/data/username username</span><br></pre></td></tr></table></figure></li>
 <li><p>设置仅有该用户拥有家目录的读、写和执行权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown username:username /mnt/data/username</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown username:username /mnt/data/username</span><br></pre></td></tr></table></figure></li>
 <li><p>从原来的家目录拷贝 <code>.bashrc</code> 和 <code>.bash_profile</code> 到新的家目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /home/username/.bashrc /mnt/data/username</span><br><span class="line">cp /home/username/.bash_profile /mnt/data/username</span><br></pre></td></tr></table></figure></li>
 <li><p>设置 SSH 密钥</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure></li>
 <li><p>设置 <code>.ssh</code> 的 SELinux 权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restorecon -v authorized_keys</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -394,6 +388,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></figure>
 <p>在文件末尾添加以下行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sdb   /mnt/data   ext4   defaults   0   0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>除此之外，更推荐使用UUID的方式设置挂载磁盘，可以指定唯一硬件，避免可能的磁盘目录变化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UUID=50eeb8b1-85f7-4348-9d5e-f85db1a0a73d /mnt/data ext4 defaults 0 0</span><br></pre></td></tr></table></figure>
+</blockquote>
 <h3 id="Step-4-设置合适的权限"><a href="#Step-4-设置合适的权限" class="headerlink" title="Step 4 设置合适的权限"></a>Step 4 设置合适的权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 755 /mnt/data</span><br></pre></td></tr></table></figure>
 <h2 id="Part-11-SSH登录"><a href="#Part-11-SSH登录" class="headerlink" title="Part 11 SSH登录"></a>Part 11 SSH登录</h2><h3 id="设置SSH密钥登录"><a href="#设置SSH密钥登录" class="headerlink" title="设置SSH密钥登录"></a>设置SSH密钥登录</h3><p>参考：<a href="https://cloud.tencent.com/developer/article/1780788">Linux系列 | SSH 如何使用密钥登录服务器</a></p>
 <ol>
