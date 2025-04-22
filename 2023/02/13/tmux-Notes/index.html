@@ -128,7 +128,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">266</span> and
+                                Words <span class="post-count">372</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -190,13 +190,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -205,6 +198,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -288,6 +288,18 @@
 <h3 id="切换session"><a href="#切换session" class="headerlink" title="切换session"></a>切换session</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux switch -t your-session-name</span><br></pre></td></tr></table></figure>
 <h2 id="Part-3-查看"><a href="#Part-3-查看" class="headerlink" title="Part 3 查看"></a>Part 3 查看</h2><h3 id="查看所有-Session-列表"><a href="#查看所有-Session-列表" class="headerlink" title="查看所有 Session 列表"></a>查看所有 Session 列表</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
 <h3 id="查看-Session-历史输出信息"><a href="#查看-Session-历史输出信息" class="headerlink" title="查看 Session 历史输出信息"></a>查看 Session 历史输出信息</h3><p><code>ctrl+b [</code> 后使用键盘的上下左右和翻页键滚动历史输出信息。</p>
+<h2 id="Part-n-踩坑"><a href="#Part-n-踩坑" class="headerlink" title="Part n 踩坑"></a>Part n 踩坑</h2><h3 id="报错-can-39-t-create-socket"><a href="#报错-can-39-t-create-socket" class="headerlink" title="报错 can&#39;t create socket"></a>报错 <code>can&#39;t create socket</code></h3><p>问题原因：关机时文件没有正确关闭</p>
+<p>解决方案：</p>
+<ol>
+<li>执行 <code>strace -e trace=file tmux</code> 找到出问题的目录<ol>
+<li>输出结果<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir(&quot;/tmp//tmux-1007&quot;, 0700)          = -1 EEXIST (文件已存在)</span><br><span class="line">lstat(&quot;/tmp//tmux-1007&quot;, &#123;st_mode=S_IFDIR|0777, st_size=4096, ...&#125;) = 0</span><br><span class="line">can&#x27;t create socket</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>删除该目录 <code>/tmp/tmux-1007</code></li>
+</ol>
+<ul>
+<li>参考博客 <a href="https://blog.csdn.net/iteye_15309/article/details/82573304">解决tmux启动「can&#39;t create socket」的问题</a></li>
+</ul>
 
                 
                 <hr>
@@ -421,7 +433,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#tmux-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tmux Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E8%BF%9B%E5%85%A5%E4%B8%8E%E9%80%80%E5%87%BA-Session"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 进入与退出 Session</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%EF%BC%88%E8%A7%A3%E7%BB%91%EF%BC%89"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">分离（解绑）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%80%E5%87%BA"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%E5%B9%B6%E9%80%80%E5%87%BA"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">分离并退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E5%85%A5%EF%BC%88%E9%87%8D%E6%96%B0%E7%BB%91%E5%AE%9A%EF%BC%89"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">进入（重新绑定）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%87%E6%8D%A2session"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">切换session</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%9F%A5%E7%9C%8B"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 查看</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89-Session-%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">查看所有 Session 列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B-Session-%E5%8E%86%E5%8F%B2%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">查看 Session 历史输出信息</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#tmux-Notes"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">tmux Notes</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-0-%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Part 0 前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Part 1 基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-2-%E8%BF%9B%E5%85%A5%E4%B8%8E%E9%80%80%E5%87%BA-Session"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Part 2 进入与退出 Session</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%EF%BC%88%E8%A7%A3%E7%BB%91%EF%BC%89"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">分离（解绑）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%80%E5%87%BA"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%E5%B9%B6%E9%80%80%E5%87%BA"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">分离并退出</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E5%85%A5%EF%BC%88%E9%87%8D%E6%96%B0%E7%BB%91%E5%AE%9A%EF%BC%89"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">进入（重新绑定）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%87%E6%8D%A2session"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">切换session</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-3-%E6%9F%A5%E7%9C%8B"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Part 3 查看</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89-Session-%E5%88%97%E8%A1%A8"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">查看所有 Session 列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9F%A5%E7%9C%8B-Session-%E5%8E%86%E5%8F%B2%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">查看 Session 历史输出信息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Part-n-%E8%B8%A9%E5%9D%91"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Part n 踩坑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8A%A5%E9%94%99-can-39-t-create-socket"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">报错 can&#39;t create socket</span></a></li></ol></li></ol></li></ol>
             
           
           </div>
