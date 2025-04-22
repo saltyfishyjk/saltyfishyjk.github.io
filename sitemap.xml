@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://saltyfishyjk.github.io/2023/04/11/PC%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    
+    <lastmod>2025-04-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://saltyfishyjk.github.io/2023/02/13/tmux-Notes/</loc>
     
     <lastmod>2025-04-22</lastmod>
@@ -237,15 +246,6 @@
   
   <url>
     <loc>https://saltyfishyjk.github.io/2022/09/01/%E3%80%8CBUAA-Python-Programming%E3%80%8DNotes/</loc>
-    
-    <lastmod>2023-08-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://saltyfishyjk.github.io/2023/04/11/PC%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     
     <lastmod>2023-08-04</lastmod>
     
@@ -943,14 +943,14 @@
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
+    <loc>https://saltyfishyjk.github.io/tags/BUAA-Discrete-Mathematics/</loc>
     <lastmod>2025-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/BUAA-Discrete-Mathematics/</loc>
+    <loc>https://saltyfishyjk.github.io/tags/BUAA-OS/</loc>
     <lastmod>2025-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -971,14 +971,14 @@
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/Latex/</loc>
+    <loc>https://saltyfishyjk.github.io/tags/Flask/</loc>
     <lastmod>2025-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://saltyfishyjk.github.io/tags/Flask/</loc>
+    <loc>https://saltyfishyjk.github.io/tags/Latex/</loc>
     <lastmod>2025-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
